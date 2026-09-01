@@ -1,0 +1,126 @@
+    {% liquid
+        assign locales = shop.metafields.foxify.locales.value
+        assign current_locale = request.locale.iso_code
+        assign primary_locale = current_locale
+        for locale in shop.published_locales
+        if locale.primary
+            assign primary_locale = locale.iso_code
+            break
+        endif
+        endfor
+        assign translation = locales[current_locale] | default: locales[primary_locale]
+    %}
+    <script>
+      window.Foxify = window.Foxify || {}
+      Foxify.ThemeStyles = {
+        product: "https:{{ 'foxify-product.css' | asset_url }}",
+        swiper: "https:{{ 'foxify-swiper.css' | asset_url }}",
+      }
+
+      Foxify.ThemeScripts = {
+        productModel: "https:{{ 'foxify-product-model.js' | asset_url }}",
+        productMedia: "https:{{ 'foxify-media-gallery.js' | asset_url }}",
+        variantPicker: "https:{{ 'foxify-variant-picker.js' | asset_url }}"
+      }
+    </script>
+    
+    
+    <div class="foxify-content">
+        <div class="f-app f:content">
+<style data-foxify-editor="foxify-custom-fonts">
+  @font-face {
+    font-family: BrownProTT-Bold-17071127825LR9n;
+    src: url('https://cdn.shopify.com/s/files/1/0619/6150/2869/files/BrownProTT-Bold.ttf?v=1707112779');
+  }
+  
+  @font-face {
+    font-family: BrownProTT-Regular-1707112782cX7wj;
+    src: url('https://cdn.shopify.com/s/files/1/0619/6150/2869/files/BrownProTT-Regular.ttf?v=1707112779');
+  }
+  </style>
+<style>
+.f-app .f-image-cards-1726527753BFVyh {letter-spacing: 0px; opacity: 1; margin: 70px 70px -60px;}@media screen and (min-width: 1024px) and (max-width: 1279px) {.f-app .f-image-cards-1726527753BFVyh {margin: 8px 8px -8px;}}@media screen and (min-width: 768px) and (max-width: 1023px) {.f-app .f-image-cards-1726527753BFVyh {margin: 0px 8px -8px;}}@media screen and (max-width: 767px) {.f-app .f-image-cards-1726527753BFVyh {margin: 0px 0px -6px;}}
+.f-app .f-image-card-block-1726527753kcZGs {letter-spacing: 0px; opacity: 1; text-align: left;}@media screen and (max-width: 767px) {.f-app .f-image-card-block-1726527753kcZGs {background-color: var(--f-gs-background-2);}}
+.f-app .f-image-card-block-1726527753sLqLq {letter-spacing: 0px; opacity: 1; background: rgb(248, 248, 248); text-align: center;}
+.f-app .f-image-card-block-1726527753NoNQS {letter-spacing: 0px; opacity: 1; background: rgb(248, 248, 248); text-align: center;}
+.f-app .f-image-card-block-1726527753H3vvN {letter-spacing: 0px; opacity: 1; text-align: left;}@media screen and (max-width: 767px) {.f-app .f-image-card-block-1726527753H3vvN {background-color: var(--f-gs-background-2);}}
+.f-app .f-image-card-block-1726527753IExR3 {letter-spacing: 0px; opacity: 1; text-align: left;}@media screen and (max-width: 767px) {.f-app .f-image-card-block-1726527753IExR3 {background-color: var(--f-gs-background-2);}}
+.f-app .f-heading-1726527753MyxnJ {letter-spacing: 0px; opacity: 1; text-transform: uppercase; color: var(--f-gs-background-1); margin: 20px;}@media screen and (max-width: 767px) {.f-app .f-heading-1726527753MyxnJ {color: var(--f-gs-accent-1); width: 50%;}}
+.f-app .f-richtext-1726527753KO0Q9 {letter-spacing: 0px; opacity: 1; color: var(--f-gs-background-1); margin: 0px 20px; width: 50%;}@media screen and (max-width: 767px) {.f-app .f-richtext-1726527753KO0Q9 {color: var(--f-gs-accent-1); width: 80%;}}
+.f-app .f-button-1726527753VHPz9 {letter-spacing: 0px; opacity: 1; color: var(--f-gs-background-1); margin: 20px;}@media screen and (max-width: 767px) {.f-app .f-button-1726527753VHPz9 {color: var(--f-gs-accent-1); border-style: solid; border-color: var(--f-gs-accent-1);}}
+.f-app .f-button-1726527753pAyjc {letter-spacing: 0px; opacity: 1; margin: 20px;}
+.f-app .f-button-1726527753zqUkJ {letter-spacing: 0px; opacity: 1; margin: 20px;}
+.f-app .f-heading-1726527753uNVNS {letter-spacing: 0px; opacity: 1; text-transform: uppercase; margin: 20px;}
+.f-app .f-richtext-1726527753jwjNR {letter-spacing: 0px; opacity: 1; margin: 0px 20px; width: 50%;}@media screen and (max-width: 767px) {.f-app .f-richtext-1726527753jwjNR {width: 80%;}}
+.f-app .f-button-17265277533nGyQ {letter-spacing: 0px; opacity: 1; margin: 20px;}
+.f-app .f-heading-1726527753lqiDt {letter-spacing: 0px; opacity: 1; font-family: BrownProTT-Bold-17071127825LR9n; text-transform: uppercase; margin: 20px; color: var(--f-gs-background-1); width: 50%;}@media screen and (max-width: 767px) {.f-app .f-heading-1726527753lqiDt {color: var(--f-gs-accent-1); width: 50%;}}
+.f-app .f-richtext-1726527753NQHpj {letter-spacing: 0px; opacity: 1; margin: 0px 20px; color: var(--f-gs-background-1);}@media screen and (max-width: 767px) {.f-app .f-richtext-1726527753NQHpj {color: var(--f-gs-accent-1);}}
+.f-app .f-button-1726527753JXWbm {letter-spacing: 0px; opacity: 1; font-family: BrownProTT-Regular-1707112782cX7wj; margin: 20px;}@media screen and (max-width: 767px) {.f-app .f-button-1726527753JXWbm {color: var(--f-gs-accent-1); border-style: solid; border-color: var(--f-gs-accent-1);}}</style>
+<style>.f-hover-scale-up .f\:image-card__inner {
+  overflow: hidden;
+}
+.f-hover-scale-up .f\:image-card__bg {
+  transition: transform 0.55s cubic-bezier(.15,.75,.5,1) 0s;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.f-hover-scale-up .f\:image-card__inner:hover .f\:image-card__bg {
+  transform: scale(1.03) translateZ(0);
+}
+.f\:content h3:lang(ja) {
+  font-family: NotoSansJP;
+  font-weight: 600;
+  line-height: 1.2;
+}
+.f\:content h3:lang(ko) {
+  font-family: NotoSansKR;
+  font-weight: 700;
+  line-height: 1.2;
+}</style>
+<div id="f-image-cards-1726527753BFVyh" class="f:sections f:image-cards f-image-cards-1726527753BFVyh"><div class="f:container-full"><div class="f:image-cards__wrapper f:image-cards__layout-3 " style="--f-grid-gap:8px;--f-grid-gap-mobile:8px;--swiper-column-width:66vw"><div id="f-image-card-block-1726527753kcZGs" class="f:blocks f:image-card-block f-image-card-block-1726527753kcZGs f-hover-scale-up">{{ 'foxify-image-card.css' | asset_url | stylesheet_tag }}<div class="f:image-card"><div class="f:image-card__wrapper f:image-card--mobile-stack" style="--f-aspect-ratio:1;--f-aspect-ratio-mobile:1"><div class="f:image-card__inner"><div class="f:image-card__bg f:bg-image"><f-image class="f:image f:bg-image" style="--f-aspect-ratio:1"><img srcSet="https://cdn.shopify.com/s/files/1/0619/6150/2869/files/V2RIng1346-2_efe813ac-86d3-41a0-afca-92f8fbbf7d0e.jpg?v=1726530608&width=165 165w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/V2RIng1346-2_efe813ac-86d3-41a0-afca-92f8fbbf7d0e.jpg?v=1726530608&width=360 360w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/V2RIng1346-2_efe813ac-86d3-41a0-afca-92f8fbbf7d0e.jpg?v=1726530608&width=533 533w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/V2RIng1346-2_efe813ac-86d3-41a0-afca-92f8fbbf7d0e.jpg?v=1726530608&width=720 720w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/V2RIng1346-2_efe813ac-86d3-41a0-afca-92f8fbbf7d0e.jpg?v=1726530608&width=940 940w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/V2RIng1346-2_efe813ac-86d3-41a0-afca-92f8fbbf7d0e.jpg?v=1726530608&width=1066 1066w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/V2RIng1346-2_efe813ac-86d3-41a0-afca-92f8fbbf7d0e.jpg?v=1726530608&width=1500 1500w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/V2RIng1346-2_efe813ac-86d3-41a0-afca-92f8fbbf7d0e.jpg?v=1726530608&width=1780 1780w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/V2RIng1346-2_efe813ac-86d3-41a0-afca-92f8fbbf7d0e.jpg?v=1726530608 4072w" src="//cdn.shopify.com/s/files/1/0619/6150/2869/files/V2RIng1346-2_efe813ac-86d3-41a0-afca-92f8fbbf7d0e_900x.jpg?v=1726530608" sizes="100vw" alt="V2RIng1346-2.jpg" loading="lazy" width="4072" height="4072"/></f-image></div><div class="f:image-card__content-wrapper f:image-card__content--left-bottom f:flex f:inset-full"><div class="f:image-card__content"><h3 id="f-heading-1726527753MyxnJ" class="f:blocks f:heading f-heading-1726527753MyxnJ f:content-block f:gs-heading-2"><span>
+{{ 'sections.foxify-preview.f-heading-1726527753MyxnJ-text_html' | t }}</span></h3><div id="f-richtext-1726527753KO0Q9" class="f:blocks f:richtext f-richtext-1726527753KO0Q9 f:content-block f:gs-subheading f:rte">
+{{ 'sections.foxify-preview.f-richtext-1726527753KO0Q9-text_html' | t }}</div><a id="f-button-1726527753VHPz9" class="f:blocks f:button f-button-1726527753VHPz9 f:gs-17102072883wMy9 f:btn" href="/collections/project-vii-wonder-rocks"><span>
+{{ 'sections.foxify-preview.f-button-1726527753VHPz9-button_label_html' | t }}</span></a></div></div></div></div></div></div><div id="f-image-card-block-1726527753sLqLq" class="f:blocks f:image-card-block f-image-card-block-1726527753sLqLq f:mobile-hidden f-hover-scale-up">{{ 'foxify-image-card.css' | asset_url | stylesheet_tag }}<div class="f:image-card"><div class="f:image-card__wrapper f:image-card--mobile-stack" style="--f-aspect-ratio:1;--f-aspect-ratio-mobile:1"><div class="f:image-card__inner"><div class="f:image-card__bg f:bg-image"><f-image class="f:image f:bg-image" style="--f-aspect-ratio:1"><img srcSet="https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Packshot_-_The_Necklace_1.png-3.png?v=1725517993&width=165 165w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Packshot_-_The_Necklace_1.png-3.png?v=1725517993&width=360 360w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Packshot_-_The_Necklace_1.png-3.png?v=1725517993&width=533 533w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Packshot_-_The_Necklace_1.png-3.png?v=1725517993&width=720 720w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Packshot_-_The_Necklace_1.png-3.png?v=1725517993&width=940 940w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Packshot_-_The_Necklace_1.png-3.png?v=1725517993&width=1066 1066w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Packshot_-_The_Necklace_1.png-3.png?v=1725517993&width=1500 1500w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Packshot_-_The_Necklace_1.png-3.png?v=1725517993&width=1780 1780w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Packshot_-_The_Necklace_1.png-3.png?v=1725517993 3000w" src="//cdn.shopify.com/s/files/1/0619/6150/2869/files/Packshot_-_The_Necklace_1.png-3_900x.png?v=1725517993" sizes="100vw" alt="Packshot_-_The_Necklace_1.png-3.png" loading="lazy" width="3000" height="3000"/></f-image></div><div class="f:image-card__content-wrapper f:image-card__content--center-bottom f:flex f:inset-full"><div class="f:image-card__content"><a id="f-button-1726527753pAyjc" class="f:blocks f:button f-button-1726527753pAyjc f:gs-outline-button f:btn" href="/products/the-necklace"><span>
+{{ 'sections.foxify-preview.f-button-1726527753pAyjc-button_label_html' | t }}</span></a></div></div></div></div></div></div><div id="f-image-card-block-1726527753NoNQS" class="f:blocks f:image-card-block f-image-card-block-1726527753NoNQS f:mobile-hidden f-hover-scale-up">{{ 'foxify-image-card.css' | asset_url | stylesheet_tag }}<div class="f:image-card"><div class="f:image-card__wrapper f:image-card--mobile-stack" style="--f-aspect-ratio:1;--f-aspect-ratio-mobile:1"><div class="f:image-card__inner"><div class="f:image-card__bg f:bg-image"><f-image class="f:image f:bg-image" style="--f-aspect-ratio:1"><img srcSet="https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Packshot-TheNecklace_1_pink_1.png-3.png?v=1725518009&width=165 165w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Packshot-TheNecklace_1_pink_1.png-3.png?v=1725518009&width=360 360w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Packshot-TheNecklace_1_pink_1.png-3.png?v=1725518009&width=533 533w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Packshot-TheNecklace_1_pink_1.png-3.png?v=1725518009&width=720 720w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Packshot-TheNecklace_1_pink_1.png-3.png?v=1725518009&width=940 940w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Packshot-TheNecklace_1_pink_1.png-3.png?v=1725518009&width=1066 1066w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Packshot-TheNecklace_1_pink_1.png-3.png?v=1725518009&width=1500 1500w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Packshot-TheNecklace_1_pink_1.png-3.png?v=1725518009&width=1780 1780w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Packshot-TheNecklace_1_pink_1.png-3.png?v=1725518009 3000w" src="//cdn.shopify.com/s/files/1/0619/6150/2869/files/Packshot-TheNecklace_1_pink_1.png-3_900x.png?v=1725518009" sizes="100vw" alt="Packshot-TheNecklace_1_pink_1.png-3.png" loading="lazy" width="3000" height="3000"/></f-image></div><div class="f:image-card__content-wrapper f:image-card__content--center-bottom f:flex f:inset-full"><div class="f:image-card__content"><a id="f-button-1726527753zqUkJ" class="f:blocks f:button f-button-1726527753zqUkJ f:gs-outline-button f:btn" href="/products/the-pink-necklace"><span>
+{{ 'sections.foxify-preview.f-button-1726527753zqUkJ-button_label_html' | t }}</span></a></div></div></div></div></div></div><div id="f-image-card-block-1726527753H3vvN" class="f:blocks f:image-card-block f-image-card-block-1726527753H3vvN f-hover-scale-up">{{ 'foxify-image-card.css' | asset_url | stylesheet_tag }}<div class="f:image-card"><div class="f:image-card__wrapper f:image-card--mobile-stack" style="--f-aspect-ratio:2;--f-aspect-ratio-mobile:1"><div class="f:image-card__inner"><div class="f:image-card__bg f:bg-image f:hidden md:f:block"><f-image class="f:image f:bg-image" style="--f-aspect-ratio:2"><img srcSet="https://cdn.shopify.com/s/files/1/0619/6150/2869/files/RoundbrilliantjoyringBlue.jpg?v=1726529853&width=165 165w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/RoundbrilliantjoyringBlue.jpg?v=1726529853&width=360 360w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/RoundbrilliantjoyringBlue.jpg?v=1726529853&width=533 533w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/RoundbrilliantjoyringBlue.jpg?v=1726529853&width=720 720w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/RoundbrilliantjoyringBlue.jpg?v=1726529853&width=940 940w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/RoundbrilliantjoyringBlue.jpg?v=1726529853&width=1066 1066w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/RoundbrilliantjoyringBlue.jpg?v=1726529853&width=1500 1500w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/RoundbrilliantjoyringBlue.jpg?v=1726529853&width=1780 1780w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/RoundbrilliantjoyringBlue.jpg?v=1726529853 3456w" src="//cdn.shopify.com/s/files/1/0619/6150/2869/files/RoundbrilliantjoyringBlue_900x.jpg?v=1726529853" sizes="100vw" alt="RoundbrilliantjoyringBlue.jpg" loading="lazy" width="3456" height="1728"/></f-image></div><div class="f:image-card__bg f:bg-image f:image-card__image--mobile md:f:hidden"><f-image class="f:image f:bg-image" style="--f-aspect-ratio:1"><img srcSet="https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Princess_joy_ring_BLUE.png?v=1727031209&width=165 165w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Princess_joy_ring_BLUE.png?v=1727031209&width=360 360w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Princess_joy_ring_BLUE.png?v=1727031209&width=533 533w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Princess_joy_ring_BLUE.png?v=1727031209&width=720 720w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Princess_joy_ring_BLUE.png?v=1727031209&width=940 940w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Princess_joy_ring_BLUE.png?v=1727031209&width=1066 1066w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Princess_joy_ring_BLUE.png?v=1727031209&width=1500 1500w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Princess_joy_ring_BLUE.png?v=1727031209&width=1780 1780w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Princess_joy_ring_BLUE.png?v=1727031209 3258w" src="//cdn.shopify.com/s/files/1/0619/6150/2869/files/Princess_joy_ring_BLUE_900x.png?v=1727031209" sizes="100vw" alt="Princess joy ring BLUE.png" loading="lazy" width="3258" height="3258"/></f-image></div><div class="f:image-card__content-wrapper f:image-card__content--left-bottom f:flex f:inset-full"><div class="f:image-card__content"><h3 id="f-heading-1726527753uNVNS" class="f:blocks f:heading f-heading-1726527753uNVNS f:content-block f:gs-heading-2"><span>
+{{ 'sections.foxify-preview.f-heading-1726527753uNVNS-text_html' | t }}</span></h3><div id="f-richtext-1726527753jwjNR" class="f:blocks f:richtext f-richtext-1726527753jwjNR f:content-block f:gs-subheading f:rte">
+{{ 'sections.foxify-preview.f-richtext-1726527753jwjNR-text_html' | t }}</div><a id="f-button-17265277533nGyQ" class="f:blocks f:button f-button-17265277533nGyQ f:gs-outline-button f:btn" href="/collections/markdown"><span>
+{{ 'sections.foxify-preview.f-button-17265277533nGyQ-button_label_html' | t }}</span></a></div></div></div></div></div></div><div id="f-image-card-block-1726527753IExR3" class="f:blocks f:image-card-block f-image-card-block-1726527753IExR3 f-hover-scale-up">{{ 'foxify-image-card.css' | asset_url | stylesheet_tag }}<div class="f:image-card"><div class="f:image-card__wrapper f:image-card--mobile-stack" style="--f-aspect-ratio:1;--f-aspect-ratio-mobile:1"><div class="f:image-card__inner"><div class="f:image-card__bg f:bg-image"><f-image class="f:image f:bg-image" style="--f-aspect-ratio:1"><img srcSet="https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Model_-_Hikari_Newness_Diamond_Ring_267_5a638ee1-26e5-4101-9ff4-87e55c736c41.jpg?v=1726530192&width=165 165w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Model_-_Hikari_Newness_Diamond_Ring_267_5a638ee1-26e5-4101-9ff4-87e55c736c41.jpg?v=1726530192&width=360 360w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Model_-_Hikari_Newness_Diamond_Ring_267_5a638ee1-26e5-4101-9ff4-87e55c736c41.jpg?v=1726530192&width=533 533w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Model_-_Hikari_Newness_Diamond_Ring_267_5a638ee1-26e5-4101-9ff4-87e55c736c41.jpg?v=1726530192&width=720 720w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Model_-_Hikari_Newness_Diamond_Ring_267_5a638ee1-26e5-4101-9ff4-87e55c736c41.jpg?v=1726530192&width=940 940w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Model_-_Hikari_Newness_Diamond_Ring_267_5a638ee1-26e5-4101-9ff4-87e55c736c41.jpg?v=1726530192&width=1066 1066w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Model_-_Hikari_Newness_Diamond_Ring_267_5a638ee1-26e5-4101-9ff4-87e55c736c41.jpg?v=1726530192&width=1500 1500w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Model_-_Hikari_Newness_Diamond_Ring_267_5a638ee1-26e5-4101-9ff4-87e55c736c41.jpg?v=1726530192&width=1780 1780w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Model_-_Hikari_Newness_Diamond_Ring_267_5a638ee1-26e5-4101-9ff4-87e55c736c41.jpg?v=1726530192 3408w" src="//cdn.shopify.com/s/files/1/0619/6150/2869/files/Model_-_Hikari_Newness_Diamond_Ring_267_5a638ee1-26e5-4101-9ff4-87e55c736c41_900x.jpg?v=1726530192" sizes="100vw" alt="Model - Hikari Newness Diamond Ring_267.jpg" loading="lazy" width="3408" height="3408"/></f-image></div><div class="f:image-card__content-wrapper f:image-card__content--left-bottom f:flex f:inset-full"><div class="f:image-card__content"><h3 id="f-heading-1726527753lqiDt" class="f:blocks f:heading f-heading-1726527753lqiDt f:content-block f:gs-heading-2"><span>
+{{ 'sections.foxify-preview.f-heading-1726527753lqiDt-text_html' | t }}</span></h3><div id="f-richtext-1726527753NQHpj" class="f:blocks f:richtext f-richtext-1726527753NQHpj f:content-block f:gs-subheading f:rte">
+{{ 'sections.foxify-preview.f-richtext-1726527753NQHpj-text_html' | t }}</div><a id="f-button-1726527753JXWbm" class="f:blocks f:button f-button-1726527753JXWbm f:gs-17102072883wMy9 f:btn" href="/collections/hikari"><span>
+{{ 'sections.foxify-preview.f-button-1726527753JXWbm-button_label_html' | t }}</span></a></div></div></div></div></div></div></div></div></div>
+{% liquid
+        assign theme_settings = shop.metafields.foxify.theme_settings.value
+        assign customCodeBody = theme_settings.customCodeBody
+        echo customCodeBody
+      %}
+
+</div>
+    </div>
+    
+    {% schema %}
+      {
+          "locales": {
+  "en": {
+    "f-heading-1726527753lqiDt-text_html": "Discover Hikari's Meteor collection",
+    "f-richtext-1726527753NQHpj-text_html": "Get to your wishlist before it's gone.",
+    "f-button-1726527753JXWbm-button_label_html": "take a look",
+    "f-button-1726527753pAyjc-button_label_html": "shop now",
+    "f-button-1726527753zqUkJ-button_label_html": "shop now",
+    "f-heading-1726527753uNVNS-text_html": "last chance alert!",
+    "f-richtext-1726527753jwjNR-text_html": "UP TO 25% OFF select styles from The Future Rocks x Lightbox Jewelry Joy Collection",
+    "f-button-17265277533nGyQ-button_label_html": "shop now",
+    "f-heading-1726527753MyxnJ-text_html": "Meet THE WONDER ROCKS",
+    "f-richtext-1726527753KO0Q9-text_html": "Transform and customize your style from ring to necklace",
+    "f-button-1726527753VHPz9-button_label_html": "shop now",
+    "f-1707112327HvVYu-text_html": "Information",
+    "f-1707112327Md07Z-text_html": "Quick links",
+    "f-1707112327tkhmc-text_html": "Subscribe to our emails",
+    "f-17071123273TtCy-text_html": "<p>You deserve to feel good. Subscribe to our newsletter.</p>",
+    "f-1707112327SURRn-email_placeholder_html": "Enter your email",
+    "f-1707112327lwqcU-copyright_html": "&copy; 2023, Foxify Powered by FoxEcom"
+  }
+}
+      }
+    {% endschema %}
+  

@@ -1,0 +1,68 @@
+    {% liquid
+      assign locales = shop.metafields.foxify.locales.value
+      assign current_locale = request.locale.iso_code
+      assign primary_locale = current_locale
+      for locale in shop.published_locales
+        if locale.primary
+          assign primary_locale = locale.iso_code
+          break
+        endif
+      endfor
+      assign translation = locales[current_locale] | default: locales[primary_locale]
+    %}
+    <script>
+      window.Foxify = window.Foxify || {}
+      Foxify.ThemeStyles = {
+        product: "https:{{ 'foxify-product.css' | asset_url }}",
+        swiper: "https:{{ 'foxify-swiper.css' | asset_url }}",
+      }
+
+      Foxify.ThemeScripts = {
+        productModel: "https:{{ 'foxify-product-model.js' | asset_url }}",
+        productMedia: "https:{{ 'foxify-media-gallery.js' | asset_url }}",
+        variantPicker: "https:{{ 'foxify-variant-picker.js' | asset_url }}"
+      }
+
+      Foxify.pageId = '1727040525tfavj'
+    </script>
+    <div class="f-app f:content">
+<link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,400;1,400&display=swap" id="Jost" rel="stylesheet">
+{{ 'foxify-1727040525tfavj.css' | asset_url | stylesheet_tag }}
+{{ 'foxify-scrolling-promotion.css' | asset_url | stylesheet_tag }}<div id="f-scrolling-promotion-1729479858Suy5D" class="f:sections f:scrolling-promotion f-scrolling-promotion-1729479858Suy5D"><f-scrolling-elements class="f:scrolling-promotion__wrapper f:scrolling-promotion--left" data-pause-on-hover="true" style="--f-scrolling-duration:60s"><div class="f:scrolling-promotion__group f:promotion--animated"><a id="f-image-1729479863wEorW" class="f:blocks f-image-1729479863wEorW f:scrolling-promotion__image f:image-block" href="https://sp.elle.co.jp/fashion/thefuturerocks/2311/" target="_blank" rel="noreferrer"><f-image class="f:image " style="--f-aspect-ratio:3.3377837116154874"><img srcSet="https://cdn.shopify.com/s/files/1/0619/6150/2869/files/elle-logo-vector.svg?v=1729481234&width=165 165w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/elle-logo-vector.svg?v=1729481234&width=360 360w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/elle-logo-vector.svg?v=1729481234&width=533 533w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/elle-logo-vector.svg?v=1729481234&width=720 720w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/elle-logo-vector.svg?v=1729481234&width=940 940w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/elle-logo-vector.svg?v=1729481234&width=1066 1066w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/elle-logo-vector.svg?v=1729481234&width=1500 1500w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/elle-logo-vector.svg?v=1729481234&width=1780 1780w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/elle-logo-vector.svg?v=1729481234&width=2000 2000w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/elle-logo-vector.svg?v=1729481234 2500w" src="//cdn.shopify.com/s/files/1/0619/6150/2869/files/elle-logo-vector_360x.svg?v=1729481234" sizes="(min-width: 1200px) 533px, (min-width: 990px) calc((100vw - 130px) / 3), (min-width: 750px) calc((100vw - 120px) / 2), calc((100vw - 35px) / 2)" alt="elle-logo-vector.svg" loading="lazy" width="2500" height="749"/></f-image></a><a id="f-image-17294799262NlG4" class="f:blocks f-image-17294799262NlG4 f:scrolling-promotion__image f:image-block" href="https://www.prestigeonline.com/hk/jewellery/jewellery-events/the-future-rocks-launches-the-ring-ii-with-adwoa-aboah/" target="_blank" rel="noreferrer"><f-image class="f:image " style="--f-aspect-ratio:5.978260869565218"><img srcSet="https://cdn.shopify.com/s/files/1/0619/6150/2869/files/cropped-cropped-prestige-logo-new.webp?v=1737627365&width=165 165w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/cropped-cropped-prestige-logo-new.webp?v=1737627365&width=360 360w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/cropped-cropped-prestige-logo-new.webp?v=1737627365&width=533 533w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/cropped-cropped-prestige-logo-new.webp?v=1737627365&width=720 720w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/cropped-cropped-prestige-logo-new.webp?v=1737627365&width=940 940w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/cropped-cropped-prestige-logo-new.webp?v=1737627365&width=1066 1066w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/cropped-cropped-prestige-logo-new.webp?v=1737627365 1100w" src="//cdn.shopify.com/s/files/1/0619/6150/2869/files/cropped-cropped-prestige-logo-new_360x.webp?v=1737627365" sizes="(min-width: 1200px) 533px, (min-width: 990px) calc((100vw - 130px) / 3), (min-width: 750px) calc((100vw - 120px) / 2), calc((100vw - 35px) / 2)" alt="cropped-cropped-prestige-logo-new.webp" loading="lazy" width="1100" height="184"/></f-image></a><a id="f-image-1729479926xyPjH" class="f:blocks f-image-1729479926xyPjH f:scrolling-promotion__image f:image-block" href="https://www.vogue.co.jp/special-feature/2024-02/07/thefuturerocks?utm_source=twitter&utm_medium=social&utm_campaign=spon-thefuturerocks240207&utm_social-type=owned&utm_brand=vogue-jp" target="_blank" rel="noreferrer"><f-image class="f:image " style="--f-aspect-ratio:3.864734299516908"><img srcSet="https://cdn.shopify.com/s/files/1/0619/6150/2869/files/800px-VOGUE_revista_-_logo.png?v=1729481234&width=165 165w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/800px-VOGUE_revista_-_logo.png?v=1729481234&width=360 360w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/800px-VOGUE_revista_-_logo.png?v=1729481234&width=533 533w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/800px-VOGUE_revista_-_logo.png?v=1729481234&width=720 720w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/800px-VOGUE_revista_-_logo.png?v=1729481234 800w" src="//cdn.shopify.com/s/files/1/0619/6150/2869/files/800px-VOGUE_revista_-_logo_360x.png?v=1729481234" sizes="(min-width: 1200px) 533px, (min-width: 990px) calc((100vw - 130px) / 3), (min-width: 750px) calc((100vw - 120px) / 2), calc((100vw - 35px) / 2)" alt="800px-VOGUE_revista_-_logo.png" loading="lazy" width="800" height="207"/></f-image></a><a id="f-image-1729479927zc5UD" class="f:blocks f-image-1729479927zc5UD f:scrolling-promotion__image f:image-block" href="https://madame.lefigaro.fr/bijoux-et-montres/ou-trouver-une-bague-de-fiancailles-en-diamants-de-laboratoire-20231114" target="_blank" rel="noreferrer"><f-image class="f:image " style="--f-aspect-ratio:3.883495145631068"><img srcSet="https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Madame_Figaro__logo__svg.png?v=1729481234&width=165 165w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Madame_Figaro__logo__svg.png?v=1729481234&width=360 360w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Madame_Figaro__logo__svg.png?v=1729481234&width=533 533w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Madame_Figaro__logo__svg.png?v=1729481234&width=720 720w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Madame_Figaro__logo__svg.png?v=1729481234&width=940 940w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Madame_Figaro__logo__svg.png?v=1729481234&width=1066 1066w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Madame_Figaro__logo__svg.png?v=1729481234 1200w" src="//cdn.shopify.com/s/files/1/0619/6150/2869/files/Madame_Figaro__logo__svg_360x.png?v=1729481234" sizes="(min-width: 1200px) 533px, (min-width: 990px) calc((100vw - 130px) / 3), (min-width: 750px) calc((100vw - 120px) / 2), calc((100vw - 35px) / 2)" alt="Madame_Figaro_(logo).svg.png" loading="lazy" width="1200" height="309"/></f-image></a><a id="f-image-1729479927PPqgd" class="f:blocks f-image-1729479927PPqgd f:scrolling-promotion__image f:image-block" href="https://wwd.com/sustainability/innovation/lightboxs-advancements-lab-grown-diamonds-1236261593/" target="_blank" rel="noreferrer"><f-image class="f:image " style="--f-aspect-ratio:3.396226429761028"><img srcSet="https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Women_s_Wear_Daily_logo_svg.png?v=1729481234 100.00000762939453w" src="//cdn.shopify.com/s/files/1/0619/6150/2869/files/Women_s_Wear_Daily_logo_svg_360x.png?v=1729481234" sizes="(min-width: 1200px) 533px, (min-width: 990px) calc((100vw - 130px) / 3), (min-width: 750px) calc((100vw - 120px) / 2), calc((100vw - 35px) / 2)" alt="Women's_Wear_Daily_logo.svg.png" loading="lazy" width="100.00000762939453" height="29.444446563720703"/></f-image></a></div></f-scrolling-elements></div>
+{% liquid
+        assign theme_settings = shop.metafields.foxify.theme_settings.value
+        assign customCodeBody = theme_settings.customCodeBody
+        echo customCodeBody
+      %}
+
+</div>
+    {% schema %}
+      {
+        "name": "[Foxify] Press logos",
+        "class": "foxify-section f-app",
+        "settings": [{"type":"header","content":"Customize section","info":"Go to [Foxify app](https://app.foxify.io/editor?id=1727040525tfavj&type=SECTION) to edit this section."}],
+        "locales": {
+  "en": {
+    "f-heading-17270405148jSBC-text_html": "Free Shipping",
+    "f-richtext-1727040514tRGzu-text_html": "<p>Free Shipping for orders over £130</p>\n",
+    "f-heading-172704051486mxq-text_html": "Money Guarantee",
+    "f-richtext-1727040514Qd7yR-text_html": "<p>Within 30 days for an exchange.</p>\n",
+    "f-heading-1727040514gYNl1-text_html": "Online Support",
+    "f-richtext-1727040514xsrSB-text_html": "<p>24 hours a day, 7 days a week</p>\n",
+    "f-heading-1727040514xoBWI-text_html": "Flexible Payment",
+    "f-richtext-1727040514jpGP3-text_html": "<p>Pay with Multiple Credit Cards</p>\n"
+  }
+},
+        "blocks": [
+          {
+            "type": "@app"
+          }
+        ],          
+        "presets": [
+          {
+            "name": "[Foxify] Press logos"
+          }
+        ]  
+      }
+    {% endschema %}
+  

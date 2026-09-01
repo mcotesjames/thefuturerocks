@@ -1,0 +1,71 @@
+    {% liquid
+      assign locales = shop.metafields.foxify.locales.value
+      assign current_locale = request.locale.iso_code
+      assign primary_locale = current_locale
+      for locale in shop.published_locales
+        if locale.primary
+          assign primary_locale = locale.iso_code
+          break
+        endif
+      endfor
+      assign translation = locales[current_locale] | default: locales[primary_locale]
+    %}
+    <script>
+      window.Foxify = window.Foxify || {}
+      Foxify.ThemeStyles = {
+        product: "https:{{ 'foxify-product.css' | asset_url }}",
+        swiper: "https:{{ 'foxify-swiper.css' | asset_url }}",
+      }
+
+      Foxify.ThemeScripts = {
+        productModel: "https:{{ 'foxify-product-model.js' | asset_url }}",
+        productMedia: "https:{{ 'foxify-media-gallery.js' | asset_url }}",
+        variantPicker: "https:{{ 'foxify-variant-picker.js' | asset_url }}"
+      }
+
+      Foxify.pageId = '1732096642MOgwZ'
+    </script>
+    <div class="f-app f:content">
+<style data-foxify-editor="foxify-custom-fonts">
+  @font-face {
+    font-family: BrownProTT-Regular-1707112782cX7wj;
+    src: url('https://cdn.shopify.com/s/files/1/0619/6150/2869/files/BrownProTT-Regular.ttf?v=1707112779');
+  }
+  </style>
+{{ 'foxify-1732096642MOgwZ.css' | asset_url | stylesheet_tag }}
+<div id="f-custom-section-1732096614nnAap" class="f:sections f:custom-section f-custom-section-1732096614nnAap f:mobile-hidden f:tablet-hidden"><div class="f:container-full"><div id="f-grid-1732096614xg7rG" class="f:blocks f:grid f-grid-1732096614xg7rG" style="--f-grid-columns-sm:minmax(0, 12fr);--f-grid-columns-md:minmax(0, 5fr) minmax(0, 7fr);--f-grid-columns-lg:minmax(0, 5fr) minmax(0, 7fr);--f-grid-columns-xl:minmax(0, 5fr) minmax(0, 7fr)"><div id="f-col-1732096614ZbPkz" class="f:blocks f:col f-col-1732096614ZbPkz f:column"><h3 id="f-heading-1732096614tr8VK" class="f:blocks f:heading f-heading-1732096614tr8VK f:content-block f:gs-heading-1"><span>
+{{ 'sections.foxify-1732096642MOgwZ.f-heading-1732096614tr8VK-text_html' | t }}</span></h3><div id="f-richtext-1732096614kNMnx" class="f:blocks f:richtext f-richtext-1732096614kNMnx f:content-block f:gs-subheading f:rte">
+{{ 'sections.foxify-1732096642MOgwZ.f-richtext-1732096614kNMnx-text_html' | t }}</div><a id="f-button-17320966143tb7k" class="f:blocks f:button f-button-17320966143tb7k f:gs-outline-button f:btn"><span>
+{{ 'sections.foxify-1732096642MOgwZ.f-button-17320966143tb7k-button_label_html' | t }}</span></a></div><div id="f-col-1732096614Qonk6" class="f:blocks f:col f-col-1732096614Qonk6 f:column"><div id="f-image-1732096614h3009" class="f:blocks f-image-1732096614h3009 f:mobile-hidden f:custom-section__image f:image-block"><f-image class="f:image " style="--f-aspect-ratio:1"><img srcSet="https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Ring-Intrepide-grand-arc-pavee-18k-yellow-gold-lab-grown-diamond-Loyale-Paris-7.jpg?v=1732023643&width=165 165w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Ring-Intrepide-grand-arc-pavee-18k-yellow-gold-lab-grown-diamond-Loyale-Paris-7.jpg?v=1732023643&width=360 360w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Ring-Intrepide-grand-arc-pavee-18k-yellow-gold-lab-grown-diamond-Loyale-Paris-7.jpg?v=1732023643&width=533 533w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Ring-Intrepide-grand-arc-pavee-18k-yellow-gold-lab-grown-diamond-Loyale-Paris-7.jpg?v=1732023643&width=720 720w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Ring-Intrepide-grand-arc-pavee-18k-yellow-gold-lab-grown-diamond-Loyale-Paris-7.jpg?v=1732023643&width=940 940w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Ring-Intrepide-grand-arc-pavee-18k-yellow-gold-lab-grown-diamond-Loyale-Paris-7.jpg?v=1732023643&width=1066 1066w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Ring-Intrepide-grand-arc-pavee-18k-yellow-gold-lab-grown-diamond-Loyale-Paris-7.jpg?v=1732023643&width=1500 1500w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Ring-Intrepide-grand-arc-pavee-18k-yellow-gold-lab-grown-diamond-Loyale-Paris-7.jpg?v=1732023643&width=1780 1780w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Ring-Intrepide-grand-arc-pavee-18k-yellow-gold-lab-grown-diamond-Loyale-Paris-7.jpg?v=1732023643 2000w" src="//cdn.shopify.com/s/files/1/0619/6150/2869/files/Ring-Intrepide-grand-arc-pavee-18k-yellow-gold-lab-grown-diamond-Loyale-Paris-7_360x.jpg?v=1732023643" sizes="(min-width: 1200px) 533px, (min-width: 990px) calc((100vw - 130px) / 3), (min-width: 750px) calc((100vw - 120px) / 2), calc((100vw - 35px) / 2)" alt=" Intrépide grand arc pavée ring - Intrépide Grand Arc Pavée Ring -  The Future Rocks -    2 " loading="lazy" width="2000" height="2000"/></f-image></div></div></div></div></div>
+{% liquid
+        assign theme_settings = shop.metafields.foxify.theme_settings.value
+        assign customCodeBody = theme_settings.customCodeBody
+        echo customCodeBody
+      %}
+
+</div>
+    {% schema %}
+      {
+        "name": "[Foxify] 2 Column L Text",
+        "class": "foxify-section f-app",
+        "settings": [{"type":"header","content":"Customize section","info":"Go to [Foxify app](https://app.foxify.io/editor?id=1732096642MOgwZ&type=SECTION) to edit this section."}],
+        "locales": {
+  "en": {
+    "f-heading-1732096614tr8VK-text_html": "Party Moments",
+    "f-richtext-1732096614kNMnx-text_html": "Gift the brilliance of sparkles that elevate every celebration with our chic jewelry.",
+    "f-button-17320966143tb7k-button_label_html": "Button label"
+  }
+},
+        "blocks": [
+          {
+            "type": "@app"
+          }
+        ],          
+        "presets": [
+          {
+            "name": "[Foxify] 2 Column L Text"
+          }
+        ]  
+      }
+    {% endschema %}
+  

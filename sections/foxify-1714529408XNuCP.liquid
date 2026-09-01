@@ -1,0 +1,349 @@
+
+{% liquid
+  
+    assign locales = shop.metafields.foxify.locales.value
+    assign current_locale = request.locale.iso_code
+    assign primary_locale = current_locale
+    for locale in shop.published_locales
+    if locale.primary
+        assign primary_locale = locale.iso_code
+        break
+    endif
+    endfor
+    assign translation = locales[current_locale] | default: locales[primary_locale]
+
+    assign theme_settings = shop.metafields.foxify.theme_settings.value
+    assign productCard = theme_settings.productCard
+  
+  
+      assign foxifyCustomCss = shop.metafields.foxify['6631a480748b10a439a8ee31'].value.customCss
+      assign foxifyCustomJs = shop.metafields.foxify['6631a480748b10a439a8ee31'].value.customJs
+    
+%}
+
+      <script>
+        window.Foxify = window.Foxify || {}
+        Foxify.ThemeStyles = {
+          product: "https:{{ 'foxify-product.css' | asset_url }}",
+          swiper: "https:{{ 'foxify-swiper.css' | asset_url }}",
+        }
+
+        Foxify.ThemeScripts = {
+          productModel: "https:{{ 'foxify-product-model.js' | asset_url }}",
+          productMedia: "https:{{ 'foxify-media-gallery.js' | asset_url }}",
+          variantPicker: "https:{{ 'foxify-variant-picker.js' | asset_url }}"
+        }
+
+        Foxify.pageId = '1714529408XNuCP';
+        Foxify.default = false;
+      </script>
+    
+<div class="f-app f:content">
+<style data-foxify-editor="foxify-custom-fonts">
+  @font-face {
+    font-family: BrownProTT-Bold-17071127825LR9n;
+    src: url('https://cdn.shopify.com/s/files/1/0619/6150/2869/files/BrownProTT-Bold.ttf?v=1707112779');
+  }
+  
+  @font-face {
+    font-family: BrownProTT-Regular-1707112782cX7wj;
+    src: url('https://cdn.shopify.com/s/files/1/0619/6150/2869/files/BrownProTT-Regular.ttf?v=1707112779');
+  }
+  </style>
+{{ 'foxify-1714529408XNuCP.css' | asset_url | stylesheet_tag }}
+<style data-foxify-custom-code-page="css">{{ foxifyCustomCss }}</style>
+<div id="f-custom-section-1714529489uV3Np" class="f:sections f:custom-section f-custom-section-1714529489uV3Np" data-animate-trigger="scroll_into_view" data-animate-name="fFadeInUp"><div class="f:container"><div id="f-grid-1714617789jdNFT" class="f:blocks f:grid f-grid-1714617789jdNFT f:justify-center f:items-center" style="--f-grid-columns-sm:minmax(0, 11fr) minmax(0, 1fr);--f-grid-columns-md:minmax(0, 9fr) minmax(0, 3fr);--f-grid-columns-lg:minmax(0, 9fr) minmax(0, 3fr);--f-grid-columns-xl:minmax(0, 9fr) minmax(0, 3fr)"><div id="f-col-1714617789geYGK" class="f:blocks f:col f-col-1714617789geYGK f:column"><div id="f-image-1714624666OrLke" class="f:blocks f-image-1714624666OrLke f:custom-section__image f:image-block"><f-image class="f:image " style="--f-aspect-ratio:1.6104218362282878"><img srcSet="https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Asset_10_27c5d75b-e42f-438d-a7bc-bab7e3cdcb67.png?v=1714625689&width=165 165w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Asset_10_27c5d75b-e42f-438d-a7bc-bab7e3cdcb67.png?v=1714625689&width=360 360w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Asset_10_27c5d75b-e42f-438d-a7bc-bab7e3cdcb67.png?v=1714625689&width=533 533w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Asset_10_27c5d75b-e42f-438d-a7bc-bab7e3cdcb67.png?v=1714625689 649w" src="//cdn.shopify.com/s/files/1/0619/6150/2869/files/Asset_10_27c5d75b-e42f-438d-a7bc-bab7e3cdcb67_360x.png?v=1714625689" sizes="(min-width: 1200px) 533px, (min-width: 990px) calc((100vw - 130px) / 3), (min-width: 750px) calc((100vw - 120px) / 2), calc((100vw - 35px) / 2)" alt="Asset 10.png" loading="lazy" width="649" height="403"/></f-image></div></div><div id="f-col-1714639758aUNpJ" class="f:blocks f:col f-col-1714639758aUNpJ f:column">{%  assign product_f-richtext-17146397713CaE6 = product %}
+         {% assign collection_f-richtext-17146397713CaE6 = collection %}
+        <div id="f-richtext-17146397713CaE6" class="f:blocks f:richtext f-richtext-17146397713CaE6 f:content-block f:gs-subheading f:rte">
+{{ 'sections.foxify-1714529408XNuCP.f-richtext-17146397713CaE6-text_html' | t }}</div></div><div id="f-col-1714624294AAygj" class="f:blocks f:col f-col-1714624294AAygj f:column"><h3 id="f-heading-1714624856D0Dw0" class="f:blocks f:heading f-heading-1714624856D0Dw0 f:content-block f:gs-heading-3"><span>
+{{ 'sections.foxify-1714529408XNuCP.f-heading-1714624856D0Dw0-text_html' | t }}</span></h3>{%  assign product_f-richtext-17146243028Ir7j = product %}
+         {% assign collection_f-richtext-17146243028Ir7j = collection %}
+        <div id="f-richtext-17146243028Ir7j" class="f:blocks f:richtext f-richtext-17146243028Ir7j f:content-block f:gs-caption f:rte">
+{{ 'sections.foxify-1714529408XNuCP.f-richtext-17146243028Ir7j-text_html' | t }}</div></div></div><div id="f-grid-1714628530TyZSQ" class="f:blocks f:grid f-grid-1714628530TyZSQ f:justify-center f:items-center" style="--f-grid-columns-sm:minmax(0, 12fr);--f-grid-columns-md:minmax(0, 12fr);--f-grid-columns-lg:minmax(0, 12fr);--f-grid-columns-xl:minmax(0, 12fr)"><div id="f-col-1714628530L6Gz5" class="f:blocks f:col f-col-1714628530L6Gz5 f:column"><div id="f-lookbook-item-1714628659ba7I0" class="f:blocks f:lookbook-item f-lookbook-item-1714628659ba7I0 f:mobile-hidden">{{ 'foxify-lookbook.css' | asset_url | stylesheet_tag }}<div class="f:lookbook-card"><div class="f:lookbook-card__inner" data-lookbook-inner="true"><div class="f:lookbook-card__image " style="--f-aspect-ratio:1.5376486129458389"><f-image class="f:image " style="--f-aspect-ratio:1.5376486129458389"><img srcSet="https://cdn.shopify.com/s/files/1/0619/6150/2869/files/0530_TFR_Group1_096_b080fd24-18bd-471a-b8a0-04fbef0e3319.jpg?v=1749094402&width=165 165w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/0530_TFR_Group1_096_b080fd24-18bd-471a-b8a0-04fbef0e3319.jpg?v=1749094402&width=360 360w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/0530_TFR_Group1_096_b080fd24-18bd-471a-b8a0-04fbef0e3319.jpg?v=1749094402&width=533 533w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/0530_TFR_Group1_096_b080fd24-18bd-471a-b8a0-04fbef0e3319.jpg?v=1749094402&width=720 720w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/0530_TFR_Group1_096_b080fd24-18bd-471a-b8a0-04fbef0e3319.jpg?v=1749094402&width=940 940w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/0530_TFR_Group1_096_b080fd24-18bd-471a-b8a0-04fbef0e3319.jpg?v=1749094402&width=1066 1066w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/0530_TFR_Group1_096_b080fd24-18bd-471a-b8a0-04fbef0e3319.jpg?v=1749094402&width=1500 1500w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/0530_TFR_Group1_096_b080fd24-18bd-471a-b8a0-04fbef0e3319.jpg?v=1749094402&width=1780 1780w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/0530_TFR_Group1_096_b080fd24-18bd-471a-b8a0-04fbef0e3319.jpg?v=1749094402&width=2000 2000w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/0530_TFR_Group1_096_b080fd24-18bd-471a-b8a0-04fbef0e3319.jpg?v=1749094402&width=3000 3000w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/0530_TFR_Group1_096_b080fd24-18bd-471a-b8a0-04fbef0e3319.jpg?v=1749094402&width=3840 3840w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/0530_TFR_Group1_096_b080fd24-18bd-471a-b8a0-04fbef0e3319.jpg?v=1749094402 5820w" src="//cdn.shopify.com/s/files/1/0619/6150/2869/files/0530_TFR_Group1_096_b080fd24-18bd-471a-b8a0-04fbef0e3319_360x.jpg?v=1749094402" sizes="(min-width: 1200px) 533px, (min-width: 990px) calc((100vw - 130px) / 3), (min-width: 750px) calc((100vw - 120px) / 2), calc((100vw - 35px) / 2)" alt="" loading="lazy" width="5820" height="3785"/></f-image></div> {% liquid assign product_list_f-lookbook-item-1714628659ba7I0 = section.settings['f-lookbook-item-1714628659ba7I0'] | compact %} </div></div></div><div id="f-lookbook-item-1714637322QStwm" class="f:blocks f:lookbook-item f-lookbook-item-1714637322QStwm f:tablet-hidden f:laptop-hidden f:desk-hidden">{{ 'foxify-lookbook.css' | asset_url | stylesheet_tag }}<div class="f:lookbook-card"><div class="f:lookbook-card__inner" data-lookbook-inner="true"><div class="f:lookbook-card__image " style="--f-aspect-ratio:1"><f-image class="f:image " style="--f-aspect-ratio:1"><img srcSet="https://cdn.shopify.com/s/files/1/0619/6150/2869/files/0530_TFR_Group1_444.jpg?v=1750043280&width=165 165w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/0530_TFR_Group1_444.jpg?v=1750043280&width=360 360w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/0530_TFR_Group1_444.jpg?v=1750043280&width=533 533w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/0530_TFR_Group1_444.jpg?v=1750043280&width=720 720w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/0530_TFR_Group1_444.jpg?v=1750043280&width=940 940w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/0530_TFR_Group1_444.jpg?v=1750043280&width=1066 1066w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/0530_TFR_Group1_444.jpg?v=1750043280&width=1500 1500w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/0530_TFR_Group1_444.jpg?v=1750043280&width=1780 1780w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/0530_TFR_Group1_444.jpg?v=1750043280&width=2000 2000w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/0530_TFR_Group1_444.jpg?v=1750043280&width=3000 3000w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/0530_TFR_Group1_444.jpg?v=1750043280 3822w" src="//cdn.shopify.com/s/files/1/0619/6150/2869/files/0530_TFR_Group1_444_360x.jpg?v=1750043280" sizes="(min-width: 1200px) 533px, (min-width: 990px) calc((100vw - 130px) / 3), (min-width: 750px) calc((100vw - 120px) / 2), calc((100vw - 35px) / 2)" alt=" Ballerina princess ring - Ballerina Princess Cut Diamond Ring -  The Future Rocks -    2 " loading="lazy" width="3822" height="3822"/></f-image></div> {% liquid assign product_list_f-lookbook-item-1714637322QStwm = section.settings['f-lookbook-item-1714637322QStwm'] | compact %} </div></div></div></div></div><div id="f-grid-1714617798uX4Wh" class="f:blocks f:grid f-grid-1714617798uX4Wh" style="--f-grid-columns-sm:minmax(0, 12fr);--f-grid-columns-md:minmax(0, 6fr) minmax(0, 6fr);--f-grid-columns-lg:minmax(0, 6fr) minmax(0, 6fr);--f-grid-columns-xl:minmax(0, 6fr) minmax(0, 6fr)"><div id="f-col-1714617922dsDYv" class="f:blocks f:col f-col-1714617922dsDYv f:column"><h3 id="f-heading-1714617922lQwWQ" class="f:blocks f:heading f-heading-1714617922lQwWQ f:content-block f:gs-heading-4 sentence-"><span>
+{{ 'sections.foxify-1714529408XNuCP.f-heading-1714617922lQwWQ-text_html' | t }}</span></h3>{%  assign product_f-richtext-1714617922uGGoT = product %}
+         {% assign collection_f-richtext-1714617922uGGoT = collection %}
+        <div id="f-richtext-1714617922uGGoT" class="f:blocks f:richtext f-richtext-1714617922uGGoT f:content-block f:gs-body-text f:rte">
+{{ 'sections.foxify-1714529408XNuCP.f-richtext-1714617922uGGoT-text_html' | t }}</div></div><div id="f-col-1714617922AqNQw" class="f:blocks f:col f-col-1714617922AqNQw f:column"><h3 id="f-heading-1714617922jxPpl" class="f:blocks f:heading f-heading-1714617922jxPpl f:content-block f:gs-heading-4"><span>
+{{ 'sections.foxify-1714529408XNuCP.f-heading-1714617922jxPpl-text_html' | t }}</span></h3>{%  assign product_f-richtext-17146179226cJ2n = product %}
+         {% assign collection_f-richtext-17146179226cJ2n = collection %}
+        <div id="f-richtext-17146179226cJ2n" class="f:blocks f:richtext f-richtext-17146179226cJ2n f:content-block f:gs-body-text f:rte">
+{{ 'sections.foxify-1714529408XNuCP.f-richtext-17146179226cJ2n-text_html' | t }}</div></div><div id="f-col-17146179234IJvs" class="f:blocks f:col f-col-17146179234IJvs f:column"><h3 id="f-heading-1714617923fbd6x" class="f:blocks f:heading f-heading-1714617923fbd6x f:content-block f:gs-heading-4"><span>
+{{ 'sections.foxify-1714529408XNuCP.f-heading-1714617923fbd6x-text_html' | t }}</span></h3>{%  assign product_f-richtext-1714617923jOscs = product %}
+         {% assign collection_f-richtext-1714617923jOscs = collection %}
+        <div id="f-richtext-1714617923jOscs" class="f:blocks f:richtext f-richtext-1714617923jOscs f:content-block f:gs-body-text f:rte">
+{{ 'sections.foxify-1714529408XNuCP.f-richtext-1714617923jOscs-text_html' | t }}</div><a id="f-button-1714617979IjDXa" class="f:blocks f:button f-button-1714617979IjDXa f:gs-outline-button f:btn" href="mailto:contact@thefuturerocks.com?Subject=The Future Rocks Warranty Claim"><span>
+{{ 'sections.foxify-1714529408XNuCP.f-button-1714617979IjDXa-button_label_html' | t }}</span></a></div></div><div id="f-grid-1714529489kquLw" class="f:blocks f:grid f-grid-1714529489kquLw" style="--f-grid-columns-sm:minmax(0, 12fr);--f-grid-columns-md:minmax(0, 12fr);--f-grid-columns-lg:minmax(0, 6fr) minmax(0, 6fr);--f-grid-columns-xl:minmax(0, 6fr) minmax(0, 6fr)"><div id="f-col-1714529489tueSk" class="f:blocks f:col f-col-1714529489tueSk f:column"><div id="f-block-1714531272N7cM1" class="f:blocks f:block f-block-1714531272N7cM1 f:block"><h3 id="f-heading-1714531281vwAnB" class="f:blocks f:heading f-heading-1714531281vwAnB f:content-block f:gs-heading-3"><span>
+{{ 'sections.foxify-1714529408XNuCP.f-heading-1714531281vwAnB-text_html' | t }}</span></h3>{%  assign product_f-richtext-1714531284HMqRf = product %}
+         {% assign collection_f-richtext-1714531284HMqRf = collection %}
+        <div id="f-richtext-1714531284HMqRf" class="f:blocks f:richtext f-richtext-1714531284HMqRf f:content-block f:gs-card-title f:rte">
+{{ 'sections.foxify-1714529408XNuCP.f-richtext-1714531284HMqRf-text_html' | t }}</div>{%  assign product_f-richtext-1714531287HpOHC = product %}
+         {% assign collection_f-richtext-1714531287HpOHC = collection %}
+        <div id="f-richtext-1714531287HpOHC" class="f:blocks f:richtext f-richtext-1714531287HpOHC f:content-block f:gs-body-text f:rte">
+{{ 'sections.foxify-1714529408XNuCP.f-richtext-1714531287HpOHC-text_html' | t }}</div></div><div id="f-block-1714530486o2q06" class="f:blocks f:block f-block-1714530486o2q06 f:block"><h4 id="f-heading-17145304942rxMM" class="f:blocks f:heading f-heading-17145304942rxMM f:content-block f:gs-heading-4"><span>
+{{ 'sections.foxify-1714529408XNuCP.f-heading-17145304942rxMM-text_html' | t }}</span></h4>{%  assign product_f-richtext-1714530496o8OP9 = product %}
+         {% assign collection_f-richtext-1714530496o8OP9 = collection %}
+        <div id="f-richtext-1714530496o8OP9" class="f:blocks f:richtext f-richtext-1714530496o8OP9 f:content-block f:gs-body-text f:rte">
+{{ 'sections.foxify-1714529408XNuCP.f-richtext-1714530496o8OP9-text_html' | t }}</div></div><div id="f-block-17146202319XeRj" class="f:blocks f:block f-block-17146202319XeRj f:block"><h5 id="f-heading-1714620231Hw22u" class="f:blocks f:heading f-heading-1714620231Hw22u f:content-block f:gs-card-title"><span>
+{{ 'sections.foxify-1714529408XNuCP.f-heading-1714620231Hw22u-text_html' | t }}</span></h5>{%  assign product_f-richtext-1714620231SDRFT = product %}
+         {% assign collection_f-richtext-1714620231SDRFT = collection %}
+        <div id="f-richtext-1714620231SDRFT" class="f:blocks f:richtext f-richtext-1714620231SDRFT f:content-block f:gs-body-text f:rte">
+{{ 'sections.foxify-1714529408XNuCP.f-richtext-1714620231SDRFT-text_html' | t }}</div></div><div id="f-block-1714620804g8Xq7" class="f:blocks f:block f-block-1714620804g8Xq7 f:block"><h3 id="f-heading-1714620804aASo0" class="f:blocks f:heading f-heading-1714620804aASo0 f:content-block f:gs-card-title"><span>
+{{ 'sections.foxify-1714529408XNuCP.f-heading-1714620804aASo0-text_html' | t }}</span></h3>{%  assign product_f-richtext-1714620804Ou5ym = product %}
+         {% assign collection_f-richtext-1714620804Ou5ym = collection %}
+        <div id="f-richtext-1714620804Ou5ym" class="f:blocks f:richtext f-richtext-1714620804Ou5ym f:content-block f:gs-body-text f:rte">
+{{ 'sections.foxify-1714529408XNuCP.f-richtext-1714620804Ou5ym-text_html' | t }}</div></div><div id="f-block-17146208055EhJx" class="f:blocks f:block f-block-17146208055EhJx f:block"><h3 id="f-heading-1714620805oYRPc" class="f:blocks f:heading f-heading-1714620805oYRPc f:content-block f:gs-card-title"><span>
+{{ 'sections.foxify-1714529408XNuCP.f-heading-1714620805oYRPc-text_html' | t }}</span></h3>{%  assign product_f-richtext-1714620805JzdWZ = product %}
+         {% assign collection_f-richtext-1714620805JzdWZ = collection %}
+        <div id="f-richtext-1714620805JzdWZ" class="f:blocks f:richtext f-richtext-1714620805JzdWZ f:content-block f:gs-body-text f:rte">
+{{ 'sections.foxify-1714529408XNuCP.f-richtext-1714620805JzdWZ-text_html' | t }}</div></div><div id="f-block-1714620805TISbL" class="f:blocks f:block f-block-1714620805TISbL f:block"><h3 id="f-heading-17146208056HCxt" class="f:blocks f:heading f-heading-17146208056HCxt f:content-block f:gs-card-title"><span>
+{{ 'sections.foxify-1714529408XNuCP.f-heading-17146208056HCxt-text_html' | t }}</span></h3>{%  assign product_f-richtext-1714620805iYuk9 = product %}
+         {% assign collection_f-richtext-1714620805iYuk9 = collection %}
+        <div id="f-richtext-1714620805iYuk9" class="f:blocks f:richtext f-richtext-1714620805iYuk9 f:content-block f:gs-body-text f:rte">
+{{ 'sections.foxify-1714529408XNuCP.f-richtext-1714620805iYuk9-text_html' | t }}</div></div><div id="f-block-17146207875NwXw" class="f:blocks f:block f-block-17146207875NwXw f:block"><h3 id="f-heading-1714620787cfZk8" class="f:blocks f:heading f-heading-1714620787cfZk8 f:content-block f:gs-card-title"><span>
+{{ 'sections.foxify-1714529408XNuCP.f-heading-1714620787cfZk8-text_html' | t }}</span></h3>{%  assign product_f-richtext-1714620787U30hA = product %}
+         {% assign collection_f-richtext-1714620787U30hA = collection %}
+        <div id="f-richtext-1714620787U30hA" class="f:blocks f:richtext f-richtext-1714620787U30hA f:content-block f:gs-body-text f:rte">
+{{ 'sections.foxify-1714529408XNuCP.f-richtext-1714620787U30hA-text_html' | t }}</div></div><div id="f-block-1714620903yHeez" class="f:blocks f:block f-block-1714620903yHeez f:block"><h3 id="f-heading-1714620903xMtMv" class="f:blocks f:heading f-heading-1714620903xMtMv f:content-block f:gs-card-title"><span>
+{{ 'sections.foxify-1714529408XNuCP.f-heading-1714620903xMtMv-text_html' | t }}</span></h3>{%  assign product_f-richtext-1714620903RK4Wh = product %}
+         {% assign collection_f-richtext-1714620903RK4Wh = collection %}
+        <div id="f-richtext-1714620903RK4Wh" class="f:blocks f:richtext f-richtext-1714620903RK4Wh f:content-block f:gs-body-text f:rte">
+{{ 'sections.foxify-1714529408XNuCP.f-richtext-1714620903RK4Wh-text_html' | t }}</div></div><div id="f-block-1714621078LZijt" class="f:blocks f:block f-block-1714621078LZijt f:block"><h3 id="f-heading-17146210780W1oV" class="f:blocks f:heading f-heading-17146210780W1oV f:content-block f:gs-card-title"><span>
+{{ 'sections.foxify-1714529408XNuCP.f-heading-17146210780W1oV-text_html' | t }}</span></h3>{%  assign product_f-richtext-1714621078LwsFz = product %}
+         {% assign collection_f-richtext-1714621078LwsFz = collection %}
+        <div id="f-richtext-1714621078LwsFz" class="f:blocks f:richtext f-richtext-1714621078LwsFz f:content-block f:gs-body-text f:rte">
+{{ 'sections.foxify-1714529408XNuCP.f-richtext-1714621078LwsFz-text_html' | t }}</div></div><div id="f-block-17146211636DNSi" class="f:blocks f:block f-block-17146211636DNSi f:block"><h3 id="f-heading-1714621163fE9BN" class="f:blocks f:heading f-heading-1714621163fE9BN f:content-block f:gs-card-title"><span>
+{{ 'sections.foxify-1714529408XNuCP.f-heading-1714621163fE9BN-text_html' | t }}</span></h3>{%  assign product_f-richtext-1714621163FfiWw = product %}
+         {% assign collection_f-richtext-1714621163FfiWw = collection %}
+        <div id="f-richtext-1714621163FfiWw" class="f:blocks f:richtext f-richtext-1714621163FfiWw f:content-block f:gs-body-text f:rte">
+{{ 'sections.foxify-1714529408XNuCP.f-richtext-1714621163FfiWw-text_html' | t }}</div></div><div id="f-block-1714621166FmXJj" class="f:blocks f:block f-block-1714621166FmXJj f:block"><h5 id="f-heading-1714621166FBUq4" class="f:blocks f:heading f-heading-1714621166FBUq4 f:content-block f:gs-card-title"><span>
+{{ 'sections.foxify-1714529408XNuCP.f-heading-1714621166FBUq4-text_html' | t }}</span></h5>{%  assign product_f-richtext-17146211664ZfZA = product %}
+         {% assign collection_f-richtext-17146211664ZfZA = collection %}
+        <div id="f-richtext-17146211664ZfZA" class="f:blocks f:richtext f-richtext-17146211664ZfZA f:content-block f:gs-body-text f:rte">
+{{ 'sections.foxify-1714529408XNuCP.f-richtext-17146211664ZfZA-text_html' | t }}</div></div><div id="f-block-1714621167HPLbj" class="f:blocks f:block f-block-1714621167HPLbj f:block"><h3 id="f-heading-17146211676lyhR" class="f:blocks f:heading f-heading-17146211676lyhR f:content-block f:gs-card-title"><span>
+{{ 'sections.foxify-1714529408XNuCP.f-heading-17146211676lyhR-text_html' | t }}</span></h3>{%  assign product_f-richtext-1714621167ZVBKk = product %}
+         {% assign collection_f-richtext-1714621167ZVBKk = collection %}
+        <div id="f-richtext-1714621167ZVBKk" class="f:blocks f:richtext f-richtext-1714621167ZVBKk f:content-block f:gs-body-text f:rte">
+{{ 'sections.foxify-1714529408XNuCP.f-richtext-1714621167ZVBKk-text_html' | t }}</div></div><div id="f-block-1714530960Gi9yz" class="f:blocks f:block f-block-1714530960Gi9yz f:block"><h3 id="f-heading-1714530960JmxJ0" class="f:blocks f:heading f-heading-1714530960JmxJ0 f:content-block f:gs-heading-4"><span>
+{{ 'sections.foxify-1714529408XNuCP.f-heading-1714530960JmxJ0-text_html' | t }}</span></h3>{%  assign product_f-richtext-1714530960KtXRr = product %}
+         {% assign collection_f-richtext-1714530960KtXRr = collection %}
+        <div id="f-richtext-1714530960KtXRr" class="f:blocks f:richtext f-richtext-1714530960KtXRr f:content-block f:gs-body-text f:rte">
+{{ 'sections.foxify-1714529408XNuCP.f-richtext-1714530960KtXRr-text_html' | t }}</div></div><div id="f-block-1714621623u8aT9" class="f:blocks f:block f-block-1714621623u8aT9 f:block"><h3 id="f-heading-1714621623M2dc0" class="f:blocks f:heading f-heading-1714621623M2dc0 f:content-block f:gs-card-title"><span>
+{{ 'sections.foxify-1714529408XNuCP.f-heading-1714621623M2dc0-text_html' | t }}</span></h3>{%  assign product_f-richtext-1714621623AnaUv = product %}
+         {% assign collection_f-richtext-1714621623AnaUv = collection %}
+        <div id="f-richtext-1714621623AnaUv" class="f:blocks f:richtext f-richtext-1714621623AnaUv f:content-block f:gs-body-text f:rte">
+{{ 'sections.foxify-1714529408XNuCP.f-richtext-1714621623AnaUv-text_html' | t }}</div></div><div id="f-block-17146216976Y3ZA" class="f:blocks f:block f-block-17146216976Y3ZA f:block"><h3 id="f-heading-1714621697flRK7" class="f:blocks f:heading f-heading-1714621697flRK7 f:content-block f:gs-card-title"><span>
+{{ 'sections.foxify-1714529408XNuCP.f-heading-1714621697flRK7-text_html' | t }}</span></h3>{%  assign product_f-richtext-1714621697eOLxO = product %}
+         {% assign collection_f-richtext-1714621697eOLxO = collection %}
+        <div id="f-richtext-1714621697eOLxO" class="f:blocks f:richtext f-richtext-1714621697eOLxO f:content-block f:gs-body-text f:rte">
+{{ 'sections.foxify-1714529408XNuCP.f-richtext-1714621697eOLxO-text_html' | t }}</div></div><div id="f-block-171462169884hPX" class="f:blocks f:block f-block-171462169884hPX f:block"><h3 id="f-heading-1714621698zsu8w" class="f:blocks f:heading f-heading-1714621698zsu8w f:content-block f:gs-card-title"><span>
+{{ 'sections.foxify-1714529408XNuCP.f-heading-1714621698zsu8w-text_html' | t }}</span></h3>{%  assign product_f-richtext-1714621698B1Faj = product %}
+         {% assign collection_f-richtext-1714621698B1Faj = collection %}
+        <div id="f-richtext-1714621698B1Faj" class="f:blocks f:richtext f-richtext-1714621698B1Faj f:content-block f:gs-body-text f:rte">
+{{ 'sections.foxify-1714529408XNuCP.f-richtext-1714621698B1Faj-text_html' | t }}</div></div><div id="f-block-1714621698FkwoD" class="f:blocks f:block f-block-1714621698FkwoD f:block"><h3 id="f-heading-17146216984YUpc" class="f:blocks f:heading f-heading-17146216984YUpc f:content-block f:gs-card-title"><span>
+{{ 'sections.foxify-1714529408XNuCP.f-heading-17146216984YUpc-text_html' | t }}</span></h3>{%  assign product_f-richtext-1714621698q9paI = product %}
+         {% assign collection_f-richtext-1714621698q9paI = collection %}
+        <div id="f-richtext-1714621698q9paI" class="f:blocks f:richtext f-richtext-1714621698q9paI f:content-block f:gs-body-text f:rte">
+{{ 'sections.foxify-1714529408XNuCP.f-richtext-1714621698q9paI-text_html' | t }}</div></div><div id="f-block-17146216985bg47" class="f:blocks f:block f-block-17146216985bg47 f:block"><h3 id="f-heading-1714621698el8mp" class="f:blocks f:heading f-heading-1714621698el8mp f:content-block f:gs-card-title"><span>
+{{ 'sections.foxify-1714529408XNuCP.f-heading-1714621698el8mp-text_html' | t }}</span></h3>{%  assign product_f-richtext-1714621698nvilT = product %}
+         {% assign collection_f-richtext-1714621698nvilT = collection %}
+        <div id="f-richtext-1714621698nvilT" class="f:blocks f:richtext f-richtext-1714621698nvilT f:content-block f:gs-body-text f:rte">
+{{ 'sections.foxify-1714529408XNuCP.f-richtext-1714621698nvilT-text_html' | t }}</div></div><div id="f-block-1756460577fBPCm" class="f:blocks f:block f-block-1756460577fBPCm f:block"><h3 id="f-heading-17564605775kuRP" class="f:blocks f:heading f-heading-17564605775kuRP f:content-block f:gs-card-title"><span>
+{{ 'sections.foxify-1714529408XNuCP.f-heading-17564605775kuRP-text_html' | t }}</span></h3>{%  assign product_f-richtext-1756460577Q69AH = product %}
+         {% assign collection_f-richtext-1756460577Q69AH = collection %}
+        <div id="f-richtext-1756460577Q69AH" class="f:blocks f:richtext f-richtext-1756460577Q69AH f:content-block f:gs-body-text f:rte">
+{{ 'sections.foxify-1714529408XNuCP.f-richtext-1756460577Q69AH-text_html' | t }}</div></div><div id="f-block-1714531004fBIZM" class="f:blocks f:block f-block-1714531004fBIZM f:block"><h3 id="f-heading-1714531004j7aZX" class="f:blocks f:heading f-heading-1714531004j7aZX f:content-block f:gs-heading-4"><span>
+{{ 'sections.foxify-1714529408XNuCP.f-heading-1714531004j7aZX-text_html' | t }}</span></h3>{%  assign product_f-richtext-1714531004EUoIx = product %}
+         {% assign collection_f-richtext-1714531004EUoIx = collection %}
+        <div id="f-richtext-1714531004EUoIx" class="f:blocks f:richtext f-richtext-1714531004EUoIx f:content-block f:gs-body-text f:rte">
+{{ 'sections.foxify-1714529408XNuCP.f-richtext-1714531004EUoIx-text_html' | t }}</div></div><div id="f-block-1714531032yn3G6" class="f:blocks f:block f-block-1714531032yn3G6 f:block"><h3 id="f-heading-1714531032wIx3R" class="f:blocks f:heading f-heading-1714531032wIx3R f:content-block f:gs-heading-4"><span>
+{{ 'sections.foxify-1714529408XNuCP.f-heading-1714531032wIx3R-text_html' | t }}</span></h3>{%  assign product_f-richtext-1714531032vyGx8 = product %}
+         {% assign collection_f-richtext-1714531032vyGx8 = collection %}
+        <div id="f-richtext-1714531032vyGx8" class="f:blocks f:richtext f-richtext-1714531032vyGx8 f:content-block f:gs-body-text f:rte">
+{{ 'sections.foxify-1714529408XNuCP.f-richtext-1714531032vyGx8-text_html' | t }}</div></div><div id="f-block-1714531053lLsYB" class="f:blocks f:block f-block-1714531053lLsYB f:block"><h3 id="f-heading-17145310533qVE7" class="f:blocks f:heading f-heading-17145310533qVE7 f:content-block f:gs-heading-4"><span>
+{{ 'sections.foxify-1714529408XNuCP.f-heading-17145310533qVE7-text_html' | t }}</span></h3>{%  assign product_f-richtext-1714531053fjkIN = product %}
+         {% assign collection_f-richtext-1714531053fjkIN = collection %}
+        <div id="f-richtext-1714531053fjkIN" class="f:blocks f:richtext f-richtext-1714531053fjkIN f:content-block f:gs-body-text f:rte">
+{{ 'sections.foxify-1714529408XNuCP.f-richtext-1714531053fjkIN-text_html' | t }}</div></div><div id="f-block-1714531071hZxjo" class="f:blocks f:block f-block-1714531071hZxjo f:block"><h3 id="f-heading-1714531071Te4Qi" class="f:blocks f:heading f-heading-1714531071Te4Qi f:content-block f:gs-heading-4"><span>
+{{ 'sections.foxify-1714529408XNuCP.f-heading-1714531071Te4Qi-text_html' | t }}</span></h3>{%  assign product_f-richtext-1714531071hTLR2 = product %}
+         {% assign collection_f-richtext-1714531071hTLR2 = collection %}
+        <div id="f-richtext-1714531071hTLR2" class="f:blocks f:richtext f-richtext-1714531071hTLR2 f:content-block f:gs-body-text f:rte">
+{{ 'sections.foxify-1714529408XNuCP.f-richtext-1714531071hTLR2-text_html' | t }}</div></div></div><div id="f-col-1714530048uGpBX" class="f:blocks f:col f-col-1714530048uGpBX f:column"><div id="f-block-1714621970ki3hw" class="f:blocks f:block f-block-1714621970ki3hw f:block"><div id="f-block-1714630757sAXqm" class="f:blocks f:block f-block-1714630757sAXqm f:block">{%  assign product_f-richtext-1714630760xEeuo = product %}
+         {% assign collection_f-richtext-1714630760xEeuo = collection %}
+        <div id="f-richtext-1714630760xEeuo" class="f:blocks f:richtext f-richtext-1714630760xEeuo f:content-block f:gs-card-title f:rte">
+{{ 'sections.foxify-1714529408XNuCP.f-richtext-1714630760xEeuo-text_html' | t }}</div>{%  assign product_f-richtext-1714630764u2ZjA = product %}
+         {% assign collection_f-richtext-1714630764u2ZjA = collection %}
+        <div id="f-richtext-1714630764u2ZjA" class="f:blocks f:richtext f-richtext-1714630764u2ZjA f:content-block f:gs-body-text f:rte">
+{{ 'sections.foxify-1714529408XNuCP.f-richtext-1714630764u2ZjA-text_html' | t }}</div></div><div id="f-block-1714630744abHWw" class="f:blocks f:block f-block-1714630744abHWw f:block"><h4 id="f-heading-17146307478dKel" class="f:blocks f:heading f-heading-17146307478dKel f:content-block f:gs-heading-4"><span>
+{{ 'sections.foxify-1714529408XNuCP.f-heading-17146307478dKel-text_html' | t }}</span></h4>{%  assign product_f-richtext-1714630753iaG8m = product %}
+         {% assign collection_f-richtext-1714630753iaG8m = collection %}
+        <div id="f-richtext-1714630753iaG8m" class="f:blocks f:richtext f-richtext-1714630753iaG8m f:content-block f:gs-body-text f:rte">
+{{ 'sections.foxify-1714529408XNuCP.f-richtext-1714630753iaG8m-text_html' | t }}</div></div><div id="f-block-1714630905qJKkg" class="f:blocks f:block f-block-1714630905qJKkg f:block"><h4 id="f-heading-1714630905MwD5j" class="f:blocks f:heading f-heading-1714630905MwD5j f:content-block f:gs-heading-4"><span>
+{{ 'sections.foxify-1714529408XNuCP.f-heading-1714630905MwD5j-text_html' | t }}</span></h4>{%  assign product_f-richtext-1714630905igoUc = product %}
+         {% assign collection_f-richtext-1714630905igoUc = collection %}
+        <div id="f-richtext-1714630905igoUc" class="f:blocks f:richtext f-richtext-1714630905igoUc f:content-block f:gs-body-text f:rte">
+{{ 'sections.foxify-1714529408XNuCP.f-richtext-1714630905igoUc-text_html' | t }}</div></div><div id="f-block-17146309350s2Yg" class="f:blocks f:block f-block-17146309350s2Yg f:block">{%  assign product_f-richtext-1714630935KAd5W = product %}
+         {% assign collection_f-richtext-1714630935KAd5W = collection %}
+        <div id="f-richtext-1714630935KAd5W" class="f:blocks f:richtext f-richtext-1714630935KAd5W f:content-block f:gs-body-text f:rte">
+{{ 'sections.foxify-1714529408XNuCP.f-richtext-1714630935KAd5W-text_html' | t }}</div></div><div id="f-block-1714630962bK15Y" class="f:blocks f:block f-block-1714630962bK15Y f:block"><h4 id="f-heading-1714630962COgo6" class="f:blocks f:heading f-heading-1714630962COgo6 f:content-block f:gs-heading-4"><span>
+{{ 'sections.foxify-1714529408XNuCP.f-heading-1714630962COgo6-text_html' | t }}</span></h4>{%  assign product_f-richtext-1714630962yvmcP = product %}
+         {% assign collection_f-richtext-1714630962yvmcP = collection %}
+        <div id="f-richtext-1714630962yvmcP" class="f:blocks f:richtext f-richtext-1714630962yvmcP f:content-block f:gs-body-text f:rte">
+{{ 'sections.foxify-1714529408XNuCP.f-richtext-1714630962yvmcP-text_html' | t }}</div></div><div id="f-block-1714630988YHMvx" class="f:blocks f:block f-block-1714630988YHMvx f:block"><h5 id="f-heading-1714630988eFP5E" class="f:blocks f:heading f-heading-1714630988eFP5E f:content-block f:gs-card-title"><span>
+{{ 'sections.foxify-1714529408XNuCP.f-heading-1714630988eFP5E-text_html' | t }}</span></h5>{%  assign product_f-richtext-17146309883QJpw = product %}
+         {% assign collection_f-richtext-17146309883QJpw = collection %}
+        <div id="f-richtext-17146309883QJpw" class="f:blocks f:richtext f-richtext-17146309883QJpw f:content-block f:gs-body-text f:rte">
+{{ 'sections.foxify-1714529408XNuCP.f-richtext-17146309883QJpw-text_html' | t }}</div></div><div id="f-block-1714631040NaRWK" class="f:blocks f:block f-block-1714631040NaRWK f:block"><h5 id="f-heading-1714631040JoBgy" class="f:blocks f:heading f-heading-1714631040JoBgy f:content-block f:gs-card-title"><span>
+{{ 'sections.foxify-1714529408XNuCP.f-heading-1714631040JoBgy-text_html' | t }}</span></h5>{%  assign product_f-richtext-1714631040GLWpk = product %}
+         {% assign collection_f-richtext-1714631040GLWpk = collection %}
+        <div id="f-richtext-1714631040GLWpk" class="f:blocks f:richtext f-richtext-1714631040GLWpk f:content-block f:gs-body-text f:rte">
+{{ 'sections.foxify-1714529408XNuCP.f-richtext-1714631040GLWpk-text_html' | t }}</div></div><div id="f-block-1714631068RR578" class="f:blocks f:block f-block-1714631068RR578 f:block"><h5 id="f-heading-1714631068u5Rcj" class="f:blocks f:heading f-heading-1714631068u5Rcj f:content-block f:gs-card-title"><span>
+{{ 'sections.foxify-1714529408XNuCP.f-heading-1714631068u5Rcj-text_html' | t }}</span></h5>{%  assign product_f-richtext-1714631068xMUwY = product %}
+         {% assign collection_f-richtext-1714631068xMUwY = collection %}
+        <div id="f-richtext-1714631068xMUwY" class="f:blocks f:richtext f-richtext-1714631068xMUwY f:content-block f:gs-body-text f:rte">
+{{ 'sections.foxify-1714529408XNuCP.f-richtext-1714631068xMUwY-text_html' | t }}</div></div><div id="f-block-1714631084sCCDL" class="f:blocks f:block f-block-1714631084sCCDL f:block"><h5 id="f-heading-1714631084ShZjk" class="f:blocks f:heading f-heading-1714631084ShZjk f:content-block f:gs-card-title"><span>
+{{ 'sections.foxify-1714529408XNuCP.f-heading-1714631084ShZjk-text_html' | t }}</span></h5>{%  assign product_f-richtext-1714631084P6RHg = product %}
+         {% assign collection_f-richtext-1714631084P6RHg = collection %}
+        <div id="f-richtext-1714631084P6RHg" class="f:blocks f:richtext f-richtext-1714631084P6RHg f:content-block f:gs-body-text f:rte">
+{{ 'sections.foxify-1714529408XNuCP.f-richtext-1714631084P6RHg-text_html' | t }}</div></div><div id="f-block-1714631100Le0Gy" class="f:blocks f:block f-block-1714631100Le0Gy f:block"><h5 id="f-heading-17146311000xalX" class="f:blocks f:heading f-heading-17146311000xalX f:content-block f:gs-card-title"><span>
+{{ 'sections.foxify-1714529408XNuCP.f-heading-17146311000xalX-text_html' | t }}</span></h5>{%  assign product_f-richtext-1714631100t02DL = product %}
+         {% assign collection_f-richtext-1714631100t02DL = collection %}
+        <div id="f-richtext-1714631100t02DL" class="f:blocks f:richtext f-richtext-1714631100t02DL f:content-block f:gs-body-text f:rte">
+{{ 'sections.foxify-1714529408XNuCP.f-richtext-1714631100t02DL-text_html' | t }}</div></div><div id="f-block-1714631117qYjTF" class="f:blocks f:block f-block-1714631117qYjTF f:block"><h5 id="f-heading-1714631117QQYr7" class="f:blocks f:heading f-heading-1714631117QQYr7 f:content-block f:gs-card-title"><span>
+{{ 'sections.foxify-1714529408XNuCP.f-heading-1714631117QQYr7-text_html' | t }}</span></h5>{%  assign product_f-richtext-1714631117XRhKJ = product %}
+         {% assign collection_f-richtext-1714631117XRhKJ = collection %}
+        <div id="f-richtext-1714631117XRhKJ" class="f:blocks f:richtext f-richtext-1714631117XRhKJ f:content-block f:gs-body-text f:rte">
+{{ 'sections.foxify-1714529408XNuCP.f-richtext-1714631117XRhKJ-text_html' | t }}</div></div><div id="f-block-1714631134rBVQi" class="f:blocks f:block f-block-1714631134rBVQi f:block"><h5 id="f-heading-1714631134UBqjH" class="f:blocks f:heading f-heading-1714631134UBqjH f:content-block f:gs-card-title"><span>
+{{ 'sections.foxify-1714529408XNuCP.f-heading-1714631134UBqjH-text_html' | t }}</span></h5>{%  assign product_f-richtext-1714631134FqRrn = product %}
+         {% assign collection_f-richtext-1714631134FqRrn = collection %}
+        <div id="f-richtext-1714631134FqRrn" class="f:blocks f:richtext f-richtext-1714631134FqRrn f:content-block f:gs-body-text f:rte">
+{{ 'sections.foxify-1714529408XNuCP.f-richtext-1714631134FqRrn-text_html' | t }}</div></div><div id="f-block-17146311523Km4f" class="f:blocks f:block f-block-17146311523Km4f f:block">{%  assign product_f-richtext-1714631152JowJX = product %}
+         {% assign collection_f-richtext-1714631152JowJX = collection %}
+        <div id="f-richtext-1714631152JowJX" class="f:blocks f:richtext f-richtext-1714631152JowJX f:content-block f:gs-card-title f:rte">
+{{ 'sections.foxify-1714529408XNuCP.f-richtext-1714631152JowJX-text_html' | t }}</div>{%  assign product_f-richtext-1714631152HFg0O = product %}
+         {% assign collection_f-richtext-1714631152HFg0O = collection %}
+        <div id="f-richtext-1714631152HFg0O" class="f:blocks f:richtext f-richtext-1714631152HFg0O f:content-block f:gs-body-text f:rte">
+{{ 'sections.foxify-1714529408XNuCP.f-richtext-1714631152HFg0O-text_html' | t }}</div></div><div id="f-block-1714631182jduvS" class="f:blocks f:block f-block-1714631182jduvS f:block"><h4 id="f-heading-1714631182pTgKK" class="f:blocks f:heading f-heading-1714631182pTgKK f:content-block f:gs-heading-4"><span>
+{{ 'sections.foxify-1714529408XNuCP.f-heading-1714631182pTgKK-text_html' | t }}</span></h4>{%  assign product_f-richtext-1714631182ss4Bn = product %}
+         {% assign collection_f-richtext-1714631182ss4Bn = collection %}
+        <div id="f-richtext-1714631182ss4Bn" class="f:blocks f:richtext f-richtext-1714631182ss4Bn f:content-block f:gs-body-text f:rte">
+{{ 'sections.foxify-1714529408XNuCP.f-richtext-1714631182ss4Bn-text_html' | t }}</div>{%  assign product_f-richtext-1714631202lwV2e = product %}
+         {% assign collection_f-richtext-1714631202lwV2e = collection %}
+        <div id="f-richtext-1714631202lwV2e" class="f:blocks f:richtext f-richtext-1714631202lwV2e f:content-block f:gs-body-text f:rte">
+{{ 'sections.foxify-1714529408XNuCP.f-richtext-1714631202lwV2e-text_html' | t }}</div></div><div id="f-block-1714631216NrpKk" class="f:blocks f:block f-block-1714631216NrpKk f:block"><h4 id="f-heading-1714631216uGwH7" class="f:blocks f:heading f-heading-1714631216uGwH7 f:content-block f:gs-heading-4"><span>
+{{ 'sections.foxify-1714529408XNuCP.f-heading-1714631216uGwH7-text_html' | t }}</span></h4>{%  assign product_f-richtext-1714631216Fx7W5 = product %}
+         {% assign collection_f-richtext-1714631216Fx7W5 = collection %}
+        <div id="f-richtext-1714631216Fx7W5" class="f:blocks f:richtext f-richtext-1714631216Fx7W5 f:content-block f:gs-body-text f:rte">
+{{ 'sections.foxify-1714529408XNuCP.f-richtext-1714631216Fx7W5-text_html' | t }}</div></div></div>{{ 'foxify-multicolumn.css' | asset_url | stylesheet_tag }}<div id="f-icon-box-1714627335iSgRI" class="f:blocks f:icon-box f-icon-box-1714627335iSgRI f:multicolumn-items--vertical f:multicolumn-items--vertical-middle"><div class="f:column" style="--blocks-count:1"><div class="f:multicolumn-block"><div id="f-image-17146273356WyR3" class="f:blocks f-image-17146273356WyR3 f:custom-section__image f:image-block"><f-image class="f:image " style="--f-aspect-ratio:0.9966996699669967"><img srcSet="https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Asset_11_e9f4c860-defc-441e-b770-aa82ec6ef050.png?v=1714627449&width=165 165w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Asset_11_e9f4c860-defc-441e-b770-aa82ec6ef050.png?v=1714627449 302w" src="//cdn.shopify.com/s/files/1/0619/6150/2869/files/Asset_11_e9f4c860-defc-441e-b770-aa82ec6ef050_360x.png?v=1714627449" sizes="(min-width: 1200px) 533px, (min-width: 990px) calc((100vw - 130px) / 3), (min-width: 750px) calc((100vw - 120px) / 2), calc((100vw - 35px) / 2)" alt="Asset 11.png" loading="lazy" width="302" height="303"/></f-image></div></div></div></div></div></div></div></div>
+<script data-foxify-custom-code-page="js" defer>{{ foxifyCustomJs }}</script>
+{% liquid
+        assign theme_settings = shop.metafields.foxify.theme_settings.value
+        assign customCodeBody = theme_settings.customCodeBody
+        echo customCodeBody
+      %}
+
+</div>
+{% schema %}
+  {
+  "name": "Foxify main content",
+  "class": "foxify-main f-app",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Customize main content",
+      "info": "Go to [Foxify app](https://admin.shopify.com/store/the-future-rocks/apps/foxify-builder/editor?id=1714529408XNuCP&type=regular) to edit this section."
+    }
+  ],
+  "locales": {
+    "en": {
+      "f-heading-17145304942rxMM-text_html": "1",
+      "f-richtext-1714530496o8OP9-text_html": "Jewelry purchased from The Future Rocks (TFR) is warranted against any manufacturing defect for a period of twenty-four (24) months from the date of purchase (the “Warranty Period”) subject to the following conditions.",
+      "f-heading-1714530960JmxJ0-text_html": "2",
+      "f-richtext-1714530960KtXRr-text_html": "The customer must send a warranty claim to <a href=\"mailto:contact@thefuturerocks.com\">contact@thefuturerocks.com</a>, proof of purchase or order number, and photos of the broken piece.",
+      "f-heading-1714531004j7aZX-text_html": "3",
+      "f-richtext-1714531004EUoIx-text_html": "The Warranty is voluntary. It provides rights separate from those provided by consumer law, including but not limited to non-conforming goods. The Warranty benefits are in addition to, and not instead of, the consumer's statutory rights provided by consumer law and those statutory rights are not affected by this Warranty. This Warranty will not affect the terms that are in place between the customer and the selling entity itself.",
+      "f-heading-1714531032wIx3R-text_html": "4",
+      "f-heading-17145310533qVE7-text_html": "5",
+      "f-richtext-1714531053fjkIN-text_html": "TFRs' Warranty gives the customer specific legal rights, and the customer may also have other rights under the applicable local laws. Such rights may vary from one country to another.",
+      "f-heading-1714531071Te4Qi-text_html": "6",
+      "f-richtext-1714531071hTLR2-text_html": "These Warranty Terms shall be governed by, and construed in accordance with, the laws of Hong Kong. To the maximum extent permitted by applicable law, you irrevocably agree that the courts of Hong Kong shall have exclusive jurisdiction to settle any dispute or claim that arises out of or in connection with the Terms.",
+      "f-heading-1714531281vwAnB-text_html": "Limited Warranty",
+      "f-richtext-1714531284HMqRf-text_html": "The Future Rocks Limited Warranty Terms and Conditions (the “Warranty Terms”)",
+      "f-richtext-1714531287HpOHC-text_html": "Depending on the territory in which you live, you may have rights under local laws that override or operate in addition to the provisions of this Warranty. Please refer to the <strong>ADDENDUM TO LIMITED WARRANTY TERMS AND CONDITIONS </strong>for warranty provisions that apply in your specific territory.",
+      "f-heading-1714617922lQwWQ-text_html": "What should I do in the event that my 2-year warranty expires?",
+      "f-richtext-1714617922uGGoT-text_html": "Upon expiration of the Warranty Period, any services or repairs will be subject to a service charge.",
+      "f-heading-1714617922jxPpl-text_html": "Under what condition can I repair my purchase from The Future Rocks?",
+      "f-richtext-17146179226cJ2n-text_html": "If a jewelry piece is returned during the Warranty Period, any defect resulting from a manufacturing defect will be repaired (if feasible) or replaced free of component (excluding diamonds) and labor charges at TFR's sole discretion.<br /><br />Our warranty does not cover lost items, normal wear and tear, including scratches, tarnishing, or fading of metals and gemstones, damage cause by improper care, such as exposure to chemicals, water, or excessive force, or any modification to your product done by a third part outside of The Future Rocks.",
+      "f-heading-1714617923fbd6x-text_html": "How do I process my warranty claim? ",
+      "f-richtext-1714617923jOscs-text_html": "You must send a warranty claim to <a href=\"mailto:contact@thefuturerocks.com\">contact@thefuturerocks.com</a>, including proof of purchase or order number, and photos of the broken piece. Do note you are responsible for the shipping cost of returning the jewelry piece to us. Shipment should be sent with a trackable shipping method and carrier. We also advise you to insure the shipment to prevent any unfortunate event during shipment.",
+      "f-button-1714617979IjDXa-button_label_html": "contact us",
+      "f-heading-1714620231Hw22u-text_html": "a",
+      "f-richtext-1714620231SDRFT-text_html": "The Warranty Period begins on the date of purchase.",
+      "f-heading-1714620804aASo0-text_html": "b",
+      "f-richtext-1714620804Ou5ym-text_html": "The Warranty is only available to customers purchasing from the TFR platform at [https://thefuturerocks.com/].",
+      "f-heading-1714620805oYRPc-text_html": "c",
+      "f-richtext-1714620805JzdWZ-text_html": "The Warranty only covers manufacturing defects.",
+      "f-heading-17146208056HCxt-text_html": "d",
+      "f-richtext-1714620805iYuk9-text_html": "If a jewelry piece is returned during the Warranty Period, any defect resulting from a manufacturing defect will be repaired (if feasible) or replaced free of component (including pavee stones but excluding center stones, whether gemstone or pearl or otherwise) and labor charges at TFRs' sole discretion. TFR will set back any stone or pearl that has fallen out when the piece is returned together with the loose stone or pearl.",
+      "f-heading-1714620787cfZk8-text_html": "e",
+      "f-richtext-1714620787U30hA-text_html": "The Warranty does not cover, notably:\n<ol>\n<li>Defects and damages resulting from misuse or negligence, or from accident.</li>\n<li>Defects and damages caused by improper use (knocks, dents, crushing to the piece, diamond, or setting, etc.), alterations, tampering, dismantling or unauthorized modifications or repairs, as well as services, works and repairs performed by anyone other than TFR.</li>\n<li>Routine maintenance, cleaning, and the consequences of the normal wear and tear and aging of the jewelry.</li>\n<li>Lost stones or pearls that fall out and are thereby lost other than due to a manufacturing defect. If the stone or pearl is lost other than due to a manufacturing defect, TFR will not replace it with a new one free of charge. The customer would need to purchase a new stone or pearl to replace it.</li>\n</ol>",
+      "f-heading-1714620903xMtMv-text_html": "f",
+      "f-richtext-1714620903RK4Wh-text_html": "Examples of common jewelry issues that would be considered manufacturing defects include:<br />\n<ol>\n<li>Stones are loose in a newly made ring.</li>\n<li>Newly made rings that are deformed or bent.</li>\n<li>Rings that are easily bent or deformed without any significant force.</li>\n<li>Rings made with the incorrect material, such as gold rather than platinum.</li>\n</ol>",
+      "f-heading-17146210780W1oV-text_html": "g",
+      "f-richtext-1714621078LwsFz-text_html": "Examples of common jewelry issues that would not be considered manufacturing defects include:<br />\n<ol>\n<li>Discoloration due to exposure to chemicals.</li>\n<li>Prongs and precious metals generally wear over time and may require “building up” or restoration work as everyday wear.</li>\n<li>Bent, caught, or worn-out prongs(s) allowing a stone to fall out or be lost due to normal wear and tear or other damage not resulting from a manufacturing defect.</li>\n<li>Lost stone that has fallen out due to chipping or breaking caused by normal wear or other damage and has then been lost, not resulting from a manufacturing defect (see Clause 1(e)(4)).</li>\n</ol>",
+      "f-heading-1714621163fE9BN-text_html": "h",
+      "f-richtext-1714621163FfiWw-text_html": "If a jewelry piece is damaged beyond repair, TFR will send a replacement within the Warranty Period.",
+      "f-heading-1714621166FBUq4-text_html": "i",
+      "f-richtext-17146211664ZfZA-text_html": "In case of replacement, TFR cannot guarantee that the customer will receive the same diamond; a comparable diamond of equal value and similar gradings will be substituted. The Warranty for the replacement jewelry piece ends twelve (12) months from the date the replacement piece is received, or 24 months from the date of purchase of the jewelry, whichever is later.",
+      "f-heading-17146211676lyhR-text_html": "j",
+      "f-richtext-1714621167ZVBKk-text_html": "Upon expiration of the Warranty Period, any services or repairs will be subject to a service charge.",
+      "f-heading-1714621623M2dc0-text_html": "a",
+      "f-richtext-1714621623AnaUv-text_html": "Since each case is unique, TFR will inspect each jewelry piece to determine whether the Warranty covers it. If TFR finds an issue not covered by the Warranty, we also offer options on the available repair service and cost.",
+      "f-heading-1714621697flRK7-text_html": "b",
+      "f-richtext-1714621697eOLxO-text_html": "TFR will evaluate the damage level on the returned jewelry and inform the customer of an estimated repair timeframe.",
+      "f-heading-1714621698zsu8w-text_html": "c",
+      "f-richtext-1714621698B1Faj-text_html": "Depending on the damage level on the jewelry piece, the repair may take up to three (3) to four (4) weeks to complete.",
+      "f-heading-17146216984YUpc-text_html": "d",
+      "f-richtext-1714621698q9paI-text_html": "The customer is responsible for the shipping cost of returning the jewelry piece to TFR. Shipment should be sent with a trackable shipping method and carrier. TFR also advises customers to insure the shipment to prevent any unfortunate event during shipment.",
+      "f-heading-1714621698el8mp-text_html": "e",
+      "f-richtext-1714621698nvilT-text_html": "TFR will return all repaired jewelry or replacement to the customer’s specific address with trackable and insured shipping at TFRs' cost.",
+      "f-richtext-1714531032vyGx8-text_html": "The preceding warranties are exclusive and in lieu of all other warranties, terms, or conditions, express, implied, or statutory, as to any matter whatsoever, including, without limitation, warranties of merchantability, fitness for a particular purpose, accuracy, satisfactory quality, title, and noninfringement, all of which are expressly disclaimed by TFR. TFR shall not be liable for incidental, consequential, indirect, special, or punitive damages or liabilities of any kind arising out of or in connection with the sale or use of the product, whether based on contract, tort (including negligence), strict product liability or any other theory, even if TFR has been advised of the possibility of such damages and even if any limited remedy specified herein is deemed to have failed of its essential purpose. To the maximum extent permitted by applicable law, TFRs' entire liability shall be limited to replacement or repair or refund of the purchase price paid at TFRs' sole option.",
+      "f-richtext-17146243028Ir7j-text_html": "Jewelry purchased from The Future Rocks starting from 16th June, 2023 is warranted against any manufacturing defect for a period of 2 years from the date of purchase. Leather and leather free fabric products are not included in this warranty.",
+      "f-heading-1714624856D0Dw0-text_html": "What is The Future Rocks warranty?",
+      "f-richtext-1714630760xEeuo-text_html": "ADDENDUM TO LIMITED WARRANTY TERMS AND CONDITIONS (UNITED KINGDOM)",
+      "f-richtext-1714630764u2ZjA-text_html": "This Addendum to the Limited Warranty Terms and Conditions applies to customers in the United Kingdom.",
+      "f-heading-17146307478dKel-text_html": "1",
+      "f-richtext-1714630753iaG8m-text_html": "This Warranty is provided by The Future Rocks.",
+      "f-heading-1714630905MwD5j-text_html": "2",
+      "f-richtext-1714630905igoUc-text_html": "Clause 4 shall be deleted and replaced with the following: \"If TFR fails to comply with these Warranty Terms, TFR is responsible for loss or damage the customer may suffer that is a foreseeable result of TFRs' breach of these Warranty Terms or failing to use reasonable care and skill, but TFR is not responsible for any loss or damage that is not foreseeable (subject to Clause 5). Loss or damage is foreseeable if they were an obvious consequence of TFR's breach or if they were contemplated by both parties at the time we entered into the Agreement.\"",
+      "f-richtext-1714630935KAd5W-text_html": "The following additional terms shall be inserted as a new Clause 5 and shall apply to consumers located in the United Kingdom:",
+      "f-heading-1714630962COgo6-text_html": "5",
+      "f-richtext-1714630962yvmcP-text_html": "TFR does not in any way exclude or limit its liability to the customer where it would be unlawful to do so. This includes:",
+      "f-heading-1714630988eFP5E-text_html": "a",
+      "f-richtext-17146309883QJpw-text_html": "liability for death or personal injury caused by negligence;",
+      "f-heading-1714631040JoBgy-text_html": "b",
+      "f-richtext-1714631040GLWpk-text_html": "for fraud or fraudulent misrepresentation;",
+      "f-heading-1714631068u5Rcj-text_html": "c",
+      "f-richtext-1714631068xMUwY-text_html": "for breach of the customer's legal rights in relation to the products or including the right to receive products which are as described and match information TFR provided to the customer and any sample or model seen or examined by the customer;",
+      "f-heading-1714631084ShZjk-text_html": "d",
+      "f-richtext-1714631084P6RHg-text_html": "of satisfactory quality;",
+      "f-heading-17146311000xalX-text_html": "e",
+      "f-richtext-1714631100t02DL-text_html": "fit for any particular purpose made known to TFR;",
+      "f-heading-1714631117QQYr7-text_html": "f",
+      "f-richtext-1714631117XRhKJ-text_html": "supplied with reasonable skill and care; and",
+      "f-heading-1714631134UBqjH-text_html": "g",
+      "f-richtext-1714631134FqRrn-text_html": "for defective products under the Consumer Protection Act 1987.\"",
+      "f-richtext-1714631152JowJX-text_html": "ADDENDUM TO LIMITED WARRANTY TERMS AND CONDITIONS (UNITED STATES)",
+      "f-richtext-1714631152HFg0O-text_html": "This Addendum to the Limited Warranty Terms and Conditions applies to customers in the United States of America.",
+      "f-heading-1714631182pTgKK-text_html": "1",
+      "f-richtext-1714631182ss4Bn-text_html": "Clause 4 shall be deleted and replaced with the following: \" The preceding warranties are exclusive and in lieu of all other warranties, terms, or conditions, express, implied, or statutory, as to any matter whatsoever, including, without limitation, warranties of merchantability, fitness for a particular purpose, accuracy, satisfactory quality, title, and noninfringement, all of which are expressly disclaimed by TFR.",
+      "f-richtext-1714631202lwV2e-text_html": "TFR. TFR SHALL NOT BE LIABLE FOR INCIDENTAL, CONSEQUENTIAL, INDIRECT, SPECIAL, OR PUNITIVE DAMAGES OR LIABILITIES OF ANY KIND ARISING OUT OF OR IN CONNECTION WITH THE SALE OR USE OF THE PRODUCT, WHETHER BASED ON CONTRACT, TORT (INCLUDING NEGLIGENCE), STRICT PRODUCT LIABILITY OR ANY OTHER THEORY. OUTSIDE THE WARRANTY PERIOD, ALL PRODUCTS ARE 'AS IS' AND THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE PRODUCT IS WITH THE CUSTOMER. OUTSIDE THE WARRANTY PERIOD, THE CUSTOMER ASSUMES THE COST OF ALL NECESSARY SERVICING OR REPAIR. Some States do not allow limitations on how long an implied warranty lasts, so the above limitation may not apply to you. TFRs' entire liability shall be limited to replacement or repair of the purchase price paid at TFRs' sole option.\"",
+      "f-heading-1714631216uGwH7-text_html": "2",
+      "f-richtext-1714631216Fx7W5-text_html": "Clause 5 shall be deleted and replaced with the following: \"TFRs' Warranty gives you specific legal rights, and you may also have other rights under the applicable local laws. Such rights may vary from State to State.\"",
+      "f-richtext-17146397713CaE6-text_html": "limited warranty",
+      "f-heading-17564605775kuRP-text_html": "f",
+      "f-richtext-1756460577Q69AH-text_html": "In case of total replacement, a comparable product of equal value may be substituted."
+    }
+  }
+}
+{% endschema %}
+  

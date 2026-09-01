@@ -1,0 +1,150 @@
+{% liquid
+  assign locales = shop.metafields.foxify.locales.value
+  assign current_locale = request.locale.iso_code
+  assign primary_locale = current_locale
+  for locale in shop.published_locales
+    if locale.primary
+      assign primary_locale = locale.iso_code
+      break
+    endif
+  endfor
+  assign translation = locales[current_locale] | default: locales[primary_locale]
+%}
+<script>
+  window.Foxify = window.Foxify || {}
+  Foxify.ThemeStyles = {
+    product: "https:{{ 'foxify-product.css' | asset_url }}",
+    swiper: "https:{{ 'foxify-swiper.css' | asset_url }}",
+  }
+
+  Foxify.ThemeScripts = {
+    productModel: "https:{{ 'foxify-product-model.js' | asset_url }}",
+    productMedia: "https:{{ 'foxify-media-gallery.js' | asset_url }}",
+    variantPicker: "https:{{ 'foxify-variant-picker.js' | asset_url }}"
+  }
+
+  Foxify.pageId = '1717650158jlnDm'
+</script>
+<div class="f-app f:content">
+  <style data-foxify-editor="foxify-custom-fonts">
+    @font-face {
+      font-family: BrownProTT-Bold-17071127825LR9n;
+      src: url('https://cdn.shopify.com/s/files/1/0619/6150/2869/files/BrownProTT-Bold.ttf?v=1707112779');
+    }
+
+    @font-face {
+      font-family: BrownProTT-Regular-1707112782cX7wj;
+      src: url('https://cdn.shopify.com/s/files/1/0619/6150/2869/files/BrownProTT-Regular.ttf?v=1707112779');
+    }
+  </style>
+  {{ 'foxify-1717650158jlnDm.css' | asset_url | stylesheet_tag }}
+  <div id="f-text-section-17176502983iYZB" class="f:sections f:text-section f-text-section-17176502983iYZB">
+    <div class="f:container-full">
+      <div
+        id="f-grid-1717650298ckbAS"
+        class="f:blocks f:grid f-grid-1717650298ckbAS"
+        style="--f-grid-columns-sm:minmax(0, 12fr);--f-grid-columns-md:minmax(0, 12fr);--f-grid-columns-lg:minmax(0, 12fr);--f-grid-columns-xl:minmax(0, 12fr)"
+      >
+        <div id="f-col-1717650298XOXEb" class="f:blocks f:col f-col-1717650298XOXEb f:column">
+          <h2 id="subscription" class="f:blocks f:heading f-heading-17176502983OIF2 f:content-block f:gs-mega-title">
+            <span> {{ 'sections.foxify-1717650158jlnDm.f-heading-17176502983OIF2-text_html' | t }}</span>
+          </h2>
+          <div
+            id="f-richtext-1717650298rMQNf"
+            class="f:blocks f:richtext f-richtext-1717650298rMQNf f:content-block f:gs-caption f:rte"
+          >
+            {{ 'sections.foxify-1717650158jlnDm.f-richtext-1717650298rMQNf-text_html' | t }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="f-custom-section-1717651000FPLHP" class="f:sections f:custom-section f-custom-section-1717651000FPLHP">
+    <div class="f:container-full">
+      <div
+        id="f-grid-17176510007LQNZ"
+        class="f:blocks f:grid f-grid-17176510007LQNZ"
+        style="--f-grid-columns-sm:minmax(0, 12fr);--f-grid-columns-md:minmax(0, 12fr);--f-grid-columns-lg:minmax(0, 4fr) minmax(0, 4fr) minmax(0, 4fr);--f-grid-columns-xl:minmax(0, 4fr) minmax(0, 4fr) minmax(0, 4fr)"
+      >
+        <div
+          id="f-col-1717651000T9ezw"
+          class="f:blocks f:col f-col-1717651000T9ezw f:mobile-hidden f:tablet-hidden f:column"
+        ></div>
+        <div id="f-col-1717651000cd12P" class="f:blocks f:col f-col-1717651000cd12P f:column">
+          <div id="f-custom-code-1717651025jtttc" class="f:blocks f:custom-code f-custom-code-1717651025jtttc">
+            <style>
+              html:not([lang|="en"]) #myDiv-en-form,html:not([lang|="ja"]) #myDiv-ja-form, html:not([lang|="ko"]) #myDiv-ko-form
+                  { display: none!important; }
+              .klaviyo {
+              justify-content: middle;
+              }
+            </style>
+
+            <div class="klaviyo" lang="en" id="myDiv-en-form">
+              <div class="klaviyo-form-TEejKr"></div>
+            </div>
+            <div class="klaviyo" lang="ja" id="myDiv-ja-form">
+              <div class="klaviyo-form-W42fJV"></div>
+            </div>
+            <div class="klaviyo" lang="ko" id="myDiv-ko-form">
+              <div class="klaviyo-form-UYrbhb"></div>
+            </div>
+          </div>
+        </div>
+        <div
+          id="f-col-1717651015dqL0T"
+          class="f:blocks f:col f-col-1717651015dqL0T f:mobile-hidden f:tablet-hidden f:column"
+        ></div>
+      </div>
+    </div>
+  </div>
+  <div id="f-text-section-1717650540hRAhz" class="f:sections f:text-section f-text-section-1717650540hRAhz">
+    <div class="f:container-full">
+      <div
+        id="f-grid-1717650540w6CA2"
+        class="f:blocks f:grid f-grid-1717650540w6CA2"
+        style="--f-grid-columns-sm:minmax(0, 1fr) minmax(0, 10fr) minmax(0, 1fr);--f-grid-columns-md:minmax(0, 2fr) minmax(0, 8fr) minmax(0, 2fr);--f-grid-columns-lg:minmax(0, 4fr) minmax(0, 4fr) minmax(0, 4fr);--f-grid-columns-xl:minmax(0, 4fr) minmax(0, 4fr) minmax(0, 4fr)"
+      >
+        <div id="f-col-1717650673wDzeB" class="f:blocks f:col f-col-1717650673wDzeB f:column"></div>
+        <div id="f-col-1717650540z5wNh" class="f:blocks f:col f-col-1717650540z5wNh f:column">
+          <div
+            id="f-richtext-1717650540OZhgU"
+            class="f:blocks f:richtext f-richtext-1717650540OZhgU f:content-block f:gs-body-text f:rte"
+          >
+            {{ 'sections.foxify-1717650158jlnDm.f-richtext-1717650540OZhgU-text_html' | t }}
+          </div>
+        </div>
+        <div id="f-col-1717650674h2L9i" class="f:blocks f:col f-col-1717650674h2L9i f:column"></div>
+      </div>
+    </div>
+  </div>
+  {% liquid
+    assign theme_settings = shop.metafields.foxify.theme_settings.value
+    assign customCodeBody = theme_settings.customCodeBody
+    echo customCodeBody
+  %}
+</div>
+{% schema %}
+      {
+        "name": "[Foxify] Subscription SS",
+        "class": "foxify-section f-app",
+        "settings": [{"type":"header","content":"Customize section","info":"Go to [Foxify app](https://app.foxify.io/editor?id=1717650158jlnDm&type=SECTION) to edit this section."}],
+        "locales": {
+  "en": {
+    "f-heading-17176502983OIF2-text_html": "ENJOY 10% OFF YOUR NEXT ORDER",
+    "f-richtext-1717650298rMQNf-text_html": "<p>Sign up to get 10% off your first order and be the first to hear about pre-orders, members-only promotions, and sneak peeks.</p>",
+    "f-richtext-1717650540OZhgU-text_html": "<p>By subscribing to our newsletter, you agree to receive information by email concerning offers, services, products, or events from The Future Rocks per the Privacy Policy.</p>"
+  }
+},
+        "blocks": [
+          {
+            "type": "@app"
+          }
+        ],
+        "presets": [
+          {
+            "name": "[Foxify] Subscription SS"
+          }
+        ]
+      }
+{% endschema %}

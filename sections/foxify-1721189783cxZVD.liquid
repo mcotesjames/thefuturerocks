@@ -1,0 +1,140 @@
+    {% liquid
+        assign locales = shop.metafields.foxify.locales.value
+        assign current_locale = request.locale.iso_code
+        assign primary_locale = current_locale
+        for locale in shop.published_locales
+        if locale.primary
+            assign primary_locale = locale.iso_code
+            break
+        endif
+        endfor
+        assign translation = locales[current_locale] | default: locales[primary_locale]
+    %}
+    <script>
+        window.Foxify = window.Foxify || {}
+        Foxify.ThemeStyles = {
+            product: "https:{{ 'foxify-product.css' | asset_url }}",
+            swiper: "https:{{ 'foxify-swiper.css' | asset_url }}",
+        }
+
+        Foxify.ThemeScripts = {
+            productModel: "https:{{ 'foxify-product-model.js' | asset_url }}",
+            productMedia: "https:{{ 'foxify-media-gallery.js' | asset_url }}",
+            variantPicker: "https:{{ 'foxify-variant-picker.js' | asset_url }}"
+        }
+
+        Foxify.pageId = '1721189783cxZVD'
+        Foxify.default = false
+    </script>
+    <div class="f-app f:content">
+<style data-foxify-editor="foxify-custom-fonts">
+  @font-face {
+    font-family: BrownProTT-Bold-17071127825LR9n;
+    src: url('https://cdn.shopify.com/s/files/1/0619/6150/2869/files/BrownProTT-Bold.ttf?v=1707112779');
+  }
+  
+  @font-face {
+    font-family: BrownProTT-Regular-1707112782cX7wj;
+    src: url('https://cdn.shopify.com/s/files/1/0619/6150/2869/files/BrownProTT-Regular.ttf?v=1707112779');
+  }
+  </style>
+{{ 'foxify-1721189783cxZVD.css' | asset_url | stylesheet_tag }}
+<style>.f\:container {
+  padding: 0px !important;
+border-radius: 30px;
+box-shadow:  20px 20px 60px #d3d3d3,
+             -20px -20px 60px #ffffff;
+}
+body .f\:lookbook-card__product-price .f\:price {
+
+font-family: var(--f-gs-body-text-font-stack, -apple-system, BlinkMacSystemFont, "San Francisco", "Segoe UI", Roboto, "Helvetica Neue", sans-serif);
+
+font-size: 12px;
+
+/*color: var(--f-gs-hot-color, #1b2b27);*/
+color: #1b2b27;
+
+}</style>
+<div id="f-custom-section-1721189762xtmrg" class="f:sections f:custom-section f-custom-section-1721189762xtmrg" data-animate-trigger="scroll_into_view" data-animate-name="fFadeInUp"><div class="f:container"><div id="f-grid-172118976220LOD" class="f:blocks f:grid f-grid-172118976220LOD f:justify-center f:items-center" style="--f-grid-columns-sm:minmax(0, 11fr) minmax(0, 1fr);--f-grid-columns-md:minmax(0, 9fr) minmax(0, 3fr);--f-grid-columns-lg:minmax(0, 9fr) minmax(0, 3fr);--f-grid-columns-xl:minmax(0, 9fr) minmax(0, 3fr)"><div id="f-col-17211897622oOFm" class="f:blocks f:col f-col-17211897622oOFm f:column"><div id="f-image-1721189762U2CXe" class="f:blocks f-image-1721189762U2CXe f:custom-section__image f:image-block"><f-image class="f:image " style="--f-aspect-ratio:1.6104218362282878"><img srcSet="https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Asset_10_27c5d75b-e42f-438d-a7bc-bab7e3cdcb67.png?v=1714625689&width=165 165w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Asset_10_27c5d75b-e42f-438d-a7bc-bab7e3cdcb67.png?v=1714625689&width=360 360w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Asset_10_27c5d75b-e42f-438d-a7bc-bab7e3cdcb67.png?v=1714625689&width=533 533w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Asset_10_27c5d75b-e42f-438d-a7bc-bab7e3cdcb67.png?v=1714625689 649w" src="//cdn.shopify.com/s/files/1/0619/6150/2869/files/Asset_10_27c5d75b-e42f-438d-a7bc-bab7e3cdcb67_360x.png?v=1714625689" sizes="(min-width: 1200px) 533px, (min-width: 990px) calc((100vw - 130px) / 3), (min-width: 750px) calc((100vw - 120px) / 2), calc((100vw - 35px) / 2)" alt="Asset 10.png" loading="lazy" width="649" height="403"/></f-image></div></div><div id="f-col-1721189762bHgIH" class="f:blocks f:col f-col-1721189762bHgIH f:column"><div id="f-richtext-1721189762z23Mo" class="f:blocks f:richtext f-richtext-1721189762z23Mo f:content-block f:gs-subheading f:rte">
+{{ 'sections.foxify-1721189783cxZVD.f-richtext-1721189762z23Mo-text_html' | t }}</div></div></div><div id="f-grid-1721189762gHQeA" class="f:blocks f:grid f-grid-1721189762gHQeA f:justify-center f:items-center" style="--f-grid-columns-sm:minmax(0, 12fr);--f-grid-columns-md:minmax(0, 12fr);--f-grid-columns-lg:minmax(0, 12fr);--f-grid-columns-xl:minmax(0, 12fr)"><div id="f-col-17211897621khz9" class="f:blocks f:col f-col-17211897621khz9 f:column"><div id="f-lookbook-item-1721189762HLCfA" class="f:blocks f:lookbook-item f-lookbook-item-1721189762HLCfA f:mobile-hidden">{{ 'foxify-lookbook.css' | asset_url | stylesheet_tag }}<div class="f:lookbook-card"><div class="f:lookbook-card__inner" data-lookbook-inner="true"><div class="f:lookbook-card__image " style="--f-aspect-ratio:1.499815837937385"><f-image class="f:image " style="--f-aspect-ratio:1.499815837937385"><img srcSet="https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Untitled_Session4791_-_Shopify_Max_model_shot_only_fedb6ae0-a9e8-4924-b005-505b389368cf.jpg?v=1721189856&width=165 165w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Untitled_Session4791_-_Shopify_Max_model_shot_only_fedb6ae0-a9e8-4924-b005-505b389368cf.jpg?v=1721189856&width=360 360w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Untitled_Session4791_-_Shopify_Max_model_shot_only_fedb6ae0-a9e8-4924-b005-505b389368cf.jpg?v=1721189856&width=533 533w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Untitled_Session4791_-_Shopify_Max_model_shot_only_fedb6ae0-a9e8-4924-b005-505b389368cf.jpg?v=1721189856&width=720 720w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Untitled_Session4791_-_Shopify_Max_model_shot_only_fedb6ae0-a9e8-4924-b005-505b389368cf.jpg?v=1721189856&width=940 940w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Untitled_Session4791_-_Shopify_Max_model_shot_only_fedb6ae0-a9e8-4924-b005-505b389368cf.jpg?v=1721189856&width=1066 1066w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Untitled_Session4791_-_Shopify_Max_model_shot_only_fedb6ae0-a9e8-4924-b005-505b389368cf.jpg?v=1721189856&width=1500 1500w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Untitled_Session4791_-_Shopify_Max_model_shot_only_fedb6ae0-a9e8-4924-b005-505b389368cf.jpg?v=1721189856&width=1780 1780w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Untitled_Session4791_-_Shopify_Max_model_shot_only_fedb6ae0-a9e8-4924-b005-505b389368cf.jpg?v=1721189856&width=2000 2000w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Untitled_Session4791_-_Shopify_Max_model_shot_only_fedb6ae0-a9e8-4924-b005-505b389368cf.jpg?v=1721189856&width=3000 3000w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Untitled_Session4791_-_Shopify_Max_model_shot_only_fedb6ae0-a9e8-4924-b005-505b389368cf.jpg?v=1721189856&width=3840 3840w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Untitled_Session4791_-_Shopify_Max_model_shot_only_fedb6ae0-a9e8-4924-b005-505b389368cf.jpg?v=1721189856 4072w" src="//cdn.shopify.com/s/files/1/0619/6150/2869/files/Untitled_Session4791_-_Shopify_Max_model_shot_only_fedb6ae0-a9e8-4924-b005-505b389368cf_360x.jpg?v=1721189856" sizes="(min-width: 1200px) 533px, (min-width: 990px) calc((100vw - 130px) / 3), (min-width: 750px) calc((100vw - 120px) / 2), calc((100vw - 35px) / 2)" alt="Untitled Session4791++ - Shopify Max (model shot only).jpg" loading="lazy" width="4072" height="2715"/></f-image></div></div></div></div><div id="f-lookbook-item-1721189762axXNz" class="f:blocks f:lookbook-item f-lookbook-item-1721189762axXNz f:tablet-hidden f:laptop-hidden f:desk-hidden">{{ 'foxify-lookbook.css' | asset_url | stylesheet_tag }}<div class="f:lookbook-card"><div class="f:lookbook-card__inner" data-lookbook-inner="true"><div class="f:lookbook-card__image " style="--f-aspect-ratio:0.800098231827112"><f-image class="f:image " style="--f-aspect-ratio:0.800098231827112"><img srcSet="https://cdn.shopify.com/s/files/1/0619/6150/2869/files/PORTRAIT_1080x1350_12_-_Shopify_Max_model_shot_only.jpg?v=1714634994&width=165 165w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/PORTRAIT_1080x1350_12_-_Shopify_Max_model_shot_only.jpg?v=1714634994&width=360 360w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/PORTRAIT_1080x1350_12_-_Shopify_Max_model_shot_only.jpg?v=1714634994&width=533 533w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/PORTRAIT_1080x1350_12_-_Shopify_Max_model_shot_only.jpg?v=1714634994&width=720 720w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/PORTRAIT_1080x1350_12_-_Shopify_Max_model_shot_only.jpg?v=1714634994&width=940 940w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/PORTRAIT_1080x1350_12_-_Shopify_Max_model_shot_only.jpg?v=1714634994&width=1066 1066w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/PORTRAIT_1080x1350_12_-_Shopify_Max_model_shot_only.jpg?v=1714634994&width=1500 1500w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/PORTRAIT_1080x1350_12_-_Shopify_Max_model_shot_only.jpg?v=1714634994&width=1780 1780w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/PORTRAIT_1080x1350_12_-_Shopify_Max_model_shot_only.jpg?v=1714634994&width=2000 2000w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/PORTRAIT_1080x1350_12_-_Shopify_Max_model_shot_only.jpg?v=1714634994&width=3000 3000w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/PORTRAIT_1080x1350_12_-_Shopify_Max_model_shot_only.jpg?v=1714634994 3258w" src="//cdn.shopify.com/s/files/1/0619/6150/2869/files/PORTRAIT_1080x1350_12_-_Shopify_Max_model_shot_only_360x.jpg?v=1714634994" sizes="(min-width: 1200px) 533px, (min-width: 990px) calc((100vw - 130px) / 3), (min-width: 750px) calc((100vw - 120px) / 2), calc((100vw - 35px) / 2)" alt="PORTRAIT_1080x1350_12 - Shopify Max (model shot only).jpg" loading="lazy" width="3258" height="4072"/></f-image></div>
+        {% liquid
+          assign product_f-lookbook-item-1721189762axXNz_0 = all_products['rever-18k-recycled-gold-lab-grown-diamond-spiral-earring']
+        %}
+      <f-lookbook-icon class="f:lookbook-card__annotation" style="top:40%;left:62%" data-lookbook-top="40" data-lookbook-left="62" data-lookbook-index="0"><span class="f:lookbook-card__pin f:lookbook-card__pin--undefined"><svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg></span><div class="f:lookbook-card__product f:flex" data-lookbook-product="true"><div class="f:lookbook-card__product-image f:image--hover-effect relative"><a class="f:full-width-link" href="{{ product_f-lookbook-item-1721189762axXNz_0.url }}"><span class="f:visually-hidden">{{ product_f-lookbook-item-1721189762axXNz_0.title }}</span></a><div class="f:image" style="--f-aspect-ratio:1"><img src="{{ product_f-lookbook-item-1721189762axXNz_0.featured_media | image_url: width: 400 }}" alt="{{ product_f-lookbook-item-1721189762axXNz_0.featured_media.alt }}" loading="lazy"/></div></div><div class="f:lookbook-card__product-info f:flex-1"><a href="{{ product_f-lookbook-item-1721189762axXNz_0.url }}" class="f:lookbook-card__product-title">{{ product_f-lookbook-item-1721189762axXNz_0.title }}</a><div class="f:lookbook-card__product-price">{% render 'foxify-price', product: product_f-lookbook-item-1721189762axXNz_0 %}</div><a class="f:lookbook-card__product-btn f:gs-link-button" href="{{ product_f-lookbook-item-1721189762axXNz_0.url }}">{{ translation.products.product.view_full_details }}</a></div></div></f-lookbook-icon></div></div></div></div></div><div id="f-grid-1721189762YNDw5" class="f:blocks f:grid f-grid-1721189762YNDw5" style="--f-grid-columns-sm:minmax(0, 12fr);--f-grid-columns-md:minmax(0, 12fr);--f-grid-columns-lg:minmax(0, 12fr);--f-grid-columns-xl:minmax(0, 12fr)"><div id="f-col-1723513785rpczo" class="f:blocks f:col f-col-1723513785rpczo f:column"><h3 id="f-heading-1723513815to1Zf" class="f:blocks f:heading f-heading-1723513815to1Zf f:content-block f:gs-heading-2"><span>
+{{ 'sections.foxify-1721189783cxZVD.f-heading-1723513815to1Zf-text_html' | t }}</span></h3><div id="f-richtext-1723513818XVB3W" class="f:blocks f:richtext f-richtext-1723513818XVB3W f:content-block f:gs-body-text f:rte">
+{{ 'sections.foxify-1721189783cxZVD.f-richtext-1723513818XVB3W-text_html' | t }}</div></div><div id="f-col-1721189762KHJae" class="f:blocks f:col f-col-1721189762KHJae f:column"><div id="f-block-17211897625Zk1c" class="f:blocks f:block f-block-17211897625Zk1c f:block"><h3 id="f-heading-1721189762DQgqZ" class="f:blocks f:heading f-heading-1721189762DQgqZ f:content-block f:gs-heading-3"><span>
+{{ 'sections.foxify-1721189783cxZVD.f-heading-1721189762DQgqZ-text_html' | t }}</span></h3></div><div id="f-block-1721189762WjtJi" class="f:blocks f:block f-block-1721189762WjtJi f:block"><div id="f-richtext-1721189762C41lJ" class="f:blocks f:richtext f-richtext-1721189762C41lJ f:content-block f:gs-body-text f:rte"><ul>
+<li>Offer Redemption: To redeem the offer, enter the provided Code at checkout when placing an order from THE FUTURE ROCKS (https://thefuturerocks.com/).</li>
+<li>The Code may only be used during the active promotion period.</li>
+<li>There is no minimum spending requirement. However, the Code cannot be applied to the “Design Lab—Project II” products, discounted item purchases,  and other excluded products as specified.</li>
+<li>THE FUTURE ROCKS reserves the right to amend the product exclusion list from the promotion from time to time.</li>
+<li>The Code cannot be used in conjunction with other promotions or discounts</li>
+<li>Exclusion of Shipping Charges: The Code does not apply to shipping charges associated with your order.</li>
+<li>Gift Voucher and Gift Card Exclusion: The Code cannot be used to purchase gift vouchers or cards.</li>
+<li>The Code is non-transferable, non-exchangeable and no cash alternative is offered.</li>
+<li>Price Calculation: The price used to calculate the promotion discount amount applied to your order will be the price displayed at the time of purchase.</li>
+<li>Returns & Refund: Returns are subject to THE FUTURE ROCKS’ Return & Refund Policy. If you return or seek a refund on any item purchased using the Code, the value of the discount will not be refunded to you.</li>
+<li>Right to Modify: THE FUTURE ROCKS reserves the right, at our discretion, to revoke, suspend, cancel, and/or amend the offer and these Terms and Conditions at any time and without notice.</li>
+<li>In the event of a dispute regarding the promotion, the decision of THE FUTURE ROCKS is final, and no correspondence or discussion shall be entered into.</li>
+<li>These Terms and Conditions shall be governed by and construed in accordance with the laws of Hong Kong and submits to the exclusive jurisdiction of the courts of Hong Kong.</li>
+</ul></div></div></div><div id="f-col-1723513900env0Y" class="f:blocks f:col f-col-1723513900env0Y f:column"><h3 id="f-heading-1723513900ouOFK" class="f:blocks f:heading f-heading-1723513900ouOFK f:content-block f:gs-heading-2"><span>
+{{ 'sections.foxify-1721189783cxZVD.f-heading-1723513900ouOFK-text_html' | t }}</span></h3><div id="f-richtext-1723513900k1Hd4" class="f:blocks f:richtext f-richtext-1723513900k1Hd4 f:content-block f:gs-body-text f:rte">
+{{ 'sections.foxify-1721189783cxZVD.f-richtext-1723513900k1Hd4-text_html' | t }}</div></div><div id="f-col-1723513905Ju0NZ" class="f:blocks f:col f-col-1723513905Ju0NZ f:column"><div id="f-block-1723513905HckTS" class="f:blocks f:block f-block-1723513905HckTS f:block"><h3 id="f-heading-1723513905cmk7K" class="f:blocks f:heading f-heading-1723513905cmk7K f:content-block f:gs-heading-3"><span>
+{{ 'sections.foxify-1721189783cxZVD.f-heading-1723513905cmk7K-text_html' | t }}</span></h3></div><div id="f-block-1723513905TTXlJ" class="f:blocks f:block f-block-1723513905TTXlJ f:block"><div id="f-richtext-1723513905jGSYT" class="f:blocks f:richtext f-richtext-1723513905jGSYT f:content-block f:gs-body-text f:rte"><ul>
+<li>Offer Redemption: To redeem the offer, enter the provided Code at checkout when placing an order from THE FUTURE ROCKS (https://thefuturerocks.com/).</li>
+<li>The Code may only be used during the active promotion period. </li>
+<li>There is no minimum spending requirement. However, the Code cannot be applied to the “Design Lab—Project II” products, discounted item purchases,  and other excluded products as specified.</li>
+<li>THE FUTURE ROCKS reserves the right to amend the product exclusion list from the promotion from time to time. </li>
+<li>The Code cannot be used in conjunction with other promotions or discounts </li>
+<li>Exclusion of Shipping Charges: The Code does not apply to shipping charges associated with your order.</li>
+<li>Gift Voucher and Gift Card Exclusion: The Code cannot be used to purchase gift vouchers or cards.</li>
+<li>The Code is non-transferable, non-exchangeable and no cash alternative is offered.</li>
+<li>Price Calculation: The price used to calculate the promotion discount amount applied to your order will be the price displayed at the time of purchase.</li>
+<li>Returns & Refund: Returns are subject to THE FUTURE ROCKS’ Return & Refund Policy. If you return or seek a refund on any item purchased using the Code, the value of the discount will not be refunded to you. </li>
+<li>Right to Modify: THE FUTURE ROCKS reserves the right, at our discretion, to revoke, suspend, cancel, and/or amend the offer and these Terms and Conditions at any time and without notice.</li>
+<li>In the event of a dispute regarding the promotion, the decision of THE FUTURE ROCKS is final, and no correspondence or discussion shall be entered into.</li>
+<li>These Terms and Conditions shall be governed by and construed in accordance with the laws of Hong Kong and submits to the exclusive jurisdiction of the courts of Hong Kong.</li>
+</ul></div></div></div><div id="f-col-1721189762cNv1r" class="f:blocks f:col f-col-1721189762cNv1r f:column">{{ 'foxify-multicolumn.css' | asset_url | stylesheet_tag }}<div id="f-icon-box-1721189762UBWLS" class="f:blocks f:icon-box f-icon-box-1721189762UBWLS f:multicolumn-items--vertical f:multicolumn-items--vertical-middle"><div class="f:column" style="--blocks-count:1"><div class="f:multicolumn-block"><div id="f-image-1721189762SpqU8" class="f:blocks f-image-1721189762SpqU8 f:custom-section__image f:image-block"><f-image class="f:image " style="--f-aspect-ratio:0.9966996699669967"><img srcSet="https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Asset_11_e9f4c860-defc-441e-b770-aa82ec6ef050.png?v=1714627449&width=165 165w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Asset_11_e9f4c860-defc-441e-b770-aa82ec6ef050.png?v=1714627449 302w" src="//cdn.shopify.com/s/files/1/0619/6150/2869/files/Asset_11_e9f4c860-defc-441e-b770-aa82ec6ef050_360x.png?v=1714627449" sizes="(min-width: 1200px) 533px, (min-width: 990px) calc((100vw - 130px) / 3), (min-width: 750px) calc((100vw - 120px) / 2), calc((100vw - 35px) / 2)" alt="Asset 11.png" loading="lazy" width="302" height="303"/></f-image></div></div></div></div></div></div></div></div>
+{% liquid
+        assign theme_settings = shop.metafields.foxify.theme_settings.value
+        assign customCodeBody = theme_settings.customCodeBody
+        echo customCodeBody
+      %}
+
+</div>
+    {% schema %}
+        {
+            "name": "Foxify main content",
+            "class": "foxify-main f-app",
+            "settings": [
+                {
+                "type": "header",
+                "content": "Customize section",
+                "info": "Go to [Foxify app](https://app.foxify.io/editor?id=1721189783cxZVD&type=REGULAR) to edit this section."
+                }
+            ],
+            "locales": {
+  "en": {
+    "f-richtext-1721189762z23Mo-text_html": "Instagram Influencer Unique Promotion Code",
+    "f-heading-17211897620H4Ta-text_html": "Instagram Influencer Unique Promotion Code",
+    "f-richtext-1721189762N8hzD-text_html": "Use the unique promo code (the \"Code\") you received via Instagram Influencer to get 15% off your next order from THE FUTURE ROCKS (<a href=\"http://www.thefuturerocks.com\">www.thefuturerocks.com</a>), subject to the terms and conditions (the \"Terms and Conditions\") of the promotion.",
+    "f-heading-1721189762PwDeK-text_html": "What should I do in the event that my 2-year warranty expires?",
+    "f-richtext-1721189762zbvkV-text_html": "Upon expiration of the Warranty Period, any services or repairs will be subject to a service charge.",
+    "f-heading-17211897620rXxJ-text_html": "Under what condition can I repair my purchase from The Future Rocks?",
+    "f-richtext-1721189762cY0I3-text_html": "If a jewelry piece is returned during the Warranty Period, any defect resulting from a manufacturing defect will be repaired (if feasible) or replaced free of component (excluding diamonds) and labor charges at TFR's sole discretion. The Warranty only covers manufacturing defects, but not defects and damages resulting from misuse or negligence, or from accident.",
+    "f-heading-1721189762FTcV1-text_html": "How do I process my warranty claim? ",
+    "f-richtext-1721189762LbtTR-text_html": "You must send a warranty claim to <a href=\"mailto:contact@thefuturerocks.com\">contact@thefuturerocks.com</a>, including proof of purchase or order number, and photos of the broken piece. Do note you are responsible for the shipping cost of returning the jewelry piece to us. Shipment should be sent with a trackable shipping method and carrier. We also advise you to insure the shipment to prevent any unfortunate event during shipment.",
+    "f-button-1721189762Y1Q5G-button_label_html": "contact us",
+    "f-heading-1721189762DQgqZ-text_html": "Promotion Terms and Conditions:",
+    "f-richtext-1721189762vQ9TT-text_html": "The Future Rocks Limited Warranty Terms and Conditions (the “Warranty Terms”)",
+    "f-richtext-1721189762ATlFP-text_html": "Depending on the territory in which you live, you may have rights under local laws that override or operate in addition to the provisions of this Warranty. Please refer to the <strong>ADDENDUM TO LIMITED WARRANTY TERMS AND CONDITIONS </strong>for warranty provisions that apply in your specific territory.",
+    "f-heading-1723513815to1Zf-text_html": "Instagram Influencer Unique Promotion Code (10% + Special Gift)",
+    "f-richtext-1723513818XVB3W-text_html": "Use the unique promo code (the \"Code\") you received via Instagram Influencer to get 10% off and a special gift with the purchase of your next order from THE FUTURE ROCKS (<a href=\"http://www.thefuturerocks.com\">www.thefuturerocks.com</a>), subject to the promotion's terms and conditions (the \"Terms and Conditions\").",
+    "f-heading-1723513900ouOFK-text_html": "Instagram Influencer Unique Promotion Code",
+    "f-richtext-1723513900k1Hd4-text_html": "Use the unique promo code (the \"Code\") you received via Instagram Influencer to get 15% off your next order from THE FUTURE ROCKS (<a href=\"http://www.thefuturerocks.com\">www.thefuturerocks.com</a>), subject to the terms and conditions (the \"Terms and Conditions\") of the promotion.",
+    "f-heading-1723513905cmk7K-text_html": "Promotion Terms and Conditions:"
+  }
+}
+        }
+    {% endschema %}
+  

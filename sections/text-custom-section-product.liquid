@@ -1,0 +1,25 @@
+<div class="custom-text-jap-eng-cutm">
+<div class="container">
+<div class="custm-p-jap-eng">
+<p>{{ section.settings.custom_text_custm }}</p>
+</div>
+</div>
+</div>
+
+{% schema %}
+  {
+    "name": "Custom Description",
+    "settings": [
+      {
+        "type": "richtext",
+        "id": "custom_text_custm",
+        "label": "Text"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Custom Description"
+      }
+    ]
+  }
+{% endschema %}

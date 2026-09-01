@@ -1,0 +1,161 @@
+    {% liquid
+      assign locales = shop.metafields.foxify.locales.value
+      assign current_locale = request.locale.iso_code
+      assign primary_locale = current_locale
+      for locale in shop.published_locales
+        if locale.primary
+          assign primary_locale = locale.iso_code
+          break
+        endif
+      endfor
+      assign translation = locales[current_locale] | default: locales[primary_locale]
+    %}
+    <script>
+      window.Foxify = window.Foxify || {}
+      Foxify.ThemeStyles = {
+        product: "https:{{ 'foxify-product.css' | asset_url }}",
+        swiper: "https:{{ 'foxify-swiper.css' | asset_url }}",
+      }
+
+      Foxify.ThemeScripts = {
+        productModel: "https:{{ 'foxify-product-model.js' | asset_url }}",
+        productMedia: "https:{{ 'foxify-media-gallery.js' | asset_url }}",
+        variantPicker: "https:{{ 'foxify-variant-picker.js' | asset_url }}"
+      }
+
+      Foxify.pageId = '17255232831V4Ua'
+    </script>
+    <div class="f-app f:content">
+{{ 'foxify-17255232831V4Ua.css' | asset_url | stylesheet_tag }}
+<style>*{
+  margin:0;
+  padding:0;
+  font-size:100%;
+}
+bf-main{
+  width:100%;
+  color:white;
+  display:flex;
+  justify-content:space-evenly;
+  align-items:center;
+}
+.bf-text{
+  text-align:center;
+  text-transform:uppercase;
+  font-family: BrownProBold;
+}
+.bf-text h1{
+  font-size:6rem;
+  color:#222;
+}
+@media (max-width: 1024px) {
+  .bf-text h1{
+  font-size:4rem;
+}
+}
+@media (max-width: 767px) {
+  .bf-text h1{
+  font-size:2rem;
+}
+}
+.bf-text h2{
+  font-size:1rem;
+  font-family: BrownProRegular;
+  text-transform:uppercase;
+  color:#777;
+  letter-spacing:10px;
+}
+.bf-text span{
+  animation: light 1.5s linear infinite;
+}
+.bf-text span:nth-child(1){
+  animation-delay:0s;
+}
+.bf-text span:nth-child(2){
+  animation-delay:0.2s;
+}
+.bf-text span:nth-child(3){
+  animation-delay:0.4s;
+}
+.bf-text span:nth-child(4){
+  animation-delay:0.6s;
+}
+.bf-text span:nth-child(5){
+  animation-delay:0.8s;
+}
+.bf-text span:nth-child(6){
+  animation-delay:1.0s;
+}
+.bf-text span:nth-child(7){
+  animation-delay:1.2s;
+}
+.bf-text span:nth-child(8){
+  animation-delay:1.4s;
+}
+.bf-text span:nth-child(9){
+  animation-delay:1.6s;
+}
+.bf-text span:nth-child(10){
+  animation-delay:1.8s;
+}
+.bf-text span:nth-child(11){
+  animation-delay:2.0s;
+}
+@keyframes light {
+  0%, 75% {
+    color: #333;
+    text-shadow: none;
+  }
+  0% {
+    color: #fff;
+    text-shadow: 0 0 30px #FFFFFF;
+  }
+}</style>
+<div id="f-custom-section-1725524370RJYsm" class="f:sections f:custom-section f-custom-section-1725524370RJYsm"><div class="f:container"><div id="f-grid-1725524370Pg9f7" class="f:blocks f:grid f-grid-1725524370Pg9f7" style="--f-grid-columns-sm:minmax(0, 12fr);--f-grid-columns-md:minmax(0, 12fr);--f-grid-columns-lg:minmax(0, 12fr);--f-grid-columns-xl:minmax(0, 12fr)"><div id="f-col-1725524370wt346" class="f:blocks f:col f-col-1725524370wt346 f:column"><div id="f-custom-code-17255243850dgnw" class="f:blocks f:custom-code f-custom-code-17255243850dgnw"><bf-main> 
+   <div class="bf-text">
+     <h1>
+       <span>b</span>
+       <span>l</span>
+       <span>a</span>
+       <span>c</span>
+       <span>k</span>
+       <span>f</span>
+       <span>r</span>
+       <span>i</span>
+       <span>d</span>
+       <span>a</span>
+       <span>y</span>
+     </h1>
+   </div>
+</bf-main></div><a id="f-button-1725610027QxLDO" class="f:blocks f:button f-button-1725610027QxLDO f:gs-17102072883wMy9 f:btn" href="/collections/black-friday-2024"><span>
+{{ 'sections.foxify-17255232831V4Ua.f-button-1725610027QxLDO-button_label_html' | t }}</span></a></div></div></div></div>
+{% liquid
+        assign theme_settings = shop.metafields.foxify.theme_settings.value
+        assign customCodeBody = theme_settings.customCodeBody
+        echo customCodeBody
+      %}
+
+</div>
+    {% schema %}
+      {
+        "name": "[Foxify] A/W 2024 Black ",
+        "class": "foxify-section f-app",
+        "settings": [{"type":"header","content":"Customize section","info":"Go to [Foxify app](https://app.foxify.io/editor?id=17255232831V4Ua&type=SECTION) to edit this section."}],
+        "locales": {
+  "en": {
+    "f-button-1725610027QxLDO-button_label_html": " SHOP NOW"
+  }
+},
+        "blocks": [
+          {
+            "type": "@app"
+          }
+        ],          
+        "presets": [
+          {
+            "name": "[Foxify] A/W 2024 Black "
+          }
+        ]  
+      }
+    {% endschema %}
+  

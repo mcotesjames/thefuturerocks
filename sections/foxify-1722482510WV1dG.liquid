@@ -1,0 +1,73 @@
+    {% liquid
+        assign locales = shop.metafields.foxify.locales.value
+        assign current_locale = request.locale.iso_code
+        assign primary_locale = current_locale
+        for locale in shop.published_locales
+        if locale.primary
+            assign primary_locale = locale.iso_code
+            break
+        endif
+        endfor
+        assign translation = locales[current_locale] | default: locales[primary_locale]
+    %}
+    <script>
+        window.Foxify = window.Foxify || {}
+        Foxify.ThemeStyles = {
+            product: "https:{{ 'foxify-product.css' | asset_url }}",
+            swiper: "https:{{ 'foxify-swiper.css' | asset_url }}",
+        }
+
+        Foxify.ThemeScripts = {
+            productModel: "https:{{ 'foxify-product-model.js' | asset_url }}",
+            productMedia: "https:{{ 'foxify-media-gallery.js' | asset_url }}",
+            variantPicker: "https:{{ 'foxify-variant-picker.js' | asset_url }}"
+        }
+
+        Foxify.pageId = '1722482510WV1dG'
+        Foxify.default = false
+    </script>
+    <div class="f-app f:content">
+<style data-foxify-editor="foxify-custom-fonts">
+  @font-face {
+    font-family: BrownProTT-Bold-17071127825LR9n;
+    src: url('https://cdn.shopify.com/s/files/1/0619/6150/2869/files/BrownProTT-Bold.ttf?v=1707112779');
+  }
+  
+  @font-face {
+    font-family: BrownProTT-Regular-1707112782cX7wj;
+    src: url('https://cdn.shopify.com/s/files/1/0619/6150/2869/files/BrownProTT-Regular.ttf?v=1707112779');
+  }
+  </style>
+{{ 'foxify-1722482510WV1dG.css' | asset_url | stylesheet_tag }}
+{{ 'foxify-hero.css' | asset_url | stylesheet_tag }}<div id="f-hero-17224825457ElO5" class="f:sections f:hero f-hero-17224825457ElO5 f:section--no-margin"><div class="f:container-full"><div class="f:hero__wrapper f:hero--adapt" style="--f-aspect-ratio:3.2;--f-aspect-ratio-mobile:0.675"><div class="f:hero__inner"><div class="f:hero__bg f:bg-image f:hero__image--desktop f:hidden md:f:block"><f-image class="f:image f:bg-image" style="--f-aspect-ratio:3.2"><img srcSet="https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Horoscope_KV_9404ac8c-5374-448f-bd42-925be09f6037.jpg?v=1722488435&width=165 165w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Horoscope_KV_9404ac8c-5374-448f-bd42-925be09f6037.jpg?v=1722488435&width=360 360w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Horoscope_KV_9404ac8c-5374-448f-bd42-925be09f6037.jpg?v=1722488435&width=533 533w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Horoscope_KV_9404ac8c-5374-448f-bd42-925be09f6037.jpg?v=1722488435&width=720 720w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Horoscope_KV_9404ac8c-5374-448f-bd42-925be09f6037.jpg?v=1722488435&width=940 940w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Horoscope_KV_9404ac8c-5374-448f-bd42-925be09f6037.jpg?v=1722488435&width=1066 1066w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Horoscope_KV_9404ac8c-5374-448f-bd42-925be09f6037.jpg?v=1722488435&width=1500 1500w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Horoscope_KV_9404ac8c-5374-448f-bd42-925be09f6037.jpg?v=1722488435&width=1780 1780w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Horoscope_KV_9404ac8c-5374-448f-bd42-925be09f6037.jpg?v=1722488435&width=2000 2000w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Horoscope_KV_9404ac8c-5374-448f-bd42-925be09f6037.jpg?v=1722488435&width=3000 3000w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Horoscope_KV_9404ac8c-5374-448f-bd42-925be09f6037.jpg?v=1722488435 3840w" src="//cdn.shopify.com/s/files/1/0619/6150/2869/files/Horoscope_KV_9404ac8c-5374-448f-bd42-925be09f6037_360x.jpg?v=1722488435" sizes="(min-width: 1200px) 533px, (min-width: 990px) calc((100vw - 130px) / 3), (min-width: 750px) calc((100vw - 120px) / 2), calc((100vw - 35px) / 2)" alt="Horoscope KV.jpg" loading="lazy" width="3840" height="1200"/></f-image></div><div class="f:hero__bg f:bg-image f:hero__image--mobile md:f:hidden"><f-image class="f:image f:bg-image" style="--f-aspect-ratio:0.675"><img srcSet="https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Horoscope_KV-2MB_a0ec39bc-5b68-4313-afc9-99a5a513bfea.jpg?v=1722487758&width=165 165w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Horoscope_KV-2MB_a0ec39bc-5b68-4313-afc9-99a5a513bfea.jpg?v=1722487758&width=360 360w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Horoscope_KV-2MB_a0ec39bc-5b68-4313-afc9-99a5a513bfea.jpg?v=1722487758&width=533 533w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Horoscope_KV-2MB_a0ec39bc-5b68-4313-afc9-99a5a513bfea.jpg?v=1722487758&width=720 720w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Horoscope_KV-2MB_a0ec39bc-5b68-4313-afc9-99a5a513bfea.jpg?v=1722487758&width=940 940w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Horoscope_KV-2MB_a0ec39bc-5b68-4313-afc9-99a5a513bfea.jpg?v=1722487758&width=1066 1066w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Horoscope_KV-2MB_a0ec39bc-5b68-4313-afc9-99a5a513bfea.jpg?v=1722487758&width=1500 1500w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Horoscope_KV-2MB_a0ec39bc-5b68-4313-afc9-99a5a513bfea.jpg?v=1722487758&width=1780 1780w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Horoscope_KV-2MB_a0ec39bc-5b68-4313-afc9-99a5a513bfea.jpg?v=1722487758&width=2000 2000w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Horoscope_KV-2MB_a0ec39bc-5b68-4313-afc9-99a5a513bfea.jpg?v=1722487758 2160w" src="//cdn.shopify.com/s/files/1/0619/6150/2869/files/Horoscope_KV-2MB_a0ec39bc-5b68-4313-afc9-99a5a513bfea_360x.jpg?v=1722487758" sizes="(min-width: 1200px) 533px, (min-width: 990px) calc((100vw - 130px) / 3), (min-width: 750px) calc((100vw - 120px) / 2), calc((100vw - 35px) / 2)" alt="Horoscope KV-2MB.jpg" loading="lazy" width="2160" height="3200"/></f-image></div><div class="f:hero__content-wrapper f:hero__content--center f:flex f:inset-full f:container-extended"><div class="f:hero__content"><h2 id="f-heading-1722482545kF1a7" class="f:blocks f:heading f-heading-1722482545kF1a7 f:content-block f:gs-mega-title"><span>
+{{ 'sections.foxify-1722482510WV1dG.f-heading-1722482545kF1a7-text_html' | t }}</span></h2><div id="f-richtext-1722482545UVdT2" class="f:blocks f:richtext f-richtext-1722482545UVdT2 f:content-block f:gs-caption f:rte">
+{{ 'sections.foxify-1722482510WV1dG.f-richtext-1722482545UVdT2-text_html' | t }}</div><a id="f-button-1722482545JCQ5d" class="f:blocks f:button f-button-1722482545JCQ5d f:gs-white-button f:btn" href="/collections/markdown"><span>
+{{ 'sections.foxify-1722482510WV1dG.f-button-1722482545JCQ5d-button_label_html' | t }}</span></a></div></div></div></div></div></div>
+{% liquid
+        assign theme_settings = shop.metafields.foxify.theme_settings.value
+        assign customCodeBody = theme_settings.customCodeBody
+        echo customCodeBody
+      %}
+
+</div>
+    {% schema %}
+        {
+            "name": "Foxify main content",
+            "class": "foxify-main f-app",
+            "settings": [
+                {
+                "type": "header",
+                "content": "Customize section",
+                "info": "Go to [Foxify app](https://app.foxify.io/editor?id=1722482510WV1dG&type=SECTION) to edit this section."
+                }
+            ],
+            "locales": {
+  "en": {
+    "f-heading-1722482545kF1a7-text_html": "Last chance alert!\n",
+    "f-richtext-1722482545UVdT2-text_html": "<p>Up to 45% off select styles from Design Lab’s Zodiac collection </p>",
+    "f-button-1722482545JCQ5d-button_label_html": "Shop Now"
+  }
+}
+        }
+    {% endschema %}
+  

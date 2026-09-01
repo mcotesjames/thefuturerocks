@@ -1,0 +1,209 @@
+    {% liquid
+        assign locales = shop.metafields.foxify.locales.value
+        assign current_locale = request.locale.iso_code
+        assign primary_locale = current_locale
+        for locale in shop.published_locales
+        if locale.primary
+            assign primary_locale = locale.iso_code
+            break
+        endif
+        endfor
+        assign translation = locales[current_locale] | default: locales[primary_locale]
+    %}
+    <script>
+        window.Foxify = window.Foxify || {}
+        Foxify.ThemeStyles = {
+            product: "https:{{ 'foxify-product.css' | asset_url }}",
+            swiper: "https:{{ 'foxify-swiper.css' | asset_url }}",
+        }
+
+        Foxify.ThemeScripts = {
+            productModel: "https:{{ 'foxify-product-model.js' | asset_url }}",
+            productMedia: "https:{{ 'foxify-media-gallery.js' | asset_url }}",
+            variantPicker: "https:{{ 'foxify-variant-picker.js' | asset_url }}"
+        }
+
+        Foxify.pageId = '1727542401cYyKE'
+        Foxify.default = false
+    </script>
+    <div class="f-app f:content">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400&display=swap" id="Noto Sans JP" rel="stylesheet">
+<style data-foxify-editor="foxify-custom-fonts">
+  @font-face {
+    font-family: BrownProTT-Regular-1727120506tyzO0;
+    src: url('https://cdn.shopify.com/s/files/1/0892/5334/7625/files/BrownProTT-Regular_223b3dd0-dcd8-4262-8890-e12e0e9b0051.ttf?v=1727120504');
+  }
+  
+  @font-face {
+    font-family: BrownProTT-Bold-1727120506qfraO;
+    src: url('https://cdn.shopify.com/s/files/1/0892/5334/7625/files/BrownProTT-Bold_3ec44b69-6654-4815-aef9-93895ea1e588.ttf?v=1727120504');
+  }
+  
+  @font-face {
+    font-family: BrownProTT-Bold-1728485728RFfmA;
+    src: url('https://cdn.shopify.com/s/files/1/0645/4968/3247/files/BrownProTT-Bold_777d37b9-2914-4a3d-829c-a9f923febfb8.ttf?v=1728485726');
+  }
+  
+  @font-face {
+    font-family: BrownProTT-Regular-1728485728u0odV;
+    src: url('https://cdn.shopify.com/s/files/1/0645/4968/3247/files/BrownProTT-Regular_12f6bcee-75ee-4015-8a44-3235979571d1.ttf?v=1728485726');
+  }
+  
+  @font-face {
+    font-family: BrownProTT-Bold-17071127825LR9n;
+    src: url('https://cdn.shopify.com/s/files/1/0619/6150/2869/files/BrownProTT-Bold.ttf?v=1707112779');
+  }
+  
+  @font-face {
+    font-family: BrownProTT-Regular-1707112782cX7wj;
+    src: url('https://cdn.shopify.com/s/files/1/0619/6150/2869/files/BrownProTT-Regular.ttf?v=1707112779');
+  }
+  </style>
+{{ 'foxify-1727542401cYyKE.css' | asset_url | stylesheet_tag }}
+<style>.region:hover {
+  background: #f8f8f8;
+}</style>
+<div id="f-custom-section-1729752918csEbv" class="f:sections f:custom-section f-custom-section-1729752918csEbv"><div class="f:container-narrow"><div id="f-grid-1729752918JQHLa" class="f:blocks f:grid f-grid-1729752918JQHLa" style="--f-grid-columns-sm:minmax(0, 12fr);--f-grid-columns-md:minmax(0, 12fr);--f-grid-columns-lg:minmax(0, 12fr);--f-grid-columns-xl:minmax(0, 12fr)"><div id="f-col-1729752918W0Vge" class="f:blocks f:col f-col-1729752918W0Vge f:column"><div id="f-richtext-17297529466zhmk" class="f:blocks f:richtext f-richtext-17297529466zhmk f:content-block f:gs-subheading f:rte">
+{{ 'sections.foxify-1727542401cYyKE.f-richtext-17297529466zhmk-text_html' | t }}</div><h3 id="f-heading-1729752949O7DHq" class="f:blocks f:heading f-heading-1729752949O7DHq f:content-block f:gs-mega-title"><span>
+{{ 'sections.foxify-1727542401cYyKE.f-heading-1729752949O7DHq-text_html' | t }}</span></h3><div id="f-richtext-1729752954kkdwt" class="f:blocks f:richtext f-richtext-1729752954kkdwt f:content-block f:gs-card-title f:rte">
+{{ 'sections.foxify-1727542401cYyKE.f-richtext-1729752954kkdwt-text_html' | t }}</div></div></div></div></div><div id="f-custom-section-1727647904zMsBC" class="f:sections f:custom-section f-custom-section-1727647904zMsBC"><div class="f:container-narrow"><div id="f-grid-1727647904n0IeH" class="f:blocks f:grid f-grid-1727647904n0IeH" style="--f-grid-columns-sm:minmax(0, 12fr);--f-grid-columns-md:minmax(0, 4fr) minmax(0, 4fr) minmax(0, 4fr);--f-grid-columns-lg:minmax(0, 4fr) minmax(0, 4fr) minmax(0, 4fr);--f-grid-columns-xl:minmax(0, 4fr) minmax(0, 4fr) minmax(0, 4fr)"><div id="f-col-1727647904fhIMr" class="f:blocks f:col f-col-1727647904fhIMr f:column"><div id="f-block-17276685416n3Ly" class="f:blocks f:block f-block-17276685416n3Ly f:block"><h3 id="f-heading-1727668545Asmjr" class="f:blocks f:heading f-heading-1727668545Asmjr f:content-block f:gs-heading-3"><span>
+{{ 'sections.foxify-1727542401cYyKE.f-heading-1727668545Asmjr-text_html' | t }}</span></h3><div id="f-block-17276685493pZj2" class="f:blocks f:block f-block-17276685493pZj2 f:block"><div id="f-block-1727668601PrxdR" class="f:blocks f:block f-block-1727668601PrxdR region f:block f:isolate"><h3 id="f-heading-17276686058unay" class="f:blocks f:heading f-heading-17276686058unay f:content-block f:gs-heading-6"><span>
+{{ 'sections.foxify-1727542401cYyKE.f-heading-17276686058unay-text_html' | t }}</span></h3><div id="f-richtext-1727668608MuLS3" class="f:blocks f:richtext f-richtext-1727668608MuLS3 f:content-block f:gs-subheading f:rte">
+{{ 'sections.foxify-1727542401cYyKE.f-richtext-1727668608MuLS3-text_html' | t }}</div><a class="f:full-width-link" href="https://thefuturerocks.com"></a></div><div id="f-block-1727668759SBb30" class="f:blocks f:block f-block-1727668759SBb30 region f:block f:isolate"><h3 id="f-heading-17276687591u484" class="f:blocks f:heading f-heading-17276687591u484 f:content-block f:gs-heading-6"><span>
+{{ 'sections.foxify-1727542401cYyKE.f-heading-17276687591u484-text_html' | t }}</span></h3><div id="f-richtext-1727668759bjD9t" class="f:blocks f:richtext f-richtext-1727668759bjD9t f:content-block f:gs-subheading f:rte">
+{{ 'sections.foxify-1727542401cYyKE.f-richtext-1727668759bjD9t-text_html' | t }}</div><a class="f:full-width-link" href="https://thefuturerocks.com/en-ca"></a></div></div></div><div id="f-block-1727668649g5tyC" class="f:blocks f:block f-block-1727668649g5tyC f:block"><h3 id="f-heading-1727668649Ae0Cm" class="f:blocks f:heading f-heading-1727668649Ae0Cm f:content-block f:gs-heading-3"><span>
+{{ 'sections.foxify-1727542401cYyKE.f-heading-1727668649Ae0Cm-text_html' | t }}</span></h3><div id="f-block-1727668649ZglmU" class="f:blocks f:block f-block-1727668649ZglmU region f:block f:isolate"><div id="f-block-1727668649AxF2P" class="f:blocks f:block f-block-1727668649AxF2P f:block"><h3 id="f-heading-1727668649Na6bi" class="f:blocks f:heading f-heading-1727668649Na6bi f:content-block f:gs-heading-6"><span>
+{{ 'sections.foxify-1727542401cYyKE.f-heading-1727668649Na6bi-text_html' | t }}</span></h3><div id="f-richtext-1727668649ORtbN" class="f:blocks f:richtext f-richtext-1727668649ORtbN f:content-block f:gs-subheading f:rte">
+{{ 'sections.foxify-1727542401cYyKE.f-richtext-1727668649ORtbN-text_html' | t }}</div></div><a class="f:full-width-link" href="https://thefuturerocks.com/en-ae" target="_blank" rel="noreferrer"></a></div></div></div><div id="f-col-1727648897Ky1Qn" class="f:blocks f:col f-col-1727648897Ky1Qn f:column"><h3 id="f-heading-1727648897fnW7k" class="f:blocks f:heading f-heading-1727648897fnW7k f:content-block f:gs-heading-3"><span>
+{{ 'sections.foxify-1727542401cYyKE.f-heading-1727648897fnW7k-text_html' | t }}</span></h3><div id="f-block-1727648897u6HNG" class="f:blocks f:block f-block-1727648897u6HNG f:block"><div id="f-block-1727648897v9nO8" class="f:blocks f:block f-block-1727648897v9nO8 region f:block f:isolate"><h3 id="f-heading-1727648897rGDEe" class="f:blocks f:heading f-heading-1727648897rGDEe f:content-block f:gs-heading-6 region-heading"><span>
+{{ 'sections.foxify-1727542401cYyKE.f-heading-1727648897rGDEe-text_html' | t }}</span></h3><div id="f-richtext-1727648897Jvvu5" class="f:blocks f:richtext f-richtext-1727648897Jvvu5 f:content-block f:gs-subheading region-language f:rte">
+{{ 'sections.foxify-1727542401cYyKE.f-richtext-1727648897Jvvu5-text_html' | t }}</div><a class="f:full-width-link" href="https://thefuturerocks.com/en-au"></a></div><div id="f-block-17276682404YzWf" class="f:blocks f:block f-block-17276682404YzWf region f:block f:isolate"><h3 id="f-heading-1727668240aKhn8" class="f:blocks f:heading f-heading-1727668240aKhn8 f:content-block f:gs-heading-6 region-heading"><span>
+{{ 'sections.foxify-1727542401cYyKE.f-heading-1727668240aKhn8-text_html' | t }}</span></h3><div id="f-richtext-1727668240WdXts" class="f:blocks f:richtext f-richtext-1727668240WdXts f:content-block f:gs-subheading region-language f:rte">
+{{ 'sections.foxify-1727542401cYyKE.f-richtext-1727668240WdXts-text_html' | t }}</div><a class="f:full-width-link" href="https://hk.thefuturerocks.com/"></a></div><div id="f-block-1727648897egRfj" class="f:blocks f:block f-block-1727648897egRfj f:block"><div id="f-block-1727649441vc6vZ" class="f:blocks f:block f-block-1727649441vc6vZ region f:block f:isolate"><h3 id="f-heading-1727649449VQsm4" class="f:blocks f:heading f-heading-1727649449VQsm4 f:content-block f:gs-heading-6"><span>
+{{ 'sections.foxify-1727542401cYyKE.f-heading-1727649449VQsm4-text_html' | t }}</span></h3><div id="f-richtext-1727649452jyGXU" class="f:blocks f:richtext f-richtext-1727649452jyGXU f:content-block f:gs-subheading f:rte">
+{{ 'sections.foxify-1727542401cYyKE.f-richtext-1727649452jyGXU-text_html' | t }}</div><a class="f:full-width-link" href="https://thefuturerocks.com/en-jp"></a></div><div id="f-block-1727649518hXXXx" class="f:blocks f:block f-block-1727649518hXXXx region f:block f:isolate"><h3 id="f-heading-17276495181HTZ8" class="f:blocks f:heading f-heading-17276495181HTZ8 f:content-block f:gs-heading-6"><span>
+{{ 'sections.foxify-1727542401cYyKE.f-heading-17276495181HTZ8-text_html' | t }}</span></h3><div id="f-richtext-1727649518ycerh" class="f:blocks f:richtext f-richtext-1727649518ycerh f:content-block f:gs-subheading f:rte">
+{{ 'sections.foxify-1727542401cYyKE.f-richtext-1727649518ycerh-text_html' | t }}</div><a class="f:full-width-link" href="https://thefuturerocks.com/ja-jp"></a></div></div><div id="f-block-1727649236JONlP" class="f:blocks f:block f-block-1727649236JONlP region f:block f:isolate"><h3 id="f-heading-1727649236MutGv" class="f:blocks f:heading f-heading-1727649236MutGv f:content-block f:gs-heading-6 region-heading"><span>
+{{ 'sections.foxify-1727542401cYyKE.f-heading-1727649236MutGv-text_html' | t }}</span></h3><div id="f-richtext-1727649236GNCKg" class="f:blocks f:richtext f-richtext-1727649236GNCKg f:content-block f:gs-subheading region-language f:rte">
+{{ 'sections.foxify-1727542401cYyKE.f-richtext-1727649236GNCKg-text_html' | t }}</div><a class="f:full-width-link" href="https://thefuturerocks.com/en-mo"></a></div><div id="f-block-1727668260t1C99" class="f:blocks f:block f-block-1727668260t1C99 region f:block f:isolate"><h3 id="f-heading-1727668260cXryi" class="f:blocks f:heading f-heading-1727668260cXryi f:content-block f:gs-heading-6 region-heading"><span>
+{{ 'sections.foxify-1727542401cYyKE.f-heading-1727668260cXryi-text_html' | t }}</span></h3><div id="f-richtext-172766826017blh" class="f:blocks f:richtext f-richtext-172766826017blh f:content-block f:gs-subheading region-language f:rte">
+{{ 'sections.foxify-1727542401cYyKE.f-richtext-172766826017blh-text_html' | t }}</div><a class="f:full-width-link" href="https://thefuturerocks.com/en-nz"></a></div><div id="f-block-1727649247dEtzm" class="f:blocks f:block f-block-1727649247dEtzm region f:block f:isolate"><h3 id="f-heading-17276492475ILWX" class="f:blocks f:heading f-heading-17276492475ILWX f:content-block f:gs-heading-6 region-heading"><span>
+{{ 'sections.foxify-1727542401cYyKE.f-heading-17276492475ILWX-text_html' | t }}</span></h3><div id="f-richtext-1727649247wozmN" class="f:blocks f:richtext f-richtext-1727649247wozmN f:content-block f:gs-subheading region-language f:rte">
+{{ 'sections.foxify-1727542401cYyKE.f-richtext-1727649247wozmN-text_html' | t }}</div><a class="f:full-width-link" href="https://thefuturerocks.com/en-sg"></a></div><div id="f-block-1727649967VhNg0" class="f:blocks f:block f-block-1727649967VhNg0 f:block"><div id="f-block-1727649967wJAvo" class="f:blocks f:block f-block-1727649967wJAvo region f:block f:isolate"><h3 id="f-heading-1727649967hX4vo" class="f:blocks f:heading f-heading-1727649967hX4vo f:content-block f:gs-heading-6"><span>
+{{ 'sections.foxify-1727542401cYyKE.f-heading-1727649967hX4vo-text_html' | t }}</span></h3><div id="f-richtext-1727649967XxjuP" class="f:blocks f:richtext f-richtext-1727649967XxjuP f:content-block f:gs-subheading f:rte">
+{{ 'sections.foxify-1727542401cYyKE.f-richtext-1727649967XxjuP-text_html' | t }}</div><a class="f:full-width-link" href="https://thefuturerocks.com/en-kr"></a></div><div id="f-block-1727649967pL6U1" class="f:blocks f:block f-block-1727649967pL6U1 region f:block f:isolate"><h3 id="f-heading-17276499671C6al" class="f:blocks f:heading f-heading-17276499671C6al f:content-block f:gs-heading-6"><span>
+{{ 'sections.foxify-1727542401cYyKE.f-heading-17276499671C6al-text_html' | t }}</span></h3><div id="f-richtext-1727649967i13I1" class="f:blocks f:richtext f-richtext-1727649967i13I1 f:content-block f:gs-subheading f:rte">
+{{ 'sections.foxify-1727542401cYyKE.f-richtext-1727649967i13I1-text_html' | t }}</div><a class="f:full-width-link" href="https://thefuturerocks.com/ko-kr"></a></div></div><div id="f-block-1727649250TV8B4" class="f:blocks f:block f-block-1727649250TV8B4 region f:block f:isolate"><h3 id="f-heading-1727649250fxs3w" class="f:blocks f:heading f-heading-1727649250fxs3w f:content-block f:gs-heading-6 region-heading"><span>
+{{ 'sections.foxify-1727542401cYyKE.f-heading-1727649250fxs3w-text_html' | t }}</span></h3><div id="f-richtext-1727649250OeqYo" class="f:blocks f:richtext f-richtext-1727649250OeqYo f:content-block f:gs-subheading region-language f:rte">
+{{ 'sections.foxify-1727542401cYyKE.f-richtext-1727649250OeqYo-text_html' | t }}</div><a class="f:full-width-link" href="https://thefuturerocks.com/en-tw"></a></div></div></div><div id="f-col-1727648930ARQXN" class="f:blocks f:col f-col-1727648930ARQXN f:column"><h3 id="f-heading-1727648930mGYYO" class="f:blocks f:heading f-heading-1727648930mGYYO f:content-block f:gs-heading-3"><span>
+{{ 'sections.foxify-1727542401cYyKE.f-heading-1727648930mGYYO-text_html' | t }}</span></h3><div id="f-block-1727648930FOIfl" class="f:blocks f:block f-block-1727648930FOIfl f:block"><div id="f-block-1727648930g9xkp" class="f:blocks f:block f-block-1727648930g9xkp region f:block f:isolate"><h3 id="f-heading-1727648930tRM8A" class="f:blocks f:heading f-heading-1727648930tRM8A f:content-block f:gs-heading-6 region-heading"><span>
+{{ 'sections.foxify-1727542401cYyKE.f-heading-1727648930tRM8A-text_html' | t }}</span></h3><div id="f-richtext-1727648930Lha1k" class="f:blocks f:richtext f-richtext-1727648930Lha1k f:content-block f:gs-subheading region-language f:rte">
+{{ 'sections.foxify-1727542401cYyKE.f-richtext-1727648930Lha1k-text_html' | t }}</div><a class="f:full-width-link" href="https://thefuturerocks.com/en-eu"></a></div><div id="f-block-1727648930xI2nR" class="f:blocks f:block f-block-1727648930xI2nR region f:block f:isolate"><h3 id="f-heading-1727648930fE4je" class="f:blocks f:heading f-heading-1727648930fE4je f:content-block f:gs-heading-6 region-heading"><span>
+{{ 'sections.foxify-1727542401cYyKE.f-heading-1727648930fE4je-text_html' | t }}</span></h3><div id="f-richtext-1727648930aIyn4" class="f:blocks f:richtext f-richtext-1727648930aIyn4 f:content-block f:gs-subheading region-language f:rte">
+{{ 'sections.foxify-1727542401cYyKE.f-richtext-1727648930aIyn4-text_html' | t }}</div><a class="f:full-width-link" href="https://thefuturerocks.com/en-eu"></a></div><div id="f-block-1727668281ozcN1" class="f:blocks f:block f-block-1727668281ozcN1 region f:block f:isolate"><h3 id="f-heading-1727668281bnctz" class="f:blocks f:heading f-heading-1727668281bnctz f:content-block f:gs-heading-6 region-heading"><span>
+{{ 'sections.foxify-1727542401cYyKE.f-heading-1727668281bnctz-text_html' | t }}</span></h3><div id="f-richtext-1727668281lKFEv" class="f:blocks f:richtext f-richtext-1727668281lKFEv f:content-block f:gs-subheading region-language f:rte">
+{{ 'sections.foxify-1727542401cYyKE.f-richtext-1727668281lKFEv-text_html' | t }}</div><a class="f:full-width-link" href="https://thefuturerocks.com/en-eu"></a></div><div id="f-block-1727668282XaTsu" class="f:blocks f:block f-block-1727668282XaTsu region f:block f:isolate"><h3 id="f-heading-1727668282TpeBv" class="f:blocks f:heading f-heading-1727668282TpeBv f:content-block f:gs-heading-6 region-heading"><span>
+{{ 'sections.foxify-1727542401cYyKE.f-heading-1727668282TpeBv-text_html' | t }}</span></h3><div id="f-richtext-1727668282gmUX7" class="f:blocks f:richtext f-richtext-1727668282gmUX7 f:content-block f:gs-subheading region-language f:rte">
+{{ 'sections.foxify-1727542401cYyKE.f-richtext-1727668282gmUX7-text_html' | t }}</div><a class="f:full-width-link" href="https://thefuturerocks.com/en-hu"></a></div><div id="f-block-1727668285wYcFs" class="f:blocks f:block f-block-1727668285wYcFs region f:block f:isolate"><h3 id="f-heading-1727668285Yo2Gm" class="f:blocks f:heading f-heading-1727668285Yo2Gm f:content-block f:gs-heading-6 region-heading"><span>
+{{ 'sections.foxify-1727542401cYyKE.f-heading-1727668285Yo2Gm-text_html' | t }}</span></h3><div id="f-richtext-1727668285QLvQX" class="f:blocks f:richtext f-richtext-1727668285QLvQX f:content-block f:gs-subheading region-language f:rte">
+{{ 'sections.foxify-1727542401cYyKE.f-richtext-1727668285QLvQX-text_html' | t }}</div><a class="f:full-width-link" href="https://thefuturerocks.com/en-is"></a></div><div id="f-block-1727668286jmqGT" class="f:blocks f:block f-block-1727668286jmqGT region f:block f:isolate"><h3 id="f-heading-1727668286eXvwn" class="f:blocks f:heading f-heading-1727668286eXvwn f:content-block f:gs-heading-6 region-heading"><span>
+{{ 'sections.foxify-1727542401cYyKE.f-heading-1727668286eXvwn-text_html' | t }}</span></h3><div id="f-richtext-17276682860ZuQH" class="f:blocks f:richtext f-richtext-17276682860ZuQH f:content-block f:gs-subheading region-language f:rte">
+{{ 'sections.foxify-1727542401cYyKE.f-richtext-17276682860ZuQH-text_html' | t }}</div><a class="f:full-width-link" href="https://thefuturerocks.com/en-eu"></a></div><div id="f-block-1727668287MjlQj" class="f:blocks f:block f-block-1727668287MjlQj region f:block f:isolate"><h3 id="f-heading-1727668287nnyth" class="f:blocks f:heading f-heading-1727668287nnyth f:content-block f:gs-heading-6 region-heading"><span>
+{{ 'sections.foxify-1727542401cYyKE.f-heading-1727668287nnyth-text_html' | t }}</span></h3><div id="f-richtext-1727668287YDzaf" class="f:blocks f:richtext f-richtext-1727668287YDzaf f:content-block f:gs-subheading region-language f:rte">
+{{ 'sections.foxify-1727542401cYyKE.f-richtext-1727668287YDzaf-text_html' | t }}</div><a class="f:full-width-link" href="https://thefuturerocks.com/en-eu"></a></div><div id="f-block-17276682883Xrae" class="f:blocks f:block f-block-17276682883Xrae region f:block f:isolate"><h3 id="f-heading-1727668288BgRrC" class="f:blocks f:heading f-heading-1727668288BgRrC f:content-block f:gs-heading-6 region-heading"><span>
+{{ 'sections.foxify-1727542401cYyKE.f-heading-1727668288BgRrC-text_html' | t }}</span></h3><div id="f-richtext-1727668288ksIHA" class="f:blocks f:richtext f-richtext-1727668288ksIHA f:content-block f:gs-subheading region-language f:rte">
+{{ 'sections.foxify-1727542401cYyKE.f-richtext-1727668288ksIHA-text_html' | t }}</div><a class="f:full-width-link" href="https://thefuturerocks.com/en-eu"></a></div><div id="f-block-1727668289lSpOZ" class="f:blocks f:block f-block-1727668289lSpOZ region f:block f:isolate"><h3 id="f-heading-1727668289W5z9z" class="f:blocks f:heading f-heading-1727668289W5z9z f:content-block f:gs-heading-6 region-heading"><span>
+{{ 'sections.foxify-1727542401cYyKE.f-heading-1727668289W5z9z-text_html' | t }}</span></h3><div id="f-richtext-1727668289iMH3c" class="f:blocks f:richtext f-richtext-1727668289iMH3c f:content-block f:gs-subheading region-language f:rte">
+{{ 'sections.foxify-1727542401cYyKE.f-richtext-1727668289iMH3c-text_html' | t }}</div><a class="f:full-width-link" href="https://thefuturerocks.com/en-eu"></a></div><div id="f-block-1727668291vx9aR" class="f:blocks f:block f-block-1727668291vx9aR region f:block f:isolate"><h3 id="f-heading-1727668291TZAVO" class="f:blocks f:heading f-heading-1727668291TZAVO f:content-block f:gs-heading-6 region-heading"><span>
+{{ 'sections.foxify-1727542401cYyKE.f-heading-1727668291TZAVO-text_html' | t }}</span></h3><div id="f-richtext-1727668291sxBPk" class="f:blocks f:richtext f-richtext-1727668291sxBPk f:content-block f:gs-subheading region-language f:rte">
+{{ 'sections.foxify-1727542401cYyKE.f-richtext-1727668291sxBPk-text_html' | t }}</div><a class="f:full-width-link" href="https://thefuturerocks.com/en-eu"></a></div><div id="f-block-1727668292OGjVd" class="f:blocks f:block f-block-1727668292OGjVd region f:block f:isolate"><h3 id="f-heading-17276682929Nzo8" class="f:blocks f:heading f-heading-17276682929Nzo8 f:content-block f:gs-heading-6 region-heading"><span>
+{{ 'sections.foxify-1727542401cYyKE.f-heading-17276682929Nzo8-text_html' | t }}</span></h3><div id="f-richtext-1727668292njimW" class="f:blocks f:richtext f-richtext-1727668292njimW f:content-block f:gs-subheading region-language f:rte">
+{{ 'sections.foxify-1727542401cYyKE.f-richtext-1727668292njimW-text_html' | t }}</div><a class="f:full-width-link" href="https://thefuturerocks.com/en-se"></a></div><div id="f-block-1727668293d4Stq" class="f:blocks f:block f-block-1727668293d4Stq region f:block f:isolate"><h3 id="f-heading-1727668293YjL3a" class="f:blocks f:heading f-heading-1727668293YjL3a f:content-block f:gs-heading-6 region-heading"><span>
+{{ 'sections.foxify-1727542401cYyKE.f-heading-1727668293YjL3a-text_html' | t }}</span></h3><div id="f-richtext-1727668293opGS2" class="f:blocks f:richtext f-richtext-1727668293opGS2 f:content-block f:gs-subheading region-language f:rte">
+{{ 'sections.foxify-1727542401cYyKE.f-richtext-1727668293opGS2-text_html' | t }}</div><a class="f:full-width-link" href="https://thefuturerocks.com/en-ch"></a></div><div id="f-block-1727668299e9Wqz" class="f:blocks f:block f-block-1727668299e9Wqz region f:block f:isolate"><h3 id="f-heading-1727668299D40cz" class="f:blocks f:heading f-heading-1727668299D40cz f:content-block f:gs-heading-6 region-heading"><span>
+{{ 'sections.foxify-1727542401cYyKE.f-heading-1727668299D40cz-text_html' | t }}</span></h3><div id="f-richtext-172766829947AnS" class="f:blocks f:richtext f-richtext-172766829947AnS f:content-block f:gs-subheading region-language f:rte">
+{{ 'sections.foxify-1727542401cYyKE.f-richtext-172766829947AnS-text_html' | t }}</div><a class="f:full-width-link" href="https://thefuturerocks.com/en-gb"></a></div></div></div></div></div></div>
+{% liquid
+        assign theme_settings = shop.metafields.foxify.theme_settings.value
+        assign customCodeBody = theme_settings.customCodeBody
+        echo customCodeBody
+      %}
+
+</div>
+    {% schema %}
+        {
+            "name": "Foxify main content",
+            "class": "foxify-main f-app",
+            "settings": [
+                {
+                "type": "header",
+                "content": "Customize section",
+                "info": "Go to [Foxify app](https://app.foxify.io/editor?id=1727542401cYyKE&type=REGULAR) to edit this section."
+                }
+            ],
+            "locales": {
+  "en": {
+    "f-richtext-17297529466zhmk-text_html": "the future rocks around the world",
+    "f-heading-1729752949O7DHq-text_html": "Change your region and language",
+    "f-richtext-1729752954kkdwt-text_html": "Please pick the location that matches your delivery address.",
+    "f-heading-1727668545Asmjr-text_html": "north america",
+    "f-heading-17276686058unay-text_html": "united states",
+    "f-richtext-1727668608MuLS3-text_html": "english",
+    "f-heading-17276687591u484-text_html": "canada",
+    "f-richtext-1727668759bjD9t-text_html": "english",
+    "f-heading-1727668649Ae0Cm-text_html": "middle east",
+    "f-heading-1727668649Na6bi-text_html": "united arab emirates",
+    "f-richtext-1727668649ORtbN-text_html": "english",
+    "f-heading-1727648897fnW7k-text_html": "asia pacific",
+    "f-heading-1727648897rGDEe-text_html": "australia",
+    "f-richtext-1727648897Jvvu5-text_html": "english",
+    "f-heading-1727668240aKhn8-text_html": "hong kong sar",
+    "f-richtext-1727668240WdXts-text_html": "english",
+    "f-heading-1727649449VQsm4-text_html": "japan",
+    "f-richtext-1727649452jyGXU-text_html": "english",
+    "f-heading-17276495181HTZ8-text_html": "日本",
+    "f-richtext-1727649518ycerh-text_html": "日本語",
+    "f-heading-1727649236MutGv-text_html": "macao sar",
+    "f-richtext-1727649236GNCKg-text_html": "english",
+    "f-heading-1727668260cXryi-text_html": "new zealand",
+    "f-richtext-172766826017blh-text_html": "english",
+    "f-heading-17276492475ILWX-text_html": "singapore",
+    "f-richtext-1727649247wozmN-text_html": "english",
+    "f-heading-1727649967hX4vo-text_html": "south korea",
+    "f-richtext-1727649967XxjuP-text_html": "english",
+    "f-heading-17276499671C6al-text_html": "대한민국",
+    "f-richtext-1727649967i13I1-text_html": "한국인",
+    "f-heading-1727649250fxs3w-text_html": "taiwan",
+    "f-richtext-1727649250OeqYo-text_html": "english",
+    "f-heading-1727648930mGYYO-text_html": "europe",
+    "f-heading-1727648930tRM8A-text_html": "belgium",
+    "f-richtext-1727648930Lha1k-text_html": "english",
+    "f-heading-1727648930fE4je-text_html": "france",
+    "f-richtext-1727648930aIyn4-text_html": "english",
+    "f-heading-1727668281bnctz-text_html": "germany",
+    "f-richtext-1727668281lKFEv-text_html": "english",
+    "f-heading-1727668282TpeBv-text_html": "hungary",
+    "f-richtext-1727668282gmUX7-text_html": "english",
+    "f-heading-1727668285Yo2Gm-text_html": "iceland",
+    "f-richtext-1727668285QLvQX-text_html": "english",
+    "f-heading-1727668286eXvwn-text_html": "ireland",
+    "f-richtext-17276682860ZuQH-text_html": "english",
+    "f-heading-1727668287nnyth-text_html": "italy",
+    "f-richtext-1727668287YDzaf-text_html": "english",
+    "f-heading-1727668288BgRrC-text_html": "netherlands",
+    "f-richtext-1727668288ksIHA-text_html": "english",
+    "f-heading-1727668289W5z9z-text_html": "portugal",
+    "f-richtext-1727668289iMH3c-text_html": "english",
+    "f-heading-1727668291TZAVO-text_html": "spain",
+    "f-richtext-1727668291sxBPk-text_html": "english",
+    "f-heading-17276682929Nzo8-text_html": "sweden",
+    "f-richtext-1727668292njimW-text_html": "english",
+    "f-heading-1727668293YjL3a-text_html": "switzerland",
+    "f-richtext-1727668293opGS2-text_html": "english",
+    "f-heading-1727668299D40cz-text_html": "united kingdom",
+    "f-richtext-172766829947AnS-text_html": "english"
+  }
+}
+        }
+    {% endschema %}
+  

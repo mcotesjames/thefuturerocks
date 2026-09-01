@@ -1,0 +1,646 @@
+    {% liquid
+        assign locales = shop.metafields.foxify.locales.value
+        assign current_locale = request.locale.iso_code
+        assign primary_locale = current_locale
+        for locale in shop.published_locales
+        if locale.primary
+            assign primary_locale = locale.iso_code
+            break
+        endif
+        endfor
+        assign translation = locales[current_locale] | default: locales[primary_locale]
+    %}
+    <script>
+        window.Foxify = window.Foxify || {}
+        Foxify.ThemeStyles = {
+            product: "https:{{ 'foxify-product.css' | asset_url }}",
+            swiper: "https:{{ 'foxify-swiper.css' | asset_url }}",
+        }
+
+        Foxify.ThemeScripts = {
+            productModel: "https:{{ 'foxify-product-model.js' | asset_url }}",
+            productMedia: "https:{{ 'foxify-media-gallery.js' | asset_url }}",
+            variantPicker: "https:{{ 'foxify-variant-picker.js' | asset_url }}"
+        }
+
+        Foxify.pageId = '1715582115lxsYw'
+        Foxify.default = true
+    </script>
+    <div class="f-app f:content">
+<style data-foxify-editor="foxify-custom-fonts">
+  @font-face {
+    font-family: BrownProTT-Bold-17071127825LR9n;
+    src: url('https://cdn.shopify.com/s/files/1/0619/6150/2869/files/BrownProTT-Bold.ttf?v=1707112779');
+  }
+  
+  @font-face {
+    font-family: Signifier-Regular-1707359576L18zD;
+    src: url('https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Signifier-Regular.otf?v=1707359573');
+  }
+  
+  @font-face {
+    font-family: BrownProTT-Regular-1707112782cX7wj;
+    src: url('https://cdn.shopify.com/s/files/1/0619/6150/2869/files/BrownProTT-Regular.ttf?v=1707112779');
+  }
+  </style>
+{{ 'foxify-1715582115lxsYw.css' | asset_url | stylesheet_tag }}
+<style>.glow {
+  font-size: 14px;
+  color: #fff;
+  text-align: center;
+  -webkit-animation: glow .01s ease-in-out infinite alternate;
+  -moz-animation: glow .01s ease-in-out infinite alternate;
+  animation: glow .01s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes glow {
+  from {
+    text-shadow: 0 0 1px rgba(255,255,255,0.2), 0 0 2px rgba(255,255,255,0.2), 0 0 3px rgba(255,255,255,0.2), 0 0 4px rgba(255,255,255,0.2), 0 0 5px rgba(255,255,255,0.2), 0 0 6px rgba(255,255,255,0.2), 0 0 7px rgba(255,255,255,0.2);
+  }
+  to {
+    text-shadow: 0 0 1px rgba(255,255,255,0.2), 0 0 2px rgba(255,255,255,0.2), 0 0 3px rgba(255,255,255,0.2), 0 0 4px rgba(255,255,255,0.2), 0 0 5px rgba(255,255,255,0.2), 0 0 6px rgba(255,255,255,0.2), 0 0 7px rgba(255,255,255,0.2);
+  }
+}
+/* language variants begin*/
+
+.f\:article-card__info .f\:article-card__title:lang(ja) {
+  font-family: serif !important;
+  font-size: 0.96rem;
+  font-weight: 600;
+}
+/*.f-col-17104234757K4JK .f-heading-17104234991s2r8:lang(ja) {
+  font-family: serif !important;
+  font-weight: 600;
+}*/
+.f\:article-card__info .f\:article-card__title:lang(ko) {
+  font-family: sans-serif !important;
+  font-size: 0.92rem !important;
+  font-weight: 600;
+}
+/*.f-col-17104234757K4JK .f-heading-17104234991s2r8:lang(ko) {
+  font-family: sans-serif !important;
+  font-weight: 600;
+}*/
+/* language variants end*/
+
+.f\:newsletter__wrapper .f\:newsletter__form {
+  background-color: #fde64d !important;
+}
+@media screen and (min-width: 768px) {
+.f\:newsletter__wrapper .f\:newsletter__form {
+  background-image: url("https://cdn.shopify.com/s/files/1/0863/9230/8010/files/Asset_7.png?v=1711001064");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: transparent !important;
+}
+}
+
+.f-hero-1711338170AwlvQ .f\:hero__content {
+  background-color: #fde64d !important;
+  aspect-ratio: inherit;
+}
+@media screen and (min-width: 1024px) {
+.f-hero-1711338170AwlvQ .f\:hero__content {
+  background-image: url("https://cdn.shopify.com/s/files/1/0863/9230/8010/files/Asset_7.png?v=1711001064");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: transparent !important;
+  padding-right: 30%;
+  aspect-ratio: 16 / 5;
+}
+}
+
+a {
+  text-decoration: none !important;
+}
+.f\:product-card .f\:product-card__wrapper {
+  background-color: #f2f2f2;
+  border-style: solid;
+  border-color: red;
+  border-width: 0 !important;
+}
+body { overflow: hidden !important }
+
+body .f\:lookbook-card__product-price .f\:price {
+
+font-family: var(--f-gs-body-text-font-stack, -apple-system, BlinkMacSystemFont, "San Francisco", "Segoe UI", Roboto, "Helvetica Neue", sans-serif);
+
+font-size: 12px;
+
+/*color: var(--f-gs-hot-color, #1b2b27);*/
+color: #1b2b27;
+
+}
+
+body .f\:lookbook-card__product-info .f\:lookbook-card__product-btn  {
+
+font-family: var(--f-gs-body-text-font-stack, -apple-system, BlinkMacSystemFont, "San Francisco", "Segoe UI", Roboto, "Helvetica Neue", sans-serif);
+
+font-size: 12px;
+text-transform: uppercase;
+
+}
+
+.f\:product-card__atc-text, .f\:product-card__summary .f\:price {
+  font-family: BrownProTT-Regular-1707112782cX7wj;
+}
+
+.f\:article-card__info .f\:article-card__title {
+  font-family: Signifier-Regular-1707359576L18zD;
+  font-size: 18px !important;
+  line-height: 24px;
+  margin: 30px 0px;
+  font-weight: 500;
+}
+
+
+}
+.f\:product-card__info .f\:product-card__vendor {
+  font-family: BrownProTT-Regular-1707112782cX7wj;
+  font-size: 10px;
+  line-height: 12px;
+}
+.gradient {
+  --gradient-background: #F6F5F1;
+}
+body {
+  --color-background: #F6F5F1;
+}
+body .f\:container {
+  --f-container-width: 1370px;
+}
+
+@keyframes snow-falling {
+  0% {
+    top: -30%;
+  }
+  100% {
+    top: 100%;
+  }
+}
+@keyframes snow-shake {
+  0% {
+    transform: translateX(0px);
+  }
+  50% {
+    transform: translateX(50px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+@keyframes snow-shake-reverse {
+  0% {
+    transform: translateX(0px);
+  }
+  50% {
+    transform: translateX(-50px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+
+.f-snowflake {
+  animation-name: snow-falling, snow-shake;
+  animation-duration: 9s, 2s;
+  animation-timing-function: linear, ease-in-out;
+  animation-iteration-count: infinite, infinite;
+  animation-play-state: running, running;
+  position: absolute;
+  top: -30%;
+  z-index: 1;
+}
+.f-snowflake--shake-reverse {
+  animation-name: snow-falling, snow-shake-reverse;
+  animation-duration: 9s, 2s;
+  animation-timing-function: linear, ease-in-out;
+  animation-iteration-count: infinite, infinite;
+  animation-play-state: running, running;
+  position: absolute;
+  top: -30%;
+  z-index: 1;
+}
+.f-snowflake--no-shake {
+  animation-name: snow-falling;
+  animation-duration: 9s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-play-state: running;
+  position: absolute;
+  top: -30%;
+  z-index: 1;
+}
+
+body .f\:price {
+  color: #000;
+  font-family: Satoshi-Medium;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+body .f\:price--on-sale .f\:price-item--regular {
+   color: #666;
+}
+
+/* Hover effect */
+.f-hover--zoom-in {
+   overflow: hidden;
+}
+.f-hover--zoom-in .f\:image {
+   transition: all .5s cubic-bezier(0.4, 0, 0.2, 1);
+   backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.f-hover--move-up .f\:image {
+   transition: transform .4s;
+}
+
+/* .f-button--underline */
+.f-button--underline {
+   display: inline-block;
+   position: relative;
+}
+.f-button--underline:before,
+.f-button--underline:after {
+   content: "";
+   position: absolute;
+   bottom: 0;
+   left: 0;
+   width: 100%;
+   height: 1px;
+   background: currentColor;
+   -webkit-transform-origin: right;
+   -ms-transform-origin: right;
+   transform-origin: right;
+   -webkit-transform: scaleX(1) translateZ(0);
+   transform: scaleX(1) translateZ(0);
+   transition: transform .5s cubic-bezier(.165, .84, .44, 1) .3s, -webkit-transform .5s cubic-bezier(.165, .84, .44, 1) .3s;
+}
+.f-button--underline:after {
+   -webkit-transform-origin: left;
+   -ms-transform-origin: left;
+   transform-origin: left;
+   -webkit-transform: scaleX(0) translateZ(0);
+   transform: scaleX(0) translateZ(0);
+   -webkit-transition: -webkit-transform .5s cubic-bezier(.165, .84, .44, 1);
+   transition: -webkit-transform .5s cubic-bezier(.165, .84, .44, 1);
+   transition: transform .5s cubic-bezier(.165, .84, .44, 1), -webkit-transform .5s cubic-bezier(.165, .84, .44, 1);
+}
+.f-button--underline:hover:before {
+   -webkit-transform: scaleX(0) translateZ(0);
+   transform: scaleX(0) translateZ(0);
+   -webkit-transition: -webkit-transform .5s cubic-bezier(.165, .84, .44, 1);
+   transition: -webkit-transform .5s cubic-bezier(.165, .84, .44, 1);
+   transition: transform .5s cubic-bezier(.165, .84, .44, 1);
+}
+.f-button--underline:hover:after {
+   -webkit-transform: scaleX(1) translateZ(0);
+   transform: scaleX(1) translateZ(0);
+   transition: transform .5s cubic-bezier(.165, .84, .44, 1) .3s, -webkit-transform .5s cubic-bezier(.165, .84, .44, 1) .3s;
+}
+
+/* Custom section Instagram */
+.f-section--instagram {
+  --items: 5;
+  --gap-count: calc(var(--items) - 1);
+  --gap: 10px;
+  --item-width: calc((var(--f-container-width) - var(--gap) * var(--gap-count)) / var(--items) );
+
+  overflow: hidden;
+}
+.f-section--instagram .f\:column {
+  overflow-x: scroll;
+  gap: var(--gap);
+}
+.f-section--instagram .f\:column::-webkit-scrollbar {
+  display: none;
+}
+.f-section--instagram .f\:image-block {
+  flex: 1 1 var(--item-width);
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  .f-section--instagram .f\:image-block {
+    flex-shrink: 0;
+    max-width: 40%;
+  }
+}
+@media (max-width: 767px) {
+  .f-section--instagram .f\:image-block {
+    flex-shrink: 0;
+    max-width: 40%;
+  }
+}
+/* END Custom section Instagram */
+
+/* .f-product-card-custom */
+.f-app .f-product-card-custom .f\:gs-card-title {
+   color: #000;
+   font-family: "Playfair Display";
+   font-size: 18px;
+   font-style: normal;
+   font-weight: 400;
+   line-height: normal;
+}
+.f-app .f-product-card-custom .f\:price {
+  font-size: 14px;
+  margin-top: 3px;
+}
+body .f-app .f\:product-card__atc {
+   color: #000;
+   font-family: Satoshi-Medium;
+   text-align: center;
+   font-size: 14px;
+   font-style: normal;
+   font-weight: 500;
+   line-height: 24px;
+   letter-spacing: 1.4px;
+   text-transform: uppercase;
+   border-radius: 0;
+}
+body .f-app .f\:product-card__atc:hover {
+   background-color: #000;
+}
+.f-app .f-product-card-custom .f\:product-card__badge {
+   font-family: Satoshi-Medium;
+   font-size: 14px;
+}
+
+/* .f-collapsible-tab-custom */
+.f-collapsible-tab-custom {
+   padding: 24px 0;
+}
+.f-collapsible-tab-custom .f\:collapsible__button {
+   padding: 0;
+}
+.f-collapsible-tab-custom .f\:collapsible__content-inner {
+   padding: 20px 0 0;
+}
+.f-collapsible-tab-custom .f\:collapsible__button-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: transparent;
+  color: #000;
+  border: 1px solid currentColor;
+  transition: all 0.3s;
+}
+.f-collapsible-tab-custom [open] .f\:collapsible__button-icon {
+  background-color: #000;
+  color: #fff;
+}
+.f-collapsible-tab-custom .f\:collapsible__button-icon svg {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  transition: transform 0.3s;
+}
+.f-collapsible-tab-custom .f\:collapsible__button-icon svg:last-child,
+.f-collapsible-tab-custom [open] .f\:collapsible__button-icon svg:first-child {
+  transform: translate(-50%,-50%) rotate(90deg);
+}
+
+/* f-subcribe-form-custom */
+.f-subcribe-form-custom .f\:newsletter-form {
+   --input-height: 48px;
+}
+.f-subcribe-form-custom .f\:form-control {
+   color: #000;
+   font-size: 16px;
+   font-weight: 400;
+  border-color: #fff;
+}
+.f-subcribe-form-custom .f\:form-control::placeholder {
+   color: #000;
+   font-size: 16px;
+   font-weight: 400;
+   font-family: Satoshi-Regular;
+}
+.f-subcribe-form-custom .f\:newsletter-form__submit {
+   font-size: 14px;
+   font-weight: 500;
+   font-family: Satoshi-Medium;
+   color: #fff;
+   background-color: #000;
+   padding: 10px 40px;
+   text-transform: uppercase;
+   letter-spacing: 1.4px;
+}
+.f-subcribe-form-custom .f\:newsletter-form__submit:hover {
+   color: #000;
+   background-color: #fff;
+}
+body .f\:form-control:focus, 
+body .f\:form-control:focus-visible {
+  box-shadow: none;
+  border-color: #000;
+}
+
+/* .f-slideshow-custom */
+.f-slideshow-custom .f\:swiper-pagination--bullets {
+  position: static;
+  transform: unset;
+  display: flex;
+  justify-content: center;
+  background-color: transparent;
+  padding: 0;
+}
+.f-slideshow-custom .f\:swiper-pagination-bullet {
+   background-color: rgba(34, 34, 34, 0.10);
+   border: none;
+}
+.f-slideshow-custom .f\:swiper-pagination-bullet.f\:swiper-pagination-bullet-active {
+   background-color: #222;
+   transform: scale(1);
+}
+
+.f-slideshow-custom .f\:swiper-pagination--bullets {
+    margin-top: 15px;
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .f-slideshow-custom .f\:slideshow-wrapper--adapt .f\:slideshow__slide-bg .f\:image {
+    --f-aspect-ratio: 1.6 !important;
+  }
+}
+@media (max-width: 1023px) {
+  .f-image-card-xs-center .f\:image-card__content-wrapper {
+    justify-content: center !important;
+  }
+
+  .f-image-card-xs-center-center .f\:image-card__content-wrapper {
+    align-items: center !important;
+    justify-content: center !important;
+  }
+}
+@media (min-width: 1280px) {
+   .f-hover--zoom-in:hover .f\:image {
+	  transform: scale(1.06) translateZ(0);
+   }
+
+  /* .f-collapsible-tab-custom */
+  .f-collapsible-tab-custom {
+     padding: 30px 0;
+  }
+  .f-collapsible-tab-custom .f\:collapsible__button-icon {
+     width: 48px;
+     height: 48px;
+  }
+  /* .f-subcribe-form-custom */
+  .f-subcribe-form-custom.f\:subscribe-form {
+    width: 570px;
+  }
+  .f-subcribe-form-custom .f\:form-control {
+    margin-right: 6px;
+  }
+}
+@media (max-width: 767px) {
+  .f-slideshow-custom .f\:slideshow__content-wrapper[class*="--left-"] {
+    justify-content: center;
+  }
+}</style>
+{{ 'foxify-hero.css' | asset_url | stylesheet_tag }}<div id="f-hero-1716863313TO1lg" class="f:sections f:hero f-hero-1716863313TO1lg f:section--no-margin f:animated" data-animate-trigger="page_load" data-animate-name="fFadeInUp"><div class="f:container-full"><div class="f:hero__wrapper f:hero--adapt f:hero--mobile-stack" style="--f-aspect-ratio:1.7773897861195984;--f-aspect-ratio-mobile:0.8001052077853761"><div class="f:hero__inner"><div class="f:hero__bg f:bg-image f:hero__image--desktop f:hidden md:f:block"><f-image class="f:image f:bg-image" style="--f-aspect-ratio:1.7773897861195984"><img srcSet="https://cdn.shopify.com/s/files/1/0619/6150/2869/files/TFRMIM0780.jpg?v=1717401717&width=165 165w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/TFRMIM0780.jpg?v=1717401717&width=360 360w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/TFRMIM0780.jpg?v=1717401717&width=533 533w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/TFRMIM0780.jpg?v=1717401717&width=720 720w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/TFRMIM0780.jpg?v=1717401717&width=940 940w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/TFRMIM0780.jpg?v=1717401717&width=1066 1066w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/TFRMIM0780.jpg?v=1717401717&width=1500 1500w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/TFRMIM0780.jpg?v=1717401717&width=1780 1780w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/TFRMIM0780.jpg?v=1717401717&width=2000 2000w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/TFRMIM0780.jpg?v=1717401717&width=3000 3000w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/TFRMIM0780.jpg?v=1717401717&width=3840 3840w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/TFRMIM0780.jpg?v=1717401717 4072w" src="//cdn.shopify.com/s/files/1/0619/6150/2869/files/TFRMIM0780_360x.jpg?v=1717401717" sizes="(min-width: 1200px) 533px, (min-width: 990px) calc((100vw - 130px) / 3), (min-width: 750px) calc((100vw - 120px) / 2), calc((100vw - 35px) / 2)" alt="TFRMIM0780.jpg" loading="lazy" width="4072" height="2291"/></f-image></div><div class="f:hero__bg f:bg-image f:hero__image--mobile md:f:hidden"><f-image class="f:image f:bg-image" style="--f-aspect-ratio:0.8001052077853761"><img srcSet="https://cdn.shopify.com/s/files/1/0619/6150/2869/files/TFRMIM0780-2.jpg?v=1717401850&width=165 165w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/TFRMIM0780-2.jpg?v=1717401850&width=360 360w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/TFRMIM0780-2.jpg?v=1717401850&width=533 533w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/TFRMIM0780-2.jpg?v=1717401850&width=720 720w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/TFRMIM0780-2.jpg?v=1717401850&width=940 940w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/TFRMIM0780-2.jpg?v=1717401850&width=1066 1066w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/TFRMIM0780-2.jpg?v=1717401850&width=1500 1500w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/TFRMIM0780-2.jpg?v=1717401850&width=1780 1780w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/TFRMIM0780-2.jpg?v=1717401850&width=2000 2000w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/TFRMIM0780-2.jpg?v=1717401850&width=3000 3000w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/TFRMIM0780-2.jpg?v=1717401850 3042w" src="//cdn.shopify.com/s/files/1/0619/6150/2869/files/TFRMIM0780-2_360x.jpg?v=1717401850" sizes="(min-width: 1200px) 533px, (min-width: 990px) calc((100vw - 130px) / 3), (min-width: 750px) calc((100vw - 120px) / 2), calc((100vw - 35px) / 2)" alt="TFRMIM0780-2.jpg" loading="lazy" width="3042" height="3802"/></f-image></div><div class="f:hero__content-wrapper f:hero__content--left-middle f:flex f:inset-full f:container-extended"><div class="f:hero__content"><div id="f-block-171686434320e8K" class="f:blocks f:block f-block-171686434320e8K f:block"><div id="f-richtext-1716864352vRvhT" class="f:blocks f:richtext f-richtext-1716864352vRvhT f:content-block f:gs-subheading f:rte">
+{{ 'sections.foxify-1715582115lxsYw.f-richtext-1716864352vRvhT-text_html' | t }}</div><h2 id="f-heading-17168643561WcNk" class="f:blocks f:heading f-heading-17168643561WcNk f:content-block f:gs-heading-1"><span>
+{{ 'sections.foxify-1715582115lxsYw.f-heading-17168643561WcNk-text_html' | t }}</span></h2><div id="f-richtext-1716864359YU1Oj" class="f:blocks f:richtext f-richtext-1716864359YU1Oj f:content-block f:gs-caption f:rte">
+{{ 'sections.foxify-1715582115lxsYw.f-richtext-1716864359YU1Oj-text_html' | t }}</div><a id="f-button-1716864363U8X1B" class="f:blocks f:button f-button-1716864363U8X1B f:gs-outline-button f:btn" href="/collections/maren-jewellery"><span>
+{{ 'sections.foxify-1715582115lxsYw.f-button-1716864363U8X1B-button_label_html' | t }}</span></a></div></div></div></div></div></div></div><div id="f-custom-section-1715582096eq5iF" class="f:sections f:custom-section f-custom-section-1715582096eq5iF"><div class="f:container-full"><div id="f-grid-1715582096rkKV5" class="f:blocks f:grid f-grid-1715582096rkKV5" style="--f-grid-columns-sm:minmax(0, 12fr);--f-grid-columns-md:minmax(0, 6fr) minmax(0, 6fr);--f-grid-columns-lg:minmax(0, 6fr) minmax(0, 6fr);--f-grid-columns-xl:minmax(0, 6fr) minmax(0, 6fr)"><div id="f-col-1715582096R8Ekk" class="f:blocks f:col f-col-1715582096R8Ekk f:column"><h3 id="f-heading-1715582096PDwlV" class="f:blocks f:heading f-heading-1715582096PDwlV f:content-block f:gs-heading-3" data-animate-trigger="scroll_into_view" data-animate-name="fFadeInLeft"><span>
+{{ 'sections.foxify-1715582115lxsYw.f-heading-1715582096PDwlV-text_html' | t }}</span></h3><div id="f-richtext-1715582096CzQuB" class="f:blocks f:richtext f-richtext-1715582096CzQuB f:content-block f:gs-caption f:rte" data-animate-trigger="scroll_into_view" data-animate-name="fFadeInLeft">
+{{ 'sections.foxify-1715582115lxsYw.f-richtext-1715582096CzQuB-text_html' | t }}</div><a id="f-button-1715582096iSAib" class="f:blocks f:button f-button-1715582096iSAib f:gs-link-button f:btn" href="/collections/feature" data-animate-trigger="scroll_into_view" data-animate-name="fFadeInLeft"><span>
+{{ 'sections.foxify-1715582115lxsYw.f-button-1715582096iSAib-button_label_html' | t }}</span></a></div></div></div></div><div id="f-featured-collection-1715582096wMMOl" class="f:sections f:featured-collection f-featured-collection-1715582096wMMOl f-featured-collection--custom"><div class="f:container-full">{{ 'foxify-component-product-card.css' | asset_url | stylesheet_tag }}{{ 'foxify-swiper.css' | asset_url | stylesheet_tag }}<div class="f:blocks f:featured-collection-block f-featured-collection-block-1715582096v2vvm" data-animate-trigger="scroll_into_view" data-animate-name="fFadeInLeft">{% liquid 
+          assign collection_f-featured-collection-block-1715582096v2vvm = collections['feature']
+        %}<f-swiper-component id="swiper-f-featured-collection-block-1715582096v2vvm" class="f:swiper f:mobile-hidden" data-swiper-options="{&quot;navigation&quot;:true,&quot;pagination&quot;:true,&quot;autoplay&quot;:false,&quot;paginationType&quot;:&quot;fraction&quot;,&quot;spaceBetween&quot;:20,&quot;slidesPerView&quot;:2,&quot;slidesPerGroup&quot;:2,&quot;loop&quot;:true,&quot;breakpoints&quot;:{&quot;1023&quot;:{&quot;slidesPerView&quot;:3}}}" data-pagination-type="fraction" data-enable-custom-controls="false"><div class="f:swiper-container"><div class="f:swiper-wrapper">{% if collection_f-featured-collection-block-1715582096v2vvm != blank %}{% for product in collection_f-featured-collection-block-1715582096v2vvm.products limit: 24 %}<div class="f:swiper-slide"><div class="f:column">{% render 'foxify-product-card', product: product, card_style: 'inherit', image_ratio: 'inherit', text_align: '' %}</div></div> {% endfor %} {% else %}{% for i in (1..24) %}<div class="f:column">{% render 'foxify-product-card', onboarding: true %}</div>{% endfor %}{% endif %}</div><div class="f:swiper-controls f:swiper-pagination--fraction f:swiper-controls--static f:swiper-navigation--inline"><div class="f:swiper-controls__inner"><div class="f:swiper-button f:swiper-button-prev"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.1875 9H2.8125" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M7.875 3.9375L2.8125 9L7.875 14.0625" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div class="f:swiper-pagination"></div><div class="f:swiper-button f:swiper-button-next"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.8125 9H15.1875" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10.125 3.9375L15.1875 9L10.125 14.0625" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></div></div></div></div></f-swiper-component><div class="f:grid f:grid-null-cols md:f:grid-2-cols xl:f:grid-3-cols f:mobile-swiper md:hidden" style="--f-grid-gap:20px;--f-grid-gap-mobile:15px;--swiper-column-width:66vw">{% if collection_f-featured-collection-block-1715582096v2vvm != blank %}{% for product in collection_f-featured-collection-block-1715582096v2vvm.products limit: 24 %}<div class="f:column">{% render 'foxify-product-card', product: product, card_style: 'inherit', image_ratio: 'inherit', text_align: '' %}</div> {% endfor %} {% else %}{% for i in (1..24) %}<div class="f:column">{% render 'foxify-product-card', onboarding: true %}</div>{% endfor %}{% endif %}</div></div></div></div><div id="f-custom-section-1715582096i7m19" class="f:sections f:custom-section f-custom-section-1715582096i7m19"><div class="f:container-full"><div id="f-grid-1715582096xgmhI" class="f:blocks f:grid f-grid-1715582096xgmhI f:justify-center f:items-center" style="--f-grid-columns-sm:minmax(0, 12fr);--f-grid-columns-md:minmax(0, 12fr);--f-grid-columns-lg:minmax(0, 12fr);--f-grid-columns-xl:minmax(0, 3fr) minmax(0, 4fr) minmax(0, 5fr)"><div id="f-col-1715582096yWvjk" class="f:blocks f:col f-col-1715582096yWvjk f:column"><div id="f-lookbook-item-1715582096SPvof" class="f:blocks f:lookbook-item f-lookbook-item-1715582096SPvof f-hover--zoom-in">{{ 'foxify-lookbook.css' | asset_url | stylesheet_tag }}<div class="f:lookbook-card"><div class="f:lookbook-card__inner" data-lookbook-inner="true"><div class="f:lookbook-card__image " style="--f-aspect-ratio:0.6667485265225933"><f-image class="f:image " style="--f-aspect-ratio:0.6667485265225933"><img srcSet="https://cdn.shopify.com/s/files/1/0619/6150/2869/files/TFR_x_Lightbox_Original_Crop_-_Shopify_Max_model_shot_only_1.jpg?v=1715573893&width=165 165w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/TFR_x_Lightbox_Original_Crop_-_Shopify_Max_model_shot_only_1.jpg?v=1715573893&width=360 360w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/TFR_x_Lightbox_Original_Crop_-_Shopify_Max_model_shot_only_1.jpg?v=1715573893&width=533 533w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/TFR_x_Lightbox_Original_Crop_-_Shopify_Max_model_shot_only_1.jpg?v=1715573893&width=720 720w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/TFR_x_Lightbox_Original_Crop_-_Shopify_Max_model_shot_only_1.jpg?v=1715573893&width=940 940w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/TFR_x_Lightbox_Original_Crop_-_Shopify_Max_model_shot_only_1.jpg?v=1715573893&width=1066 1066w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/TFR_x_Lightbox_Original_Crop_-_Shopify_Max_model_shot_only_1.jpg?v=1715573893&width=1500 1500w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/TFR_x_Lightbox_Original_Crop_-_Shopify_Max_model_shot_only_1.jpg?v=1715573893&width=1780 1780w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/TFR_x_Lightbox_Original_Crop_-_Shopify_Max_model_shot_only_1.jpg?v=1715573893&width=2000 2000w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/TFR_x_Lightbox_Original_Crop_-_Shopify_Max_model_shot_only_1.jpg?v=1715573893 2715w" src="//cdn.shopify.com/s/files/1/0619/6150/2869/files/TFR_x_Lightbox_Original_Crop_-_Shopify_Max_model_shot_only_1_360x.jpg?v=1715573893" sizes="(min-width: 1200px) 533px, (min-width: 990px) calc((100vw - 130px) / 3), (min-width: 750px) calc((100vw - 120px) / 2), calc((100vw - 35px) / 2)" alt="TFR x Lightbox Original Crop - Shopify Max (model shot only)1.jpg" loading="lazy" width="2715" height="4072"/></f-image></div>
+        {% liquid
+          assign product_f-lookbook-item-1715582096SPvof_0 = all_products['princess-joy-ring']
+        %}
+      <f-lookbook-icon class="f:lookbook-card__annotation" style="top:48%;left:34%" data-lookbook-top="48" data-lookbook-left="34" data-lookbook-index="0"><span class="f:lookbook-card__pin f:lookbook-card__pin--undefined"><svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg></span><div class="f:lookbook-card__product f:flex" data-lookbook-product="true"><div class="f:lookbook-card__product-image f:image--hover-effect relative"><a class="f:full-width-link" href="{{ product_f-lookbook-item-1715582096SPvof_0.url }}"><span class="f:visually-hidden">{{ product_f-lookbook-item-1715582096SPvof_0.title }}</span></a><div class="f:image" style="--f-aspect-ratio:1"><img src="{{ product_f-lookbook-item-1715582096SPvof_0.featured_media | image_url: width: 400 }}" alt="{{ product_f-lookbook-item-1715582096SPvof_0.featured_media.alt }}" loading="lazy"/></div></div><div class="f:lookbook-card__product-info f:flex-1"><a href="{{ product_f-lookbook-item-1715582096SPvof_0.url }}" class="f:lookbook-card__product-title">{{ product_f-lookbook-item-1715582096SPvof_0.title }}</a><div class="f:lookbook-card__product-price">{% render 'foxify-price', product: product_f-lookbook-item-1715582096SPvof_0 %}</div><a class="f:lookbook-card__product-btn f:gs-link-button" href="{{ product_f-lookbook-item-1715582096SPvof_0.url }}">{{ translation.products.product.view_full_details }}</a></div></div></f-lookbook-icon>
+        {% liquid
+          assign product_f-lookbook-item-1715582096SPvof_1 = all_products['princess-pink-joy-necklace']
+        %}
+      <f-lookbook-icon class="f:lookbook-card__annotation" style="top:60%;left:54%" data-lookbook-top="60" data-lookbook-left="54" data-lookbook-index="1"><span class="f:lookbook-card__pin f:lookbook-card__pin--white"><svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg></span><div class="f:lookbook-card__product f:flex" data-lookbook-product="true"><div class="f:lookbook-card__product-image f:image--hover-effect relative"><a class="f:full-width-link" href="{{ product_f-lookbook-item-1715582096SPvof_1.url }}"><span class="f:visually-hidden">{{ product_f-lookbook-item-1715582096SPvof_1.title }}</span></a><div class="f:image" style="--f-aspect-ratio:1"><img src="{{ product_f-lookbook-item-1715582096SPvof_1.featured_media | image_url: width: 400 }}" alt="{{ product_f-lookbook-item-1715582096SPvof_1.featured_media.alt }}" loading="lazy"/></div></div><div class="f:lookbook-card__product-info f:flex-1"><a href="{{ product_f-lookbook-item-1715582096SPvof_1.url }}" class="f:lookbook-card__product-title">{{ product_f-lookbook-item-1715582096SPvof_1.title }}</a><div class="f:lookbook-card__product-price">{% render 'foxify-price', product: product_f-lookbook-item-1715582096SPvof_1 %}</div><a class="f:lookbook-card__product-btn f:gs-link-button" href="{{ product_f-lookbook-item-1715582096SPvof_1.url }}">{{ translation.products.product.view_full_details }}</a></div></div></f-lookbook-icon></div></div></div><div id="f-lookbook-item-1715582419I2saw" class="f:blocks f:lookbook-item f-lookbook-item-1715582419I2saw f-hover--zoom-in">{{ 'foxify-lookbook.css' | asset_url | stylesheet_tag }}<div class="f:lookbook-card"><div class="f:lookbook-card__inner" data-lookbook-inner="true"><div class="f:lookbook-card__image " style="--f-aspect-ratio:0.6667485265225933"><f-image class="f:image " style="--f-aspect-ratio:0.6667485265225933"><img srcSet="https://cdn.shopify.com/s/files/1/0619/6150/2869/files/TFR_x_Lightbox_Original_Crop_-_Shopify_Max_model_shot_only_9e4c6c41-3ef9-4aa2-a1f6-adf616e95706.jpg?v=1715573892&width=165 165w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/TFR_x_Lightbox_Original_Crop_-_Shopify_Max_model_shot_only_9e4c6c41-3ef9-4aa2-a1f6-adf616e95706.jpg?v=1715573892&width=360 360w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/TFR_x_Lightbox_Original_Crop_-_Shopify_Max_model_shot_only_9e4c6c41-3ef9-4aa2-a1f6-adf616e95706.jpg?v=1715573892&width=533 533w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/TFR_x_Lightbox_Original_Crop_-_Shopify_Max_model_shot_only_9e4c6c41-3ef9-4aa2-a1f6-adf616e95706.jpg?v=1715573892&width=720 720w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/TFR_x_Lightbox_Original_Crop_-_Shopify_Max_model_shot_only_9e4c6c41-3ef9-4aa2-a1f6-adf616e95706.jpg?v=1715573892&width=940 940w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/TFR_x_Lightbox_Original_Crop_-_Shopify_Max_model_shot_only_9e4c6c41-3ef9-4aa2-a1f6-adf616e95706.jpg?v=1715573892&width=1066 1066w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/TFR_x_Lightbox_Original_Crop_-_Shopify_Max_model_shot_only_9e4c6c41-3ef9-4aa2-a1f6-adf616e95706.jpg?v=1715573892&width=1500 1500w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/TFR_x_Lightbox_Original_Crop_-_Shopify_Max_model_shot_only_9e4c6c41-3ef9-4aa2-a1f6-adf616e95706.jpg?v=1715573892&width=1780 1780w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/TFR_x_Lightbox_Original_Crop_-_Shopify_Max_model_shot_only_9e4c6c41-3ef9-4aa2-a1f6-adf616e95706.jpg?v=1715573892&width=2000 2000w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/TFR_x_Lightbox_Original_Crop_-_Shopify_Max_model_shot_only_9e4c6c41-3ef9-4aa2-a1f6-adf616e95706.jpg?v=1715573892 2715w" src="//cdn.shopify.com/s/files/1/0619/6150/2869/files/TFR_x_Lightbox_Original_Crop_-_Shopify_Max_model_shot_only_9e4c6c41-3ef9-4aa2-a1f6-adf616e95706_360x.jpg?v=1715573892" sizes="(min-width: 1200px) 533px, (min-width: 990px) calc((100vw - 130px) / 3), (min-width: 750px) calc((100vw - 120px) / 2), calc((100vw - 35px) / 2)" alt="TFR x Lightbox Original Crop - Shopify Max (model shot only).jpg" loading="lazy" width="2715" height="4072"/></f-image></div>
+        {% liquid
+          assign product_f-lookbook-item-1715582419I2saw_0 = all_products['joyful-ring']
+        %}
+      <f-lookbook-icon class="f:lookbook-card__annotation" style="top:40%;left:30%" data-lookbook-top="40" data-lookbook-left="30" data-lookbook-index="0"><span class="f:lookbook-card__pin f:lookbook-card__pin--undefined"><svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg></span><div class="f:lookbook-card__product f:flex" data-lookbook-product="true"><div class="f:lookbook-card__product-image f:image--hover-effect relative"><a class="f:full-width-link" href="{{ product_f-lookbook-item-1715582419I2saw_0.url }}"><span class="f:visually-hidden">{{ product_f-lookbook-item-1715582419I2saw_0.title }}</span></a><div class="f:image" style="--f-aspect-ratio:1"><img src="{{ product_f-lookbook-item-1715582419I2saw_0.featured_media | image_url: width: 400 }}" alt="{{ product_f-lookbook-item-1715582419I2saw_0.featured_media.alt }}" loading="lazy"/></div></div><div class="f:lookbook-card__product-info f:flex-1"><a href="{{ product_f-lookbook-item-1715582419I2saw_0.url }}" class="f:lookbook-card__product-title">{{ product_f-lookbook-item-1715582419I2saw_0.title }}</a><div class="f:lookbook-card__product-price">{% render 'foxify-price', product: product_f-lookbook-item-1715582419I2saw_0 %}</div><a class="f:lookbook-card__product-btn f:gs-link-button" href="{{ product_f-lookbook-item-1715582419I2saw_0.url }}">{{ translation.products.product.view_full_details }}</a></div></div></f-lookbook-icon></div></div></div></div><div id="f-col-1715582096K1I3y" class="f:blocks f:col f-col-1715582096K1I3y f:column" data-animate-trigger="scroll_into_view" data-animate-name="fFadeInUp"><div id="f-richtext-1715582096BjSvr" class="f:blocks f:richtext f-richtext-1715582096BjSvr f:content-block f:gs-subheading f:rte">
+{{ 'sections.foxify-1715582115lxsYw.f-richtext-1715582096BjSvr-text_html' | t }}</div><h2 id="f-heading-1715582096qZM4Y" class="f:blocks f:heading f-heading-1715582096qZM4Y f:content-block f:gs-heading-1"><span>
+{{ 'sections.foxify-1715582115lxsYw.f-heading-1715582096qZM4Y-text_html' | t }}</span></h2><h2 id="f-heading-1715582096KtdEv" class="f:blocks f:heading f-heading-1715582096KtdEv f:content-block f:gs-caption"><span>
+{{ 'sections.foxify-1715582115lxsYw.f-heading-1715582096KtdEv-text_html' | t }}</span></h2><a id="f-button-17155820966Q89z" class="f:blocks f:button f-button-17155820966Q89z f:gs-outline-button f:btn" href="/collections/the-future-rocks-x-lightbox-jewelry"><span>
+{{ 'sections.foxify-1715582115lxsYw.f-button-17155820966Q89z-button_label_html' | t }}</span></a></div><div id="f-col-17155823775ygb6" class="f:blocks f:col f-col-17155823775ygb6 f:column"><div id="f-lookbook-item-1715582377Wndrm" class="f:blocks f:lookbook-item f-lookbook-item-1715582377Wndrm f-hover--zoom-in">{{ 'foxify-lookbook.css' | asset_url | stylesheet_tag }}<div class="f:lookbook-card"><div class="f:lookbook-card__inner" data-lookbook-inner="true"><div class="f:lookbook-card__image " style="--f-aspect-ratio:1"><f-image class="f:image " style="--f-aspect-ratio:1"><img srcSet="https://cdn.shopify.com/s/files/1/0619/6150/2869/files/LBTFR414.jpg?v=1715573256&width=165 165w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/LBTFR414.jpg?v=1715573256&width=360 360w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/LBTFR414.jpg?v=1715573256&width=533 533w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/LBTFR414.jpg?v=1715573256&width=720 720w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/LBTFR414.jpg?v=1715573256&width=940 940w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/LBTFR414.jpg?v=1715573256&width=1066 1066w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/LBTFR414.jpg?v=1715573256&width=1500 1500w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/LBTFR414.jpg?v=1715573256&width=1780 1780w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/LBTFR414.jpg?v=1715573256&width=2000 2000w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/LBTFR414.jpg?v=1715573256&width=3000 3000w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/LBTFR414.jpg?v=1715573256 3840w" src="//cdn.shopify.com/s/files/1/0619/6150/2869/files/LBTFR414_360x.jpg?v=1715573256" sizes="(min-width: 1200px) 533px, (min-width: 990px) calc((100vw - 130px) / 3), (min-width: 750px) calc((100vw - 120px) / 2), calc((100vw - 35px) / 2)" alt="LBTFR414.jpg" loading="lazy" width="3840" height="3840"/></f-image></div>
+        {% liquid
+          assign product_f-lookbook-item-1715582377Wndrm_0 = all_products['round-brilliant-flatback-earrings']
+        %}
+      <f-lookbook-icon class="f:lookbook-card__annotation" style="top:20%;left:22%" data-lookbook-top="20" data-lookbook-left="22" data-lookbook-index="0"><span class="f:lookbook-card__pin f:lookbook-card__pin--undefined"><svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg></span><div class="f:lookbook-card__product f:flex" data-lookbook-product="true"><div class="f:lookbook-card__product-image f:image--hover-effect relative"><a class="f:full-width-link" href="{{ product_f-lookbook-item-1715582377Wndrm_0.url }}"><span class="f:visually-hidden">{{ product_f-lookbook-item-1715582377Wndrm_0.title }}</span></a><div class="f:image" style="--f-aspect-ratio:1"><img src="{{ product_f-lookbook-item-1715582377Wndrm_0.featured_media | image_url: width: 400 }}" alt="{{ product_f-lookbook-item-1715582377Wndrm_0.featured_media.alt }}" loading="lazy"/></div></div><div class="f:lookbook-card__product-info f:flex-1"><a href="{{ product_f-lookbook-item-1715582377Wndrm_0.url }}" class="f:lookbook-card__product-title">{{ product_f-lookbook-item-1715582377Wndrm_0.title }}</a><div class="f:lookbook-card__product-price">{% render 'foxify-price', product: product_f-lookbook-item-1715582377Wndrm_0 %}</div><a class="f:lookbook-card__product-btn f:gs-link-button" href="{{ product_f-lookbook-item-1715582377Wndrm_0.url }}">{{ translation.products.product.view_full_details }}</a></div></div></f-lookbook-icon>
+        {% liquid
+          assign product_f-lookbook-item-1715582377Wndrm_1 = all_products['joyful-ring']
+        %}
+      <f-lookbook-icon class="f:lookbook-card__annotation" style="top:88%;left:20%" data-lookbook-top="88" data-lookbook-left="20" data-lookbook-index="1"><span class="f:lookbook-card__pin f:lookbook-card__pin--white"><svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg></span><div class="f:lookbook-card__product f:flex" data-lookbook-product="true"><div class="f:lookbook-card__product-image f:image--hover-effect relative"><a class="f:full-width-link" href="{{ product_f-lookbook-item-1715582377Wndrm_1.url }}"><span class="f:visually-hidden">{{ product_f-lookbook-item-1715582377Wndrm_1.title }}</span></a><div class="f:image" style="--f-aspect-ratio:1"><img src="{{ product_f-lookbook-item-1715582377Wndrm_1.featured_media | image_url: width: 400 }}" alt="{{ product_f-lookbook-item-1715582377Wndrm_1.featured_media.alt }}" loading="lazy"/></div></div><div class="f:lookbook-card__product-info f:flex-1"><a href="{{ product_f-lookbook-item-1715582377Wndrm_1.url }}" class="f:lookbook-card__product-title">{{ product_f-lookbook-item-1715582377Wndrm_1.title }}</a><div class="f:lookbook-card__product-price">{% render 'foxify-price', product: product_f-lookbook-item-1715582377Wndrm_1 %}</div><a class="f:lookbook-card__product-btn f:gs-link-button" href="{{ product_f-lookbook-item-1715582377Wndrm_1.url }}">{{ translation.products.product.view_full_details }}</a></div></div></f-lookbook-icon>
+        {% liquid
+          assign product_f-lookbook-item-1715582377Wndrm_2 = all_products['joyful-necklace']
+        %}
+      <f-lookbook-icon class="f:lookbook-card__annotation" style="top:88%;left:62%" data-lookbook-top="88" data-lookbook-left="62" data-lookbook-index="2"><span class="f:lookbook-card__pin f:lookbook-card__pin--white"><svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg></span><div class="f:lookbook-card__product f:flex" data-lookbook-product="true"><div class="f:lookbook-card__product-image f:image--hover-effect relative"><a class="f:full-width-link" href="{{ product_f-lookbook-item-1715582377Wndrm_2.url }}"><span class="f:visually-hidden">{{ product_f-lookbook-item-1715582377Wndrm_2.title }}</span></a><div class="f:image" style="--f-aspect-ratio:1"><img src="{{ product_f-lookbook-item-1715582377Wndrm_2.featured_media | image_url: width: 400 }}" alt="{{ product_f-lookbook-item-1715582377Wndrm_2.featured_media.alt }}" loading="lazy"/></div></div><div class="f:lookbook-card__product-info f:flex-1"><a href="{{ product_f-lookbook-item-1715582377Wndrm_2.url }}" class="f:lookbook-card__product-title">{{ product_f-lookbook-item-1715582377Wndrm_2.title }}</a><div class="f:lookbook-card__product-price">{% render 'foxify-price', product: product_f-lookbook-item-1715582377Wndrm_2 %}</div><a class="f:lookbook-card__product-btn f:gs-link-button" href="{{ product_f-lookbook-item-1715582377Wndrm_2.url }}">{{ translation.products.product.view_full_details }}</a></div></div></f-lookbook-icon></div></div></div></div></div></div></div><div id="f-custom-section-1715582096bLgC7" class="f:sections f:custom-section f-custom-section-1715582096bLgC7"><div class="f:container-full"><div id="f-grid-1715582096bZPdp" class="f:blocks f:grid f-grid-1715582096bZPdp" style="--f-grid-columns-sm:minmax(0, 12fr);--f-grid-columns-md:minmax(0, 12fr);--f-grid-columns-lg:minmax(0, 12fr);--f-grid-columns-xl:minmax(0, 12fr)"><div id="f-col-1715582096DLPjl" class="f:blocks f:col f-col-1715582096DLPjl f:column"><h3 id="f-heading-1715582096xV2VK" class="f:blocks f:heading f-heading-1715582096xV2VK f:content-block f:gs-heading-3" data-animate-trigger="scroll_into_view" data-animate-name="fFadeInLeft"><span>
+{{ 'sections.foxify-1715582115lxsYw.f-heading-1715582096xV2VK-text_html' | t }}</span></h3><div id="f-richtext-1715582096O47RU" class="f:blocks f:richtext f-richtext-1715582096O47RU f:content-block f:gs-caption f:rte" data-animate-trigger="scroll_into_view" data-animate-name="fFadeInLeft">
+{{ 'sections.foxify-1715582115lxsYw.f-richtext-1715582096O47RU-text_html' | t }}</div><a id="f-button-1715582096cnrB4" class="f:blocks f:button f-button-1715582096cnrB4 f:gs-link-button f:btn" href="/collections/best-sellers" data-animate-trigger="scroll_into_view" data-animate-name="fFadeInLeft"><span>
+{{ 'sections.foxify-1715582115lxsYw.f-button-1715582096cnrB4-button_label_html' | t }}</span></a></div></div></div></div><div id="f-featured-collection-1715582096lW4GI" class="f:sections f:featured-collection f-featured-collection-1715582096lW4GI f-featured-collection--custom"><div class="f:container-full">{{ 'foxify-component-product-card.css' | asset_url | stylesheet_tag }}{{ 'foxify-swiper.css' | asset_url | stylesheet_tag }}<div class="f:blocks f:featured-collection-block f-featured-collection-block-1715582096g6sYf" data-animate-trigger="scroll_into_view" data-animate-name="fFadeInLeft">{% liquid 
+          assign collection_f-featured-collection-block-1715582096g6sYf = collections['best-sellers']
+        %}<f-swiper-component id="swiper-f-featured-collection-block-1715582096g6sYf" class="f:swiper f:mobile-hidden" data-swiper-options="{&quot;navigation&quot;:true,&quot;pagination&quot;:true,&quot;autoplay&quot;:false,&quot;paginationType&quot;:&quot;fraction&quot;,&quot;spaceBetween&quot;:20,&quot;slidesPerView&quot;:2,&quot;slidesPerGroup&quot;:2,&quot;loop&quot;:true,&quot;breakpoints&quot;:{&quot;1023&quot;:{&quot;slidesPerView&quot;:3}}}" data-pagination-type="fraction" data-enable-custom-controls="false"><div class="f:swiper-container"><div class="f:swiper-wrapper">{% if collection_f-featured-collection-block-1715582096g6sYf != blank %}{% for product in collection_f-featured-collection-block-1715582096g6sYf.products limit: 24 %}<div class="f:swiper-slide"><div class="f:column">{% render 'foxify-product-card', product: product, card_style: 'inherit', image_ratio: 'inherit', text_align: '' %}</div></div> {% endfor %} {% else %}{% for i in (1..24) %}<div class="f:column">{% render 'foxify-product-card', onboarding: true %}</div>{% endfor %}{% endif %}</div><div class="f:swiper-controls f:swiper-pagination--fraction f:swiper-controls--static f:swiper-navigation--inline"><div class="f:swiper-controls__inner"><div class="f:swiper-button f:swiper-button-prev"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.1875 9H2.8125" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M7.875 3.9375L2.8125 9L7.875 14.0625" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div class="f:swiper-pagination"></div><div class="f:swiper-button f:swiper-button-next"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.8125 9H15.1875" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10.125 3.9375L15.1875 9L10.125 14.0625" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></div></div></div></div></f-swiper-component><div class="f:grid f:grid-null-cols md:f:grid-2-cols xl:f:grid-3-cols f:mobile-swiper md:hidden" style="--f-grid-gap:20px;--f-grid-gap-mobile:15px;--swiper-column-width:66vw">{% if collection_f-featured-collection-block-1715582096g6sYf != blank %}{% for product in collection_f-featured-collection-block-1715582096g6sYf.products limit: 24 %}<div class="f:column">{% render 'foxify-product-card', product: product, card_style: 'inherit', image_ratio: 'inherit', text_align: '' %}</div> {% endfor %} {% else %}{% for i in (1..24) %}<div class="f:column">{% render 'foxify-product-card', onboarding: true %}</div>{% endfor %}{% endif %}</div></div></div></div><div id="f-custom-section-17155820960pEIo" class="f:sections f:custom-section f-custom-section-17155820960pEIo" data-animate-trigger="scroll_into_view" data-animate-name="fFadeInLeft"><div class="f:container-full"><div id="f-grid-1715582096aDVrq" class="f:blocks f:grid f-grid-1715582096aDVrq f:justify-center f:items-center" style="--f-grid-columns-sm:minmax(0, 12fr);--f-grid-columns-md:minmax(0, 7fr) minmax(0, 5fr);--f-grid-columns-lg:minmax(0, 7fr) minmax(0, 5fr);--f-grid-columns-xl:minmax(0, 7fr) minmax(0, 5fr)"><div id="f-col-1715582096Ehdam" class="f:blocks f:col f-col-1715582096Ehdam f:column"><h2 id="f-heading-1715582096CIawc" class="f:blocks f:heading f-heading-1715582096CIawc f:content-block f:gs-heading-2"><span>
+{{ 'sections.foxify-1715582115lxsYw.f-heading-1715582096CIawc-text_html' | t }}</span></h2><div id="f-richtext-17155820966G8r4" class="f:blocks f:richtext f-richtext-17155820966G8r4 f:content-block f:gs-body-text f:rte">
+{{ 'sections.foxify-1715582115lxsYw.f-richtext-17155820966G8r4-text_html' | t }}</div><div id="f-custom-code-17155820965tEiI" class="f:blocks f:custom-code f-custom-code-17155820965tEiI"><style>
+html:not([lang|="en"]) #myDiv-en-form,html:not([lang|="ja"]) #myDiv-ja-form, html:not([lang|="ko"]) #myDiv-ko-form
+    { display: none!important; }
+</style> 
+
+<div lang="en" id="myDiv-en-form">
+<div class="klaviyo-form-TEejKr"></div>
+</div>    
+<div lang="ja" id="myDiv-ja-form">
+<div class="klaviyo-form-W42fJV"></div>
+</div>
+<div lang="ko" id="myDiv-ko-form">
+<div class="klaviyo-form-UYrbhb"></div>
+</div></div></div></div></div></div><div id="f-custom-section-1715582096LOcua" class="f:sections f:custom-section f-custom-section-1715582096LOcua"><div class="f:container-full"><div id="f-grid-17155820963mgdv" class="f:blocks f:grid f-grid-17155820963mgdv f:justify-start f:items-center" style="--f-grid-columns-sm:minmax(0, 8fr) minmax(0, 4fr);--f-grid-columns-md:minmax(0, 6fr) minmax(0, 6fr);--f-grid-columns-lg:minmax(0, 6fr) minmax(0, 6fr);--f-grid-columns-xl:minmax(0, 4fr) minmax(0, 4fr) minmax(0, 4fr)"><div id="f-col-1715582096u1ZGF" class="f:blocks f:col f-col-1715582096u1ZGF f:column" data-animate-trigger="scroll_into_view" data-animate-name="fFadeInUp"><h4 id="f-heading-17155820968UZMg" class="f:blocks f:heading f-heading-17155820968UZMg f:content-block f:gs-1710758126JfBi3"><span>
+{{ 'sections.foxify-1715582115lxsYw.f-heading-17155820968UZMg-text_html' | t }}</span></h4></div><div id="f-col-1715582096qShEv" class="f:blocks f:col f-col-1715582096qShEv f:column" data-animate-trigger="scroll_into_view" data-animate-name="fFadeInUp"><div id="f-menu-block-1715582096tQiQP" class="f:blocks f:menu-block f-menu-block-1715582096tQiQP">{% liquid 
+        assign menu_f-menu-block-1715582096tQiQP = shop.metafields.foxify.menus.value['65f390b92987b2e16718b02b']
+      %}{% if menu_f-menu-block-1715582096tQiQP %}<ul class="f:list-none">{% for item in menu_f-menu-block-1715582096tQiQP %}<li><a href="{{ item.link }}">{{ item.label }}</a></li>{% endfor %}</ul>{% endif %}</div></div></div></div></div><div id="f-blog-posts-1715582096l7JD4" class="f:sections f:blog-posts f-blog-posts-1715582096l7JD4"><div class="f:container-full">{{ 'foxify-component-article-card.css' | asset_url | stylesheet_tag }}<div id="f-blog-posts-block-1715582096BMuq0" class="f:blocks f:blog-posts-block f-blog-posts-block-1715582096BMuq0" data-animate-trigger="scroll_into_view" data-animate-name="fFadeInUp"><div class="f:grid f:grid-1-cols md:f:grid-2-cols xl:f:grid-3-cols f:mobile-swiper" style="--f-grid-gap:20px;--f-grid-gap-mobile:10px;--swiper-column-width:66vw">{% liquid 
+            assign blog = blogs['news']  
+          %}{% if blog != empty %}{% for article in blog.articles limit: 3 %}<div class="f:column">{% render 'foxify-article-card', article: article, blog: blog, card_style: 'inherit', image_ratio: '1:1', text_align: '' %}</div>{% endfor %}{% else %}{% for i in (1..3) %}<div class="f:column">{% render 'foxify-article-card', onboarding: true %}</div>{% endfor %}{% endif %}</div></div></div></div><div id="f-image-cards-1715582096utXKl" class="f:sections f:image-cards f-image-cards-1715582096utXKl" data-animate-trigger="scroll_into_view" data-animate-name="fFadeInUp"><div class="f:container-full"><div class="f:image-cards__wrapper f:image-cards__layout-1 f:mobile-swiper" style="--f-grid-gap:20px;--f-grid-gap-mobile:0px;--swiper-column-width:66vw"><div id="f-image-card-block-1715582096Hmfpv" class="f:blocks f:image-card-block f-image-card-block-1715582096Hmfpv f:animated" data-animate-trigger="page_load" data-animate-name="fFadeInUp">{{ 'foxify-image-card.css' | asset_url | stylesheet_tag }}<div class="f:image-card"><div class="f:image-card__wrapper" style="--f-aspect-ratio:1;--f-aspect-ratio-mobile:1"><div class="f:image-card__inner"><div class="f:image-card__bg f:bg-image"><f-image class="f:image f:bg-image" style="--f-aspect-ratio:1"><img srcSet="https://cdn.shopify.com/s/files/1/0619/6150/2869/files/spiral-earring-242636_png.webp?v=1710751486&width=165 165w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/spiral-earring-242636_png.webp?v=1710751486&width=360 360w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/spiral-earring-242636_png.webp?v=1710751486&width=533 533w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/spiral-earring-242636_png.webp?v=1710751486&width=720 720w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/spiral-earring-242636_png.webp?v=1710751486&width=940 940w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/spiral-earring-242636_png.webp?v=1710751486&width=1066 1066w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/spiral-earring-242636_png.webp?v=1710751486&width=1500 1500w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/spiral-earring-242636_png.webp?v=1710751486&width=1780 1780w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/spiral-earring-242636_png.webp?v=1710751486 1860w" src="//cdn.shopify.com/s/files/1/0619/6150/2869/files/spiral-earring-242636_png_900x.webp?v=1710751486" sizes="100vw" alt="spiral-earring-242636.png.webp" loading="lazy" width="1860" height="1860"/></f-image></div><div class="f:image-card__content-wrapper f:image-card__content--center-bottom f:flex f:inset-full"><div class="f:image-card__content"><a id="f-button-1715582096xOTDq" class="f:blocks f:button f-button-1715582096xOTDq f:gs-outline-button f:btn" href="/collections/earrings"><span>
+{{ 'sections.foxify-1715582115lxsYw.f-button-1715582096xOTDq-button_label_html' | t }}</span></a></div></div></div></div></div></div><div id="f-image-card-block-1715582096bqa6v" class="f:blocks f:image-card-block f-image-card-block-1715582096bqa6v f:animated" data-animate-trigger="page_load" data-animate-name="fFadeInUp">{{ 'foxify-image-card.css' | asset_url | stylesheet_tag }}<div class="f:image-card"><div class="f:image-card__wrapper" style="--f-aspect-ratio:1;--f-aspect-ratio-mobile:1"><div class="f:image-card__inner"><div class="f:image-card__bg f:bg-image"><f-image class="f:image f:bg-image" style="--f-aspect-ratio:1"><img srcSet="https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Necklace3diamondTranspar_resize_a6f42e4c-e880-4a88-8267-e598d30e8360.png?v=1710491983&width=165 165w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Necklace3diamondTranspar_resize_a6f42e4c-e880-4a88-8267-e598d30e8360.png?v=1710491983&width=360 360w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Necklace3diamondTranspar_resize_a6f42e4c-e880-4a88-8267-e598d30e8360.png?v=1710491983&width=533 533w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Necklace3diamondTranspar_resize_a6f42e4c-e880-4a88-8267-e598d30e8360.png?v=1710491983&width=720 720w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Necklace3diamondTranspar_resize_a6f42e4c-e880-4a88-8267-e598d30e8360.png?v=1710491983&width=940 940w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Necklace3diamondTranspar_resize_a6f42e4c-e880-4a88-8267-e598d30e8360.png?v=1710491983&width=1066 1066w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Necklace3diamondTranspar_resize_a6f42e4c-e880-4a88-8267-e598d30e8360.png?v=1710491983&width=1500 1500w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Necklace3diamondTranspar_resize_a6f42e4c-e880-4a88-8267-e598d30e8360.png?v=1710491983&width=1780 1780w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Necklace3diamondTranspar_resize_a6f42e4c-e880-4a88-8267-e598d30e8360.png?v=1710491983 1860w" src="//cdn.shopify.com/s/files/1/0619/6150/2869/files/Necklace3diamondTranspar_resize_a6f42e4c-e880-4a88-8267-e598d30e8360_900x.png?v=1710491983" sizes="100vw" alt="Necklace3diamondTranspar_resize.png" loading="lazy" width="1860" height="1860"/></f-image></div><div class="f:image-card__content-wrapper f:image-card__content--center-bottom f:flex f:inset-full"><div class="f:image-card__content"><a id="f-button-1715582096GP6B4" class="f:blocks f:button f-button-1715582096GP6B4 f:gs-outline-button f:btn" href="/collections/necklaces"><span>
+{{ 'sections.foxify-1715582115lxsYw.f-button-1715582096GP6B4-button_label_html' | t }}</span></a></div></div></div></div></div></div><div id="f-image-card-block-17155820969sKJV" class="f:blocks f:image-card-block f-image-card-block-17155820969sKJV f:animated" data-animate-trigger="page_load" data-animate-name="fFadeInRight">{{ 'foxify-image-card.css' | asset_url | stylesheet_tag }}<div class="f:image-card"><div class="f:image-card__wrapper" style="--f-aspect-ratio:1;--f-aspect-ratio-mobile:1"><div class="f:image-card__inner"><div class="f:image-card__bg f:bg-image"><f-image class="f:image f:bg-image" style="--f-aspect-ratio:1"><img srcSet="https://cdn.shopify.com/s/files/1/0619/6150/2869/files/the-ring-125764_png.webp?v=1710492580&width=165 165w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/the-ring-125764_png.webp?v=1710492580&width=360 360w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/the-ring-125764_png.webp?v=1710492580&width=533 533w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/the-ring-125764_png.webp?v=1710492580&width=720 720w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/the-ring-125764_png.webp?v=1710492580&width=940 940w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/the-ring-125764_png.webp?v=1710492580&width=1066 1066w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/the-ring-125764_png.webp?v=1710492580&width=1500 1500w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/the-ring-125764_png.webp?v=1710492580 1540w" src="//cdn.shopify.com/s/files/1/0619/6150/2869/files/the-ring-125764_png_900x.webp?v=1710492580" sizes="100vw" alt="the-ring-125764.png.webp" loading="lazy" width="1540" height="1540"/></f-image></div><div class="f:image-card__content-wrapper f:image-card__content--center-bottom f:flex f:inset-full"><div class="f:image-card__content"><a id="f-button-1715582096rLPMk" class="f:blocks f:button f-button-1715582096rLPMk f:gs-outline-button f:btn" href="/collections/rings"><span>
+{{ 'sections.foxify-1715582115lxsYw.f-button-1715582096rLPMk-button_label_html' | t }}</span></a></div></div></div></div></div></div><div id="f-image-card-block-1715582096claCx" class="f:blocks f:image-card-block f-image-card-block-1715582096claCx f:animated" data-animate-trigger="page_load" data-animate-name="fFadeInRight">{{ 'foxify-image-card.css' | asset_url | stylesheet_tag }}<div class="f:image-card"><div class="f:image-card__wrapper" style="--f-aspect-ratio:1;--f-aspect-ratio-mobile:1"><div class="f:image-card__inner"><div class="f:image-card__bg f:bg-image"><f-image class="f:image f:bg-image" style="--f-aspect-ratio:1"><img srcSet="https://cdn.shopify.com/s/files/1/0619/6150/2869/files/sunray-pendant-986347_png.webp?v=1710492631&width=165 165w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/sunray-pendant-986347_png.webp?v=1710492631&width=360 360w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/sunray-pendant-986347_png.webp?v=1710492631&width=533 533w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/sunray-pendant-986347_png.webp?v=1710492631&width=720 720w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/sunray-pendant-986347_png.webp?v=1710492631&width=940 940w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/sunray-pendant-986347_png.webp?v=1710492631&width=1066 1066w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/sunray-pendant-986347_png.webp?v=1710492631&width=1500 1500w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/sunray-pendant-986347_png.webp?v=1710492631 1540w" src="//cdn.shopify.com/s/files/1/0619/6150/2869/files/sunray-pendant-986347_png_900x.webp?v=1710492631" sizes="100vw" alt="sunray-pendant-986347.png.webp" loading="lazy" width="1540" height="1540"/></f-image></div><div class="f:image-card__content-wrapper f:image-card__content--center-bottom f:flex f:inset-full"><div class="f:image-card__content"><a id="f-button-1715582096ff9AN" class="f:blocks f:button f-button-1715582096ff9AN f:gs-outline-button f:btn" href="/collections/charms"><span>
+{{ 'sections.foxify-1715582115lxsYw.f-button-1715582096ff9AN-button_label_html' | t }}</span></a></div></div></div></div></div></div><div id="f-image-card-block-1715582096LRZfH" class="f:blocks f:image-card-block f-image-card-block-1715582096LRZfH f:animated" data-animate-trigger="page_load" data-animate-name="fFadeInRight">{{ 'foxify-image-card.css' | asset_url | stylesheet_tag }}<div class="f:image-card"><div class="f:image-card__wrapper" style="--f-aspect-ratio:1;--f-aspect-ratio-mobile:1"><div class="f:image-card__inner"><div class="f:image-card__bg f:bg-image"><f-image class="f:image f:bg-image" style="--f-aspect-ratio:1"><img srcSet="https://cdn.shopify.com/s/files/1/0619/6150/2869/files/eternity-green-enamel-bangle-386325_7a056ebb-f5cf-4c4e-a079-10944fd77e19.png?v=1710549569&width=165 165w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/eternity-green-enamel-bangle-386325_7a056ebb-f5cf-4c4e-a079-10944fd77e19.png?v=1710549569&width=360 360w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/eternity-green-enamel-bangle-386325_7a056ebb-f5cf-4c4e-a079-10944fd77e19.png?v=1710549569&width=533 533w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/eternity-green-enamel-bangle-386325_7a056ebb-f5cf-4c4e-a079-10944fd77e19.png?v=1710549569&width=720 720w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/eternity-green-enamel-bangle-386325_7a056ebb-f5cf-4c4e-a079-10944fd77e19.png?v=1710549569&width=940 940w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/eternity-green-enamel-bangle-386325_7a056ebb-f5cf-4c4e-a079-10944fd77e19.png?v=1710549569&width=1066 1066w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/eternity-green-enamel-bangle-386325_7a056ebb-f5cf-4c4e-a079-10944fd77e19.png?v=1710549569 1280w" src="//cdn.shopify.com/s/files/1/0619/6150/2869/files/eternity-green-enamel-bangle-386325_7a056ebb-f5cf-4c4e-a079-10944fd77e19_900x.png?v=1710549569" sizes="100vw" alt="eternity-green-enamel-bangle-386325.png" loading="lazy" width="1280" height="1280"/></f-image></div><div class="f:image-card__content-wrapper f:image-card__content--center-bottom f:flex f:inset-full"><div class="f:image-card__content"><a id="f-button-1715582096J3tqz" class="f:blocks f:button f-button-1715582096J3tqz f:gs-outline-button f:btn" href="/collections/bracelets"><span>
+{{ 'sections.foxify-1715582115lxsYw.f-button-1715582096J3tqz-button_label_html' | t }}</span></a></div></div></div></div></div></div></div></div></div><div id="f-multicolumn-1715582096q7W5N" class="f:sections f:multicolumn f-multicolumn-1715582096q7W5N"><div class="f:container-full">{{ 'foxify-multicolumn.css' | asset_url | stylesheet_tag }}<div id="f-multicolumn-items-1715582096xDLLE" class="f:blocks f:multicolumn-items f-multicolumn-items-1715582096xDLLE f:grid f:grid-2-cols md:f:grid-2-cols lg:f:grid-3-cols f:multicolumn-items--horizontal f:multicolumn-items--vertical-top" style="--f-grid-gap:30px;--f-grid-gap-mobile:15px;--swiper-column-width:66vw"><div id="f-multicolumn-block-1715582096a3VkA" class="f:column f:blocks f:multicolumn-block f-multicolumn-block-1715582096a3VkA" style="--blocks-count:3" data-animate-trigger="scroll_into_view" data-animate-name="fFadeInLeft"><div id="f-image-1715582096jdqn9" class="f:blocks f-image-1715582096jdqn9 f:multicolumn__image f:image-block"><f-image class="f:image " style="--f-aspect-ratio:1"><img srcSet="https://cdn.shopify.com/s/files/1/0619/6150/2869/files/redeem_FILL0_wght400_GRAD0_opsz24_7a59ddc6-207e-4c4d-a6ef-c765166eb6a8.svg?v=1710547405 24w" src="//cdn.shopify.com/s/files/1/0619/6150/2869/files/redeem_FILL0_wght400_GRAD0_opsz24_7a59ddc6-207e-4c4d-a6ef-c765166eb6a8_360x.svg?v=1710547405" sizes="(min-width: 1200px) 533px, (min-width: 990px) calc((100vw - 130px) / 3), (min-width: 750px) calc((100vw - 120px) / 2), calc((100vw - 35px) / 2)" alt="redeem_FILL0_wght400_GRAD0_opsz24.svg" loading="lazy" width="24" height="24"/></f-image></div><a id="f-button-1715582096slxCX" class="f:blocks f:button f-button-1715582096slxCX f:gs-link-button f:btn" href="/pages/member-perks"><span>
+{{ 'sections.foxify-1715582115lxsYw.f-button-1715582096slxCX-button_label_html' | t }}</span></a><div id="f-richtext-1715582096kZf0T" class="f:blocks f:richtext f-richtext-1715582096kZf0T f:content-block f:gs-body-text f:rte">
+{{ 'sections.foxify-1715582115lxsYw.f-richtext-1715582096kZf0T-text_html' | t }}</div></div><div id="f-multicolumn-block-1715582096xgaA0" class="f:column f:blocks f:multicolumn-block f-multicolumn-block-1715582096xgaA0" style="--blocks-count:3" data-animate-trigger="scroll_into_view" data-animate-name="fFadeInLeft"><div id="f-image-1715582096qKHpX" class="f:blocks f-image-1715582096qKHpX f:multicolumn__image f:image-block"><f-image class="f:image " style="--f-aspect-ratio:1"><img srcSet="https://cdn.shopify.com/s/files/1/0619/6150/2869/files/package_2_FILL0_wght400_GRAD0_opsz24.svg?v=1710547030 24w" src="//cdn.shopify.com/s/files/1/0619/6150/2869/files/package_2_FILL0_wght400_GRAD0_opsz24_360x.svg?v=1710547030" sizes="(min-width: 1200px) 533px, (min-width: 990px) calc((100vw - 130px) / 3), (min-width: 750px) calc((100vw - 120px) / 2), calc((100vw - 35px) / 2)" alt="package_2_FILL0_wght400_GRAD0_opsz24.svg" loading="lazy" width="24" height="24"/></f-image></div><a id="f-button-1715582096pjqtA" class="f:blocks f:button f-button-1715582096pjqtA f:gs-link-button f:btn" href="/pages/faq"><span>
+{{ 'sections.foxify-1715582115lxsYw.f-button-1715582096pjqtA-button_label_html' | t }}</span></a><div id="f-richtext-1715582096A15g4" class="f:blocks f:richtext f-richtext-1715582096A15g4 f:content-block f:gs-body-text f:rte">
+{{ 'sections.foxify-1715582115lxsYw.f-richtext-1715582096A15g4-text_html' | t }}</div></div><div id="f-multicolumn-block-17155820965U2tO" class="f:column f:blocks f:multicolumn-block f-multicolumn-block-17155820965U2tO" style="--blocks-count:3" data-animate-trigger="scroll_into_view" data-animate-name="fFadeInLeft"><div id="f-image-1715582096BcpAX" class="f:blocks f-image-1715582096BcpAX f:multicolumn__image f:image-block"><f-image class="f:image " style="--f-aspect-ratio:1"><img srcSet="https://cdn.shopify.com/s/files/1/0619/6150/2869/files/currency_exchange_FILL0_wght400_GRAD0_opsz24.svg?v=1710547078 24w" src="//cdn.shopify.com/s/files/1/0619/6150/2869/files/currency_exchange_FILL0_wght400_GRAD0_opsz24_360x.svg?v=1710547078" sizes="(min-width: 1200px) 533px, (min-width: 990px) calc((100vw - 130px) / 3), (min-width: 750px) calc((100vw - 120px) / 2), calc((100vw - 35px) / 2)" alt="currency_exchange_FILL0_wght400_GRAD0_opsz24.svg" loading="lazy" width="24" height="24"/></f-image></div><a id="f-button-1715582096S4vKo" class="f:blocks f:button f-button-1715582096S4vKo f:gs-link-button f:btn" href="/pages/faq"><span>
+{{ 'sections.foxify-1715582115lxsYw.f-button-1715582096S4vKo-button_label_html' | t }}</span></a><div id="f-richtext-1715582096nG1qo" class="f:blocks f:richtext f-richtext-1715582096nG1qo f:content-block f:gs-body-text f:rte">
+{{ 'sections.foxify-1715582115lxsYw.f-richtext-1715582096nG1qo-text_html' | t }}</div></div></div></div></div>
+{% liquid
+        assign theme_settings = shop.metafields.foxify.theme_settings.value
+        assign customCodeBody = theme_settings.customCodeBody
+        echo customCodeBody
+      %}
+
+</div>
+    {% schema %}
+        {
+            "name": "Foxify main content",
+            "class": "foxify-main f-app",
+            "settings": [
+                {
+                "type": "header",
+                "content": "Customize section",
+                "info": "Go to [Foxify app](https://app.foxify.io/editor?id=1715582115lxsYw&type=HOMEPAGE) to edit this section."
+                }
+            ],
+            "locales": {
+  "en": {
+    "f-richtext-1715582096IJmVO-text_html": "NEW",
+    "f-heading-1715582096TmqQ3-text_html": "Explore Unsaid",
+    "f-heading-1715582096ItHY4-text_html": "Bringing a sense of brilliance to any lifestyle.",
+    "f-button-171558209603rla-button_label_html": "Shop now",
+    "f-heading-1715582096PDwlV-text_html": "feature",
+    "f-richtext-1715582096CzQuB-text_html": "Stay ahead in style with our latest features",
+    "f-button-1715582096iSAib-button_label_html": "see all",
+    "f-richtext-1715582096BjSvr-text_html": "An essential collaboration",
+    "f-heading-1715582096qZM4Y-text_html": "The Future Rocks x Lightbox Jewelry",
+    "f-heading-1715582096KtdEv-text_html": "Joyful symphony of colors",
+    "f-button-17155820966Q89z-button_label_html": "Shop now",
+    "f-heading-1715582096xV2VK-text_html": "bestseller",
+    "f-richtext-1715582096O47RU-text_html": "From accent accessories to statement jewels – these are the most-wanted pieces enjoyed by our members",
+    "f-button-1715582096cnrB4-button_label_html": "see all",
+    "f-richtext-1715582096ApVKa-text_html": "NEW",
+    "f-heading-1715582096qU34P-text_html": "THE RING II",
+    "f-heading-171558209616OqW-text_html": "Meticulously crafted to the highest standards of quality.",
+    "f-button-1715582096mSbbt-button_label_html": "take a look",
+    "f-heading-1715582096CIawc-text_html": "Enjoy 10% off",
+    "f-richtext-17155820966G8r4-text_html": "Sign up to get 10% off your first order and be the first to hear about pre-orders, members-only promotions, and sneak peeks.",
+    "f-heading-17155820968UZMg-text_html": "journal",
+    "f-button-1715582096xOTDq-button_label_html": "earrings",
+    "f-button-1715582096GP6B4-button_label_html": "necklaces",
+    "f-button-1715582096rLPMk-button_label_html": "rings",
+    "f-button-1715582096ff9AN-button_label_html": "pendants",
+    "f-button-1715582096J3tqz-button_label_html": "bracelets",
+    "f-button-1715582096slxCX-button_label_html": "member perks",
+    "f-richtext-1715582096kZf0T-text_html": "<p>Exclusive members-only privileges</p>",
+    "f-button-1715582096pjqtA-button_label_html": "free shipping",
+    "f-richtext-1715582096A15g4-text_html": "<p>Free Shipping for orders over USD 300</p>",
+    "f-button-1715582096S4vKo-button_label_html": "easy return",
+    "f-richtext-1715582096nG1qo-text_html": "<p>Within 14 days of receipt of shipment</p>",
+    "f-richtext-1716864352vRvhT-text_html": "new",
+    "f-heading-17168643561WcNk-text_html": "Discover Maren",
+    "f-richtext-1716864359YU1Oj-text_html": "Glam up with Maren",
+    "f-button-1716864363U8X1B-button_label_html": "Take a look",
+    "f-richtext-1717402256yNXNL-text_html": "<p>summer code is here</p>",
+    "f-heading-1717402256qVyge-text_html": "summer 50",
+    "f-richtext-17174027480Og2r-text_html": "<p>Step up your style game this summer!</p>",
+    "f-countdown-171740225658ObT-day_label_html": "Days",
+    "f-countdown-171740225658ObT-hour_label_html": "Hrs",
+    "f-countdown-171740225658ObT-min_label_html": "Mins",
+    "f-countdown-171740225658ObT-sec_label_html": "Secs",
+    "f-button-1717402256kfdTy-button_label_html": "Shop now"
+  }
+}
+        }
+    {% endschema %}
+  

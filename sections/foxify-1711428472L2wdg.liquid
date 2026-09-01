@@ -1,0 +1,226 @@
+    {% liquid
+        assign locales = shop.metafields.foxify.locales.value
+        assign current_locale = request.locale.iso_code
+        assign primary_locale = current_locale
+        for locale in shop.published_locales
+        if locale.primary
+            assign primary_locale = locale.iso_code
+            break
+        endif
+        endfor
+        assign translation = locales[current_locale] | default: locales[primary_locale]
+    %}
+    <script>
+        window.Foxify = window.Foxify || {}
+        Foxify.ThemeStyles = {
+            product: "https:{{ 'foxify-product.css' | asset_url }}",
+            swiper: "https:{{ 'foxify-swiper.css' | asset_url }}",
+        }
+
+        Foxify.ThemeScripts = {
+            productModel: "https:{{ 'foxify-product-model.js' | asset_url }}",
+            productMedia: "https:{{ 'foxify-media-gallery.js' | asset_url }}",
+            variantPicker: "https:{{ 'foxify-variant-picker.js' | asset_url }}"
+        }
+
+        Foxify.pageId = '1711428472L2wdg'
+        Foxify.default = false
+    </script>
+    <div class="f-app f:content">
+<style data-foxify-editor="foxify-custom-fonts">
+  @font-face {
+    font-family: BrownProTT-Regular-1707112782cX7wj;
+    src: url('https://cdn.shopify.com/s/files/1/0619/6150/2869/files/BrownProTT-Regular.ttf?v=1707112779');
+  }
+  </style>
+{{ 'foxify-1711428472L2wdg.css' | asset_url | stylesheet_tag }}
+<style>x-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: left;
+}
+
+h-animate {
+  text-align: left;
+  transform: scale(0.94);
+  animation: scale 3s forwards cubic-bezier(0.5, 1, 0.89, 1);
+}
+@keyframes scale {
+  100% {
+    transform: scale(1);
+  }
+}
+
+span {
+  display: inline-block;
+  opacity: 0;
+  filter: blur(4px);
+}
+
+span:nth-child(1) {
+  animation: fade-in 0.8s 0.1s forwards cubic-bezier(0.11, 0, 0.5, 0);
+}
+
+span:nth-child(2) {
+  animation: fade-in 0.8s 0.2s forwards cubic-bezier(0.11, 0, 0.5, 0);
+}
+
+span:nth-child(3) {
+  animation: fade-in 0.8s 0.3s forwards cubic-bezier(0.11, 0, 0.5, 0);
+}
+
+span:nth-child(4) {
+  animation: fade-in 0.8s 0.4s forwards cubic-bezier(0.11, 0, 0.5, 0);
+}
+
+span:nth-child(5) {
+  animation: fade-in 0.8s 0.5s forwards cubic-bezier(0.11, 0, 0.5, 0);
+}
+
+span:nth-child(6) {
+  animation: fade-in 0.8s 0.6s forwards cubic-bezier(0.11, 0, 0.5, 0);
+}
+
+span:nth-child(7) {
+  animation: fade-in 0.8s 0.7s forwards cubic-bezier(0.11, 0, 0.5, 0);
+}
+
+span:nth-child(8) {
+  animation: fade-in 0.8s 0.8s forwards cubic-bezier(0.11, 0, 0.5, 0);
+}
+
+span:nth-child(9) {
+  animation: fade-in 0.8s 0.9s forwards cubic-bezier(0.11, 0, 0.5, 0);
+}
+
+span:nth-child(10) {
+  animation: fade-in 0.8s 1s forwards cubic-bezier(0.11, 0, 0.5, 0);
+}
+
+span:nth-child(11) {
+  animation: fade-in 0.8s 1.1s forwards cubic-bezier(0.11, 0, 0.5, 0);
+}
+
+span:nth-child(12) {
+  animation: fade-in 0.8s 1.2s forwards cubic-bezier(0.11, 0, 0.5, 0);
+}
+
+span:nth-child(13) {
+  animation: fade-in 0.8s 1.3s forwards cubic-bezier(0.11, 0, 0.5, 0);
+}
+
+span:nth-child(14) {
+  animation: fade-in 0.8s 1.4s forwards cubic-bezier(0.11, 0, 0.5, 0);
+}
+
+span:nth-child(15) {
+  animation: fade-in 0.8s 1.5s forwards cubic-bezier(0.11, 0, 0.5, 0);
+}
+
+span:nth-child(16) {
+  animation: fade-in 0.8s 1.6s forwards cubic-bezier(0.11, 0, 0.5, 0);
+}
+
+span:nth-child(17) {
+  animation: fade-in 0.8s 1.7s forwards cubic-bezier(0.11, 0, 0.5, 0);
+}
+
+span:nth-child(18) {
+  animation: fade-in 0.8s 1.8s forwards cubic-bezier(0.11, 0, 0.5, 0);
+}
+
+@keyframes fade-in {
+  100% {
+    opacity: 1;
+    filter: blur(0);
+  }
+}</style>
+<div id="f-custom-code-1711428481CWfCk" class="f:blocks f:custom-code f-custom-code-1711428481CWfCk"><style>
+html:not([lang|="en"]) #myDiv-en-form,html:not([lang|="ja"]) #myDiv-ja-form, html:not([lang|="ko"]) #myDiv-ko-form
+    { display: none!important; }
+</style> 
+
+<div lang="en" id="myDiv-en-form">
+<x-body>
+  <h-animate>
+  <span>THE</span>
+  <span>FUTURE</span>
+  <span>ROCKS</span>
+  <span>is</span>
+  <span>a</span>
+  <span>global</span>
+  <span>marketplace</span>
+  <span>for</span>
+  <span>jewelry</span>
+  <span>made</span>
+  <span>with</span>
+  <span>lab-grown</span>
+  <span>diamonds</span>
+  <span>and</span>
+  <span>gemstones.</span>
+</h-animate>
+</x-body>
+</div>    
+<div lang="ja" id="myDiv-ja-form">
+<x-body>
+  <h-animate>
+  <span>ザ・フューチャーロックスは</span>
+  <span>ラボグロウン</span>
+  <span>ダイヤモンド</span>
+  <span>と</span>
+  <span>ジェムストーン</span>
+  <span>を使用した</span>
+  <span>ジュエリーの</span>
+  <span>グローバル・</span>
+  <span>マーケットプレイス</span>
+  <span>です。</span>
+</h-animate>
+</x-body>
+</div>
+<div lang="ko" id="myDiv-ko-form">
+<x-body>
+  <h-animate>
+  <span>THE</span>
+  <span>FUTURE</span>
+  <span>ROCKS</span>
+  <span>is</span>
+  <span>a</span>
+  <span>global</span>
+  <span>marketplace</span>
+  <span>for</span>
+  <span>jewelry</span>
+  <span>made</span>
+  <span>with</span>
+  <span>lab-grown</span>
+  <span>diamonds</span>
+  <span>and</span>
+  <span>gemstones.</span>
+</h-animate>
+</x-body>
+</div>
+</div>
+{% liquid
+        assign theme_settings = shop.metafields.foxify.theme_settings.value
+        assign customCodeBody = theme_settings.customCodeBody
+        echo customCodeBody
+      %}
+
+</div>
+    {% schema %}
+        {
+            "name": "Foxify main content",
+            "class": "foxify-main f-app",
+            "settings": [
+                {
+                "type": "header",
+                "content": "Customize section",
+                "info": "Go to [Foxify app](https://app.foxify.io/editor?id=1711428472L2wdg&type=SECTION) to edit this section."
+                }
+            ],
+            "locales": {
+  "en": {}
+}
+        }
+    {% endschema %}
+  

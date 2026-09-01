@@ -1,0 +1,41 @@
+{% style %}
+  #content {
+    min-height: 100vh;
+  }
+  #loading{position: fixed;top: 0;left: 0;width: 100vw !important;background: white;z-index: 99999;height: 100vh !important;}
+{% endstyle %}
+{% if request.path == "/collections/future-forward-jewelry" %}
+  <link rel="preload" as="image" href="https://cdn.shopify.com/s/files/1/0619/6150/2869/files/V2RIng1346-2_efe813ac-86d3-41a0-afca-92f8fbbf7d0e_900x.jpg?v=1726530608" />
+{% endif %}
+<script>
+  /* gtm fix */
+  var _lt = function(){}
+  var ytag = function(){}
+</script>
+{% comment %}
+  <script>
+    /* add rum logger */
+  (function () {
+    var script = document.createElement('script');
+    script.src = 'https://unpkg.com/web-vitals@4/dist/web-vitals.iife.js';
+    function tptSendReport(e) {
+        /* Log the Real user result */
+      if (e && (e.rating ==='poor')) {
+        fetch("https://tapitaio.pwa-commerce.com/pb/rumlog.php", {
+          method: "POST",
+          body: JSON.stringify({ url: window.location.href, user_agent: navigator.userAgent, inner_width: window.innerWidth, poor: e }),
+          headers: {
+            "Content-type": "application/json; charset=UTF-8"
+          }
+        });
+      }
+        window.tptSentReport = true;
+    }
+    script.onload = function () {
+       webVitals.onLCP(function(e){console.log(e);window.tptLCP = e;tptSendReport(e);});
+      //webVitals.onINP(function(e){console.log(e);window.tptINP = e;tptSendReport(e);});
+    };
+    document.head.appendChild(script);
+  })();
+  </script>
+{% endcomment %}

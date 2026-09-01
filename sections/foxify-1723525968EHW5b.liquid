@@ -1,0 +1,111 @@
+    {% liquid
+        assign locales = shop.metafields.foxify.locales.value
+        assign current_locale = request.locale.iso_code
+        assign primary_locale = current_locale
+        for locale in shop.published_locales
+        if locale.primary
+            assign primary_locale = locale.iso_code
+            break
+        endif
+        endfor
+        assign translation = locales[current_locale] | default: locales[primary_locale]
+    %}
+    <script>
+        window.Foxify = window.Foxify || {}
+        Foxify.ThemeStyles = {
+            product: "https:{{ 'foxify-product.css' | asset_url }}",
+            swiper: "https:{{ 'foxify-swiper.css' | asset_url }}",
+        }
+
+        Foxify.ThemeScripts = {
+            productModel: "https:{{ 'foxify-product-model.js' | asset_url }}",
+            productMedia: "https:{{ 'foxify-media-gallery.js' | asset_url }}",
+            variantPicker: "https:{{ 'foxify-variant-picker.js' | asset_url }}"
+        }
+
+        Foxify.pageId = '1723525968EHW5b'
+        Foxify.default = false
+    </script>
+    <div class="f-app f:content">
+<style data-foxify-editor="foxify-custom-fonts">
+  @font-face {
+    font-family: BrownProTT-Bold-17071127825LR9n;
+    src: url('https://cdn.shopify.com/s/files/1/0619/6150/2869/files/BrownProTT-Bold.ttf?v=1707112779');
+  }
+  
+  @font-face {
+    font-family: BrownProTT-Regular-1707112782cX7wj;
+    src: url('https://cdn.shopify.com/s/files/1/0619/6150/2869/files/BrownProTT-Regular.ttf?v=1707112779');
+  }
+  </style>
+{{ 'foxify-1723525968EHW5b.css' | asset_url | stylesheet_tag }}
+<style>@media (min-width: 768px) {
+.f-app .f-block-1721628052KsItY {
+    background: #f8f8f8;
+    transition: all 4s ease-in-out;
+  }
+  .f-app .f-block-1721628052KsItY:hover {
+    background: #FDE9EA;
+    transition: all 2s ease-in-out;
+  }
+  .f-app .f-block-1721628085Q51kL {
+    background: #f8f8f8;
+    transition: all 4s ease-in-out;
+  }
+  .f-app .f-block-1721628085Q51kL:hover {
+    background: #FDE9EA;
+    transition: all 2s ease-in-out;
+  }
+}
+@media (max-width: 767.9px) {
+.f-app .f-block-1721892662r0Dhn {
+    background: #f8f8f8;
+    transition: all 4s ease-in-out;
+  }
+  .f-app .f-block-17218926625VAkN {
+    background: #f8f8f8;
+    transition: all 4s ease-in-out;
+  }
+}</style>
+<div id="necklace-anchor" class="f:sections f:custom-section f-custom-section-1721626038G0s9t"><div class="f:container-full"><div id="f-grid-1721626038tq6SQ" class="f:blocks f:grid f-grid-1721626038tq6SQ f:mobile-hidden f:tablet-hidden" style="--f-grid-columns-sm:minmax(0, 12fr);--f-grid-columns-md:minmax(0, 6fr) minmax(0, 6fr);--f-grid-columns-lg:minmax(0, 6fr) minmax(0, 6fr);--f-grid-columns-xl:minmax(0, 6fr) minmax(0, 6fr)"><div id="f-col-1721626038Y24SA" class="f:blocks f:col f-col-1721626038Y24SA f:column"><div id="f-block-1721628052KsItY" class="f:blocks f:block f-block-1721628052KsItY f:block"><h3 id="f-heading-1721628061QtNEL" class="f:blocks f:heading f-heading-1721628061QtNEL f:content-block f:gs-mega-title"><span>
+{{ 'sections.foxify-1723525968EHW5b.f-heading-1721628061QtNEL-text_html' | t }}</span></h3><div id="f-richtext-1721628064IOTcg" class="f:blocks f:richtext f-richtext-1721628064IOTcg f:content-block f:gs-caption f:rte">
+{{ 'sections.foxify-1723525968EHW5b.f-richtext-1721628064IOTcg-text_html' | t }}</div></div><div id="f-image-1721626102j4S6B" class="f:blocks f-image-1721626102j4S6B f:custom-section__image f:image-block"><f-image class="f:image " style="--f-aspect-ratio:0.6668335419274093"><img srcSet="https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Creative_Still_-_Ring_Extension_28422_-_Shopify_Max_model_shot_only_db81fcc2-a863-4353-9cec-27624ea8fbd4.jpg?v=1723538153&width=165 165w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Creative_Still_-_Ring_Extension_28422_-_Shopify_Max_model_shot_only_db81fcc2-a863-4353-9cec-27624ea8fbd4.jpg?v=1723538153&width=360 360w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Creative_Still_-_Ring_Extension_28422_-_Shopify_Max_model_shot_only_db81fcc2-a863-4353-9cec-27624ea8fbd4.jpg?v=1723538153&width=533 533w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Creative_Still_-_Ring_Extension_28422_-_Shopify_Max_model_shot_only_db81fcc2-a863-4353-9cec-27624ea8fbd4.jpg?v=1723538153&width=720 720w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Creative_Still_-_Ring_Extension_28422_-_Shopify_Max_model_shot_only_db81fcc2-a863-4353-9cec-27624ea8fbd4.jpg?v=1723538153&width=940 940w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Creative_Still_-_Ring_Extension_28422_-_Shopify_Max_model_shot_only_db81fcc2-a863-4353-9cec-27624ea8fbd4.jpg?v=1723538153&width=1066 1066w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Creative_Still_-_Ring_Extension_28422_-_Shopify_Max_model_shot_only_db81fcc2-a863-4353-9cec-27624ea8fbd4.jpg?v=1723538153&width=1500 1500w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Creative_Still_-_Ring_Extension_28422_-_Shopify_Max_model_shot_only_db81fcc2-a863-4353-9cec-27624ea8fbd4.jpg?v=1723538153&width=1780 1780w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Creative_Still_-_Ring_Extension_28422_-_Shopify_Max_model_shot_only_db81fcc2-a863-4353-9cec-27624ea8fbd4.jpg?v=1723538153&width=2000 2000w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Creative_Still_-_Ring_Extension_28422_-_Shopify_Max_model_shot_only_db81fcc2-a863-4353-9cec-27624ea8fbd4.jpg?v=1723538153 2664w" src="//cdn.shopify.com/s/files/1/0619/6150/2869/files/Creative_Still_-_Ring_Extension_28422_-_Shopify_Max_model_shot_only_db81fcc2-a863-4353-9cec-27624ea8fbd4_360x.jpg?v=1723538153" sizes="(min-width: 1200px) 533px, (min-width: 990px) calc((100vw - 130px) / 3), (min-width: 750px) calc((100vw - 120px) / 2), calc((100vw - 35px) / 2)" alt="Creative Still - Ring Extension_28422 - Shopify Max (model shot only).jpg" loading="lazy" width="2664" height="3995"/></f-image></div></div><div id="f-col-1721626038xgGNB" class="f:blocks f:col f-col-1721626038xgGNB f:column"><div id="f-image-1721626106pNNCL" class="f:blocks f-image-1721626106pNNCL f:custom-section__image f:image-block"><f-image class="f:image " style="--f-aspect-ratio:0.6669941060903732"><img srcSet="https://cdn.shopify.com/s/files/1/0619/6150/2869/files/The_Necklace_1_-_Shopify_Max_model_shot_only.jpg?v=1723527458&width=165 165w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/The_Necklace_1_-_Shopify_Max_model_shot_only.jpg?v=1723527458&width=360 360w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/The_Necklace_1_-_Shopify_Max_model_shot_only.jpg?v=1723527458&width=533 533w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/The_Necklace_1_-_Shopify_Max_model_shot_only.jpg?v=1723527458&width=720 720w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/The_Necklace_1_-_Shopify_Max_model_shot_only.jpg?v=1723527458&width=940 940w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/The_Necklace_1_-_Shopify_Max_model_shot_only.jpg?v=1723527458&width=1066 1066w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/The_Necklace_1_-_Shopify_Max_model_shot_only.jpg?v=1723527458&width=1500 1500w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/The_Necklace_1_-_Shopify_Max_model_shot_only.jpg?v=1723527458&width=1780 1780w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/The_Necklace_1_-_Shopify_Max_model_shot_only.jpg?v=1723527458&width=2000 2000w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/The_Necklace_1_-_Shopify_Max_model_shot_only.jpg?v=1723527458 2716w" src="//cdn.shopify.com/s/files/1/0619/6150/2869/files/The_Necklace_1_-_Shopify_Max_model_shot_only_360x.jpg?v=1723527458" sizes="(min-width: 1200px) 533px, (min-width: 990px) calc((100vw - 130px) / 3), (min-width: 750px) calc((100vw - 120px) / 2), calc((100vw - 35px) / 2)" alt="" loading="lazy" width="2716" height="4072"/></f-image></div><div id="f-block-1721628085Q51kL" class="f:blocks f:block f-block-1721628085Q51kL f:block"><h3 id="f-heading-1721628092U5b2q" class="f:blocks f:heading f-heading-1721628092U5b2q f:content-block f:gs-mega-title"><span>
+{{ 'sections.foxify-1723525968EHW5b.f-heading-1721628092U5b2q-text_html' | t }}</span></h3><div id="f-richtext-1721631941IvUXh" class="f:blocks f:richtext f-richtext-1721631941IvUXh f:content-block f:gs-caption f:rte">
+{{ 'sections.foxify-1723525968EHW5b.f-richtext-1721631941IvUXh-text_html' | t }}</div></div></div></div><div id="f-grid-1721892662XS0Nn" class="f:blocks f:grid f-grid-1721892662XS0Nn f:laptop-hidden f:desk-hidden" style="--f-grid-columns-sm:minmax(0, 12fr);--f-grid-columns-md:minmax(0, 6fr) minmax(0, 6fr);--f-grid-columns-lg:minmax(0, 6fr) minmax(0, 6fr);--f-grid-columns-xl:minmax(0, 6fr) minmax(0, 6fr)"><div id="f-col-1721892662YEMCL" class="f:blocks f:col f-col-1721892662YEMCL f:column"><div id="f-image-1721892662nDCo0" class="f:blocks f-image-1721892662nDCo0 f:custom-section__image f:image-block"><f-image class="f:image " style="--f-aspect-ratio:0.6668335419274093"><img srcSet="https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Creative_Still_-_Ring_Extension_28422_-_Shopify_Max_model_shot_only_db81fcc2-a863-4353-9cec-27624ea8fbd4.jpg?v=1723538153&width=165 165w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Creative_Still_-_Ring_Extension_28422_-_Shopify_Max_model_shot_only_db81fcc2-a863-4353-9cec-27624ea8fbd4.jpg?v=1723538153&width=360 360w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Creative_Still_-_Ring_Extension_28422_-_Shopify_Max_model_shot_only_db81fcc2-a863-4353-9cec-27624ea8fbd4.jpg?v=1723538153&width=533 533w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Creative_Still_-_Ring_Extension_28422_-_Shopify_Max_model_shot_only_db81fcc2-a863-4353-9cec-27624ea8fbd4.jpg?v=1723538153&width=720 720w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Creative_Still_-_Ring_Extension_28422_-_Shopify_Max_model_shot_only_db81fcc2-a863-4353-9cec-27624ea8fbd4.jpg?v=1723538153&width=940 940w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Creative_Still_-_Ring_Extension_28422_-_Shopify_Max_model_shot_only_db81fcc2-a863-4353-9cec-27624ea8fbd4.jpg?v=1723538153&width=1066 1066w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Creative_Still_-_Ring_Extension_28422_-_Shopify_Max_model_shot_only_db81fcc2-a863-4353-9cec-27624ea8fbd4.jpg?v=1723538153&width=1500 1500w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Creative_Still_-_Ring_Extension_28422_-_Shopify_Max_model_shot_only_db81fcc2-a863-4353-9cec-27624ea8fbd4.jpg?v=1723538153&width=1780 1780w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Creative_Still_-_Ring_Extension_28422_-_Shopify_Max_model_shot_only_db81fcc2-a863-4353-9cec-27624ea8fbd4.jpg?v=1723538153&width=2000 2000w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Creative_Still_-_Ring_Extension_28422_-_Shopify_Max_model_shot_only_db81fcc2-a863-4353-9cec-27624ea8fbd4.jpg?v=1723538153 2664w" src="//cdn.shopify.com/s/files/1/0619/6150/2869/files/Creative_Still_-_Ring_Extension_28422_-_Shopify_Max_model_shot_only_db81fcc2-a863-4353-9cec-27624ea8fbd4_360x.jpg?v=1723538153" sizes="(min-width: 1200px) 533px, (min-width: 990px) calc((100vw - 130px) / 3), (min-width: 750px) calc((100vw - 120px) / 2), calc((100vw - 35px) / 2)" alt="Creative Still - Ring Extension_28422 - Shopify Max (model shot only).jpg" loading="lazy" width="2664" height="3995"/></f-image></div><div id="f-block-1721892662r0Dhn" class="f:blocks f:block f-block-1721892662r0Dhn f:block"><h3 id="f-heading-1721892662TebXB" class="f:blocks f:heading f-heading-1721892662TebXB f:content-block f:gs-mega-title"><span>
+{{ 'sections.foxify-1723525968EHW5b.f-heading-1721892662TebXB-text_html' | t }}</span></h3><div id="f-richtext-1721892662zoZYe" class="f:blocks f:richtext f-richtext-1721892662zoZYe f:content-block f:gs-caption f:rte">
+{{ 'sections.foxify-1723525968EHW5b.f-richtext-1721892662zoZYe-text_html' | t }}</div></div></div><div id="f-col-17218926624XmYG" class="f:blocks f:col f-col-17218926624XmYG f:column"><div id="f-image-1721892662BOvU4" class="f:blocks f-image-1721892662BOvU4 f:custom-section__image f:image-block"><f-image class="f:image " style="--f-aspect-ratio:0.6669941060903732"><img srcSet="https://cdn.shopify.com/s/files/1/0619/6150/2869/files/The_Necklace_1_-_Shopify_Max_model_shot_only.jpg?v=1723527458&width=165 165w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/The_Necklace_1_-_Shopify_Max_model_shot_only.jpg?v=1723527458&width=360 360w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/The_Necklace_1_-_Shopify_Max_model_shot_only.jpg?v=1723527458&width=533 533w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/The_Necklace_1_-_Shopify_Max_model_shot_only.jpg?v=1723527458&width=720 720w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/The_Necklace_1_-_Shopify_Max_model_shot_only.jpg?v=1723527458&width=940 940w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/The_Necklace_1_-_Shopify_Max_model_shot_only.jpg?v=1723527458&width=1066 1066w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/The_Necklace_1_-_Shopify_Max_model_shot_only.jpg?v=1723527458&width=1500 1500w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/The_Necklace_1_-_Shopify_Max_model_shot_only.jpg?v=1723527458&width=1780 1780w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/The_Necklace_1_-_Shopify_Max_model_shot_only.jpg?v=1723527458&width=2000 2000w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/The_Necklace_1_-_Shopify_Max_model_shot_only.jpg?v=1723527458 2716w" src="//cdn.shopify.com/s/files/1/0619/6150/2869/files/The_Necklace_1_-_Shopify_Max_model_shot_only_360x.jpg?v=1723527458" sizes="(min-width: 1200px) 533px, (min-width: 990px) calc((100vw - 130px) / 3), (min-width: 750px) calc((100vw - 120px) / 2), calc((100vw - 35px) / 2)" alt="" loading="lazy" width="2716" height="4072"/></f-image></div><div id="f-block-17218926625VAkN" class="f:blocks f:block f-block-17218926625VAkN f:block"><h3 id="f-heading-1721892662Ze3BQ" class="f:blocks f:heading f-heading-1721892662Ze3BQ f:content-block f:gs-mega-title"><span>
+{{ 'sections.foxify-1723525968EHW5b.f-heading-1721892662Ze3BQ-text_html' | t }}</span></h3><div id="f-richtext-1721892662ByCFX" class="f:blocks f:richtext f-richtext-1721892662ByCFX f:content-block f:gs-caption f:rte">
+{{ 'sections.foxify-1723525968EHW5b.f-richtext-1721892662ByCFX-text_html' | t }}</div></div></div></div></div></div>
+{% liquid
+        assign theme_settings = shop.metafields.foxify.theme_settings.value
+        assign customCodeBody = theme_settings.customCodeBody
+        echo customCodeBody
+      %}
+
+</div>
+    {% schema %}
+        {
+            "name": "Foxify main content",
+            "class": "foxify-main f-app",
+            "settings": [
+                {
+                "type": "header",
+                "content": "Customize section",
+                "info": "Go to [Foxify app](https://app.foxify.io/editor?id=1723525968EHW5b&type=SECTION) to edit this section."
+                }
+            ],
+            "locales": {
+  "en": {
+    "f-heading-1721628061QtNEL-text_html": "Noble. Esteem.",
+    "f-richtext-1721628064IOTcg-text_html": "With the iconic halo design as the unifying element, THE NECKLACE transforms the original ring design into an exquisite piece that stands alone in prestige or graces beautifully as a versatile companion.",
+    "f-heading-1721628092U5b2q-text_html": "eighty. nine.",
+    "f-richtext-1721631941IvUXh-text_html": "Each necklace takes 89 hours of meticulous craftsmanship to create. We carefully cut and polish a 60-carat lab-grown sapphire into a 13-carat halo. Then, we perfect every facet and angle to ensure maximum shine and light reflection, creating an optimal brilliant chamber to showcase an impeccably cut lab-grown diamond.",
+    "f-heading-1721892662TebXB-text_html": "Noble. Esteem.",
+    "f-richtext-1721892662zoZYe-text_html": "With the iconic halo design as the unifying element, THE NECKLACE transforms the original ring design into an exquisite piece that stands alone in prestige or graces beautifully as a versatile companion.",
+    "f-heading-1721892662Ze3BQ-text_html": "eighty. nine.",
+    "f-richtext-1721892662ByCFX-text_html": "Each necklace takes 89 hours of meticulous craftsmanship to create. We carefully cut and polish a 60-carat lab-grown sapphire into a 13-carat halo. Then, we perfect every facet and angle to ensure maximum shine and light reflection, creating an optimal brilliant chamber to showcase an impeccably cut lab-grown diamond."
+  }
+}
+        }
+    {% endschema %}
+  

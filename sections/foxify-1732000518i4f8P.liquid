@@ -1,0 +1,76 @@
+    {% liquid
+      assign locales = shop.metafields.foxify.locales.value
+      assign current_locale = request.locale.iso_code
+      assign primary_locale = current_locale
+      for locale in shop.published_locales
+        if locale.primary
+          assign primary_locale = locale.iso_code
+          break
+        endif
+      endfor
+      assign translation = locales[current_locale] | default: locales[primary_locale]
+    %}
+    <script>
+      window.Foxify = window.Foxify || {}
+      Foxify.ThemeStyles = {
+        product: "https:{{ 'foxify-product.css' | asset_url }}",
+        swiper: "https:{{ 'foxify-swiper.css' | asset_url }}",
+      }
+
+      Foxify.ThemeScripts = {
+        productModel: "https:{{ 'foxify-product-model.js' | asset_url }}",
+        productMedia: "https:{{ 'foxify-media-gallery.js' | asset_url }}",
+        variantPicker: "https:{{ 'foxify-variant-picker.js' | asset_url }}"
+      }
+
+      Foxify.pageId = '1732000518i4f8P'
+    </script>
+    <div class="f-app f:content">
+<style data-foxify-editor="foxify-custom-fonts">
+  @font-face {
+    font-family: BrownProTT-Bold-17071127825LR9n;
+    src: url('https://cdn.shopify.com/s/files/1/0619/6150/2869/files/BrownProTT-Bold.ttf?v=1707112779');
+  }
+  
+  @font-face {
+    font-family: BrownProTT-Regular-1707112782cX7wj;
+    src: url('https://cdn.shopify.com/s/files/1/0619/6150/2869/files/BrownProTT-Regular.ttf?v=1707112779');
+  }
+  </style>
+{{ 'foxify-1732000518i4f8P.css' | asset_url | stylesheet_tag }}
+<div id="f-image-with-text-1732264897xrFxc" class="f:sections f:image-with-text f-image-with-text-1732264897xrFxc"><div class="f:container"><div id="f-grid-1732264897LszC7" class="f:blocks f:grid f-grid-1732264897LszC7 f:justify-center f:items-center" style="--f-grid-columns-sm:minmax(0, 12fr);--f-grid-columns-md:minmax(0, 6fr) minmax(0, 6fr);--f-grid-columns-lg:minmax(0, 6fr) minmax(0, 6fr);--f-grid-columns-xl:minmax(0, 6fr) minmax(0, 6fr)"><div id="f-col-1732264897uOeCY" class="f:blocks f:col f-col-1732264897uOeCY f:column"><div id="f-image-17322648977KSEd" class="f:blocks f-image-17322648977KSEd f:image-with-text__image f:image-block"><f-image class="f:image " style="--f-aspect-ratio:1"><img srcSet="https://cdn.shopify.com/s/files/1/0619/6150/2869/files/01_Warm_Wishes_red_drawing_ver2.jpg?v=1732265039&width=165 165w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/01_Warm_Wishes_red_drawing_ver2.jpg?v=1732265039&width=360 360w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/01_Warm_Wishes_red_drawing_ver2.jpg?v=1732265039&width=533 533w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/01_Warm_Wishes_red_drawing_ver2.jpg?v=1732265039&width=720 720w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/01_Warm_Wishes_red_drawing_ver2.jpg?v=1732265039&width=940 940w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/01_Warm_Wishes_red_drawing_ver2.jpg?v=1732265039&width=1066 1066w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/01_Warm_Wishes_red_drawing_ver2.jpg?v=1732265039 1080w" src="//cdn.shopify.com/s/files/1/0619/6150/2869/files/01_Warm_Wishes_red_drawing_ver2_360x.jpg?v=1732265039" sizes="(min-width: 1200px) 533px, (min-width: 990px) calc((100vw - 130px) / 3), (min-width: 750px) calc((100vw - 120px) / 2), calc((100vw - 35px) / 2)" alt="01_Warm_Wishes_red_drawing_ver2.jpg" loading="lazy" width="1080" height="1080"/></f-image></div></div><div id="f-col-17322648972hl1X" class="f:blocks f:col f-col-17322648972hl1X f:column"><h3 id="f-heading-1732264897xbMpO" class="f:blocks f:heading f-heading-1732264897xbMpO f:content-block f:gs-heading-2"><span>
+{{ 'sections.foxify-1732000518i4f8P.f-heading-1732264897xbMpO-text_html' | t }}</span></h3><div id="f-richtext-17322648971KDab" class="f:blocks f:richtext f-richtext-17322648971KDab f:content-block f:gs-heading-5 f:rte">
+{{ 'sections.foxify-1732000518i4f8P.f-richtext-17322648971KDab-text_html' | t }}</div><a id="f-button-17322648978XYOt" class="f:blocks f:button f-button-17322648978XYOt f:gs-outline-button f:btn"><span>
+{{ 'sections.foxify-1732000518i4f8P.f-button-17322648978XYOt-button_label_html' | t }}</span></a></div></div></div></div>
+{% liquid
+        assign theme_settings = shop.metafields.foxify.theme_settings.value
+        assign customCodeBody = theme_settings.customCodeBody
+        echo customCodeBody
+      %}
+
+</div>
+    {% schema %}
+      {
+        "name": "[Foxify] Warm Wishes",
+        "class": "foxify-section f-app",
+        "settings": [{"type":"header","content":"Customize section","info":"Go to [Foxify app](https://app.foxify.io/editor?id=1732000518i4f8P&type=SECTION) to edit this section."}],
+        "locales": {
+  "en": {
+    "f-heading-1732264897xbMpO-text_html": "WARM WISHES",
+    "f-richtext-17322648971KDab-text_html": "<p>Unique pieces that radiate love, select gems that reflect her style and personality.</p>",
+    "f-button-17322648978XYOt-button_label_html": "Shop now"
+  }
+},
+        "blocks": [
+          {
+            "type": "@app"
+          }
+        ],          
+        "presets": [
+          {
+            "name": "[Foxify] Warm Wishes"
+          }
+        ]  
+      }
+    {% endschema %}
+  

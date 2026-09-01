@@ -1,0 +1,349 @@
+    {% liquid
+        assign locales = shop.metafields.foxify.locales.value
+        assign current_locale = request.locale.iso_code
+        assign primary_locale = current_locale
+        for locale in shop.published_locales
+        if locale.primary
+            assign primary_locale = locale.iso_code
+            break
+        endif
+        endfor
+        assign translation = locales[current_locale] | default: locales[primary_locale]
+    %}
+    <script>
+        window.Foxify = window.Foxify || {}
+        Foxify.ThemeStyles = {
+            product: "https:{{ 'foxify-product.css' | asset_url }}",
+            swiper: "https:{{ 'foxify-swiper.css' | asset_url }}",
+        }
+
+        Foxify.ThemeScripts = {
+            productModel: "https:{{ 'foxify-product-model.js' | asset_url }}",
+            productMedia: "https:{{ 'foxify-media-gallery.js' | asset_url }}",
+            variantPicker: "https:{{ 'foxify-variant-picker.js' | asset_url }}"
+        }
+
+        Foxify.pageId = '17096112925iF0r'
+        Foxify.default = false
+    </script>
+    <div class="f-app f:content">
+<style data-foxify-editor="foxify-custom-fonts">
+  @font-face {
+    font-family: BrownProTT-Bold-17071127825LR9n;
+    src: url('https://cdn.shopify.com/s/files/1/0619/6150/2869/files/BrownProTT-Bold.ttf?v=1707112779');
+  }
+  
+  @font-face {
+    font-family: BrownProTT-Regular-1707112782cX7wj;
+    src: url('https://cdn.shopify.com/s/files/1/0619/6150/2869/files/BrownProTT-Regular.ttf?v=1707112779');
+  }
+  </style>
+{{ 'foxify-17096112925iF0r.css' | asset_url | stylesheet_tag }}
+<style>@keyframes move-up-down {
+  0% { transform: translateY(8px); }
+  100% { transform: translateY(-8px); }
+}
+@keyframes move-up-down-reverse {
+  0% { transform: translateY(-8px); }
+  100% { transform: translateY(8px); }
+}
+@keyframes move-up-down-middle {
+  0% { transform: translate(-50%, 8px); }
+  100% { transform: translate(-50%, -8px); }
+}
+@keyframes move-left-right {
+  0% { transform: translateX(8px); }
+  100% { transform: translateX(-8px); }
+}
+
+.mover-2 {
+  animation: move-up-down 2s linear infinite alternate;
+}
+.mover-3 {
+  animation: move-up-down 3s linear infinite alternate;
+}
+.mover-3-middle {
+  animation: move-up-down-middle 3s linear infinite alternate;
+}
+.mover-reverse-2 {
+  animation: move-up-down-reverse 2s linear infinite alternate;
+}
+.mover-reverse-3 {
+  animation: move-up-down-reverse 3s linear infinite alternate;
+}
+.mover-4{
+  animation: move-left-right 2s linear infinite alternate;
+}
+
+.relative {
+  position: relative;
+}
+.f-custom-btn-underline {
+    position: relative;
+    text-decoration-line: none !important   ;
+}
+.f-custom-btn-underline:after,
+.f-custom-btn-underline:before {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: currentColor;
+    transform: scaleX(1) translateZ(0);
+    transform-origin: right;
+    transition: transform .6s cubic-bezier(.165,.84,.44,1) .3s;
+}
+.f-custom-btn-underline:before {
+    left: 0;
+    width: 100%;
+}
+.f-custom-btn-underline:after {
+    transform: scaleX(0) translateZ(0);
+    transform-origin: left;
+    transition: transform .6s cubic-bezier(.165,.84,.44,1);
+}
+.f-custom-btn-underline:hover:before {
+    transform: scaleX(0) translateZ(0);
+    transition: transform .6s cubic-bezier(.165,.84,.44,1);
+}
+.f-custom-btn-underline:hover:after {
+    transform: scaleX(1) translateZ(0);
+    transition: transform .6s cubic-bezier(.165,.84,.44,1) .3s;
+}
+
+.f\:star-rating.f\:testimonial-item__star svg {
+    margin: 2px;
+}
+.f\:testimonial-item .f\:testimonial-item__text {
+    max-width: 900px;
+    margin: 19px auto 22px;
+}
+.f\:testimonial-item .f\:testimonial-item__author {
+    font-size: 18px;
+    font-family: "DM Sans";
+    font-weight: 400;
+    margin-bottom: 2px;
+    text-transform: uppercase;
+}
+.f\:testimonial-item .f\:testimonial-item__bio {
+    font-size: 16px;
+    font-family: "DM Sans";
+}
+@media (min-width: 1280px) {
+    .f-testimonial--centered-mode .f\:testimonial-items {
+    width: 140%;
+    margin-left: -20%;
+    }
+    .f-testimonial--centered-mode .f\:swiper-slide {
+    transition: opacity 0.35s;
+    }
+    .f-testimonial--centered-mode .f\:swiper-slide-active,
+    .f-testimonial--centered-mode .f\:swiper-slide-next + .f\:swiper-slide {
+    opacity: .3;
+    }
+    .f-testimonial--centered-mode .f\:swiper-slide-next {
+    opacity: 1;
+    }
+}
+
+.f\:collapsible__item .f\:collapsible__button {
+    position: relative;
+    border-width: 2px;
+    border-color: rgba(0, 0, 0, .1);
+}
+.f\:collapsible__item .f\:collapsible__button:before {
+    position: absolute;
+    content: '';
+    bottom: -2px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background-color: #000;
+    transition: all .3s;
+}
+.f\:is-expanded .f\:collapsible__button:before {
+    width: 100%;
+}
+
+.f-grid-product-style .f\:price__regular {
+    color: #000;
+}
+.f-grid-product-style .f\:product-card__title {
+    color: #000;
+    font-size: 18px;
+    font-family: DM Sans;
+    font-weight: 500;
+    line-height: 1.5;
+    margin-bottom: 0px !important;
+}
+.f-grid-product-style .f\:product-card__info {
+    padding: 20px 15px 10px;
+}
+.f-grid-product-style .f\:product-card__actions .f\:product-card__atc {
+    border-radius: 0;
+    background-color: #000;
+    color: #fff;
+    margin-top: 42px;
+    font-family: "DM Sans";
+    font-size: 18px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+.f-grid-product-style .f\:product-card__actions .f\:product-card__atc:hover {
+  background-color: #D23030;
+}
+.f-favorite-product-custom .f\:favorite-products__grid {
+  gap: 0;
+  background-color: #EDE9E2;
+}   
+.f-favorite-product-custom .f\:favorite-product-header__title {
+  font-size: 32px;
+  font-weight: 500;
+}
+.f-favorite-product-custom .f\:product-card__info {
+  padding-top: 24px;
+}
+.f-favorite-product-custom .f\:favorite-product-header{
+  margin-bottom: 11px !important;
+}
+.f-favorite-product-custom f-swiper-component {
+  margin: 0 5px;
+  --swiper-navigation-size: 50px;
+  padding: 0 calc(var(--swiper-navigation-size) + 30px) !important;
+}
+.f-favorite-product-custom .f\:product-card__info .f\:product-card__summary {
+  display: none;
+} 
+.f-favorite-product-custom .f\:product-card__actions {
+  border-top: none !important;
+  margin-top: 0 !important;
+}
+.f-favorite-product-custom .f\:product-card__actions button {
+  padding-top: 0;
+}
+
+.f-favorite-product-custom .f\:product-card__atc {
+  position: relative;
+  text-decoration-line: none !important;
+  max-width: max-content;
+  font-size: 18px;
+  font-family: "DM Sans";
+  text-transform: uppercase;
+}
+.f-favorite-product-custom .f\:product-card__atc:after, 
+.f-favorite-product-custom .f\:product-card__atc:before {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: currentColor;
+  transform: scaleX(1) translateZ(0);
+  transform-origin: right;
+  transition: transform .6s cubic-bezier(.165,.84,.44,1) .3s;
+}
+.f-favorite-product-custom .f\:product-card__atc:before {
+  left: 0;
+  width: 100%;
+}
+.f-favorite-product-custom .f\:product-card__atc:after {
+  transform: scaleX(0) translateZ(0);
+  transform-origin: left;
+  transition: transform .6s cubic-bezier(.165,.84,.44,1);
+}
+.f-favorite-product-custom .f\:product-card__atc:hover:before {
+  transform: scaleX(0) translateZ(0);
+  transition: transform .6s cubic-bezier(.165,.84,.44,1);
+}
+.f-favorite-product-custom .f\:product-card__atc:hover:after {
+  transform: scaleX(1) translateZ(0);
+  transition: transform .6s cubic-bezier(.165,.84,.44,1) .3s;
+}
+
+.f-favorite-product-custom .f\:swiper-button-prev, .f-favorite-product-custom .f\:swiper-button-next {
+  --f-gs-border-color: #000;
+}
+.f-favorite-product-custom .f\:swiper-controls .f\:swiper-button-disabled {
+  border-color: #9B9B9B;
+}
+.f-favorite-product-custom .f\:favorite-products__image {
+  overflow: hidden;
+}
+.f-favorite-product-custom .f\:favorite-products__image img {
+  transition: .65s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.f-favorite-product-custom .f\:favorite-products__image:hover img {
+  transform: scale(1.05);
+}
+
+@media (min-width: 1300px) {
+  .f-favorite-product-custom .f\:favorite-products__content {
+    max-width: calc(var(--f-container-width)/2.14);
+  }
+}
+@media (min-width: 1024px) and (max-width: 1299px) {
+  .f-favorite-product-custom .f\:favorite-products__content {
+    max-width: calc(var(--f-container-width)/3);
+  }
+  .f-favorite-product-custom f-swiper-component {
+    padding: 0 calc(var(--swiper-navigation-size) + 10px) !important;
+  }
+}
+@media (max-width: 1023px) {
+  .f-favorite-product-custom f-swiper-component {
+    margin: 50px 5px 60px;
+    padding: 0 calc(var(--swiper-navigation-size) + 200px) !important;
+  }
+}
+@media (max-width: 767px) {
+  .f-favorite-product-custom f-swiper-component {
+    margin: 30px -10px 60px;
+    padding: 0 calc(var(--swiper-navigation-size) + -100px) !important;
+  }
+
+  .f-favorite-product-custom .f\:swiper-button-prev, .f-favorite-product-custom .f\:swiper-button-next {
+    margin: 0 5px; 
+  }
+}
+@media (min-width: 1024px) {
+  .f-grid-product-style .f\:swiper-pagination--fraction {
+      transform: translateX(-16.5%) !important;
+  }
+}</style>
+<div id="f-custom-section-1709611258v1p1K" class="f:sections f:custom-section f-custom-section-1709611258v1p1K f:mobile-hidden f:tablet-hidden f:laptop-hidden f:desk-hidden f:animated" data-animate-trigger="page_load" data-animate-name="fFadeIn"><div class="f:container-full"><div id="f-grid-1709611258nBWdk" class="f:blocks f:grid f-grid-1709611258nBWdk" style="--f-grid-columns-sm:minmax(0, 12fr);--f-grid-columns-md:minmax(0, 12fr);--f-grid-columns-lg:minmax(0, 12fr);--f-grid-columns-xl:minmax(0, 12fr)"><div id="f-col-1709611258wArlc" class="f:blocks f:col f-col-1709611258wArlc f:column"><div id="f-image-1709611785RPjfX" class="f:blocks f-image-1709611785RPjfX f:custom-section__image f:image-block"><f-image class="f:image " style="--f-aspect-ratio:5.216269841269841"><img srcSet="https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Asset_1_9f776044-f6c7-497d-a7a4-efb529f5799e.png?v=1709612614&width=165 165w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Asset_1_9f776044-f6c7-497d-a7a4-efb529f5799e.png?v=1709612614&width=360 360w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Asset_1_9f776044-f6c7-497d-a7a4-efb529f5799e.png?v=1709612614&width=533 533w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Asset_1_9f776044-f6c7-497d-a7a4-efb529f5799e.png?v=1709612614&width=720 720w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Asset_1_9f776044-f6c7-497d-a7a4-efb529f5799e.png?v=1709612614&width=940 940w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Asset_1_9f776044-f6c7-497d-a7a4-efb529f5799e.png?v=1709612614&width=1066 1066w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Asset_1_9f776044-f6c7-497d-a7a4-efb529f5799e.png?v=1709612614&width=1500 1500w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Asset_1_9f776044-f6c7-497d-a7a4-efb529f5799e.png?v=1709612614&width=1780 1780w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Asset_1_9f776044-f6c7-497d-a7a4-efb529f5799e.png?v=1709612614&width=2000 2000w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Asset_1_9f776044-f6c7-497d-a7a4-efb529f5799e.png?v=1709612614 2629w" src="//cdn.shopify.com/s/files/1/0619/6150/2869/files/Asset_1_9f776044-f6c7-497d-a7a4-efb529f5799e_360x.png?v=1709612614" sizes="(min-width: 1200px) 533px, (min-width: 990px) calc((100vw - 130px) / 3), (min-width: 750px) calc((100vw - 120px) / 2), calc((100vw - 35px) / 2)" alt="Asset 1.png" loading="lazy" width="2629" height="504"/></f-image></div><h2 id="f-heading-1709611258mBq0w" class="f:blocks f:heading f-heading-1709611258mBq0w f:content-block f:animated" data-animate-trigger="page_load" data-animate-name="fFadeInUp"><span>
+{{ 'sections.foxify-17096112925iF0r.f-heading-1709611258mBq0w-text_html' | t }}</span></h2><div id="f-richtext-1709611258EBsXm" class="f:blocks f:richtext f-richtext-1709611258EBsXm f:content-block f:animated f:rte" data-animate-trigger="page_load" data-animate-name="fFadeInUp">
+{{ 'sections.foxify-17096112925iF0r.f-richtext-1709611258EBsXm-text_html' | t }}</div></div></div></div></div><div id="f-custom-section-1709611258bUtJC" class="f:sections f:custom-section f-custom-section-1709611258bUtJC relative" data-animate-trigger="scroll_into_view" data-animate-name="fFadeIn"><div class="f:container-full"><div id="f-grid-17096112580NJuV" class="f:blocks f:grid f-grid-17096112580NJuV f:justify-center f:items-center" style="--f-grid-columns-sm:minmax(0, 12fr);--f-grid-columns-md:minmax(0, 12fr);--f-grid-columns-lg:minmax(0, 12fr);--f-grid-columns-xl:minmax(0, 12fr)"><div id="f-col-1709611258AvF0k" class="f:blocks f:col f-col-1709611258AvF0k f:column"><div id="f-image-1709611258ZTlfr" class="f:blocks f-image-1709611258ZTlfr f:custom-section__image f:image-block" data-animate-trigger="scroll_into_view" data-animate-name="fFadeInUp"><f-image class="f:image " style="--f-aspect-ratio:0.9966996699669967"><img srcSet="https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Dot_mark.png?v=1710053241&width=165 165w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Dot_mark.png?v=1710053241 302w" src="//cdn.shopify.com/s/files/1/0619/6150/2869/files/Dot_mark_360x.png?v=1710053241" sizes="(min-width: 1200px) 533px, (min-width: 990px) calc((100vw - 130px) / 3), (min-width: 750px) calc((100vw - 120px) / 2), calc((100vw - 35px) / 2)" alt="Dot mark.png" loading="lazy" width="302" height="303"/></f-image></div><h2 id="f-heading-1709611258yKt3I" class="f:blocks f:heading f-heading-1709611258yKt3I f:content-block f:gs-caption" data-animate-trigger="scroll_into_view" data-animate-name="fFadeInUp"><span>
+{{ 'sections.foxify-17096112925iF0r.f-heading-1709611258yKt3I-text_html' | t }}</span></h2><a id="f-button-1709611258q0w7c" class="f:blocks f:button f-button-1709611258q0w7c f:gs-outline-button f:btn" href="/collections/the-future-rocks-x-lightbox-jewelry" data-animate-trigger="scroll_into_view" data-animate-name="fFadeInUp"><span>
+{{ 'sections.foxify-17096112925iF0r.f-button-1709611258q0w7c-button_label_html' | t }}</span></a></div></div></div></div>
+{% liquid
+        assign theme_settings = shop.metafields.foxify.theme_settings.value
+        assign customCodeBody = theme_settings.customCodeBody
+        echo customCodeBody
+      %}
+
+</div>
+    {% schema %}
+        {
+            "name": "Foxify main content",
+            "class": "foxify-main f-app",
+            "settings": [
+                {
+                "type": "header",
+                "content": "Customize section",
+                "info": "Go to [Foxify app](https://app.foxify.io/editor?id=17096112925iF0r&type=REGULAR) to edit this section."
+                }
+            ],
+            "locales": {
+  "en": {
+    "f-heading-1709611258mBq0w-text_html": "is here",
+    "f-richtext-1709611258EBsXm-text_html": "but...",
+    "f-heading-1709611258yKt3I-text_html": "We don’t mean to disappoint, but we cannot ship Lightbox Jewelry products to Singapore, UAE, Macau, Iceland, Switzerland, Canada, and the US.",
+    "f-button-1709611258q0w7c-button_label_html": "shop our collaboration"
+  }
+}
+        }
+    {% endschema %}
+  

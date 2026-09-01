@@ -1,0 +1,75 @@
+    {% liquid
+        assign locales = shop.metafields.foxify.locales.value
+        assign current_locale = request.locale.iso_code
+        assign primary_locale = current_locale
+        for locale in shop.published_locales
+        if locale.primary
+            assign primary_locale = locale.iso_code
+            break
+        endif
+        endfor
+        assign translation = locales[current_locale] | default: locales[primary_locale]
+    %}
+    <script>
+        window.Foxify = window.Foxify || {}
+        Foxify.ThemeStyles = {
+            product: "https:{{ 'foxify-product.css' | asset_url }}",
+            swiper: "https:{{ 'foxify-swiper.css' | asset_url }}",
+        }
+
+        Foxify.ThemeScripts = {
+            productModel: "https:{{ 'foxify-product-model.js' | asset_url }}",
+            productMedia: "https:{{ 'foxify-media-gallery.js' | asset_url }}",
+            variantPicker: "https:{{ 'foxify-variant-picker.js' | asset_url }}"
+        }
+
+        Foxify.pageId = '1723699073N67SX'
+        Foxify.default = false
+    </script>
+    <div class="f-app f:content">
+<style data-foxify-editor="foxify-custom-fonts">
+  @font-face {
+    font-family: BrownProTT-Bold-17071127825LR9n;
+    src: url('https://cdn.shopify.com/s/files/1/0619/6150/2869/files/BrownProTT-Bold.ttf?v=1707112779');
+  }
+  
+  @font-face {
+    font-family: BrownProTT-Regular-1707112782cX7wj;
+    src: url('https://cdn.shopify.com/s/files/1/0619/6150/2869/files/BrownProTT-Regular.ttf?v=1707112779');
+  }
+  </style>
+{{ 'foxify-1723699073N67SX.css' | asset_url | stylesheet_tag }}
+{{ 'foxify-hero.css' | asset_url | stylesheet_tag }}<div id="f-hero-1723699216EHc6X" class="f:sections f:hero f-hero-1723699216EHc6X f:section--no-margin"><div class="f:container-full"><div class="f:hero__wrapper f:hero--adapt f:hero--mobile-stack" style="--f-aspect-ratio:1.778165938864629;--f-aspect-ratio-mobile:1.778165938864629"><div class="f:hero__inner"><div class="f:hero__bg f:bg-image f:hero__image--desktop"><f-image class="f:image f:bg-image" style="--f-aspect-ratio:1.778165938864629"><img srcSet="https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Model_-_Ring_Extension_Necklace_722_298960b5-cb02-4923-98ec-b07fd89273ef.jpg?v=1723699419&width=165 165w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Model_-_Ring_Extension_Necklace_722_298960b5-cb02-4923-98ec-b07fd89273ef.jpg?v=1723699419&width=360 360w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Model_-_Ring_Extension_Necklace_722_298960b5-cb02-4923-98ec-b07fd89273ef.jpg?v=1723699419&width=533 533w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Model_-_Ring_Extension_Necklace_722_298960b5-cb02-4923-98ec-b07fd89273ef.jpg?v=1723699419&width=720 720w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Model_-_Ring_Extension_Necklace_722_298960b5-cb02-4923-98ec-b07fd89273ef.jpg?v=1723699419&width=940 940w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Model_-_Ring_Extension_Necklace_722_298960b5-cb02-4923-98ec-b07fd89273ef.jpg?v=1723699419&width=1066 1066w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Model_-_Ring_Extension_Necklace_722_298960b5-cb02-4923-98ec-b07fd89273ef.jpg?v=1723699419&width=1500 1500w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Model_-_Ring_Extension_Necklace_722_298960b5-cb02-4923-98ec-b07fd89273ef.jpg?v=1723699419&width=1780 1780w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Model_-_Ring_Extension_Necklace_722_298960b5-cb02-4923-98ec-b07fd89273ef.jpg?v=1723699419&width=2000 2000w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Model_-_Ring_Extension_Necklace_722_298960b5-cb02-4923-98ec-b07fd89273ef.jpg?v=1723699419&width=3000 3000w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Model_-_Ring_Extension_Necklace_722_298960b5-cb02-4923-98ec-b07fd89273ef.jpg?v=1723699419&width=3840 3840w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Model_-_Ring_Extension_Necklace_722_298960b5-cb02-4923-98ec-b07fd89273ef.jpg?v=1723699419 4072w" src="//cdn.shopify.com/s/files/1/0619/6150/2869/files/Model_-_Ring_Extension_Necklace_722_298960b5-cb02-4923-98ec-b07fd89273ef_360x.jpg?v=1723699419" sizes="(min-width: 1200px) 533px, (min-width: 990px) calc((100vw - 130px) / 3), (min-width: 750px) calc((100vw - 120px) / 2), calc((100vw - 35px) / 2)" alt="Model - Ring Extension Necklace_722.jpg" loading="lazy" width="4072" height="2290"/></f-image></div><div class="f:hero__bg f:bg-image f:hero__image--mobile md:f:hidden"><f-image class="f:image f:bg-image" style="--f-aspect-ratio:1">{{ 'image'| placeholder_svg_tag: 'f:placeholder-svg' }}</f-image></div><div class="f:hero__content-wrapper f:hero__content--middle-left f:flex f:inset-full f:container-extended"><div class="f:hero__content"><div id="f-richtext-1723699216ZBNlG" class="f:blocks f:richtext f-richtext-1723699216ZBNlG f:content-block f:gs-card-title f:rte">
+{{ 'sections.foxify-1723699073N67SX.f-richtext-1723699216ZBNlG-text_html' | t }}</div><h2 id="f-heading-1723699216BuapM" class="f:blocks f:heading f-heading-1723699216BuapM f:content-block f:gs-mega-title"><span>
+{{ 'sections.foxify-1723699073N67SX.f-heading-1723699216BuapM-text_html' | t }}</span></h2><div id="f-richtext-1723699216NOhlB" class="f:blocks f:richtext f-richtext-1723699216NOhlB f:content-block f:gs-caption f:rte">
+{{ 'sections.foxify-1723699073N67SX.f-richtext-1723699216NOhlB-text_html' | t }}</div><a id="f-button-1723699216q6Ukp" class="f:blocks f:button f-button-1723699216q6Ukp f:gs-white-button f:btn" href="the ring reimagined"><span>
+{{ 'sections.foxify-1723699073N67SX.f-button-1723699216q6Ukp-button_label_html' | t }}</span></a></div></div></div></div></div></div>
+{% liquid
+        assign theme_settings = shop.metafields.foxify.theme_settings.value
+        assign customCodeBody = theme_settings.customCodeBody
+        echo customCodeBody
+      %}
+
+</div>
+    {% schema %}
+        {
+            "name": "Foxify main content",
+            "class": "foxify-main f-app",
+            "settings": [
+                {
+                "type": "header",
+                "content": "Customize section",
+                "info": "Go to [Foxify app](https://app.foxify.io/editor?id=1723699073N67SX&type=SECTION) to edit this section."
+                }
+            ],
+            "locales": {
+  "en": {
+    "f-richtext-1723699216ZBNlG-text_html": "<p>New</p>",
+    "f-heading-1723699216BuapM-text_html": " THE RING REIMAGINED",
+    "f-richtext-1723699216NOhlB-text_html": "<p>Iconic vision. Future-ready.</p>",
+    "f-button-1723699216q6Ukp-button_label_html": "learn more"
+  }
+}
+        }
+    {% endschema %}
+  

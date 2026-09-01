@@ -1,0 +1,191 @@
+    {% liquid
+        assign locales = shop.metafields.foxify.locales.value
+        assign current_locale = request.locale.iso_code
+        assign primary_locale = current_locale
+        for locale in shop.published_locales
+        if locale.primary
+            assign primary_locale = locale.iso_code
+            break
+        endif
+        endfor
+        assign translation = locales[current_locale] | default: locales[primary_locale]
+    %}
+    <script>
+        window.Foxify = window.Foxify || {}
+        Foxify.ThemeStyles = {
+            product: "https:{{ 'foxify-product.css' | asset_url }}",
+            swiper: "https:{{ 'foxify-swiper.css' | asset_url }}",
+        }
+
+        Foxify.ThemeScripts = {
+            productModel: "https:{{ 'foxify-product-model.js' | asset_url }}",
+            productMedia: "https:{{ 'foxify-media-gallery.js' | asset_url }}",
+            variantPicker: "https:{{ 'foxify-variant-picker.js' | asset_url }}"
+        }
+
+        Foxify.pageId = '1721380459eLXgz'
+        Foxify.default = false
+    </script>
+    <div class="f-app f:content">
+<style data-foxify-editor="foxify-custom-fonts">
+  @font-face {
+    font-family: BrownProTT-Regular-1707112782cX7wj;
+    src: url('https://cdn.shopify.com/s/files/1/0619/6150/2869/files/BrownProTT-Regular.ttf?v=1707112779');
+  }
+  
+  @font-face {
+    font-family: BrownProTT-Bold-17071127825LR9n;
+    src: url('https://cdn.shopify.com/s/files/1/0619/6150/2869/files/BrownProTT-Bold.ttf?v=1707112779');
+  }
+  </style>
+{{ 'foxify-1721380459eLXgz.css' | asset_url | stylesheet_tag }}
+<style>
+body .f\:lookbook-card__product-price .f\:price {
+
+font-family: var(--f-gs-body-text-font-stack, -apple-system, BlinkMacSystemFont, "San Francisco", "Segoe UI", Roboto, "Helvetica Neue", sans-serif);
+
+font-size: 12px;
+
+/*color: var(--f-gs-hot-color, #1b2b27);*/
+color: #1b2b27;
+
+}
+.sec-container {
+  padding: 8%;
+}
+.section-line {
+  width: 100%;
+  height: 1px;
+  background-color: #cccccc;
+}
+.f\:icon {
+  color: #009e2d;
+}
+.f\:list-items__inner {
+  line-height: 120%;
+}
+@media screen and (min-width: 1024px) {
+.f\:tabs__list {
+border: 0.5px #1b2b27 solid;
+}
+}
+@media screen and (max-width: 1024px) {
+.f\:tabs__list {
+border-radius: 0px;
+background: white;
+}
+}
+.f\:container-extended {
+  padding: 0px !important;
+}
+.f\:tabs__button {
+  margin: 0px 15px 0px 15px !important;
+}
+.f\:tabs__header-wrapper {
+  gap: 0px !important;
+}
+.solid-icon {
+  width: 20px !important;
+}
+.f-button-1715123327gqWYj .f\:icon, .f-button-1717132417zT81r .f\:icon {
+  color: #FF6666;
+}
+.date-ref::after {
+  content: "08.05.2024";
+}
+.pre-date::after {
+  content: "Updated";
+}
+.tab-logo-ref::after {
+  content: "IDENTITY";
+}
+.tab-visual-ref::after {
+  content: "VISUAL";
+}
+.tab-application-ref::after {
+  content: "APPLICATION";
+}
+.tab-overview-ref::after {
+  content: "GET STARTED";
+}
+.tab-typo-ref::after {
+  content: "DESIGN";
+}
+.title-ref::after {
+  content: "The Future Rocks Design System";
+}
+a:link {
+  text-decoration: none;
+}
+.en-sample-title::after {
+  content: "Future";
+}
+.en-sample-ref::after {
+  content: "We don't sell sustainability, WE ACT WITH CONSCIENCE.";
+}
+.ja-sample-title::after {
+  content: "未来";
+}
+.ja-sample-ref::after {
+  content: "私たちは持続可能性を売っているのではなく、良心をもって行動をしています。";
+}
+.ko-sample-title::after {
+  content: "미래";
+}
+.ko-sample-ref::after {
+  content: "우리는 지속 가능성을 판매하지 않습니다. 다만, 지속 가능하게 행동합니다.";
+}</style>
+<div id="f-custom-section-1721380440N71qV" class="f:sections f:custom-section f-custom-section-1721380440N71qV"><div class="f:container-full"><div id="f-grid-1721380440zGfWa" class="f:blocks f:grid f-grid-1721380440zGfWa" style="--f-grid-columns-sm:minmax(0, 12fr);--f-grid-columns-md:minmax(0, 6fr) minmax(0, 6fr);--f-grid-columns-lg:minmax(0, 6fr) minmax(0, 6fr);--f-grid-columns-xl:minmax(0, 8fr) minmax(0, 4fr)"><div id="f-col-17213804401yjOd" class="f:blocks f:col f-col-17213804401yjOd f:column"><div id="f-richtext-1721380440c7qlZ" class="f:blocks f:richtext f-richtext-1721380440c7qlZ f:content-block f:gs-subheading f:rte">
+{{ 'sections.foxify-1721380459eLXgz.f-richtext-1721380440c7qlZ-text_html' | t }}</div><h1 id="f-heading-1721380440Ff5H0" class="f:blocks f:heading f-heading-1721380440Ff5H0 f:content-block f:gs-mega-title"><span>
+{{ 'sections.foxify-1721380459eLXgz.f-heading-1721380440Ff5H0-text_html' | t }}</span></h1></div><div id="f-col-1721380440W6775" class="f:blocks f:col f-col-1721380440W6775 f:column"><div id="f-image-1721380440rmkHz" class="f:blocks f-image-1721380440rmkHz f:custom-section__image f:image-block"><f-image class="f:image " style="--f-aspect-ratio:0.9968847352024922"><img srcSet="https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Asset_11_e9f4c860-defc-441e-b770-aa82ec6ef050.png?v=1714661405 40w" src="//cdn.shopify.com/s/files/1/0619/6150/2869/files/Asset_11_e9f4c860-defc-441e-b770-aa82ec6ef050_360x.png?v=1714661405" sizes="(min-width: 1200px) 533px, (min-width: 990px) calc((100vw - 130px) / 3), (min-width: 750px) calc((100vw - 120px) / 2), calc((100vw - 35px) / 2)" alt="Asset 11.png" loading="lazy" width="40" height="40.125"/></f-image></div><div id="f-image-17213804407TbFQ" class="f:blocks f-image-17213804407TbFQ f:custom-section__image f:image-block"><f-image class="f:image " style="--f-aspect-ratio:0.9968847352024922"><img srcSet="https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Asset_11_e9f4c860-defc-441e-b770-aa82ec6ef050.png?v=1714661405 40w" src="//cdn.shopify.com/s/files/1/0619/6150/2869/files/Asset_11_e9f4c860-defc-441e-b770-aa82ec6ef050_360x.png?v=1714661405" sizes="(min-width: 1200px) 533px, (min-width: 990px) calc((100vw - 130px) / 3), (min-width: 750px) calc((100vw - 120px) / 2), calc((100vw - 35px) / 2)" alt="Asset 11.png" loading="lazy" width="40" height="40.125"/></f-image></div><div id="f-richtext-1721380440gG8Xn" class="f:blocks f:richtext f-richtext-1721380440gG8Xn f:content-block f:gs-subheading f:rte">
+{{ 'sections.foxify-1721380459eLXgz.f-richtext-1721380440gG8Xn-text_html' | t }}</div></div></div><div id="f-grid-172138044064dlM" class="f:blocks f:grid f-grid-172138044064dlM" style="--f-grid-columns-sm:minmax(0, 12fr);--f-grid-columns-md:minmax(0, 12fr);--f-grid-columns-lg:minmax(0, 12fr);--f-grid-columns-xl:minmax(0, 12fr)"><div id="f-col-1721380440Ybpxv" class="f:blocks f:col f-col-1721380440Ybpxv f:column"><a id="f-button-1721380440al7nz" class="f:blocks f:button f-button-1721380440al7nz f:gs-outline-button f:btn" href="/pages/tfr-brand-guideline-get-started"><span>
+{{ 'sections.foxify-1721380459eLXgz.f-button-1721380440al7nz-button_label_html' | t }}</span></a><a id="f-button-1721380440MwLDO" class="f:blocks f:button f-button-1721380440MwLDO f:gs-outline-button f:btn" href="/pages/tfr-brand-guideline-identity"><span>
+{{ 'sections.foxify-1721380459eLXgz.f-button-1721380440MwLDO-button_label_html' | t }}</span></a><a id="f-button-1721380440TSkY7" class="f:blocks f:button f-button-1721380440TSkY7 f:gs-outline-button f:btn" href="/pages/tfr-brand-guideline-design"><span>
+{{ 'sections.foxify-1721380459eLXgz.f-button-1721380440TSkY7-button_label_html' | t }}</span></a><a id="f-button-1721380440FN32m" class="f:blocks f:button f-button-1721380440FN32m f:gs-outline-button f:btn" href="/pages/tfr-brand-guideline-visual"><span>
+{{ 'sections.foxify-1721380459eLXgz.f-button-1721380440FN32m-button_label_html' | t }}</span></a><a id="f-button-1721380582EMdWP" class="f:blocks f:button f-button-1721380582EMdWP f:gs-outline-button f:btn" href="/pages/tfr-brand-guideline-do-not"><span>
+{{ 'sections.foxify-1721380459eLXgz.f-button-1721380582EMdWP-button_label_html' | t }}</span></a><a id="f-button-1721380583jND2u" class="f:blocks f:button f-button-1721380583jND2u f:gs-primary-button f:btn" href="/pages/tfr-brand-guideline-resources"><span>
+{{ 'sections.foxify-1721380459eLXgz.f-button-1721380583jND2u-button_label_html' | t }}</span></a></div></div></div></div>{{ 'foxify-component-tabs.css' | asset_url | stylesheet_tag }}<script src="{{ 'foxify-tabs-component.js' | asset_url }}" defer=""></script><div id="f-content-tabs-17213804407iOWj" class="f:sections f:content-tabs f-content-tabs-17213804407iOWj"><div class="f:container-extended"><tabs-component class="f:tabs f:tabs--inline-style-1"><div class="f:tabs__header f:flex" role="tablist"><div class="f:tabs__header-wrapper"><button aria-selected="true" class="f:tabs__button" role="tab">
+{{ 'sections.foxify-1721380459eLXgz.f-content-tab-1721380440vE71Z-title_html' | t }}</button></div></div><div class="f:tabs__list"><div class="f:tabs__content" role="tabpanel"><div id="anchordam" class="f:blocks f:grid f-grid-1721380440kDvPK" style="--f-grid-columns-sm:minmax(0, 12fr);--f-grid-columns-md:minmax(0, 12fr);--f-grid-columns-lg:minmax(0, 4fr) minmax(0, 4fr) minmax(0, 4fr);--f-grid-columns-xl:minmax(0, 4fr) minmax(0, 4fr) minmax(0, 4fr)"><div id="f-col-17213804408PmiW" class="f:blocks f:col f-col-17213804408PmiW f:column"><h2 id="f-heading-1721380440Cr0Cq" class="f:blocks f:heading f-heading-1721380440Cr0Cq f:content-block f:gs-heading-3"><span>
+{{ 'sections.foxify-1721380459eLXgz.f-heading-1721380440Cr0Cq-text_html' | t }}</span></h2><div id="f-richtext-1721380440dUA60" class="f:blocks f:richtext f-richtext-1721380440dUA60 f:content-block f:gs-body-text f:rte">
+{{ 'sections.foxify-1721380459eLXgz.f-richtext-1721380440dUA60-text_html' | t }}</div></div><div id="f-col-1721380440cYUz6" class="f:blocks f:col f-col-1721380440cYUz6 f:column"><span id="f-icon-1721380440E0MuD" class="f:blocks f:icon f-icon-1721380440E0MuD" style="--f-icon-size:30px"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="f-icon-feather f-icon-arrow-down"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg></span></div><div id="f-col-1721380440duWG4" class="f:blocks f:col f-col-1721380440duWG4 f:column"><div id="f-list-items-1721380440WBnn7" class="f:blocks f:list-items f-list-items-1721380440WBnn7 f:list-items--none f:list-items--vertical"><ul style="list-style-type:none;--item-spacing:10px"><li><div class="f:list-items__inner"><span class="f:icon" style="--f-icon-size:20px"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="f-icon-feather f-icon-link-2"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></span><a href="https://the-future-rocks.dash.app/home" title="" target="_blank" rel="noreferrer">
+{{ 'sections.foxify-1721380459eLXgz.f-list-items-1721380440WBnn7-items-Item-1-title_html' | t }}</a></div></li><li><div class="f:list-items__inner"><span class="f:icon" style="--f-icon-size:20px"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="f-icon-feather f-icon-link-2"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></span><a href="https://shopify.com" title="" target="_blank" rel="noreferrer">
+{{ 'sections.foxify-1721380459eLXgz.f-list-items-1721380440WBnn7-items-Item-3-title_html' | t }}</a></div></li></ul></div></div></div><div id="f-grid-1721380440cYaIm" class="f:blocks f:grid f-grid-1721380440cYaIm" style="--f-grid-columns-sm:minmax(0, 12fr);--f-grid-columns-md:minmax(0, 8fr) minmax(0, 4fr);--f-grid-columns-lg:minmax(0, 8fr) minmax(0, 4fr);--f-grid-columns-xl:minmax(0, 8fr) minmax(0, 4fr)"><div id="f-col-1721380440AJTkn" class="f:blocks f:col f-col-1721380440AJTkn f:column"><div id="f-image-17213804405MSxW" class="f:blocks f-image-17213804405MSxW f:content-tabs__image f:image-block"><f-image class="f:image " style="--f-aspect-ratio:0.8853427895981087"><img srcSet="https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Screenshot_2024-06-03_at_14.08.49.png?v=1717395071&width=165 165w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Screenshot_2024-06-03_at_14.08.49.png?v=1717395071&width=360 360w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Screenshot_2024-06-03_at_14.08.49.png?v=1717395071&width=533 533w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Screenshot_2024-06-03_at_14.08.49.png?v=1717395071&width=720 720w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Screenshot_2024-06-03_at_14.08.49.png?v=1717395071&width=940 940w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Screenshot_2024-06-03_at_14.08.49.png?v=1717395071&width=1066 1066w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Screenshot_2024-06-03_at_14.08.49.png?v=1717395071&width=1500 1500w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Screenshot_2024-06-03_at_14.08.49.png?v=1717395071&width=1780 1780w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Screenshot_2024-06-03_at_14.08.49.png?v=1717395071&width=2000 2000w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/Screenshot_2024-06-03_at_14.08.49.png?v=1717395071 2996w" src="//cdn.shopify.com/s/files/1/0619/6150/2869/files/Screenshot_2024-06-03_at_14.08.49_360x.png?v=1717395071" sizes="(min-width: 1200px) 533px, (min-width: 990px) calc((100vw - 130px) / 3), (min-width: 750px) calc((100vw - 120px) / 2), calc((100vw - 35px) / 2)" alt="Screenshot 2024-06-03 at 14.08.49.png" loading="lazy" width="2996" height="3384"/></f-image></div></div><div id="f-col-1721380440iFs4Q" class="f:blocks f:col f-col-1721380440iFs4Q f:column"></div></div><div id="f-grid-1721380440cSNsi" class="f:blocks f:grid f-grid-1721380440cSNsi" style="--f-grid-columns-sm:minmax(0, 12fr);--f-grid-columns-md:minmax(0, 12fr);--f-grid-columns-lg:minmax(0, 4fr) minmax(0, 4fr) minmax(0, 4fr);--f-grid-columns-xl:minmax(0, 4fr) minmax(0, 4fr) minmax(0, 4fr)"><div id="f-col-1721380440SE1ar" class="f:blocks f:col f-col-1721380440SE1ar f:column"><div id="f-custom-code-1721380440qZFpQ" class="f:blocks f:custom-code f-custom-code-1721380440qZFpQ"><div class="title-ref"></div></div></div><div id="f-col-1721380440LD2jw" class="f:blocks f:col f-col-1721380440LD2jw f:column"><div id="f-custom-code-1721380440FrmLk" class="f:blocks f:custom-code f-custom-code-1721380440FrmLk"><div class="tab-visual-ref"></div></div></div><div id="f-col-17213804408FcRP" class="f:blocks f:col f-col-17213804408FcRP f:column"><div id="f-custom-code-1721380440l62Cz" class="f:blocks f:custom-code f-custom-code-1721380440l62Cz"><span class="date-ref"><div class="pre-date"></div>  </span></div></div></div></div></div></tabs-component></div></div>
+{% liquid
+        assign theme_settings = shop.metafields.foxify.theme_settings.value
+        assign customCodeBody = theme_settings.customCodeBody
+        echo customCodeBody
+      %}
+
+</div>
+    {% schema %}
+        {
+            "name": "Foxify main content",
+            "class": "foxify-main f-app",
+            "settings": [
+                {
+                "type": "header",
+                "content": "Customize section",
+                "info": "Go to [Foxify app](https://app.foxify.io/editor?id=1721380459eLXgz&type=REGULAR) to edit this section."
+                }
+            ],
+            "locales": {
+  "en": {
+    "f-richtext-1721380440c7qlZ-text_html": "visual identity standards",
+    "f-heading-1721380440Ff5H0-text_html": "brand guidelines",
+    "f-richtext-1721380440gG8Xn-text_html": "This document contains the rules of the communication system. Follow these rules strictly to maintain brand consistency.",
+    "f-button-1721380440al7nz-button_label_html": "get started",
+    "f-button-1721380440MwLDO-button_label_html": "identity",
+    "f-button-1721380440TSkY7-button_label_html": "design",
+    "f-button-1721380440FN32m-button_label_html": "visual",
+    "f-heading-1721380440Cr0Cq-text_html": "DAM",
+    "f-richtext-1721380440dUA60-text_html": "A Digital Asset Management (DAM) system provide several benefits for our team to deal with a large number of digital assets, such as images, videos, documents, and other multimedia content.<br /><br />In the spirit of enhancing our ability to manage, collaborate on, and derive value from our digital assets more effectively, we centralize all our assets in one location.",
+    "f-list-items-1721380440WBnn7-items-Item-1-title_html": "DAM access",
+    "f-list-items-1721380440WBnn7-items-Item-3-title_html": "SHOPIFY access",
+    "f-content-tab-1721380440vE71Z-title_html": "DIGITAL ASSET MANAGEMENT",
+    "f-button-1721380582EMdWP-button_label_html": "do not",
+    "f-button-1721380583jND2u-button_label_html": "resources"
+  }
+}
+        }
+    {% endschema %}
+  

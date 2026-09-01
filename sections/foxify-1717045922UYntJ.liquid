@@ -1,0 +1,83 @@
+    {% liquid
+        assign locales = shop.metafields.foxify.locales.value
+        assign current_locale = request.locale.iso_code
+        assign primary_locale = current_locale
+        for locale in shop.published_locales
+        if locale.primary
+            assign primary_locale = locale.iso_code
+            break
+        endif
+        endfor
+        assign translation = locales[current_locale] | default: locales[primary_locale]
+    %}
+    <script>
+        window.Foxify = window.Foxify || {}
+        Foxify.ThemeStyles = {
+            product: "https:{{ 'foxify-product.css' | asset_url }}",
+            swiper: "https:{{ 'foxify-swiper.css' | asset_url }}",
+        }
+
+        Foxify.ThemeScripts = {
+            productModel: "https:{{ 'foxify-product-model.js' | asset_url }}",
+            productMedia: "https:{{ 'foxify-media-gallery.js' | asset_url }}",
+            variantPicker: "https:{{ 'foxify-variant-picker.js' | asset_url }}"
+        }
+
+        Foxify.pageId = '1717045922UYntJ'
+        Foxify.default = false
+    </script>
+    <div class="f-app f:content">
+<style data-foxify-editor="foxify-custom-fonts">
+  @font-face {
+    font-family: BrownProTT-Regular-1707112782cX7wj;
+    src: url('https://cdn.shopify.com/s/files/1/0619/6150/2869/files/BrownProTT-Regular.ttf?v=1707112779');
+  }
+  
+  @font-face {
+    font-family: BrownProTT-Bold-17071127825LR9n;
+    src: url('https://cdn.shopify.com/s/files/1/0619/6150/2869/files/BrownProTT-Bold.ttf?v=1707112779');
+  }
+  </style>
+{{ 'foxify-1717045922UYntJ.css' | asset_url | stylesheet_tag }}
+{{ 'foxify-countdown-timer.css' | asset_url | stylesheet_tag }}<div id="f-countdown-timer-1717045773Eed9Z" class="f:sections f:countdown-timer f-countdown-timer-1717045773Eed9Z"><div class="f:container-full"><div class="f:countdown__wrapper f:relative"><div class="f:countdown__content f:w-full f:flex f:justify-center"><div class="f:countdown__inner"><div id="f-richtext-17170457731vPob" class="f:blocks f:richtext f-richtext-17170457731vPob f:content-block f:gs-subheading f:rte">
+{{ 'sections.foxify-1717045922UYntJ.f-richtext-17170457731vPob-text_html' | t }}</div><h3 id="f-heading-1717045773peukR" class="f:blocks f:heading f-heading-1717045773peukR f:content-block f:gs-mega-title"><span>
+{{ 'sections.foxify-1717045922UYntJ.f-heading-1717045773peukR-text_html' | t }}</span></h3><div id="f-richtext-1717045963Kq4Nk" class="f:blocks f:richtext f-richtext-1717045963Kq4Nk f:content-block f:gs-body-text f:rte">
+{{ 'sections.foxify-1717045922UYntJ.f-richtext-1717045963Kq4Nk-text_html' | t }}</div>{{ 'foxify-countdown-timer.css' | asset_url | stylesheet_tag }}<div id="f-countdown-1717045773IHWNX" class="f:blocks f:countdown f-countdown-1717045773IHWNX f:countdown-timer--minimal"><f-countdown-timer id="f-countdown-1717045773IHWNX" class="f:countdown-timer" data-countdown-timer="2024-06-18T16:00:00.000Z"><div class="f:countdown-timer__inner f:inline-flex f:items-center f:justify-center"><div class="f:countdown-timer__block"><div class="f:countdown-timer__number f:countdown-timer__day" data-timer-day="true">00</div><span class="f:countdown-timer__label">
+{{ 'sections.foxify-1717045922UYntJ.f-countdown-1717045773IHWNX-day_label_html' | t }}</span></div><div class="f:countdown-timer__block"><div class="f:countdown-timer__number f:countdown-timer__hour" data-timer-hour="true">00</div><span class="f:countdown-timer__label">
+{{ 'sections.foxify-1717045922UYntJ.f-countdown-1717045773IHWNX-hour_label_html' | t }}</span></div><div class="f:countdown-timer__block"><div class="f:countdown-timer__number f:countdown-timer__minute" data-timer-minute="true">00</div><span class="f:countdown-timer__label">
+{{ 'sections.foxify-1717045922UYntJ.f-countdown-1717045773IHWNX-min_label_html' | t }}</span></div><div class="f:countdown-timer__block"><div class="f:countdown-timer__number f:countdown-timer__sec" data-timer-second="true">00</div><span class="f:countdown-timer__label">
+{{ 'sections.foxify-1717045922UYntJ.f-countdown-1717045773IHWNX-sec_label_html' | t }}</span></div></div></f-countdown-timer></div><a id="f-button-17170457739Xj84" class="f:blocks f:button f-button-17170457739Xj84 f:gs-white-button f:btn" href="/collections/summer-jewelry"><span>
+{{ 'sections.foxify-1717045922UYntJ.f-button-17170457739Xj84-button_label_html' | t }}</span></a></div></div></div></div></div>
+{% liquid
+        assign theme_settings = shop.metafields.foxify.theme_settings.value
+        assign customCodeBody = theme_settings.customCodeBody
+        echo customCodeBody
+      %}
+
+</div>
+    {% schema %}
+        {
+            "name": "Foxify main content",
+            "class": "foxify-main f-app",
+            "settings": [
+                {
+                "type": "header",
+                "content": "Customize section",
+                "info": "Go to [Foxify app](https://app.foxify.io/editor?id=1717045922UYntJ&type=SECTION) to edit this section."
+                }
+            ],
+            "locales": {
+  "en": {
+    "f-heading-1717045773peukR-text_html": "summer 50",
+    "f-richtext-17170457731vPob-text_html": "<p>summer code is here</p>",
+    "f-countdown-1717045773IHWNX-day_label_html": "Days",
+    "f-countdown-1717045773IHWNX-hour_label_html": "Hrs",
+    "f-countdown-1717045773IHWNX-min_label_html": "Mins",
+    "f-countdown-1717045773IHWNX-sec_label_html": "Secs",
+    "f-button-17170457739Xj84-button_label_html": "shop now",
+    "f-richtext-1717045963Kq4Nk-text_html": "<p>Step up your style game this summer!</p>"
+  }
+}
+        }
+    {% endschema %}
+  

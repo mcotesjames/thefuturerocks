@@ -1,0 +1,53 @@
+   {% if product.metafields.custom.vendor != blank %}
+<div class="cstm-image-with-text">
+    <div class="container">
+   
+      <div class="cstm-image-with-text-wrapper">
+            <div class="cstm-image-with-text-text-wrapper">
+              {% if product.metafields.custom.vendor != blank %}
+              <div class="image-heading">
+                <h3>{{ product.metafields.custom.vendor }}</h3>
+              </div>
+              {% endif %}
+              {% if product.metafields.custom.some_text != blank %}
+              <div class="image-text">
+                <span>{{ product.metafields.custom.some_text }}</span>
+              </div>
+                 {% endif %}
+              
+                <div class="button custom-buton-cls">
+                  <a href="{{ product.metafields.custom.collectionpage_vendor }}">{{ product.metafields.custom.button_text.value }}</a>
+                </div>          
+            </div>
+          </div>
+              
+       {% if product.metafields.custom.a_picture != blank %}
+            <div class="cstm-image-with-text-image-wrapper">
+              
+              <div class="cstm-image">
+                {% assign vendor_image_meta = product.metafields.custom.a_picture %}
+                <img src="{{ vendor_image_meta |img_url:"master"}}" loading="lazy">
+              </div>
+               
+      </div>
+           {% endif %}
+    </div>
+  </div>
+  {% endif %}
+{% schema %}
+{
+  "name": "cstm-image-with-text",
+  "settings": [],
+  "presets":[
+    {
+      "name":"cstm-image-with-text"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

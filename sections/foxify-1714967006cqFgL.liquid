@@ -1,0 +1,238 @@
+    {% liquid
+        assign locales = shop.metafields.foxify.locales.value
+        assign current_locale = request.locale.iso_code
+        assign primary_locale = current_locale
+        for locale in shop.published_locales
+        if locale.primary
+            assign primary_locale = locale.iso_code
+            break
+        endif
+        endfor
+        assign translation = locales[current_locale] | default: locales[primary_locale]
+    %}
+    <script>
+        window.Foxify = window.Foxify || {}
+        Foxify.ThemeStyles = {
+            product: "https:{{ 'foxify-product.css' | asset_url }}",
+            swiper: "https:{{ 'foxify-swiper.css' | asset_url }}",
+        }
+
+        Foxify.ThemeScripts = {
+            productModel: "https:{{ 'foxify-product-model.js' | asset_url }}",
+            productMedia: "https:{{ 'foxify-media-gallery.js' | asset_url }}",
+            variantPicker: "https:{{ 'foxify-variant-picker.js' | asset_url }}"
+        }
+
+        Foxify.pageId = '1714967006cqFgL'
+        Foxify.default = false
+    </script>
+    <div class="f-app f:content">
+<style data-foxify-editor="foxify-custom-fonts">
+  @font-face {
+    font-family: BrownProTT-Regular-1707112782cX7wj;
+    src: url('https://cdn.shopify.com/s/files/1/0619/6150/2869/files/BrownProTT-Regular.ttf?v=1707112779');
+  }
+  
+  @font-face {
+    font-family: BrownProTT-Bold-17071127825LR9n;
+    src: url('https://cdn.shopify.com/s/files/1/0619/6150/2869/files/BrownProTT-Bold.ttf?v=1707112779');
+  }
+  </style>
+{{ 'foxify-1714967006cqFgL.css' | asset_url | stylesheet_tag }}
+<style>.f-heading-1712723399pVBiG:lang(ja) {
+  line-height: 120%;
+}
+.f-heading-1712723399WVe0K:lang(ja) {
+  line-height: 120%;
+}
+.f-heading-1712725902sWOfP:lang(ja) {
+  line-height: 120%;
+}
+.f-heading-1712725902kS6sM:lang(ja) {
+  line-height: 120%;
+}
+.f-heading-1712723399pVBiG:lang(ko) {
+  line-height: 120%;
+}
+.f-heading-1712723399WVe0K:lang(ko) {
+  line-height: 120%;
+}
+.f-heading-1712725902sWOfP:lang(ko) {
+  line-height: 120%;
+}
+.f-heading-1712725902kS6sM:lang(ko) {
+  line-height: 120%;
+}
+.rotate {
+  rotate: -10deg;
+}
+.sentence-mod {
+  text-transform: lowercase !important;
+}
+.sentence-mod:first-letter {
+  text-transform: uppercase !important;
+}
+
+.f-app {
+  --f-container-width: 1270px !important;
+}
+
+.f-hover--zoom-in {
+  overflow: hidden;
+  vertical-align: top;
+}
+.f-hover--zoom-in .f\:image {
+  transition: all .5s cubic-bezier(0.4, 0, 0.2, 1);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.f-ct-heading-style {
+  font-style: italic;
+  font-weight: 300;
+}
+
+.f-feature-product-single-ct .f\:product-single__info {
+  padding-left: 60px;
+}
+.f-feature-product-single-ct .f\:variant-picker__button {
+  --f-button-size: 42px;
+}
+.f-feature-product-single-ct .f\:variant-picker__button .f\:variant-picker__option-button {
+  padding: 5px 10px;
+  line-height: 25px;
+  border-radius: 9999px;
+  background: transparent;
+}
+.f-feature-product-single-ct .f\:variant-picker__color {
+  --f-color-swatch-size: 72px;
+}
+.f-custom-panigation .f\:swiper-pagination--bullets {
+  background-color: transparent;
+}
+
+.f\:list-items__inner span+a, .f\:list-items__inner span+span {
+  margin-left: 12px !important;
+}
+
+.underline-none {
+  text-decoration: none !important;
+}
+
+.f-quantity-custom-css .f\:quantity {
+  border-radius: 64px;
+  overflow: hidden;
+  border-color: rgba(0, 0, 0, .3);
+  --btn-height: 64px;
+}
+
+.f-collapsible-css .f\:collapsible__button {
+  border-bottom-color: rgba(0, 0, 0, .3) !important;
+}
+
+.f-collapsible-css .f\:collapsible__button span {
+  font-style: italic;
+  font-family: Fraunces;
+}
+
+.f-variant-custom-css .f\:variant-picker__input select {
+  border-color: rgba(0, 0, 0, .3);
+  border-radius: 30px;
+}
+
+@media (min-width: 1280px) {
+  .f-hover--zoom-in:hover .f\:image {
+    transform: scale(1.06) translateZ(0);
+  }
+}
+
+@media (max-width: 1023px) {
+  .f-feature-product-single-ct .f\:product-single__info {
+    padding-left: 0;
+  }
+  .f-feature-product-single-ct .f\:variant-picker__color {
+    --f-color-swatch-size: 50px;
+  }
+}
+.morph-7 {
+border-radius: 0px;
+box-shadow:  20px 20px 60px #d3d3d3,
+             -20px -20px 60px #ffffff;
+}
+a:link {
+  text-decoration: none;
+}</style>
+<div id="f-custom-section-1714966987sFzz5" class="f:sections f:custom-section f-custom-section-1714966987sFzz5" data-animate-trigger="scroll_into_view" data-animate-name="fFadeInLeft"><div class="f:container-full"><div id="f-grid-1714966987pvPbv" class="f:blocks f:grid f-grid-1714966987pvPbv" style="--f-grid-columns-sm:minmax(0, 12fr);--f-grid-columns-md:minmax(0, 6fr) minmax(0, 6fr);--f-grid-columns-lg:minmax(0, 6fr) minmax(0, 6fr);--f-grid-columns-xl:minmax(0, 11fr) minmax(0, 1fr)"><div id="f-col-1714966987ATyN6" class="f:blocks f:col f-col-1714966987ATyN6 f:column"><div id="f-richtext-17149669879JxNF" class="f:blocks f:richtext f-richtext-17149669879JxNF f:content-block f:gs-subheading f:rte">
+{{ 'sections.foxify-1714967006cqFgL.f-richtext-17149669879JxNF-text_html' | t }}</div><h1 id="f-heading-17149669875IpKd" class="f:blocks f:heading f-heading-17149669875IpKd f:content-block f:gs-heading-1" data-animate-trigger="scroll_into_view" data-animate-name="fFadeInLeft"><span>
+{{ 'sections.foxify-1714967006cqFgL.f-heading-17149669875IpKd-text_html' | t }}</span></h1></div></div></div></div><div id="f-custom-section-1733805034r2MDU" class="f:sections f:custom-section f-custom-section-1733805034r2MDU" data-animate-trigger="scroll_into_view" data-animate-name="fFadeInLeft"><div class="f:container"><div id="f-grid-1733805034PPOH2" class="f:blocks f:grid f-grid-1733805034PPOH2" style="--f-grid-columns-sm:minmax(0, 12fr);--f-grid-columns-md:minmax(0, 6fr) minmax(0, 6fr);--f-grid-columns-lg:minmax(0, 6fr) minmax(0, 6fr);--f-grid-columns-xl:minmax(0, 6fr) minmax(0, 6fr)"><div id="f-col-1733805034c3xN0" class="f:blocks f:col f-col-1733805034c3xN0 f:column"><div id="f-image-1733805179iUFDg" class="f:blocks f-image-1733805179iUFDg f-hover--zoom-in f:custom-section__image f:image-block"><f-image class="f:image " style="--f-aspect-ratio:1.25"><img srcSet="https://cdn.shopify.com/s/files/1/0619/6150/2869/files/0.jpg?v=1733815889&width=165 165w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/0.jpg?v=1733815889&width=360 360w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/0.jpg?v=1733815889&width=533 533w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/0.jpg?v=1733815889&width=720 720w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/0.jpg?v=1733815889&width=940 940w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/0.jpg?v=1733815889&width=1066 1066w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/0.jpg?v=1733815889&width=1500 1500w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/0.jpg?v=1733815889&width=1780 1780w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/0.jpg?v=1733815889 1800w" src="//cdn.shopify.com/s/files/1/0619/6150/2869/files/0_360x.jpg?v=1733815889" sizes="(min-width: 1200px) 533px, (min-width: 990px) calc((100vw - 130px) / 3), (min-width: 750px) calc((100vw - 120px) / 2), calc((100vw - 35px) / 2)" alt="0.jpg" loading="lazy" width="1800" height="1440"/></f-image></div></div><div id="f-col-1733805034ow7Hv" class="f:blocks f:col f-col-1733805034ow7Hv f:column"><h3 id="f-heading-1733805961plyga" class="f:blocks f:heading f-heading-1733805961plyga f:content-block f:gs-heading-2"><span>
+{{ 'sections.foxify-1714967006cqFgL.f-heading-1733805961plyga-text_html' | t }}</span></h3><div id="f-richtext-1733805182hYZrI" class="f:blocks f:richtext f-richtext-1733805182hYZrI f:content-block f:gs-body-text f:rte">
+{{ 'sections.foxify-1714967006cqFgL.f-richtext-1733805182hYZrI-text_html' | t }}</div></div></div><div id="f-grid-1733805199oIU7C" class="f:blocks f:grid f-grid-1733805199oIU7C" style="--f-grid-columns-sm:minmax(0, 12fr);--f-grid-columns-md:minmax(0, 6fr) minmax(0, 6fr);--f-grid-columns-lg:minmax(0, 6fr) minmax(0, 6fr);--f-grid-columns-xl:minmax(0, 6fr) minmax(0, 6fr)"><div id="f-col-1733805199DqQ6Z" class="f:blocks f:col f-col-1733805199DqQ6Z f:tablet-hidden f:laptop-hidden f:desk-hidden f:column"><div id="f-image-1733805289IB2JR" class="f:blocks f-image-1733805289IB2JR f-hover--zoom-in f:custom-section__image f:image-block"><f-image class="f:image " style="--f-aspect-ratio:1.25"><img srcSet="https://cdn.shopify.com/s/files/1/0619/6150/2869/files/02_7f53929b-2f1f-4192-8917-e6a09f1720ec.jpg?v=1733815899&width=165 165w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/02_7f53929b-2f1f-4192-8917-e6a09f1720ec.jpg?v=1733815899&width=360 360w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/02_7f53929b-2f1f-4192-8917-e6a09f1720ec.jpg?v=1733815899&width=533 533w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/02_7f53929b-2f1f-4192-8917-e6a09f1720ec.jpg?v=1733815899&width=720 720w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/02_7f53929b-2f1f-4192-8917-e6a09f1720ec.jpg?v=1733815899&width=940 940w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/02_7f53929b-2f1f-4192-8917-e6a09f1720ec.jpg?v=1733815899&width=1066 1066w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/02_7f53929b-2f1f-4192-8917-e6a09f1720ec.jpg?v=1733815899&width=1500 1500w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/02_7f53929b-2f1f-4192-8917-e6a09f1720ec.jpg?v=1733815899&width=1780 1780w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/02_7f53929b-2f1f-4192-8917-e6a09f1720ec.jpg?v=1733815899 1800w" src="//cdn.shopify.com/s/files/1/0619/6150/2869/files/02_7f53929b-2f1f-4192-8917-e6a09f1720ec_360x.jpg?v=1733815899" sizes="(min-width: 1200px) 533px, (min-width: 990px) calc((100vw - 130px) / 3), (min-width: 750px) calc((100vw - 120px) / 2), calc((100vw - 35px) / 2)" alt="02.jpg" loading="lazy" width="1800" height="1440"/></f-image></div></div><div id="f-col-1733805199VZD5Z" class="f:blocks f:col f-col-1733805199VZD5Z f:column"><h3 id="f-heading-1733806186zgU5u" class="f:blocks f:heading f-heading-1733806186zgU5u f:content-block f:gs-heading-2"><span>
+{{ 'sections.foxify-1714967006cqFgL.f-heading-1733806186zgU5u-text_html' | t }}</span></h3><div id="f-richtext-1733805249PZyo4" class="f:blocks f:richtext f-richtext-1733805249PZyo4 f:content-block f:gs-body-text f:rte">
+{{ 'sections.foxify-1714967006cqFgL.f-richtext-1733805249PZyo4-text_html' | t }}</div></div><div id="f-col-1733816249P48jD" class="f:blocks f:col f-col-1733816249P48jD f:mobile-hidden f:column"><div id="f-image-1733816249eupAA" class="f:blocks f-image-1733816249eupAA f-hover--zoom-in f:custom-section__image f:image-block"><f-image class="f:image " style="--f-aspect-ratio:1.25"><img srcSet="https://cdn.shopify.com/s/files/1/0619/6150/2869/files/02_7f53929b-2f1f-4192-8917-e6a09f1720ec.jpg?v=1733815899&width=165 165w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/02_7f53929b-2f1f-4192-8917-e6a09f1720ec.jpg?v=1733815899&width=360 360w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/02_7f53929b-2f1f-4192-8917-e6a09f1720ec.jpg?v=1733815899&width=533 533w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/02_7f53929b-2f1f-4192-8917-e6a09f1720ec.jpg?v=1733815899&width=720 720w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/02_7f53929b-2f1f-4192-8917-e6a09f1720ec.jpg?v=1733815899&width=940 940w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/02_7f53929b-2f1f-4192-8917-e6a09f1720ec.jpg?v=1733815899&width=1066 1066w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/02_7f53929b-2f1f-4192-8917-e6a09f1720ec.jpg?v=1733815899&width=1500 1500w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/02_7f53929b-2f1f-4192-8917-e6a09f1720ec.jpg?v=1733815899&width=1780 1780w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/02_7f53929b-2f1f-4192-8917-e6a09f1720ec.jpg?v=1733815899 1800w" src="//cdn.shopify.com/s/files/1/0619/6150/2869/files/02_7f53929b-2f1f-4192-8917-e6a09f1720ec_360x.jpg?v=1733815899" sizes="(min-width: 1200px) 533px, (min-width: 990px) calc((100vw - 130px) / 3), (min-width: 750px) calc((100vw - 120px) / 2), calc((100vw - 35px) / 2)" alt="02.jpg" loading="lazy" width="1800" height="1440"/></f-image></div></div></div><div id="f-grid-1733805208yJkbN" class="f:blocks f:grid f-grid-1733805208yJkbN" style="--f-grid-columns-sm:minmax(0, 12fr);--f-grid-columns-md:minmax(0, 6fr) minmax(0, 6fr);--f-grid-columns-lg:minmax(0, 6fr) minmax(0, 6fr);--f-grid-columns-xl:minmax(0, 6fr) minmax(0, 6fr)"><div id="f-col-1733805208UCD87" class="f:blocks f:col f-col-1733805208UCD87 f:column"><div id="f-image-1733805208wA1ST" class="f:blocks f-image-1733805208wA1ST f-hover--zoom-in f:custom-section__image f:image-block"><f-image class="f:image " style="--f-aspect-ratio:1.25"><img srcSet="https://cdn.shopify.com/s/files/1/0619/6150/2869/files/03_e5e87d0e-511c-4f7d-b474-a9598615c4d3.jpg?v=1733815912&width=165 165w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/03_e5e87d0e-511c-4f7d-b474-a9598615c4d3.jpg?v=1733815912&width=360 360w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/03_e5e87d0e-511c-4f7d-b474-a9598615c4d3.jpg?v=1733815912&width=533 533w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/03_e5e87d0e-511c-4f7d-b474-a9598615c4d3.jpg?v=1733815912&width=720 720w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/03_e5e87d0e-511c-4f7d-b474-a9598615c4d3.jpg?v=1733815912&width=940 940w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/03_e5e87d0e-511c-4f7d-b474-a9598615c4d3.jpg?v=1733815912&width=1066 1066w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/03_e5e87d0e-511c-4f7d-b474-a9598615c4d3.jpg?v=1733815912&width=1500 1500w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/03_e5e87d0e-511c-4f7d-b474-a9598615c4d3.jpg?v=1733815912&width=1780 1780w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/03_e5e87d0e-511c-4f7d-b474-a9598615c4d3.jpg?v=1733815912 1800w" src="//cdn.shopify.com/s/files/1/0619/6150/2869/files/03_e5e87d0e-511c-4f7d-b474-a9598615c4d3_360x.jpg?v=1733815912" sizes="(min-width: 1200px) 533px, (min-width: 990px) calc((100vw - 130px) / 3), (min-width: 750px) calc((100vw - 120px) / 2), calc((100vw - 35px) / 2)" alt="03.jpg" loading="lazy" width="1800" height="1440"/></f-image></div></div><div id="f-col-1733805208LwpiO" class="f:blocks f:col f-col-1733805208LwpiO f:column"><h3 id="f-heading-1733806215zm0Xq" class="f:blocks f:heading f-heading-1733806215zm0Xq f:content-block f:gs-heading-2"><span>
+{{ 'sections.foxify-1714967006cqFgL.f-heading-1733806215zm0Xq-text_html' | t }}</span></h3><div id="f-richtext-1733806120SfXlC" class="f:blocks f:richtext f-richtext-1733806120SfXlC f:content-block f:gs-body-text f:rte">
+{{ 'sections.foxify-1714967006cqFgL.f-richtext-1733806120SfXlC-text_html' | t }}</div></div></div><div id="f-grid-1733805299mLtxh" class="f:blocks f:grid f-grid-1733805299mLtxh" style="--f-grid-columns-sm:minmax(0, 12fr);--f-grid-columns-md:minmax(0, 6fr) minmax(0, 6fr);--f-grid-columns-lg:minmax(0, 6fr) minmax(0, 6fr);--f-grid-columns-xl:minmax(0, 6fr) minmax(0, 6fr)"><div id="f-col-1733816272mk4fM" class="f:blocks f:col f-col-1733816272mk4fM f:tablet-hidden f:laptop-hidden f:desk-hidden f:column"><div id="f-image-1733816272qz683" class="f:blocks f-image-1733816272qz683 f-hover--zoom-in f:custom-section__image f:image-block"><f-image class="f:image " style="--f-aspect-ratio:1.25"><img srcSet="https://cdn.shopify.com/s/files/1/0619/6150/2869/files/04_a9146b35-bbcf-409e-9750-ac4e9d762277.jpg?v=1733815925&width=165 165w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/04_a9146b35-bbcf-409e-9750-ac4e9d762277.jpg?v=1733815925&width=360 360w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/04_a9146b35-bbcf-409e-9750-ac4e9d762277.jpg?v=1733815925&width=533 533w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/04_a9146b35-bbcf-409e-9750-ac4e9d762277.jpg?v=1733815925&width=720 720w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/04_a9146b35-bbcf-409e-9750-ac4e9d762277.jpg?v=1733815925&width=940 940w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/04_a9146b35-bbcf-409e-9750-ac4e9d762277.jpg?v=1733815925&width=1066 1066w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/04_a9146b35-bbcf-409e-9750-ac4e9d762277.jpg?v=1733815925&width=1500 1500w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/04_a9146b35-bbcf-409e-9750-ac4e9d762277.jpg?v=1733815925&width=1780 1780w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/04_a9146b35-bbcf-409e-9750-ac4e9d762277.jpg?v=1733815925 1800w" src="//cdn.shopify.com/s/files/1/0619/6150/2869/files/04_a9146b35-bbcf-409e-9750-ac4e9d762277_360x.jpg?v=1733815925" sizes="(min-width: 1200px) 533px, (min-width: 990px) calc((100vw - 130px) / 3), (min-width: 750px) calc((100vw - 120px) / 2), calc((100vw - 35px) / 2)" alt="04.jpg" loading="lazy" width="1800" height="1440"/></f-image></div></div><div id="f-col-1733805299rKriK" class="f:blocks f:col f-col-1733805299rKriK f:column"><h3 id="f-heading-1733806233LkOUM" class="f:blocks f:heading f-heading-1733806233LkOUM f:content-block f:gs-heading-2"><span>
+{{ 'sections.foxify-1714967006cqFgL.f-heading-1733806233LkOUM-text_html' | t }}</span></h3><div id="f-richtext-1733805299DNLv3" class="f:blocks f:richtext f-richtext-1733805299DNLv3 f:content-block f:gs-body-text f:rte">
+{{ 'sections.foxify-1714967006cqFgL.f-richtext-1733805299DNLv3-text_html' | t }}</div></div><div id="f-col-1733805299V2iCv" class="f:blocks f:col f-col-1733805299V2iCv f:mobile-hidden f:column"><div id="f-image-1733805299hBPKP" class="f:blocks f-image-1733805299hBPKP f-hover--zoom-in f:custom-section__image f:image-block"><f-image class="f:image " style="--f-aspect-ratio:1.25"><img srcSet="https://cdn.shopify.com/s/files/1/0619/6150/2869/files/04_a9146b35-bbcf-409e-9750-ac4e9d762277.jpg?v=1733815925&width=165 165w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/04_a9146b35-bbcf-409e-9750-ac4e9d762277.jpg?v=1733815925&width=360 360w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/04_a9146b35-bbcf-409e-9750-ac4e9d762277.jpg?v=1733815925&width=533 533w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/04_a9146b35-bbcf-409e-9750-ac4e9d762277.jpg?v=1733815925&width=720 720w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/04_a9146b35-bbcf-409e-9750-ac4e9d762277.jpg?v=1733815925&width=940 940w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/04_a9146b35-bbcf-409e-9750-ac4e9d762277.jpg?v=1733815925&width=1066 1066w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/04_a9146b35-bbcf-409e-9750-ac4e9d762277.jpg?v=1733815925&width=1500 1500w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/04_a9146b35-bbcf-409e-9750-ac4e9d762277.jpg?v=1733815925&width=1780 1780w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/04_a9146b35-bbcf-409e-9750-ac4e9d762277.jpg?v=1733815925 1800w" src="//cdn.shopify.com/s/files/1/0619/6150/2869/files/04_a9146b35-bbcf-409e-9750-ac4e9d762277_360x.jpg?v=1733815925" sizes="(min-width: 1200px) 533px, (min-width: 990px) calc((100vw - 130px) / 3), (min-width: 750px) calc((100vw - 120px) / 2), calc((100vw - 35px) / 2)" alt="04.jpg" loading="lazy" width="1800" height="1440"/></f-image></div></div></div></div></div><div id="f-custom-section-1733805097scfjR" class="f:sections f:custom-section f-custom-section-1733805097scfjR"><div class="f:container-full"><div id="f-grid-1733805097DM4X9" class="f:blocks f:grid f-grid-1733805097DM4X9" style="--f-grid-columns-sm:minmax(0, 12fr);--f-grid-columns-md:minmax(0, 6fr) minmax(0, 6fr);--f-grid-columns-lg:minmax(0, 6fr) minmax(0, 6fr);--f-grid-columns-xl:minmax(0, 8fr) minmax(0, 4fr)"><div id="f-col-17338050973L10Z" class="f:blocks f:col f-col-17338050973L10Z f:column"><h1 id="f-heading-1733805097YzRz8" class="f:blocks f:heading f-heading-1733805097YzRz8 f:content-block f:gs-heading-1" data-animate-trigger="scroll_into_view" data-animate-name="fFadeInLeft"><span>
+{{ 'sections.foxify-1714967006cqFgL.f-heading-1733805097YzRz8-text_html' | t }}</span></h1></div><div id="f-col-1733805097EmTvE" class="f:blocks f:col f-col-1733805097EmTvE f:column"><div id="f-richtext-1733805097BfgAd" class="f:blocks f:richtext f-richtext-1733805097BfgAd f:content-block f:gs-caption f:rte" data-animate-trigger="scroll_into_view" data-animate-name="fFadeInLeft">
+{{ 'sections.foxify-1714967006cqFgL.f-richtext-1733805097BfgAd-text_html' | t }}</div></div></div></div></div><div id="f-custom-section-1714966987Oq7mg" class="f:sections f:custom-section f-custom-section-1714966987Oq7mg"><div class="f:container-full"><div id="f-grid-1714966987mB39U" class="f:blocks f:grid f-grid-1714966987mB39U" style="--f-grid-columns-sm:minmax(0, 12fr);--f-grid-columns-md:minmax(0, 6fr) minmax(0, 6fr);--f-grid-columns-lg:minmax(0, 3fr) minmax(0, 3fr) minmax(0, 3fr) minmax(0, 3fr);--f-grid-columns-xl:minmax(0, 3fr) minmax(0, 3fr) minmax(0, 3fr) minmax(0, 3fr)"><div id="f-col-1714966987ZyFQI" class="f:blocks f:col f-col-1714966987ZyFQI f:column" data-animate-trigger="scroll_into_view" data-animate-name="fFadeInUp">{{ 'foxify-multicolumn.css' | asset_url | stylesheet_tag }}<div id="f-icon-box-1714966987vAioz" class="f:blocks f:icon-box f-icon-box-1714966987vAioz f:multicolumn-items--vertical f:multicolumn-items--vertical-top"><div class="f:column" style="--blocks-count:4"><div class="f:multicolumn-block"><div id="f-image-1714966987z4tk9" class="f:blocks f-image-1714966987z4tk9 f-hover--zoom-in f:custom-section__image f:image-block"><f-image class="f:image " style="--f-aspect-ratio:0.6666666666666666"><img srcSet="https://cdn.shopify.com/s/files/1/0619/6150/2869/files/sincerely-media-UmDfdonflT0-unsplash_jpg.webp?v=1714967203&width=165 165w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/sincerely-media-UmDfdonflT0-unsplash_jpg.webp?v=1714967203&width=360 360w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/sincerely-media-UmDfdonflT0-unsplash_jpg.webp?v=1714967203&width=533 533w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/sincerely-media-UmDfdonflT0-unsplash_jpg.webp?v=1714967203&width=720 720w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/sincerely-media-UmDfdonflT0-unsplash_jpg.webp?v=1714967203&width=940 940w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/sincerely-media-UmDfdonflT0-unsplash_jpg.webp?v=1714967203&width=1066 1066w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/sincerely-media-UmDfdonflT0-unsplash_jpg.webp?v=1714967203&width=1500 1500w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/sincerely-media-UmDfdonflT0-unsplash_jpg.webp?v=1714967203&width=1780 1780w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/sincerely-media-UmDfdonflT0-unsplash_jpg.webp?v=1714967203 1860w" src="//cdn.shopify.com/s/files/1/0619/6150/2869/files/sincerely-media-UmDfdonflT0-unsplash_jpg_360x.webp?v=1714967203" sizes="(min-width: 1200px) 533px, (min-width: 990px) calc((100vw - 130px) / 3), (min-width: 750px) calc((100vw - 120px) / 2), calc((100vw - 35px) / 2)" alt="sincerely-media-UmDfdonflT0-unsplash.jpg.webp" loading="lazy" width="1860" height="2790"/></f-image></div><h2 id="f-heading-17149669876MV8a" class="f:blocks f:heading f-heading-17149669876MV8a f:content-block f:gs-heading-3 sentence-mod"><span>
+{{ 'sections.foxify-1714967006cqFgL.f-heading-17149669876MV8a-text_html' | t }}</span></h2><div id="f-richtext-1714966987x8UZG" class="f:blocks f:richtext f-richtext-1714966987x8UZG f:content-block f:gs-body-text f:rte">
+{{ 'sections.foxify-1714967006cqFgL.f-richtext-1714966987x8UZG-text_html' | t }}</div><div id="f-richtext-17149679401fAvL" class="f:blocks f:richtext f-richtext-17149679401fAvL f:content-block f:gs-body-text f:rte">
+{{ 'sections.foxify-1714967006cqFgL.f-richtext-17149679401fAvL-text_html' | t }}</div></div></div></div></div><div id="f-col-1714966987WZnkk" class="f:blocks f:col f-col-1714966987WZnkk f:column" data-animate-trigger="scroll_into_view" data-animate-name="fFadeInUp">{{ 'foxify-multicolumn.css' | asset_url | stylesheet_tag }}<div id="f-icon-box-17149669870Kb9D" class="f:blocks f:icon-box f-icon-box-17149669870Kb9D f:multicolumn-items--vertical f:multicolumn-items--vertical-top"><div class="f:column" style="--blocks-count:3"><div class="f:multicolumn-block"><div id="f-image-1714966987wHhpz" class="f:blocks f-image-1714966987wHhpz f-hover--zoom-in f:custom-section__image f:image-block"><f-image class="f:image " style="--f-aspect-ratio:0.6666666666666666"><img srcSet="https://cdn.shopify.com/s/files/1/0619/6150/2869/files/sincerely-media-UmDfdonflT0-unsplash_1_jpg.webp?v=1714967203&width=165 165w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/sincerely-media-UmDfdonflT0-unsplash_1_jpg.webp?v=1714967203&width=360 360w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/sincerely-media-UmDfdonflT0-unsplash_1_jpg.webp?v=1714967203&width=533 533w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/sincerely-media-UmDfdonflT0-unsplash_1_jpg.webp?v=1714967203&width=720 720w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/sincerely-media-UmDfdonflT0-unsplash_1_jpg.webp?v=1714967203&width=940 940w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/sincerely-media-UmDfdonflT0-unsplash_1_jpg.webp?v=1714967203&width=1066 1066w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/sincerely-media-UmDfdonflT0-unsplash_1_jpg.webp?v=1714967203&width=1500 1500w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/sincerely-media-UmDfdonflT0-unsplash_1_jpg.webp?v=1714967203&width=1780 1780w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/sincerely-media-UmDfdonflT0-unsplash_1_jpg.webp?v=1714967203 1860w" src="//cdn.shopify.com/s/files/1/0619/6150/2869/files/sincerely-media-UmDfdonflT0-unsplash_1_jpg_360x.webp?v=1714967203" sizes="(min-width: 1200px) 533px, (min-width: 990px) calc((100vw - 130px) / 3), (min-width: 750px) calc((100vw - 120px) / 2), calc((100vw - 35px) / 2)" alt="sincerely-media-UmDfdonflT0-unsplash_1.jpg.webp" loading="lazy" width="1860" height="2790"/></f-image></div><h2 id="f-heading-1714966987LE4mz" class="f:blocks f:heading f-heading-1714966987LE4mz f:content-block f:gs-heading-3 sentence-mod"><span>
+{{ 'sections.foxify-1714967006cqFgL.f-heading-1714966987LE4mz-text_html' | t }}</span></h2><div id="f-richtext-1714966987RS4KU" class="f:blocks f:richtext f-richtext-1714966987RS4KU f:content-block f:gs-body-text f:rte">
+{{ 'sections.foxify-1714967006cqFgL.f-richtext-1714966987RS4KU-text_html' | t }}</div></div></div></div></div><div id="f-col-1714966987WbKou" class="f:blocks f:col f-col-1714966987WbKou f:column" data-animate-trigger="scroll_into_view" data-animate-name="fFadeInUp">{{ 'foxify-multicolumn.css' | asset_url | stylesheet_tag }}<div id="f-icon-box-1714966987czWk7" class="f:blocks f:icon-box f-icon-box-1714966987czWk7 f:multicolumn-items--vertical f:multicolumn-items--vertical-top"><div class="f:column" style="--blocks-count:4"><div class="f:multicolumn-block"><div id="f-image-17149669874m3pu" class="f:blocks f-image-17149669874m3pu f-hover--zoom-in f:custom-section__image f:image-block"><f-image class="f:image " style="--f-aspect-ratio:0.6666666666666666"><img srcSet="https://cdn.shopify.com/s/files/1/0619/6150/2869/files/tanya-trukyr-MRLBl6Xetyw-unsplash_jpg.webp?v=1714967204&width=165 165w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/tanya-trukyr-MRLBl6Xetyw-unsplash_jpg.webp?v=1714967204&width=360 360w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/tanya-trukyr-MRLBl6Xetyw-unsplash_jpg.webp?v=1714967204&width=533 533w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/tanya-trukyr-MRLBl6Xetyw-unsplash_jpg.webp?v=1714967204&width=720 720w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/tanya-trukyr-MRLBl6Xetyw-unsplash_jpg.webp?v=1714967204&width=940 940w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/tanya-trukyr-MRLBl6Xetyw-unsplash_jpg.webp?v=1714967204&width=1066 1066w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/tanya-trukyr-MRLBl6Xetyw-unsplash_jpg.webp?v=1714967204&width=1500 1500w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/tanya-trukyr-MRLBl6Xetyw-unsplash_jpg.webp?v=1714967204&width=1780 1780w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/tanya-trukyr-MRLBl6Xetyw-unsplash_jpg.webp?v=1714967204 1860w" src="//cdn.shopify.com/s/files/1/0619/6150/2869/files/tanya-trukyr-MRLBl6Xetyw-unsplash_jpg_360x.webp?v=1714967204" sizes="(min-width: 1200px) 533px, (min-width: 990px) calc((100vw - 130px) / 3), (min-width: 750px) calc((100vw - 120px) / 2), calc((100vw - 35px) / 2)" alt="tanya-trukyr-MRLBl6Xetyw-unsplash.jpg.webp" loading="lazy" width="1860" height="2790"/></f-image></div><h2 id="f-heading-1714966987fesLv" class="f:blocks f:heading f-heading-1714966987fesLv f:content-block f:gs-heading-3 sentence-mod"><span>
+{{ 'sections.foxify-1714967006cqFgL.f-heading-1714966987fesLv-text_html' | t }}</span></h2><div id="f-richtext-17149669872kHF9" class="f:blocks f:richtext f-richtext-17149669872kHF9 f:content-block f:gs-body-text f:rte">
+{{ 'sections.foxify-1714967006cqFgL.f-richtext-17149669872kHF9-text_html' | t }}</div><div id="f-richtext-1714967989hldu5" class="f:blocks f:richtext f-richtext-1714967989hldu5 f:content-block f:gs-body-text f:rte">
+{{ 'sections.foxify-1714967006cqFgL.f-richtext-1714967989hldu5-text_html' | t }}</div></div></div></div></div><div id="f-col-1714967234rRyPF" class="f:blocks f:col f-col-1714967234rRyPF f:column" data-animate-trigger="scroll_into_view" data-animate-name="fFadeInUp">{{ 'foxify-multicolumn.css' | asset_url | stylesheet_tag }}<div id="f-icon-box-17149672345DnxB" class="f:blocks f:icon-box f-icon-box-17149672345DnxB f:multicolumn-items--vertical f:multicolumn-items--vertical-top"><div class="f:column" style="--blocks-count:3"><div class="f:multicolumn-block"><div id="f-image-1714967234O41st" class="f:blocks f-image-1714967234O41st f-hover--zoom-in f:custom-section__image f:image-block"><f-image class="f:image " style="--f-aspect-ratio:0.6666666666666666"><img srcSet="https://cdn.shopify.com/s/files/1/0619/6150/2869/files/uliana-kopanytsia-eaHf_jIg0QQ-unsplash_jpg.webp?v=1714967203&width=165 165w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/uliana-kopanytsia-eaHf_jIg0QQ-unsplash_jpg.webp?v=1714967203&width=360 360w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/uliana-kopanytsia-eaHf_jIg0QQ-unsplash_jpg.webp?v=1714967203&width=533 533w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/uliana-kopanytsia-eaHf_jIg0QQ-unsplash_jpg.webp?v=1714967203&width=720 720w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/uliana-kopanytsia-eaHf_jIg0QQ-unsplash_jpg.webp?v=1714967203&width=940 940w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/uliana-kopanytsia-eaHf_jIg0QQ-unsplash_jpg.webp?v=1714967203&width=1066 1066w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/uliana-kopanytsia-eaHf_jIg0QQ-unsplash_jpg.webp?v=1714967203&width=1500 1500w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/uliana-kopanytsia-eaHf_jIg0QQ-unsplash_jpg.webp?v=1714967203&width=1780 1780w, https://cdn.shopify.com/s/files/1/0619/6150/2869/files/uliana-kopanytsia-eaHf_jIg0QQ-unsplash_jpg.webp?v=1714967203 1860w" src="//cdn.shopify.com/s/files/1/0619/6150/2869/files/uliana-kopanytsia-eaHf_jIg0QQ-unsplash_jpg_360x.webp?v=1714967203" sizes="(min-width: 1200px) 533px, (min-width: 990px) calc((100vw - 130px) / 3), (min-width: 750px) calc((100vw - 120px) / 2), calc((100vw - 35px) / 2)" alt="uliana-kopanytsia-eaHf_jIg0QQ-unsplash.jpg.webp" loading="lazy" width="1860" height="2790"/></f-image></div><h2 id="f-heading-1714967234lK4DA" class="f:blocks f:heading f-heading-1714967234lK4DA f:content-block f:gs-heading-3 sentence-mod"><span>
+{{ 'sections.foxify-1714967006cqFgL.f-heading-1714967234lK4DA-text_html' | t }}</span></h2><div id="f-richtext-17149672342VBBJ" class="f:blocks f:richtext f-richtext-17149672342VBBJ f:content-block f:gs-body-text f:rte">
+{{ 'sections.foxify-1714967006cqFgL.f-richtext-17149672342VBBJ-text_html' | t }}</div></div></div></div></div></div></div></div><div id="f-text-section-1714967313SEP9G" class="f:sections f:text-section f-text-section-1714967313SEP9G" data-animate-trigger="scroll_into_view" data-animate-name="fFadeInLeft"><div class="f:container-full"><div id="f-grid-17149673135b3ge" class="f:blocks f:grid f-grid-17149673135b3ge" style="--f-grid-columns-sm:minmax(0, 6fr) minmax(0, 6fr);--f-grid-columns-md:minmax(0, 6fr) minmax(0, 6fr);--f-grid-columns-lg:minmax(0, 6fr) minmax(0, 6fr);--f-grid-columns-xl:minmax(0, 6fr) minmax(0, 6fr)"><div id="f-col-1714967313NLjFq" class="f:blocks f:col f-col-1714967313NLjFq f:column"><h2 id="f-heading-1714967313Vvlq4" class="f:blocks f:heading f-heading-1714967313Vvlq4 f:content-block f:gs-heading-2"><span>
+{{ 'sections.foxify-1714967006cqFgL.f-heading-1714967313Vvlq4-text_html' | t }}</span></h2><div id="f-richtext-17149673133xJBF" class="f:blocks f:richtext f-richtext-17149673133xJBF f:content-block f:gs-body-text f:rte">
+{{ 'sections.foxify-1714967006cqFgL.f-richtext-17149673133xJBF-text_html' | t }}</div></div></div></div></div>
+{% liquid
+        assign theme_settings = shop.metafields.foxify.theme_settings.value
+        assign customCodeBody = theme_settings.customCodeBody
+        echo customCodeBody
+      %}
+
+</div>
+    {% schema %}
+        {
+            "name": "Foxify main content",
+            "class": "foxify-main f-app",
+            "settings": [
+                {
+                "type": "header",
+                "content": "Customize section",
+                "info": "Go to [Foxify app](https://app.foxify.io/editor?id=1714967006cqFgL&type=REGULAR) to edit this section."
+                }
+            ],
+            "locales": {
+  "en": {
+    "f-richtext-17149669879JxNF-text_html": "jewlery care",
+    "f-heading-17149669875IpKd-text_html": "Jewelry Care Guide To Enjoy Your Jewelry For Years To Come",
+    "f-heading-17149669876MV8a-text_html": "Beginner’s scrub",
+    "f-richtext-1714966987x8UZG-text_html": "Dissolve one tablespoon of mild dish soap into a glass of warm water and let your jewelry go for a little swim. Scrub gently with a soft cloth or an old soft-bristle toothbrush before rinsing with clean water.",
+    "f-heading-1714966987LE4mz-text_html": "Zen clean",
+    "f-richtext-1714966987RS4KU-text_html": "Add 3 drops of lemon essential oil to a half cup of witch hazel or vinegar. Let your jewelry sit for 5 minutes, and wipe with a soft polishing cloth if necessary. Rinse with clean water.",
+    "f-heading-1714966987fesLv-text_html": "For plated pieces",
+    "f-richtext-17149669872kHF9-text_html": "When treating plated pieces, gentleness is key. Do not scrub or use a polishing cloth as this will damage the coating. Rub the surface gently with a soft jewelry cloth.",
+    "f-richtext-17149679401fAvL-text_html": "Photo by <a href=\"https://unsplash.com/@sincerelymedia\" target=\"_blank\" rel=\"noopener\">Sincerely Media</a> on <a href=\"https://unsplash.com\" target=\"_blank\" rel=\"noopener\">Unsplash</a>",
+    "f-richtext-1714967989hldu5-text_html": "Photo by <a href=\"https://unsplash.com/@tanyatrukyr\" target=\"_blank\" rel=\"noopener\">Tanya Trukyr</a> on <a href=\"https://unsplash.com\" target=\"_blank\" rel=\"noopener\">Unsplash</a>",
+    "f-heading-1714967234lK4DA-text_html": "For raw brass and sterling silver jewelry polish finish",
+    "f-richtext-17149672342VBBJ-text_html": "Make a paste using half a lemon and a teaspoon of baking soda. Rub the paste in your jewelry in one direction with a cotton cloth. Wipe off and rinse.",
+    "f-heading-1714967313Vvlq4-text_html": "Final note",
+    "f-richtext-17149673133xJBF-text_html": "<p>Be careful not to leave your diamonds to air dry, as that can result in unappealing, hard to clean water stains. Instead, lightly pat your gems dry to avoid blemishes. To deep clean your gems, soak them in lukewarm water mixed with mild soap for a few minutes.</p>",
+    "f-heading-1733805961plyga-text_html": "Take It Off Sometimes",
+    "f-richtext-1733805182hYZrI-text_html": "Do your best to avoid exposure to direct sunlight and excessive heat. This means, securing your jewelry, especially silver, in a holder with individually lined compartments to avoid scratches. If you'd rather have your jewelry out on display, remember to clean your trinket trays and ring holders regularly to eliminate dust.",
+    "f-heading-1733806186zgU5u-text_html": "Avoid Chemical",
+    "f-richtext-1733805249PZyo4-text_html": "Chemicals such as hairspray, chlorine bleach, perfume, and cleaning solutions can cause your metal to change color. It will be wise to save your fine jewelry for the final stage of any styling process. Also, if you're trying to go full on clean and organize mode, remember to remove it temporarily before doing any housework.",
+    "f-heading-1733806215zm0Xq-text_html": "How To Store",
+    "f-richtext-1733806120SfXlC-text_html": "Do your best to avoid exposure to direct sunlight and excessive heat. This means, securing your jewelry, especially silver, in a holder with individually lined compartments to avoid scratches. If you'd rather have your jewelry out on display, remember to clean your trinket trays and ring holders regularly to eliminate dust.",
+    "f-heading-1733806233LkOUM-text_html": "Regular Inspection",
+    "f-richtext-1733805299DNLv3-text_html": "Have a professional inspect your jewelry every 6–12 months. Pay special attention to your diamonds’ setting, so you don’t lose those little rocks. Diamonds are extremely hard, yes — but the surrounding settings can dislodge over time and regular use.",
+    "f-heading-1733805097YzRz8-text_html": "Jewelry cleaning guide to prolong jewelry life",
+    "f-richtext-1733805097BfgAd-text_html": "For diamonds and precious metals"
+  }
+}
+        }
+    {% endschema %}
+  

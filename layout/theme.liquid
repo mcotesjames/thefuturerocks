@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+{%- liquid
+  assign rtl_langs = 'ar,arc,dv,fa,ha,he,khw,ks,ku,ps,ur,yi' | split: ','
+  if rtl_langs contains localization.language.iso_code
+    assign lang_dir = 'rtl'
+  else
+    assign lang_dir = 'ltr'
+  endif
+-%}
+<html lang="{{ request.locale.iso_code }}" dir="{{ lang_dir }}" class="no-js">
+<head>
+  
+
+  {% if request.path == '/collections/flourishan' %}
+<meta name="robots" content="noindex">
+{% endif %}
+
+  {% if request.path == '/pages/flourishan' %}
+<meta name="robots" content="noindex">
+{% endif %}
+
+ <script>/* start spd config */window._spt_delay_keywords=["/gtag/js,gtag(,/checkouts,/tiktok-track.js,/hotjar-,/smile-,/adoric.js,/wpm/,fbq("];window._spt_customer_delay_keywords=["/tiktok-track.js","/hotjar-","/smile-","foxify"];window._spt_advdlkws=["/extensions","/wpm/","boomerang","feature","BOOM","BigInt","sendBeacon","preAsssignedValue","tptPageType","/payment-sheet/","asyncLoad","recaptcha","/predictive-search.","brokenFixer","shopify_pay","privacy-banner","preload","perf-kit","klaviyo","new_comment","compiled_assets","loadelementScriptUsingExtension","loadable","loadScript","getOffsetTopFromDoc","addEventListener","portable","gtag","gtm"];/* end spd config */</script> 
+ {%- if content_for_header contains 'tapita-seo-script-tags' -%}{%- include 'tapita-seo-schema' -%}{%- endif -%} 
+  
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PWTM9J9');</script>
+<!-- End Google Tag Manager -->
+
+<meta name="naver-site-verification" content="f7b80315d275828f0d3f03f3f1ed5a89a6b1aa8f" />
+  
+
+ {% comment %} <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> {% endcomment %}
+
+  <script src="{{ 'custom.js'  | asset_url }}" defer></script>
+
+  
+  <!-- Mode 4.1.1 -->
+
+  <title>
+    {{- page_title }}{% if current_tags %}{% assign meta_tags = current_tags | join: ', ' %} &ndash; {{ 'general.meta.tags' | t: tags: meta_tags }}{% endif %}{% if current_page != 1 %} &ndash; {{ 'general.meta.page' | t: page: current_page }}{% endif %}{% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+  </title>
+  {% render 'cwv-fix' %}
+
+  {% render 'head-tag' %}
+
+  {%- liquid
+    assign base_font = settings.type_base_font
+    assign base_font_bold = base_font | font_modify: 'weight', 'bolder'
+    assign base_font_semibold = base_font | font_modify: 'weight', '600'
+    assign base_font_medium = base_font | font_modify: 'weight', '500'
+    assign base_font_italic = base_font | font_modify: 'style', 'italic'
+    assign base_font_bold_italic = base_font_bold | font_modify: 'style', 'italic'
+    assign heading_font = settings.type_heading_font
+    assign logo_font = settings.type_logo_font
+    assign nav_font = settings.type_nav_font
+    assign nav_font_600 = nav_font | font_modify: 'weight', '600'
+    assign type_highlight_font = settings.type_highlight_font
+  -%}
+
+  <style>
+    {{ base_font | font_face: font_display: 'fallback' }}
+    {{ base_font_bold | font_face: font_display: 'fallback' }}
+    {{ base_font_semibold | font_face: font_display: 'fallback' }}
+    {{ base_font_medium | font_face: font_display: 'fallback' }}
+    {{ base_font_italic | font_face: font_display: 'fallback' }}
+    {{ base_font_bold_italic | font_face: font_display: 'fallback' }}
+    {{ heading_font | font_face: font_display: 'fallback' }}
+    {{ logo_font | font_face: font_display: 'fallback' }}
+    {{ nav_font | font_face: font_display: 'fallback' }}
+    {{ nav_font_600 | font_face: font_display: 'fallback' }}
+    {{ type_highlight_font | font_face: font_display: 'fallback' }}
+  </style>
+
+  {% render 'social-meta-tags' %}
+
+  {{ 'styles.css' | asset_url | stylesheet_tag: preload: true }}
+ {{ 'custom.css' | asset_url | stylesheet_tag: preload: true }}
+  
+  {%- if settings.swatch_enabled and settings.swatch_value_list != blank -%}
+    <link rel="stylesheet" href="{{ 'swatches.css' | asset_url }}" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="{{ 'swatches.css' | asset_url }}"></noscript>
+  {%- endif -%}
+
+  <script>
+    document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+    window.theme = window.theme || {};
+    theme.money_format_with_product_code_preference = {% if settings.product_currency_code_enabled %}{{ shop.money_with_currency_format | json }}{% else %}{{ shop.money_format | json }}{% endif %};
+    theme.money_format = {{ shop.money_format | json }};
+    theme.strings = {
+      previous: {{ 'general.accessibility_labels.previous' | t | json }},
+      next: {{ 'general.accessibility_labels.next' | t | json }},
+      addressError: {{ 'map.errors.address_error' | t | json }},
+      addressNoResults: {{ 'map.errors.address_no_results' | t | json }},
+      addressQueryLimit: {{ 'map.errors.address_query_limit_html' | t | json }},
+      authError: {{ 'map.errors.auth_error' | t | json }},
+      icon_labels_left: {{ 'general.icon_labels.left' | t | escape | json }},
+      icon_labels_right: {{ 'general.icon_labels.right' | t | escape | json }},
+      icon_labels_down: {{ 'general.icon_labels.down' | t | escape | json }},
+      icon_labels_close: {{ 'general.icon_labels.close' | t | escape | json }},
+      icon_labels_plus: {{ 'general.icon_labels.plus' | t | escape | json }},
+      imageSlider: {{ 'general.slider.images' | t | json }},
+      cart_terms_confirmation: {{ 'cart.terms.confirmation' | t | json }},
+      cart_general_quantity_too_high: {{ 'cart.general.quantity_too_high' | t: quantity: '[QUANTITY]' | json }},
+      products_listing_from: {{ 'products.listing.from' | t | json }},
+      products_product_add_to_cart: {{ 'products.product.add_to_cart' | t | json }},
+      products_variant_no_stock: {{ 'products.variant.no_stock' | t | json }},
+      products_variant_non_existent: {{ 'products.variant.non_existent' | t | json }},
+      products_product_pick_a: {{ 'products.product.pick_a' | t | json }},
+      general_navigation_menu_toggle_aria_label: {{ 'general.navigation.menu_toggle_aria_label' | t | json }},
+      general_accessibility_labels_close: {{ 'general.accessibility_labels.close' | t | json }},
+      products_product_added_to_cart: {{ 'products.product.added_to_cart' | t | json }},
+      general_quick_search_pages: {{ 'general.quick_search.pages' | t | json }},
+      general_quick_search_no_results: {{ 'general.quick_search.no_results' | t | json }}
+    };
+    theme.routes = {
+      search_url: '{{ routes.search_url }}',
+      cart_url: '{{ routes.cart_url }}',
+      cart_add_url: '{{ routes.cart_add_url }}.js',
+      cart_change_url: '{{ routes.cart_change_url }}.js',
+      cart_update_url: '{{ routes.cart_update_url }}.js',
+      predictive_search_url: '{{ routes.predictive_search_url }}'
+    };
+    theme.settings = {
+      cart_type: {{ settings.cart_type | json }},
+      after_add_to_cart: {{ settings.after_add_to_cart | json }},
+      quickbuy_style: {{ settings.quickbuy_style | json }},
+      quickbuy_visibility: {{ settings.quickbuy_visibility | json }},
+      avoid_orphans: {{ settings.avoid_orphans | json }},
+      qb_enable_sticky_cols: {{ settings.qb_enable_sticky_cols | json }},
+      show_search_suggestions: {{ settings.show_search_suggestions | json }}
+    };
+
+    theme.enqueueStyleUpdateQueue = [];
+    theme.enqueueStyleUpdateTimeoutId = null;
+    theme.enqueueStyleUpdate = (cb) => {
+      clearTimeout(theme.enqueueStyleUpdateTimeoutId);
+      theme.enqueueStyleUpdateQueue.push(cb);
+      theme.enqueueStyleUpdateTimeoutId = setTimeout(() => {
+        while (theme.enqueueStyleUpdateQueue.length > 0) {
+          theme.enqueueStyleUpdateQueue.pop()();
+        }
+      }, 0);
+    }
+  </script>
+
+  <script src="{{ 'vendor.min.js'  | asset_url }}" defer></script>
+  <script src="{{ 'theme.js'  | asset_url }}" defer></script>
+
+  {{ content_for_header }}
+
+  {%- if request.design_mode -%}
+    <script src="{{ 'store-info.v1.0.0.js' | asset_url }}" defer="defer" data-theme="Mode" data-version="4.1.1" data-contact="{{ shop.email | escape }}"></script>
+  {%- endif -%}
+{%- render 'foxify-head' -%}  {% render 'rapid-search-settings' %}
+</head>
+
+<body class="template-{{ template | split: '.' | first | handle }}
+    {%- if template.suffix %} template-suffix-{{ template.suffix }}{% endif -%}
+    {%- if settings.swatch_enabled %} swatch-method-{{ settings.swatch_method }} swatch-style-{{ settings.swatch_style }}{% endif -%}
+    {%- if settings.enable_anims_image_load %} image-load-anim-enabled{% endif -%}
+    " data-cc-animate-timeout="0">           {% sections 'foxify-header-group' %} 
+  
+  {%- if settings.enable_anims_reveal -%}
+
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src=https://www.googletagmanager.com/ns.html?id=GTM-PWTM9J9
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    
+    <script>
+      if ('IntersectionObserver' in window) {
+        document.body.classList.add("cc-animate-enabled");
+      }
+    </script>
+  {%- endif -%}
+
+  <a class="skip-link visually-hidden" href="#content">{{ 'general.accessibility_labels.skip_to_content' | t }}</a>
+
+  {%- sections 'header-group' -%}
+  {%- sections 'overlay-group' -%}
+
+  <main id="content">
+    <div class="main-container container">
+
+      {{ content_for_layout }}
+
+    </div>
+  </main>
+
+ <script>
+    setTimeout(function () { // Extra delay to ensure all elements exist
+        var targetDiv = document.querySelector(".buy-buttons-row + div");
+        if (targetDiv) {
+            targetDiv.classList.add("wishlist-wrapper");
+        }
+        var wishlist = document.querySelector(".wishlist-wrapper");
+        var targetDiv = document.querySelector(".buy-buttons-row .product-purchase-form .quantity-submit-row");
+
+        if (wishlist && targetDiv) {
+            targetDiv.insertAdjacentElement("afterend", wishlist);
+        } 
+        if (document.querySelector(".quantity-submit-row__submit") && document.querySelector(".wishlist-wrapper")) {
+            console.log("✅ Wrapping elements together");
+            $(".quantity-submit-row__submit, .wishlist-wrapper").wrapAll("<div class='quantity-submit--butn-wish'></div>");
+        }
+    }, 1500); 
+
+
+if (document.querySelector('.product-unavailable')) {
+    const buyButtons = document.querySelector('.buy-buttons-row');
+    if (buyButtons) {
+      buyButtons.classList.add('product-unavailable-active');
+    }
+  }
+
+   
+ </script>
+  
+
+  {% if request.path != '/challenge' %}
+    {%- sections 'footer-group' -%}
+  {% endif %}
+
+  {%- render 'lazy-loading' -%}
+
+  <template id="ModalTemplate">
+    <div class="quickbuy-modal cc-popup cc-popup--right" aria-hidden="true" data-freeze-scroll="true">
+      <div class="cc-popup-background"></div>
+      <div class="cc-popup-modal" role="dialog" aria-modal="true" aria-labelledby="">
+        <div class="cc-popup-container">
+          <button type="button" class="cc-popup-close tap-target" aria-label="{{ 'general.accessibility_labels.close' | t | escape }}">
+            {%- render 'popup-close' -%}
+          </button>
+          <div class="cc-popup-content">
+            <div class="loading-spinner"></div>
+          </div>
+        </div>
+      </div>
+  	</div>
+  </template>
+  
+{%- render 'foxify-footer' -%}
+  
+ {% sections 'foxify-footer-group' %}   
+
+
+<style>
+.product-price {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end !important;
+  width: 100%;
+  justify-content: flex-end;
+  font-size: 12px;
+}
+.product-price__compare {
+  order: 1;
+}
+.product-price__amount--on-sale {
+  order: 2;
+  margin-right: 0;
+}
+</style>
+
+
+        </body>
+  </html>

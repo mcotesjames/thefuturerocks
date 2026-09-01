@@ -1,0 +1,283 @@
+{% comment %}
+  Parameters:
+  - id {string} [required] - A unique id.
+  - option_values {Array} [required] - Option values.
+  - option_names {Array} [optional] - Option names. If not supplied, values will be used.
+  - selected_value {string} [optional] - The value of the selected option
+  - label {string} [optional] - Label text. If not supplied, a label must be rendered separately with
+      an id that matches the 'id' parameter.
+  - label_inside {boolean} [optional] - Whether the label should be inside the select box. Default is false.
+  - hide_label [optional] - Whether to visually hide the label. Default is false.
+  - swatches {boolean} [optional] - Whether the select element is a colour selector with swatches enabled. Default is false.
+  - include_native {boolean} [optional] - Whether a native select element should be included (hidden). Default is false.
+  - native_name {string} [optional] - A unique name for the native select element (if included).
+  - native_form_id {string} [optional] - Associated form for the native select element.
+  - blank_option {string} [optional] - Include a blank option before other options, using the string provided as the name.
+
+  Example usage:
+  render 'custom-select',
+    id: 'colour-selector',
+    option_values: ['Blue', 'Green', 'Red'],
+    selected_value: 'Red',
+    label: 'Colour',
+    swatches: true
+{% endcomment %}
+
+{%- liquid
+  assign label_id = id | append: '-label'
+
+  if option_names == blank
+    assign option_names = option_values
+  endif
+
+  if blank_option != blank and selected_value == ''
+    assign selected_id = id | append: '-opt-blank'
+    assign selected_name = blank_option
+  elsif selected_value
+    for value in option_values
+      if value == selected_value
+        assign selected_id = id | append: '-opt' | append: forloop.index0
+        assign selected_name = option_names[forloop.index0]
+      endif
+    endfor
+  endif
+-%}
+{%- if label -%}
+  {%- capture label_html -%}
+    <label id="{{ label_id }}" class="label{% if hide_label %} visually-hidden{% endif %} no-js-hidden">{{ label | escape_once }}</label>
+  {%- endcapture -%}
+  {%- unless label_inside -%}{{ label_html }}{%- endunless -%}
+{%- endif -%}
+{% if label == "Size" or label == "サイズ" or label == "사이즈" %}
+<div class="cc-select{% if label_inside %} cc-select--label-inside{% endif %} no-js-hidden custom-size-cls" id="{{ id }}">
+  {%- if label and label_inside -%}{{ label_html }}{%- endif %}
+  <button class="cc-select__btn" type="button"
+          aria-haspopup="listbox" aria-labelledby="{{ label_id }}"
+          {% if swatches and selected_value != blank %} data-swatch="{{ selected_value | replace: '"', '' | downcase }}"{% endif %}>
+    {{- selected_name | escape_once -}}
+    <svg class="cc-select__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <polyline points="6 9 12 15 18 9"></polyline>
+    </svg>
+  </button>
+
+
+
+
+
+
+{% assign selected_variant = product.selected_or_first_available_variant %}
+
+{% comment %} Dynamically find which option position (1, 2, or 3) is the Size {% endcomment %}
+{% assign size_option_idx = 0 %}
+{% for option in product.options %}
+  {% if option == label %}
+    {% assign size_option_idx = forloop.index %}
+  {% endif %}
+{% endfor %}
+
+{% assign ready_to_ship_options = '' %}
+{% assign made_to_order_options = '' %}
+
+<ul class="cc-select__listbox custm_size" role="listbox" tabindex="-1" aria-hidden="true"
+  {% if selected_value %} aria-activedescendant="{{ selected_id }}"{% endif %}>
+
+  {% comment %} Loop through the actual sizes provided to the dropdown {% endcomment %}
+  {% for value in option_values %}
+    {% assign target_variant = blank %}
+    
+    {% comment %} Find the variant that matches the currently selected other options, plus this specific size {% endcomment %}
+    {% for variant in product.variants %}
+      {% if size_option_idx == 1 %}
+        {% if variant.option1 == value and variant.option2 == selected_variant.option2 and variant.option3 == selected_variant.option3 %}
+          {% assign target_variant = variant %}{% break %}
+        {% endif %}
+      {% elsif size_option_idx == 2 %}
+        {% if variant.option1 == selected_variant.option1 and variant.option2 == value and variant.option3 == selected_variant.option3 %}
+          {% assign target_variant = variant %}{% break %}
+        {% endif %}
+      {% elsif size_option_idx == 3 %}
+        {% if variant.option1 == selected_variant.option1 and variant.option2 == selected_variant.option2 and variant.option3 == value %}
+          {% assign target_variant = variant %}{% break %}
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+
+    {% capture list_item %}
+      <li class="cc-select__option sb_variant_option js-option"
+          id="{{ id }}-opt-{{ forloop.index }}"
+          role="option"
+          data-value="{{ value | escape }}"
+          {% if value == selected_value %} aria-selected="true"{% endif %}>
+        <span>{{ value }}</span>
+      </li>
+    {% endcapture %}
+
+    {% if target_variant != blank and target_variant.inventory_quantity != null and target_variant.inventory_quantity > 0 %}
+
+      {% capture ready_to_ship_options %}
+        {{ ready_to_ship_options }}
+        {{ list_item }}
+      {% endcapture %}
+    {% else %}
+      {% capture made_to_order_options %}
+        {{ made_to_order_options }}
+        {{ list_item }}
+      {% endcapture %}
+    {% endif %}
+  {% endfor %}
+
+
+
+
+
+
+
+  {% if ready_to_ship_options != blank %}
+    <li class="cc-select__heading backgrd-col-ready" aria-hidden="true">
+      {{ 'products.product.ready_to_ship_title' | t }}
+     <span class="info-icon" type="button" data-popup="1" aria-label="Info">
+           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="10" stroke="#000" stroke-width="2"></circle>
+            <line x1="12" y1="16" x2="12" y2="12" stroke="#000" stroke-width="2"></line>
+            <circle cx="12" cy="8" r="1" fill="#000"></circle>
+          </svg>
+        </span>
+    </li>
+    {{ ready_to_ship_options }}
+  {% endif %}
+
+  {% if made_to_order_options != blank %}
+    <li class="cc-select__heading backgrd-col-order" aria-hidden="true">
+      {{ 'products.product.made_to_order_title' | t }}
+     <span class="info-icon" type="button" data-popup="1" aria-label="Info">
+           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="10" stroke="#000" stroke-width="2"></circle>
+            <line x1="12" y1="16" x2="12" y2="12" stroke="#000" stroke-width="2"></line>
+            <circle cx="12" cy="8" r="1" fill="#000"></circle>
+          </svg>
+        </span>
+    </li>
+    {{ made_to_order_options }}
+  {% endif %}
+</ul>
+
+
+</div>
+<!-- Popup Modal 1 (Ready to Ship) -->
+<div id="popup-modal-1" class="popup-modal" style="display: none;">
+  <div class="popup-content">
+    <button class="popup-close" type="button">X</button>
+    <h2 class="popup-title">{{ 'products.product.ready_to_ship_title' | t }}</h2>
+    <p class="popup-text">{{ 'products.product.ready_to_ship_text' | t }}</p>
+  </div>
+</div>
+
+<!-- Popup Modal 2 (Made to Order) -->
+<div id="popup-modal-2" class="popup-modal" style="display: none;">
+  <div class="popup-content">
+    <button class="popup-close" type="button">X</button>
+    <h2 class="popup-title">{{ 'products.product.made_to_order_title' | t }}</h2>
+    <p class="popup-text">{{ 'products.product.made_to_order_text' | t }}</p>
+  </div>
+</div>
+
+{% else %}
+<div class="cc-select{% if label_inside %} cc-select--label-inside{% endif %} no-js-hidden" id="{{ id }}">
+  {%- if label and label_inside -%}{{ label_html }}{%- endif -%}
+  <button class="cc-select__btn" type="button"
+          aria-haspopup="listbox" aria-labelledby="{{ label_id }}"
+          {% if swatches and selected_value != blank %} data-swatch="{{ selected_value | replace: '"', '' | downcase }}"{% endif %}>
+    {{- selected_name | escape_once -}}
+    <svg class="cc-select__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+  </button>
+  <ul class="cc-select__listbox" role="listbox" tabindex="-1"
+      aria-hidden="true"{% if selected_value %} aria-activedescendant="{{ selected_id }}"{% endif %}>
+    {%- if blank_option != blank -%}
+      <li class="cc-select__option sb_variant_option js-option" id="{{ id }}-opt-blank" role="option"
+          data-value=""
+          {% if selected_value == blank %} aria-selected="true"{% endif %}>
+        <span>{{- blank_option | escape_once -}}</span>
+      </li>
+    {%- endif -%}
+    {%- for value in option_values -%}
+      <li class="cc-select__option sb_variant_option js-option" id="{{ id }}-opt-{{ forloop.index0 }}" role="option"
+          data-value="{{ value | escape }}"
+          {% if swatches %} data-swatch="{{ value | replace: '"', '' | downcase }}"{% endif %}
+          {% if value == selected_value %} aria-selected="true"{% endif %}>
+        <span>{{- option_names[forloop.index0] | escape_once -}}</span>
+      </li>
+    {%- endfor -%}
+  </ul>
+</div>
+
+
+{% endif %}
+
+{%- if include_native -%}
+  {%- if label -%}
+    <label for="{{ id }}-native" class="label{% if hide_label %} visually-hidden{% endif %} js-hidden">{{ label | escape_once }}</label>
+  {%- endif -%}
+  <select class="js-hidden" id="{{ id }}-native"{% if native_name %} name="{{ native_name }}"{% endif %}{% if native_form_id %} form="{{ native_form_id }}"{% endif %}>
+    {%- if blank_option != blank -%}
+      <option value="">{{ blank_option | escape_once }}</option>
+    {%- endif -%}
+    {%- for value in option_values -%}
+      <option value="{{ value | escape }}"{% if value == selected_value %} selected{% endif %}>
+        {{- option_names[forloop.index0] | escape_once -}}
+      </option>
+    {%- endfor -%}
+  </select>
+{%- endif -%}
+
+
+
+{% comment %} <script>
+document.querySelectorAll('.js-option').forEach(option => {
+  option.addEventListener('click', function () {
+    const value = this.getAttribute('data-value');
+
+    // Find matching variant ID
+    const variants = {{ product.variants | json }};
+    const selected = variants.find(v => v.option1 === value);
+
+    if (selected) {
+      window.location.href = `?variant=${selected.id}`;
+    }
+  });
+});
+  </script> {% endcomment %}
+
+  <script>
+document.querySelectorAll('.js-option').forEach(option => {
+  option.addEventListener('click', function () {
+    const value = this.getAttribute('data-value');
+    const variants = {{ product.variants | json }};
+    
+    // Dynamically find the variant that contains this value in ANY of its options
+    // while also matching the other currently selected options.
+    const urlParams = new URLSearchParams(window.location.search);
+    const currentVariantId = urlParams.get('variant') || {{ product.selected_or_first_available_variant.id | json }};
+    const currentVariant = variants.find(v => v.id == currentVariantId);
+    
+    const selected = variants.find(v => {
+      // Check if this variant has the clicked value in any option slot
+      const hasValue = v.option1 === value || v.option2 === value || v.option3 === value;
+      if (!hasValue) return false;
+      
+      // Ensure the other options match what is currently selected
+      let isMatch = true;
+      if (v.option1 !== value && currentVariant && v.option1 !== currentVariant.option1) isMatch = false;
+      if (v.option2 !== value && currentVariant && v.option2 !== currentVariant.option2) isMatch = false;
+      if (v.option3 !== value && currentVariant && v.option3 !== currentVariant.option3) isMatch = false;
+      
+      return isMatch;
+    });
+
+    if (selected) {
+        const newUrl = new URL(window.location);
+        newUrl.searchParams.set('variant', selected.id);
+        window.history.replaceState({}, '', newUrl); // Changes URL instantly without a reload
+      }
+  });
+});
+</script>

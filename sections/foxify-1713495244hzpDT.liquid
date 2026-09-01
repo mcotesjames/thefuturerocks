@@ -1,0 +1,519 @@
+    {% liquid
+        assign locales = shop.metafields.foxify.locales.value
+        assign current_locale = request.locale.iso_code
+        assign primary_locale = current_locale
+        for locale in shop.published_locales
+        if locale.primary
+            assign primary_locale = locale.iso_code
+            break
+        endif
+        endfor
+        assign translation = locales[current_locale] | default: locales[primary_locale]
+    %}
+    <script>
+        window.Foxify = window.Foxify || {}
+        Foxify.ThemeStyles = {
+            product: "https:{{ 'foxify-product.css' | asset_url }}",
+            swiper: "https:{{ 'foxify-swiper.css' | asset_url }}",
+        }
+
+        Foxify.ThemeScripts = {
+            productModel: "https:{{ 'foxify-product-model.js' | asset_url }}",
+            productMedia: "https:{{ 'foxify-media-gallery.js' | asset_url }}",
+            variantPicker: "https:{{ 'foxify-variant-picker.js' | asset_url }}"
+        }
+
+        Foxify.pageId = '1713495244hzpDT'
+        Foxify.default = false
+    </script>
+    <div class="f-app f:content">
+<style data-foxify-editor="foxify-custom-fonts">
+  @font-face {
+    font-family: BrownProTT-Bold-17071127825LR9n;
+    src: url('https://cdn.shopify.com/s/files/1/0619/6150/2869/files/BrownProTT-Bold.ttf?v=1707112779');
+  }
+  
+  @font-face {
+    font-family: BrownProTT-Regular-1707112782cX7wj;
+    src: url('https://cdn.shopify.com/s/files/1/0619/6150/2869/files/BrownProTT-Regular.ttf?v=1707112779');
+  }
+  </style>
+{{ 'foxify-1713495244hzpDT.css' | asset_url | stylesheet_tag }}
+<style>.f\:list-items__inner .f\:icon {
+  color: #009e2d;
+}
+.f\:list-items__inner {
+ line-height: 16px !important; 
+}
+.f\:form-control {
+  border-color: #1b2b27;
+}
+.f\:product-single__block .f\:product-single__block-variant-picker {
+  background-color: red !important;
+}
+.f\:product-single__blocks {
+padding: 0px 25px 0px 25px;
+}
+@media screen and (min-width: 800px) {
+.f\:product-single__blocks {
+max-width: 380px;
+  padding: 30px;
+  margin-top: 10%;
+border-radius: 0px;
+background: #ffffff;
+box-shadow:  20px 20px 60px #d9d9d9,
+             -20px -20px 60px #ffffff;
+}
+}
+
+f-collapsible-tab.f\:collapsible__item.f\:collapsible__item--empty {
+display: none;
+}
+
+body {
+  overflow: hidden;
+}
+.f\:nav-swiper {
+  padding: 0px 25px 0px 25px !important;
+}
+@media screen and (min-width: 800px) {
+  .f\:nav-swiper {
+  padding: 0px 40px 0px 40px !important;
+}
+}
+.f\:swiper-controls.f\:f\:hidden {
+  display: none;
+  margin: 0;
+  padding: 0;
+  --swiper-controls-background: transparent;
+}
+.f\:main-product .f\:badge--sale {
+  font-family: "DM Sans";
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.4;
+  background-color: #D23030;
+  padding: 4px 10px 3px;
+  text-transform: uppercase;
+}
+.f\:main-product .f\:price {
+  color: #000;
+}
+.f\:main-product .f\:price--on-sale .f\:price-item.f\:price-item--regular  {
+  font-family: "DM Sans";
+  font-weight: 500;
+  font-size: 80%;
+  color: #009e2d;
+  margin-left: 10px;
+}
+.f\:price {
+  color: #1b2b27;
+}
+.f-custom-panigation .f\:swiper-pagination--bullets {
+  background-color: transparent;
+}
+.f-style-width-heading {
+  width: 100%;
+}
+.f-style-width-heading span {
+  max-width: 500px;
+  margin: 0 auto;
+  display: block;
+}
+
+.f\:collapsible__item .f\:collapsible__button {
+  position: relative;
+}
+.f\:collapsible__item .f\:collapsible__button:before {
+  position: absolute;
+  content: '';
+  bottom: -1px;
+  left: 0;
+  width: 0%;
+  height: 1px;
+  background-color: #000;
+  transition: all .3s;
+}
+.f\:is-expanded .f\:collapsible__button:before {
+  width: 100%;
+} 
+
+.f-grid-product-style .f\:price__regular {
+  color: #000;
+}
+.f-grid-product-style .f\:product-card__title {
+  color: #000;
+  font-size: 18px;
+  font-family: DM Sans;
+  font-weight: 500;
+  line-height: 1.5;
+  margin-bottom: 0px !important;
+}
+.f-grid-product-style .f\:product-card__info {
+  padding: 20px 15px 10px;
+}
+.f-grid-product-style .f\:product-card__actions .f\:product-card__atc {
+  border-radius: 0;
+  background-color: #000;
+  color: #fff;
+  margin-top: 42px;
+  font-family: "DM Sans";
+  font-size: 18px;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+.f-grid-product-style .f\:product-card__actions .f\:product-card__atc:hover {
+  background-color: #D23030;
+}
+.f\:testimonial-item .f\:testimonial-item__text {
+  margin-bottom: 21px;
+}
+.f\:testimonial-item .f\:testimonial-item__author {
+  font-size: 18px;
+  font-family: "DM Sans";
+  font-weight: 400;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+.f\:testimonial-item .f\:testimonial-item__bio {
+  font-size: 16px;
+  font-family: "DM Sans";
+}
+
+.f-favorite-product-custom .f\:favorite-products__grid {
+  gap: 0;
+  background-color: #EDE9E2;
+}   
+.f-favorite-product-custom .f\:favorite-product-header__title {
+  font-size: 32px;
+  font-weight: 500;
+}
+.f-favorite-product-custom .f\:product-card__info {
+  padding-top: 24px;
+}
+.f-favorite-product-custom .f\:favorite-product-header{
+  margin-bottom: 11px !important;
+}
+.f-favorite-product-custom f-swiper-component {
+  margin: 0 5px;
+  --swiper-navigation-size: 50px;
+  padding: 0 calc(var(--swiper-navigation-size) + 30px) !important;
+}
+.f-favorite-product-custom .f\:product-card__info .f\:product-card__summary {
+  display: none;
+} 
+.f-favorite-product-custom .f\:product-card__actions {
+  border-top: none !important;
+  margin-top: 0 !important;
+}
+.f-favorite-product-custom .f\:product-card__actions button {
+  padding-top: 0;
+}
+
+.f-favorite-product-custom .f\:product-card__atc {
+  position: relative;
+  text-decoration-line: none !important;
+  max-width: max-content;
+  font-size: 18px;
+  font-family: "DM Sans";
+  text-transform: uppercase;
+}
+.f-favorite-product-custom .f\:product-card__atc:after, 
+.f-favorite-product-custom .f\:product-card__atc:before {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: currentColor;
+  transform: scaleX(1) translateZ(0);
+  transform-origin: right;
+  transition: transform .6s cubic-bezier(.165,.84,.44,1) .3s;
+}
+.f-favorite-product-custom .f\:product-card__atc:before {
+  left: 0;
+  width: 100%;
+}
+.f-favorite-product-custom .f\:product-card__atc:after {
+  transform: scaleX(0) translateZ(0);
+  transform-origin: left;
+  transition: transform .6s cubic-bezier(.165,.84,.44,1);
+}
+.f-favorite-product-custom .f\:product-card__atc:hover:before {
+  transform: scaleX(0) translateZ(0);
+  transition: transform .6s cubic-bezier(.165,.84,.44,1);
+}
+.f-favorite-product-custom .f\:product-card__atc:hover:after {
+  transform: scaleX(1) translateZ(0);
+  transition: transform .6s cubic-bezier(.165,.84,.44,1) .3s;
+}
+
+.f-favorite-product-custom .f\:swiper-button-prev, .f-favorite-product-custom .f\:swiper-button-next {
+  --f-gs-border-color: #000;
+}
+.f-favorite-product-custom .f\:swiper-controls .f\:swiper-button-disabled {
+  border-color: #9B9B9B;
+}
+.f-favorite-product-custom .f\:favorite-products__image {
+  overflow: hidden;
+}
+.f-favorite-product-custom .f\:favorite-products__image img {
+  transition: .65s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.f-favorite-product-custom .f\:favorite-products__image:hover img {
+  transform: scale(1.05);
+}
+
+@media (min-width: 1200px) {
+  .f-culomn-custom-right {
+    max-width: 670px;
+  }
+} 
+@media (min-width: 1300px) {
+  .f-favorite-product-custom .f\:favorite-products__content {
+    max-width: calc(var(--f-container-width)/2.14);
+  }
+}
+@media (min-width: 1024px) and (max-width: 1299px) {
+  .f-favorite-product-custom .f\:favorite-products__content {
+    max-width: calc(var(--f-container-width)/3);
+  }
+  .f-favorite-product-custom f-swiper-component {
+    padding: 0 calc(var(--swiper-navigation-size) + 10px) !important;
+  }
+}
+@media (max-width: 1023px) {
+  .f-favorite-product-custom f-swiper-component {
+    margin: 50px 5px 60px;
+    padding: 0 calc(var(--swiper-navigation-size) + 200px) !important;
+  }
+}
+@media (max-width: 767px) {
+  .f-favorite-product-custom f-swiper-component {
+    margin: 30px -10px 60px;
+    padding: 0 calc(var(--swiper-navigation-size) + -100px) !important;
+  }
+
+  .f-favorite-product-custom .f\:swiper-button-prev, .f-favorite-product-custom .f\:swiper-button-next {
+    margin: 0 5px; 
+  }
+}
+a:link {
+  text-decoration: none;
+}
+.f\:product-card .f\:product-card__wrapper {
+  background-color: #f2f2f2;
+  border-style: solid;
+  border-color: red;
+  border-width: 0 !important;
+}
+body .f\:lookbook-card__product-price .f\:price {
+
+font-family: var(--f-gs-body-text-font-stack, -apple-system, BlinkMacSystemFont, "San Francisco", "Segoe UI", Roboto, "Helvetica Neue", sans-serif);
+
+font-size: 12px;
+
+/*color: var(--f-gs-hot-color, #1b2b27);*/
+color: #1b2b27 !important;
+
+}
+.f\:variant-picker__selected-value {
+  display: none !important;
+}</style>
+{{ 'foxify-product.css' | asset_url | stylesheet_tag }}<div id="f-main-product-1713495223MjAjD" class="f:sections f:main-product f-main-product-1713495223MjAjD f:animated" data-animate-trigger="page_load" data-animate-name="fFadeIn"><div class="f:container-full"><div class="f:flex f:flex-wrap md:f:flex-nowrap f:single-product--media-large f:single-product--media-left"><div class="f:column f:product__media-wrapper">{% if product.media.size > 0 %}{{ 'foxify-swiper.css' | asset_url | stylesheet_tag }}<script src="{{ 'foxify-media-gallery.js' | asset_url }}" defer=""></script><f-media-gallery id="Media-Gallery-{{ section.id }}" class="f:product-media__gallery f:product-media__gallery--carousel" data-layout="carousel"><div class="f:product-media__list f:product-media--carousel"><f-swiper-carousel-component className="f:product-media__carousel f:swiper" data-swiper-options="{&quot;slidesPerView&quot;:1,&quot;autoplay&quot;:false,&quot;navigation&quot;:true,&quot;pagination&quot;:true,&quot;paginationType&quot;:&quot;fraction&quot;,&quot;autoHeight&quot;:true,&quot;enabled&quot;:true,&quot;breakpoints&quot;:{&quot;768&quot;:{&quot;enabled&quot;:true}},&quot;effect&quot;:&quot;fade&quot;,&quot;fadeEffect&quot;:{&quot;crossFade&quot;:true}}"><div class="f:product-media__carousel-main"><div class="f:main-swiper f:swiper-container"><div class="f:swiper-wrapper">{%- for media in product.media -%}<div class="f:swiper-slide{% if media.media_type != 'image' %} swiper-no-swiping{% endif %}" data-media-type="{{ media.media_type }}" data-media-id="{{ media.id }}" data-media-index="{{ forloop.index0 }}"><div class="f:product-media f:product-media--{{ media.media_type }}"><f-image class="f:image" style="--f-aspect-ratio:{{ media.preview_image.aspect_ratio | default: 1 }}">{{ media.preview_image | image_url: width: 1946 | image_tag:
+        loading: lazy,
+        sizes: '(min-width: 1200px) 715px, (min-width: 990px) calc(65.0vw - 10rem), (min-width: 750px) calc((100vw - 11.5rem) / 2), calc(100vw / 1 - 4rem)',
+        widths: '246, 493, 600, 713, 823, 990, 1100, 1206, 1346, 1426, 1646, 1946',
+        alt: media.preview_image.alt | escape
+      }}</f-image>{%- if media.media_type != 'image' -%}<f-deferred-media style="--f-aspect-ratio:{{ media.aspect_ratio | default: 1 }}" class="f:deferred-media no-js-hidden" data-media-id="{{ media.id }}"><button id="Deferred-Poster-Modal-{{ media.id }}" class="f:deferred-media__poster" type="button"><span class="f:deferred-media__poster-button motion-reduce">{%- if media.media_type == 'model' -%}<span class="f:visually-hidden">{{ translation.products.product.media.play_model }}</span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" role="presentation" class="f:icon f:icon-3d-model" fill="none" viewBox="0 0 18 21"><path d="M7.67998 20.629L1.28002 16.723C0.886205 16.4784 0.561675 16.1368 0.337572 15.731C0.113468 15.3251 -0.00274623 14.8686 -1.39464e-05 14.405V6.59497C-0.00238367 6.13167 0.113819 5.6755 0.33751 5.26978C0.561202 4.86405 0.884959 4.52227 1.278 4.27698L7.67796 0.377014C8.07524 0.131403 8.53292 0.000877102 8.99999 9.73346e-08C9.46678 -0.000129605 9.92446 0.129369 10.322 0.374024V0.374024L16.722 4.27399C17.1163 4.51985 17.4409 4.86287 17.6647 5.27014C17.8885 5.67742 18.0039 6.13529 18 6.59998V14.409C18.0026 14.8725 17.8864 15.3289 17.6625 15.7347C17.4386 16.1405 17.1145 16.4821 16.721 16.727L10.321 20.633C9.92264 20.8742 9.46565 21.0012 8.99999 21C8.53428 20.9998 8.07761 20.8714 7.67998 20.629V20.629ZM8.72398 2.078L2.32396 5.97803C2.22303 6.04453 2.14066 6.13551 2.08452 6.24255C2.02838 6.34959 2.00031 6.46919 2.00298 6.59003V14.4C2.00026 14.5205 2.02818 14.6396 2.08415 14.7463C2.14013 14.853 2.22233 14.9438 2.32298 15.01L7.99999 18.48V10.919C8.00113 10.5997 8.08851 10.2867 8.25292 10.0129C8.41732 9.73922 8.65267 9.51501 8.93401 9.36401L15.446 5.841L9.28001 2.08002C9.19614 2.02738 9.09901 1.99962 8.99999 2C8.90251 1.99972 8.8069 2.02674 8.72398 2.078V2.078Z" fill="currentColor"></path></svg>{%- else -%}<span class="f:visually-hidden">{{ translation.products.product.media.play_video }}</span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" role="presentation" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon fill="currentColor" points="5 3 19 12 5 21 5 3"></polygon></svg>{%- endif -%}</span>{{media.preview_image | image_url: width: 1946 | image_tag:
+            loading: lazy,
+            sizes: '(min-width: 1200px) 715px, (min-width: 990px) calc(65.0vw - 10rem), (min-width: 750px) calc((100vw - 11.5rem) / 2), calc(100vw / 1 - 4rem)',
+            widths: '246, 493, 600, 713, 823, 990, 1100, 1206, 1346, 1426, 1646, 1946',
+            alt: media.preview_image.alt | escape
+            }}</button><template>{%- liquid
+            case media.media_type
+            when 'external_video'
+              assign video_class = 'js-' | append: media.host
+              if media.host == 'youtube'
+                echo media | external_video_url: autoplay: true, loop: loop, playlist: media.external_id | external_video_tag: class: video_class, loading: 'lazy'
+              else
+                echo media | external_video_url: autoplay: true, loop: loop | external_video_tag: class: video_class, loading: 'lazy'
+              endif
+            when 'video'
+              echo media | media_tag: image_size: '2048x', autoplay: true, loop: loop, controls: true, preload: 'none'
+            when 'model'
+              echo media | media_tag: image_size: '2048x', toggleable: true
+            endcase
+            -%}</template></f-deferred-media>{%- endif -%}</div></div>{%- endfor -%}</div></div>{%- if product.media.size > 1 -%}<div class="f:swiper-controls"><div class="f:swiper-controls__inner"><div class="f:swiper-button-prev"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.1875 9H2.8125" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M7.875 3.9375L2.8125 9L7.875 14.0625" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div class="f:swiper-pagination"></div><div class="f:swiper-button-next"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.8125 9H15.1875" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10.125 3.9375L15.1875 9L10.125 14.0625" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></div></div></div>{%- endif -%}</div>{%- if product.media.size > 1 -%}<div class="f:product-media__carousel-thumbs"><div class="f:nav-swiper f:swiper-container" data-swiper-options="{&quot;slidesPerView&quot;:5,&quot;autoplay&quot;:false,&quot;navigation&quot;:false,&quot;pagination&quot;:false,&quot;spaceBetween&quot;:10,&quot;enabled&quot;:true,&quot;breakpoints&quot;:{&quot;768&quot;:{&quot;enabled&quot;:true,&quot;spaceBetween&quot;:15}}}"><div class="f:swiper-wrapper f:items-center">{%- for media in product.media -%}<div class="f:swiper-slide"><div class="f:product-media__thumb">{%- if media.media_type != 'image' -%}<span class="f:product-media__thumb-icon">{%- if media.media_type == 'model' -%}<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" role="presentation" class="f:icon f:icon-3d-model" fill="none" viewBox="0 0 18 21"><path d="M7.67998 20.629L1.28002 16.723C0.886205 16.4784 0.561675 16.1368 0.337572 15.731C0.113468 15.3251 -0.00274623 14.8686 -1.39464e-05 14.405V6.59497C-0.00238367 6.13167 0.113819 5.6755 0.33751 5.26978C0.561202 4.86405 0.884959 4.52227 1.278 4.27698L7.67796 0.377014C8.07524 0.131403 8.53292 0.000877102 8.99999 9.73346e-08C9.46678 -0.000129605 9.92446 0.129369 10.322 0.374024V0.374024L16.722 4.27399C17.1163 4.51985 17.4409 4.86287 17.6647 5.27014C17.8885 5.67742 18.0039 6.13529 18 6.59998V14.409C18.0026 14.8725 17.8864 15.3289 17.6625 15.7347C17.4386 16.1405 17.1145 16.4821 16.721 16.727L10.321 20.633C9.92264 20.8742 9.46565 21.0012 8.99999 21C8.53428 20.9998 8.07761 20.8714 7.67998 20.629V20.629ZM8.72398 2.078L2.32396 5.97803C2.22303 6.04453 2.14066 6.13551 2.08452 6.24255C2.02838 6.34959 2.00031 6.46919 2.00298 6.59003V14.4C2.00026 14.5205 2.02818 14.6396 2.08415 14.7463C2.14013 14.853 2.22233 14.9438 2.32298 15.01L7.99999 18.48V10.919C8.00113 10.5997 8.08851 10.2867 8.25292 10.0129C8.41732 9.73922 8.65267 9.51501 8.93401 9.36401L15.446 5.841L9.28001 2.08002C9.19614 2.02738 9.09901 1.99962 8.99999 2C8.90251 1.99972 8.8069 2.02674 8.72398 2.078V2.078Z" fill="currentColor"></path></svg>{%- else -%}<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" role="presentation" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon fill="currentColor" points="5 3 19 12 5 21 5 3"></polygon></svg>{%- endif -%}</span>{%- endif -%}<f-image class="f:image" style="--f-aspect-ratio:1"><img srcSet="{% if media.preview_image.width >= 59 %}{{ media.preview_image | image_url: width: 59 }} 59w,{% endif %}
+                            {% if media.preview_image.width >= 118 %}{{ media.preview_image | image_url: width: 118 }} 118w,{% endif %}
+                            {% if media.preview_image.width >= 84 %}{{ media.preview_image | image_url: width: 84 }} 84w,{% endif %}
+                            {% if media.preview_image.width >= 200 %}{{ media.preview_image | image_url: width: 200 }} 200w,{% endif %}
+                            {% if media.preview_image.width >= 130 %}{{ media.preview_image | image_url: width: 130 }} 130w,{% endif %}
+                            {% if media.preview_image.width >= 260 %}{{ media.preview_image | image_url: width: 260 }} 260w{% endif %}" src="{{ media | image_url: width: 84, height: 84 }}" sizes="(min-width: 1200px) calc((1200px - 19.5rem) / 12), (min-width: 750px) calc((100vw - 16.5rem) / 8), calc((100vw - 8rem) / 5)" alt="{{ media.alt | escape }}" height="200" width="200" loading="lazy"/></f-image></div></div>{%- endfor -%}</div></div></div>{%- endif -%}</f-swiper-carousel-component></div></f-media-gallery>{% endif %}</div><div class="f:column f:product-single__info f:w-full f:product-single__info--sticky"><div class="f:product-single__blocks"><div class="f:product-single__block f:product-single__block-product-title"><h1 id="f-product-title-1713495223wYf69" class="f:blocks f:product-title f-product-title-1713495223wYf69 f:gs-heading-2 f:product-single__title h1">{% if product %}{{ product.title }}{% else %}{{ translation.onboarding.product_title }}{% endif %}</h1></div><div class="f:product-single__block f:product-single__block-richtext"><div id="f-richtext-1713519541Orc6w" class="f:blocks f:richtext f-richtext-1713519541Orc6w f:content-block f:gs-body-text f:rte">{% assign f_richtext_1713519541Orc6w_text = product.vendor  %}
+{{ 'sections.foxify-1713495244hzpDT.f-richtext-1713519541Orc6w-text_html' | t: f_richtext_1713519541Orc6w_text: f_richtext_1713519541Orc6w_text }}</div></div><div class="f:product-single__block f:product-single__block-product-price"><div id="f-product-price-1713495223eNOQE" class="f:blocks f:product-price f-product-price-1713495223eNOQE f:gs-subheading f:product-single__block f:product-single__block--price">{% render 'foxify-price', use_variant: true, product: product, show_sale_badge: true, sale_badge_type: 'text', show_soldout_badge: true %}{%- if shop.taxes_included -%}<div class="f:product-single__block-tax f:gs-body-text f:gs-caption">{{- translation.products.product.include_taxes -}}</div>{%- endif -%}{%- assign product_form_installment_id = 'product-form-installment-main-product-1713495223MjAjD' -%}{% if product != blank %}{%- form 'product', product, id: product_form_installment_id, class: 'installment no_bold_options' -%}<input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}"/>{{ form | payment_terms }}{%- endform -%}{% endif %}</div></div><div class="f:product-single__block f:product-single__block-collapsible-tab"><div id="f-collapsible-tab-1713497779M8N6t" class="f:blocks f:collapsible-tab f-collapsible-tab-1713497779M8N6t">{{ 'foxify-collapsible-tabs.css' | asset_url | stylesheet_tag }}<script src="{{ 'foxify-collapsible.js' | asset_url }}" defer=""></script><f-collapsible-tab class="f:collapsible__item" data-hide-if-empty="true"><div class="f:collapsible__button" data-trigger="true"><span>
+{{ 'sections.foxify-1713495244hzpDT.f-collapsible-tab-1713497779M8N6t-heading_html' | t }}</span><span class="f:collapsible__button-icon"><svg width="2" height="12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.333v9.334" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg><svg width="2" height="12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.333v9.334" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></div><div class="f:collapsible__content" data-content="true"><div class="f:collapsible__content-inner"><div>
+{{ 'sections.foxify-1713495244hzpDT.f-collapsible-tab-1713497779M8N6t-content_html' | t }}</div></div></div></f-collapsible-tab></div></div><div class="f:product-single__block f:product-single__block-custom-code"><div id="f-custom-code-1713498001dAj62" class="f:blocks f:custom-code f-custom-code-1713498001dAj62"><div class='delivery_date_shortcode'></div></div></div><div class="f:product-single__block f:product-single__block-richtext"><div id="f-richtext-171410884030GIg" class="f:blocks f:richtext f-richtext-171410884030GIg f:content-block f:gs-body-text f:rte">
+{{ 'sections.foxify-1713495244hzpDT.f-richtext-171410884030GIg-text_html' | t }}</div></div><div class="f:product-single__block f:product-single__block-list-items"><div id="f-list-items-1713495223S47OC" class="f:blocks f:list-items f-list-items-1713495223S47OC f:list-items--none f:list-items--vertical"><ul style="list-style-type:none;--item-spacing:10px"><li><div class="f:list-items__inner"><span class="f:icon" style="--f-icon-size:14px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="f-icon-font-awesome f-icon-check"><!--! Font Awesome Free 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M438.6 105.4C451.1 117.9 451.1 138.1 438.6 150.6L182.6 406.6C170.1 419.1 149.9 419.1 137.4 406.6L9.372 278.6C-3.124 266.1-3.124 245.9 9.372 233.4C21.87 220.9 42.13 220.9 54.63 233.4L159.1 338.7L393.4 105.4C405.9 92.88 426.1 92.88 438.6 105.4H438.6z"></path></svg></span><span>
+{{ 'sections.foxify-1713495244hzpDT.f-list-items-1713495223S47OC-items-Item-1-title_html' | t }}</span></div></li><li><div class="f:list-items__inner"><span class="f:icon" style="--f-icon-size:14px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="f-icon-font-awesome f-icon-check"><!--! Font Awesome Free 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M438.6 105.4C451.1 117.9 451.1 138.1 438.6 150.6L182.6 406.6C170.1 419.1 149.9 419.1 137.4 406.6L9.372 278.6C-3.124 266.1-3.124 245.9 9.372 233.4C21.87 220.9 42.13 220.9 54.63 233.4L159.1 338.7L393.4 105.4C405.9 92.88 426.1 92.88 438.6 105.4H438.6z"></path></svg></span><span>
+{{ 'sections.foxify-1713495244hzpDT.f-list-items-1713495223S47OC-items-Item-3-title_html' | t }}</span></div></li><li><div class="f:list-items__inner"><span class="f:icon" style="--f-icon-size:14px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="f-icon-font-awesome f-icon-check"><!--! Font Awesome Free 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M438.6 105.4C451.1 117.9 451.1 138.1 438.6 150.6L182.6 406.6C170.1 419.1 149.9 419.1 137.4 406.6L9.372 278.6C-3.124 266.1-3.124 245.9 9.372 233.4C21.87 220.9 42.13 220.9 54.63 233.4L159.1 338.7L393.4 105.4C405.9 92.88 426.1 92.88 438.6 105.4H438.6z"></path></svg></span><span>
+{{ 'sections.foxify-1713495244hzpDT.f-list-items-1713495223S47OC-items-Item-2-title_html' | t }}</span></div></li></ul></div></div><div class="f:product-single__block f:product-single__block-richtext"><div id="f-richtext-1714116845NtBHq" class="f:blocks f:richtext f-richtext-1714116845NtBHq f:content-block f:gs-body-text f:rte">
+{{ 'sections.foxify-1713495244hzpDT.f-richtext-1714116845NtBHq-text_html' | t }}</div></div><div class="f:product-single__block f:product-single__block-variant-picker"><script src="{{ 'foxify-variant-picker.js' | asset_url }}" defer=""></script><div id="f-variant-picker-1713495223lvwvq" class="f:blocks f:variant-picker f-variant-picker-1713495223lvwvq">{% render 'foxify-variant-picker', product: product, variant_picker_type: 'dropdown', show_selected_value: true, updateUrl: true, sectionId: 'main-product-1713495223MjAjD' %}</div></div><div class="f:product-single__block f:product-single__block-buy-buttons">{% liquid
+        assign enableAjax = false
+        assign ajaxCart = shop.metafields.foxify.ajax-add-to-cart.value
+        if ajaxCart != blank and ajaxCart.enabled == true
+          assign enableAjax = true
+        endif
+      %}<f-product-form class="f:product-form product-form" data-enable-ajax="{{ enableAjax }}"><div class="f:product-form__error-message-wrapper" role="alert" hidden=""><svg aria-hidden="true" focusable="false" role="presentation" class="f:icon f:icon-error" viewBox="0 0 13 13"><circle cx="6.5" cy="6.50049" r="5.5" stroke="white" stroke-width="2"></circle><circle cx="6.5" cy="6.5" r="5.5" fill="#EB001B" stroke="#EB001B" stroke-width="0.7"></circle><path d="M5.87413 3.52832L5.97439 7.57216H7.02713L7.12739 3.52832H5.87413ZM6.50076 9.66091C6.88091 9.66091 7.18169 9.37267 7.18169 9.00504C7.18169 8.63742 6.88091 8.34917 6.50076 8.34917C6.12061 8.34917 5.81982 8.63742 5.81982 9.00504C5.81982 9.37267 6.12061 9.66091 6.50076 9.66091Z" fill="white"></path><path d="M5.87413 3.17832H5.51535L5.52424 3.537L5.6245 7.58083L5.63296 7.92216H5.97439H7.02713H7.36856L7.37702 7.58083L7.47728 3.537L7.48617 3.17832H7.12739H5.87413ZM6.50076 10.0109C7.06121 10.0109 7.5317 9.57872 7.5317 9.00504C7.5317 8.43137 7.06121 7.99918 6.50076 7.99918C5.94031 7.99918 5.46982 8.43137 5.46982 9.00504C5.46982 9.57872 5.94031 10.0109 6.50076 10.0109Z" fill="white" stroke="#EB001B" stroke-width="0.7"></path></svg><span class="f:product-form__error-message"></span></div>{% if product != blank %}{%- form 'product', product, id: 'product-form-main-product-1713495223MjAjD', class: 'f:main-product-form', novalidate: 'novalidate', data-type: 'add-to-cart-form', data-product-id: product.id -%}<input type="hidden" name="product_id" value="{{ product.id }}"/><input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}"/>{% if product.selected_or_first_available_variant.available == false %}<button name="add" id="f-buy-buttons-1713495223Infef" class="f:blocks f:buy-buttons f-buy-buttons-1713495223Infef f:gs-outline-button f:btn f:w-full f:btn-atc" disabled=""><span class="f:btn__label">{{ translation.products.product.sold_out }}</span></button>{% else %}<button name="add" id="f-buy-buttons-1713495223Infef" class="f:blocks f:buy-buttons f-buy-buttons-1713495223Infef f:gs-outline-button f:btn f:w-full f:btn-atc"><span class="f:btn__label">
+{{ 'sections.foxify-1713495244hzpDT.f-buy-buttons-1713495223Infef-button_label_html' | t }}</span><svg width="16" height="16" aria-hidden="true" focusable="false" role="presentation" class="f:spinner-icon f:svg-icon" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg"><circle fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle></svg></button>{% endif %}{% endform %}{% else %}<button name="add" id="f-buy-buttons-1713495223Infef" class="f:blocks f:buy-buttons f-buy-buttons-1713495223Infef f:gs-outline-button f:btn f:w-full f:btn-atc"><span class="f:btn__label">
+{{ 'sections.foxify-1713495244hzpDT.f-buy-buttons-1713495223Infef-button_label_html' | t }}</span></button>{% endif %}<div class="f:product-form__messages" role="alert"></div></f-product-form></div><div class="f:product-single__block f:product-single__block-collapsible-tab"><div id="f-collapsible-tab-1713516773vAj1o" class="f:blocks f:collapsible-tab f-collapsible-tab-1713516773vAj1o">{{ 'foxify-collapsible-tabs.css' | asset_url | stylesheet_tag }}<script src="{{ 'foxify-collapsible.js' | asset_url }}" defer=""></script><f-collapsible-tab class="f:collapsible__item" data-hide-if-empty="true"><div class="f:collapsible__button" data-trigger="true"><span>
+{{ 'sections.foxify-1713495244hzpDT.f-collapsible-tab-1713516773vAj1o-heading_html' | t }}</span><span class="f:collapsible__button-icon"><svg width="2" height="12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.333v9.334" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg><svg width="2" height="12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.333v9.334" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></div><div class="f:collapsible__content" data-content="true"><div class="f:collapsible__content-inner"><div>{% assign f_collapsible_tab_1713516773vAj1o_content = product.metafields.custom['design'].value  %}
+{{ 'sections.foxify-1713495244hzpDT.f-collapsible-tab-1713516773vAj1o-content_html' | t: f_collapsible_tab_1713516773vAj1o_content: f_collapsible_tab_1713516773vAj1o_content }}</div></div></div></f-collapsible-tab></div></div><div class="f:product-single__block f:product-single__block-collapsible-tab"><div id="f-collapsible-tab-1713516938Zw9gA" class="f:blocks f:collapsible-tab f-collapsible-tab-1713516938Zw9gA">{{ 'foxify-collapsible-tabs.css' | asset_url | stylesheet_tag }}<script src="{{ 'foxify-collapsible.js' | asset_url }}" defer=""></script><f-collapsible-tab class="f:collapsible__item" data-hide-if-empty="true"><div class="f:collapsible__button" data-trigger="true"><span>
+{{ 'sections.foxify-1713495244hzpDT.f-collapsible-tab-1713516938Zw9gA-heading_html' | t }}</span><span class="f:collapsible__button-icon"><svg width="2" height="12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.333v9.334" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg><svg width="2" height="12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.333v9.334" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></div><div class="f:collapsible__content" data-content="true"><div class="f:collapsible__content-inner"><div>{% assign f_collapsible_tab_1713516938Zw9gA_content = product.metafields.custom['material_1'].value  %}
+{{ 'sections.foxify-1713495244hzpDT.f-collapsible-tab-1713516938Zw9gA-content_html' | t: f_collapsible_tab_1713516938Zw9gA_content: f_collapsible_tab_1713516938Zw9gA_content }}</div></div></div></f-collapsible-tab></div></div><div class="f:product-single__block f:product-single__block-collapsible-tab"><div id="f-collapsible-tab-1713516952i8trr" class="f:blocks f:collapsible-tab f-collapsible-tab-1713516952i8trr">{{ 'foxify-collapsible-tabs.css' | asset_url | stylesheet_tag }}<script src="{{ 'foxify-collapsible.js' | asset_url }}" defer=""></script><f-collapsible-tab class="f:collapsible__item" data-hide-if-empty="true"><div class="f:collapsible__button" data-trigger="true"><span>
+{{ 'sections.foxify-1713495244hzpDT.f-collapsible-tab-1713516952i8trr-heading_html' | t }}</span><span class="f:collapsible__button-icon"><svg width="2" height="12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.333v9.334" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg><svg width="2" height="12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.333v9.334" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></div><div class="f:collapsible__content" data-content="true"><div class="f:collapsible__content-inner"><div>{% assign f_collapsible_tab_1713516952i8trr_content = product.metafields.custom['ethical_1'].value  %}
+{{ 'sections.foxify-1713495244hzpDT.f-collapsible-tab-1713516952i8trr-content_html' | t: f_collapsible_tab_1713516952i8trr_content: f_collapsible_tab_1713516952i8trr_content }}</div></div></div></f-collapsible-tab></div></div><div class="f:product-single__block f:product-single__block-collapsible-tab"><div id="f-collapsible-tab-17135169521MYS1" class="f:blocks f:collapsible-tab f-collapsible-tab-17135169521MYS1">{{ 'foxify-collapsible-tabs.css' | asset_url | stylesheet_tag }}<script src="{{ 'foxify-collapsible.js' | asset_url }}" defer=""></script><f-collapsible-tab class="f:collapsible__item" data-hide-if-empty="true"><div class="f:collapsible__button" data-trigger="true"><span>
+{{ 'sections.foxify-1713495244hzpDT.f-collapsible-tab-17135169521MYS1-heading_html' | t }}</span><span class="f:collapsible__button-icon"><svg width="2" height="12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.333v9.334" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg><svg width="2" height="12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.333v9.334" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></div><div class="f:collapsible__content" data-content="true"><div class="f:collapsible__content-inner"><div>
+{{ 'sections.foxify-1713495244hzpDT.f-collapsible-tab-17135169521MYS1-content_html' | t }}</div></div></div></f-collapsible-tab></div></div><div class="f:product-single__block f:product-single__block-collapsible-tab"><div id="f-collapsible-tab-1713516953cxLEC" class="f:blocks f:collapsible-tab f-collapsible-tab-1713516953cxLEC">{{ 'foxify-collapsible-tabs.css' | asset_url | stylesheet_tag }}<script src="{{ 'foxify-collapsible.js' | asset_url }}" defer=""></script><f-collapsible-tab class="f:collapsible__item" data-hide-if-empty="true"><div class="f:collapsible__button" data-trigger="true"><span>
+{{ 'sections.foxify-1713495244hzpDT.f-collapsible-tab-1713516953cxLEC-heading_html' | t }}</span><span class="f:collapsible__button-icon"><svg width="2" height="12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.333v9.334" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg><svg width="2" height="12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.333v9.334" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></div><div class="f:collapsible__content" data-content="true"><div class="f:collapsible__content-inner"><div>
+{{ 'sections.foxify-1713495244hzpDT.f-collapsible-tab-1713516953cxLEC-content_html' | t }}</div></div></div></f-collapsible-tab></div></div></div></div></div></div></div><div id="f-custom-section-17134952230iWGt" class="f:sections f:custom-section f-custom-section-17134952230iWGt"><div class="f:container-full"><div id="f-grid-1713495223NOsUO" class="f:blocks f:grid f-grid-1713495223NOsUO" style="--f-grid-columns-sm:minmax(0, 12fr);--f-grid-columns-md:minmax(0, 6fr) minmax(0, 6fr);--f-grid-columns-lg:minmax(0, 6fr) minmax(0, 6fr);--f-grid-columns-xl:minmax(0, 6fr) minmax(0, 6fr)"><div id="f-col-1713495223HmUkd" class="f:blocks f:col f-col-1713495223HmUkd f:column" data-animate-trigger="scroll_into_view" data-animate-name="fFadeInLeft"><div id="f-richtext-1713514119CNtm1" class="f:blocks f:richtext f-richtext-1713514119CNtm1 f:content-block f:gs-card-title f:rte">{% assign f_richtext_1713514119CNtm1_text = product.title  %}
+{{ 'sections.foxify-1713495244hzpDT.f-richtext-1713514119CNtm1-text_html' | t: f_richtext_1713514119CNtm1_text: f_richtext_1713514119CNtm1_text }}</div><div id="f-richtext-1713495223ibXOD" class="f:blocks f:richtext f-richtext-1713495223ibXOD f:content-block f:gs-body-text f:rte">{% assign f_richtext_1713495223ibXOD_text = product.metafields.custom['about_the_brand'].value  %}
+{{ 'sections.foxify-1713495244hzpDT.f-richtext-1713495223ibXOD-text_html' | t: f_richtext_1713495223ibXOD_text: f_richtext_1713495223ibXOD_text }}</div></div></div></div></div><div id="anchordetail" class="f:sections f:custom-section f-custom-section-1713513828xGc7M"><div class="f:container-full"><div id="f-grid-1713513828C0MVX" class="f:blocks f:grid f-grid-1713513828C0MVX" style="--f-grid-columns-sm:minmax(0, 12fr);--f-grid-columns-md:minmax(0, 12fr);--f-grid-columns-lg:minmax(0, 6fr) minmax(0, 6fr);--f-grid-columns-xl:minmax(0, 6fr) minmax(0, 6fr)"><div id="f-col-1713513828e9fBA" class="f:blocks f:col f-col-1713513828e9fBA f:column"><h6 id="f-heading-17135138280sCbh" class="f:blocks f:heading f-heading-17135138280sCbh f:content-block f:gs-heading-6"><span>
+{{ 'sections.foxify-1713495244hzpDT.f-heading-17135138280sCbh-text_html' | t }}</span></h6></div></div><div id="f-grid-1713513828gA21T" class="f:blocks f:grid f-grid-1713513828gA21T" style="--f-grid-columns-sm:minmax(0, 12fr);--f-grid-columns-md:minmax(0, 6fr) minmax(0, 6fr);--f-grid-columns-lg:minmax(0, 6fr) minmax(0, 6fr);--f-grid-columns-xl:minmax(0, 6fr) minmax(0, 6fr)"><div id="f-col-1713513828N2kMA" class="f:blocks f:col f-col-1713513828N2kMA f:column"><div id="f-collapsible-tab-17135138282iRhY" class="f:blocks f:collapsible-tab f-collapsible-tab-17135138282iRhY">{{ 'foxify-collapsible-tabs.css' | asset_url | stylesheet_tag }}<script src="{{ 'foxify-collapsible.js' | asset_url }}" defer=""></script><f-collapsible-tab class="f:collapsible__item" data-hide-if-empty="true"><div class="f:collapsible__button" data-trigger="true"><span>
+{{ 'sections.foxify-1713495244hzpDT.f-collapsible-tab-17135138282iRhY-heading_html' | t }}</span><span class="f:collapsible__button-icon"><svg width="2" height="12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.333v9.334" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg><svg width="2" height="12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.333v9.334" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></div><div class="f:collapsible__content" data-content="true"><div class="f:collapsible__content-inner"><div>{% assign f_collapsible_tab_17135138282iRhY_content = product.metafields.custom['primary_metal'].value  %}
+{{ 'sections.foxify-1713495244hzpDT.f-collapsible-tab-17135138282iRhY-content_html' | t: f_collapsible_tab_17135138282iRhY_content: f_collapsible_tab_17135138282iRhY_content }}</div></div></div></f-collapsible-tab></div><div id="f-collapsible-tab-17135138284QRxf" class="f:blocks f:collapsible-tab f-collapsible-tab-17135138284QRxf">{{ 'foxify-collapsible-tabs.css' | asset_url | stylesheet_tag }}<script src="{{ 'foxify-collapsible.js' | asset_url }}" defer=""></script><f-collapsible-tab class="f:collapsible__item" data-hide-if-empty="true"><div class="f:collapsible__button" data-trigger="true"><span>
+{{ 'sections.foxify-1713495244hzpDT.f-collapsible-tab-17135138284QRxf-heading_html' | t }}</span><span class="f:collapsible__button-icon"><svg width="2" height="12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.333v9.334" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg><svg width="2" height="12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.333v9.334" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></div><div class="f:collapsible__content" data-content="true"><div class="f:collapsible__content-inner"><div>{% assign f_collapsible_tab_17135138284QRxf_content = product.metafields.custom['material_description_breakdown'].value  %}
+{{ 'sections.foxify-1713495244hzpDT.f-collapsible-tab-17135138284QRxf-content_html' | t: f_collapsible_tab_17135138284QRxf_content: f_collapsible_tab_17135138284QRxf_content }}</div></div></div></f-collapsible-tab></div><div id="f-collapsible-tab-17135138281iu4Q" class="f:blocks f:collapsible-tab f-collapsible-tab-17135138281iu4Q">{{ 'foxify-collapsible-tabs.css' | asset_url | stylesheet_tag }}<script src="{{ 'foxify-collapsible.js' | asset_url }}" defer=""></script><f-collapsible-tab class="f:collapsible__item" data-hide-if-empty="true"><div class="f:collapsible__button" data-trigger="true"><span>
+{{ 'sections.foxify-1713495244hzpDT.f-collapsible-tab-17135138281iu4Q-heading_html' | t }}</span><span class="f:collapsible__button-icon"><svg width="2" height="12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.333v9.334" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg><svg width="2" height="12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.333v9.334" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></div><div class="f:collapsible__content" data-content="true"><div class="f:collapsible__content-inner"><div>{% assign f_collapsible_tab_17135138281iu4Q_content = product.metafields.custom['material_durability_care'].value  %}
+{{ 'sections.foxify-1713495244hzpDT.f-collapsible-tab-17135138281iu4Q-content_html' | t: f_collapsible_tab_17135138281iu4Q_content: f_collapsible_tab_17135138281iu4Q_content }}</div></div></div></f-collapsible-tab></div><div id="f-collapsible-tab-1713513828rlh1F" class="f:blocks f:collapsible-tab f-collapsible-tab-1713513828rlh1F">{{ 'foxify-collapsible-tabs.css' | asset_url | stylesheet_tag }}<script src="{{ 'foxify-collapsible.js' | asset_url }}" defer=""></script><f-collapsible-tab class="f:collapsible__item" data-hide-if-empty="true"><div class="f:collapsible__button" data-trigger="true"><span>
+{{ 'sections.foxify-1713495244hzpDT.f-collapsible-tab-1713513828rlh1F-heading_html' | t }}</span><span class="f:collapsible__button-icon"><svg width="2" height="12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.333v9.334" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg><svg width="2" height="12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.333v9.334" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></div><div class="f:collapsible__content" data-content="true"><div class="f:collapsible__content-inner"><div>{% assign f_collapsible_tab_1713513828rlh1F_content = product.metafields.custom['material_conscious_practice'].value  %}
+{{ 'sections.foxify-1713495244hzpDT.f-collapsible-tab-1713513828rlh1F-content_html' | t: f_collapsible_tab_1713513828rlh1F_content: f_collapsible_tab_1713513828rlh1F_content }}</div></div></div></f-collapsible-tab></div></div><div id="f-col-1713513828HKwhp" class="f:blocks f:col f-col-1713513828HKwhp f:column"><div id="f-collapsible-tab-1713513828hB05t" class="f:blocks f:collapsible-tab f-collapsible-tab-1713513828hB05t">{{ 'foxify-collapsible-tabs.css' | asset_url | stylesheet_tag }}<script src="{{ 'foxify-collapsible.js' | asset_url }}" defer=""></script><f-collapsible-tab class="f:collapsible__item" data-hide-if-empty="true"><div class="f:collapsible__button" data-trigger="true"><span>
+{{ 'sections.foxify-1713495244hzpDT.f-collapsible-tab-1713513828hB05t-heading_html' | t }}</span><span class="f:collapsible__button-icon"><svg width="2" height="12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.333v9.334" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg><svg width="2" height="12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.333v9.334" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></div><div class="f:collapsible__content" data-content="true"><div class="f:collapsible__content-inner"><div>{% assign f_collapsible_tab_1713513828hB05t_content = product.metafields.custom['primary_gemstone'].value  %}
+{{ 'sections.foxify-1713495244hzpDT.f-collapsible-tab-1713513828hB05t-content_html' | t: f_collapsible_tab_1713513828hB05t_content: f_collapsible_tab_1713513828hB05t_content }}</div></div></div></f-collapsible-tab></div><div id="f-collapsible-tab-1713513828dfmIw" class="f:blocks f:collapsible-tab f-collapsible-tab-1713513828dfmIw">{{ 'foxify-collapsible-tabs.css' | asset_url | stylesheet_tag }}<script src="{{ 'foxify-collapsible.js' | asset_url }}" defer=""></script><f-collapsible-tab class="f:collapsible__item" data-hide-if-empty="true"><div class="f:collapsible__button" data-trigger="true"><span>
+{{ 'sections.foxify-1713495244hzpDT.f-collapsible-tab-1713513828dfmIw-heading_html' | t }}</span><span class="f:collapsible__button-icon"><svg width="2" height="12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.333v9.334" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg><svg width="2" height="12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.333v9.334" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></div><div class="f:collapsible__content" data-content="true"><div class="f:collapsible__content-inner"><div>{% assign f_collapsible_tab_1713513828dfmIw_content = product.metafields.custom['primary_gemstone_total_carat_weight'].value  %}
+{{ 'sections.foxify-1713495244hzpDT.f-collapsible-tab-1713513828dfmIw-content_html' | t: f_collapsible_tab_1713513828dfmIw_content: f_collapsible_tab_1713513828dfmIw_content }}</div></div></div></f-collapsible-tab></div><div id="f-collapsible-tab-17137689120Rq7p" class="f:blocks f:collapsible-tab f-collapsible-tab-17137689120Rq7p">{{ 'foxify-collapsible-tabs.css' | asset_url | stylesheet_tag }}<script src="{{ 'foxify-collapsible.js' | asset_url }}" defer=""></script><f-collapsible-tab class="f:collapsible__item" data-hide-if-empty="true"><div class="f:collapsible__button" data-trigger="true"><span>
+{{ 'sections.foxify-1713495244hzpDT.f-collapsible-tab-17137689120Rq7p-heading_html' | t }}</span><span class="f:collapsible__button-icon"><svg width="2" height="12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.333v9.334" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg><svg width="2" height="12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.333v9.334" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></div><div class="f:collapsible__content" data-content="true"><div class="f:collapsible__content-inner"><div>{% assign f_collapsible_tab_17137689120Rq7p_content = product.metafields.custom['primary_gemstone_center_stone_carat_weight'].value  %}
+{{ 'sections.foxify-1713495244hzpDT.f-collapsible-tab-17137689120Rq7p-content_html' | t: f_collapsible_tab_17137689120Rq7p_content: f_collapsible_tab_17137689120Rq7p_content }}</div></div></div></f-collapsible-tab></div><div id="f-collapsible-tab-1713513828jhqMt" class="f:blocks f:collapsible-tab f-collapsible-tab-1713513828jhqMt">{{ 'foxify-collapsible-tabs.css' | asset_url | stylesheet_tag }}<script src="{{ 'foxify-collapsible.js' | asset_url }}" defer=""></script><f-collapsible-tab class="f:collapsible__item" data-hide-if-empty="true"><div class="f:collapsible__button" data-trigger="true"><span>
+{{ 'sections.foxify-1713495244hzpDT.f-collapsible-tab-1713513828jhqMt-heading_html' | t }}</span><span class="f:collapsible__button-icon"><svg width="2" height="12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.333v9.334" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg><svg width="2" height="12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.333v9.334" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></div><div class="f:collapsible__content" data-content="true"><div class="f:collapsible__content-inner"><div>{% assign f_collapsible_tab_1713513828jhqMt_content = product.metafields.custom['primary_gemstone_color_grade'].value  %}
+{{ 'sections.foxify-1713495244hzpDT.f-collapsible-tab-1713513828jhqMt-content_html' | t: f_collapsible_tab_1713513828jhqMt_content: f_collapsible_tab_1713513828jhqMt_content }}</div></div></div></f-collapsible-tab></div><div id="f-collapsible-tab-1713513828xFMkt" class="f:blocks f:collapsible-tab f-collapsible-tab-1713513828xFMkt">{{ 'foxify-collapsible-tabs.css' | asset_url | stylesheet_tag }}<script src="{{ 'foxify-collapsible.js' | asset_url }}" defer=""></script><f-collapsible-tab class="f:collapsible__item" data-hide-if-empty="true"><div class="f:collapsible__button" data-trigger="true"><span>
+{{ 'sections.foxify-1713495244hzpDT.f-collapsible-tab-1713513828xFMkt-heading_html' | t }}</span><span class="f:collapsible__button-icon"><svg width="2" height="12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.333v9.334" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg><svg width="2" height="12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.333v9.334" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></div><div class="f:collapsible__content" data-content="true"><div class="f:collapsible__content-inner"><div>{% assign f_collapsible_tab_1713513828xFMkt_content = product.metafields.custom['primary_gemstone_clarity_grade'].value  %}
+{{ 'sections.foxify-1713495244hzpDT.f-collapsible-tab-1713513828xFMkt-content_html' | t: f_collapsible_tab_1713513828xFMkt_content: f_collapsible_tab_1713513828xFMkt_content }}</div></div></div></f-collapsible-tab></div><div id="f-collapsible-tab-1713513828xgsTB" class="f:blocks f:collapsible-tab f-collapsible-tab-1713513828xgsTB">{{ 'foxify-collapsible-tabs.css' | asset_url | stylesheet_tag }}<script src="{{ 'foxify-collapsible.js' | asset_url }}" defer=""></script><f-collapsible-tab class="f:collapsible__item" data-hide-if-empty="true"><div class="f:collapsible__button" data-trigger="true"><span>
+{{ 'sections.foxify-1713495244hzpDT.f-collapsible-tab-1713513828xgsTB-heading_html' | t }}</span><span class="f:collapsible__button-icon"><svg width="2" height="12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.333v9.334" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg><svg width="2" height="12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.333v9.334" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></div><div class="f:collapsible__content" data-content="true"><div class="f:collapsible__content-inner"><div>{% assign f_collapsible_tab_1713513828xgsTB_content = product.metafields.custom['primary_gemstone_description_breakdown'].value  %}
+{{ 'sections.foxify-1713495244hzpDT.f-collapsible-tab-1713513828xgsTB-content_html' | t: f_collapsible_tab_1713513828xgsTB_content: f_collapsible_tab_1713513828xgsTB_content }}</div></div></div></f-collapsible-tab></div><div id="f-collapsible-tab-1713513828d69Jl" class="f:blocks f:collapsible-tab f-collapsible-tab-1713513828d69Jl">{{ 'foxify-collapsible-tabs.css' | asset_url | stylesheet_tag }}<script src="{{ 'foxify-collapsible.js' | asset_url }}" defer=""></script><f-collapsible-tab class="f:collapsible__item" data-hide-if-empty="true"><div class="f:collapsible__button" data-trigger="true"><span>
+{{ 'sections.foxify-1713495244hzpDT.f-collapsible-tab-1713513828d69Jl-heading_html' | t }}</span><span class="f:collapsible__button-icon"><svg width="2" height="12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.333v9.334" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg><svg width="2" height="12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.333v9.334" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></div><div class="f:collapsible__content" data-content="true"><div class="f:collapsible__content-inner"><div>{% assign f_collapsible_tab_1713513828d69Jl_content = product.metafields.custom['primary_gemstone_durability_care'].value  %}
+{{ 'sections.foxify-1713495244hzpDT.f-collapsible-tab-1713513828d69Jl-content_html' | t: f_collapsible_tab_1713513828d69Jl_content: f_collapsible_tab_1713513828d69Jl_content }}</div></div></div></f-collapsible-tab></div><div id="f-collapsible-tab-1713513828viPfj" class="f:blocks f:collapsible-tab f-collapsible-tab-1713513828viPfj">{{ 'foxify-collapsible-tabs.css' | asset_url | stylesheet_tag }}<script src="{{ 'foxify-collapsible.js' | asset_url }}" defer=""></script><f-collapsible-tab class="f:collapsible__item" data-hide-if-empty="true"><div class="f:collapsible__button" data-trigger="true"><span>
+{{ 'sections.foxify-1713495244hzpDT.f-collapsible-tab-1713513828viPfj-heading_html' | t }}</span><span class="f:collapsible__button-icon"><svg width="2" height="12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.333v9.334" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg><svg width="2" height="12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.333v9.334" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></div><div class="f:collapsible__content" data-content="true"><div class="f:collapsible__content-inner"><div>{% assign f_collapsible_tab_1713513828viPfj_content = product.metafields.custom['primary_gemstone_conscious_practice'].value  %}
+{{ 'sections.foxify-1713495244hzpDT.f-collapsible-tab-1713513828viPfj-content_html' | t: f_collapsible_tab_1713513828viPfj_content: f_collapsible_tab_1713513828viPfj_content }}</div></div></div></f-collapsible-tab></div></div><div id="f-col-1713513828t7sCn" class="f:blocks f:col f-col-1713513828t7sCn f:column"><div id="f-collapsible-tab-17135138287VegC" class="f:blocks f:collapsible-tab f-collapsible-tab-17135138287VegC">{{ 'foxify-collapsible-tabs.css' | asset_url | stylesheet_tag }}<script src="{{ 'foxify-collapsible.js' | asset_url }}" defer=""></script><f-collapsible-tab class="f:collapsible__item" data-hide-if-empty="true"><div class="f:collapsible__button" data-trigger="true"><span>
+{{ 'sections.foxify-1713495244hzpDT.f-collapsible-tab-17135138287VegC-heading_html' | t }}</span><span class="f:collapsible__button-icon"><svg width="2" height="12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.333v9.334" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg><svg width="2" height="12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.333v9.334" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></div><div class="f:collapsible__content" data-content="true"><div class="f:collapsible__content-inner"><div>{% assign f_collapsible_tab_17135138287VegC_content = product.metafields.custom['secondary_metal'].value  %}
+{{ 'sections.foxify-1713495244hzpDT.f-collapsible-tab-17135138287VegC-content_html' | t: f_collapsible_tab_17135138287VegC_content: f_collapsible_tab_17135138287VegC_content }}</div></div></div></f-collapsible-tab></div><div id="f-collapsible-tab-1713513828IEhO2" class="f:blocks f:collapsible-tab f-collapsible-tab-1713513828IEhO2">{{ 'foxify-collapsible-tabs.css' | asset_url | stylesheet_tag }}<script src="{{ 'foxify-collapsible.js' | asset_url }}" defer=""></script><f-collapsible-tab class="f:collapsible__item" data-hide-if-empty="true"><div class="f:collapsible__button" data-trigger="true"><span>
+{{ 'sections.foxify-1713495244hzpDT.f-collapsible-tab-1713513828IEhO2-heading_html' | t }}</span><span class="f:collapsible__button-icon"><svg width="2" height="12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.333v9.334" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg><svg width="2" height="12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.333v9.334" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></div><div class="f:collapsible__content" data-content="true"><div class="f:collapsible__content-inner"><div>{% assign f_collapsible_tab_1713513828IEhO2_content = product.metafields.custom['secondary_metal_description_breakdown'].value  %}
+{{ 'sections.foxify-1713495244hzpDT.f-collapsible-tab-1713513828IEhO2-content_html' | t: f_collapsible_tab_1713513828IEhO2_content: f_collapsible_tab_1713513828IEhO2_content }}</div></div></div></f-collapsible-tab></div><div id="f-collapsible-tab-1713513828nix3k" class="f:blocks f:collapsible-tab f-collapsible-tab-1713513828nix3k">{{ 'foxify-collapsible-tabs.css' | asset_url | stylesheet_tag }}<script src="{{ 'foxify-collapsible.js' | asset_url }}" defer=""></script><f-collapsible-tab class="f:collapsible__item" data-hide-if-empty="true"><div class="f:collapsible__button" data-trigger="true"><span>
+{{ 'sections.foxify-1713495244hzpDT.f-collapsible-tab-1713513828nix3k-heading_html' | t }}</span><span class="f:collapsible__button-icon"><svg width="2" height="12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.333v9.334" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg><svg width="2" height="12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.333v9.334" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></div><div class="f:collapsible__content" data-content="true"><div class="f:collapsible__content-inner"><div>{% assign f_collapsible_tab_1713513828nix3k_content = product.metafields.custom['secondary_metal_durability_care'].value  %}
+{{ 'sections.foxify-1713495244hzpDT.f-collapsible-tab-1713513828nix3k-content_html' | t: f_collapsible_tab_1713513828nix3k_content: f_collapsible_tab_1713513828nix3k_content }}</div></div></div></f-collapsible-tab></div><div id="f-collapsible-tab-1713513828OIvEd" class="f:blocks f:collapsible-tab f-collapsible-tab-1713513828OIvEd">{{ 'foxify-collapsible-tabs.css' | asset_url | stylesheet_tag }}<script src="{{ 'foxify-collapsible.js' | asset_url }}" defer=""></script><f-collapsible-tab class="f:collapsible__item" data-hide-if-empty="true"><div class="f:collapsible__button" data-trigger="true"><span>
+{{ 'sections.foxify-1713495244hzpDT.f-collapsible-tab-1713513828OIvEd-heading_html' | t }}</span><span class="f:collapsible__button-icon"><svg width="2" height="12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.333v9.334" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg><svg width="2" height="12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.333v9.334" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></div><div class="f:collapsible__content" data-content="true"><div class="f:collapsible__content-inner"><div>{% assign f_collapsible_tab_1713513828OIvEd_content = product.metafields.custom['secondary_metal_conscious_practice'].value  %}
+{{ 'sections.foxify-1713495244hzpDT.f-collapsible-tab-1713513828OIvEd-content_html' | t: f_collapsible_tab_1713513828OIvEd_content: f_collapsible_tab_1713513828OIvEd_content }}</div></div></div></f-collapsible-tab></div></div><div id="f-col-1713513828LEqdu" class="f:blocks f:col f-col-1713513828LEqdu f:column"><div id="f-collapsible-tab-1713513828T8Pr3" class="f:blocks f:collapsible-tab f-collapsible-tab-1713513828T8Pr3">{{ 'foxify-collapsible-tabs.css' | asset_url | stylesheet_tag }}<script src="{{ 'foxify-collapsible.js' | asset_url }}" defer=""></script><f-collapsible-tab class="f:collapsible__item" data-hide-if-empty="true"><div class="f:collapsible__button" data-trigger="true"><span>
+{{ 'sections.foxify-1713495244hzpDT.f-collapsible-tab-1713513828T8Pr3-heading_html' | t }}</span><span class="f:collapsible__button-icon"><svg width="2" height="12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.333v9.334" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg><svg width="2" height="12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.333v9.334" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></div><div class="f:collapsible__content" data-content="true"><div class="f:collapsible__content-inner"><div>{% assign f_collapsible_tab_1713513828T8Pr3_content = product.metafields.custom['secondary_gemstone'].value  %}
+{{ 'sections.foxify-1713495244hzpDT.f-collapsible-tab-1713513828T8Pr3-content_html' | t: f_collapsible_tab_1713513828T8Pr3_content: f_collapsible_tab_1713513828T8Pr3_content }}</div></div></div></f-collapsible-tab></div><div id="f-collapsible-tab-1713513828jd5W4" class="f:blocks f:collapsible-tab f-collapsible-tab-1713513828jd5W4">{{ 'foxify-collapsible-tabs.css' | asset_url | stylesheet_tag }}<script src="{{ 'foxify-collapsible.js' | asset_url }}" defer=""></script><f-collapsible-tab class="f:collapsible__item" data-hide-if-empty="true"><div class="f:collapsible__button" data-trigger="true"><span>
+{{ 'sections.foxify-1713495244hzpDT.f-collapsible-tab-1713513828jd5W4-heading_html' | t }}</span><span class="f:collapsible__button-icon"><svg width="2" height="12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.333v9.334" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg><svg width="2" height="12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.333v9.334" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></div><div class="f:collapsible__content" data-content="true"><div class="f:collapsible__content-inner"><div>{% assign f_collapsible_tab_1713513828jd5W4_content = product.metafields.custom['secondary_gemstone_total_carat_weight'].value  %}
+{{ 'sections.foxify-1713495244hzpDT.f-collapsible-tab-1713513828jd5W4-content_html' | t: f_collapsible_tab_1713513828jd5W4_content: f_collapsible_tab_1713513828jd5W4_content }}</div></div></div></f-collapsible-tab></div><div id="f-collapsible-tab-1713513828xdp1T" class="f:blocks f:collapsible-tab f-collapsible-tab-1713513828xdp1T">{{ 'foxify-collapsible-tabs.css' | asset_url | stylesheet_tag }}<script src="{{ 'foxify-collapsible.js' | asset_url }}" defer=""></script><f-collapsible-tab class="f:collapsible__item" data-hide-if-empty="true"><div class="f:collapsible__button" data-trigger="true"><span>
+{{ 'sections.foxify-1713495244hzpDT.f-collapsible-tab-1713513828xdp1T-heading_html' | t }}</span><span class="f:collapsible__button-icon"><svg width="2" height="12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.333v9.334" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg><svg width="2" height="12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.333v9.334" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></div><div class="f:collapsible__content" data-content="true"><div class="f:collapsible__content-inner"><div>{% assign f_collapsible_tab_1713513828xdp1T_content = product.metafields.custom['secondary_gemstone_size'].value  %}
+{{ 'sections.foxify-1713495244hzpDT.f-collapsible-tab-1713513828xdp1T-content_html' | t: f_collapsible_tab_1713513828xdp1T_content: f_collapsible_tab_1713513828xdp1T_content }}</div></div></div></f-collapsible-tab></div><div id="f-collapsible-tab-1713513828N75h3" class="f:blocks f:collapsible-tab f-collapsible-tab-1713513828N75h3">{{ 'foxify-collapsible-tabs.css' | asset_url | stylesheet_tag }}<script src="{{ 'foxify-collapsible.js' | asset_url }}" defer=""></script><f-collapsible-tab class="f:collapsible__item" data-hide-if-empty="true"><div class="f:collapsible__button" data-trigger="true"><span>
+{{ 'sections.foxify-1713495244hzpDT.f-collapsible-tab-1713513828N75h3-heading_html' | t }}</span><span class="f:collapsible__button-icon"><svg width="2" height="12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.333v9.334" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg><svg width="2" height="12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.333v9.334" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></div><div class="f:collapsible__content" data-content="true"><div class="f:collapsible__content-inner"><div>{% assign f_collapsible_tab_1713513828N75h3_content = product.metafields.custom['secondary_gemstone_description_breakdown'].value  %}
+{{ 'sections.foxify-1713495244hzpDT.f-collapsible-tab-1713513828N75h3-content_html' | t: f_collapsible_tab_1713513828N75h3_content: f_collapsible_tab_1713513828N75h3_content }}</div></div></div></f-collapsible-tab></div><div id="f-collapsible-tab-1713513828DlV3t" class="f:blocks f:collapsible-tab f-collapsible-tab-1713513828DlV3t">{{ 'foxify-collapsible-tabs.css' | asset_url | stylesheet_tag }}<script src="{{ 'foxify-collapsible.js' | asset_url }}" defer=""></script><f-collapsible-tab class="f:collapsible__item" data-hide-if-empty="true"><div class="f:collapsible__button" data-trigger="true"><span>
+{{ 'sections.foxify-1713495244hzpDT.f-collapsible-tab-1713513828DlV3t-heading_html' | t }}</span><span class="f:collapsible__button-icon"><svg width="2" height="12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.333v9.334" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg><svg width="2" height="12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.333v9.334" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></div><div class="f:collapsible__content" data-content="true"><div class="f:collapsible__content-inner"><div>{% assign f_collapsible_tab_1713513828DlV3t_content = product.metafields.custom['secondary_gemstone_durability_care'].value  %}
+{{ 'sections.foxify-1713495244hzpDT.f-collapsible-tab-1713513828DlV3t-content_html' | t: f_collapsible_tab_1713513828DlV3t_content: f_collapsible_tab_1713513828DlV3t_content }}</div></div></div></f-collapsible-tab></div><div id="f-collapsible-tab-1713513828nhd75" class="f:blocks f:collapsible-tab f-collapsible-tab-1713513828nhd75">{{ 'foxify-collapsible-tabs.css' | asset_url | stylesheet_tag }}<script src="{{ 'foxify-collapsible.js' | asset_url }}" defer=""></script><f-collapsible-tab class="f:collapsible__item" data-hide-if-empty="true"><div class="f:collapsible__button" data-trigger="true"><span>
+{{ 'sections.foxify-1713495244hzpDT.f-collapsible-tab-1713513828nhd75-heading_html' | t }}</span><span class="f:collapsible__button-icon"><svg width="2" height="12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.333v9.334" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg><svg width="2" height="12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.333v9.334" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></div><div class="f:collapsible__content" data-content="true"><div class="f:collapsible__content-inner"><div>{% assign f_collapsible_tab_1713513828nhd75_content = product.metafields.custom['secondary_gemstone_conscious_practice'].value  %}
+{{ 'sections.foxify-1713495244hzpDT.f-collapsible-tab-1713513828nhd75-content_html' | t: f_collapsible_tab_1713513828nhd75_content: f_collapsible_tab_1713513828nhd75_content }}</div></div></div></f-collapsible-tab></div></div></div></div></div><div id="f-product-recommendations-1713752439cJUSH" class="f:sections f:product-recommendations f-product-recommendations-1713752439cJUSH"><div class="f:container-full"><div id="f-section-header-1713752439LvFwC" class="f:blocks f:section-header f-section-header-1713752439LvFwC f:section-header"><h6 id="f-heading-1713752439CKw6I" class="f:blocks f:heading f-heading-1713752439CKw6I f:content-block f:gs-heading-6"><span>
+{{ 'sections.foxify-1713495244hzpDT.f-heading-1713752439CKw6I-text_html' | t }}</span></h6></div><script src="{{ 'foxify-product-recommendations.js' | asset_url }}" defer=""></script>{{ 'foxify-swiper.css' | asset_url | stylesheet_tag }}{{ 'foxify-component-product-card.css' | asset_url | stylesheet_tag }}<div id="f-product-recommendations-block-1713752439RmjYI" class="f:blocks f:product-recommendations-block f-product-recommendations-block-1713752439RmjYI"><f-product-recommendations class="f:product-recommendations f:block" data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit=24"><f-swiper-component class="f:swiper f:mobile-hidden" data-swiper-options="{&quot;navigation&quot;:false,&quot;pagination&quot;:true,&quot;autoplay&quot;:false,&quot;loop&quot;:false,&quot;paginationType&quot;:&quot;fraction&quot;,&quot;spaceBetween&quot;:10,&quot;slidesPerView&quot;:3,&quot;breakpoints&quot;:{&quot;1023&quot;:{&quot;slidesPerView&quot;:4}}}" data-pagination-type="fraction"><div class="f:swiper-container"><div class="f:swiper-wrapper">{% for product in recommendations.products %}<div class="f:swiper-slide"><div class="f:column">{% render 'foxify-product-card', product: product, card_style: 'inherit', image_ratio: 'inherit', text_align: '' %}</div></div> {% endfor %} </div><div class="f:swiper-controls f:swiper-pagination--fraction f:swiper-controls--static"><div class="f:swiper-controls__inner"><div class="f:swiper-button-prev f:hidden"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.1875 9H2.8125" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M7.875 3.9375L2.8125 9L7.875 14.0625" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div class="f:swiper-pagination"></div><div class="f:swiper-button-next f:hidden"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.8125 9H15.1875" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10.125 3.9375L15.1875 9L10.125 14.0625" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></div></div></div></div></f-swiper-component><div class="f:grid f:grid-2-cols md:f:grid-3-cols xl:f:grid-4-cols f:mobile-swiper md:hidden" style="--f-grid-gap:10px;--f-grid-gap-mobile:15px;--swiper-column-width:66vw">{% for product in recommendations.products %}<div class="f:column">{% render 'foxify-product-card', product: product, card_style: 'inherit', image_ratio: 'inherit', text_align: '' %}</div> {% endfor %} </div></f-product-recommendations></div></div></div>
+{% liquid
+        assign theme_settings = shop.metafields.foxify.theme_settings.value
+        assign customCodeBody = theme_settings.customCodeBody
+        echo customCodeBody
+      %}
+
+</div>
+    {% schema %}
+        {
+            "name": "Foxify main content",
+            "class": "foxify-main f-app",
+            "settings": [
+                {
+                "type": "header",
+                "content": "Customize section",
+                "info": "Go to [Foxify app](https://app.foxify.io/editor?id=1713495244hzpDT&type=PRODUCT) to edit this section."
+                }
+            ],
+            "locales": {
+  "en": {
+    "f-list-items-1713495223S47OC-items-Item-1-title_html": "Tax and duties included",
+    "f-list-items-1713495223S47OC-items-Item-3-title_html": "Easy 14-day return",
+    "f-list-items-1713495223S47OC-items-Item-2-title_html": "Free insured shipping for orders above USD $300",
+    "f-buy-buttons-1713495223Infef-button_label_html": "Add To Cart",
+    "f-richtext-1713495223ibXOD-text_html": "{{ f_richtext_1713495223ibXOD_text }}",
+    "f-collapsible-tab-1713497779M8N6t-heading_html": "Ships on or before:",
+    "f-collapsible-tab-1713497779M8N6t-content_html": "Why isn't my order shipped immediately upon payment?<br /><br />With a socially conscious vision and an unwavering commitment to sustainability, we encourage our community of creatives and designers not to overproduce and operate on a made-to-order basis. In light of that, we hope you'd be patient with your order and allow extra time for our creators to craft the jewelry that will stand the test of time.",
+    "f-heading-17135138280sCbh-text_html": "product detail",
+    "f-collapsible-tab-17135138282iRhY-heading_html": "primary material",
+    "f-collapsible-tab-17135138282iRhY-content_html": "{{ f_collapsible_tab_17135138282iRhY_content }}",
+    "f-collapsible-tab-17135138284QRxf-heading_html": "about this material",
+    "f-collapsible-tab-17135138284QRxf-content_html": "{{ f_collapsible_tab_17135138284QRxf_content }}",
+    "f-collapsible-tab-17135138281iu4Q-heading_html": "durability and care",
+    "f-collapsible-tab-17135138281iu4Q-content_html": "{{ f_collapsible_tab_17135138281iu4Q_content }}",
+    "f-collapsible-tab-1713513828rlh1F-heading_html": "conscious practices",
+    "f-collapsible-tab-1713513828rlh1F-content_html": "{{ f_collapsible_tab_1713513828rlh1F_content }}",
+    "f-collapsible-tab-1713513828IEhO2-heading_html": "about this material",
+    "f-collapsible-tab-1713513828IEhO2-content_html": "{{ f_collapsible_tab_1713513828IEhO2_content }}",
+    "f-collapsible-tab-1713513828nix3k-heading_html": "durability and care",
+    "f-collapsible-tab-1713513828nix3k-content_html": "{{ f_collapsible_tab_1713513828nix3k_content }}",
+    "f-collapsible-tab-1713513828OIvEd-heading_html": "conscious practices",
+    "f-collapsible-tab-1713513828OIvEd-content_html": "{{ f_collapsible_tab_1713513828OIvEd_content }}",
+    "f-collapsible-tab-1713513828hB05t-heading_html": "primary gemstone",
+    "f-collapsible-tab-1713513828hB05t-content_html": "{{ f_collapsible_tab_1713513828hB05t_content }}",
+    "f-collapsible-tab-1713513828dfmIw-heading_html": "total carat weight",
+    "f-collapsible-tab-1713513828dfmIw-content_html": "{{ f_collapsible_tab_1713513828dfmIw_content }}",
+    "f-collapsible-tab-1713513828jhqMt-heading_html": "color",
+    "f-collapsible-tab-1713513828jhqMt-content_html": "{{ f_collapsible_tab_1713513828jhqMt_content }}",
+    "f-collapsible-tab-1713513828xFMkt-heading_html": "clarity",
+    "f-collapsible-tab-1713513828xFMkt-content_html": "{{ f_collapsible_tab_1713513828xFMkt_content }}",
+    "f-collapsible-tab-1713513828xgsTB-heading_html": "about this gemstone",
+    "f-collapsible-tab-1713513828xgsTB-content_html": "{{ f_collapsible_tab_1713513828xgsTB_content }}",
+    "f-collapsible-tab-1713513828d69Jl-heading_html": "durability and care",
+    "f-collapsible-tab-1713513828d69Jl-content_html": "{{ f_collapsible_tab_1713513828d69Jl_content }}",
+    "f-collapsible-tab-1713513828viPfj-heading_html": "conscious practices",
+    "f-collapsible-tab-1713513828viPfj-content_html": "{{ f_collapsible_tab_1713513828viPfj_content }}",
+    "f-collapsible-tab-1713513828T8Pr3-heading_html": "secondary gemstone",
+    "f-collapsible-tab-1713513828T8Pr3-content_html": "{{ f_collapsible_tab_1713513828T8Pr3_content }}",
+    "f-collapsible-tab-1713513828xdp1T-heading_html": "Size",
+    "f-collapsible-tab-1713513828xdp1T-content_html": "{{ f_collapsible_tab_1713513828xdp1T_content }}",
+    "f-collapsible-tab-1713513828N75h3-heading_html": "about this gemstone",
+    "f-collapsible-tab-1713513828N75h3-content_html": "{{ f_collapsible_tab_1713513828N75h3_content }}",
+    "f-collapsible-tab-1713513828DlV3t-heading_html": "durability and care",
+    "f-collapsible-tab-1713513828DlV3t-content_html": "{{ f_collapsible_tab_1713513828DlV3t_content }}",
+    "f-collapsible-tab-1713513828nhd75-heading_html": "conscious practices",
+    "f-collapsible-tab-1713513828nhd75-content_html": "{{ f_collapsible_tab_1713513828nhd75_content }}",
+    "f-richtext-1713514119CNtm1-text_html": "About the designer of {{ f_richtext_1713514119CNtm1_text }}",
+    "f-collapsible-tab-1713516773vAj1o-heading_html": "design",
+    "f-collapsible-tab-1713516773vAj1o-content_html": "{{ f_collapsible_tab_1713516773vAj1o_content }}",
+    "f-collapsible-tab-1713516938Zw9gA-heading_html": "material",
+    "f-collapsible-tab-1713516938Zw9gA-content_html": "{{ f_collapsible_tab_1713516938Zw9gA_content }}",
+    "f-collapsible-tab-1713516952i8trr-heading_html": "ethical practices",
+    "f-collapsible-tab-1713516952i8trr-content_html": "{{ f_collapsible_tab_1713516952i8trr_content }}",
+    "f-collapsible-tab-17135169521MYS1-heading_html": "the future rocks warranty",
+    "f-collapsible-tab-17135169521MYS1-content_html": "Jewelry purchased from The Future Rocks starting from 16th June, 2023 is warranted against any manufacturing defect for a period of 2 years from the date of purchase. <br /><br />For detailed information and warranty conditions, please view <a href=\"https://thefuturerocks.com/pages/the-future-rocks-limited-warranty\" target=\"_blank\" rel=\"noopener\">TERMS AND CONDITIONS</a>.",
+    "f-collapsible-tab-1713516953cxLEC-heading_html": "FSC-certified packaging",
+    "f-collapsible-tab-1713516953cxLEC-content_html": "Your jewelry comes in a box made from uncoated pulp coloured papers and boards, with a rough surface. Light fast, pure ECF and FSC® certified.<br /><br /><img src=\"https://cdn.shopify.com/s/files/1/0619/6150/2869/files/06_Flat_Square_Box_Mockup_00f649c2-cb62-438a-84c1-cec634d3dc8c.png?v=1713507341\" alt=\"\" width=\"1280\" height=\"854\" /><br /><br /><strong>Environmental features<br /></strong>\n<ul>\n<li>Acid free</li>\n<li>Heavy metal absence CE 94/62</li>\n<li>Environmental chlorine free</li>\n<li>Long life ISO 9706</li>\n<li>FSC C015523</li>\n</ul>",
+    "f-richtext-1713519541Orc6w-text_html": "Designed and dispatched by {{ f_richtext_1713519541Orc6w_text }}",
+    "f-collapsible-tab-17135138287VegC-heading_html": "secondary material",
+    "f-collapsible-tab-1713513828jd5W4-heading_html": "carat weight",
+    "f-collapsible-tab-17135138287VegC-content_html": "{{ f_collapsible_tab_17135138287VegC_content }}",
+    "f-collapsible-tab-1713513828jd5W4-content_html": "{{ f_collapsible_tab_1713513828jd5W4_content }}",
+    "f-heading-1713752439CKw6I-text_html": "You may also like",
+    "f-collapsible-tab-17137689120Rq7p-heading_html": "center stone weight",
+    "f-collapsible-tab-17137689120Rq7p-content_html": "{{ f_collapsible_tab_17137689120Rq7p_content }}",
+    "f-richtext-171410884030GIg-text_html": "Estimated time in transit: 7 days",
+    "f-richtext-1714116845NtBHq-text_html": "<a href=\"https://thefuturerocks.com/pages/size-guide\" target=\"_blank\" rel=\"noopener\">view size guide</a>"
+  }
+}
+        }
+    {% endschema %}
+  

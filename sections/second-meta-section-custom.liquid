@@ -1,0 +1,42 @@
+ {% if product.metafields.custom.a_header != blank %}
+<div class="cstm-with-text">
+    <div class="container">
+      <div class="cstm-text-cutsm-btn-with-text-wrapper">
+            <div class="cstm-text-cutsm-btn-with-text-text-wrapper">
+              {% if product.metafields.custom.a_header != blank %}
+              <div class="text-cutsm-btn-heading">
+                <h3>{{ product.metafields.custom.a_header }}</h3>
+              </div>
+              {% endif %}
+              {% if product.metafields.custom.text_link != blank %}
+              <div class="text-cutsm-btn-text">
+                <span>{{ product.metafields.custom.text_link }}</span>
+              </div>
+                 {% endif %}
+             
+                <div class="button custom-text-cutsm-btn-cls">
+                  <a href="{{ product.metafields.custom.journalpage_meta }}">{{ product.metafields.custom.readmore_button.value }}</a>
+                </div>
+             
+            </div>
+      </div>
+    </div>
+  </div>
+{% endif %}
+{% schema %}
+{
+  "name": "custom-text-meta",
+  "settings": [],
+  "presets":[
+    {
+      "name":"custom-text-meta"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
