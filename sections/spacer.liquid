@@ -1,0 +1,77 @@
+{%- comment -%}
+  Spacer — 2026 redesign.
+  Inserts responsive vertical space between sections. Use where the
+  module padding convention doesn't produce the right gap, e.g.
+  between a colour block (padding-bottom only) and a plain block.
+
+  Height defaults come from theme settings (Layout > Spacer module),
+  so the standard gap can be tuned once globally. A single Spacer can
+  opt out with "Use a custom height" and set its own values.
+{%- endcomment -%}
+
+{%- liquid
+  assign spacer_height = settings.spacer_height
+  assign spacer_height_mobile = settings.spacer_height_mobile
+  if section.settings.use_custom_height
+    assign spacer_height = section.settings.height
+    assign spacer_height_mobile = section.settings.height_mobile
+  endif
+-%}
+
+{%- style -%}
+  #section-id-{{ section.id }} {
+    height: {{ spacer_height_mobile }}px;
+  }
+  @media (min-width: 768px) {
+    #section-id-{{ section.id }} {
+      height: {{ spacer_height }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div id="section-id-{{ section.id }}" class="spacer" data-section-type="spacer" aria-hidden="true"></div>
+
+{% schema %}
+{
+  "name": "Spacer",
+  "class": "section-spacer",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Adds empty vertical space between sections. Uses the global height from Theme settings > Layout > Spacer module unless a custom height is set below."
+    },
+    {
+      "type": "checkbox",
+      "id": "use_custom_height",
+      "label": "Use a custom height",
+      "info": "Override the global spacer height for this section only.",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "height",
+      "min": 0,
+      "max": 240,
+      "step": 4,
+      "unit": "px",
+      "label": "Custom height (desktop)",
+      "default": 120
+    },
+    {
+      "type": "range",
+      "id": "height_mobile",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Custom height (mobile)",
+      "default": 60
+    }
+  ],
+  "presets": [
+    {
+      "name": "Spacer"
+    }
+  ]
+}
+{% endschema %}

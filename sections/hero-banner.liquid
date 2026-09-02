@@ -1,0 +1,379 @@
+{%- comment -%}
+  Hero banner — 2026 redesign.
+  Full-bleed image at viewport height, heading + primary CTA bottom-left.
+  Reuses Mode's overlay/button/height machinery so theme settings
+  (overlay tint/shadow, button colours, animations) apply automatically.
+{%- endcomment -%}
+
+<div id="section-id-{{ section.id }}" class="hero-banner" data-section-type="hero-banner">
+  {%- style -%}
+    #section-id-{{ section.id }} .height--fixed {
+      {%- case section.settings.height -%}
+        {%- when 'full' -%}
+          --image-height: 100vh;
+          --image-height: 100svh;
+        {%- when 'three-quarters' -%}
+          --image-height: 75vh;
+          --image-height: 75svh;
+        {%- when 'half' -%}
+          --image-height: 50vh;
+          --image-height: 50svh;
+      {%- endcase -%}
+    }
+    #section-id-{{ section.id }} .overlay-text__title {
+      margin-bottom: {% if section.settings.button_label != blank %}12px{% else %}0{% endif %};
+    }
+    #section-id-{{ section.id }} .overlay-text__inner {
+      padding: 20px;
+    }
+    #section-id-{{ section.id }} .overlay-text__button-row,
+    #section-id-{{ section.id }} .overlay-text__button-row .overlay-text__button {
+      margin: 0;
+    }
+    #section-id-{{ section.id }} .hero-banner__video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      #section-id-{{ section.id }} .hero-banner__video {
+        display: none;
+      }
+    }
+  {%- endstyle -%}
+
+  {%- liquid
+    assign show_overlay_text = false
+    if section.settings.title != blank or section.settings.subheading != blank or section.settings.text != blank or section.settings.button_label != blank
+      assign show_overlay_text = true
+    endif
+
+    assign wrap_banner_with_link = false
+    if section.settings.image_link != blank and section.settings.button_url == blank
+      assign wrap_banner_with_link = true
+      if section.settings.text contains '</a>'
+        assign wrap_banner_with_link = false
+      endif
+    endif
+  -%}
+
+  <div class="height--fixed image-overlay image-overlay--bg-{{ section.settings.overlay_style }}" data-cc-animate data-cc-animate-delay="0.2s">
+    {%- if wrap_banner_with_link -%}
+      <a class="image-overlay__image-link focus-inset" href="{{ section.settings.image_link }}">
+    {%- endif -%}
+
+    {%- if section.settings.image == blank and section.settings.video == blank -%}
+      <div class="placeholder-image placeholder--banner{% if show_overlay_text %} dark{% endif %}">
+        {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+      </div>
+    {%- else -%}
+      {%- if section.settings.image != blank -%}
+        {%-
+          render 'background-image',
+          image: section.settings.image,
+          mobile_image: section.settings.mobile_image,
+          mobile_image_position: section.settings.mobile_image.presentation.focal_point,
+          eager: true,
+          preload: true,
+          wide: true
+        -%}
+      {%- endif -%}
+
+      {%- if section.settings.video != blank -%}
+        {%- liquid
+          if section.settings.image != blank
+            assign poster_url = section.settings.image | image_url: width: 2048
+          elsif section.settings.video.preview_image
+            assign poster_url = section.settings.video.preview_image | image_url: width: 2048
+          endif
+        -%}
+        <video
+          class="hero-banner__video"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata"
+          aria-hidden="true"
+          {% if poster_url %}poster="{{ poster_url }}"{% endif %}
+        >
+          {%- for source in section.settings.video.sources -%}
+            {%- if source.format == 'mp4' -%}
+              <source src="{{ source.url }}" type="{{ source.mime_type }}">
+            {%- endif -%}
+          {%- endfor -%}
+        </video>
+      {%- endif -%}
+    {%- endif -%}
+
+    {%- if show_overlay_text -%}
+      <div class="overlay-text overlay-text--for-banner overlay--v-{{ section.settings.text_alignment | split: ' ' | first }} overlay--h-{{ section.settings.text_alignment | split: ' ' | last }} image-overlay__over">
+        <div class="overlay-text__inner" style="max-width: {{ section.settings.content_max_width }}px">
+          <div class="overlay-text__text">
+            {%- if section.settings.subheading != blank -%}
+              <div class="overlay-text__subheading subheading subheading--over">{{ section.settings.subheading | escape }}</div>
+            {%- endif -%}
+
+            {%- if section.settings.title != blank -%}
+              {%- if section.settings.use_h1 -%}
+                <h1 class="overlay-text__title {{ section.settings.title_size }}">{{ section.settings.title | escape }}</h1>
+              {%- else -%}
+                <h2 class="overlay-text__title {{ section.settings.title_size }}">{{ section.settings.title | escape }}</h2>
+              {%- endif -%}
+            {%- endif -%}
+
+            {%- if section.settings.text != blank -%}
+              <div class="overlay-text__rte rte{% if section.settings.enlarge_text %} large-text{% endif %}">{{ section.settings.text }}</div>
+            {%- endif -%}
+
+            {%- if section.settings.button_label != blank -%}
+              <div class="overlay-text__button-row">
+                {%- if wrap_banner_with_link -%}
+                  <span class="overlay-text__button btn btn--{{ section.settings.button_style }} btn--link"><span class="btn__text">{{ section.settings.button_label | escape }}</span></span>
+                {%- else -%}
+                  <a class="overlay-text__button btn btn--{{ section.settings.button_style }} btn--link" href="{{ section.settings.button_url }}"><span class="btn__text">{{ section.settings.button_label | escape }}</span></a>
+                {%- endif -%}
+              </div>
+            {%- endif -%}
+          </div>
+        </div>
+      </div>
+    {%- endif -%}
+
+    {%- if wrap_banner_with_link -%}
+      </a>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Hero banner",
+  "class": "cc-hero-banner",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Media"
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Video",
+      "info": "Autoplays muted on a loop. When set, it replaces the image and the image becomes the video's poster frame."
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image",
+      "info": "2048 x 1200px recommended. Shown when there is no video, and used as the video poster."
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Mobile image (optional)",
+      "info": "1200 x 1600px recommended. Desktop image is used if empty."
+    },
+    {
+      "type": "url",
+      "id": "image_link",
+      "label": "Image link (optional)",
+      "info": "Makes the whole banner clickable. Ignored when the button has its own link."
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Wear the future style today"
+    },
+    {
+      "type": "checkbox",
+      "id": "use_h1",
+      "label": "Use H1 tag for heading",
+      "info": "Use once per page, for the page's main heading",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "title_size",
+      "label": "Heading size",
+      "options": [
+        {
+          "value": "h1-style",
+          "label": "Standard"
+        },
+        {
+          "value": "hl-style",
+          "label": "Large"
+        },
+        {
+          "value": "hsl-style",
+          "label": "Extra large"
+        }
+      ],
+      "default": "hl-style"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text"
+    },
+    {
+      "type": "checkbox",
+      "id": "enlarge_text",
+      "label": "Enlarge text",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "info": "Leave blank to hide the button"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button link"
+    },
+    {
+      "type": "select",
+      "id": "button_style",
+      "label": "Button style",
+      "options": [
+        {
+          "value": "primary",
+          "label": "Primary"
+        },
+        {
+          "value": "secondary",
+          "label": "Secondary"
+        }
+      ],
+      "default": "primary"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "height",
+      "label": "Height",
+      "options": [
+        {
+          "value": "full",
+          "label": "Full screen"
+        },
+        {
+          "value": "three-quarters",
+          "label": "Three quarters"
+        },
+        {
+          "value": "half",
+          "label": "Half screen"
+        }
+      ],
+      "default": "full"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text position",
+      "options": [
+        {
+          "value": "top left",
+          "label": "Top left"
+        },
+        {
+          "value": "top center",
+          "label": "Top center"
+        },
+        {
+          "value": "top right",
+          "label": "Top right"
+        },
+        {
+          "value": "center left",
+          "label": "Middle left"
+        },
+        {
+          "value": "center center",
+          "label": "Middle center"
+        },
+        {
+          "value": "center right",
+          "label": "Middle right"
+        },
+        {
+          "value": "bottom left",
+          "label": "Bottom left"
+        },
+        {
+          "value": "bottom center",
+          "label": "Bottom center"
+        },
+        {
+          "value": "bottom right",
+          "label": "Bottom right"
+        }
+      ],
+      "default": "bottom left"
+    },
+    {
+      "type": "range",
+      "id": "content_max_width",
+      "min": 400,
+      "max": 1200,
+      "step": 50,
+      "unit": "px",
+      "label": "Maximum content width",
+      "default": 800
+    },
+    {
+      "type": "select",
+      "id": "overlay_style",
+      "label": "Overlay style",
+      "options": [
+        {
+          "value": "full",
+          "label": "Tint"
+        },
+        {
+          "value": "shadow",
+          "label": "Text shadow"
+        },
+        {
+          "value": "full image-overlay--bg-shadow",
+          "label": "Text shadow and tint"
+        },
+        {
+          "value": "no_background",
+          "label": "No background"
+        }
+      ],
+      "default": "shadow"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero banner"
+    }
+  ]
+}
+{% endschema %}

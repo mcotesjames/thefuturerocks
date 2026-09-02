@@ -202,7 +202,8 @@
       "percent_reduction": "-{{ amount }}%",
       "value_reduction_html": "-{{ amount }}",
       "sale": "Aanbieding",
-      "sold_out": "Uitverkocht"
+      "sold_out": "Uitverkocht",
+      "trending": "Trending"
     },
     "quick_buy": {
       "read_more": "Lees verder",
@@ -456,6 +457,11 @@
       "pick_up_available": "Afhaling is beschikbaar",
       "pick_up_currently_unavailable": "Afhaling is momenteel niet beschikbaar",
       "invalid_location_address": "Neem contact op met de winkel om het adres te bevestigen"
+    }
+  },
+  "sections": {
+    "featured_collection": {
+      "view_all": "Bekijk {{ title }}"
     }
   }
 }

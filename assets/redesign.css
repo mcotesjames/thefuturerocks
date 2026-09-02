@@ -1,0 +1,464 @@
+/* ============================================================
+   REDESIGN.CSS — 2026 cosmetic redesign override layer
+   ------------------------------------------------------------
+   Loaded in layout/theme.liquid AFTER styles.css and custom.css.
+   All redesign overrides live here — do not edit styles.css
+   (flattened, fragile) except by exception, and never rename
+   existing classes (wishlist/GTM/custom.js are bound to them).
+
+   Contents:
+     1. Design tokens
+     2. @font-face — ABC Favorit Mono
+     3. Font application (replaces BrownPro/Signifier)
+   ============================================================ */
+
+/* ---- 1. Design tokens ------------------------------------- */
+
+:root {
+  --font-body: "ABCFavoritMono", "Courier New", monospace;
+  --font-heading: "ABCFavoritMonoBlack", "Courier New", monospace;
+  --font-heading-ja: "ABCFavoritMonoBlack", "NotoSansJP", sans-serif;
+  --font-heading-ko: "ABCFavoritMonoBlack", "NotoSansKR", sans-serif;
+
+  /* Module spacing convention (see section 6):
+     no top padding, 120px bottom, 120px inline on large screens. */
+  --module-pad-inline: 120px;
+  --module-pad-bottom: 120px;
+  --module-title-mb: 60px;
+
+  /* Caption: reusable small-label type (vendor, price, meta). */
+  --caption-size: 10px;
+  --caption-lh: 10px;
+}
+
+/* Reusable caption style. */
+.caption {
+  font-size: var(--caption-size);
+  line-height: var(--caption-lh);
+}
+
+/* ---- 2. @font-face: ABC Favorit Mono ----------------------- */
+/* Weight-mapped so <strong>/bold text in body copy resolves to
+   the Black cut instead of a synthesized faux-bold. */
+
+@font-face {
+  font-family: "ABCFavoritMono";
+  src: url("ABCFavoritMono-Regular.woff2") format("woff2");
+  font-weight: 100 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "ABCFavoritMono";
+  src: url("ABCFavoritMono-Black.woff2") format("woff2");
+  font-weight: 501 1000;
+  font-style: normal;
+  font-display: swap;
+}
+/* Standalone heading family: matches every weight, so heading
+   contexts render the Black cut regardless of inherited
+   font-weight rules (mirrors the old BrownProBold pattern). */
+@font-face {
+  font-family: "ABCFavoritMonoBlack";
+  src: url("ABCFavoritMono-Black.woff2") format("woff2");
+  font-weight: 100 1000;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ---- 3. Font application ----------------------------------- */
+/* Each block overrides a rule in styles.css/custom.css that
+   hardcodes BrownProRegular / BrownProBold / SignifierRegular.
+   Selectors are copied 1:1 so specificity ties resolve to this
+   file (loaded later). */
+
+/* Body — was BrownProRegular (styles.css ~10160) */
+body {
+  font-family: var(--font-body);
+}
+
+/* Buttons & inputs — was BrownProRegular (styles.css ~1524) */
+.button,
+.btn,
+button,
+input[type=submit],
+input[type=reset],
+input[type=button] {
+  font-family: var(--font-body);
+}
+
+/* Add-to-cart submit — was BrownProRegular (styles.css ~7558) */
+.product-form .quantity-submit-row .quantity-submit-row__submit button[type=submit] {
+  font-family: var(--font-body);
+}
+
+/* Headings — was BrownProBold (styles.css ~2713) */
+h1, .h1-style,
+h2, h3, h4, h5, h6,
+.heading-font {
+  font-family: var(--font-heading);
+}
+
+/* JA/KO heading stacks — keep Noto fallbacks; !important matches
+   the originals (styles.css ~2720) so these win the tie. */
+h1:lang(ko), .h1-style:lang(ko), h2:lang(ko), h3:lang(ko), h4:lang(ko),
+h5:lang(ko), h6:lang(ko), .heading-font:lang(ko) {
+  font-family: var(--font-heading-ko) !important;
+}
+h1:lang(ja), .h1-style:lang(ja), h2:lang(ja), h3:lang(ja), h4:lang(ja),
+h5:lang(ja), h6:lang(ja), .heading-font:lang(ja) {
+  font-family: var(--font-heading-ja) !important;
+}
+
+/* Signifier accent spots — originals use !important, so these
+   must too (styles.css ~6152, ~10502). */
+.heading-font {
+  font-family: var(--font-heading) !important;
+}
+.page-header__title {
+  font-family: var(--font-heading) !important;
+}
+
+/* Heading contexts styled individually in styles.css */
+.overlay-text .overlay-text__title { font-family: var(--font-heading); }
+.announcement .announcement__text { font-family: var(--font-heading); }
+.navigation--desktop .navigation__columns .navigation__column:not(.navigation__column--promotion) .navigation__column-title { font-family: var(--font-heading); }
+.mobile-nav-title { font-family: var(--font-heading); }
+.product-label > span { font-family: var(--font-body); }
+
+/* custom.css stragglers */
+.product-count p { font-family: var(--font-body); }
+ul.navigation__tier-2 li.custom-sect-cls a.navigation__link { font-family: var(--font-heading); }
+
+/* Design-lab (.dsgn-*) blocks — was BrownProRegular (styles.css tail) */
+.dsgn-title,
+.dsgn-paragraph,
+.dsgn-button,
+.dsgn-button:hover {
+  font-family: var(--font-body);
+}
+
+/* ---- 4. Buttons --------------------------------------------- */
+/* Primary CTA: flat colour, no padding, body mono at the size set
+   in theme settings. The --btn-* variables are emitted from theme
+   settings in layout/theme.liquid, so Customizer > Colors > Buttons
+   and Typography > Button text size drive this live (the flattened
+   styles.css had disconnected them). Base .btn buttons (ATC, forms)
+   are deliberately untouched until their own pass. */
+.btn--primary {
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  border: none;
+  border-radius: var(--btn-radius, 0);
+  padding: 0;
+  font-family: var(--font-body);
+  font-size: var(--btn-text-size, 18px);
+}
+.btn--primary:hover,
+.btn--primary:focus {
+  background: var(--btn-bg-hover);
+  color: var(--btn-text);
+}
+
+/* All CTAs — primary and secondary — are set in uppercase. */
+.btn--primary,
+.btn--secondary {
+  text-transform: uppercase;
+}
+
+/* Secondary CTA — same construction as primary, using the secondary
+   colours from theme settings, at 16px, underlined, with a trailing
+   "+" (no gap). Selector matches .btn.btn--secondary to beat the
+   theme's bordered secondary style. */
+.btn.btn--secondary,
+button.btn--secondary {
+  background: var(--btn-secondary-bg);
+  color: var(--btn-secondary-text);
+  border: none;
+  border-radius: var(--btn-radius, 0);
+  padding: 0;
+  font-family: var(--font-body);
+  font-size: 16px;
+}
+.btn.btn--secondary:hover,
+.btn.btn--secondary:focus,
+button.btn--secondary:hover,
+button.btn--secondary:focus {
+  background: var(--btn-secondary-bg);
+  color: var(--btn-secondary-text);
+}
+/* Underline on the label span — the base button forces
+   text-decoration: none !important on the <a>, which suppresses the
+   anchor's own underline; the span renders it cleanly. */
+.btn--secondary .btn__text {
+  text-decoration: underline;
+}
+/* Trailing "+", no gap, sitting on the same line as the label text. */
+.btn--secondary .btn__text::after {
+  content: "+";
+  line-height: inherit;
+}
+
+/* ---- 6. Module spacing convention --------------------------- */
+/* Standard module rhythm: no padding-top, 120px padding-bottom,
+   120px inline padding on large screens, section heading left-
+   aligned and inset to the content edge with 60px below it.
+   Applied per-module as each is redesigned (the shared classes
+   .section-title / .cc-carousel are used by many sections, so
+   this is scoped to each section's wrapper class rather than set
+   globally). Colour-block modules get padding-bottom only. */
+
+/* Featured collection */
+.section-featured-collection {
+  padding-top: 0;
+  padding-bottom: var(--module-pad-bottom);
+}
+.section-featured-collection .cc-carousel.card-margin {
+  margin-top: 0;
+}
+/* Title row: heading left + "view all" CTA right, one row at all sizes */
+.section-featured-collection .section-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 0 0 var(--module-title-mb);
+  padding: 0 20px;
+}
+.section-featured-collection .section-title {
+  text-align: left;
+  margin: 0;
+  min-width: 0;
+}
+/* View-all uses the shared secondary CTA style (.btn--secondary);
+   only the header-layout bits live here. */
+.section-featured-collection .section-header__view-all {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+@media (min-width: 1280px) {
+  .section-featured-collection .section-header {
+    padding: 0 var(--module-pad-inline);
+  }
+  .section-featured-collection .cc-carousel--mobile-only .product-list.cc-carousel__scroll-area {
+    padding-top: 0;
+    padding-left: var(--module-pad-inline);
+    padding-right: var(--module-pad-inline);
+  }
+}
+
+/* ---- 7. Product card (snippets/product-block.liquid) -------- */
+/* Shared by collection, search, featured-collection, related,
+   product-list. The class names are load-bearing (swatch JS,
+   quick-add, theme.card_bg, and the Swish wishlist app all target
+   them) — restyle only, don't rename. */
+
+/* Card background stays on the image; product info sits below it on
+   a transparent ground, visually separated from the image. */
+.product-block .block-inner.card-scheme--1,
+.product-block .block-inner.card-scheme--2,
+.product-block .block-inner.card-scheme--3 {
+  background: transparent;
+}
+.product-block .image-cont {
+  background: var(--bg, #f8f8f8);
+}
+/* Neutralise the "CDO" desktop card rules (styles.css ~6212, min-width
+   1280/1133) that force a grey background onto the whole card and add a
+   hover-lift. They use !important + high specificity, so the redesign
+   card only showed below 1280 without this. Matching their selectors so
+   the transparent-info card is uniform at every width. */
+.template-index .cc-carousel .product-list .block-inner,
+.template-index .cc-carousel .product-list .block-inner:hover,
+.template-product .cc-carousel .product-list .block-inner,
+.template-product .cc-carousel .product-list .block-inner:hover,
+.collection-listing .block-inner,
+.collection-listing .block-inner:hover {
+  margin: 0 !important;
+  padding: 0 !important;
+  background-color: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+}
+/* 10px gap between the image and the info block (was a 16px/14px
+   margin on product-info). */
+.product-block .image-cont {
+  margin-bottom: 10px;
+}
+
+/* Reconnect card grid spacing to the "Space between cards" setting
+   (site_gutter). styles.css:6351 froze these at a literal 8px when the
+   stylesheet was flattened; --site-gutter is emitted in theme.liquid. */
+.product-block {
+  padding-left: var(--site-gutter, 8px);
+  margin-bottom: var(--site-gutter, 8px);
+}
+/* Product info: left-aligned, position context for the absolute
+   swatches, and an even 8px gap between every element (vendor, title,
+   subtitle, price). Theme element margins are zeroed so the gap is the
+   only spacing. */
+.product-block .product-info {
+  margin: 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: left;
+}
+.product-block .product-info > .product-link {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.product-block .block-inner .vendor,
+.product-block__title,
+.product-block__subtitle,
+.product-block__price-row {
+  margin: 0;
+}
+/* Override the theme's text-align: right on the info link (0,3,0), at
+   all widths — must match its specificity, not just the parent. */
+.product-block .product-link:not(.button) {
+  text-align: left;
+}
+
+/* Type sizes: vendor & price use the caption style, title is 12px. */
+.product-block .block-inner .vendor,
+.product-block .product-info .product-price {
+  font-size: var(--caption-size);
+  line-height: var(--caption-lh);
+}
+.product-block__title {
+  font-size: 12px;
+}
+
+/* Text colours from the active card scheme: title = primary text,
+   vendor & price = secondary text (both set per scheme in theme
+   settings, emitted as vars in layout/theme.liquid). */
+.product-block__title {
+  color: var(--card-text);
+}
+.product-block .block-inner .vendor,
+.product-block .product-info .product-price {
+  color: var(--card-text-secondary);
+}
+.product-block__price-row--swatches-inline .product-block-options {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+}
+.product-block .product-info > .product-link,
+.product-block .product-info .product-block__price-row {
+  padding-right: 48px;
+}
+/* Price left-aligned; the theme's 0.5em top margin is removed (spacing
+   is now the product-info gap). The second selector matches (and beats)
+   the theme's flex-end rule for the swatches-present case. */
+.product-block .product-info .product-price,
+.product-block__price-row--swatches-inline .product-block__price:not(:last-child) .product-price {
+  justify-content: flex-start;
+  text-align: left;
+}
+.product-block__price-row--swatches-inline .product-block__price:not(:last-child) {
+  text-align: left;
+  flex: 1 1 auto;
+  margin-top: 0;
+}
+.product-block__price-row--swatches-inline .product-block__price:not(:last-child) .product-price {
+  font-size: var(--caption-size);
+  line-height: var(--caption-lh);
+}
+/* Swatches: flush to the top-right (no item margin) with a 1px solid
+   black border. */
+.product-block .product-block-options__item {
+  margin: 0;
+  border: 1px solid #000;
+}
+
+/* All badges: a 3×3 square marker before the text, inheriting the
+   badge's text colour. */
+.product-label > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.product-label > span::before {
+  content: "";
+  flex: 0 0 auto;
+  width: 3px;
+  height: 3px;
+  background: currentColor;
+}
+
+/* Trending badge — black background, brand-green text. Other badge
+   colours remain hardcoded in styles.css. */
+.product-label--trending > span {
+  background: #000;
+  color: #00d200;
+  font-weight: 400;
+}
+
+/* Wishlist button (Swish / Wishlist King app) — bottom-left of the
+   image, no background circle. NOTE: targets app-injected markup
+   (.wk-floating) that is not in the theme repo; NEEDS verifying
+   against the live DOM — the app may render different classes. */
+.product-block .image-cont .wk-floating {
+  top: auto;
+  right: auto;
+  bottom: 10px;
+  left: 10px;
+  background: none;
+  box-shadow: none;
+  border: none;
+  padding: 0;
+}
+
+/* ---- 8. Foxify page-builder overrides ----------------------- */
+/* Foxify sections load their generated CSS mid-body, AFTER this
+   file, and set fonts per block instance as
+   `.f-app .f-<blocktype>-<instanceID> { font-family: ... }` —
+   so these overrides require !important to win. Scoped entirely
+   to .f-app; do not use !important elsewhere in this file.
+
+   Foxify pages load Google "Noto Sans JP/KR" themselves, so CJK
+   glyphs (absent from ABC Favorit Mono) fall through to those.  */
+
+:root {
+  --f-font-body: "ABCFavoritMono", "Courier New", "Noto Sans KR", "Noto Sans JP", monospace;
+  --f-font-heading: "ABCFavoritMonoBlack", "Courier New", "Noto Sans KR", "Noto Sans JP", monospace;
+}
+
+/* Body font: base wrapper + every block type Foxify styles as
+   body/regular text (was BrownProTT-Regular/Light, Noto Sans,
+   Jost, Signifier on assorted blocks). */
+.f-app,
+.f-app [class*="f-richtext-"],
+.f-app [class*="f-text-"],
+.f-app [class*="f-button-"],
+.f-app [class*="f-col-"],
+.f-app [class*="f-grid-"],
+.f-app [class*="f-content-tabs-"],
+.f-app [class*="f-collapsible-"],
+.f-app [class*="f-menu-"],
+.f-app [class*="f-image-"],
+.f-app [class*="f-product-price-"],
+.f-app [class*="f-scrolling-promotion-"],
+.f-app [class*="f-slideshow-"],
+.f-app [class*="f-press-content-"],
+.f-app [class*="f-countdown-"],
+.f-app [class*="f-custom-code-"],
+.f-app [class*="f-custom-section-"],
+.f-app input,
+.f-app textarea,
+.f-app select {
+  font-family: var(--f-font-body) !important;
+}
+
+/* Heading font: heading/product-title blocks (was BrownProTT-Bold
+   et al.) plus bare heading elements inside custom-code blocks. */
+.f-app h1, .f-app h2, .f-app h3, .f-app h4, .f-app h5, .f-app h6,
+.f-app [class*="f-heading-"],
+.f-app [class*="f-product-title-"] {
+  font-family: var(--f-font-heading) !important;
+}

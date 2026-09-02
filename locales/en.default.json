@@ -247,7 +247,8 @@
       "percent_reduction": "{{ amount }}% off",
       "value_reduction_html": "{{ amount }} off",
       "sale": "Sale",
-      "sold_out": "Sold Out"
+      "sold_out": "Sold Out",
+      "trending": "Trending"
     },
     "quick_buy": {
       "read_more": "More details",
@@ -1263,6 +1264,9 @@
       "f-richtext-1714008644s6JWj-text_html": "We repurpose selected furniture to prolong its life, ensuring that we are consciously using items and promoting sustainable actions in our day to day.",
       "f-richtext-1714008644baEyi-text_html": "Background image<br /><br />On a mission to forge new ideas in the retail sphere, The Future Rocks co-developed a ground-breaking packaging concept with materials designed by Natural Materials Studio. Through a material-led approach centred around the properties and qualities of often discarded or under-utilised natural resources, together, we created a new form of semi-transparent wrapping paper grown from protein-based bio-polymers, natural softners, clay, chalk, algae, reishi mushroom.",
       "f-button-17140086440zfMd-button_label_html": "learn more"
+    },
+    "featured_collection": {
+      "view_all": "View {{ title }}"
     }
   }
 }

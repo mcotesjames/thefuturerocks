@@ -202,7 +202,8 @@
       "percent_reduction": "-{{ amount }}%",
       "value_reduction_html": "-{{ amount }}",
       "sale": "¡Oferta!",
-      "sold_out": "Agotado"
+      "sold_out": "Agotado",
+      "trending": "Tendencia"
     },
     "quick_buy": {
       "read_more": "Más detalles",
@@ -456,6 +457,11 @@
       "pick_up_available": "Retiro disponible",
       "pick_up_currently_unavailable": "Retiro no disponible actualmente",
       "invalid_location_address": "Contacta a la tienda para confirmar la dirección"
+    }
+  },
+  "sections": {
+    "featured_collection": {
+      "view_all": "Ver {{ title }}"
     }
   }
 }

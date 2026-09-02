@@ -10,9 +10,16 @@
 -%}
 
 <div class="section-id-{{ section.id }} collection-slider-row" data-section-type="featured-collection">
-  {% if section.settings.title != blank %}
-    <h2 class="section-title{% unless section.settings.show_title %} visually-hidden{% endunless %}"><a href="{{ collection.url }}">{{ section.settings.title | escape }}</a></h2>
-  {% endif %}
+  {%- if section.settings.title != blank or section.settings.collection != blank -%}
+    <div class="section-header">
+      {% if section.settings.title != blank %}
+        <h2 class="section-title{% unless section.settings.show_title %} visually-hidden{% endunless %}"><a href="{{ collection.url }}">{{ section.settings.title | escape }}</a></h2>
+      {% endif %}
+      {%- if section.settings.collection != blank -%}
+        <a class="section-header__view-all btn btn--secondary btn--link" href="{{ collection.url }}"><span class="btn__text">{{ 'sections.featured_collection.view_all' | t: title: collection.title }}</span></a>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
 
   <cc-carousel class="cc-carousel cc-carousel--off-edge-mobile{% unless section.settings.enable_carousel %} cc-carousel--mobile-only{% endunless %} card-margin" allow-mouse-drag rebuild-on-resize data-cc-animate="cc-fade-in-up">
     <div class="cc-carousel-buttons cc-carousel-buttons--overlay-top">

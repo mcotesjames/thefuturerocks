@@ -202,7 +202,8 @@
       "percent_reduction": "Sconto del {{ amount }}%",
       "value_reduction_html": "Sconto di {{ amount }}",
       "sale": "In offerta",
-      "sold_out": "Esaurito"
+      "sold_out": "Esaurito",
+      "trending": "Di tendenza"
     },
     "quick_buy": {
       "read_more": "Maggiori dettagli",
@@ -456,6 +457,11 @@
       "pick_up_available": "Ritiro disponibile",
       "pick_up_currently_unavailable": "Ritiro al momento non disponibile",
       "invalid_location_address": "Contatta il negozio per confermare l'indirizzo"
+    }
+  },
+  "sections": {
+    "featured_collection": {
+      "view_all": "Vedi {{ title }}"
     }
   }
 }

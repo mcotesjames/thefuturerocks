@@ -202,7 +202,8 @@
       "percent_reduction": "-{{ amount }}%",
       "value_reduction_html": "-{{ amount }}",
       "sale": "På Tilbud",
-      "sold_out": "Udsolgt"
+      "sold_out": "Udsolgt",
+      "trending": "Trending"
     },
     "quick_buy": {
       "read_more": "Flere detaljer",
@@ -456,6 +457,11 @@
       "pick_up_available": "Afhentning er tilgængeligt",
       "pick_up_currently_unavailable": "Afhentning er ikke tilgængeligt i øjeblikket",
       "invalid_location_address": "Kontakt butikken for at bekræfte adressen"
+    }
+  },
+  "sections": {
+    "featured_collection": {
+      "view_all": "Se {{ title }}"
     }
   }
 }

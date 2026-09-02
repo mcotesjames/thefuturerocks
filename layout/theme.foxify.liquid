@@ -75,11 +75,31 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     {{ type_highlight_font | font_face: font_display: 'fallback' }}
   </style>
 
+  {%- comment -%} Redesign: theme settings exposed as CSS variables, consumed by redesign.css {%- endcomment -%}
+  <style>
+    :root {
+      --btn-bg: {{ settings.btn_col }};
+      --btn-bg-hover: {{ settings.btn_col_alt }};
+      --btn-text: {{ settings.btn_col_txt }};
+      --btn-secondary-bg: {{ settings.btn_alt_bg }};
+      --btn-secondary-text: {{ settings.btn_alt_txt }};
+      --btn-radius: {{ settings.button_border_radius }}px;
+      --btn-text-size: {{ settings.btn_text_size | default: 18 }}px;
+      --site-gutter: {{ settings.site_gutter }}px;
+    }
+    .card-scheme--1 { --card-text: {{ settings.card_1_text }}; --card-text-secondary: {{ settings.card_1_text_secondary }}; }
+    .card-scheme--2 { --card-text: {{ settings.card_2_text }}; --card-text-secondary: {{ settings.card_2_text_secondary }}; }
+    .card-scheme--3 { --card-text: {{ settings.card_3_text }}; --card-text-secondary: {{ settings.card_3_text_secondary }}; }
+  </style>
+
   {% render 'social-meta-tags' %}
 
   {{ 'styles.css' | asset_url | stylesheet_tag: preload: true }}
  {{ 'custom.css' | asset_url | stylesheet_tag: preload: true }}
-  
+  <link rel="preload" href="{{ 'ABCFavoritMono-Regular.woff2' | asset_url }}" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="{{ 'ABCFavoritMono-Black.woff2' | asset_url }}" as="font" type="font/woff2" crossorigin>
+  {{ 'redesign.css' | asset_url | stylesheet_tag: preload: true }}
+
   {%- if settings.swatch_enabled and settings.swatch_value_list != blank -%}
     <link rel="stylesheet" href="{{ 'swatches.css' | asset_url }}" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="{{ 'swatches.css' | asset_url }}"></noscript>
@@ -246,25 +266,6 @@ if (document.querySelector('.product-unavailable')) {
 {%- render 'foxify-footer' -%}
   
  {% sections 'foxify-footer-group' %}   
-
-
-<style>
-.product-price {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end !important;
-  width: 100%;
-  justify-content: flex-end;
-  font-size: 12px;
-}
-.product-price__compare {
-  order: 1;
-}
-.product-price__amount--on-sale {
-  order: 2;
-  margin-right: 0;
-}
-</style>
 
 
         </body>

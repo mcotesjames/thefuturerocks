@@ -65,6 +65,34 @@
         "unit": "px",
         "label": "Large margin",
         "default": 72
+      },
+      {
+        "type": "header",
+        "content": "Spacer module"
+      },
+      {
+        "type": "paragraph",
+        "content": "Default height for Spacer sections. Each Spacer can override this with its own height setting."
+      },
+      {
+        "type": "range",
+        "id": "spacer_height",
+        "min": 0,
+        "max": 240,
+        "step": 4,
+        "unit": "px",
+        "label": "Spacer height (desktop)",
+        "default": 120
+      },
+      {
+        "type": "range",
+        "id": "spacer_height_mobile",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Spacer height (mobile)",
+        "default": 60
       }
     ]
   },
@@ -152,6 +180,12 @@
       },
       {
         "type": "color",
+        "id": "card_1_text_secondary",
+        "label": "Secondary text",
+        "default": "#8a8a8a"
+      },
+      {
+        "type": "color",
         "id": "card_1_bg",
         "label": "Background color",
         "default": "#f6f6ef"
@@ -174,6 +208,12 @@
       },
       {
         "type": "color",
+        "id": "card_2_text_secondary",
+        "label": "Secondary text",
+        "default": "#8a8a8a"
+      },
+      {
+        "type": "color",
         "id": "card_2_bg",
         "label": "Background color",
         "default": "#f6f6ef"
@@ -193,6 +233,12 @@
         "id": "card_3_text",
         "label": "Text",
         "default": "#333333"
+      },
+      {
+        "type": "color",
+        "id": "card_3_text_secondary",
+        "label": "Secondary text",
+        "default": "#8a8a8a"
       },
       {
         "type": "color",
@@ -636,6 +682,16 @@
         "unit": "px",
         "label": "Button border radius",
         "default": 3
+      },
+      {
+        "type": "range",
+        "id": "btn_text_size",
+        "min": 12,
+        "max": 28,
+        "step": 1,
+        "unit": "px",
+        "label": "Button text size",
+        "default": 18
       },
       {
         "type": "select",
@@ -1161,6 +1217,13 @@
         "label": "New in date limit",
         "default": 7,
         "info": "Label shows if product was created within this many days"
+      },
+      {
+        "type": "checkbox",
+        "id": "prod_trending_show",
+        "label": "Show 'Trending' label",
+        "default": true,
+        "info": "Add the tag 'trending' to a product to show this label."
       },
       {
         "type": "checkbox",

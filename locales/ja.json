@@ -1635,6 +1635,9 @@
     "foxify-1749437913qB7oq": {
       "f-heading-1749441655gobXA-text_html": "ザ・フューチャーロックスはバタフライマーク認証を取得しています",
       "f-richtext-1749441655k2YqZ-text_html": "最高水準の持続可能性を認める独立した認証"
+    },
+    "featured_collection": {
+      "view_all": "{{ title }}をすべて見る"
     }
   },
   "foxify": {
@@ -1907,7 +1910,8 @@
       "percent_reduction": "{{ amount }}% オフ",
       "value_reduction_html": "{{ amount }} オフ",
       "sale": "セール",
-      "sold_out": "売り切れ"
+      "sold_out": "売り切れ",
+      "trending": "トレンド"
     },
     "quick_buy": {
       "read_more": "さらに詳しく",

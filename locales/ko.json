@@ -1486,6 +1486,9 @@
       "f-richtext-1733824107wvsjy-text_html": "<p>나사산이 없는 플랫백 주얼리를 제거하려면</p>",
       "f-heading-1733824233UiaW0-text_html": "1단계",
       "f-heading-1733824241FRfUE-text_html": "2단계"
+    },
+    "featured_collection": {
+      "view_all": "{{ title }} 전체 보기"
     }
   },
   "foxify": {
@@ -1748,7 +1751,8 @@
       "percent_reduction": "{{ amount }} % 할인",
       "value_reduction_html": "{{ amount }} 할인",
       "sale": "판매",
-      "sold_out": "매진"
+      "sold_out": "매진",
+      "trending": "인기"
     },
     "listing": {
       "from": "에서"
