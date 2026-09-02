@@ -7,6 +7,10 @@
 
 <div id="section-id-{{ section.id }}" class="hero-banner" data-section-type="hero-banner">
   {%- style -%}
+    #section-id-{{ section.id }} .overlay-text__title {
+      font-size: min(10.6vw, 4rem);
+      line-height: 1.05;
+    }
     #section-id-{{ section.id }} .height--fixed {
       {%- case section.settings.height -%}
         {%- when 'full' -%}
@@ -42,6 +46,30 @@
     @media (prefers-reduced-motion: reduce) {
       #section-id-{{ section.id }} .hero-banner__video {
         display: none;
+      }
+    }
+    @media (max-width: 767.98px) {
+      /* Mobile: CTA is edge-to-edge (no inner padding); the fluid inline
+         padding moves onto the headline so the text-to-space ratio stays
+         constant and it never wraps as the screen narrows. */
+      #section-id-{{ section.id }} .overlay-text__inner {
+        max-width: none;
+        width: 100%;
+        padding: 0;
+      }
+      #section-id-{{ section.id }} .overlay-text__title {
+        padding-inline: 2vw;
+        margin-bottom: 0;
+      }
+      #section-id-{{ section.id }} .overlay-text__button-row {
+        width: 100%;
+      }
+      #section-id-{{ section.id }} .overlay-text__button {
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding-block: 4px;
+        font-size: 14px;
       }
     }
   {%- endstyle -%}

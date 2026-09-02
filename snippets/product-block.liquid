@@ -162,8 +162,9 @@
           {% render 'unit-price', variant: cheapest_variant %}
         {%- endcapture -%}
 
+        <div class="product-block__price">{{ product_block_price }}</div>
+
         <div class="product-block__price-row {% if settings.prod_thumb_swatches_layout != blank %}product-block__price-row--swatches-{{ settings.prod_thumb_swatches_layout }}{% endif %}">
-          <div class="product-block__price">{{ product_block_price }}</div>
 
           {%- if settings.swatch_enabled and settings.prod_thumb_swatches_layout != blank -%}
             {%- assign options_to_show = settings.swatch_option_name | replace: ', ', ',' | split: ',' -%}

@@ -1,3 +1,28 @@
+{%- liquid
+  # Separate collection-image aspect ratios for mobile and desktop.
+  # Value is width/height; pad-top (height/width) is what sizes the box.
+  assign ar_m = section.settings.image_aspect_mobile | times: 1.0
+  assign ar_d = section.settings.image_aspect_desktop | times: 1.0
+  if ar_m == 0
+    assign ar_m = 1.0
+  endif
+  if ar_d == 0
+    assign ar_d = 1.0
+  endif
+  assign pad_m = 1.0 | divided_by: ar_m | times: 100
+  assign pad_d = 1.0 | divided_by: ar_d | times: 100
+-%}
+{%- style -%}
+  #shopify-section-{{ section.id }} .collection-block .inline-image__pad {
+    padding-top: {{ pad_m }}%;
+  }
+  @media (min-width: 768px) {
+    #shopify-section-{{ section.id }} .collection-block .inline-image__pad {
+      padding-top: {{ pad_d }}%;
+    }
+  }
+{%- endstyle -%}
+
 <div class="section-id-{{ section.id }} collection-slider-row for-collections" data-section-type="featured-collections">
   {% if section.settings.title != blank %}
     <h2 class="section-title{% unless section.settings.show_title %} visually-hidden{% endunless %}" data-cc-animate>{{ section.settings.title | escape }}</h2>
@@ -118,6 +143,36 @@
         "max": 5,
         "step": 1,
         "default": 4
+      },
+      {
+        "type": "header",
+        "content": "Image aspect ratio"
+      },
+      {
+        "type": "select",
+        "id": "image_aspect_mobile",
+        "label": "Mobile aspect ratio",
+        "default": "1",
+        "options": [
+          { "value": "0.67", "label": "Portrait (2:3)" },
+          { "value": "0.8", "label": "Portrait (4:5)" },
+          { "value": "1", "label": "Square (1:1)" },
+          { "value": "1.25", "label": "Landscape (5:4)" },
+          { "value": "1.5", "label": "Landscape (3:2)" }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "image_aspect_desktop",
+        "label": "Desktop aspect ratio",
+        "default": "1",
+        "options": [
+          { "value": "0.67", "label": "Portrait (2:3)" },
+          { "value": "0.8", "label": "Portrait (4:5)" },
+          { "value": "1", "label": "Square (1:1)" },
+          { "value": "1.25", "label": "Landscape (5:4)" },
+          { "value": "1.5", "label": "Landscape (3:2)" }
+        ]
       }
     ],
     "blocks": [

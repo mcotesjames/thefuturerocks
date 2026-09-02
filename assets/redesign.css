@@ -37,6 +37,16 @@
   line-height: var(--caption-lh);
 }
 
+/* Reusable heading-3: 18px / 21px, ABC Favorit Mono Black. Also applied
+   to collection-card titles (scoped selector wins the 12px product-card
+   title rule). */
+.heading-3,
+.section-collection-list .product-block__title {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  line-height: 21px;
+}
+
 /* ---- 2. @font-face: ABC Favorit Mono ----------------------- */
 /* Weight-mapped so <strong>/bold text in body copy resolves to
    the Black cut instead of a synthesized faux-bold. */
@@ -247,6 +257,75 @@ button.btn--secondary:focus {
   }
 }
 
+/* Collection list — full width with a site-gutter page gutter (no
+   carousel; items wrap to the grid column count). Title matches the
+   featured-collection treatment. */
+.section-collection-list {
+  padding-inline: var(--site-gutter);
+}
+.section-collection-list .section-title {
+  text-align: left;
+  margin: 0 0 var(--module-title-mb);
+  padding-inline: var(--site-gutter);
+}
+/* Gap-based flex grid (replaces the theme's negative-margin gutters). */
+.section-collection-list .collection-listing .product-list {
+  gap: 24px var(--site-gutter);
+  margin: 0;
+  padding: 0;
+}
+.section-collection-list .collection-block {
+  margin: 0;
+  padding: 0;
+}
+.section-collection-list .product-list--per-row-2 .collection-block { width: calc((100% - 1 * var(--site-gutter)) / 2); }
+.section-collection-list .product-list--per-row-3 .collection-block { width: calc((100% - 2 * var(--site-gutter)) / 3); }
+.section-collection-list .product-list--per-row-4 .collection-block { width: calc((100% - 3 * var(--site-gutter)) / 4); }
+.section-collection-list .product-list--per-row-5 .collection-block { width: calc((100% - 4 * var(--site-gutter)) / 5); }
+/* Mobile: draggable (touch-scroll) carousel instead of a grid — cards
+   in a nowrap row that scrolls horizontally with snap. Native finger-
+   drag, no JS. Desktop keeps the wrapping grid above. */
+@media (max-width: 767.98px) {
+  .section-collection-list .collection-listing .product-list {
+    flex-wrap: nowrap;
+    gap: 0;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    scroll-padding-inline: var(--site-gutter);
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .section-collection-list .collection-listing .product-list::-webkit-scrollbar {
+    display: none;
+  }
+  /* (0,4,0) beats the desktop per-row width rules (0,3,0). */
+  .section-collection-list .collection-listing .product-list .collection-block {
+    flex: 0 0 auto;
+    width: 85%;
+    scroll-snap-align: start;
+  }
+  /* Carousel: title overlays the card, bottom-right, white + underlined. */
+  .section-collection-list .collection-block .product-link {
+    position: relative;
+  }
+  .section-collection-list .collection-block .product-info {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding: 20px;
+    text-align: right;
+  }
+  .section-collection-list .collection-block .product-block__title {
+    color: #fff;
+    text-decoration: underline;
+  }
+}
+/* Left-align all collection card titles (theme centres them). */
+.product-block.collection-block .product-info {
+  text-align: left;
+  margin-bottom: 0;
+}
+
 /* ---- 7. Product card (snippets/product-block.liquid) -------- */
 /* Shared by collection, search, featured-collection, related,
    product-list. The class names are load-bearing (swatch JS,
@@ -283,7 +362,7 @@ button.btn--secondary:focus {
 /* 10px gap between the image and the info block (was a 16px/14px
    margin on product-info). */
 .product-block .image-cont {
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 /* Reconnect card grid spacing to the "Space between cards" setting
@@ -297,6 +376,10 @@ button.btn--secondary:focus {
    swatches, and an even 8px gap between every element (vendor, title,
    subtitle, price). Theme element margins are zeroed so the gap is the
    only spacing. */
+.product-block.collection-block .product-info {
+  text-align: left;
+}
+
 .product-block .product-info {
   margin: 0;
   position: relative;
@@ -330,6 +413,7 @@ button.btn--secondary:focus {
 }
 .product-block__title {
   font-size: 12px;
+  text-transform: capitalize;
 }
 
 /* Text colours from the active card scheme: title = primary text,
@@ -348,9 +432,17 @@ button.btn--secondary:focus {
   right: 0;
   margin: 0;
 }
+/* Reserve space on the right so copy never sits under the absolute
+   swatches (price is now a direct child of product-info). */
 .product-block .product-info > .product-link,
+.product-block .product-info > .product-block__price,
 .product-block .product-info .product-block__price-row {
   padding-right: 48px;
+}
+/* Price-row spacing comes from the product-info gap, not its own margin
+   (theme sets margin-top: 0.5em on --swatches-inline). */
+.product-block .product-info .product-block__price-row {
+  margin: 0;
 }
 /* Price left-aligned; the theme's 0.5em top margin is removed (spacing
    is now the product-info gap). The second selector matches (and beats)
@@ -370,10 +462,84 @@ button.btn--secondary:focus {
   line-height: var(--caption-lh);
 }
 /* Swatches: flush to the top-right (no item margin) with a 1px solid
-   black border. */
+   black border, and a 4px gap between items. */
 .product-block .product-block-options__item {
   margin: 0;
   border: 1px solid #000;
+}
+.product-block-options__inner.cc-carousel__scroll-area {
+  gap: 4px;
+  justify-content: flex-start;
+}
+
+/* Mobile: swatches drop below the product info, back in normal flow
+   (no absolute positioning, no reserved copy padding). The price-row
+   is a flex child of product-info, so the 8px gap spaces it from the
+   price above. */
+@media (max-width: 767.98px) {
+  .product-block__price-row--swatches-inline {
+    display: block;
+  }
+  .product-block__price-row--swatches-inline .product-block-options {
+    position: static;
+  }
+  .product-block .product-info > .product-link,
+  .product-block .product-info > .product-block__price,
+  .product-block .product-info .product-block__price-row {
+    padding-right: 0;
+  }
+  /* Carousel/grid scroll-area sits 8px below the section title. */
+  .cc-carousel__scroll-area {
+    margin-top: 8px;
+  }
+  /* Standard swatches are 16×16 on mobile. */
+  .swatch-method-standard .product-block-options__item {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+/* Mobile: product grids drop the swipe carousel for a 2-column grid.
+   Scoped to .cc-carousel--mobile-only (featured-collection, product
+   lists) so swatch carousels are unaffected. */
+@media (max-width: 767.98px) {
+  .cc-carousel--mobile-only .product-list.cc-carousel__scroll-area {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px 16px;
+    overflow: visible;
+    scroll-snap-type: none;
+    padding-inline: 16px;
+    margin-left: 0;
+  }
+  .cc-carousel--mobile-only .cc-carousel__scroll-area > product-block,
+  .cc-carousel--mobile-only .cc-carousel__scroll-area > .product-block {
+    width: auto;
+    max-width: none;
+    padding-left: 0;
+    margin-bottom: 0;
+    scroll-snap-align: none;
+  }
+  .cc-carousel--mobile-only .cc-carousel__scroll-area > .product-block--mobile-wide {
+    grid-column: 1 / -1;
+  }
+  /* Stop the off-edge bleed that pushed the grid past the page width. */
+  .container .cc-carousel--mobile-only.cc-carousel--off-edge-mobile,
+  .cc-carousel--mobile-only.cc-carousel--off-edge-mobile {
+    margin-right: 0;
+    margin-left: 0;
+  }
+  .cc-carousel--mobile-only .cc-carousel-buttons {
+    display: none;
+  }
+
+  /* Swatches left-aligned on mobile — override the theme's per-row-mob-2
+   * rule that centres them (styles.css ~6420). */
+  .product-block-options,
+  .product-list--per-row-mob-2 .product-block .product-info .product-block__price-row--swatches-inline .product-block-options {
+    justify-content: flex-start;
+    margin-inline-end: 0;
+  }
 }
 
 /* All badges: a 3×3 square marker before the text, inheriting the

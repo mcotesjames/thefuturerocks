@@ -101,6 +101,7 @@
       "type": "spacer",
       "name": "Spacer",
       "settings": {
+        "use_custom_height": false,
         "height": 120,
         "height_mobile": 60
       }
@@ -462,22 +463,6 @@
         "color_scheme": "1"
       }
     },
-    "featured_collection_hWqWa7": {
-      "type": "featured-collection",
-      "settings": {
-        "title": "Trending",
-        "show_title": true,
-        "collection": "feature",
-        "show_vendor": true,
-        "enable_carousel": false,
-        "grid": 5,
-        "rows": 1,
-        "show_title_card": false,
-        "show_title_card_image": false,
-        "overlay_style": "shadow",
-        "color_scheme": "1"
-      }
-    },
     "collection_list_E6zqP6": {
       "type": "collection-list",
       "blocks": {
@@ -524,15 +509,30 @@
         "collection_eMi376",
         "collection_KqDydm"
       ],
-      "custom_css": [
-        ".collection-slider-row {padding-left: 5%; padding-right: 5%; padding-top: 3%; padding-bottom: 3%;}",
-        "@media screen and (min-width: 1280px) {.block-inner:hover {transition: margin 0.4s ease; margin: 0%; padding: 0%; z-index: 2; background-color: #f8f8f8 !important; border: 0px; border-radius: 0px !important; }}"
-      ],
+      "custom_css": [],
       "settings": {
-        "title": "SHOP BY CATEGORY",
+        "title": "",
         "show_title": true,
-        "enable_carousel": true,
-        "grid": 5
+        "enable_carousel": false,
+        "grid": 3,
+        "image_aspect_mobile": "0.8",
+        "image_aspect_desktop": "1.25"
+      }
+    },
+    "featured_collection_hWqWa7": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Trending",
+        "show_title": true,
+        "collection": "feature",
+        "show_vendor": true,
+        "enable_carousel": false,
+        "grid": 5,
+        "rows": 1,
+        "show_title_card": false,
+        "show_title_card_image": false,
+        "overlay_style": "shadow",
+        "color_scheme": "1"
       }
     },
     "custom_row_QJcEQh": {
@@ -706,8 +706,8 @@
     "scrolling_banner_gRAJF6",
     "rich_text_wUqXYH",
     "featured_collection_Dx8cG6",
-    "featured_collection_hWqWa7",
     "collection_list_E6zqP6",
+    "featured_collection_hWqWa7",
     "custom_row_QJcEQh",
     "media_with_text_6Xe8JY",
     "media_with_text_4bfqwW"
