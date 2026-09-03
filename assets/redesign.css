@@ -19,11 +19,15 @@
   --font-heading: "ABCFavoritMonoBlack", "Courier New", monospace;
   --font-heading-ja: "ABCFavoritMonoBlack", "NotoSansJP", sans-serif;
   --font-heading-ko: "ABCFavoritMonoBlack", "NotoSansKR", sans-serif;
+  /* Proportional (non-mono) Favorit — currently used for product
+     card titles only. */
+  --font-favorit: "ABCFavorit", "Helvetica Neue", Arial, sans-serif;
 
   /* Module spacing convention (see section 6):
-     no top padding, 120px bottom, 120px inline on large screens. */
+     no top padding, 80px bottom (60px on mobile), 120px inline on
+     large screens. */
   --module-pad-inline: 120px;
-  --module-pad-bottom: 120px;
+  --module-pad-bottom: 80px;
   --module-title-mb: 60px;
 
   /* Caption: reusable small-label type (vendor, price, meta). */
@@ -31,10 +35,24 @@
   --caption-lh: 10px;
 }
 
+@media (max-width: 767.98px) {
+  :root {
+    --module-pad-bottom: 60px;
+  }
+}
+
 /* Reusable caption style. */
 .caption {
   font-size: var(--caption-size);
   line-height: var(--caption-lh);
+}
+
+/* Reusable heading-2 (Figma TFR_Header2): 32px / 32px, ABC Favorit
+   Mono Black. */
+.heading-2 {
+  font-family: var(--font-heading);
+  font-size: 32px;
+  line-height: 32px;
 }
 
 /* Reusable heading-3: 18px / 21px, ABC Favorit Mono Black. Also applied
@@ -71,6 +89,16 @@
 @font-face {
   font-family: "ABCFavoritMonoBlack";
   src: url("ABCFavoritMono-Black.woff2") format("woff2");
+  font-weight: 100 1000;
+  font-style: normal;
+  font-display: swap;
+}
+/* Proportional ABC Favorit (Regular cut). Matches every weight so it
+   renders the Regular cut wherever it's applied, regardless of
+   inherited font-weight. */
+@font-face {
+  font-family: "ABCFavorit";
+  src: url("ABCFavorit-Regular.woff2") format("woff2");
   font-weight: 100 1000;
   font-style: normal;
   font-display: swap;
@@ -251,7 +279,7 @@ button.btn--secondary:focus {
     padding: 0 var(--module-pad-inline);
   }
   .section-featured-collection .cc-carousel--mobile-only .product-list.cc-carousel__scroll-area {
-    padding-top: 0;
+    padding-block: 0;
     padding-left: var(--module-pad-inline);
     padding-right: var(--module-pad-inline);
   }
@@ -261,6 +289,8 @@ button.btn--secondary:focus {
    carousel; items wrap to the grid column count). Title matches the
    featured-collection treatment. */
 .section-collection-list {
+  padding-top: 0;
+  padding-bottom: var(--module-pad-bottom);
   padding-inline: var(--site-gutter);
 }
 .section-collection-list .section-title {
@@ -362,7 +392,7 @@ button.btn--secondary:focus {
 /* 10px gap between the image and the info block (was a 16px/14px
    margin on product-info). */
 .product-block .image-cont {
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 
 /* Reconnect card grid spacing to the "Space between cards" setting
@@ -412,6 +442,7 @@ button.btn--secondary:focus {
   line-height: var(--caption-lh);
 }
 .product-block__title {
+  font-family: var(--font-favorit);
   font-size: 12px;
   text-transform: capitalize;
 }
@@ -627,4 +658,105 @@ button.btn--secondary:focus {
 .f-app [class*="f-heading-"],
 .f-app [class*="f-product-title-"] {
   font-family: var(--f-font-heading) !important;
+}
+
+/* ---- 9. Text with media (sections/text-with-media.liquid) --- */
+/* 2026 replacement direction for "Media with text" (which stays
+   untouched on the campaign product templates). Full-bleed colour
+   band: text column gets 40px block / site-gutter inline padding,
+   media column gets site-gutter padding all round (per Figma, the
+   media insets equal the 20px site gutter). Colours and media
+   width are per-instance Customizer settings emitted as --twm-*
+   vars on the section wrapper. */
+.text-with-media {
+  display: flex;
+  align-items: stretch;
+  /* Keeps the media pinned to the far edge when the text column
+     hits its max-width cap. */
+  justify-content: space-between;
+  background: var(--twm-bg, #00d200);
+  color: var(--twm-text, #000);
+  /* Module rhythm below the band — margin, not padding, so the
+     spacing stays outside the colour fill. */
+  margin-bottom: var(--module-pad-bottom);
+}
+.text-with-media--media-left {
+  flex-direction: row-reverse;
+}
+.text-with-media__content {
+  flex: 1 1 auto;
+  /* "Maximum content width" setting; the cap includes the inline
+     padding. */
+  max-width: var(--twm-content-max, 800px);
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 40px var(--site-gutter);
+  text-transform: uppercase;
+}
+.text-with-media__eyebrow,
+.text-with-media__title {
+  margin: 0;
+  color: inherit;
+}
+.text-with-media__title {
+  margin-top: 16px;
+}
+.text-with-media__cta {
+  margin-top: 12px;
+}
+/* CTA inherits the band's text colour on any background (the shared
+   secondary style paints theme-settings colours). */
+.text-with-media .btn.btn--secondary,
+.text-with-media .btn.btn--secondary:hover,
+.text-with-media .btn.btn--secondary:focus {
+  background: transparent;
+  color: inherit;
+}
+/* Media column: site-gutter padding all the way around. */
+.text-with-media__media-col {
+  flex: 0 0 var(--twm-media-w, 40%);
+  min-width: 0;
+  padding: var(--site-gutter);
+}
+.text-with-media__media {
+  height: 100%;
+  aspect-ratio: var(--twm-ar, auto);
+}
+.text-with-media__media img,
+.text-with-media__media video,
+.text-with-media__media .placeholder-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* Fill mode: media matches the text column's height. */
+.text-with-media__media--fill {
+  position: relative;
+}
+.text-with-media__media--fill img,
+.text-with-media__media--fill video {
+  position: absolute;
+  inset: 0;
+}
+/* Mobile: stack text over media; media goes full width at a fixed
+   ratio (fill mode has no height to inherit once stacked). */
+@media (max-width: 767.98px) {
+  .text-with-media,
+  .text-with-media--media-left {
+    flex-direction: column;
+  }
+  .text-with-media__media-col {
+    flex-basis: auto;
+  }
+  .text-with-media__media,
+  .text-with-media__media--fill {
+    aspect-ratio: var(--twm-ar, 1.25);
+  }
+  .text-with-media__media--fill img,
+  .text-with-media__media--fill video {
+    position: static;
+  }
 }

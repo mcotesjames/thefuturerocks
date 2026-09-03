@@ -519,6 +519,23 @@
         "image_aspect_desktop": "1.25"
       }
     },
+    "text_with_media_brVMgd": {
+      "type": "text-with-media",
+      "name": "Text with media",
+      "settings": {
+        "bg_color": "#00D200",
+        "text_color": "#000000",
+        "eyebrow": "About TFR",
+        "title": "The Future Rocks creates accessories for people who refuse to blend in.",
+        "use_h1": false,
+        "button_label": "Read more",
+        "button_link": "",
+        "image": "shopify://shop_images/TFR-Badge_f0458253-3ecc-498b-93b9-c39438d5f659.png",
+        "media_position": "right",
+        "media_width": 40,
+        "media_shape": "1.7778"
+      }
+    },
     "featured_collection_hWqWa7": {
       "type": "featured-collection",
       "settings": {
@@ -707,6 +724,7 @@
     "rich_text_wUqXYH",
     "featured_collection_Dx8cG6",
     "collection_list_E6zqP6",
+    "text_with_media_brVMgd",
     "featured_collection_hWqWa7",
     "custom_row_QJcEQh",
     "media_with_text_6Xe8JY",
