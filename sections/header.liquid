@@ -1,14 +1,20 @@
 {%- assign mobile_expand_with_entire_link = true -%}
 
 {% style %}
-  .logo img {
+  .logo img,
+  .logo svg {
     width: {{ section.settings.logo_img_width_int }}px;
+  }
+  .logo svg {
+    display: block;
+    height: auto;
   }
   .logo-area__middle--logo-image {
     max-width: {{ section.settings.logo_img_width_int }}px;
   }
   @media (max-width: 767.98px) {
-    .logo img {
+    .logo img,
+    .logo svg {
       width: {{ section.settings.mobile_logo_img_width_int }}px;
     }
     .logo-area__middle--logo-image {
@@ -73,12 +79,12 @@
             {%- endif -%}
 
             <a class="logo__link" href="{{ routes.root_url }}" title="{{ shop.name }}" itemprop="url">
-              {%- if section.settings.logo != blank -%}
-                {%- capture img_size -%}{{ section.settings.logo_img_width_int | times: 2 }}x{%- endcapture -%}
-                <img class="logo__image" src="{{ section.settings.logo | img_url: img_size }}" alt="{{ section.settings.logo.alt | default: shop.name | escape }}" width="{{ section.settings.logo.width }}" height="{{ section.settings.logo.height }}" itemprop="logo" />
-              {%- else -%}
-                <span class="logotext">{{ shop.name }}</span>
-              {%- endif -%}
+              {%- comment -%}
+                2026 redesign: inline currentColor wordmark (tints white
+                over the hero, dark when docked). The logo image setting
+                is left intact but unused while the wordmark is in play.
+              {%- endcomment -%}
+              <span class="logo__image logo__wordmark" role="img" aria-label="{{ shop.name | escape }}">{{ 'tfr-wordmark.svg' | inline_asset_content }}</span>
             </a>
 
             {%- if request.page_type == 'index' and section.settings.logo_h1 -%}
@@ -283,6 +289,36 @@
     }
   }
   setTimeout(theme.inlineNavigationCheck, 0);
+</script>
+
+<script>
+  /* 2026 redesign header state machine (desktop styling hooks only —
+     all rules consuming these classes live in redesign.css §13).
+     - html.tfr-has-hero / .tfr-no-hero: whether the page opens with a
+       hero banner (header overlays it in "hero" state).
+     - html.tfr-past-hero: hero has left the viewport → docked bar.
+     (--tfr-announce-h is a fixed 45px token in redesign.css §13.) */
+  (function () {
+    var root = document.documentElement;
+
+    function init() {
+      var hero = document.querySelector('.cc-hero-banner');
+      if (!hero) {
+        root.classList.add('tfr-no-hero');
+        return;
+      }
+      root.classList.add('tfr-has-hero');
+      new IntersectionObserver(function (entries) {
+        root.classList.toggle('tfr-past-hero', !entries[0].isIntersecting);
+      }).observe(hero);
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  })();
 </script>
 
 {%- endif -%}

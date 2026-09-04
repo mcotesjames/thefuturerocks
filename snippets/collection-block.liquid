@@ -1,4 +1,4 @@
-<div class="product-block scale-on-hover collection-block" data-collection-id="{{ collection.id }}" {{ custom_attrs }} {% if animate %}data-cc-animate{% endif %}>
+<div class="product-block scale-on-hover collection-block" data-collection-id="{{ collection.id }}" {{ custom_attrs }} {% if animate %}data-cc-animate{% endif %}{% if image_fit %} style="--cl-fit: {{ image_fit }}; --cl-pos: {{ image_pos_x | default: 50 }}% {{ image_pos_y | default: 50 }}%; --cl-scale: {{ image_scale | default: 100 }};"{% endif %}>
   <div class="block-inner card-scheme card-scheme--{{ settings.collection_card_color_scheme }} card-br-oh">
     <a class="product-link focus-inset" href="{{ collection.url }}">
       <div class="image-cont scale-on-hover__oh {% if settings.collection_card_color_scheme == 'none' %}card-br-oh{% endif %}">

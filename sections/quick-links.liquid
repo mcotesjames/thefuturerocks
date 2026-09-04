@@ -1,0 +1,127 @@
+{%- comment -%}
+  Quick Links — 2026 redesign module (homepage).
+  Bespoke replacement for the homepage "Custom content" (custom-row)
+  instance: a row of equal-width image tiles, each fully clickable,
+  with title / text / CTA overlaid at the bottom. The generic
+  custom-row section stays untouched.
+  All styling lives in assets/redesign.css (section 10).
+{%- endcomment -%}
+
+<div
+  id="section-id-{{ section.id }}"
+  class="quick-links"
+  style="{% if section.settings.tile_shape != blank %}--ql-ar: {{ section.settings.tile_shape }};{% endif %} --ql-text: {{ section.settings.text_color }};"
+  data-section-type="quick-links"
+>
+  {%- for block in section.blocks -%}
+    {%- capture tile_inner -%}
+      <div class="quick-links__media">
+        {%- if block.settings.image != blank -%}
+          {{ block.settings.image | image_url: width: 1200 | image_tag: widths: '300, 450, 600, 750, 900, 1200', sizes: '(max-width: 767px) 100vw, 33vw' }}
+        {%- else -%}
+          <div class="placeholder-image dark">{{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}</div>
+        {%- endif -%}
+      </div>
+      <div class="quick-links__overlay">
+        {%- if block.settings.title != blank -%}
+          <h3 class="quick-links__title heading-3">{{ block.settings.title | escape }}</h3>
+        {%- endif -%}
+        {%- if block.settings.text != blank -%}
+          <p class="quick-links__text">{{ block.settings.text | escape }}</p>
+        {%- endif -%}
+        {%- if block.settings.button_label != blank -%}
+          <span class="quick-links__cta btn btn--secondary btn--secondary-light btn--link"><span class="btn__text">{{ block.settings.button_label | escape }}</span></span>
+        {%- endif -%}
+      </div>
+    {%- endcapture -%}
+
+    {%- if block.settings.link != blank -%}
+      <a class="quick-links__tile" href="{{ block.settings.link }}" {{ block.shopify_attributes }} data-cc-animate="cc-fade-in-up" data-cc-animate-delay="{{ forloop.index | times: 0.15 }}s">
+        {{ tile_inner }}
+      </a>
+    {%- else -%}
+      <div class="quick-links__tile" {{ block.shopify_attributes }} data-cc-animate="cc-fade-in-up" data-cc-animate-delay="{{ forloop.index | times: 0.15 }}s">
+        {{ tile_inner }}
+      </div>
+    {%- endif -%}
+  {%- endfor -%}
+</div>
+
+{% schema %}
+{
+  "name": "Quick links",
+  "class": "section-quick-links",
+  "max_blocks": 6,
+  "disabled_on": {
+    "groups": ["aside"]
+  },
+  "settings": [
+    {
+      "type": "select",
+      "id": "tile_shape",
+      "label": "Tile aspect ratio",
+      "default": "0.8",
+      "options": [
+        { "value": "0.6667", "label": "Portrait (2:3)" },
+        { "value": "0.8", "label": "Portrait (4:5)" },
+        { "value": "1", "label": "Square (1:1)" },
+        { "value": "1.25", "label": "Landscape (5:4)" },
+        { "value": "1.5", "label": "Landscape (3:2)" },
+        { "value": "1.7778", "label": "Landscape (16:9)" }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Overlay text",
+      "default": "#FFFFFF"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "tile",
+      "name": "Tile",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Quick link"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button",
+          "default": "Shop now"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link",
+          "info": "The whole tile is clickable"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Quick links",
+      "blocks": [
+        { "type": "tile" },
+        { "type": "tile" },
+        { "type": "tile" }
+      ]
+    }
+  ]
+}
+{% endschema %}

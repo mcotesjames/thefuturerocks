@@ -461,7 +461,7 @@
   },
   "sections": {
     "featured_collection": {
-      "view_all": "Bekijk {{ title }}"
+      "view_all": "Bekijk alles"
     }
   }
 }

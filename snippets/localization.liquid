@@ -32,7 +32,7 @@
             {{- localization.country.name -}}
           {%- endif %}
           ({{ localization.country.currency.iso_code }}&nbsp;{{ localization.country.currency.symbol }})
-          <span class="disclosure__toggle-arrow" role="presentation">{% render 'svg-chevron-down' %}</span>
+          <span class="disclosure__toggle-arrow" role="presentation">{% if rd_arrow %}{% render 'svg-chevron-down-rd' %}{% else %}{% render 'svg-chevron-down' %}{% endif %}</span>
         </button>
         <ul id="country-list-{{ input_prefix }}" class="disclosure-list" data-disclosure-list>
           {% for country in localization.available_countries %}
@@ -98,7 +98,7 @@
             endfor
             echo capitalized_endonym
           -%}
-          <span class="disclosure__toggle-arrow" role="presentation">{% render 'svg-chevron-down' %}</span>
+          <span class="disclosure__toggle-arrow" role="presentation">{% if rd_arrow %}{% render 'svg-chevron-down-rd' %}{% else %}{% render 'svg-chevron-down' %}{% endif %}</span>
         </button>
         <ul id="lang-list-{{ input_prefix }}" class="disclosure-list" data-disclosure-list>
           {% for language in localization.available_languages %}

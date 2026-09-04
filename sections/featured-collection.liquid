@@ -16,7 +16,7 @@
         <h2 class="section-title{% unless section.settings.show_title %} visually-hidden{% endunless %}"><a href="{{ collection.url }}">{{ section.settings.title | escape }}</a></h2>
       {% endif %}
       {%- if section.settings.collection != blank -%}
-        <a class="section-header__view-all btn btn--secondary btn--link" href="{{ collection.url }}"><span class="btn__text">{{ 'sections.featured_collection.view_all' | t: title: collection.title }}</span></a>
+        <a class="section-header__view-all btn btn--secondary btn--link" href="{{ collection.url }}"><span class="btn__text">{{ 'sections.featured_collection.view_all' | t }}</span></a>
       {%- endif -%}
     </div>
   {%- endif -%}

@@ -81,7 +81,7 @@
         {% assign collection = collections[block.settings.collection] %}
 
         {% unless collection == blank %}
-          {% render 'collection-block', collection: collection, custom_attrs: block.shopify_attributes, custom_image: block.settings.image, custom_aspect_ratio: chosen_aspect_ratio %}
+          {% render 'collection-block', collection: collection, custom_attrs: block.shopify_attributes, custom_image: block.settings.image, custom_aspect_ratio: chosen_aspect_ratio, image_fit: block.settings.image_fit, image_pos_x: block.settings.image_pos_x, image_pos_y: block.settings.image_pos_y, image_scale: block.settings.image_scale %}
         {% else %}
           {% render 'onboarding-collection-block', forloop: forloop %}
         {% endunless %}
@@ -189,6 +189,48 @@
             "type": "image_picker",
             "id": "image",
             "label": "Image"
+          },
+          {
+            "type": "select",
+            "id": "image_fit",
+            "label": "Image size",
+            "default": "cover",
+            "options": [
+              { "value": "cover", "label": "Fill (crop to container)" },
+              { "value": "contain", "label": "Fit (show whole image)" }
+            ]
+          },
+          {
+            "type": "range",
+            "id": "image_pos_x",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "unit": "%",
+            "label": "Image position — horizontal",
+            "info": "0 = left, 100 = right",
+            "default": 50
+          },
+          {
+            "type": "range",
+            "id": "image_pos_y",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "unit": "%",
+            "label": "Image position — vertical",
+            "info": "0 = top, 100 = bottom",
+            "default": 50
+          },
+          {
+            "type": "range",
+            "id": "image_scale",
+            "min": 100,
+            "max": 200,
+            "step": 5,
+            "unit": "%",
+            "label": "Image zoom",
+            "default": 100
           }
         ]
       }

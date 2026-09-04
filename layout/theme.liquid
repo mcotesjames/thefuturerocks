@@ -98,6 +98,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
  {{ 'custom.css' | asset_url | stylesheet_tag: preload: true }}
   <link rel="preload" href="{{ 'ABCFavoritMono-Regular.woff2' | asset_url }}" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="{{ 'ABCFavoritMono-Black.woff2' | asset_url }}" as="font" type="font/woff2" crossorigin>
+  {%- comment -%} Space Grotesk (Google Fonts) — exposed as --font-grotesk in redesign.css {%- endcomment -%}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk&display=swap" rel="stylesheet">
   {{ 'redesign.css' | asset_url | stylesheet_tag: preload: true }}
 
   {%- if settings.swatch_enabled and settings.swatch_value_list != blank -%}

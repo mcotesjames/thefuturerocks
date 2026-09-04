@@ -4611,7 +4611,7 @@
       }
 
       var $nav = options.nav,
-        navHoverDelay = 250,
+        navHoverDelay = 0, /* 2026 redesign: was 250 — menus open/close instantly (nav item padding connects them to the panel, so there is no dead space to bridge) */
         $navLastOpenDropdown = $(),
         navOpenTimeoutId = -1;
 

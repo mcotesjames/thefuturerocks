@@ -426,9 +426,7 @@ span.product-block-options__item.sterling.silver:last-of-type {
     margin-right: 15px;
 }
 }
-li.navigation__item a.SALE {
-    color: red;
-}
+
 /* 2-jan-24-end*/
 
 
@@ -548,19 +546,4 @@ span.inline-menu a.wk-button span.wk-counter.wk-bubble {
     opacity: 1;
 }
 
-.navigation--desktop .navigation__tier-1 > .navigation__item:last-child > .navigation__link {
-    color: red;
-}
-.navigation--desktop .navigation__tier-1>.navigation__item:last-child>.navigation__link:hover {
-    border: 1px solid red;
-}
 
-.navigation.navigation--mobile ul li a.Final.Sale {
-    color: red;
-}
-.navigation.navigation--mobile .navigation__tier-1-container ul li a.Pet, .navigation.navigation--desktop .navigation__tier-1-container ul li a.Pet {
-    color: #009e2d !important;
-}
-.navigation.navigation--desktop .navigation__tier-1-container ul li a.Pet:hover, .navigation.navigation--mobile .navigation__tier-1-container ul li a.Pet:hover {
-    border: 1px solid #009e2d !important;
-}

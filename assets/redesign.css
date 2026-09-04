@@ -22,6 +22,9 @@
   /* Proportional (non-mono) Favorit — currently used for product
      card titles only. */
   --font-favorit: "ABCFavorit", "Helvetica Neue", Arial, sans-serif;
+  /* Space Grotesk (Google Fonts, loaded in layout/theme.liquid).
+     Not applied anywhere yet — consume via var(--font-grotesk). */
+  --font-grotesk: "Space Grotesk", "Helvetica Neue", Arial, sans-serif;
 
   /* Module spacing convention (see section 6):
      no top padding, 80px bottom (60px on mobile), 120px inline on
@@ -38,6 +41,7 @@
 @media (max-width: 767.98px) {
   :root {
     --module-pad-bottom: 60px;
+    --module-title-mb: 40px;
   }
 }
 
@@ -159,7 +163,7 @@ h5:lang(ja), h6:lang(ja), .heading-font:lang(ja) {
 
 /* Heading contexts styled individually in styles.css */
 .overlay-text .overlay-text__title { font-family: var(--font-heading); }
-.announcement .announcement__text { font-family: var(--font-heading); }
+.announcement .announcement__text { font-family: var(--font-grotesk); }
 .navigation--desktop .navigation__columns .navigation__column:not(.navigation__column--promotion) .navigation__column-title { font-family: var(--font-heading); }
 .mobile-nav-title { font-family: var(--font-heading); }
 .product-label > span { font-family: var(--font-body); }
@@ -192,16 +196,25 @@ ul.navigation__tier-2 li.custom-sect-cls a.navigation__link { font-family: var(-
   font-family: var(--font-body);
   font-size: var(--btn-text-size, 18px);
 }
+/* Hover: colours invert — ground takes the text colour, text takes
+   the ground colour (replaces the theme-settings hover colour). */
 .btn--primary:hover,
 .btn--primary:focus {
-  background: var(--btn-bg-hover);
-  color: var(--btn-text);
+  background: var(--btn-text);
+  color: var(--btn-bg);
 }
 
 /* All CTAs — primary and secondary — are set in uppercase. */
 .btn--primary,
 .btn--secondary {
   text-transform: uppercase;
+}
+
+/* Kill the theme's hover label animation (btn-slide-up: the text
+   scrolls out of the button and back in) on every CTA — hover states
+   are instant colour swaps now. */
+.btn--link:hover .btn__text {
+  animation: none;
 }
 
 /* Secondary CTA — same construction as primary, using the secondary
@@ -225,6 +238,18 @@ button.btn--secondary:focus {
   background: var(--btn-secondary-bg);
   color: var(--btn-secondary-text);
 }
+/* Light secondary variant — hardcoded white ground with black text
+   (not theme-settings driven), for CTAs sitting on imagery or colour
+   where the standard secondary colours don't read. Triple class
+   out-specifies the base/hover secondary rules and later scoped
+   overrides. */
+.btn.btn--secondary.btn--secondary-light,
+.btn.btn--secondary.btn--secondary-light:hover,
+.btn.btn--secondary.btn--secondary-light:focus {
+  background: #fff;
+  color: #000;
+}
+
 /* Underline on the label span — the base button forces
    text-decoration: none !important on the <a>, which suppresses the
    anchor's own underline; the span renders it cleanly. */
@@ -254,8 +279,10 @@ button.btn--secondary:focus {
 .section-featured-collection .cc-carousel.card-margin {
   margin-top: 0;
 }
-/* Title row: heading left + "view all" CTA right, one row at all sizes */
-.section-featured-collection .section-header {
+/* Title row: heading left + "view all" CTA right, one row at all
+   sizes. Shared by the logo-carousel module (heading only, no CTA). */
+.section-featured-collection .section-header,
+.section-logo-carousel .section-header {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
@@ -263,7 +290,8 @@ button.btn--secondary:focus {
   margin: 0 0 var(--module-title-mb);
   padding: 0 20px;
 }
-.section-featured-collection .section-title {
+.section-featured-collection .section-title,
+.section-logo-carousel .section-title {
   text-align: left;
   margin: 0;
   min-width: 0;
@@ -275,7 +303,8 @@ button.btn--secondary:focus {
   white-space: nowrap;
 }
 @media (min-width: 1280px) {
-  .section-featured-collection .section-header {
+  .section-featured-collection .section-header,
+  .section-logo-carousel .section-header {
     padding: 0 var(--module-pad-inline);
   }
   .section-featured-collection .cc-carousel--mobile-only .product-list.cc-carousel__scroll-area {
@@ -316,7 +345,11 @@ button.btn--secondary:focus {
    in a nowrap row that scrolls horizontally with snap. Native finger-
    drag, no JS. Desktop keeps the wrapping grid above. */
 @media (max-width: 767.98px) {
+  .section-collection-list {
+    padding: 0;
+  }
   .section-collection-list .collection-listing .product-list {
+    padding: 0;
     flex-wrap: nowrap;
     gap: 0;
     overflow-x: auto;
@@ -338,6 +371,9 @@ button.btn--secondary:focus {
   .section-collection-list .collection-block .product-link {
     position: relative;
   }
+  .section-collection-list .collection-block .product-link .image-cont {
+    margin-bottom: 0;
+  }
   .section-collection-list .collection-block .product-info {
     position: absolute;
     left: 0;
@@ -348,8 +384,33 @@ button.btn--secondary:focus {
   .section-collection-list .collection-block .product-block__title {
     color: #fff;
     text-decoration: underline;
+    text-transform: uppercase;
+  }
+
+  .section-collection-list .collection-block .product-block__title::after {
+    content: "+";
+    line-height: inherit;
   }
 }
+/* Card images: fit and position from the section's Customizer
+   settings ("Card images"), emitted as --cl-fit / --cl-pos on the
+   section wrapper. --bg-pos is the theme's own object-position hook
+   (inherits into .inline-image); --content-fit is set inline there so
+   the fit override targets the img directly. */
+/* Selector depth matches styles.css's own
+   .product-block.collection-block .image-cont .inline-image__image
+   rule, which pins object-position: center center at (0,4,1). */
+.section-collection-list .product-block.collection-block .image-cont .inline-image__image {
+  object-fit: var(--cl-fit, cover);
+  object-position: var(--cl-pos, 50% 50%);
+  /* Per-block zoom (100 = natural). Clipped by .image-cont's
+     overflow:hidden; sits on the img so the wrapper-level
+     scale-on-hover still composes on top. Overrides the load-in
+     scale-settle animation on these cards. */
+  transform: scale(calc(var(--cl-scale, 100) / 100));
+  transform-origin: var(--cl-pos, 50% 50%);
+}
+
 /* Left-align all collection card titles (theme centres them). */
 .product-block.collection-block .product-info {
   text-align: left;
@@ -596,6 +657,14 @@ button.btn--secondary:focus {
   font-weight: 400;
 }
 
+/* Card image controls: square grounds (the theme draws both the
+   quick-add/quick-view button and the prev/next chevrons on
+   border-radius 100% circles — styles.css ~1880, ~6725). */
+.quick-action-button,
+.image-page-button::after {
+  border-radius: 0;
+}
+
 /* Wishlist button (Swish / Wishlist King app) — bottom-left of the
    image, no background circle. NOTE: targets app-injected markup
    (.wk-floating) that is not in the theme repo; NEEDS verifying
@@ -676,9 +745,8 @@ button.btn--secondary:focus {
   justify-content: space-between;
   background: var(--twm-bg, #00d200);
   color: var(--twm-text, #000);
-  /* Module rhythm below the band — margin, not padding, so the
-     spacing stays outside the colour fill. */
-  margin-bottom: var(--module-pad-bottom);
+  /* No spacing below: the following module owns the gap (quick-links
+     carries it as top padding, dropped on mobile so the two touch). */
 }
 .text-with-media--media-left {
   flex-direction: row-reverse;
@@ -748,6 +816,12 @@ button.btn--secondary:focus {
   .text-with-media--media-left {
     flex-direction: column;
   }
+  .text-with-media__content {
+    padding: 40px var(--site-gutter) 10px;
+  }
+  .text-with-media__title {
+    margin-bottom: 32px;
+  }
   .text-with-media__media-col {
     flex-basis: auto;
   }
@@ -758,5 +832,682 @@ button.btn--secondary:focus {
   .text-with-media__media--fill img,
   .text-with-media__media--fill video {
     position: static;
+  }
+}
+
+/* ---- 10. Quick links (sections/quick-links.liquid) ----------- */
+/* Bespoke replacement for the homepage custom-row promo grid: a
+   row of equal-width clickable image tiles with bottom-left
+   overlay text. Module rhythm: gutter inline padding, standard
+   bottom padding, and — exception to the no-top-padding rule —
+   standard top padding too, because the preceding text-with-media
+   band carries no bottom spacing (on mobile the two touch, so the
+   top padding is dropped there). Site-gutter gap between tiles. */
+.quick-links {
+  display: flex;
+  align-items: stretch;
+  gap: var(--site-gutter);
+  padding: var(--module-pad-bottom) var(--site-gutter) var(--module-pad-bottom);
+}
+/* The tile owns the height: its aspect-ratio (the "Tile aspect
+   ratio" setting via --ql-ar) fixes it against the flexed width, and
+   the media fills it — so mixed-ratio uploads always cover-crop to a
+   uniform grid. The ratio must stay on the tile, not the image: a
+   height:100% chain with no fixed ratio collapses to zero (the
+   absolute overlay contributes no height). */
+.quick-links__tile {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+  display: block;
+  text-decoration: none;
+  aspect-ratio: var(--ql-ar, 0.8);
+}
+.quick-links__media {
+  height: 100%;
+}
+.quick-links__media img,
+.quick-links__media .placeholder-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* Overlay: bottom-left stack over the image. */
+.quick-links__overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  gap: 5px;
+  padding: var(--site-gutter);
+  text-align: left;
+  color: var(--ql-text, #fff);
+}
+.quick-links__title,
+.quick-links__text {
+  margin: 0;
+  color: inherit;
+}
+/* CTA is a span (the tile itself is the link): uses the light
+   secondary variant (white ground, black text), so the overlay's
+   text-shadow must not bleed onto it. */
+.quick-links .btn.btn--secondary {
+  text-shadow: none;
+}
+/* Mobile: tiles stack full-bleed — no gutter padding, no gap, and
+   no top padding (flush against the preceding text-with-media band);
+   module bottom padding stays. */
+@media (max-width: 767.98px) {
+  .quick-links {
+    flex-direction: column;
+    gap: 0;
+    padding-inline: 0;
+    padding-top: 0;
+  }
+}
+
+/* ---- 11. Logo carousel (sections/logo-carousel.liquid) ------- */
+/* Bespoke replacement for the Foxify press-logo carousel. Pure CSS
+   marquee: the Liquid renders the logo set four times inside the
+   track, and one animation cycle translates exactly one set-width
+   (-25% of the track), so the loop is seamless for any logo count.
+   --lc-h (logo height), --lc-gap (space between logos) and
+   --lc-speed (seconds per loop) are Customizer settings emitted on
+   the section wrapper. */
+.logo-carousel {
+  padding-bottom: var(--module-pad-bottom);
+  overflow: hidden;
+}
+/* Heading uses the shared .section-header/.section-title structure
+   (styled in section 6, scoped to include .section-logo-carousel). */
+.logo-carousel__viewport {
+  overflow: hidden;
+}
+.logo-carousel__track {
+  display: flex;
+  width: max-content;
+  animation: lc-marquee var(--lc-speed, 40s) linear infinite;
+}
+.logo-carousel__viewport:hover .logo-carousel__track {
+  animation-play-state: paused;
+}
+.logo-carousel__set {
+  display: flex;
+  align-items: center;
+  gap: var(--lc-gap, 80px);
+  padding-inline-end: var(--lc-gap, 80px);
+}
+.logo-carousel__item {
+  display: block;
+  flex: 0 0 auto;
+}
+.logo-carousel__img {
+  display: block;
+  height: var(--lc-h, 40px);
+  width: auto;
+}
+@keyframes lc-marquee {
+  to {
+    transform: translateX(-25%);
+  }
+}
+/* Reduced motion: no animation; the strip becomes a plain
+   touch/trackpad-scrollable row instead. */
+@media (prefers-reduced-motion: reduce) {
+  .logo-carousel__track {
+    animation: none;
+  }
+  .logo-carousel__viewport {
+    overflow-x: auto;
+  }
+}
+
+/* ---- 12. Footer (sections/footer.liquid) --------------------- */
+/* 2026 rebuild. Colours are Customizer settings (--footer-bg /
+   --footer-text, defaults #F8F8EC on #000). Desktop: newsletter left
+   / three menu columns right; socials left / Butterfly Mark right;
+   legal + copyright left / large logo right. Mobile: single column,
+   menus stay 3-up, butterfly loses its text, logo is hidden, and the
+   country/language selectors appear below a rule (they are mobile-
+   only per the design — desktop omission is with the designer). */
+.footer-rd {
+  background: var(--footer-bg, #f8f8ec);
+  color: var(--footer-text, #000);
+  padding: 40px var(--site-gutter) var(--site-gutter);
+}
+.footer-rd a {
+  color: inherit;
+}
+
+/* Top: newsletter zone left, menu columns right. */
+.footer-rd__top {
+  display: flex;
+  gap: 50px;
+}
+.footer-rd__newsletter {
+  flex: 0 0 46%;
+  min-width: 0;
+}
+.footer-rd__menus {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--site-gutter);
+}
+.footer-rd__menu-title {
+  margin: 0 0 24px;
+  text-transform: uppercase;
+}
+.footer-rd__menu-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+/* styles.css re-applies list-style at the li level, so the ul's
+   list-style: none doesn't stick — kill the markers on the lis. */
+.footer-rd__menu-list li,
+.footer-rd__legal-menu li {
+  list-style: none;
+}
+.footer-rd__menu-list li::marker,
+.footer-rd__legal-menu li::marker {
+  content: none;
+}
+.footer-rd__menu-list a {
+  text-decoration: none;
+}
+.footer-rd__menu-list a:hover {
+  text-decoration: underline;
+}
+
+/* Mid band: socials left, Butterfly Mark right. */
+.footer-rd__mid {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: var(--site-gutter);
+  margin-top: 20px;
+}
+.footer-rd__social .social-links {
+  margin: 0;
+}
+.footer-rd .social-links a svg,
+.footer-rd .social-links a img {
+  width: 25px;
+  height: 25px;
+}
+.footer-rd__butterfly {
+  max-width: 160px;
+  text-align: left;
+}
+.footer-rd__butterfly-badge img {
+  display: block;
+  width: 120px;
+  height: auto;
+}
+.footer-rd__butterfly-text {
+  margin-top: 12px;
+}
+
+/* Bottom: legal cluster left, large logo right, bottom-aligned. */
+.footer-rd__bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: var(--site-gutter);
+  margin-top: 40px;
+}
+/* Desktop shows the legal links row above the copyright line. */
+.footer-rd__legal {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 12px;
+  font-size: 12px;
+}
+.footer-rd__legal-menu {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  text-transform: uppercase;
+  opacity: 0.5;
+}
+.footer-rd__legal-menu a {
+  text-decoration: none;
+}
+.footer-rd__legal-menu a:hover {
+  text-decoration: underline;
+}
+.footer-rd__logo {
+  flex: 0 1 50%;
+}
+.footer-rd__logo img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Selectors: hidden on desktop (design has none there). */
+.footer-rd__localization {
+  display: none;
+}
+/* Country + language sit side by side, 20px apart. */
+.footer-rd__localization .selectors-form {
+  display: flex;
+  gap: 20px;
+}
+/* Toggles read as plain text: no box (base + hover styles in
+   styles.css paint a white bordered button). */
+.footer-rd__localization .disclosure__toggle,
+.footer-rd__localization .disclosure__toggle:hover {
+  padding: 0;
+  background: none;
+  border: none;
+}
+/* Arrow: the footer renders its own snippet (svg-chevron-down-rd.liquid,
+   switched by the rd_arrow flag on the localization render) — size it
+   down from the base 18px square. styles.css already rotates the svg
+   180deg when the disclosure is open. */
+.footer-rd__localization .disclosure__toggle-arrow svg {
+  width: 9px;
+  height: 12px;
+}
+
+@media (max-width: 767.98px) {
+  .footer-rd {
+    padding: 24px var(--site-gutter) var(--site-gutter);
+  }
+  .footer-rd__top {
+    flex-direction: column;
+    gap: 40px;
+  }
+  .footer-rd__newsletter {
+    flex-basis: auto;
+  }
+  .footer-rd__menus {
+    gap: var(--site-gutter);
+  }
+  .footer-rd__menu-title {
+    margin-bottom: 16px;
+    font-size: 16px;
+  }
+  .footer-rd__menu-list {
+    font-size: 12px;
+    gap: 12px;
+  }
+  .footer-rd__mid {
+    margin-top: 40px;
+    align-items: center;
+  }
+  .footer-rd__butterfly-badge img {
+    width: 72px;
+  }
+  .footer-rd__butterfly-text {
+    display: none;
+  }
+  .footer-rd__bottom {
+    margin-top: 32px;
+  }
+  .footer-rd__logo {
+    display: none;
+  }
+  /* Copyright and legal links run together as one wrapping block. */
+  .footer-rd__legal {
+    display: block;
+  }
+  .footer-rd__copyright {
+    margin-right: 8px;
+  }
+  .footer-rd__legal-menu {
+    display: inline;
+    opacity: 1;
+  }
+  .footer-rd__legal-menu li {
+    display: inline;
+    margin-right: 8px;
+  }
+  .footer-rd__legal-menu a {
+    text-decoration: underline;
+  }
+  /* Selectors below a full-width rule, mobile only. */
+  .footer-rd__localization {
+    display: block;
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid currentColor;
+  }
+}
+
+/* ---- 13. Header / main navigation (sections/header.liquid) --- */
+/* 2026 redesign, DESKTOP ONLY — mobile keeps the theme's existing
+   header and drawer untouched. One header, two states, driven by the
+   classes the header's state-machine script puts on <html>:
+     hero state  (.tfr-has-hero:not(.tfr-past-hero)) — header sits
+       transparent over the hero: full-width wordmark, white text.
+     docked state (.tfr-past-hero, and every page without a hero) —
+       the theme's sticky header, restyled: small wordmark row, then
+       menu left / icons right.
+   The announcement bar is pinned above both states. Markup, classes,
+   theme.js behaviour and all mega-menu blocks are untouched. */
+/* The header's inline {% style %} sticky rule targets bare
+   .section-header, which is also the class of content section-title
+   rows (featured collection, logo carousel). Keep those rows in
+   normal flow — only the header's .shopify-section wrapper may
+   stick. */
+.section-header:not(.shopify-section) {
+  position: static;
+}
+
+/* The theme gives every .card an 8px top margin, which pushes the
+   announcement bar / header content out of their fixed-height
+   wrappers and causes overlap. Global removal (site-wide, not just
+   the header cards) — redesign modules manage their own rhythm. */
+.card {
+  margin-top: 0;
+}
+
+/* Fixed announcement-bar height at all widths (45px desktop, 42px
+   mobile) — consumed as the docked/hero header top offset on desktop
+   and by the mobile hero-height calc below. Inner chain stretched to
+   fill it. */
+:root {
+  --tfr-announce-h: 45px;
+}
+@media (max-width: 767.98px) {
+  :root {
+    --tfr-announce-h: 42px;
+  }
+}
+.shopify-section.section-announcement-bar {
+  height: var(--tfr-announce-h);
+}
+.shopify-section.section-announcement-bar .wide-container,
+.shopify-section.section-announcement-bar .announcement-bar {
+  height: 100%;
+}
+.shopify-section.section-announcement-bar .announcement-bar {
+  display: flex;
+  align-items: center;
+}
+
+/* Mobile: the hero fills exactly the viewport minus the announcement
+   bar and header (both in normal flow above it). --theme-header-height
+   is maintained live by theme.js; !important matches the hero
+   section's ID-scoped inline {% style %} that sets 100svh. */
+@media (max-width: 767.98px) {
+  .cc-hero-banner .height--fixed {
+    --image-height: calc(100svh - var(--tfr-announce-h) - var(--theme-header-height, 44px)) !important;
+  }
+}
+
+@media (min-width: 768px) {
+  /* Announcement bar: always pinned at the very top. */
+  .shopify-section.section-announcement-bar {
+    position: sticky;
+    top: 0;
+    z-index: 130;
+  }
+
+  /* Docked bar sticks below the pinned announcement. NOTE:
+     "section-header" is BOTH the header section's wrapper class and
+     the class of section title rows (featured collection, logo
+     carousel) — the .shopify-section pairing scopes these rules to
+     the header wrapper only, and also beats the header's inline
+     {% style %} rule (top: var(--magic-margin)) on specificity. */
+  .shopify-section.section-header {
+    position: sticky;
+    top: var(--tfr-announce-h, 0px);
+    z-index: 120;
+  }
+  /* On hero pages the docked bar must be FIXED, not sticky: the hero
+     state is absolute (out of flow), and toggling to in-flow sticky
+     at the scroll boundary reflowed the whole page by the header's
+     height — a visible stutter, and it could push the hero back into
+     view and flap the observer. Fixed keeps both states out of flow
+     so the handoff never reflows. */
+  .tfr-has-hero.tfr-past-hero .shopify-section.section-header {
+    position: fixed;
+    top: var(--tfr-announce-h, 0px);
+    left: 0;
+    right: 0;
+  }
+
+  /* The theme's two desktop nav modes both assume the old flex bar
+     and fight the grid:
+     - not-permitted (burger): hides the nav, shows the burger;
+     - permitted + inline-menu-center: fakes centering by collapsing
+       .logo-area__left to 2px and stretching the inner across the
+       viewport with a -50vw margin (styles.css ~4924/4955), which
+       throws the menu off-screen under the grid.
+     Neutralise both so the nav row is a plain left-aligned flex row
+     regardless of which class theme.js lands on. */
+  .pageheader .logo-area .mobile-nav-toggle.mobile-nav-toggle {
+    display: none;
+  }
+  .pageheader:not(.pageheader--layout-inline-permitted) .navigation--desktop {
+    position: static;
+    visibility: visible;
+    pointer-events: auto;
+  }
+  /* Burger mode also clips the bar (styles.css ~4937) — which would
+     clip the open mega-menu panel hanging below it. */
+  .pageheader:not(.pageheader--layout-inline-permitted) .logo-area {
+    overflow: visible;
+  }
+  .pageheader .logo-area .logo-area__left {
+    display: block;
+    width: auto;
+    flex: none;
+    margin: 0;
+    font-size: inherit;
+  }
+  .pageheader .logo-area .logo-area__left__inner {
+    /* position: static also re-anchors the absolute mega-menu panel
+       to the header wrapper, so it spans the full bar width. */
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0;
+    justify-content: flex-start;
+  }
+  .pageheader .navigation--desktop {
+    text-align: start;
+  }
+  /* Pull the row back by the first item's own link padding so the
+     items align flush with the wordmark / gutter edge. Flex layout
+     kills the ~3px inline-whitespace gaps between items, so their
+     18px link paddings connect — no dead zones for the pointer to
+     fall into while moving between menus. */
+  .pageheader .navigation--desktop .navigation__tier-1 {
+    margin-inline-start: -18px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+  }
+
+  .height--fixed {
+  height: calc(var(--image-height) - var(--tfr-announce-h));
+  }
+  .height--fixed .background-image,
+  .height--fixed .placeholder-image {
+    height: calc(var(--image-height) - var(--tfr-announce-h));
+  }
+
+  /* Shared two-row bar: wordmark row, then nav left / icons right.
+     No bottom padding and end-aligned second row: the nav items must
+     run flush to the header's bottom edge (where the mega-menu panel
+     starts) so the cursor never crosses dead space between a nav item
+     and its open panel — the absorbed bottom gutter moves into the
+     nav links' bottom padding instead. */
+  .pageheader .logo-area {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      "logo  logo"
+      "nav   icons";
+    row-gap: 12px;
+    align-items: end;
+    padding: var(--site-gutter) var(--site-gutter) 0;
+  }
+  /* The theme pads the logo 10px block (styles.css ~3768) — the grid
+     row gap is the only spacing now. */
+  .pageheader .logo {
+    padding: 0;
+  }
+  .pageheader .logo-area__middle {
+    grid-area: logo;
+    max-width: none;
+    justify-self: start;
+  }
+  .pageheader .logo-area__left {
+    grid-area: nav;
+  }
+  .pageheader .logo-area__right {
+    grid-area: icons;
+    justify-self: end;
+  }
+
+  /* Nav row typography: heading-3 type (18/21 Favorit Mono Black),
+     caps — direct-child selector keeps the mega-menu tiers on their
+     existing styles. Featured link ("final sale" / "outlab") in brand
+     green in both states. */
+  .navigation--desktop .navigation__tier-1 > .navigation__item > .navigation__link {
+    font-family: var(--font-heading);
+    font-size: 18px;
+    line-height: 21px;
+    text-transform: uppercase;
+    /* 6px visual + the bar's absorbed 12px bottom padding: the link's
+       hover box touches the mega-menu panel's top edge. */
+    padding-bottom: 18px;
+  }
+  /* !important matches the originals (styles.css ~4052 hardcodes the
+     old #009e2d green + a green-block hover with !important). */
+  .navigation--desktop .navigation__tier-1 > .featured-link > .navigation__link {
+    color: #00d200 !important;
+  }
+  .navigation--desktop .navigation__tier-1 > .featured-link > .navigation__link:hover {
+    background: transparent !important;
+    color: #00d200 !important;
+  }
+
+  /* ---- Hero state: transparent overlay on the hero banner. ---- */
+  .tfr-has-hero:not(.tfr-past-hero) .shopify-section.section-header {
+    position: absolute;
+    top: var(--tfr-announce-h, 0px);
+    left: 0;
+    right: 0;
+  }
+  .tfr-has-hero:not(.tfr-past-hero) .pageheader {
+    background: transparent;
+    color: #fff;
+  }
+  .tfr-has-hero:not(.tfr-past-hero) .pageheader .navigation__link,
+  .tfr-has-hero:not(.tfr-past-hero) .pageheader .logo__link,
+  .tfr-has-hero:not(.tfr-past-hero) .pageheader .header-account-link,
+  .tfr-has-hero:not(.tfr-past-hero) .pageheader .show-search-link,
+  .tfr-has-hero:not(.tfr-past-hero) .pageheader .cart-link {
+    color: #fff;
+  }
+  /* Full-bleed wordmark over the hero. Every ancestor between the
+     grid area and the svg must be a stretched block — any inline-block
+     shrink-to-fit link in the chain collapses width:100% to the SVG's
+     300px intrinsic default. */
+  .tfr-has-hero:not(.tfr-past-hero) .logo-area__middle,
+  .tfr-has-hero:not(.tfr-past-hero) .logo-area__middle__inner,
+  .tfr-has-hero:not(.tfr-past-hero) .logo-area__middle .logo,
+  .tfr-has-hero:not(.tfr-past-hero) .logo-area__middle .logo__h1,
+  .tfr-has-hero:not(.tfr-past-hero) .logo-area__middle .logo__link,
+  .tfr-has-hero:not(.tfr-past-hero) .logo-area__middle .logo__wordmark {
+    display: block;
+    width: 100%;
+    max-width: none;
+    justify-self: stretch;
+  }
+  .tfr-has-hero:not(.tfr-past-hero) .logo svg {
+    width: 100%;
+  }
+  /* Keep the green featured link legible on imagery too. */
+  .tfr-has-hero:not(.tfr-past-hero) .pageheader .featured-link > .navigation__link {
+    color: #00d200 !important;
+  }
+
+  /* Mega menu panel: no top padding (the theme reserves
+     var(--magic-margin) there), instant open/close (kills the
+     theme's 175ms opacity/visibility fade — hover-intent delays in
+     theme.js still apply), and all non-heading type in body mono —
+     column titles and promo titles keep the Black heading cut.
+     Out-specifies the section-3 custom-sect-cls straggler. */
+  .navigation--desktop .navigation__tier-2-container {
+    padding-top: 0;
+    transition: none;
+  }
+  .navigation--desktop .navigation__tier-2-container .navigation__link:not(.navigation__column-title):not(.heading-font),
+  .navigation--desktop .navigation__tier-2-container .menu-promotion__text {
+    font-family: var(--font-body);
+  }
+
+  /* No hover borders on tier-1 items (the old campaign hacks drew
+     them), and no colour transitions anywhere in the bar — state
+     swaps are instant by design. */
+  .navigation--desktop .navigation__tier-1 > .navigation__item > .navigation__link:hover {
+    border: none;
+  }
+  .pageheader,
+  .pageheader .navigation__link,
+  .pageheader .logo__link,
+  .pageheader .header-account-link,
+  .pageheader .show-search-link,
+  .pageheader .cart-link {
+    transition: none;
+  }
+
+  /* Hero state: invert the whole bar to a white ground — but only
+     while a nav link is hovered (:has), or while a dropdown is open
+     (theme.js puts section-header--nav-open on the wrapper) so the
+     inversion holds as the pointer moves down into the mega menu.
+     Hovering the wordmark, icons or empty bar does NOT invert.
+     Instant — no transition. */
+  .tfr-has-hero:not(.tfr-past-hero) .shopify-section.section-header:has(.navigation--desktop .navigation__link:hover) .pageheader,
+  .tfr-has-hero:not(.tfr-past-hero) .shopify-section.section-header--nav-open .pageheader {
+    background: #fff;
+    color: #000;
+  }
+  .tfr-has-hero:not(.tfr-past-hero) .shopify-section.section-header:has(.navigation--desktop .navigation__link:hover) .pageheader .navigation__link,
+  .tfr-has-hero:not(.tfr-past-hero) .shopify-section.section-header:has(.navigation--desktop .navigation__link:hover) .pageheader .logo__link,
+  .tfr-has-hero:not(.tfr-past-hero) .shopify-section.section-header:has(.navigation--desktop .navigation__link:hover) .pageheader .header-account-link,
+  .tfr-has-hero:not(.tfr-past-hero) .shopify-section.section-header:has(.navigation--desktop .navigation__link:hover) .pageheader .show-search-link,
+  .tfr-has-hero:not(.tfr-past-hero) .shopify-section.section-header:has(.navigation--desktop .navigation__link:hover) .pageheader .cart-link,
+  .tfr-has-hero:not(.tfr-past-hero) .shopify-section.section-header--nav-open .pageheader .navigation__link,
+  .tfr-has-hero:not(.tfr-past-hero) .shopify-section.section-header--nav-open .pageheader .logo__link,
+  .tfr-has-hero:not(.tfr-past-hero) .shopify-section.section-header--nav-open .pageheader .header-account-link,
+  .tfr-has-hero:not(.tfr-past-hero) .shopify-section.section-header--nav-open .pageheader .show-search-link,
+  .tfr-has-hero:not(.tfr-past-hero) .shopify-section.section-header--nav-open .pageheader .cart-link {
+    color: #000;
+  }
+
+  /* ---- Docked state entrance. ---- */
+  .tfr-past-hero .shopify-section.section-header .pageheader {
+    animation: tfr-dock-in 0.25s ease-out;
+  }
+  @keyframes tfr-dock-in {
+    from {
+      transform: translateY(-16px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
   }
 }

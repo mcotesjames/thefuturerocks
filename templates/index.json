@@ -9,78 +9,11 @@
  */
 {
   "sections": {
-    "logo_list_M4L6kC": {
-      "type": "logo-list",
-      "blocks": {
-        "logo_Uekm8f": {
-          "type": "logo",
-          "settings": {
-            "image": "shopify://shop_images/elle-logo-png.png",
-            "image_width": 80,
-            "link": "https://sp.elle.co.jp/fashion/thefuturerocks/2311/",
-            "title": ""
-          }
-        },
-        "logo_WTGend": {
-          "type": "logo",
-          "settings": {
-            "image": "shopify://shop_images/logo_classy_black.webp",
-            "image_width": 100,
-            "link": "https://classy-online.jp/partner/prtimes/157443/",
-            "title": ""
-          }
-        },
-        "logo_jUMLCQ": {
-          "type": "logo",
-          "settings": {
-            "image": "shopify://shop_images/vogue.png",
-            "image_width": 100,
-            "link": "https://www.vogue.co.jp/special-feature/2024-02/07/thefuturerocks?utm_source=twitter&utm_medium=social&utm_campaign=spon-thefuturerocks240207&utm_social-type=owned&utm_brand=vogue-jp",
-            "title": ""
-          }
-        },
-        "logo_KwRWcY": {
-          "type": "logo",
-          "settings": {
-            "image": "shopify://shop_images/Madame_Figaro_logo.png",
-            "image_width": 120,
-            "link": "https://madame.lefigaro.fr/bijoux-et-montres/ou-trouver-une-bague-de-fiancailles-en-diamants-de-laboratoire-20231114",
-            "title": ""
-          }
-        },
-        "logo_3Vy7Un": {
-          "type": "logo",
-          "settings": {
-            "image": "shopify://shop_images/toppng.com-jun-22-wwd-logo-sv-1862x552.png",
-            "image_width": 80,
-            "link": "https://wwd.com/sustainability/innovation/lightboxs-advancements-lab-grown-diamonds-1236261593/",
-            "title": ""
-          }
-        }
-      },
-      "block_order": [
-        "logo_Uekm8f",
-        "logo_WTGend",
-        "logo_jUMLCQ",
-        "logo_KwRWcY",
-        "logo_3Vy7Un"
-      ],
-      "disabled": true,
-      "custom_css": [
-        ".inline-image__image {background-color: #ffffff;}"
-      ],
-      "settings": {
-        "title": "Logo list",
-        "show_title": false,
-        "image_opacity": 100,
-        "color_scheme": "none"
-      }
-    },
     "hero_banner": {
       "type": "hero-banner",
       "settings": {
         "image": "shopify://shop_images/70bedce8782aee9785444f2b4aa5c5cd3ca8f145.gif",
-        "mobile_image": "shopify://shop_images/NOVA2_optz.webp",
+        "mobile_image": "shopify://shop_images/7a21e0b49aca79ca7d710dad6c8688ef344684d8.jpg",
         "image_link": "",
         "subheading": "",
         "title": "Be the occasion",
@@ -469,36 +402,67 @@
         "collection_XeLGAN": {
           "type": "collection",
           "settings": {
-            "collection": "rings",
-            "image": "shopify://shop_images/powerful_curb.png"
+            "collection": "pet-collection",
+            "image": "shopify://shop_images/ad4e1a52e6fcf33b01cb4294bf4d679d61da2c4c_1.png",
+            "image_fit": "cover",
+            "image_pos_x": 50,
+            "image_pos_y": 75,
+            "image_scale": 135
           }
         },
         "collection_WNtbC4": {
           "type": "collection",
           "settings": {
-            "collection": "earrings",
-            "image": "shopify://shop_images/nova_earring.jpg"
+            "collection": "fashion-accessories",
+            "image": "shopify://shop_images/d8acd5f8d9684e2570db6ae28e03f9747f7f1b51_1.png",
+            "image_fit": "cover",
+            "image_pos_x": 75,
+            "image_pos_y": 15,
+            "image_scale": 120
           }
         },
         "collection_LaYAyy": {
           "type": "collection",
           "settings": {
-            "collection": "necklaces",
-            "image": "shopify://shop_images/Hearts_on_model2_plainbg.png"
+            "collection": "rings",
+            "image": "shopify://shop_images/33f03b2ce4aec8a4e67f9b8ba9a8be19fe26fc1a_1.png",
+            "image_fit": "cover",
+            "image_pos_x": 50,
+            "image_pos_y": 50,
+            "image_scale": 100
           }
         },
         "collection_eMi376": {
           "type": "collection",
           "settings": {
-            "collection": "bracelets",
-            "image": "shopify://shop_images/hand_on_pocket.jpg"
+            "collection": "necklaces",
+            "image": "shopify://shop_images/f9f92c39e49d8d0960662f91926c73e40c8dda34_1.png",
+            "image_fit": "cover",
+            "image_pos_x": 50,
+            "image_pos_y": 50,
+            "image_scale": 100
           }
         },
         "collection_KqDydm": {
           "type": "collection",
           "settings": {
-            "collection": "pendants-charms",
-            "image": "shopify://shop_images/metalcan.png"
+            "collection": "bracelets",
+            "image": "shopify://shop_images/e4acac19d90c45896e95ba2d91db3fd77b18dd8d_1.png",
+            "image_fit": "cover",
+            "image_pos_x": 50,
+            "image_pos_y": 10,
+            "image_scale": 140
+          }
+        },
+        "collection_TEPMpc": {
+          "type": "collection",
+          "settings": {
+            "collection": "earrings",
+            "image": "shopify://shop_images/f1cc489c6a37a04b5d3eedfd55bb40e7169fedbb_1_1.jpg",
+            "image_fit": "cover",
+            "image_pos_x": 35,
+            "image_pos_y": 75,
+            "image_scale": 120
           }
         }
       },
@@ -507,7 +471,8 @@
         "collection_WNtbC4",
         "collection_LaYAyy",
         "collection_eMi376",
-        "collection_KqDydm"
+        "collection_KqDydm",
+        "collection_TEPMpc"
       ],
       "custom_css": [],
       "settings": {
@@ -523,7 +488,7 @@
       "type": "text-with-media",
       "name": "Text with media",
       "settings": {
-        "bg_color": "#00D200",
+        "bg_color": "#00d200",
         "text_color": "#000000",
         "eyebrow": "About TFR",
         "title": "The Future Rocks creates accessories for people who refuse to blend in.",
@@ -533,11 +498,13 @@
         "image": "shopify://shop_images/TFR-Badge_f0458253-3ecc-498b-93b9-c39438d5f659.png",
         "media_position": "right",
         "media_width": 40,
+        "content_max_width": 800,
         "media_shape": "1.7778"
       }
     },
     "featured_collection_hWqWa7": {
       "type": "featured-collection",
+      "disabled": true,
       "settings": {
         "title": "Trending",
         "show_title": true,
@@ -550,6 +517,103 @@
         "show_title_card_image": false,
         "overlay_style": "shadow",
         "color_scheme": "1"
+      }
+    },
+    "quick_links_redesign": {
+      "type": "quick-links",
+      "blocks": {
+        "tile_1": {
+          "type": "tile",
+          "settings": {
+            "image": "shopify://shop_images/NEW_ARRIVAL.png",
+            "title": "New Arrivals",
+            "text": "Upgrade your wardrobe with our latest addition.",
+            "button_label": "EXPLORE",
+            "link": "shopify://collections/new-arrivals"
+          }
+        },
+        "tile_2": {
+          "type": "tile",
+          "settings": {
+            "image": "shopify://shop_images/BEST_SELLER.png",
+            "title": "BESTSELLERS",
+            "text": "Explore our most-loved, elegant staples.",
+            "button_label": "EXPLORE",
+            "link": "shopify://collections/best-sellers"
+          }
+        },
+        "tile_3": {
+          "type": "tile",
+          "settings": {
+            "image": "shopify://shop_images/READY_TO_SHIP.png",
+            "title": "READY TO SHIP",
+            "text": "A great selection for all gifting occasions.",
+            "button_label": "EXPLORE",
+            "link": "shopify://collections/in-stock-ready-to-ship"
+          }
+        }
+      },
+      "block_order": [
+        "tile_1",
+        "tile_2",
+        "tile_3"
+      ],
+      "settings": {
+        "tile_shape": "",
+        "text_color": "#ffffff"
+      }
+    },
+    "logo_carousel_redesign": {
+      "type": "logo-carousel",
+      "blocks": {
+        "logo_1": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/elle-logo-png.png",
+            "link": "https://sp.elle.co.jp/fashion/thefuturerocks/2311/"
+          }
+        },
+        "logo_2": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/cropped-cropped-prestige-logo-new.webp",
+            "link": "https://classy-online.jp/partner/prtimes/157443/"
+          }
+        },
+        "logo_3": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/vogue.png",
+            "link": "https://www.vogue.co.jp/special-feature/2024-02/07/thefuturerocks?utm_source=twitter&utm_medium=social&utm_campaign=spon-thefuturerocks240207&utm_social-type=owned&utm_brand=vogue-jp"
+          }
+        },
+        "logo_4": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/Madame_Figaro_logo.png",
+            "link": "https://madame.lefigaro.fr/bijoux-et-montres/ou-trouver-une-bague-de-fiancailles-en-diamants-de-laboratoire-20231114"
+          }
+        },
+        "logo_5": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/toppng.com-jun-22-wwd-logo-sv-1862x552.png",
+            "link": "https://wwd.com/sustainability/innovation/lightboxs-advancements-lab-grown-diamonds-1236261593/"
+          }
+        }
+      },
+      "block_order": [
+        "logo_1",
+        "logo_2",
+        "logo_3",
+        "logo_4",
+        "logo_5"
+      ],
+      "settings": {
+        "title": "Featured in",
+        "logo_height": 40,
+        "logo_gap": 80,
+        "speed": 10
       }
     },
     "custom_row_QJcEQh": {
@@ -636,6 +700,7 @@
         "image_yEXpKE",
         "image_tf3q43"
       ],
+      "disabled": true,
       "custom_css": [
         ".flexible-layout {padding-left: 5%; padding-right: 5%; padding-top: 0%; padding-bottom: 3%;}",
         ".overlay-text__rte {color: white; text-decoration: none; position: relative;}",
@@ -716,7 +781,6 @@
     }
   },
   "order": [
-    "logo_list_M4L6kC",
     "hero_banner",
     "spacer_EH4pcn",
     "slideshow_PbLQ6c",
@@ -726,6 +790,8 @@
     "collection_list_E6zqP6",
     "text_with_media_brVMgd",
     "featured_collection_hWqWa7",
+    "quick_links_redesign",
+    "logo_carousel_redesign",
     "custom_row_QJcEQh",
     "media_with_text_6Xe8JY",
     "media_with_text_4bfqwW"
