@@ -1190,9 +1190,12 @@ button.btn--secondary:focus {
 }
 
 /* ---- 13. Header / main navigation (sections/header.liquid) --- */
-/* 2026 redesign, DESKTOP ONLY — mobile keeps the theme's existing
-   header and drawer untouched. One header, two states, driven by the
-   classes the header's state-machine script puts on <html>:
+/* 2026 redesign, WIDE DESKTOP ONLY (>=1150px) — below that the
+   theme's stock header with the burger + mobile drawer applies
+   (forced into burger mode between 768-1149.98px; true mobile
+   header below 768px stays untouched). One header, two states,
+   driven by the classes the header's state-machine script puts on
+   <html>:
      hero state  (.tfr-has-hero:not(.tfr-past-hero)) — header sits
        transparent over the hero: full-width wordmark, white text.
      docked state (.tfr-past-hero, and every page without a hero) —
@@ -1241,17 +1244,34 @@ button.btn--secondary:focus {
   align-items: center;
 }
 
-/* Mobile: the hero fills exactly the viewport minus the announcement
-   bar and header (both in normal flow above it). --theme-header-height
-   is maintained live by theme.js; !important matches the hero
-   section's ID-scoped inline {% style %} that sets 100svh. */
-@media (max-width: 767.98px) {
+/* Below the 1150px redesign breakpoint: the hero fills exactly the
+   viewport minus the announcement bar and header (both in normal
+   flow above it). --theme-header-height is maintained live by
+   theme.js; !important matches the hero section's ID-scoped inline
+   {% style %} that sets 100svh. */
+@media (max-width: 1149.98px) {
   .cc-hero-banner .height--fixed {
     --image-height: calc(100svh - var(--tfr-announce-h) - var(--theme-header-height, 44px)) !important;
   }
 }
 
-@media (min-width: 768px) {
+/* 768-1149.98px: no redesign header at all — the theme's stock bar
+   opening the mobile drawer. Burger mode is forced regardless of the
+   inline-permitted class the fit-measurement script toggles; doubled
+   classes out-specify the theme's own mode rules either way. */
+@media (min-width: 768px) and (max-width: 1149.98px) {
+  .pageheader .logo-area .mobile-nav-toggle.mobile-nav-toggle {
+    display: inline-block;
+    height: auto;
+  }
+  .pageheader .navigation--desktop.navigation--desktop {
+    position: absolute;
+    visibility: hidden;
+    pointer-events: none;
+  }
+}
+
+@media (min-width: 1150px) {
   /* Announcement bar: always pinned at the very top. */
   .shopify-section.section-announcement-bar {
     position: sticky;
@@ -1295,7 +1315,10 @@ button.btn--secondary:focus {
   .pageheader .logo-area .mobile-nav-toggle.mobile-nav-toggle {
     display: none;
   }
-  .pageheader:not(.pageheader--layout-inline-permitted) .navigation--desktop {
+  /* Doubled class out-specifies the theme's burger-mode hide rule
+     (.pageheader:not(.pageheader--layout-inline-permitted)
+     .navigation). */
+  .pageheader .navigation--desktop.navigation--desktop {
     position: static;
     visibility: visible;
     pointer-events: auto;
@@ -1510,4 +1533,21 @@ button.btn--secondary:focus {
       opacity: 1;
     }
   }
+}
+
+/* ---- 14. Mobile drawer navigation type ----------------------- */
+/* Mirror the desktop nav: tiers 1 and 2 in the Black heading cut,
+   tier 3 and promo/body copy in body mono. (Tier-2 column titles
+   already carry .heading-font.) The base rule un-does the system-ui
+   stack styles.css puts on bare .navigation, which everything
+   without an explicit family (menu-promotion__text, rte) fell
+   back to. */
+.mobile-navigation-drawer .navigation {
+  font-family: var(--font-body);
+}
+.mobile-navigation-drawer .navigation__link {
+  font-family: var(--font-heading);
+}
+.mobile-navigation-drawer .navigation__tier-3 .navigation__link {
+  font-family: var(--font-body);
 }
