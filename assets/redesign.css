@@ -51,6 +51,12 @@
   line-height: var(--caption-lh);
 }
 
+.heading-1 {
+  font-family: var(--font-heading);
+  font-size: 48px;
+  line-height: 48px;
+}
+
 /* Reusable heading-2 (Figma TFR_Header2): 32px / 32px, ABC Favorit
    Mono Black. */
 .heading-2 {
