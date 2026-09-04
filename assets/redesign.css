@@ -73,6 +73,7 @@
   font-family: var(--font-heading);
   font-size: 18px;
   line-height: 21px;
+  text-transform: uppercase;
 }
 
 /* ---- 2. @font-face: ABC Favorit Mono ----------------------- */
