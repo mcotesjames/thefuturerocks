@@ -1220,16 +1220,31 @@ button.btn--secondary:focus {
   margin-top: 0;
 }
 
-/* Fixed announcement-bar height at all widths (45px desktop, 42px
-   mobile) — consumed as the docked/hero header top offset on desktop
-   and by the mobile hero-height calc below. Inner chain stretched to
-   fill it. */
+/* Fixed announcement-bar height at all widths (45px on wide desktop,
+   42px below the 1150px header breakpoint) — consumed as the
+   docked/hero header top offset on wide desktop and by the
+   hero-height calc below. Inner chain stretched to fill it. */
 :root {
   --tfr-announce-h: 45px;
 }
-@media (max-width: 767.98px) {
+@media (max-width: 1149.98px) {
   :root {
     --tfr-announce-h: 42px;
+  }
+}
+/* 768-1149.98px: the bar flips to its mobile presentation together
+   with the header — announcement text only. Below 768px the theme's
+   .desktop-only utility hides these side columns anyway. */
+@media (min-width: 768px) and (max-width: 1149.98px) {
+  .announcement-bar .announcement-bar__left,
+  .announcement-bar .announcement-bar__right {
+    display: none;
+  }
+  /* The hidden side columns still count as :first/:last-child, so the
+     theme's desktop max-width: 50% on the middle would pin the text
+     to the bar's left half — let it fill like on mobile. */
+  .announcement-bar__middle:not(:first-child):not(:last-child) {
+    max-width: none;
   }
 }
 .shopify-section.section-announcement-bar {
@@ -1268,6 +1283,14 @@ button.btn--secondary:focus {
     position: absolute;
     visibility: hidden;
     pointer-events: none;
+  }
+  /* Drawer footer (inline menu + locale selectors + social links,
+     cloned from the announcement bar by theme.js) comes in with the
+     drawer — styles.css hides it from 768px up, which would leave
+     those options unreachable now the announcement bar's right side
+     is gone below 1150px. */
+  .mobile-navigation-drawer__footer {
+    display: block;
   }
 }
 
