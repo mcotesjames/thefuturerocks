@@ -1196,9 +1196,9 @@ button.btn--secondary:focus {
 }
 
 /* ---- 13. Header / main navigation (sections/header.liquid) --- */
-/* 2026 redesign, WIDE DESKTOP ONLY (>=1150px) — below that the
+/* 2026 redesign, WIDE DESKTOP ONLY (>=1370px) — below that the
    theme's stock header with the burger + mobile drawer applies
-   (forced into burger mode between 768-1149.98px; true mobile
+   (forced into burger mode between 768-1369.98px; true mobile
    header below 768px stays untouched). One header, two states,
    driven by the classes the header's state-machine script puts on
    <html>:
@@ -1227,21 +1227,21 @@ button.btn--secondary:focus {
 }
 
 /* Fixed announcement-bar height at all widths (45px on wide desktop,
-   42px below the 1150px header breakpoint) — consumed as the
+   42px below the 1370px header breakpoint) — consumed as the
    docked/hero header top offset on wide desktop and by the
    hero-height calc below. Inner chain stretched to fill it. */
 :root {
   --tfr-announce-h: 45px;
 }
-@media (max-width: 1149.98px) {
+@media (max-width: 1369.98px) {
   :root {
     --tfr-announce-h: 42px;
   }
 }
-/* 768-1149.98px: the bar flips to its mobile presentation together
+/* 768-1369.98px: the bar flips to its mobile presentation together
    with the header — announcement text only. Below 768px the theme's
    .desktop-only utility hides these side columns anyway. */
-@media (min-width: 768px) and (max-width: 1149.98px) {
+@media (min-width: 768px) and (max-width: 1369.98px) {
   .announcement-bar .announcement-bar__left,
   .announcement-bar .announcement-bar__right {
     display: none;
@@ -1265,22 +1265,22 @@ button.btn--secondary:focus {
   align-items: center;
 }
 
-/* Below the 1150px redesign breakpoint: the hero fills exactly the
+/* Below the 1370px redesign breakpoint: the hero fills exactly the
    viewport minus the announcement bar and header (both in normal
    flow above it). --theme-header-height is maintained live by
    theme.js; !important matches the hero section's ID-scoped inline
    {% style %} that sets 100svh. */
-@media (max-width: 1149.98px) {
+@media (max-width: 1369.98px) {
   .cc-hero-banner .height--fixed {
     --image-height: calc(100svh - var(--tfr-announce-h) - var(--theme-header-height, 44px)) !important;
   }
 }
 
-/* 768-1149.98px: no redesign header at all — the theme's stock bar
+/* 768-1369.98px: no redesign header at all — the theme's stock bar
    opening the mobile drawer. Burger mode is forced regardless of the
    inline-permitted class the fit-measurement script toggles; doubled
    classes out-specify the theme's own mode rules either way. */
-@media (min-width: 768px) and (max-width: 1149.98px) {
+@media (min-width: 768px) and (max-width: 1369.98px) {
   .pageheader .logo-area .mobile-nav-toggle.mobile-nav-toggle {
     display: inline-block;
     height: auto;
@@ -1294,13 +1294,13 @@ button.btn--secondary:focus {
      cloned from the announcement bar by theme.js) comes in with the
      drawer — styles.css hides it from 768px up, which would leave
      those options unreachable now the announcement bar's right side
-     is gone below 1150px. */
+     is gone below 1370px. */
   .mobile-navigation-drawer__footer {
     display: block;
   }
 }
 
-@media (min-width: 1150px) {
+@media (min-width: 1370px) {
   /* Announcement bar: always pinned at the very top. */
   .shopify-section.section-announcement-bar {
     position: sticky;
