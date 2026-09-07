@@ -1749,7 +1749,13 @@
       "preorder": "선주문",
       "product_unavailable": "이 제품은 사용할 수 없습니다",
       "backorder": ": 주문 제작 제품으로 제작이 완료되는대로 배송됩니다. ",
-      "size_chart": "사이즈 가이드"
+      "size_chart": "사이즈 가이드",
+      "details": {
+        "title": "Product Details"
+      },
+      "shipping": {
+        "title": "Shipping"
+      }
     },
     "labels": {
       "new_in": "새로운",

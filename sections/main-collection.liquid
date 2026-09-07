@@ -89,7 +89,7 @@
 
         {%- if section.settings.heading_layout == 'card' -%}
            {% if paginate.current_offset == 0 %}
-          <div class="product-block product-block--mobile-wide {{ paginate.current_offset  }}">
+          <div class="product-block product-block--mobile-wide product-block__info-card {{ paginate.current_offset  }}">
             <div class="product-list-heading-block card-scheme card-scheme--{{ section.settings.color_scheme }} card-br-oh card-br-oh--no-isolate height--cover page-header page-header--with-background {% if header_image_enabled %}image-overlay image-overlay--bg-{{ section.settings.overlay_style }}{% endif %}{% if section.settings.heading_card_filter_button %} product-list-heading-block--toggle-btn-button-style{% endif %}">
               {%- if header_image_enabled -%}
                 {%- render 'background-image', image: collection.image, eager: true -%}

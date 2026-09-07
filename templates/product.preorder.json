@@ -1,1 +1,76 @@
-{"sections":{"main":{"type":"main-product","blocks":{"title":{"type":"title","settings":{}},"price":{"type":"price","settings":{}},"vendor":{"type":"vendor","settings":{}},"divider":{"type":"divider","settings":{}},"variant_picker":{"type":"variant_picker","settings":{}},"buy_buttons":{"type":"buy_buttons","settings":{}},"description":{"type":"description","settings":{}}},"block_order":["title","price","vendor","divider","variant_picker","buy_buttons","description"],"settings":{}},"related-products":{"type":"related-products","settings":{}}},"order":["main","related-products"]}
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "vendor": {
+          "type": "vendor",
+          "settings": {}
+        },
+        "divider": {
+          "type": "divider",
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {}
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
+        "shipping_row_ships": {
+          "type": "shipping_row",
+          "settings": {
+            "heading": "Ships on or before",
+            "content": "<p><strong>Why isn't my order shipped immediately upon payment?</strong></p><p>With a socially conscious vision and an unwavering commitment to sustainability, we encourage our community of creatives and designers not to overproduce and operate on a made-to-order basis. In light of that, we hope you'd be patient with your order and allow extra time for our creators to craft the jewelry that will stand the test of time.</p>"
+          }
+        },
+        "shipping_row_transit": {
+          "type": "shipping_row",
+          "settings": {
+            "heading": "Estimated time in transit",
+            "content": "<p>7 days</p>"
+          }
+        },
+        "dropdowns_anchor": {
+          "type": "dropdowns_anchor",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "title",
+        "price",
+        "vendor",
+        "divider",
+        "variant_picker",
+        "buy_buttons",
+        "description",
+        "shipping_row_ships",
+        "shipping_row_transit",
+        "dropdowns_anchor"
+      ],
+      "settings": {}
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "related-products"
+  ]
+}

@@ -191,7 +191,13 @@
       "product_unavailable": "Ikke Tilgængelig",
       "backorder": "er på bestilling og sendes så snart den er tilbage på lager",
       "unit_price_separator": " / ",
-      "size_chart": "Skostørrelse diagram"
+      "size_chart": "Skostørrelse diagram",
+      "details": {
+        "title": "Product Details"
+      },
+      "shipping": {
+        "title": "Shipping"
+      }
     },
     "variant": {
       "no_stock": "Udsolgt",

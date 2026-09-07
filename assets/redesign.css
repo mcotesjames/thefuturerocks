@@ -27,15 +27,24 @@
   --font-grotesk: "Space Grotesk", "Helvetica Neue", Arial, sans-serif;
 
   /* Module spacing convention (see section 6):
-     no top padding, 80px bottom (60px on mobile), 120px inline on
-     large screens. */
-  --module-pad-inline: 120px;
+     no top padding, 80px bottom (60px on mobile), 5% inline on
+     large screens (matches the PDP product-detail's 5% margins). */
+  --module-pad-inline: 5%;
   --module-pad-bottom: 80px;
   --module-title-mb: 60px;
 
   /* Caption: reusable small-label type (vendor, price, meta). */
   --caption-size: 10px;
   --caption-lh: 10px;
+
+  /* Brand palette — values match the Figma foundations file. Grey
+     is muted/inactive text (breadcrumb ancestors). */
+  --color-black: #000000;
+  --color-white: #FFFFFF;
+  --color-green: #00D200;
+  --color-grey: #B2B2B2;
+  --color-grey-dark: #808080;
+  --color-cream: #F8F8EC;
 }
 
 @media (max-width: 767.98px) {
@@ -49,6 +58,14 @@
 .caption {
   font-size: var(--caption-size);
   line-height: var(--caption-lh);
+}
+
+/* Reusable body-2: 12px / 14px Space Grotesk (variant picker rows,
+   small UI copy). */
+.body-2 {
+  font-family: var(--font-grotesk);
+  font-size: 12px;
+  line-height: 14px;
 }
 
 .heading-1 {
@@ -253,8 +270,8 @@ button.btn--secondary:focus {
 .btn.btn--secondary.btn--secondary-light,
 .btn.btn--secondary.btn--secondary-light:hover,
 .btn.btn--secondary.btn--secondary-light:focus {
-  background: #fff;
-  color: #000;
+  background: var(--color-white);
+  color: var(--color-black);
 }
 
 /* Underline on the label span — the base button forces
@@ -278,17 +295,21 @@ button.btn--secondary:focus {
    this is scoped to each section's wrapper class rather than set
    globally). Colour-block modules get padding-bottom only. */
 
-/* Featured collection */
-.section-featured-collection {
+/* Featured collection — and the PDP related-products module, which
+   mirrors it (same header, title, carousel treatment). */
+.section-featured-collection,
+.section-related-products {
   padding-top: 0;
   padding-bottom: var(--module-pad-bottom);
 }
-.section-featured-collection .cc-carousel.card-margin {
+.section-featured-collection .cc-carousel.card-margin,
+.section-related-products .cc-carousel.card-margin {
   margin-top: 0;
 }
 /* Title row: heading left + "view all" CTA right, one row at all
    sizes. Shared by the logo-carousel module (heading only, no CTA). */
 .section-featured-collection .section-header,
+.section-related-products .section-header,
 .section-logo-carousel .section-header {
   display: flex;
   align-items: baseline;
@@ -298,6 +319,7 @@ button.btn--secondary:focus {
   padding: 0 20px;
 }
 .section-featured-collection .section-title,
+.section-related-products .section-title,
 .section-logo-carousel .section-title {
   text-align: left;
   margin: 0;
@@ -311,10 +333,12 @@ button.btn--secondary:focus {
 }
 @media (min-width: 1280px) {
   .section-featured-collection .section-header,
+  .section-related-products .section-header,
   .section-logo-carousel .section-header {
     padding: 0 var(--module-pad-inline);
   }
-  .section-featured-collection .cc-carousel--mobile-only .product-list.cc-carousel__scroll-area {
+  .section-featured-collection .cc-carousel--mobile-only .product-list.cc-carousel__scroll-area,
+  .section-related-products .cc-carousel--mobile-only .product-list.cc-carousel__scroll-area {
     padding-block: 0;
     padding-left: var(--module-pad-inline);
     padding-right: var(--module-pad-inline);
@@ -389,7 +413,7 @@ button.btn--secondary:focus {
     text-align: right;
   }
   .section-collection-list .collection-block .product-block__title {
-    color: #fff;
+    color: var(--color-white);
     text-decoration: underline;
     text-transform: uppercase;
   }
@@ -469,6 +493,11 @@ button.btn--secondary:focus {
 .product-block {
   padding-left: var(--site-gutter, 8px);
   margin-bottom: var(--site-gutter, 8px);
+  padding-bottom: 20px;
+}
+
+.product-block__info-card {
+  padding-bottom: 0px;
 }
 /* Product info: left-aligned, position context for the absolute
    swatches, and an even 8px gap between every element (vendor, title,
@@ -564,7 +593,7 @@ button.btn--secondary:focus {
    black border, and a 4px gap between items. */
 .product-block .product-block-options__item {
   margin: 0;
-  border: 1px solid #000;
+  border: 1px solid var(--color-black);
 }
 .product-block-options__inner.cc-carousel__scroll-area {
   gap: 4px;
@@ -659,8 +688,8 @@ button.btn--secondary:focus {
 /* Trending badge — black background, brand-green text. Other badge
    colours remain hardcoded in styles.css. */
 .product-label--trending > span {
-  background: #000;
-  color: #00d200;
+  background: var(--color-black);
+  color: var(--color-green);
   font-weight: 400;
 }
 
@@ -750,8 +779,8 @@ button.btn--secondary:focus {
   /* Keeps the media pinned to the far edge when the text column
      hits its max-width cap. */
   justify-content: space-between;
-  background: var(--twm-bg, #00d200);
-  color: var(--twm-text, #000);
+  background: var(--twm-bg, var(--color-green));
+  color: var(--twm-text, var(--color-black));
   /* No spacing below: the following module owns the gap (quick-links
      carries it as top padding, dropped on mobile so the two touch). */
 }
@@ -891,7 +920,7 @@ button.btn--secondary:focus {
   gap: 5px;
   padding: var(--site-gutter);
   text-align: left;
-  color: var(--ql-text, #fff);
+  color: var(--ql-text, var(--color-white));
 }
 .quick-links__title,
 .quick-links__text {
@@ -974,15 +1003,15 @@ button.btn--secondary:focus {
 
 /* ---- 12. Footer (sections/footer.liquid) --------------------- */
 /* 2026 rebuild. Colours are Customizer settings (--footer-bg /
-   --footer-text, defaults #F8F8EC on #000). Desktop: newsletter left
+   --footer-text, defaults cream on black). Desktop: newsletter left
    / three menu columns right; socials left / Butterfly Mark right;
    legal + copyright left / large logo right. Mobile: single column,
    menus stay 3-up, butterfly loses its text, logo is hidden, and the
    country/language selectors appear below a rule (they are mobile-
    only per the design — desktop omission is with the designer). */
 .footer-rd {
-  background: var(--footer-bg, #f8f8ec);
-  color: var(--footer-text, #000);
+  background: var(--footer-bg, var(--color-cream));
+  color: var(--footer-text, var(--color-black));
   padding: 40px var(--site-gutter) var(--site-gutter);
 }
 .footer-rd a {
@@ -1447,11 +1476,11 @@ button.btn--secondary:focus {
   /* !important matches the originals (styles.css ~4052 hardcodes the
      old #009e2d green + a green-block hover with !important). */
   .navigation--desktop .navigation__tier-1 > .featured-link > .navigation__link {
-    color: #00d200 !important;
+    color: var(--color-green) !important;
   }
   .navigation--desktop .navigation__tier-1 > .featured-link > .navigation__link:hover {
     background: transparent !important;
-    color: #00d200 !important;
+    color: var(--color-green) !important;
   }
 
   /* ---- Hero state: transparent overlay on the hero banner. ---- */
@@ -1463,14 +1492,14 @@ button.btn--secondary:focus {
   }
   .tfr-has-hero:not(.tfr-past-hero) .pageheader {
     background: transparent;
-    color: #fff;
+    color: var(--color-white);
   }
   .tfr-has-hero:not(.tfr-past-hero) .pageheader .navigation__link,
   .tfr-has-hero:not(.tfr-past-hero) .pageheader .logo__link,
   .tfr-has-hero:not(.tfr-past-hero) .pageheader .header-account-link,
   .tfr-has-hero:not(.tfr-past-hero) .pageheader .show-search-link,
   .tfr-has-hero:not(.tfr-past-hero) .pageheader .cart-link {
-    color: #fff;
+    color: var(--color-white);
   }
   /* Full-bleed wordmark over the hero. Every ancestor between the
      grid area and the svg must be a stretched block — any inline-block
@@ -1492,7 +1521,7 @@ button.btn--secondary:focus {
   }
   /* Keep the green featured link legible on imagery too. */
   .tfr-has-hero:not(.tfr-past-hero) .pageheader .featured-link > .navigation__link {
-    color: #00d200 !important;
+    color: var(--color-green) !important;
   }
 
   /* Mega menu panel: no top padding (the theme reserves
@@ -1533,8 +1562,8 @@ button.btn--secondary:focus {
      Instant — no transition. */
   .tfr-has-hero:not(.tfr-past-hero) .shopify-section.section-header:has(.navigation--desktop .navigation__link:hover) .pageheader,
   .tfr-has-hero:not(.tfr-past-hero) .shopify-section.section-header--nav-open .pageheader {
-    background: #fff;
-    color: #000;
+    background: var(--color-white);
+    color: var(--color-black);
   }
   .tfr-has-hero:not(.tfr-past-hero) .shopify-section.section-header:has(.navigation--desktop .navigation__link:hover) .pageheader .navigation__link,
   .tfr-has-hero:not(.tfr-past-hero) .shopify-section.section-header:has(.navigation--desktop .navigation__link:hover) .pageheader .logo__link,
@@ -1546,7 +1575,7 @@ button.btn--secondary:focus {
   .tfr-has-hero:not(.tfr-past-hero) .shopify-section.section-header--nav-open .pageheader .header-account-link,
   .tfr-has-hero:not(.tfr-past-hero) .shopify-section.section-header--nav-open .pageheader .show-search-link,
   .tfr-has-hero:not(.tfr-past-hero) .shopify-section.section-header--nav-open .pageheader .cart-link {
-    color: #000;
+    color: var(--color-black);
   }
 
   /* ---- Docked state entrance. ---- */
@@ -1580,4 +1609,520 @@ button.btn--secondary:focus {
 }
 .mobile-navigation-drawer .navigation__tier-3 .navigation__link {
   font-family: var(--font-body);
+}
+
+/* ---- 15. Collection page header (product-list-heading-block) - */
+/* The heading card used by main-collection (and the product-list /
+   featured-collection variants). */
+.product-list-heading-block__text {
+  padding: var(--site-gutter);
+}
+/* Collection title takes heading-2 (32/32 Favorit Mono Black) —
+   scoped tighter than the styles.css base rule so it wins the tie. */
+.product-list-heading-block .overlay-text__title {
+  font-family: var(--font-heading);
+  font-size: 32px;
+  line-height: 32px;
+}
+
+/* ---- 16. PDP sticky columns (sections/main-product.liquid) --- */
+/* position:sticky on the product-detail columns only engages if no
+   ancestor between them and the viewport is a scroll container. Two
+   styles.css rules create one: `.cc-animate-enabled .shopify-section
+   {overflow:hidden}` (clips the reveal-animation translate) and
+   `.main-container {overflow-x:hidden}` (an x-hidden box computes
+   overflow-y to auto). `clip` keeps the same clipping without
+   creating a scroll container, so the sticky works. */
+/* --sticky-top is set per column by the script in main-product.liquid:
+   the header offset when the column fits the viewport, or a negative
+   offset for a column taller than the viewport, so it scrolls to its
+   own bottom edge (last image row / final accordion) before pinning. */
+.sticky-content-container {
+  position: -webkit-sticky;
+  position: sticky;
+  top: var(--sticky-top, calc(50px + var(--theme-sticky-header-height)));
+}
+
+.cc-animate-enabled .shopify-section.section-main-product {
+  overflow: clip;
+}
+/* Module rhythm: the PDP section closes with the standard module
+   bottom padding (section 6 convention). */
+.shopify-section.section-main-product {
+  padding-bottom: var(--module-pad-bottom);
+}
+.main-container {
+  overflow-x: clip;
+}
+
+/* ---- 17. PDP breadcrumb (snippets/breadcrumb.liquid) --------- */
+/* Caption-size Space Grotesk trail above the product columns —
+   ancestor crumbs in brand grey, current page black. Normal flow
+   (no sticky), so it scrolls away with the page. Inline margins
+   mirror the .template-product .product-detail container margins
+   (styles.css ~10346) plus the gallery's own 8px, so the trail
+   left-aligns with the gallery edge at every breakpoint. */
+.template-product .main-container .product-detail {
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 50px;
+}
+.breadcrumb {
+  font-family: var(--font-grotesk);
+  font-size: var(--caption-size);
+  line-height: var(--caption-lh);
+  text-transform: uppercase;
+  color: var(--color-grey);
+  margin: 50px 8px 0;
+}
+@media (max-width: 767.98px) {
+  .breadcrumb {
+    margin-top: 10px;
+  }
+}
+@media (min-width: 768px) {
+  .breadcrumb {
+    margin-inline: 30px;
+  }
+}
+@media (min-width: 1040px) {
+  .breadcrumb {
+    margin-inline: 52px;
+  }
+}
+@media (min-width: 1280px) {
+  .breadcrumb {
+    margin-inline: calc(5% + 8px);
+  }
+}
+@media (min-width: 2160px) {
+  .breadcrumb {
+    margin-inline: calc(20% + 8px);
+  }
+}
+/* Double-class selectors: `a:link {color:#1b2b27}` (styles.css ~2673)
+   is (0,1,1) and outguns a lone class, so the crumbs need (0,2,0). */
+.breadcrumb .breadcrumb__link {
+  color: var(--color-grey);
+}
+.breadcrumb .breadcrumb__link:hover {
+  color: var(--color-black);
+}
+.breadcrumb__sep {
+  margin: 0 0.4em;
+}
+.breadcrumb__current {
+  color: var(--color-black);
+}
+
+/* ---- 18. Mobile gallery (sections/main-product.liquid) ------- */
+/* The carousel keeps the theme's slick behaviour; this restyles it:
+   full-bleed images and a green progress bar instead of the
+   thumbnail strip. Desktop (the two-column grid) is untouched. */
+@media (max-width: 767.98px) {
+  /* Full bleed: cancel the gallery's own 8px margin plus whatever
+     inline margins/padding any wrapper adds (the 50%-50vw trick
+     recentres the box on the viewport, so it holds even if the
+     wrapper margins change). Safe against x-overflow because
+     .main-container is overflow-x: clip (section 16). */
+  .template-product .product-detail .gallery {
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-inline: calc(50% - 50vw);
+  }
+  /* Bar sits flush against the image's bottom edge. */
+  .template-product .product-detail .gallery .main-image {
+    margin-bottom: 0;
+  }
+  /* Thumbnail strip retired in favour of the progress bar. */
+  .template-product .product-detail .gallery .cc-carousel.mobile-only {
+    display: none !important;
+  }
+}
+
+/* Track: brand green at 10%. Hidden on desktop, where the grid has
+   no carousel position to report. */
+.gallery-progress {
+  display: none;
+  height: 4px;
+  background: color-mix(in srgb, var(--color-green) 10%, transparent);
+  overflow: hidden;
+}
+@media (max-width: 767.98px) {
+  .gallery-progress {
+    display: block;
+  }
+}
+/* Fill: width and translateX are set inline by the script in
+   main-product.liquid (width = 100% / image count, offset = current
+   slide index x own width). */
+.gallery-progress__bar {
+  height: 100%;
+  width: 100%;
+  background: var(--color-green);
+}
+
+/* ---- 19. PDP detail column (sections/main-product.liquid) ---- */
+/* Block order (vendor > title > price) lives in the product
+   templates' block_order, not here. */
+
+/* Form loses the off-card-container's 16px inline padding; the
+   column's own margins set the inset instead. */
+.product-detail .product-form {
+  padding-left: 0;
+  padding-right: 0;
+}
+.product-detail .detail {
+  margin-inline: 12px;
+}
+/* Mobile: the stacked detail column sits 5% below the gallery and
+   runs full-bleed (the 12px inset comes off); the whole product
+   area starts 10px below the breadcrumb. */
+@media (max-width: 767.98px) {
+  .template-product .main-container .product-detail {
+    margin-top: 10px;
+  }
+  .product-detail .product-column-right {
+    margin-top: 5%;
+  }
+  .product-detail .detail {
+    margin-inline: 0;
+  }
+}
+
+/* Vendor row (now above the title) and the remaining
+   .product-detail-label uses (e.g. SKU) are set in uppercase. */
+.product-detail .vendor {
+  text-transform: uppercase;
+}
+
+/* Product labels (NEW IN etc.) moved out of the gallery overlay:
+   the render call now sits inside .product-form, and since the form
+   is position:sticky (a positioned ancestor) the absolute container
+   anchors to the form's own top-right — travelling with it when the
+   column pins. Base rule (styles.css ~7289) sets all four inset
+   sides to 10px; this re-anchors it. */
+.product-detail .product-form .product-label-container {
+  inset: 0 0 auto auto;
+  align-items: flex-end;
+}
+/* Labels float over the form without reserving space; when any are
+   present, keep the (full-width) title clear of the badge column so
+   long product names wrap instead of running under a second badge. */
+.product-detail .product-form:has(.product-label) .title-row {
+  padding-inline-end: 100px;
+}
+/* PDP labels take the trending-badge treatment (section 7): black
+   ground, brand-green text; the square marker and mono font come
+   from the global .product-label rules. Out-guns the per-type
+   colour rules in styles.css (.product-label--new-in etc.). */
+.product-detail .product-form .product-label > span {
+  background: var(--color-black);
+  color: var(--color-green);
+  font-weight: 400;
+}
+
+/* Inventory-state messages by the buy buttons (made-to-order
+   backorder line, inventory-transfer notice): body-2 type on a
+   brand-green ground. No .hidden guard on the backorder — theme.js
+   reveals it with an inline display style while the class stays, and
+   a display:none element paints nothing anyway. The transfer keeps
+   its --none guard because JS empties it without hiding it. */
+.product-form .backorder,
+.product-form .product-inventory-transfer:not(.product-inventory-transfer--none) {
+  font-family: var(--font-grotesk);
+  font-size: 12px;
+  line-height: 14px;
+  background: var(--color-green);
+  color: var(--color-black);
+  padding: 10px;
+}
+.product-form .backorder p {
+  margin: 0;
+}
+
+/* Add-to-cart: flat green CTA. Selector mirrors the styles.css rule
+   (border + old-brand hover, ~7559) to tie and win by order. Hover
+   follows the section-4 CTA convention: colours invert. */
+.product-form .quantity-submit-row .quantity-submit-row__submit button[type=submit] {
+  border: none;
+  background: var(--color-green);
+  color: var(--color-black);
+  min-height: 32px;
+  padding-block: 10px;
+}
+.product-form .quantity-submit-row .quantity-submit-row__submit button[type=submit]:hover {
+  background-color: var(--color-black);
+  color: var(--color-green);
+}
+/* Mobile: taller tap target, height from min-height alone. */
+@media (max-width: 767.98px) {
+  .product-form .quantity-submit-row .quantity-submit-row__submit button[type=submit] {
+    min-height: 48px;
+    padding-block: 0;
+  }
+}
+
+/* Even 10px rhythm through vendor > title > price. The price
+   selector mirrors the styles.css rule (20px 0 10px, min-768) to
+   tie at (0,4,0) and win by order. */
+.product-detail .detail .vendor {
+  margin: 0;
+}
+.product-detail .detail .title-row {
+  margin: 10px 0 0;
+}
+.product-detail .detail .title {
+  margin: 0;
+}
+.template-product .main-container .detail .price-container {
+  margin: 10px 0 0;
+}
+.product-detail-label {
+  text-transform: uppercase;
+}
+
+/* Price takes heading-3 (18/21 Favorit Mono Black, uppercase).
+   Four-class selector: the styles.css PDP block pins .price at 16px
+   with .template-product .main-container .detail .price, so this
+   must tie it (0,4,0) and win by order. */
+.product-detail .detail .price-container .price {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  line-height: 21px;
+  text-transform: uppercase;
+}
+
+/* Desktop: both columns start at the same y — the gallery drops its
+   8px top margin, the detail its 20px. */
+@media (min-width: 768px) {
+  .product-detail .gallery {
+    margin-top: 0;
+  }
+  .product-detail .detail {
+    margin-top: 0;
+  }
+}
+
+/* ---- 20. PDP variant picker (snippets/variant-picker.liquid) - */
+/* Rebuilt "listed" radio picker. Each option is a full-width row
+   with a top rule; the last row also closes with a bottom rule. */
+.product-detail .option-selectors .option-selector {
+  border-top: 1px solid var(--color-black);
+  padding: 14px 0 18px;
+  margin: 0;
+}
+.product-detail .option-selectors .option-selector:last-child {
+  border-bottom: 1px solid var(--color-black);
+}
+
+/* Header row: option name (bold), selected swatch value beside it,
+   ready-to-ship legend pushed right. */
+.option-selector__header {
+  display: flex;
+  align-items: baseline;
+}
+/* Header label and values take body-2 (12/14 Space Grotesk); the
+   selected swatch value takes proportional ABC Favorit at the same
+   size. */
+.product-detail .option-selector__header .label {
+  font-family: var(--font-grotesk);
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 14px;
+  color: var(--color-black);
+  margin: 0;
+}
+.option-selector__selected-value {
+  font-family: var(--font-favorit);
+  font-size: 12px;
+  line-height: 14px;
+  color: var(--color-black);
+  margin-inline-start: 32px;
+}
+.option-selector__legend {
+  font-family: var(--font-grotesk);
+  font-size: var(--caption-size);
+  line-height: var(--caption-lh);
+  color: var(--color-black);
+  margin-inline-start: auto;
+}
+
+/* Value rows: strip the theme's boxed chip styling back to text. */
+.product-detail .option-selector__btns {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 32px;
+  margin: 14px 0 0;
+}
+.product-detail .opt-label {
+  min-width: 0;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font-family: var(--font-grotesk);
+  font-size: 12px;
+  line-height: 14px;
+  color: var(--color-black);
+  cursor: pointer;
+}
+.product-detail .opt-btn:checked + .opt-label {
+  border: 0;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+/* A sole value (e.g. Carat "2ct") reads as plain text, not a choice. */
+.product-detail .opt-btn:only-of-type + .opt-label {
+  text-decoration: none;
+  cursor: default;
+}
+/* Unavailable values: brand grey, no strike-through artwork. */
+.product-detail .opt-btn.is-unavailable + .opt-label {
+  background-image: none;
+  color: var(--color-grey);
+}
+
+/* Swatch rows (Metal): circle only, name in the header instead.
+   The circle drops the ::before pattern's inherited sizing and the
+   colours come from swatches.css.liquid via --swatch-background-*. */
+.product-detail .option-selector--swatch .opt-label__text {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.swatch-style-listed .product-detail .option-selector--swatch .opt-label[data-swatch] {
+  width: auto;
+  padding: 0;
+}
+.swatch-style-listed .product-detail .option-selector--swatch [data-swatch]::before {
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  box-shadow: 0 0 0 1px var(--color-grey);
+}
+.swatch-style-listed .product-detail .option-selector--swatch .opt-btn:checked + [data-swatch]::before {
+  box-shadow: 0 0 0 1.5px var(--color-black);
+}
+/* Unavailable swatch keeps the theme's diagonal-line treatment but
+   in brand grey. */
+.product-detail .opt-btn.is-unavailable + .opt-label[data-swatch] {
+  --line-color: var(--color-grey);
+}
+
+/* ---- 21. PDP consolidated Product Details ------------------- */
+/* Toggle arrow: the redesign chevron replaces the theme's CSS
+   plus/minus (two ::before/::after bars on the summary). Scoped to
+   .consolidated-details so other accordions keep their icon. */
+.consolidated-details .cc-accordion-item__title::before,
+.consolidated-details .cc-accordion-item__title::after {
+  content: none;
+}
+.consolidated-details__arrow {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  display: inline-flex;
+  transition: transform 0.3s ease;
+}
+.consolidated-details__arrow svg {
+  width: 10px;
+  height: auto;
+}
+.cc-accordion-item[open]:not(.is-closing) .consolidated-details__arrow {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+/* Separators: 1px black top + bottom on each dropdown; an adjacent
+   pair shares a single line (the follower drops its top border).
+   The theme's -50px overlap hack between .detail-accordions
+   (styles.css ~9950) is neutralised, and any inner .cc-accordion
+   borders cleared so the wrapper lines are the only ones. */
+.product-detail .consolidated-details {
+  border-top: 1px solid var(--color-black);
+  border-bottom: 1px solid var(--color-black);
+  margin-top: 10px;
+}
+/* The delivery-date shortcode mount carries an inline -40px
+   margin-top hack that compensated for old row spacing (rows now
+   disabled) — it was dragging the accordion group upward.
+   !important is required to beat the inline style. */
+.product-form .delivery_date_shortcode {
+  margin-top: 0 !important;
+}
+.product-detail .consolidated-details + .consolidated-details {
+  border-top: none;
+  margin-top: 0;
+}
+/* Disclaimer under the dropdowns (anchor block's "Show disclaimer"
+   toggle): caption size/line-height, dark grey. */
+.product-info-dropdowns__disclaimer {
+  font-family: var(--font-grotesk);
+  font-size: var(--caption-size);
+  line-height: var(--caption-lh);
+  color: var(--color-grey-dark);
+  margin-top: 12px;
+}
+.product-info-dropdowns__disclaimer p {
+  margin: 0 0 0.5em;
+}
+.product-info-dropdowns__disclaimer p:last-child {
+  margin-bottom: 0;
+}
+
+.product-detail .consolidated-details .cc-accordion {
+  border-top: none;
+  border-bottom: none;
+  /* the theme gives .cc-accordion a 50px bottom margin — inside our
+     bordered wrapper it reads as dead space above the border */
+  margin-bottom: 0;
+}
+/* Compact title row in heading-3 (18/21 Favorit Mono Black,
+   uppercase), normalised to the type's own height plus even
+   padding. Scoped to the redesign dropdowns — other theme
+   accordions keep their own title styling. */
+.product-detail .consolidated-details .cc-accordion-item__title {
+  height: auto;
+  min-height: 0;
+  padding-block: 16px;
+  font-family: var(--font-heading);
+  font-size: 18px;
+  line-height: 21px;
+  text-transform: uppercase;
+}
+
+/* One dropdown holding every accordion block as a subsection
+   (main-product.liquid, "consolidate_accordions" section setting).
+   Subheads and body take Space Grotesk per the mock. */
+.consolidated-details__group {
+  margin: 0 0 24px;
+}
+.consolidated-details__group:last-child {
+  margin-bottom: 8px;
+}
+/* Triple-class selectors: the accordion body carries .rte, whose
+   typographic rules (.rte h4 etc.) outgun a lone class. */
+.consolidated-details .consolidated-details__group .consolidated-details__subheading {
+  font-family: var(--font-grotesk);
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 14px;
+  text-transform: uppercase;
+  color: var(--color-black);
+  margin: 0 0 8px;
+}
+.consolidated-details .consolidated-details__group .consolidated-details__body {
+  font-family: var(--font-grotesk);
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--color-black);
+}
+.consolidated-details .consolidated-details__group .consolidated-details__body p {
+  margin: 0 0 0.6em;
 }

@@ -137,7 +137,8 @@
             "page": "",
             "open": false,
             "show_in_quickbuy": true
-          }
+          },
+          "disabled": true
         },
         "custom_liquid_KAwH8z": {
           "type": "custom_liquid",
@@ -155,7 +156,8 @@
             "enable_box": false,
             "box_color": "#e0f4d5",
             "show_in_quickbuy": true
-          }
+          },
+          "disabled": true
         },
         "divider_frUPRe": {
           "type": "divider",
@@ -211,7 +213,8 @@
             "page": "",
             "open": false,
             "show_in_quickbuy": true
-          }
+          },
+          "disabled": true
         },
         "accordion_wQT4PD": {
           "type": "accordion",
@@ -222,7 +225,8 @@
             "page": "",
             "open": false,
             "show_in_quickbuy": true
-          }
+          },
+          "disabled": true
         },
         "accordion_wJyWkc": {
           "type": "accordion",
@@ -233,7 +237,8 @@
             "page": "",
             "open": false,
             "show_in_quickbuy": true
-          }
+          },
+          "disabled": true
         },
         "accordion_XniCXG": {
           "type": "accordion",
@@ -244,7 +249,8 @@
             "page": "",
             "open": false,
             "show_in_quickbuy": true
-          }
+          },
+          "disabled": true
         },
         "accordion_xQCYRD": {
           "type": "accordion",
@@ -255,7 +261,8 @@
             "page": "",
             "open": false,
             "show_in_quickbuy": true
-          }
+          },
+          "disabled": true
         },
         "accordion_kKLj48": {
           "type": "accordion",
@@ -266,7 +273,8 @@
             "page": "",
             "open": false,
             "show_in_quickbuy": true
-          }
+          },
+          "disabled": true
         },
         "image_WMbF9y": {
           "type": "image",
@@ -288,6 +296,52 @@
             "max_products": 10,
             "show_in_quickbuy": true
           }
+        },
+        "details_row_KykLQh": {
+          "type": "details_row",
+          "settings": {
+            "heading": "design",
+            "content": "<p>{{ product.metafields.custom.design | metafield_tag }}</p>"
+          }
+        },
+        "details_row_wQT4PD": {
+          "type": "details_row",
+          "settings": {
+            "heading": "material",
+            "content": "<p>{{ product.metafields.custom.material_1 | metafield_tag }}</p>"
+          }
+        },
+        "details_row_wJyWkc": {
+          "type": "details_row",
+          "settings": {
+            "heading": "dimensions",
+            "content": "<p>{{ product.metafields.custom.dimension | metafield_tag }}</p>"
+          }
+        },
+        "details_row_XniCXG": {
+          "type": "details_row",
+          "settings": {
+            "heading": "conscious practices",
+            "content": "<p>{{ product.metafields.custom.ethical_1 | metafield_tag }}</p>"
+          }
+        },
+        "shipping_row_ships": {
+          "type": "shipping_row",
+          "settings": {
+            "heading": "Ships on or before",
+            "content": "<p><strong>Why isn't my order shipped immediately upon payment?</strong></p><p>With a socially conscious vision and an unwavering commitment to sustainability, we encourage our community of creatives and designers not to overproduce and operate on a made-to-order basis. In light of that, we hope you'd be patient with your order and allow extra time for our creators to craft the jewelry that will stand the test of time.</p>"
+          }
+        },
+        "shipping_row_transit": {
+          "type": "shipping_row",
+          "settings": {
+            "heading": "Estimated time in transit",
+            "content": "<p>7 days</p>"
+          }
+        },
+        "dropdowns_anchor": {
+          "type": "dropdowns_anchor",
+          "settings": {}
         }
       },
       "block_order": [
@@ -312,13 +366,20 @@
         "richtext_C7gjga",
         "richtext_A7HF4e",
         "accordion_KykLQh",
+        "details_row_KykLQh",
         "accordion_wQT4PD",
+        "details_row_wQT4PD",
         "accordion_wJyWkc",
+        "details_row_wJyWkc",
         "accordion_XniCXG",
+        "details_row_XniCXG",
         "accordion_xQCYRD",
         "accordion_kKLj48",
         "image_WMbF9y",
-        "complementary_4PYwWD"
+        "complementary_4PYwWD",
+        "shipping_row_ships",
+        "shipping_row_transit",
+        "dropdowns_anchor"
       ],
       "custom_css": [],
       "settings": {

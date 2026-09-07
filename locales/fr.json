@@ -191,7 +191,13 @@
       "product_unavailable": "Non disponible",
       "backorder": "est en rupture de stock et sera envoyé dès qu'il sera disponible",
       "unit_price_separator": " / ",
-      "size_chart": "Tableau des tailles"
+      "size_chart": "Tableau des tailles",
+      "details": {
+        "title": "Product Details"
+      },
+      "shipping": {
+        "title": "Shipping"
+      }
     },
     "variant": {
       "no_stock": "Épuisé",

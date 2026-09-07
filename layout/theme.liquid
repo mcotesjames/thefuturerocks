@@ -75,6 +75,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     {{ type_highlight_font | font_face: font_display: 'fallback' }}
   </style>
 
+
+  {% render 'social-meta-tags' %}
+
+  {{ 'styles.css' | asset_url | stylesheet_tag: preload: true }}
+ {{ 'custom.css' | asset_url | stylesheet_tag: preload: true }}
+  <link rel="preload" href="{{ 'ABCFavoritMono-Regular.woff2' | asset_url }}" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="{{ 'ABCFavoritMono-Black.woff2' | asset_url }}" as="font" type="font/woff2" crossorigin>
+  {%- comment -%} Space Grotesk (Google Fonts) — exposed as --font-grotesk in redesign.css {%- endcomment -%}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk&display=swap" rel="stylesheet">
+  {{ 'redesign.css' | asset_url | stylesheet_tag: preload: true }}
+
   {%- comment -%} Redesign: theme settings exposed as CSS variables, consumed by redesign.css {%- endcomment -%}
   <style>
     :root {
@@ -90,19 +103,60 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .card-scheme--1 { --card-text: {{ settings.card_1_text }}; --card-text-secondary: {{ settings.card_1_text_secondary }}; }
     .card-scheme--2 { --card-text: {{ settings.card_2_text }}; --card-text-secondary: {{ settings.card_2_text_secondary }}; }
     .card-scheme--3 { --card-text: {{ settings.card_3_text }}; --card-text-secondary: {{ settings.card_3_text_secondary }}; }
+    {%- comment -%}
+      Card scheme vars re-wired to settings. The flattened styles.css
+      baked these in as constants (old brand colours), disconnecting the
+      Customizer. Formulas ported verbatim from the deleted
+      styles.css.liquid (commit f917d23): --bg prefers the gradient,
+      --text is an RGB triplet (consumed as rgb(var(--text))), headings
+      take the raw text colour, --btn-bg is text mixed 8% into bg.
+      Loaded after styles.css, so these win by order.
+    {%- endcomment -%}
+    {%- liquid
+      assign card_1_bg = settings.card_1_bg
+      assign card_1_head = settings.card_1_text
+      if settings.text_lighter_than_heading
+        assign card_1_text = settings.card_1_text | color_mix: card_1_bg, 80
+      else
+        assign card_1_text = settings.card_1_text
+      endif
+      assign card_2_bg = settings.card_2_bg
+      assign card_2_head = settings.card_2_text
+      if settings.text_lighter_than_heading
+        assign card_2_text = settings.card_2_text | color_mix: card_2_bg, 80
+      else
+        assign card_2_text = settings.card_2_text
+      endif
+      assign card_3_bg = settings.card_3_bg
+      assign card_3_head = settings.card_3_text
+      if settings.text_lighter_than_heading
+        assign card_3_text = settings.card_3_text | color_mix: card_3_bg, 80
+      else
+        assign card_3_text = settings.card_3_text
+      endif
+    -%}
+    .card-scheme--1,
+    .card-scheme-vars--1 {
+      --bg: {{ settings.card_1_bg_grad | default: card_1_bg }};
+      --text: {{ card_1_text | color_extract: "red" }}, {{ card_1_text | color_extract: "green" }}, {{ card_1_text | color_extract: "blue" }};
+      --headings: {{ card_1_head }};
+      --btn-bg: {{ card_1_text | color_mix: card_1_bg, 8 }};
+    }
+    .card-scheme--2,
+    .card-scheme-vars--2 {
+      --bg: {{ settings.card_2_bg_grad | default: card_2_bg }};
+      --text: {{ card_2_text | color_extract: "red" }}, {{ card_2_text | color_extract: "green" }}, {{ card_2_text | color_extract: "blue" }};
+      --headings: {{ card_2_head }};
+      --btn-bg: {{ card_2_text | color_mix: card_2_bg, 8 }};
+    }
+    .card-scheme--3,
+    .card-scheme-vars--3 {
+      --bg: {{ settings.card_3_bg_grad | default: card_3_bg }};
+      --text: {{ card_3_text | color_extract: "red" }}, {{ card_3_text | color_extract: "green" }}, {{ card_3_text | color_extract: "blue" }};
+      --headings: {{ card_3_head }};
+      --btn-bg: {{ card_3_text | color_mix: card_3_bg, 8 }};
+    }
   </style>
-
-  {% render 'social-meta-tags' %}
-
-  {{ 'styles.css' | asset_url | stylesheet_tag: preload: true }}
- {{ 'custom.css' | asset_url | stylesheet_tag: preload: true }}
-  <link rel="preload" href="{{ 'ABCFavoritMono-Regular.woff2' | asset_url }}" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="{{ 'ABCFavoritMono-Black.woff2' | asset_url }}" as="font" type="font/woff2" crossorigin>
-  {%- comment -%} Space Grotesk (Google Fonts) — exposed as --font-grotesk in redesign.css {%- endcomment -%}
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk&display=swap" rel="stylesheet">
-  {{ 'redesign.css' | asset_url | stylesheet_tag: preload: true }}
 
   {%- if settings.swatch_enabled and settings.swatch_value_list != blank -%}
     <link rel="stylesheet" href="{{ 'swatches.css' | asset_url }}" media="print" onload="this.media='all'">

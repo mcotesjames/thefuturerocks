@@ -12,10 +12,18 @@
     assign is_preorder_product = false
   endif
 
+  assign show_backorder_text = false
+  assign has_dropdowns_anchor = false
   for block in section.blocks
     if block.type == 'variant_picker' and block.settings.select_first_variant == false
       assign current_variant = product.selected_variant | default: false
       assign featured_media = product.featured_media
+    endif
+    if block.type == 'buy_buttons' and block.settings.show_backorder_text
+      assign show_backorder_text = true
+    endif
+    if block.type == 'dropdowns_anchor'
+      assign has_dropdowns_anchor = true
     endif
   endfor
 
@@ -38,6 +46,7 @@
 -%}
 
 <div data-section-type="main-product" data-components="accordion,custom-select,modal">
+  {% render 'breadcrumb', product: product, collection: collection %}
   <div class="product-detail quickbuy-content">
     <div class="gallery gallery--layout-{{ section.settings.gallery_layout }} gallery--size-{{ section.settings.gallery_size }} gallery--cards-{{ section.settings.image_cards }} card-scheme-vars--{{ settings.product_card_color_scheme }} product-column-left {% if product.media.size > 1 %}has-thumbnails{% endif %}"
       {% if product.metafields.theme.card_bg != blank %}style="--bg:{{ product.metafields.theme.card_bg }}"{% endif %}
@@ -94,7 +103,6 @@
             </button>
           {% endif %}
 
-          {% render 'product-label-detail', product: product, current_variant: current_variant %}
         </div>
 
         {% if product.media.size > 1 %}
@@ -121,12 +129,22 @@
               </div>
             </div>
           </cc-carousel>
+          {%- comment -%}
+            Mobile carousel progress bar (redesign.css section 18) —
+            replaces the thumbnail strip below 768px. Fill width and
+            position are driven by the script at the end of this file.
+          {%- endcomment -%}
+          <div class="gallery-progress" aria-hidden="true">
+            <div class="gallery-progress__bar"></div>
+          </div>
         {% endif %}
       </div>
     </div>
 
     <div class="detail product-column-right" data-cc-animate data-cc-animate-delay="0.2s">
       <div class="product-form off-card-container{% if section.settings.enable_sticky_columns %} sticky-content-container{% endif %}" data-ajax-add-to-cart="true" data-product-id="{{ product.id }}" data-enable-history-state="true">
+        {%- comment -%} Redesign: product labels (NEW IN etc.) anchor top-right of the form instead of overlaying the gallery — see redesign.css section 19 {%- endcomment -%}
+        {% render 'product-label-detail', product: product, current_variant: current_variant %}
         {%- assign product_form_present = false -%}
         {%- capture original_select -%}
           <select name="id" class="original-selector{% if product.variants.size == 1 %} hidden{% endif %}" aria-label="{{ 'products.product.selector_label' | t | escape }}">
@@ -320,8 +338,9 @@
                   assign vendor_url = product.vendor | url_for_vendor
                 endif
               -%}
+              {%- comment -%} Redesign: bare vendor name, no "Vendor:" label prefix {%- endcomment -%}
               <div class="vendor lightly-spaced-row" {{ block.shopify_attributes }}>
-                <span class="product-detail-label">{{ 'products.product.vendor' | t }}</span> {{ product.vendor | link_to: vendor_url, class: 'underline' }}
+                {{ product.vendor | link_to: vendor_url, class: 'underline' }}
               </div>
 
             {% when 'sku' %}
@@ -332,6 +351,10 @@
             {% when 'variant_picker' %}
               <div class="input-row" {{ block.shopify_attributes }}>
                 {% render 'variant-picker', section: section, product: product, block: block %}
+                {%- comment -%} Redesign: backorder message sits under the selectors, not by the buy buttons. Honours the buy_buttons block's show_backorder_text setting. {%- endcomment -%}
+                {%- if show_backorder_text -%}
+                  {% render 'backorder', product: product, variant: current_variant, location: 'product' %}
+                {%- endif -%}
               </div>
 
             {% when 'buy_buttons' %}
@@ -387,9 +410,7 @@
                         </script>
                       {% endif %}
 
-                      {% if block.settings.show_backorder_text == true %}
-                        {% render 'backorder', product: product, variant: current_variant, location: 'product' %}
-                      {% endif %}
+                      {%- comment -%} Redesign: backorder message moved to the variant_picker block {%- endcomment -%}
                     </div>
 
                     {%- unless block.settings.show_pickup_availability == false -%}
@@ -475,6 +496,62 @@
                     {%- endif -%}
                   {%- endcapture -%}
                   {% render 'accordion', allow_multi_open: true, add_content_class: 'rte cf', first_item_open: block.settings.open, item1_title: accordion_title, item1_content: content %}
+                </div>
+              {%- endif -%}
+
+            {% when 'dropdowns_anchor' %}
+              {%- comment -%}
+                Placement marker: the Shipping and Packaging + Product
+                Details dropdowns render here, so the client positions
+                them (and anything below) in the editor hierarchy.
+              {%- endcomment -%}
+              <div class="product-info-dropdowns" {{ block.shopify_attributes }}>
+                {% render 'product-info-dropdowns', section: section, product: product %}
+                {%- assign disclaimer_check = block.settings.disclaimer | strip_html | strip -%}
+                {%- if block.settings.show_disclaimer and disclaimer_check != blank -%}
+                  <div class="product-info-dropdowns__disclaimer">{{ block.settings.disclaimer }}</div>
+                {%- endif -%}
+              </div>
+
+            {% when 'details' %}
+              {%- comment -%}
+                Redesign: bespoke "Details" dropdown (styled in
+                redesign.css section 21). One collapsible built from an
+                intro plus up to five heading+content subsections; the
+                richtext settings accept dynamic sources, so the client
+                connects whichever product metafields they want per
+                slot. Empty slots skip; blank dropdowns don't render.
+              {%- endcomment -%}
+              {%- capture details_content -%}
+                {%- assign intro_check = block.settings.intro | strip_html | strip -%}
+                {%- if intro_check != blank -%}
+                  <div class="consolidated-details__group">
+                    <div class="consolidated-details__body">{{ block.settings.intro }}</div>
+                  </div>
+                {%- endif -%}
+                {%- for i in (1..5) -%}
+                  {%- liquid
+                    assign h_key = 'heading_' | append: i
+                    assign c_key = 'content_' | append: i
+                    assign sub_heading = block.settings[h_key]
+                    assign sub_content = block.settings[c_key]
+                    assign sub_check = sub_content | strip_html | strip
+                  -%}
+                  {%- if sub_check != blank -%}
+                    <div class="consolidated-details__group">
+                      {%- if sub_heading != blank -%}
+                        <h4 class="consolidated-details__subheading">{{ sub_heading | escape }}</h4>
+                      {%- endif -%}
+                      <div class="consolidated-details__body">{{ sub_content }}</div>
+                    </div>
+                  {%- endif -%}
+                {%- endfor -%}
+              {%- endcapture -%}
+              {%- assign details_check = details_content | strip_html | strip -%}
+              {%- if details_check != blank -%}
+                {%- assign details_title = block.settings.title | escape -%}
+                <div class="detail-accordion consolidated-details{% unless block.settings.show_in_quickbuy %} not-in-quickbuy{% endunless %}" {{ block.shopify_attributes }}>
+                  {% render 'accordion', allow_multi_open: true, add_content_class: 'rte cf', first_item_open: block.settings.open, item1_title: details_title, item1_content: details_content %}
                 </div>
               {%- endif -%}
 
@@ -777,6 +854,16 @@
           {% endcase %}
         {% endfor %}
 
+        {%- comment -%}
+          Redesign dropdowns: rendered at the "dropdowns_anchor"
+          block's position when one exists (client-controlled
+          placement in the editor); this is the fallback for
+          templates without an anchor block.
+        {%- endcomment -%}
+        {%- unless has_dropdowns_anchor -%}
+          {% render 'product-info-dropdowns', section: section, product: product %}
+        {%- endunless -%}
+
         {%- if product_form_present == false -%}
           <form class="product-purchase-form hidden" data-product-id="{{ product.id }}">
             {{- original_select -}}
@@ -839,6 +926,92 @@
         filter: brightness(0) invert(1); /* Converts image to white */
     }
 </style>
+
+<script>
+  /* Redesign sticky columns: a column taller than the viewport must
+     scroll to its own bottom edge before pinning (otherwise sticky
+     top clips its tail forever — e.g. the gallery's last image row).
+     Sets --sticky-top per column; redesign.css section 16 consumes
+     it, falling back to the plain header offset. */
+  (function () {
+    var cols = document.querySelectorAll('.product-detail .sticky-content-container');
+    if (!cols.length) return;
+    var setTops = function () {
+      var header = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--theme-sticky-header-height')) || 0;
+      var base = 50 + header;
+      cols.forEach(function (el) {
+        var overhang = el.offsetHeight - (window.innerHeight - base - 20);
+        el.style.setProperty('--sticky-top', (overhang > 0 ? base - overhang : base) + 'px');
+      });
+    };
+    if ('ResizeObserver' in window) {
+      var ro = new ResizeObserver(setTops);
+      cols.forEach(function (el) { ro.observe(el); });
+    }
+    window.addEventListener('resize', setTops);
+    setTops();
+  })();
+
+  /* Mobile carousel progress bar: fill = one slide's share of the
+     track (100% / image count), offset = current slide index. Bound
+     on DOMContentLoaded because jQuery/slick load deferred; slick's
+     events bubble, so delegation catches init however late it runs. */
+  (function () {
+    var progress = document.querySelector('.product-detail .gallery-progress__bar');
+    var slideshow = document.querySelector('.product-detail .product-slideshow');
+    if (!progress || !slideshow) return;
+    var render = function (index, count) {
+      progress.style.width = 100 / count + '%';
+      progress.style.transform = 'translateX(' + index * 100 + '%)';
+    };
+    render(0, slideshow.querySelectorAll('.slide').length || 1);
+    document.addEventListener('DOMContentLoaded', function () {
+      if (!window.jQuery) return;
+      jQuery(document).on('init reInit afterChange breakpoint', '.product-detail .product-slideshow', function (evt, slick, current) {
+        render(typeof current === 'number' ? current : slick.currentSlide || 0, slick.slideCount || 1);
+      });
+    });
+  })();
+
+  /* Variant picker: echo the checked swatch value into the option
+     row's header ("Metal — 18K Gold"), and recompute the size row's
+     ready-to-ship asterisks against the newly selected combination
+     (data from the [data-variant-rts-data] JSON in the picker). */
+  (function () {
+    var recomputeRts = function (selectors) {
+      var dataEl = selectors.querySelector('[data-variant-rts-data]');
+      if (!dataEl) return;
+      var variants;
+      try { variants = JSON.parse(dataEl.textContent); } catch (err) { return; }
+      var checked = [];
+      selectors.querySelectorAll('.option-selector[data-selector-type="listed"]').forEach(function (sel) {
+        var c = sel.querySelector('.opt-btn:checked');
+        checked[parseInt(sel.dataset.optionIndex, 10)] = c ? c.value : null;
+      });
+      selectors.querySelectorAll('.option-selector[data-rts]').forEach(function (sel) {
+        var idx = parseInt(sel.dataset.optionIndex, 10);
+        sel.querySelectorAll('.opt-btn').forEach(function (radio) {
+          var match = variants.find(function (v) {
+            return v.options.every(function (ov, i) {
+              if (i === idx) return ov === radio.value;
+              return checked[i] == null || ov === checked[i];
+            });
+          });
+          var star = radio.nextElementSibling && radio.nextElementSibling.querySelector('.opt-label__rts');
+          if (star) star.hidden = !(match && match.rts);
+        });
+      });
+    };
+    document.addEventListener('change', function (e) {
+      if (!e.target.classList || !e.target.classList.contains('opt-btn')) return;
+      var sel = e.target.closest('.option-selector');
+      var out = sel && sel.querySelector('[data-selected-value]');
+      if (out) out.textContent = e.target.value;
+      var selectors = e.target.closest('.option-selectors');
+      if (selectors) recomputeRts(selectors);
+    });
+  })();
+</script>
 
 {% schema %}
   {
@@ -1390,6 +1563,172 @@
             "id": "show_in_quickbuy",
             "label": "Show in quick buy",
             "default": true
+          }
+        ]
+      },
+      {
+        "type": "dropdowns_anchor",
+        "name": "Product info dropdowns",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "paragraph",
+            "content": "Placement marker: the Shipping and Packaging and Product Details dropdowns render at this position. Drag this block to move them; blocks placed below it render below the dropdowns."
+          },
+          {
+            "type": "checkbox",
+            "id": "show_disclaimer",
+            "label": "Show disclaimer",
+            "default": false
+          },
+          {
+            "type": "richtext",
+            "id": "disclaimer",
+            "label": "Disclaimer text",
+            "info": "Shown below the dropdowns when enabled."
+          }
+        ]
+      },
+      {
+        "type": "shipping_row",
+        "name": "Shipping & Packaging row",
+        "settings": [
+          {
+            "type": "paragraph",
+            "content": "Renders inside the Shipping and Packaging dropdown, in block order. Rows with no content are hidden automatically."
+          },
+          {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading"
+          },
+          {
+            "type": "richtext",
+            "id": "content",
+            "label": "Content"
+          }
+        ]
+      },
+      {
+        "type": "details_row",
+        "name": "Product Details row",
+        "settings": [
+          {
+            "type": "paragraph",
+            "content": "Renders inside the Product Details dropdown, in block order. Connect the content to a product metafield with the dynamic source button; rows with no value are hidden automatically."
+          },
+          {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading"
+          },
+          {
+            "type": "richtext",
+            "id": "content",
+            "label": "Content"
+          }
+        ]
+      },
+      {
+        "type": "details",
+        "name": "Details dropdown",
+        "settings": [
+          {
+            "type": "paragraph",
+            "content": "One dropdown built from an intro and up to five heading + content subsections. Connect content to product metafields with the dynamic source button."
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Product Details"
+          },
+          {
+            "type": "checkbox",
+            "id": "open",
+            "label": "Open by default",
+            "default": false
+          },
+          {
+            "type": "checkbox",
+            "id": "show_in_quickbuy",
+            "label": "Show in quick buy",
+            "default": false
+          },
+          {
+            "type": "richtext",
+            "id": "intro",
+            "label": "Intro content"
+          },
+          {
+            "type": "header",
+            "content": "Subsection 1"
+          },
+          {
+            "type": "text",
+            "id": "heading_1",
+            "label": "Heading"
+          },
+          {
+            "type": "richtext",
+            "id": "content_1",
+            "label": "Content"
+          },
+          {
+            "type": "header",
+            "content": "Subsection 2"
+          },
+          {
+            "type": "text",
+            "id": "heading_2",
+            "label": "Heading"
+          },
+          {
+            "type": "richtext",
+            "id": "content_2",
+            "label": "Content"
+          },
+          {
+            "type": "header",
+            "content": "Subsection 3"
+          },
+          {
+            "type": "text",
+            "id": "heading_3",
+            "label": "Heading"
+          },
+          {
+            "type": "richtext",
+            "id": "content_3",
+            "label": "Content"
+          },
+          {
+            "type": "header",
+            "content": "Subsection 4"
+          },
+          {
+            "type": "text",
+            "id": "heading_4",
+            "label": "Heading"
+          },
+          {
+            "type": "richtext",
+            "id": "content_4",
+            "label": "Content"
+          },
+          {
+            "type": "header",
+            "content": "Subsection 5"
+          },
+          {
+            "type": "text",
+            "id": "heading_5",
+            "label": "Heading"
+          },
+          {
+            "type": "richtext",
+            "id": "content_5",
+            "label": "Content"
           }
         ]
       },

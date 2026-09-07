@@ -191,7 +191,13 @@
       "product_unavailable": "Niet beschikbaar",
       "backorder": "is in bestelling en wordt verzonden zodra het weer op voorraad is",
       "unit_price_separator": " / ",
-      "size_chart": "Scherm maattabel"
+      "size_chart": "Scherm maattabel",
+      "details": {
+        "title": "Product Details"
+      },
+      "shipping": {
+        "title": "Shipping"
+      }
     },
     "variant": {
       "no_stock": "Uitverkocht",

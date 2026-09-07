@@ -1,6 +1,15 @@
 {%- if product.has_only_default_variant == false -%}
   {%- if product.variants.size > 1 or block.settings.show_single -%}
     <div class="option-selectors" data-disable-unavailable="{{ block.settings.disable_unavailable_variants }}">
+      {%- comment -%}
+        Per-variant ready-to-ship map for the listed picker: lets the
+        section script recompute the size asterisks when another
+        option (e.g. Metal) changes. inventory_quantity is Liquid-only
+        — it never reaches the storefront product JSON.
+      {%- endcomment -%}
+      <script type="application/json" data-variant-rts-data>
+        [{%- for variant in product.variants -%}{"options":{{ variant.options | json }},"rts":{% if variant.inventory_quantity != null and variant.inventory_quantity > 0 %}true{% else %}false{% endif %}}{%- unless forloop.last -%},{%- endunless -%}{%- endfor -%}]
+      </script>
       {%- for option in product.options_with_values -%}
         {%- capture option_id -%}{{ section.id }}-{{ product.id }}-{{ option.name | handle }}-selector{%- endcapture -%}
 
@@ -76,16 +85,89 @@
     %}
   </div>
 {%- else -%}
-  <div class="option-selector{% if size_chart_html != empty %} option-selector--with-size-chart{% endif %}{% if uses_swatches %} option-selector--swatch{% endif %}" data-selector-type="dropdown" data-option-index="{{ forloop.index0 }}">
-    {{ size_chart_html }}
-    {% render 'custom-select',
-      id: option_id,
-      label: option.name,
-      option_values: option.values,
-      selected_value: option.selected_value,
-      swatches: uses_swatches,
-      blank_option: blank_option
-    %}
+  {%- comment -%}
+    Redesign: rebuilt "listed" radio picker (styled in redesign.css
+    section 20). Contract with theme.js OptionManager: the wrapper is
+    .option-selector[data-selector-type="listed"][data-option-index],
+    each value is a hidden radio input.opt-btn.js-option (value =
+    option value, read via :checked) immediately followed by its
+    label.opt-label; availability JS toggles .is-unavailable on the
+    input; validation prepends into .label. Swatch circles come from
+    [data-swatch] + swatches.css.liquid variables.
+    The ready-to-ship marker ports the size-dropdown logic from
+    custom-select.liquid: a value is "ready to ship" when the variant
+    matching it (holding the other selected options constant, at page
+    load) has inventory_quantity > 0.
+  {%- endcomment -%}
+  {%- liquid
+    assign is_size_option = false
+    assign option_name_down = option.name | downcase
+    if option_name_down contains 'size' or option.name == 'サイズ' or option.name == '사이즈'
+      assign is_size_option = true
+    endif
+    assign baseline_variant = product.selected_or_first_available_variant
+
+    if block.settings.select_first_variant or product.selected_variant or product.variants.size == 1
+      assign picker_selected_value = option.selected_value
+    else
+      assign picker_selected_value = nil
+    endif
+  -%}
+  <div class="option-selector{% if size_chart_html != empty %} option-selector--with-size-chart{% endif %}{% if uses_swatches %} option-selector--swatch{% endif %}" data-selector-type="listed" data-option-index="{{ forloop.index0 }}"{% if is_size_option %} data-rts{% endif %}>
+    <div class="option-selector__header">
+      <span class="label" id="{{ option_id }}-label">{{ option.name | escape_once }}</span>
+      {%- if uses_swatches -%}
+        <span class="option-selector__selected-value" data-selected-value>{{ picker_selected_value | escape_once }}</span>
+      {%- endif -%}
+      {{ size_chart_html }}
+      {%- if is_size_option -%}
+        <span class="option-selector__legend">*{{ 'products.product.ready_to_ship_title' | t }}</span>
+      {%- endif -%}
+    </div>
+    <div class="option-selector__btns" role="radiogroup" aria-labelledby="{{ option_id }}-label">
+      {%- for value in option.values -%}
+        {%- liquid
+          assign show_rts = false
+          if is_size_option
+            assign target_variant = blank
+            for variant in product.variants
+              assign matches = false
+              case option.position
+                when 1
+                  if variant.option1 == value and variant.option2 == baseline_variant.option2 and variant.option3 == baseline_variant.option3
+                    assign matches = true
+                  endif
+                when 2
+                  if variant.option1 == baseline_variant.option1 and variant.option2 == value and variant.option3 == baseline_variant.option3
+                    assign matches = true
+                  endif
+                when 3
+                  if variant.option1 == baseline_variant.option1 and variant.option2 == baseline_variant.option2 and variant.option3 == value
+                    assign matches = true
+                  endif
+              endcase
+              if matches
+                assign target_variant = variant
+                break
+              endif
+            endfor
+            if target_variant != blank and target_variant.inventory_quantity != null and target_variant.inventory_quantity > 0
+              assign show_rts = true
+            endif
+          endif
+        -%}
+        <input type="radio"
+          class="opt-btn js-option"
+          name="{{ option_id }}"
+          id="{{ option_id }}-{{ forloop.index0 }}"
+          value="{{ value | escape_once }}"
+          {% if picker_selected_value == value or option.values.size == 1 %}checked{% endif %}>
+        <label class="opt-label" for="{{ option_id }}-{{ forloop.index0 }}"{% if uses_swatches %} data-swatch="{{ value | replace: '"', '' | downcase }}"{% endif %}>
+          <span class="opt-label__text">{{ value | escape_once }}</span>
+          {%- if is_size_option -%}<span class="opt-label__rts" aria-hidden="true"{% unless show_rts %} hidden{% endunless %}>*</span>{%- endif -%}
+        </label>
+      {%- endfor -%}
+    </div>
   </div>
 {%- endif -%}
 

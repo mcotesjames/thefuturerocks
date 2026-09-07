@@ -191,7 +191,13 @@
       "product_unavailable": "Nicht verfügbar",
       "backorder": "ist auf Lager und wird versandt, sobald es wieder verfügbar ist",
       "unit_price_separator": " / ",
-      "size_chart": "Größentabelle"
+      "size_chart": "Größentabelle",
+      "details": {
+        "title": "Product Details"
+      },
+      "shipping": {
+        "title": "Shipping"
+      }
     },
     "variant": {
       "no_stock": "Ausverkauft",

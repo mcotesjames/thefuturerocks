@@ -1890,7 +1890,13 @@
       "description": "説明",
       "sku": "商品コード:",
       "quantity": "量",
-      "preorder": "予約注文"
+      "preorder": "予約注文",
+      "details": {
+        "title": "Product Details"
+      },
+      "shipping": {
+        "title": "Shipping"
+      }
     },
     "variant": {
       "no_stock": "売り切れ",

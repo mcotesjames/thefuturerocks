@@ -227,7 +227,13 @@
       "product_unavailable": "This product is unavailable",
       "backorder": "is made-to-order and will ship as soon as it is crafted.",
       "unit_price_separator": " / ",
-      "size_chart": "Size Guide"
+      "size_chart": "Size Guide",
+      "details": {
+        "title": "Product Details"
+      },
+      "shipping": {
+        "title": "Shipping"
+      }
     },
     "variant": {
       "no_stock": "Sold out",
