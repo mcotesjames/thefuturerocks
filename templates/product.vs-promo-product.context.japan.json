@@ -1,1 +1,32 @@
-{"parent":"product.vs-promo-product.json","context":{"market":"japan"},"sections":{"text_custom_section_product_GUTkVY":{"settings":{"custom_text_custm":"<p>カラットの重量、金重、宝石の数や商品サイズは、ご注文商品のサイズによって異なります。詳しくは <a href=\"\/pages\/contact\" title=\"Contact\"><span style=\"text-decoration:underline\"><strong>お問い合わせ<\/strong><\/span><\/a>ください。<\/p>"},"blocks":{}}}}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "parent": "product.vs-promo-product.json",
+  "context": {
+    "market": "japan"
+  },
+  "sections": {
+    "text_custom_section_product_GUTkVY": {
+      "settings": {
+        "custom_text_custm": "<p>カラットの重量、金重、宝石の数や商品サイズは、ご注文商品のサイズによって異なります。詳しくは <a href=\"/pages/contact\" title=\"Contact\"><span style=\"text-decoration:underline\"><strong>お問い合わせ</strong></span></a>ください。</p>"
+      },
+      "blocks": {}
+    },
+    "main": {
+      "blocks": {
+        "dropdowns_anchor": {
+          "settings": {
+            "disclaimer": "<p>カラットの重量、金重、宝石の数や商品サイズは、ご注文商品のサイズによって異なります。詳しくは <a href=\"/pages/contact\" title=\"Contact\"><span style=\"text-decoration:underline\"><strong>お問い合わせ</strong></span></a>ください。</p>"
+          }
+        }
+      }
+    }
+  }
+}

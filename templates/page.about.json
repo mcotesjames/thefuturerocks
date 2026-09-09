@@ -1,1 +1,189 @@
-{"sections":{"main":{"type":"main-page","settings":{"full_width":false}}},"order":["main"]}
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "full_width": true,
+        "split_header": false
+      },
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "We believe the future of jewelry is grown, not mined."
+          }
+        }
+      },
+      "block_order": [
+        "heading"
+      ]
+    },
+    "editorial_about": {
+      "type": "editorial-column",
+      "blocks": {
+        "image": {
+          "type": "image",
+          "settings": {}
+        },
+        "label": {
+          "type": "label",
+          "settings": {
+            "text": "About TFR"
+          }
+        },
+        "statement": {
+          "type": "statement",
+          "settings": {
+            "text": "At The Future Rocks, we're not selling sustainability, we're implementing it. We're setting the stage for a new generation of creative and conscious, future-forward jewelry designers with innovative practices."
+          }
+        },
+        "link": {
+          "type": "link",
+          "settings": {
+            "text": "Explore our collections",
+            "url": "/collections"
+          }
+        }
+      },
+      "block_order": [
+        "image",
+        "label",
+        "statement",
+        "link"
+      ],
+      "settings": {
+        "column_position": "right"
+      }
+    },
+    "banner": {
+      "type": "image-banner",
+      "settings": {
+        "title": "Be the occasion."
+      }
+    },
+    "values": {
+      "type": "numbered-columns",
+      "blocks": {
+        "value_1": {
+          "type": "column",
+          "settings": {
+            "title": "Buying jewelry can be a socially responsible act.",
+            "text": "<p>Buying jewelry can be a socially responsible act. We believe you don’t have to sacrifice your sense of style to live consciously. You can express yourself authentically while caring for our planet’s future.</p><p>We see a future where social responsibility and environmental consideration is a natural concept when it comes to fine jewelry. Imagine a jeweler’s dream playground where curious minds collaborate to push design boundaries and encourage conscious practices.</p><p>With a socially conscious vision and an unwavering commitment to sustainability, we transform the realm of the jewelry industry — by putting people and the planet first.</p>"
+          }
+        },
+        "value_2": {
+          "type": "column",
+          "settings": {
+            "title": "Curator of style.",
+            "text": "<p>Drawing together designers with conscious practices that span across the globe, we cultivate a community of innovators united in shared values. We empower the poetic nature of human craftsmanship, through partnerships and collaborations with creatives, designers, and inspiring influencers.</p><p>Conscious jewelry made from high-quality materials, recycled metals, lab-grown diamonds, and gemstones - is at the heart of our jewelry universe. We leave a powerful statement with a gentler legacy.</p>"
+          }
+        },
+        "value_3": {
+          "type": "column",
+          "settings": {
+            "title": "Passion meets curation",
+            "text": "<p>We are what we believe in, and we believe in a circular economy — powered by conscientious and transparent business practices.</p><p>Our commitment to quality products goes beyond face value. We go the extra mile to examine their design, production, and how they impact the world around us. While we don’t have all the answers, we strive to do the right thing for future generations.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "value_1",
+        "value_2",
+        "value_3"
+      ],
+      "settings": {
+        "label": "Our value"
+      }
+    },
+    "statement_banner": {
+      "type": "text-banner",
+      "settings": {
+        "background_color": "#00D200",
+        "text": "We don't just make accessories. We create symbols of taste, confidence, and cultural relevance."
+      }
+    },
+    "sustainability": {
+      "type": "scrolling-columns",
+      "blocks": {
+        "way_1": {
+          "type": "column",
+          "settings": {
+            "text": "<p>Buying jewelry can be a socially responsible act. We believe you don’t have to sacrifice your sense of style to live consciously. You can express yourself authentically while caring for our planet’s future.</p>"
+          }
+        },
+        "way_2": {
+          "type": "column",
+          "settings": {
+            "text": "<p>Buying jewelry can be a socially responsible act. We believe you don’t have to sacrifice your sense of style to live consciously. You can express yourself authentically while caring for our planet’s future.</p>"
+          }
+        },
+        "way_3": {
+          "type": "column",
+          "settings": {
+            "text": "<p>Several of our partnering designers are proud members of the Responsible Jewelry Council — the world’s leading standards authority in the global watch and jewelry industry — and B-Corp certified, a stamp of approval on their practices across the board.</p>"
+          }
+        },
+        "way_4": {
+          "type": "column",
+          "settings": {
+            "text": "<p>Buying jewelry can be a socially responsible act. We believe you don’t have to sacrifice your sense of style to live consciously.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "way_1",
+        "way_2",
+        "way_3",
+        "way_4"
+      ],
+      "settings": {
+        "label": "7 ways we move sustainably",
+        "aspect_ratio": "5 / 6",
+        "aspect_ratio_mobile": "5 / 6"
+      }
+    },
+    "promotion": {
+      "type": "promotion",
+      "blocks": {
+        "eyebrow": {
+          "type": "eyebrow",
+          "settings": {
+            "text": "Hong Kong"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "text": "K11 Musea 3F"
+          }
+        },
+        "link": {
+          "type": "link",
+          "settings": {
+            "text": "Visit us",
+            "url": "/pages/the-future-rocks-k11-musea"
+          }
+        }
+      },
+      "block_order": [
+        "eyebrow",
+        "title",
+        "link"
+      ],
+      "settings": {
+        "title": "Our store",
+        "aspect_ratio": "21 / 9",
+        "aspect_ratio_mobile": "4 / 5"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "editorial_about",
+    "banner",
+    "values",
+    "statement_banner",
+    "sustainability",
+    "promotion"
+  ]
+}

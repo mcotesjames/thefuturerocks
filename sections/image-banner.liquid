@@ -1,0 +1,88 @@
+{%- comment -%}
+  Image banner — 2026 redesign.
+  Full-width image with an optional oversized title overlaid on the
+  bottom edge (vw-sized so it scales with the viewport). Inset by
+  the site gutter on desktop; full bleed on mobile, where the title
+  runs edge to edge. Optional separate mobile image (falls back to
+  the desktop image). Styled in redesign.css §25.
+{%- endcomment -%}
+
+<div
+  class="image-banner{% if section.settings.image_mobile %} image-banner--has-mobile-image{% endif %}"
+  style="--image-ratio: {{ section.settings.aspect_ratio | default: 'auto' }}; --image-ratio-mobile: {{ section.settings.aspect_ratio_mobile | default: 'auto' }};{% if section.settings.title != blank %} --title-chars: {{ section.settings.title.size }};{% endif %}"
+  data-section-type="image-banner"
+>
+  {%- if section.settings.image -%}
+    {{ section.settings.image | image_url: width: 3000 | image_tag: widths: '600, 900, 1200, 1600, 2000, 2600, 3000', sizes: '100vw', class: 'image-banner__img image-banner__img--desktop ratio-media' }}
+  {%- else -%}
+    {{ 'lifestyle-1' | placeholder_svg_tag: 'image-banner__img image-banner__img--desktop ratio-media placeholder-svg' }}
+  {%- endif -%}
+  {%- if section.settings.image_mobile -%}
+    {{ section.settings.image_mobile | image_url: width: 1500 | image_tag: widths: '400, 600, 800, 1100, 1500', sizes: '100vw', class: 'image-banner__img image-banner__img--mobile ratio-media' }}
+  {%- endif -%}
+  {%- if section.settings.title != blank -%}
+    <h2 class="image-banner__title">{{ section.settings.title | escape }}</h2>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Image banner",
+  "class": "section-image-banner",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Image (mobile)",
+      "info": "Optional. Falls back to the desktop image."
+    },
+    {
+      "type": "select",
+      "id": "aspect_ratio",
+      "label": "Aspect ratio (desktop)",
+      "options": [
+        { "value": "auto", "label": "Natural" },
+        { "value": "1 / 1", "label": "Square (1:1)" },
+        { "value": "4 / 5", "label": "Portrait (4:5)" },
+        { "value": "3 / 4", "label": "Portrait (3:4)" },
+        { "value": "4 / 3", "label": "Landscape (4:3)" },
+        { "value": "3 / 2", "label": "Landscape (3:2)" },
+        { "value": "16 / 9", "label": "Widescreen (16:9)" },
+        { "value": "21 / 9", "label": "Panoramic (21:9)" }
+      ],
+      "default": "auto"
+    },
+    {
+      "type": "select",
+      "id": "aspect_ratio_mobile",
+      "label": "Aspect ratio (mobile)",
+      "options": [
+        { "value": "auto", "label": "Natural" },
+        { "value": "1 / 1", "label": "Square (1:1)" },
+        { "value": "4 / 5", "label": "Portrait (4:5)" },
+        { "value": "3 / 4", "label": "Portrait (3:4)" },
+        { "value": "4 / 3", "label": "Landscape (4:3)" },
+        { "value": "3 / 2", "label": "Landscape (3:2)" },
+        { "value": "16 / 9", "label": "Widescreen (16:9)" }
+      ],
+      "default": "auto"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "info": "Optional. Overlaid on the bottom edge of the image, sized to always fill the width on one line."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image banner"
+    }
+  ]
+}
+{% endschema %}

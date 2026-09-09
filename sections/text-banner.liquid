@@ -1,0 +1,48 @@
+{%- comment -%}
+  Text banner — 2026 redesign.
+  Full-width colour band with a centred heading-1 statement and an
+  optional small image below it. Background colour per instance.
+  No external spacing (colour blocks butt up to neighbours; use the
+  Spacer module for gaps). Styled in redesign.css §28.
+{%- endcomment -%}
+
+<div class="text-banner" style="--banner-bg: {{ section.settings.background_color | default: '#00D200' }};" data-section-type="text-banner">
+  {%- if section.settings.text != blank -%}
+    <h2 class="heading-1 text-banner__text">{{ section.settings.text | escape | newline_to_br }}</h2>
+  {%- endif -%}
+  {%- if section.settings.image -%}
+    {{ section.settings.image | image_url: width: 480 | image_tag: widths: '160, 240, 480', class: 'text-banner__image' }}
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Text banner",
+  "class": "section-text-banner",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background colour",
+      "default": "#00D200"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Text",
+      "info": "Line breaks are kept."
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image",
+      "info": "Optional. Shown small, centred below the text."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Text banner"
+    }
+  ]
+}
+{% endschema %}

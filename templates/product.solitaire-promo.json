@@ -142,7 +142,8 @@
           "type": "divider",
           "settings": {
             "show_in_quickbuy": true
-          }
+          },
+          "disabled": true
         },
         "essential_shipping_bar_app_block_6dHPct": {
           "type": "shopify://apps/essential-free-shipping/blocks/app-block/4125375e-37c8-4137-949d-c4e1a3aac572",
@@ -340,15 +341,18 @@
         },
         "dropdowns_anchor": {
           "type": "dropdowns_anchor",
-          "settings": {}
+          "settings": {
+            "show_disclaimer": true,
+            "disclaimer": "<p>Please note that the carat weight, gold weight, number of stones, and dimensions will vary depending on the size of the product ordered. Please <a href=\"/pages/contact\" title=\"Contact\">contact us</a> for more information.</p>"
+          }
         }
       },
       "block_order": [
+        "vendor",
         "title",
         "profy_banner_countdown_timer_app_block_ERxKXV",
         "custom_liquid_E64dKX",
         "price",
-        "vendor",
         "variant_picker",
         "easify_options_easify_product_options_RwWzDW",
         "text_BNWt97",
@@ -387,7 +391,7 @@
         "inventory_transfers_enable": true,
         "enable_sticky_columns": true,
         "gallery_size": "large",
-        "gallery_layout": "carousel-under",
+        "gallery_layout": "columns-2",
         "enable_zoom": true,
         "enable_video_looping": true,
         "image_cards": "",
@@ -410,7 +414,8 @@
       "type": "text-custom-section-product",
       "settings": {
         "custom_text_custm": "<p>Please note that the carat weight, gold weight, number of stones, and dimensions will vary depending on the size of the product ordered. Please <a href=\"/pages/contact\" title=\"Contact\">contact us</a> for more information.</p>"
-      }
+      },
+      "disabled": true
     },
     "text_custom_section_product_Tx6g6f": {
       "type": "text-custom-section-product",

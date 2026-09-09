@@ -33,6 +33,14 @@
   --module-pad-bottom: 80px;
   --module-title-mb: 60px;
 
+  /* Sticky chrome: the bars that stay on screen while scrolling,
+     as fixed approximations of their rendered heights — used by
+     pinned modules to size against the visible viewport below
+     them. Desktop: announcement bar (45px) + header (85px), both
+     sticky. Mobile: header only (44px) — the announcement bar
+     scrolls away there. */
+  --sticky-chrome: 130px;
+
   /* Caption: reusable small-label type (vendor, price, meta). */
   --caption-size: 10px;
   --caption-lh: 10px;
@@ -47,10 +55,35 @@
   --color-cream: #F8F8EC;
 }
 
+@media (max-width: 1369.98px) {
+  :root {
+    --sticky-chrome: 44px;
+  }
+}
+
 @media (max-width: 767.98px) {
   :root {
     --module-pad-bottom: 60px;
     --module-title-mb: 40px;
+  }
+}
+
+/* Reusable module inline padding — puts a module's content on the
+   5% grid (token above). Apply to module wrappers in section markup. */
+.module-pad-inline {
+  padding-inline: var(--module-pad-inline);
+}
+
+/* Reusable media aspect ratio — apply to an img/svg and set
+   --image-ratio / --image-ratio-mobile ("auto" = natural) inline on
+   it or an ancestor; sections emit them from their settings. */
+.ratio-media {
+  aspect-ratio: var(--image-ratio, auto);
+  object-fit: cover;
+}
+@media (max-width: 767.98px) {
+  .ratio-media {
+    aspect-ratio: var(--image-ratio-mobile, auto);
   }
 }
 
@@ -91,6 +124,23 @@
   font-size: 18px;
   line-height: 21px;
   text-transform: uppercase;
+}
+
+/* Mobile heading sizes. */
+@media (max-width: 767.98px) {
+  .heading-1 {
+    font-size: 28px;
+    line-height: 28px;
+  }
+  .heading-2 {
+    font-size: 18px;
+    line-height: 18px;
+  }
+  .heading-3,
+  .section-collection-list .product-block__title {
+    font-size: 16px;
+    line-height: 22px;
+  }
 }
 
 /* ---- 2. @font-face: ABC Favorit Mono ----------------------- */
@@ -883,7 +933,7 @@ button.btn--secondary:focus {
   display: flex;
   align-items: stretch;
   gap: var(--site-gutter);
-  padding: var(--module-pad-bottom) var(--site-gutter) var(--module-pad-bottom);
+  padding: var(--module-pad-bottom) var(--site-gutter) 0;
 }
 /* The tile owns the height: its aspect-ratio (the "Tile aspect
    ratio" setting via --ql-ar) fixes it against the flexed width, and
@@ -2125,4 +2175,576 @@ button.btn--secondary:focus {
 }
 .consolidated-details .consolidated-details__group .consolidated-details__body p {
   margin: 0 0 0.6em;
+}
+
+/* ---- 22. About page (templates/page.about.json) ------------- */
+/* Scoped to the about template's body class so the shared
+   main-page section stays untouched on default-template pages. */
+
+/* Module grid: the 5% inline padding sits on the whole section
+   wrapper, so every header element — including the mobile
+   two-column row — inherits it. Inner elements drop their own
+   insets (the container's gutter, the blocks' .module-pad-inline). */
+.template-suffix-about .page-section-spacing {
+  padding-inline: var(--module-pad-inline);
+}
+.template-suffix-about .page-section-spacing .container {
+  padding-inline: 0;
+}
+.template-suffix-about .page-section-spacing :is(.heading-module, .page-cta-block) {
+  padding-inline: 0;
+}
+.template-suffix-about .page-header {
+  margin: 50px 0;
+  text-align: left;
+}
+/* Title takes heading-3 type (18/21 Favorit Mono Black, uppercase)
+   in grey. */
+.template-suffix-about .page-header .majortitle {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  line-height: 21px;
+  text-transform: uppercase;
+  color: var(--color-grey);
+  margin: 0;
+}
+/* Mobile: title and heading block sit side by side — title column
+   35%, heading module 65%. The 50px rhythm moves to the row. */
+@media (max-width: 767.98px) {
+  .template-suffix-about .page-section-spacing {
+    display: flex;
+    align-items: flex-start;
+    margin: 50px 0;
+  }
+  .template-suffix-about .page-section-spacing .container {
+    flex: 0 0 30%;
+    min-width: 0;
+  }
+  .template-suffix-about .page-header {
+    margin: 0;
+  }
+  .template-suffix-about .page-section-spacing .heading-module {
+    flex: 0 0 70%;
+    min-width: 0;
+    margin-bottom: 0;
+  }
+}
+
+/* ---- 23. Heading block (sections/main-page.liquid) ---------- */
+/* Standalone heading in heading-1 type (class set in markup);
+   capped for line length. */
+.heading-module {
+  margin-bottom: 20px;
+}
+.heading-module__title {
+  max-width: 850px;
+  margin: 0;
+}
+
+/* ---- 24. Editorial column (sections/editorial-column.liquid) - */
+/* Half-width stacked column on the 5% grid. Module spacing
+   convention: no top padding, 80px bottom. */
+.editorial-column {
+  padding-bottom: var(--module-pad-bottom);
+}
+.editorial-column__content {
+  width: 55%;
+}
+.editorial-column--right .editorial-column__content {
+  margin-left: auto;
+}
+.editorial-column__image {
+  margin: 0 0 40px;
+}
+/* Aspect ratio comes from .ratio-media (§1) via the --image-ratio
+   vars the image block emits inline on its wrapper. */
+.editorial-column__img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+/* Type comes from the shared classes in markup: label is
+   .heading-3, statement is .heading-2, link is the secondary CTA
+   (.btn.btn--secondary). Only spacing lives here. */
+.editorial-column__label {
+  margin: 0 0 16px;
+}
+.editorial-column__statement {
+  text-transform: uppercase;
+  margin: 0 0 24px;
+}
+/* Mobile: column spans the full page width (inside the module
+   gutter) and the statement centres. */
+@media (max-width: 767.98px) {
+  .editorial-column__content {
+    width: 100%;
+  }
+  .editorial-column__statement {
+    text-align: center;
+  }
+}
+
+/* ---- 25. Image banner (sections/image-banner.liquid) -------- */
+/* Site-gutter inset on desktop (no bottom padding, so the overlaid
+   title sits on the image edge — module bottom spacing is margin
+   instead); full bleed on mobile. */
+.image-banner {
+  position: relative;
+  padding: var(--site-gutter) var(--site-gutter) 0;
+  margin-bottom: var(--module-pad-bottom);
+  /* Container so the title's cqw units track the banner's width. */
+  container-type: inline-size;
+}
+.image-banner__img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.image-banner__img--mobile {
+  display: none;
+}
+/* Oversized overlay title. The mono font advances exactly 0.6em
+   per character, so available-width / (chars × 0.6) is the font
+   size at which the title exactly fills one line — any length,
+   never wrapping. --title-chars is emitted inline from liquid.
+   Tight line height keeps the glyphs sitting on the bottom edge. */
+.image-banner__title {
+  position: absolute;
+  inset-inline: var(--site-gutter);
+  bottom: 0;
+  margin: 0;
+  font-family: var(--font-heading);
+  padding-inline: 12.5vw;
+  font-size: calc((100cqw - 2 * var(--site-gutter) - 25vw) / (var(--title-chars, 16) * 0.6));
+  line-height: 0.75;
+  white-space: nowrap;
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--color-green);
+}
+@media (max-width: 767.98px) {
+  .image-banner {
+    padding: 0;
+  }
+  .image-banner--has-mobile-image .image-banner__img--desktop {
+    display: none;
+  }
+  .image-banner--has-mobile-image .image-banner__img--mobile {
+    display: block;
+  }
+  /* Title touches the viewport edges — same fit formula, no gutter
+     or title padding. */
+  .image-banner__title {
+    inset-inline: 0;
+    padding-inline: 0;
+    font-size: calc(100cqw / (var(--title-chars, 16) * 0.6));
+  }
+}
+
+
+/* ---- 26. Accordion (shared redesign style) ------------------- */
+/* Canonical accordion row anatomy, mechanism-agnostic: 2px ruled
+   rows, a full-width title row (type class set in markup — usually
+   heading-3) with a right-hand icon that flips when open. The
+   consumer's mechanism marks an open row with .is-open; show/hide
+   mechanics stay with the consumer (details-based accordions
+   collapse natively, scripted ones toggle their body). Icon SVGs
+   should point down in their closed state.
+   Consumers: numbered-columns (§27). The PDP consolidated details
+   (§21) predate this with a 1px/chevron treatment on the theme's
+   cc-accordion — align them on the next PDP pass. */
+.accordion-rd__item {
+  border-top: 2px solid var(--color-black);
+}
+.accordion-rd__item:last-child {
+  border-bottom: 2px solid var(--color-black);
+}
+/* Works on a <button> or a <summary>; strips button chrome so the
+   row renders as the heading it sits in. */
+.accordion-rd__toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  padding: 20px 0;
+  border: none;
+  background: none;
+  font: inherit;
+  text-transform: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.accordion-rd__icon {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  transition: transform 0.3s ease;
+}
+.accordion-rd__item.is-open .accordion-rd__icon {
+  transform: rotate(180deg);
+}
+.accordion-rd__body {
+  padding-bottom: 32px;
+}
+
+/* ---- 27. Numbered columns (sections/numbered-columns.liquid) - */
+/* Body copy is the theme default (.rte); titles and label are
+   heading-3. Below 1024px the columns collapse into rows using the
+   shared accordion style (§26). */
+.numbered-columns {
+  padding-inline: var(--site-gutter);
+  padding-bottom: var(--module-pad-bottom);
+}
+.numbered-columns__title {
+  margin: 0;
+}
+/* "01." sits on its own line above the title. */
+.numbered-columns__number {
+  display: block;
+}
+
+/* Desktop: 4-column grid — label rail, then the columns, each
+   spanning two subgrid rows so every body starts on the same line
+   under the tallest title. The accordion is inert: rules, icon and
+   row padding are unset. */
+@media (min-width: 1024px) {
+  .numbered-columns {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto auto;
+    column-gap: 20px;
+    row-gap: 60px;
+  }
+  .numbered-columns__label {
+    grid-column: 1;
+    grid-row: 1;
+    margin: 0;
+  }
+  .numbered-columns__item {
+    display: grid;
+    grid-row: 1 / 3;
+    grid-template-rows: subgrid;
+    border: none;
+  }
+  /* The shared accordion's :last-child bottom rule out-specifies
+     the plain border unset above — match it. */
+  .numbered-columns .numbered-columns__item:last-child {
+    border-bottom: none;
+  }
+  .numbered-columns .accordion-rd__toggle {
+    display: block;
+    padding: 0;
+    pointer-events: none;
+  }
+  .numbered-columns .accordion-rd__icon {
+    display: none;
+  }
+  .numbered-columns .accordion-rd__body {
+    padding-bottom: 0;
+  }
+}
+
+/* Accordion view: numbers hidden, first item open (set in liquid),
+   only open items show their body. Row anatomy comes from §26. */
+@media (max-width: 1023.98px) {
+  .numbered-columns__label {
+    margin: 0 0 24px;
+  }
+  .numbered-columns__number {
+    display: none;
+  }
+  .numbered-columns__item:not(.is-open) .accordion-rd__body {
+    display: none;
+  }
+}
+
+/* ---- 28. Text banner (sections/text-banner.liquid) ---------- */
+/* Colour band with centred heading-1 statement (type class in
+   markup) and optional small image below. Background per instance
+   via --banner-bg (inline from the section setting). No external
+   spacing — colour blocks butt up to neighbours; use the Spacer
+   module for gaps. */
+.text-banner {
+  background: var(--banner-bg, var(--color-green));
+  color: var(--color-black);
+  text-align: center;
+  padding: 64px var(--module-pad-inline);
+}
+.text-banner__text {
+  margin: 0 auto;
+}
+.text-banner__image {
+  display: block;
+  width: 120px;
+  height: auto;
+  margin: 48px auto 0;
+}
+@media (max-width: 767.98px) {
+  .text-banner {
+    padding-block: 48px;
+  }
+  .text-banner__image {
+    margin-top: 40px;
+    width: 100px;
+  }
+}
+
+:root {
+  --scrolling-columns-pad-top: 20px;
+}
+
+/* ---- 29. Scrolling columns (sections/scrolling-columns.liquid) */
+/* Pinned horizontal scroll (script-driven scrub); the label rides
+   inside the track as a wider leading column and scrolls out of
+   view with the content columns. */
+.scrolling-columns {
+  position: relative;
+  /* Module spacing sits on top here (the pinned screen fills the
+     rest of the viewport beneath it). */
+  margin-top: var(--module-pad-bottom);
+  padding-bottom: var(--module-pad-bottom);
+}
+/* Pinned mode (added by the section script; absent = swipe
+   fallback). The root becomes the runway — its height is set by
+   the script to pin height + horizontal overflow — and the pin
+   sticks below the top margin for one viewport while the track is
+   translated. */
+.scrolling-columns--pinned {
+  padding-bottom: 0;
+  margin-bottom: var(--module-pad-bottom);
+}
+.scrolling-columns--pinned .scrolling-columns__pin {
+  position: sticky;
+  /* Clears the sticky announcement bar + header, then the module's
+     own top margin; height fills the rest of the viewport. */
+  top: calc(var(--sticky-chrome) + var(--scrolling-columns-pad-top));
+  height: calc(100vh - var(--sticky-chrome) - var(--module-pad-bottom));
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+@supports (height: 100svh) {
+  .scrolling-columns--pinned .scrolling-columns__pin {
+    height: calc(100svh - var(--sticky-chrome) - var(--module-pad-bottom));
+  }
+}
+/* The pin clips; the track itself must not (its content extends
+   past the viewport and is pulled left by transform). */
+.scrolling-columns--pinned .scrolling-columns__track {
+  overflow-x: visible;
+  scroll-snap-type: none;
+  will-change: transform;
+}
+/* The row wraps the label column and the track; its height is the
+   track's height, so the absolute label column spans exactly the
+   cards' band and the title top-aligns with them. */
+.scrolling-columns__row {
+  position: relative;
+}
+.scrolling-columns__label {
+  margin: 0;
+  max-width: 300px;
+}
+/* Desktop: static opaque column at the left — sits above the track
+   so the sliding cards disappear behind it. */
+@media (min-width: 768px) {
+  .scrolling-columns__label-column {
+    position: absolute;
+    inset-block: 0;
+    left: 0;
+    z-index: 1;
+    width: 33vw;
+    background: var(--color-white);
+    padding: 0 20px 0 var(--site-gutter);
+  }
+}
+/* Scrollbar hidden per the design — trackpads, touch and wheel
+   still scroll natively. */
+.scrolling-columns__track {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding-inline: var(--site-gutter);
+  scroll-snap-type: x proximity;
+  scroll-padding-inline: var(--site-gutter);
+  scrollbar-width: none;
+}
+.scrolling-columns__track::-webkit-scrollbar {
+  display: none;
+}
+/* Desktop lead-in: room for the static label column (declared
+   after the base track rule so it beats the padding-inline
+   shorthand above). */
+@media (min-width: 768px) {
+  .scrolling-columns__track {
+    padding-inline-start: calc(33vw + 20px);
+    scroll-padding-inline-start: calc(33vw + 20px);
+  }
+}
+.scrolling-columns__item {
+  /* vw, not % — a percentage basis resolves against the track's
+     content box and would let columns shrink to fit instead of
+     overflowing. */
+  flex: 0 0 22vw;
+  min-width: 0;
+  scroll-snap-align: start;
+}
+/* Pinned mode (both breakpoints): cards fill the pin's height
+   with UNIFORM imagery. The track becomes a grid with two shared
+   rows — image row (1fr) and text row (auto, sized by the tallest
+   text across all cards) — and each card spans both via subgrid,
+   so the image/text boundary lands at the same y on every card.
+   Column width per breakpoint: 22vw desktop, 75vw mobile. */
+.scrolling-columns--pinned .scrolling-columns__row {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+.scrolling-columns--pinned .scrolling-columns__track {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 22vw;
+  grid-template-rows: minmax(0, 1fr) auto;
+  column-gap: 20px;
+  row-gap: 16px;
+}
+.scrolling-columns--pinned .scrolling-columns__item {
+  display: grid;
+  grid-row: 1 / 3;
+  grid-template-rows: subgrid;
+}
+.scrolling-columns--pinned .scrolling-columns__image {
+  min-height: 0;
+  margin: 0;
+}
+.scrolling-columns--pinned .scrolling-columns__img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: auto;
+  object-fit: cover;
+}
+
+.scrolling-columns__image {
+  margin: 0 0 16px;
+}
+.scrolling-columns__img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+/* Mobile: the label column sits in flow above the track while the
+   columns slide beneath. */
+@media (max-width: 767.98px) {
+
+  .scrolling-columns__label-column {
+    margin: 0 0 24px;
+    padding-inline: var(--module-pad-inline);
+  }
+  .scrolling-columns__track {
+    padding-inline: var(--module-pad-inline);
+    scroll-padding-inline: var(--module-pad-inline);
+  }
+  .scrolling-columns__item {
+    flex-basis: 75vw;
+  }
+
+  .scrolling-columns--pinned .scrolling-columns__track {
+    grid-auto-columns: 75vw;
+  }
+}
+
+/* ---- 30. Promotion (sections/promotion.liquid) --------------- */
+/* Full-width image with overlaid white text: section title top
+   left, block stack (eyebrow / title / link) bottom left. Bottom
+   spacing is margin so neighbours keep the module rhythm against
+   the full-bleed image. */
+.promotion {
+  position: relative;
+}
+.promotion__img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.promotion__img--mobile {
+  display: none;
+}
+.promotion__title {
+  position: absolute;
+  top: var(--site-gutter);
+  left: var(--site-gutter);
+  margin: 0;
+  color: var(--color-white);
+}
+.promotion__content {
+  position: absolute;
+  bottom: var(--site-gutter);
+  left: var(--site-gutter);
+  color: var(--color-white);
+}
+/* Eyebrow type comes from .caption (markup); this just uppercases
+   and spaces it. */
+.promotion__eyebrow {
+  text-transform: uppercase;
+  margin: 0 0 8px;
+}
+.promotion__block-title {
+  margin: 0 0 12px;
+}
+.promotion__link {
+  display: inline-block;
+}
+@media (max-width: 767.98px) {
+  .promotion--has-mobile-image .promotion__img--desktop {
+    display: none;
+  }
+  .promotion--has-mobile-image .promotion__img--mobile {
+    display: block;
+  }
+}
+
+/* ---- 31. Split page header (sections/main-page.liquid) ------- */
+/* "Two-column header" layout: page title left (same grey heading-3
+   treatment as the about header, but carried by the layout class
+   so it works on any template), content + blocks right. Stacks on
+   mobile. */
+.page-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 20px;
+  margin: 50px 0;
+}
+.page-split .page-header {
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+.page-split .page-header .majortitle {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  line-height: 21px;
+  text-transform: uppercase;
+  color: var(--color-grey);
+  margin: 0;
+}
+/* Blocks inherit the wrapper's grid padding — no inner inset. */
+.page-split .heading-module {
+  padding-inline: 0;
+}
+@media (max-width: 767.98px) {
+  .page-split {
+    grid-template-columns: 1fr;
+    row-gap: 24px;
+  }
+  .page-split .page-header .majortitle {
+    font-size: 16px;
+    line-height: 22px;
+  }
 }

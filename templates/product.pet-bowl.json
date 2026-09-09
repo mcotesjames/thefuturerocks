@@ -163,7 +163,8 @@
           "type": "divider",
           "settings": {
             "show_in_quickbuy": true
-          }
+          },
+          "disabled": true
         },
         "essential_shipping_bar_app_block_6dHPct": {
           "type": "shopify://apps/essential-free-shipping/blocks/app-block/4125375e-37c8-4137-949d-c4e1a3aac572",
@@ -356,10 +357,10 @@
         }
       },
       "block_order": [
+        "vendor",
         "title",
         "custom_liquid_xRWAGD",
         "price",
-        "vendor",
         "variant_picker",
         "richtext_VgL3GB",
         "easify_options_easify_product_options_RwWzDW",
@@ -398,7 +399,7 @@
         "inventory_transfers_enable": true,
         "enable_sticky_columns": true,
         "gallery_size": "large",
-        "gallery_layout": "carousel-under",
+        "gallery_layout": "columns-2",
         "enable_zoom": true,
         "enable_video_looping": true,
         "image_cards": "",

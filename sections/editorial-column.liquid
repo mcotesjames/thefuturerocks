@@ -1,0 +1,153 @@
+{%- comment -%}
+  Editorial column — 2026 redesign.
+  Half-width stacked content column (image / label / statement /
+  link blocks, reorderable and repeatable) sitting on the left or
+  right half of the page, on the 5% module grid. Styled in
+  redesign.css §24.
+{%- endcomment -%}
+
+<div class="editorial-column module-pad-inline editorial-column--{{ section.settings.column_position }}" data-section-type="editorial-column">
+  <div class="editorial-column__content">
+    {%- for block in section.blocks -%}
+      {%- case block.type -%}
+        {%- when 'image' -%}
+          <div
+            class="editorial-column__image"
+            style="--image-ratio: {{ block.settings.aspect_ratio | default: 'auto' }}; --image-ratio-mobile: {{ block.settings.aspect_ratio_mobile | default: 'auto' }};"
+            {{ block.shopify_attributes }}
+          >
+            {%- if block.settings.image -%}
+              {{ block.settings.image | image_url: width: 1600 | image_tag: widths: '400, 600, 800, 1200, 1600', class: 'editorial-column__img ratio-media' }}
+            {%- else -%}
+              {{ 'image' | placeholder_svg_tag: 'editorial-column__img ratio-media placeholder-svg' }}
+            {%- endif -%}
+          </div>
+        {%- when 'label' -%}
+          <p class="heading-3 editorial-column__label" {{ block.shopify_attributes }}>{{ block.settings.text | escape }}</p>
+        {%- when 'statement' -%}
+          <h2 class="heading-2 editorial-column__statement" {{ block.shopify_attributes }}>{{ block.settings.text | escape }}</h2>
+        {%- when 'link' -%}
+          {%- if block.settings.url != blank -%}
+            <a class="btn btn--secondary editorial-column__link" href="{{ block.settings.url }}" {{ block.shopify_attributes }}>
+              <span class="btn__text">{{ block.settings.text | escape }}</span>
+            </a>
+          {%- endif -%}
+      {%- endcase -%}
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Editorial column",
+  "class": "section-editorial-column",
+  "settings": [
+    {
+      "type": "select",
+      "id": "column_position",
+      "label": "Column position",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "right"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "select",
+          "id": "aspect_ratio",
+          "label": "Aspect ratio (desktop)",
+          "options": [
+            { "value": "auto", "label": "Natural" },
+            { "value": "1 / 1", "label": "Square (1:1)" },
+            { "value": "4 / 5", "label": "Portrait (4:5)" },
+            { "value": "3 / 4", "label": "Portrait (3:4)" },
+            { "value": "4 / 3", "label": "Landscape (4:3)" },
+            { "value": "3 / 2", "label": "Landscape (3:2)" },
+            { "value": "16 / 9", "label": "Widescreen (16:9)" }
+          ],
+          "default": "auto"
+        },
+        {
+          "type": "select",
+          "id": "aspect_ratio_mobile",
+          "label": "Aspect ratio (mobile)",
+          "options": [
+            { "value": "auto", "label": "Natural" },
+            { "value": "1 / 1", "label": "Square (1:1)" },
+            { "value": "4 / 5", "label": "Portrait (4:5)" },
+            { "value": "3 / 4", "label": "Portrait (3:4)" },
+            { "value": "4 / 3", "label": "Landscape (4:3)" },
+            { "value": "3 / 2", "label": "Landscape (3:2)" },
+            { "value": "16 / 9", "label": "Widescreen (16:9)" }
+          ],
+          "default": "auto"
+        }
+      ]
+    },
+    {
+      "type": "label",
+      "name": "Label",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "About TFR"
+        }
+      ]
+    },
+    {
+      "type": "statement",
+      "name": "Statement",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text",
+          "default": "A statement in heading-2 type. Keep it to a few lines."
+        }
+      ]
+    },
+    {
+      "type": "link",
+      "name": "Link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "info": "The trailing + is added automatically.",
+          "default": "Explore our collections"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Editorial column",
+      "blocks": [
+        { "type": "image" },
+        { "type": "label" },
+        { "type": "statement" },
+        { "type": "link" }
+      ]
+    }
+  ]
+}
+{% endschema %}

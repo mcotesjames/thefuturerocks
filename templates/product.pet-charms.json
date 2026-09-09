@@ -50,7 +50,7 @@
           "settings": {
             "show_single": true,
             "select_first_variant": true,
-            "variant_style": "dropdown",
+            "variant_style": "listed",
             "disable_unavailable_variants": true,
             "show_size_chart": false,
             "size_chart_variant": "Size",
@@ -161,7 +161,8 @@
           "type": "divider",
           "settings": {
             "show_in_quickbuy": true
-          }
+          },
+          "disabled": true
         },
         "essential_shipping_bar_app_block_6dHPct": {
           "type": "shopify://apps/essential-free-shipping/blocks/app-block/4125375e-37c8-4137-949d-c4e1a3aac572",
@@ -350,16 +351,19 @@
         },
         "dropdowns_anchor": {
           "type": "dropdowns_anchor",
-          "settings": {}
+          "settings": {
+            "show_disclaimer": true,
+            "disclaimer": "<p>Please note that the carat weight, gold weight, number of stones, and dimensions will vary depending on the size of the product ordered. Please <a href=\"/pages/contact\" title=\"Contact\"><span style=\"text-decoration:underline\">contact us</span></a> for more information.</p>"
+          }
         }
       },
       "block_order": [
+        "vendor",
         "title",
         "custom_liquid_mD7feG",
         "custom_liquid_gjYx7r",
         "richtext_Kam7hY",
         "price",
-        "vendor",
         "variant_picker",
         "text_BNWt97",
         "link_xrcnp8",
@@ -398,7 +402,7 @@
         "inventory_transfers_enable": true,
         "enable_sticky_columns": true,
         "gallery_size": "large",
-        "gallery_layout": "carousel-under",
+        "gallery_layout": "columns-2",
         "enable_zoom": true,
         "enable_video_looping": true,
         "image_cards": "",
@@ -489,7 +493,8 @@
       "custom_css": [],
       "settings": {
         "custom_text_custm": "<p>Please note that the carat weight, gold weight, number of stones, and dimensions will vary depending on the size of the product ordered. Please <a href=\"/pages/contact\" title=\"Contact\"><span style=\"text-decoration:underline\">contact us</span></a> for more information.</p>"
-      }
+      },
+      "disabled": true
     },
     "media_with_text_YK7bMK": {
       "type": "media-with-text",

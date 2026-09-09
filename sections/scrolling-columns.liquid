@@ -1,0 +1,177 @@
+{%- comment -%}
+  Scrolling columns — 2026 redesign.
+  Pinned horizontal scroll: as the page scrolls, the module sticks
+  for one viewport and the columns travel horizontally at 1px per
+  1px of scroll (the wrapper is a "runway" sized to pin height +
+  horizontal overflow by the script below). The label is a static
+  33vw white column at the left; the 25vw cards slide behind it.
+  On mobile the label sits in flow above the track instead. Without
+  JS (or with reduced motion) it falls back to a swipeable row.
+  Column image ratios come from the shared .ratio-media utility via
+  section-level settings. Styled in redesign.css §29.
+{%- endcomment -%}
+
+<div
+  class="scrolling-columns"
+  id="scrolling-columns-{{ section.id }}"
+  style="--image-ratio: {{ section.settings.aspect_ratio | default: 'auto' }}; --image-ratio-mobile: {{ section.settings.aspect_ratio_mobile | default: 'auto' }};"
+  data-section-type="scrolling-columns"
+>
+  <div class="scrolling-columns__pin">
+    <div class="scrolling-columns__row">
+      {%- if section.settings.label != blank -%}
+        <div class="scrolling-columns__label-column">
+          <p class="heading-3 scrolling-columns__label">{{ section.settings.label }}</p>
+        </div>
+      {%- endif -%}
+      <div class="scrolling-columns__track">
+      {%- for block in section.blocks -%}
+        <div class="scrolling-columns__item" {{ block.shopify_attributes }}>
+          <div class="scrolling-columns__image">
+            {%- if block.settings.image -%}
+              {{ block.settings.image | image_url: width: 1200 | image_tag: widths: '400, 600, 800, 1200', class: 'scrolling-columns__img ratio-media' }}
+            {%- else -%}
+              {{ 'image' | placeholder_svg_tag: 'scrolling-columns__img ratio-media placeholder-svg' }}
+            {%- endif -%}
+          </div>
+          {%- if block.settings.text != blank -%}
+            <div class="scrolling-columns__text rte">{{ block.settings.text }}</div>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function () {
+    var root = document.getElementById('scrolling-columns-{{ section.id }}');
+    if (!root || root.dataset.initialised) return;
+    root.dataset.initialised = 'true';
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    var pin = root.querySelector('.scrolling-columns__pin');
+    var track = root.querySelector('.scrolling-columns__track');
+    if (!pin || !track) return;
+
+    var max = 0;
+    var ticking = false;
+
+    function measure() {
+      max = track.scrollWidth - track.clientWidth;
+      if (max > 0) {
+        root.classList.add('scrolling-columns--pinned');
+        root.style.height = pin.offsetHeight + max + 'px';
+      } else {
+        root.classList.remove('scrolling-columns--pinned');
+        root.style.height = '';
+      }
+      update();
+    }
+
+    function update() {
+      if (max <= 0) {
+        track.style.transform = '';
+        return;
+      }
+      var stickyTop = parseFloat(getComputedStyle(pin).top) || 0;
+      var shift = Math.min(max, Math.max(0, stickyTop - root.getBoundingClientRect().top));
+      track.style.transform = 'translate3d(' + -shift + 'px, 0, 0)';
+    }
+
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(function () {
+        ticking = false;
+        update();
+      });
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', measure);
+    if (window.ResizeObserver) {
+      var ro = new ResizeObserver(measure);
+      root.querySelectorAll('.scrolling-columns__item').forEach(function (el) { ro.observe(el); });
+    }
+    measure();
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Scrolling columns",
+  "class": "section-scrolling-columns",
+  "max_blocks": 12,
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Label",
+      "info": "Static column at the left on desktop — the cards slide behind it. Sits above the track on mobile."
+    },
+    {
+      "type": "select",
+      "id": "aspect_ratio",
+      "label": "Image aspect ratio (desktop)",
+      "options": [
+        { "value": "auto", "label": "Natural" },
+        { "value": "1 / 1", "label": "Square (1:1)" },
+        { "value": "4 / 5", "label": "Portrait (4:5)" },
+        { "value": "5 / 6", "label": "Portrait (5:6)" },
+        { "value": "3 / 4", "label": "Portrait (3:4)" },
+        { "value": "4 / 3", "label": "Landscape (4:3)" },
+        { "value": "3 / 2", "label": "Landscape (3:2)" },
+        { "value": "16 / 9", "label": "Widescreen (16:9)" }
+      ],
+      "default": "4 / 5"
+    },
+    {
+      "type": "select",
+      "id": "aspect_ratio_mobile",
+      "label": "Image aspect ratio (mobile)",
+      "options": [
+        { "value": "auto", "label": "Natural" },
+        { "value": "1 / 1", "label": "Square (1:1)" },
+        { "value": "4 / 5", "label": "Portrait (4:5)" },
+        { "value": "5 / 6", "label": "Portrait (5:6)" },
+        { "value": "3 / 4", "label": "Portrait (3:4)" },
+        { "value": "4 / 3", "label": "Landscape (4:3)" },
+        { "value": "3 / 2", "label": "Landscape (3:2)" },
+        { "value": "16 / 9", "label": "Widescreen (16:9)" }
+      ],
+      "default": "4 / 5"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "column",
+      "name": "Column",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Scrolling columns",
+      "blocks": [
+        { "type": "column" },
+        { "type": "column" },
+        { "type": "column" },
+        { "type": "column" }
+      ]
+    }
+  ]
+}
+{% endschema %}

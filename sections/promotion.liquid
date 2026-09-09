@@ -1,0 +1,161 @@
+{%- comment -%}
+  Promotion — 2026 redesign.
+  Full-width promotional image with overlaid text: section title at
+  the top left, and a bottom-left content stack built from
+  reorderable blocks (eyebrow / title / link — default layout in
+  that order). Separate mobile image (falls back to desktop) and
+  per-breakpoint aspect ratios via the shared .ratio-media utility.
+  The link is the light secondary CTA (white ground, for imagery).
+  Styled in redesign.css §30.
+{%- endcomment -%}
+
+<div
+  class="promotion{% if section.settings.image_mobile %} promotion--has-mobile-image{% endif %}"
+  style="--image-ratio: {{ section.settings.aspect_ratio | default: 'auto' }}; --image-ratio-mobile: {{ section.settings.aspect_ratio_mobile | default: 'auto' }};"
+  data-section-type="promotion"
+>
+  {%- if section.settings.image -%}
+    {{ section.settings.image | image_url: width: 3000 | image_tag: widths: '600, 900, 1200, 1600, 2000, 2600, 3000', sizes: '100vw', class: 'promotion__img promotion__img--desktop ratio-media' }}
+  {%- else -%}
+    {{ 'lifestyle-2' | placeholder_svg_tag: 'promotion__img promotion__img--desktop ratio-media placeholder-svg' }}
+  {%- endif -%}
+  {%- if section.settings.image_mobile -%}
+    {{ section.settings.image_mobile | image_url: width: 1500 | image_tag: widths: '400, 600, 800, 1100, 1500', sizes: '100vw', class: 'promotion__img promotion__img--mobile ratio-media' }}
+  {%- endif -%}
+
+  {%- if section.settings.title != blank -%}
+    <h2 class="heading-3 promotion__title">{{ section.settings.title | escape }}</h2>
+  {%- endif -%}
+
+  {%- if section.blocks.size > 0 -%}
+    <div class="promotion__content">
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when 'eyebrow' -%}
+            <p class="caption promotion__eyebrow" {{ block.shopify_attributes }}>{{ block.settings.text | escape }}</p>
+          {%- when 'title' -%}
+            <p class="heading-3 promotion__block-title" {{ block.shopify_attributes }}>{{ block.settings.text | escape }}</p>
+          {%- when 'link' -%}
+            {%- if block.settings.url != blank -%}
+              <a class="btn btn--secondary btn--secondary-light promotion__link" href="{{ block.settings.url }}" {{ block.shopify_attributes }}>
+                <span class="btn__text">{{ block.settings.text | escape }}</span>
+              </a>
+            {%- endif -%}
+        {%- endcase -%}
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Promotion",
+  "class": "section-promotion",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Our store"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image (desktop)"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Image (mobile)",
+      "info": "Optional. Falls back to the desktop image."
+    },
+    {
+      "type": "select",
+      "id": "aspect_ratio",
+      "label": "Aspect ratio (desktop)",
+      "options": [
+        { "value": "auto", "label": "Natural" },
+        { "value": "1 / 1", "label": "Square (1:1)" },
+        { "value": "4 / 5", "label": "Portrait (4:5)" },
+        { "value": "5 / 6", "label": "Portrait (5:6)" },
+        { "value": "3 / 4", "label": "Portrait (3:4)" },
+        { "value": "4 / 3", "label": "Landscape (4:3)" },
+        { "value": "3 / 2", "label": "Landscape (3:2)" },
+        { "value": "16 / 9", "label": "Widescreen (16:9)" },
+        { "value": "21 / 9", "label": "Panoramic (21:9)" }
+      ],
+      "default": "auto"
+    },
+    {
+      "type": "select",
+      "id": "aspect_ratio_mobile",
+      "label": "Aspect ratio (mobile)",
+      "options": [
+        { "value": "auto", "label": "Natural" },
+        { "value": "1 / 1", "label": "Square (1:1)" },
+        { "value": "4 / 5", "label": "Portrait (4:5)" },
+        { "value": "5 / 6", "label": "Portrait (5:6)" },
+        { "value": "3 / 4", "label": "Portrait (3:4)" },
+        { "value": "4 / 3", "label": "Landscape (4:3)" },
+        { "value": "3 / 2", "label": "Landscape (3:2)" },
+        { "value": "16 / 9", "label": "Widescreen (16:9)" }
+      ],
+      "default": "auto"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "eyebrow",
+      "name": "Eyebrow",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Hong Kong"
+        }
+      ]
+    },
+    {
+      "type": "title",
+      "name": "Title",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "K11 Musea 3F"
+        }
+      ]
+    },
+    {
+      "type": "link",
+      "name": "Link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "info": "The trailing + is added automatically.",
+          "default": "Visit us"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Promotion",
+      "blocks": [
+        { "type": "eyebrow" },
+        { "type": "title" },
+        { "type": "link" }
+      ]
+    }
+  ]
+}
+{% endschema %}
