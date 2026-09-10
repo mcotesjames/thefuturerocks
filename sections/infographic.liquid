@@ -1,0 +1,105 @@
+{%- comment -%}
+  Infographic — 2026 redesign.
+  Colour block (background per instance, brand green default) of
+  50/50 media + text rows. Rows ALWAYS alternate sides — odd rows
+  media left, even rows media right — hard-styled with CSS
+  (:nth-child), no per-block side option by design. Section title
+  uses the shared .section-header/.section-title structure (§6).
+  Styled in redesign.css §32.
+{%- endcomment -%}
+
+<div
+  class="infographic"
+  style="--infographic-bg: {{ section.settings.background_color | default: '#00D200' }};"
+  data-section-type="infographic"
+>
+  {%- if section.settings.title != blank -%}
+    <div class="section-header">
+      <h2 class="section-title">{{ section.settings.title }}</h2>
+    </div>
+  {%- endif -%}
+  {%- if section.blocks.size > 0 -%}
+    <div class="infographic__rows">
+      {%- for block in section.blocks -%}
+        <div class="infographic__row" {{ block.shopify_attributes }}>
+          <div class="infographic__media{% if block.settings.image_mobile %} infographic__media--has-mobile-image{% endif %}">
+            {%- if block.settings.image -%}
+              {{ block.settings.image | image_url: width: 1600 | image_tag: widths: '400, 600, 800, 1200, 1600', sizes: '(min-width: 768px) 50vw, 100vw', class: 'infographic__img infographic__img--desktop' }}
+            {%- else -%}
+              {{ 'image' | placeholder_svg_tag: 'infographic__img infographic__img--desktop placeholder-svg' }}
+            {%- endif -%}
+            {%- if block.settings.image_mobile -%}
+              {{ block.settings.image_mobile | image_url: width: 1200 | image_tag: widths: '400, 600, 800, 1200', sizes: '100vw', class: 'infographic__img infographic__img--mobile' }}
+            {%- endif -%}
+          </div>
+          <div class="infographic__content">
+            {%- if block.settings.title != blank -%}
+              <h3 class="heading-2 infographic__row-title">{{ block.settings.title | escape }}</h3>
+            {%- endif -%}
+            {%- if block.settings.text != blank -%}
+              <div class="infographic__text rte">{{ block.settings.text }}</div>
+            {%- endif -%}
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Infographic",
+  "class": "section-infographic",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background colour",
+      "default": "#00D200"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "media_text",
+      "name": "Media with text",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Copy"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "Image (mobile)",
+          "info": "Optional. Falls back to the desktop image."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Infographic",
+      "blocks": [
+        { "type": "media_text" },
+        { "type": "media_text" }
+      ]
+    }
+  ]
+}
+{% endschema %}

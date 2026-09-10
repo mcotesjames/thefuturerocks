@@ -1,0 +1,77 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Jewelry care guide to enjoy your jewelry for years to come"
+          }
+        },
+        "cta": {
+          "type": "link",
+          "settings": {
+            "text": "Explore our jewelry",
+            "url": "/collections"
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "cta"
+      ],
+      "settings": {
+        "full_width": true,
+        "split_header": true
+      }
+    },
+    "cleaning_guide": {
+      "type": "infographic",
+      "blocks": {
+        "row_1": {
+          "type": "media_text",
+          "settings": {
+            "title": "Beginner's scrub",
+            "text": "<p>Dissolve one tablespoon of mild dish soap into a glass of warm water and let your jewelry go for a little swim. Scrub gently with a soft cloth or an old soft-bristle toothbrush before rinsing with clean water.</p>"
+          }
+        },
+        "row_2": {
+          "type": "media_text",
+          "settings": {
+            "title": "Zen clean",
+            "text": "<p>Add 3 drops of lemon essential oil to a half cup of witch hazel or vinegar. Let your jewelry sit for 5 minutes, and wipe with a soft polishing cloth if necessary. Rinse with clean water.</p>"
+          }
+        },
+        "row_3": {
+          "type": "media_text",
+          "settings": {
+            "title": "Beginner's scrub",
+            "text": "<p>Dissolve one tablespoon of mild dish soap into a glass of warm water and let your jewelry go for a little swim. Scrub gently with a soft cloth or an old soft-bristle toothbrush before rinsing with clean water.</p>"
+          }
+        },
+        "row_4": {
+          "type": "media_text",
+          "settings": {
+            "title": "Zen clean",
+            "text": "<p>Add 3 drops of lemon essential oil to a half cup of witch hazel or vinegar. Let your jewelry sit for 5 minutes, and wipe with a soft polishing cloth if necessary. Rinse with clean water.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "row_1",
+        "row_2",
+        "row_3",
+        "row_4"
+      ],
+      "settings": {
+        "title": "Jewelry cleaning guide to prolong jewelry life",
+        "background_color": "#00D200"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "cleaning_guide"
+  ]
+}

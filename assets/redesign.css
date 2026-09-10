@@ -360,7 +360,8 @@ button.btn--secondary:focus {
    sizes. Shared by the logo-carousel module (heading only, no CTA). */
 .section-featured-collection .section-header,
 .section-related-products .section-header,
-.section-logo-carousel .section-header {
+.section-logo-carousel .section-header,
+.section-infographic .section-header {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
@@ -370,7 +371,8 @@ button.btn--secondary:focus {
 }
 .section-featured-collection .section-title,
 .section-related-products .section-title,
-.section-logo-carousel .section-title {
+.section-logo-carousel .section-title,
+.section-infographic .section-title {
   text-align: left;
   margin: 0;
   min-width: 0;
@@ -384,7 +386,8 @@ button.btn--secondary:focus {
 @media (min-width: 1280px) {
   .section-featured-collection .section-header,
   .section-related-products .section-header,
-  .section-logo-carousel .section-header {
+  .section-logo-carousel .section-header,
+  .section-infographic .section-header {
     padding: 0 var(--module-pad-inline);
   }
   .section-featured-collection .cc-carousel--mobile-only .product-list.cc-carousel__scroll-area,
@@ -2216,15 +2219,18 @@ button.btn--secondary:focus {
     align-items: flex-start;
     margin: 50px 0;
   }
+  .template-suffix-about .page-section-spacing {
+    gap: 20px;
+  }
   .template-suffix-about .page-section-spacing .container {
-    flex: 0 0 30%;
+    flex: 0 0 calc(30% - 20px);
     min-width: 0;
   }
   .template-suffix-about .page-header {
     margin: 0;
   }
   .template-suffix-about .page-section-spacing .heading-module {
-    flex: 0 0 70%;
+    flex: 0 0 calc(70%);
     min-width: 0;
     margin-bottom: 0;
   }
@@ -2739,12 +2745,100 @@ button.btn--secondary:focus {
   padding-inline: 0;
 }
 @media (max-width: 767.98px) {
+  /* Mirrors the default layout's mobile header exactly: title
+     column 35%, content 65%, side by side (title keeps its 18/21
+     size, as the default does). */
   .page-split {
-    grid-template-columns: 1fr;
-    row-gap: 24px;
+    /* 20px gap, absorbed by the columns so the row still totals
+       100% (30/70 of the remaining space, matching the default
+       layout). */
+    grid-template-columns: calc(30% - 20px) calc(70% - 0px);
+    column-gap: 20px;
   }
-  .page-split .page-header .majortitle {
-    font-size: 16px;
-    line-height: 22px;
+  /* The header's heading-2 holds at heading-1's mobile size (28px)
+     instead of dropping to 18px like heading-2 elsewhere. */
+  .page-split .heading-module__title.heading-2 {
+    font-size: 28px;
+    line-height: 28px;
+  }
+}
+
+/* ---- 32. Infographic (sections/infographic.liquid) ----------- */
+/* Colour block of 50/50 media + text rows, inset by the site
+   gutter. Rows always alternate — odd rows media left, even rows
+   media right — enforced here (no per-block side option). */
+.infographic {
+  padding-bottom: var(--module-pad-bottom);
+}
+.infographic__rows {
+  margin-inline: var(--site-gutter);
+  background: var(--infographic-bg, var(--color-green));
+}
+.infographic__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.infographic__row:nth-child(even) .infographic__media {
+  grid-column: 2;
+  grid-row: 1;
+}
+.infographic__row:nth-child(even) .infographic__content {
+  grid-column: 1;
+  grid-row: 1;
+}
+/* Image fills its half; the row's height comes from the taller of
+   content or the media minimum. */
+.infographic__media {
+  position: relative;
+  min-height: 340px;
+}
+.infographic__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.infographic__img--mobile {
+  display: none;
+}
+.infographic__content {
+  padding: 40px;
+  color: var(--color-black);
+}
+.infographic__row-title {
+  text-transform: uppercase;
+  margin: 0 0 20px;
+}
+.infographic__text {
+  max-width: 460px;
+}
+/* Mobile: rows stack media-first (alternation is a desktop-only
+   rhythm). */
+@media (max-width: 767.98px) {
+  .infographic__row,
+  .infographic__row:nth-child(even) .infographic__media,
+  .infographic__row:nth-child(even) .infographic__content {
+    grid-template-columns: 1fr;
+    grid-column: 1;
+    grid-row: auto;
+  }
+  .infographic__media {
+    position: static;
+    min-height: 0;
+  }
+  .infographic__img {
+    position: static;
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
+  .infographic__media--has-mobile-image .infographic__img--desktop {
+    display: none;
+  }
+  .infographic__media--has-mobile-image .infographic__img--mobile {
+    display: block;
+  }
+  .infographic__content {
+    padding: 32px 20px 40px;
   }
 }
