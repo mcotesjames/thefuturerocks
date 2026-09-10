@@ -2184,12 +2184,12 @@ button.btn--secondary:focus {
 /* Scoped to the about template's body class so the shared
    main-page section stays untouched on default-template pages. */
 
-/* Module grid: the 5% inline padding sits on the whole section
+/* The site-gutter inline padding sits on the whole section
    wrapper, so every header element — including the mobile
    two-column row — inherits it. Inner elements drop their own
    insets (the container's gutter, the blocks' .module-pad-inline). */
 .template-suffix-about .page-section-spacing {
-  padding-inline: var(--module-pad-inline);
+  padding-inline: var(--site-gutter);
 }
 .template-suffix-about .page-section-spacing .container {
   padding-inline: 0;

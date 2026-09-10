@@ -18,6 +18,7 @@
     },
     "custom_liquid_HLWHUY": {
       "type": "custom-liquid",
+      "disabled": true,
       "settings": {
         "code": "<p id=\"subscription\"></p>"
       }
