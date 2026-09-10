@@ -1,6 +1,7 @@
 {%- comment -%}
   Text banner — 2026 redesign.
-  Full-width colour band with a centred heading-1 statement and an
+  Full-width colour band with a centred heading statement (size
+  selectable: heading-1/2/3) and an
   optional small image below it. Background colour per instance.
   No external spacing (colour blocks butt up to neighbours; use the
   Spacer module for gaps). Styled in redesign.css §28.
@@ -8,7 +9,7 @@
 
 <div class="text-banner" style="--banner-bg: {{ section.settings.background_color | default: '#00D200' }};" data-section-type="text-banner">
   {%- if section.settings.text != blank -%}
-    <h2 class="heading-1 text-banner__text">{{ section.settings.text | escape | newline_to_br }}</h2>
+    <h2 class="{{ section.settings.text_size | default: 'heading-1' }} text-banner__text">{{ section.settings.text | escape | newline_to_br }}</h2>
   {%- endif -%}
   {%- if section.settings.image -%}
     {{ section.settings.image | image_url: width: 480 | image_tag: widths: '160, 240, 480', class: 'text-banner__image' }}
@@ -31,6 +32,26 @@
       "id": "text",
       "label": "Text",
       "info": "Line breaks are kept."
+    },
+    {
+      "type": "select",
+      "id": "text_size",
+      "label": "Text size",
+      "options": [
+        {
+          "value": "heading-1",
+          "label": "Large"
+        },
+        {
+          "value": "heading-2",
+          "label": "Big"
+        },
+        {
+          "value": "heading-3",
+          "label": "Medium"
+        }
+      ],
+      "default": "heading-1"
     },
     {
       "type": "image_picker",
