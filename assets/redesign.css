@@ -43,7 +43,7 @@
 
   /* Caption: reusable small-label type (vendor, price, meta). */
   --caption-size: 10px;
-  --caption-lh: 10px;
+  --caption-lh: 12px;
 
   /* Brand palette — values match the Figma foundations file. Grey
      is muted/inactive text (breadcrumb ancestors). */
@@ -72,6 +72,15 @@
    5% grid (token above). Apply to module wrappers in section markup. */
 .module-pad-inline {
   padding-inline: var(--module-pad-inline);
+}
+
+/* Kill the theme's image zoom-on-hover globally (collection cards,
+   grid promos, title cards, gallery/multi-column images…) — the
+   class is hardcoded in their markup, so neutralise it here. Same
+   selector as the theme rule (styles.css ~11838); this sheet loads
+   later, so it wins by order. */
+.scale-on-hover:hover .scale-on-hover__target {
+  transform: none;
 }
 
 /* Reusable media aspect ratio — apply to an img/svg and set
@@ -305,23 +314,28 @@ button.btn--secondary {
   font-family: var(--font-body);
   font-size: 16px;
 }
+/* Hover: colours invert, mirroring the primary CTA — ground takes
+   the text colour, text takes the ground colour. */
 .btn.btn--secondary:hover,
 .btn.btn--secondary:focus,
 button.btn--secondary:hover,
 button.btn--secondary:focus {
-  background: var(--btn-secondary-bg);
-  color: var(--btn-secondary-text);
+  background: var(--btn-secondary-text);
+  color: var(--btn-secondary-bg);
 }
 /* Light secondary variant — hardcoded white ground with black text
    (not theme-settings driven), for CTAs sitting on imagery or colour
    where the standard secondary colours don't read. Triple class
    out-specifies the base/hover secondary rules and later scoped
-   overrides. */
-.btn.btn--secondary.btn--secondary-light,
-.btn.btn--secondary.btn--secondary-light:hover,
-.btn.btn--secondary.btn--secondary-light:focus {
+   overrides. Hover inverts, same as every other CTA. */
+.btn.btn--secondary.btn--secondary-light {
   background: var(--color-white);
   color: var(--color-black);
+}
+.btn.btn--secondary.btn--secondary-light:hover,
+.btn.btn--secondary.btn--secondary-light:focus {
+  background: var(--color-black);
+  color: var(--color-white);
 }
 
 /* Underline on the label span — the base button forces
@@ -552,10 +566,9 @@ button.btn--secondary:focus {
 .product-block__info-card {
   padding-bottom: 0px;
 }
-/* Product info: left-aligned, position context for the absolute
-   swatches, and an even 8px gap between every element (vendor, title,
-   subtitle, price). Theme element margins are zeroed so the gap is the
-   only spacing. */
+/* Product info: left-aligned, with an even 8px gap between every
+   element (vendor, title, subtitle, price, swatch/material row).
+   Theme element margins are zeroed so the gap is the only spacing. */
 .product-block.collection-block .product-info {
   text-align: left;
 }
@@ -585,9 +598,9 @@ button.btn--secondary:focus {
   text-align: left;
 }
 
-/* Type sizes: vendor & price use the caption style, title is 12px. */
-.product-block .block-inner .vendor,
-.product-block .product-info .product-price {
+/* Type sizes: vendor uses the caption style; title and price are
+   both 12px. */
+.product-block .block-inner .vendor {
   font-size: var(--caption-size);
   line-height: var(--caption-lh);
 }
@@ -596,34 +609,55 @@ button.btn--secondary:focus {
   font-size: 12px;
   text-transform: capitalize;
 }
-
-/* Text colours from the active card scheme: title = primary text,
-   vendor & price = secondary text (both set per scheme in theme
-   settings, emitted as vars in layout/theme.liquid). */
-.product-block__title {
-  color: var(--card-text);
-}
-.product-block .block-inner .vendor,
 .product-block .product-info .product-price {
+  font-size: 12px;
+}
+
+/* Text colours: title grey, price black, vendor = the card scheme's
+   secondary text (set per scheme in theme settings, emitted as vars
+   in layout/theme.liquid). */
+.product-block__title {
+  color: var(--color-grey);
+}
+.product-block .block-inner .vendor {
   color: var(--card-text-secondary);
 }
+.product-block .product-info .product-price {
+  color: var(--color-black);
+}
+/* Swatches sit in normal flow below the price at all widths (the old
+   absolute top-right desktop treatment is gone), with the material
+   caption on the same row. Spacing comes from the product-info gap,
+   not the row's own margin (theme sets margin-top: 0.5em and
+   justify-content: space-between on --swatches-inline). */
+.product-block .product-info .product-block__price-row {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+}
 .product-block__price-row--swatches-inline .product-block-options {
-  position: absolute;
-  top: 0;
-  right: 0;
+  position: static;
   margin: 0;
 }
-/* Reserve space on the right so copy never sits under the absolute
-   swatches (price is now a direct child of product-info). */
-.product-block .product-info > .product-link,
-.product-block .product-info > .product-block__price,
-.product-block .product-info .product-block__price-row {
-  padding-right: 48px;
+/* Swatches keep their natural width — the material text must never
+   crush them (a shrunk carousel clips or underlaps the swatch). Wide
+   swatch sets cap at 60% of the row and scroll inside the carousel;
+   the material takes the remaining width and wraps. */
+.product-block .product-info .product-block__price-row .product-block-options {
+  flex: 0 0 auto;
+  max-width: 60%;
 }
-/* Price-row spacing comes from the product-info gap, not its own margin
-   (theme sets margin-top: 0.5em on --swatches-inline). */
-.product-block .product-info .product-block__price-row {
-  margin: 0;
+/* Material (custom.material_1) takes the caption style, secondary
+   card colour — same treatment as vendor and price. */
+.product-block__material {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-family: var(--font-favorit);
+  font-size: var(--caption-size);
+  line-height: var(--caption-lh);
+  color: var(--card-text-secondary);
 }
 /* Price left-aligned; the theme's 0.5em top margin is removed (spacing
    is now the product-info gap). The second selector matches (and beats)
@@ -648,27 +682,42 @@ button.btn--secondary:focus {
   margin: 0;
   border: 1px solid var(--color-black);
 }
+/* Sold-out swatches draw a 3px box-shadow ring and a strike-through
+   that overhangs the item by up to 4px (theme styles) — the item
+   margins that gave them room are zeroed above, so give the two
+   overflow-hidden clip boxes 4px padding instead, pulled back with
+   a negative margin so nothing shifts. */
+.product-block .product-block-options,
+.product-block .product-block-options .cc-carousel__scroll-outer {
+  padding: 4px;
+  margin: -4px;
+}
+/* Sold-out swatches are self-contained: the theme's halo ring can't
+   fit the 4px swatch gap without overlapping neighbours, so drop it
+   (the redesign's 1px black border already outlines the swatch) and
+   clip the diagonal strike inside the circle. */
+.product-block .product-block-options__item.product-block-options__item--unavailable {
+  box-shadow: none;
+  overflow: hidden;
+}
+/* The strike matches the swatch border: solid black, full opacity
+   (theme default is 30% text colour). */
+.product-block .product-block-options__item.product-block-options__item--unavailable::after {
+  background: var(--color-black);
+  opacity: 1;
+}
 .product-block-options__inner.cc-carousel__scroll-area {
   gap: 4px;
   justify-content: flex-start;
+  /* The scroll-area is itself a scroll container (overflow-x: auto
+     clips BOTH axes — overflow-y: visible computes to auto), so it
+     needs the same 4px paint room as the outer clip boxes for the
+     sold-out ring/strike. */
+  padding: 4px;
+  margin: -4px;
 }
 
-/* Mobile: swatches drop below the product info, back in normal flow
-   (no absolute positioning, no reserved copy padding). The price-row
-   is a flex child of product-info, so the 8px gap spaces it from the
-   price above. */
 @media (max-width: 767.98px) {
-  .product-block__price-row--swatches-inline {
-    display: block;
-  }
-  .product-block__price-row--swatches-inline .product-block-options {
-    position: static;
-  }
-  .product-block .product-info > .product-link,
-  .product-block .product-info > .product-block__price,
-  .product-block .product-info .product-block__price-row {
-    padding-right: 0;
-  }
   /* Carousel/grid scroll-area sits 8px below the section title. */
   .cc-carousel__scroll-area {
     margin-top: 8px;
@@ -715,11 +764,12 @@ button.btn--secondary:focus {
   }
 
   /* Swatches left-aligned on mobile — override the theme's per-row-mob-2
-   * rule that centres them (styles.css ~6420). */
+   * rule that centres them (styles.css ~6420). The -4px matches the
+   * clip-box padding compensation above. */
   .product-block-options,
   .product-list--per-row-mob-2 .product-block .product-info .product-block__price-row--swatches-inline .product-block-options {
     justify-content: flex-start;
-    margin-inline-end: 0;
+    margin-inline-end: -4px;
   }
 }
 
@@ -1282,15 +1332,21 @@ button.btn--secondary:focus {
 /* 2026 redesign, WIDE DESKTOP ONLY (>=1370px) — below that the
    theme's stock header with the burger + mobile drawer applies
    (forced into burger mode between 768-1369.98px; true mobile
-   header below 768px stays untouched). One header, two states,
-   driven by the classes the header's state-machine script puts on
-   <html>:
-     hero state  (.tfr-has-hero:not(.tfr-past-hero)) — header sits
-       transparent over the hero: full-width wordmark, white text.
-     docked state (.tfr-past-hero, and every page without a hero) —
-       the theme's sticky header, restyled: small wordmark row, then
-       menu left / icons right.
-   The announcement bar is pinned above both states. Markup, classes,
+   header below 768px stays untouched). One header, sticky mechanics
+   in pure CSS, JS only for the stuck-state colour class:
+     hero pages (html:has(.cc-hero-banner)) — the header starts
+       transparent over the hero (full-width wordmark, white text) in
+       normal flow, overlaying via a negative bottom margin. It is
+       sticky with a NEGATIVE top offset, so the wordmark scrolls out
+       of the viewport naturally and the menu row pins seamlessly
+       under the announcement bar. Only the colour flip to the docked
+       white/black look uses JS: html.tfr-nav-stuck, toggled by a
+       small IntersectionObserver in header.liquid when the wordmark
+       row passes under the announcement bar.
+     no-hero pages — the same mechanic on the docked header: small
+       wordmark row scrolls away, menu row pins (no colour flip —
+       the docked bar is white/black throughout).
+   The announcement bar is pinned above both. Markup, classes,
    theme.js behaviour and all mega-menu blocks are untouched. */
 /* The header's inline {% style %} sticky rule targets bare
    .section-header, which is also the class of content section-title
@@ -1402,17 +1458,41 @@ button.btn--secondary:focus {
     top: var(--tfr-announce-h, 0px);
     z-index: 120;
   }
-  /* On hero pages the docked bar must be FIXED, not sticky: the hero
-     state is absolute (out of flow), and toggling to in-flow sticky
-     at the scroll boundary reflowed the whole page by the header's
-     height — a visible stutter, and it could push the hero back into
-     view and flap the observer. Fixed keeps both states out of flow
-     so the handoff never reflows. */
-  .tfr-has-hero.tfr-past-hero .shopify-section.section-header {
-    position: fixed;
-    top: var(--tfr-announce-h, 0px);
-    left: 0;
-    right: 0;
+  /* Hero pages: pure-CSS scroll-away wordmark + sticky menu row.
+     The header sits in normal flow, pulled over the hero by a
+     negative bottom margin, and sticks with a NEGATIVE top offset:
+     the wordmark row scrolls out of the viewport naturally, and the
+     moment it's gone the menu row pins under the announcement bar.
+     No scroll listeners, no state classes.
+     Tokens:
+     --tfr-wordmark-h: rendered wordmark height — full-bleed width ×
+       the SVG's aspect ratio (viewBox 400 × 24.12 → 0.0603);
+     --tfr-hdr-scroll: scroll distance consumed before the pin (bar
+       top padding 12 + wordmark + 12 row gap);
+     --tfr-navrow-h: menu row height — MUST track the tier-1 link's
+       vertical padding (currently padding: 18px → 18 + 21 line
+       + 18 = 57): a mismatch leaves a page-background strip
+       between the announcement bar and the hero. */
+  html:has(.cc-hero-banner) {
+    --tfr-wordmark-h: calc((100vw - 2 * var(--site-gutter)) * 0.0603);
+    --tfr-hdr-scroll: calc(var(--tfr-wordmark-h) + 24px);
+    --tfr-navrow-h: 57px;
+  }
+  html:has(.cc-hero-banner) .shopify-section.section-header {
+    top: calc(var(--tfr-announce-h) - var(--tfr-hdr-scroll));
+    margin-bottom: calc(-1 * (var(--tfr-hdr-scroll) + var(--tfr-navrow-h)));
+  }
+
+  /* No-hero pages: the SAME scroll-away mechanic on the docked
+     header — the small wordmark row scrolls out and the menu row
+     pins under the announcement bar. Identical negative-sticky-top
+     trick; the row height comes from the logo width setting
+     (--tfr-logo-w, emitted by header.liquid's {% style %}) × the
+     wordmark SVG aspect (24.12/400), plus the bar's 12px top
+     padding and 12px row gap. No overlay margin (nothing to overlap)
+     and no colour flip (the docked bar is white/black throughout). */
+  html:not(:has(.cc-hero-banner)) .shopify-section.section-header {
+    top: calc(var(--tfr-announce-h) - ((var(--tfr-logo-w, 180px) * 0.0603) + 24px));
   }
 
   /* The theme's two desktop nav modes both assume the old flex bar
@@ -1494,6 +1574,7 @@ button.btn--secondary:focus {
     row-gap: 12px;
     align-items: end;
     padding: var(--site-gutter) var(--site-gutter) 0;
+    align-items: center;
   }
   /* The theme pads the logo 10px block (styles.css ~3768) — the grid
      row gap is the only spacing now. */
@@ -1524,7 +1605,7 @@ button.btn--secondary:focus {
     text-transform: uppercase;
     /* 6px visual + the bar's absorbed 12px bottom padding: the link's
        hover box touches the mega-menu panel's top edge. */
-    padding-bottom: 18px;
+    padding: 18px;
   }
   /* !important matches the originals (styles.css ~4052 hardcodes the
      old #009e2d green + a green-block hover with !important). */
@@ -1536,44 +1617,53 @@ button.btn--secondary:focus {
     color: var(--color-green) !important;
   }
 
-  /* ---- Hero state: transparent overlay on the hero banner. ---- */
-  .tfr-has-hero:not(.tfr-past-hero) .shopify-section.section-header {
-    position: absolute;
-    top: var(--tfr-announce-h, 0px);
-    left: 0;
-    right: 0;
-  }
-  .tfr-has-hero:not(.tfr-past-hero) .pageheader {
+  /* ---- Hero pages: transparent bar over the hero banner. ----
+     White ink over the hero; the colour flip to black-on-white when
+     the bar pins is driven by html.tfr-nav-stuck, set by the small
+     observer in header.liquid (positioning needs no JS at all). */
+  html:has(.cc-hero-banner) .pageheader {
     background: transparent;
     color: var(--color-white);
   }
-  .tfr-has-hero:not(.tfr-past-hero) .pageheader .navigation__link,
-  .tfr-has-hero:not(.tfr-past-hero) .pageheader .logo__link,
-  .tfr-has-hero:not(.tfr-past-hero) .pageheader .header-account-link,
-  .tfr-has-hero:not(.tfr-past-hero) .pageheader .show-search-link,
-  .tfr-has-hero:not(.tfr-past-hero) .pageheader .cart-link {
+  /* Stuck: the bar's grid element (the container of the nav and
+     icons areas) takes the white ground — the wordmark row above
+     has scrolled offscreen by the time the class comes on. */
+  html:has(.cc-hero-banner).tfr-nav-stuck .pageheader .logo-area {
+    background: var(--color-white);
+  }
+  html:has(.cc-hero-banner) .pageheader .navigation__link,
+  html:has(.cc-hero-banner) .pageheader .logo__link,
+  html:has(.cc-hero-banner) .pageheader .header-account-link,
+  html:has(.cc-hero-banner) .pageheader .show-search-link,
+  html:has(.cc-hero-banner) .pageheader .cart-link {
     color: var(--color-white);
+  }
+  html:has(.cc-hero-banner).tfr-nav-stuck .pageheader .navigation__link,
+  html:has(.cc-hero-banner).tfr-nav-stuck .pageheader .header-account-link,
+  html:has(.cc-hero-banner).tfr-nav-stuck .pageheader .show-search-link,
+  html:has(.cc-hero-banner).tfr-nav-stuck .pageheader .cart-link {
+    color: var(--color-black);
   }
   /* Full-bleed wordmark over the hero. Every ancestor between the
      grid area and the svg must be a stretched block — any inline-block
      shrink-to-fit link in the chain collapses width:100% to the SVG's
      300px intrinsic default. */
-  .tfr-has-hero:not(.tfr-past-hero) .logo-area__middle,
-  .tfr-has-hero:not(.tfr-past-hero) .logo-area__middle__inner,
-  .tfr-has-hero:not(.tfr-past-hero) .logo-area__middle .logo,
-  .tfr-has-hero:not(.tfr-past-hero) .logo-area__middle .logo__h1,
-  .tfr-has-hero:not(.tfr-past-hero) .logo-area__middle .logo__link,
-  .tfr-has-hero:not(.tfr-past-hero) .logo-area__middle .logo__wordmark {
+  html:has(.cc-hero-banner) .logo-area__middle,
+  html:has(.cc-hero-banner) .logo-area__middle__inner,
+  html:has(.cc-hero-banner) .logo-area__middle .logo,
+  html:has(.cc-hero-banner) .logo-area__middle .logo__h1,
+  html:has(.cc-hero-banner) .logo-area__middle .logo__link,
+  html:has(.cc-hero-banner) .logo-area__middle .logo__wordmark {
     display: block;
     width: 100%;
     max-width: none;
     justify-self: stretch;
   }
-  .tfr-has-hero:not(.tfr-past-hero) .logo svg {
+  html:has(.cc-hero-banner) .logo svg {
     width: 100%;
   }
   /* Keep the green featured link legible on imagery too. */
-  .tfr-has-hero:not(.tfr-past-hero) .pageheader .featured-link > .navigation__link {
+  html:has(.cc-hero-banner) .pageheader .featured-link > .navigation__link {
     color: var(--color-green) !important;
   }
 
@@ -1599,6 +1689,7 @@ button.btn--secondary:focus {
     border: none;
   }
   .pageheader,
+  .pageheader .logo-area,
   .pageheader .navigation__link,
   .pageheader .logo__link,
   .pageheader .header-account-link,
@@ -1607,43 +1698,30 @@ button.btn--secondary:focus {
     transition: none;
   }
 
-  /* Hero state: invert the whole bar to a white ground — but only
+  /* Hero pages: invert the whole bar to a white ground — but only
      while a nav link is hovered (:has), or while a dropdown is open
      (theme.js puts section-header--nav-open on the wrapper) so the
      inversion holds as the pointer moves down into the mega menu.
      Hovering the wordmark, icons or empty bar does NOT invert.
-     Instant — no transition. */
-  .tfr-has-hero:not(.tfr-past-hero) .shopify-section.section-header:has(.navigation--desktop .navigation__link:hover) .pageheader,
-  .tfr-has-hero:not(.tfr-past-hero) .shopify-section.section-header--nav-open .pageheader {
+     Instant — no transition. These set background/color directly, so
+     they out-cascade the animated custom properties in every scroll
+     state. */
+  html:has(.cc-hero-banner) .shopify-section.section-header:has(.navigation--desktop .navigation__link:hover) .pageheader,
+  html:has(.cc-hero-banner) .shopify-section.section-header--nav-open .pageheader {
     background: var(--color-white);
     color: var(--color-black);
   }
-  .tfr-has-hero:not(.tfr-past-hero) .shopify-section.section-header:has(.navigation--desktop .navigation__link:hover) .pageheader .navigation__link,
-  .tfr-has-hero:not(.tfr-past-hero) .shopify-section.section-header:has(.navigation--desktop .navigation__link:hover) .pageheader .logo__link,
-  .tfr-has-hero:not(.tfr-past-hero) .shopify-section.section-header:has(.navigation--desktop .navigation__link:hover) .pageheader .header-account-link,
-  .tfr-has-hero:not(.tfr-past-hero) .shopify-section.section-header:has(.navigation--desktop .navigation__link:hover) .pageheader .show-search-link,
-  .tfr-has-hero:not(.tfr-past-hero) .shopify-section.section-header:has(.navigation--desktop .navigation__link:hover) .pageheader .cart-link,
-  .tfr-has-hero:not(.tfr-past-hero) .shopify-section.section-header--nav-open .pageheader .navigation__link,
-  .tfr-has-hero:not(.tfr-past-hero) .shopify-section.section-header--nav-open .pageheader .logo__link,
-  .tfr-has-hero:not(.tfr-past-hero) .shopify-section.section-header--nav-open .pageheader .header-account-link,
-  .tfr-has-hero:not(.tfr-past-hero) .shopify-section.section-header--nav-open .pageheader .show-search-link,
-  .tfr-has-hero:not(.tfr-past-hero) .shopify-section.section-header--nav-open .pageheader .cart-link {
+  html:has(.cc-hero-banner) .shopify-section.section-header:has(.navigation--desktop .navigation__link:hover) .pageheader .navigation__link,
+  html:has(.cc-hero-banner) .shopify-section.section-header:has(.navigation--desktop .navigation__link:hover) .pageheader .logo__link,
+  html:has(.cc-hero-banner) .shopify-section.section-header:has(.navigation--desktop .navigation__link:hover) .pageheader .header-account-link,
+  html:has(.cc-hero-banner) .shopify-section.section-header:has(.navigation--desktop .navigation__link:hover) .pageheader .show-search-link,
+  html:has(.cc-hero-banner) .shopify-section.section-header:has(.navigation--desktop .navigation__link:hover) .pageheader .cart-link,
+  html:has(.cc-hero-banner) .shopify-section.section-header--nav-open .pageheader .navigation__link,
+  html:has(.cc-hero-banner) .shopify-section.section-header--nav-open .pageheader .logo__link,
+  html:has(.cc-hero-banner) .shopify-section.section-header--nav-open .pageheader .header-account-link,
+  html:has(.cc-hero-banner) .shopify-section.section-header--nav-open .pageheader .show-search-link,
+  html:has(.cc-hero-banner) .shopify-section.section-header--nav-open .pageheader .cart-link {
     color: var(--color-black);
-  }
-
-  /* ---- Docked state entrance. ---- */
-  .tfr-past-hero .shopify-section.section-header .pageheader {
-    animation: tfr-dock-in 0.25s ease-out;
-  }
-  @keyframes tfr-dock-in {
-    from {
-      transform: translateY(-16px);
-      opacity: 0;
-    }
-    to {
-      transform: translateY(0);
-      opacity: 1;
-    }
   }
 }
 

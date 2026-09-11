@@ -562,6 +562,15 @@
         "text_color": "#ffffff"
       }
     },
+    "spacer_xRBbAt": {
+      "type": "spacer",
+      "name": "Spacer",
+      "settings": {
+        "use_custom_height": false,
+        "height": 120,
+        "height_mobile": 60
+      }
+    },
     "logo_carousel_redesign": {
       "type": "logo-carousel",
       "blocks": {
@@ -790,6 +799,7 @@
     "text_with_media_brVMgd",
     "featured_collection_hWqWa7",
     "quick_links_redesign",
+    "spacer_xRBbAt",
     "logo_carousel_redesign",
     "custom_row_QJcEQh",
     "media_with_text_6Xe8JY",

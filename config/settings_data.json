@@ -400,7 +400,7 @@
     "prod_thumb_hover_image": true,
     "prod_thumb_show_subtitle": true,
     "prod_thumb_url_within_coll": false,
-    "quickbuy_style": "button-quick-add",
+    "quickbuy_style": "button",
     "quickbuy_visibility": "hover",
     "prod_block_label_loc": "top left",
     "prod_reduction_show": true,
@@ -685,11 +685,6 @@
           "wishlist_path": "/apps/wishlist",
           "money_show_currency_code": true
         }
-      },
-      "8043271908280424605": {
-        "type": "shopify://apps/variants-on-collection/blocks/app-embed/00a4acfa-b585-4e47-b72d-257155abcb94",
-        "disabled": false,
-        "settings": {}
       },
       "316487575649303945": {
         "type": "shopify://apps/easify-options/blocks/app-embed-block/d2288b18-c1ba-42f5-b3b3-26c75c8820bf",

@@ -1,6 +1,12 @@
 {%- assign mobile_expand_with_entire_link = true -%}
 
 {% style %}
+  :root {
+    /* Consumed by redesign.css §13: no-hero pages compute the
+       docked wordmark row height from this (× the SVG aspect) for
+       the scroll-away-logo sticky offset. */
+    --tfr-logo-w: {{ section.settings.logo_img_width_int }}px;
+  }
   .logo img,
   .logo svg {
     width: {{ section.settings.logo_img_width_int }}px;
@@ -292,25 +298,26 @@
 </script>
 
 <script>
-  /* 2026 redesign header state machine (desktop styling hooks only —
-     all rules consuming these classes live in redesign.css §13).
-     - html.tfr-has-hero / .tfr-no-hero: whether the page opens with a
-       hero banner (header overlays it in "hero" state).
-     - html.tfr-past-hero: hero has left the viewport → docked bar.
-     (--tfr-announce-h is a fixed 45px token in redesign.css §13.) */
+  /* 2026 redesign header: the sticky mechanics are pure CSS
+     (redesign.css §13 — html:has(.cc-hero-banner) + a negative
+     sticky top offset). This observer only toggles the stuck-state
+     COLOUR class: html.tfr-nav-stuck goes on when the wordmark row
+     has scrolled under the announcement bar, which is the moment
+     the menu row pins. Once pinned, the wordmark's bottom rests
+     exactly (row gap) 12px above the announcement line, so the
+     boundary must sit inside that 12px window — 6px in, the flip
+     lands a hair before the pin and can always be crossed. */
   (function () {
     var root = document.documentElement;
 
     function init() {
-      var hero = document.querySelector('.cc-hero-banner');
-      if (!hero) {
-        root.classList.add('tfr-no-hero');
-        return;
-      }
-      root.classList.add('tfr-has-hero');
+      if (!document.querySelector('.cc-hero-banner')) return;
+      var wordmark = document.querySelector('#pageheader .logo-area__middle');
+      if (!wordmark) return;
+      var announceH = parseInt(getComputedStyle(root).getPropertyValue('--tfr-announce-h'), 10) || 45;
       new IntersectionObserver(function (entries) {
-        root.classList.toggle('tfr-past-hero', !entries[0].isIntersecting);
-      }).observe(hero);
+        root.classList.toggle('tfr-nav-stuck', !entries[0].isIntersecting);
+      }, { rootMargin: '-' + (announceH - 6) + 'px 0px 0px 0px' }).observe(wordmark);
     }
 
     if (document.readyState === 'loading') {

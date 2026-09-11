@@ -251,6 +251,10 @@
               -%}
             {%- endfor -%}
           {%- endif -%}
+
+          {%- if product.metafields.custom.material_1 != blank -%}
+            <div class="product-block__material">{{ product.metafields.custom.material_1.value | join: ', ' }}</div>
+          {%- endif -%}
         </div>
       </div>
     </div>
