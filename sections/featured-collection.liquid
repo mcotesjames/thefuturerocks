@@ -9,14 +9,47 @@
   assign collection = collections[section.settings.collection]
 -%}
 
-<div class="section-id-{{ section.id }} collection-slider-row" data-section-type="featured-collection">
-  {%- if section.settings.title != blank or section.settings.collection != blank -%}
+<div class="section-id-{{ section.id }} collection-slider-row module-inline--{{ section.settings.inline_padding | default: 'inset' }}" data-section-type="featured-collection">
+  {%- liquid
+    comment
+      With the title card on, "View all" ALWAYS sits inside the card;
+      the position setting only applies when the card is off.
+    endcomment
+    assign show_view_all_in_header = false
+    assign show_view_all_below = false
+    assign show_view_all_in_card = false
+    if section.settings.collection != blank
+      if section.settings.show_title_card
+        assign show_view_all_in_card = true
+      elsif section.settings.view_all_position == 'below'
+        assign show_view_all_below = true
+      else
+        assign show_view_all_in_header = true
+      endif
+    endif
+    assign view_all_label = section.settings.view_all_label
+    if view_all_label == blank
+      assign view_all_label = 'sections.featured_collection.view_all' | t
+    endif
+  -%}
+  {%- liquid
+    comment
+      Render the title row only when something in it is VISIBLE — a
+      hidden title (show_title off) with no header CTA used to leave
+      an empty row carrying its stray bottom margin.
+    endcomment
+    assign show_title_row = show_view_all_in_header
+    if section.settings.title != blank and section.settings.show_title
+      assign show_title_row = true
+    endif
+  -%}
+  {%- if show_title_row -%}
     <div class="section-header">
       {% if section.settings.title != blank %}
         <h2 class="section-title{% unless section.settings.show_title %} visually-hidden{% endunless %}"><a href="{{ collection.url }}">{{ section.settings.title | escape }}</a></h2>
       {% endif %}
-      {%- if section.settings.collection != blank -%}
-        <a class="section-header__view-all btn btn--secondary btn--link" href="{{ collection.url }}"><span class="btn__text">{{ 'sections.featured_collection.view_all' | t }}</span></a>
+      {%- if show_view_all_in_header -%}
+        <a class="section-header__view-all btn btn--secondary btn--link" href="{{ collection.url }}"><span class="btn__text">{{ view_all_label | escape }}</span></a>
       {%- endif -%}
     </div>
   {%- endif -%}
@@ -37,6 +70,7 @@
         {% else %}
 
           {%- if section.settings.show_title_card -%}
+            {%- capture title_card_html -%}
             <div class="product-block product-block--mobile-wide">
               {%- liquid
                 if section.settings.show_title_card_image
@@ -47,20 +81,32 @@
                   endif
                 endif
               -%}
-              <div class="product-list-heading-block scale-on-hover card-scheme card-scheme--{{ section.settings.color_scheme }} card-br-oh height--cover page-header page-header--with-background {% if title_card_image %}image-overlay image-overlay--bg-{{ section.settings.overlay_style }}{% endif %}">
+              {%- comment -%}
+                featured-collection__title-card: dedicated styling hook —
+                this card shares all its other classes with the product-list
+                / main-collection title cards, so style THIS class (or
+                restructure inside it) to stay scoped to featured collection.
+              {%- endcomment -%}
+              <div class="featured-collection__title-card product-list-heading-block scale-on-hover card-scheme card-scheme--{{ section.settings.color_scheme }} card-br-oh height--cover page-header page-header--with-background {% if title_card_image %}image-overlay image-overlay--bg-{{ section.settings.overlay_style }}{% endif %}">
                 {%- if title_card_image != blank -%}
                   {%- render 'background-image', image: title_card_image, extra_classes: 'scale-on-hover__target' -%}
                 {%- endif -%}
 
-                <div class="product-list-heading-block__text">
-                  <div class="overlay-text overlay-text--inline overlay--v-bottom align-start image-overlay__over" data-cc-animate data-cc-animate-delay="0.2s">
-                    <div class="overlay-text__inner">
-                      <div class="overlay-text__text">
-                        <h2 class="overlay-text__title h1-style" id="{{ section.id }}-Heading">{{ collection.title | link_to: collection.url }}</h2>
-                        {%- if collection.description != blank -%}
-                        <div class="overlay-text__rte rte cf reading-width">{{ collection.description }}</div>
-                        {%- endif -%}
-                      </div>
+                {%- comment -%}
+                  The .product-list-heading-block__text wrapper is removed
+                  in this card (all devices) — the card itself carries the
+                  site-gutter padding (redesign.css title-card rules).
+                {%- endcomment -%}
+                <div class="overlay-text overlay-text--inline overlay--v-top align-start image-overlay__over" data-cc-animate data-cc-animate-delay="0.2s">
+                  <div class="overlay-text__inner">
+                    <div class="overlay-text__text">
+                      <h2 class="overlay-text__title heading-3" id="{{ section.id }}-Heading">{{ collection.title | link_to: collection.url }}</h2>
+                      {%- if collection.description != blank -%}
+                      <div class="overlay-text__rte rte cf reading-width">{{ collection.description }}</div>
+                      {%- endif -%}
+                      {%- if show_view_all_in_card -%}
+                        <a class="section-header__view-all btn btn--secondary btn--link" href="{{ collection.url }}"><span class="btn__text">{{ view_all_label | escape }}</span></a>
+                      {%- endif -%}
                     </div>
                   </div>
                 </div>
@@ -68,6 +114,10 @@
                 <a class="product-list-heading-block__link" href="{{ collection.url }}" aria-labelledby="{{ section.id }}-Heading"></a>
               </div>
             </div>
+            {%- endcapture -%}
+            {%- unless section.settings.title_card_position == 'last' -%}
+              {{ title_card_html }}
+            {%- endunless -%}
           {%- endif -%}
 
           {%- liquid
@@ -101,10 +151,20 @@
             {% render 'product-block', product: product, collection: collection, custom_aspect_ratio: chosen_aspect_ratio, no_swiping: true %}
           {% endfor %}
 
+          {%- if section.settings.show_title_card and section.settings.title_card_position == 'last' -%}
+            {{ title_card_html }}
+          {%- endif -%}
+
         {% endif %}
       </div>
     </div>
   </cc-carousel>
+
+  {%- if show_view_all_below -%}
+    <div class="section-footer">
+      <a class="section-header__view-all btn btn--secondary btn--link" href="{{ collection.url }}"><span class="btn__text">{{ view_all_label | escape }}</span></a>
+    </div>
+  {%- endif -%}
 </div>
 
 
@@ -135,6 +195,46 @@
         "type": "collection",
         "id": "collection",
         "label": "Collection"
+      },
+      {
+        "type": "select",
+        "id": "inline_padding",
+        "label": "Inline padding",
+        "info": "Wide uses the site gutter; Inset uses the 5% module grid.",
+        "default": "inset",
+        "options": [
+          {
+            "value": "wide",
+            "label": "Wide"
+          },
+          {
+            "value": "inset",
+            "label": "Inset"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "view_all_position",
+        "label": "'View all' position",
+        "info": "Applies when the title card is off. With the title card on, 'View all' always sits inside the card.",
+        "default": "header",
+        "options": [
+          {
+            "value": "header",
+            "label": "Title row"
+          },
+          {
+            "value": "below",
+            "label": "Below products"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "view_all_label",
+        "label": "'View all' label",
+        "info": "Leave blank for the default. The trailing + is added automatically."
       },
       {
         "type": "checkbox",
@@ -181,6 +281,22 @@
         "id": "show_title_card",
         "label": "Show title card",
         "default": true
+      },
+      {
+        "type": "select",
+        "id": "title_card_position",
+        "label": "Title card position",
+        "default": "first",
+        "options": [
+          {
+            "value": "first",
+            "label": "First item"
+          },
+          {
+            "value": "last",
+            "label": "Last item"
+          }
+        ]
       },
       {
         "type": "checkbox",

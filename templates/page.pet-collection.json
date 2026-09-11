@@ -1,1 +1,676 @@
-{"sections":{"main":{"type":"main-page","disabled":true,"settings":{"full_width":false}},"foxify_1733306160fqi_c4_D4MMCc":{"type":"foxify-1733306160fqiC4","disabled":true,"settings":{}},"image_with_text_overlay_3zzhwh":{"type":"image-with-text-overlay","settings":{"image":"shopify:\/\/shop_images\/PetKV_desktop.png","mobile_image":"shopify:\/\/shop_images\/pet_campaign_model_pet_1_v2_new_cloth.png","height":"adapt","height_desktop":500,"height_mobile":300,"image_link":"","content_max_width":960,"subheading":"","title":"","title_size":"hl-style","use_h1":false,"text":"","enlarge_text":false,"button_label_1":"","button_url_1":"","button_label_2":"","button_url_2":"","text_alignment":"center center","mobile_overlay_under":false,"overlay_style":"shadow","color_scheme":"1","heading_highlight_text":"","heading_highlight_font":true,"heading_highlight_stencil":false,"heading_highlight_color":"rgba(0,0,0,0)","heading_highlight_gradient":""}},"rich_text_FQpbbp":{"type":"rich-text","blocks":{"heading_6dMRa4":{"type":"heading","settings":{"title":"The Future of Pet Fashion","title_size":"h1-style","use_h1":false,"heading_highlight_text":"","heading_highlight_font":true,"heading_highlight_stencil":false,"heading_highlight_color":"rgba(0,0,0,0)","heading_highlight_gradient":""}},"text_bcKLjW":{"type":"text","settings":{"text":"<p>For the most devoted pet lovers, we know every walk is never a daily routine—it’s a moment to bond, play, and express your shared taste in fashion. Yours, theirs, perfectly in sync.<\/p><p>Fusing jewelry-grade craftsmanship and pet-friendly design, our lineup of pet accessories is crafted to elevate a life in motion—keeping up with every run, walk, and playdate. For fine paws with bold moves.<\/p>","enlarge_text":true}},"button_MyXgrz":{"type":"button","settings":{"button_label":"Shop the Pet Collection","button_link":"shopify:\/\/collections\/pet-collection","button_style":"primary"}}},"block_order":["heading_6dMRa4","text_bcKLjW","button_MyXgrz"],"settings":{"height":"medium","text_alignment":"center","color_scheme":"none","full_width":false}},"custom_row_iPKRjk":{"type":"custom-row","blocks":{"image_zV9whD":{"type":"image","settings":{"width":"half","image":"shopify:\/\/shop_images\/pet_campaign_model_pet_5.2.png","height":"adapt","height_desktop":400,"height_mobile":300,"subheading":"","title":"","text":"","enlarge_text":false,"button_label":"","image_link":"","text_alignment":"center center","mobile_overlay_under":false,"overlay_style":"shadow","color_scheme":"none","heading_highlight_text":"","heading_highlight_font":true,"heading_highlight_stencil":false,"heading_highlight_color":"rgba(0,0,0,0)","heading_highlight_gradient":""}},"text_Px7Q4k":{"type":"text","settings":{"width":"half","subheading":"","title":"Pawtner & Me","title_size":"hl-style","text":"<p>Match, share, and wear your bond. Let your furry companion dazzle with matching charms while you wear a subtle note of elegance—a beautiful connection between you and your four-legged muse.<\/p>","button_label":"","button_link":"shopify:\/\/collections\/most-gifted-jewelry","button_style":"primary","text_alignment":"center","color_scheme":"none","heading_highlight_text":"","heading_highlight_font":true,"heading_highlight_stencil":false,"heading_highlight_color":"rgba(0,0,0,0)","heading_highlight_gradient":""}}},"block_order":["image_zV9whD","text_Px7Q4k"],"custom_css":["div {padding-top: 0px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px; background-color: #ffffff;}"],"settings":{"alignment":"middle","color_scheme":"none"}},"featured_collection_hDKtPf":{"type":"featured-collection","name":"Featured collection","settings":{"title":"Featured collection","show_title":false,"collection":"pawtner-me","show_vendor":false,"enable_carousel":true,"grid":2,"rows":1,"show_title_card":false,"show_title_card_image":false,"overlay_style":"shadow","color_scheme":"1"}},"rich_text_T4iQJM":{"type":"rich-text","blocks":{"button_d9RWEg":{"type":"button","settings":{"button_label":"Shop Now","button_link":"shopify:\/\/collections\/pet-collection","button_style":"primary"}}},"block_order":["button_d9RWEg"],"custom_css":["div {padding-top: 5px; padding-right: 0px; padding-bottom: 20px; padding-left: 0px;}"],"settings":{"height":"medium","text_alignment":"center","color_scheme":"none","full_width":false}},"custom_row_hLLUh9":{"type":"custom-row","blocks":{"image_FAjGUt":{"type":"image","settings":{"width":"half","image":"shopify:\/\/shop_images\/pet_campaign_model_pet_3.png","height":"adapt","height_desktop":400,"height_mobile":300,"subheading":"","title":"","text":"","enlarge_text":false,"button_label":"","image_link":"","text_alignment":"center center","mobile_overlay_under":false,"overlay_style":"shadow","color_scheme":"none","heading_highlight_text":"","heading_highlight_font":true,"heading_highlight_stencil":false,"heading_highlight_color":"rgba(0,0,0,0)","heading_highlight_gradient":""}},"text_jrfefJ":{"type":"text","settings":{"width":"half","subheading":"","title":"Collars & Leashes","title_size":"hl-style","text":"<p>Designed for movement and style, our collars and leashes are available in three sizes and come in Caramel Brown and Forest Green, crafted from high-quality materials. Refined yet ruggedly durable, and ready for every adventure together.<\/p>","button_label":"","button_link":"shopify:\/\/collections\/christmas-gifts","button_style":"primary","text_alignment":"center","color_scheme":"none","heading_highlight_text":"","heading_highlight_font":true,"heading_highlight_stencil":false,"heading_highlight_color":"rgba(0,0,0,0)","heading_highlight_gradient":""}}},"block_order":["image_FAjGUt","text_jrfefJ"],"custom_css":["div {padding-top: 0px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px; background-color: #ffffff;}"],"settings":{"alignment":"middle","color_scheme":"none"}},"featured_collection_7MKCUJ":{"type":"featured-collection","name":"Featured collection","settings":{"title":"Featured collection","show_title":false,"collection":"collars-leashes","show_vendor":false,"enable_carousel":true,"grid":4,"rows":1,"show_title_card":false,"show_title_card_image":false,"overlay_style":"shadow","color_scheme":"1"}},"rich_text_Ug6hBG":{"type":"rich-text","blocks":{"button_q4Y8W4":{"type":"button","settings":{"button_label":"Shop Now","button_link":"shopify:\/\/collections\/pet-collection","button_style":"primary"}}},"block_order":["button_q4Y8W4"],"custom_css":["div {padding-top: 5px; padding-right: 0px; padding-bottom: 20px; padding-left: 0px;}"],"settings":{"height":"medium","text_alignment":"center","color_scheme":"none","full_width":false}},"custom_row_jq6rUB":{"type":"custom-row","blocks":{"image_UPcfdp":{"type":"image","settings":{"width":"half","image":"shopify:\/\/shop_images\/pet_campaign_pet_4.png","height":"adapt","height_desktop":400,"height_mobile":300,"subheading":"","title":"","text":"","enlarge_text":false,"button_label":"","image_link":"","text_alignment":"center center","mobile_overlay_under":false,"overlay_style":"shadow","color_scheme":"none","heading_highlight_text":"","heading_highlight_font":true,"heading_highlight_stencil":false,"heading_highlight_color":"rgba(0,0,0,0)","heading_highlight_gradient":""}},"text_MBD88U":{"type":"text","settings":{"width":"half","subheading":"","title":"Pet Charms","title_size":"hl-style","text":"<p>Celebrate your real bond with 26 timeless alphabet charms and four pet-inspired styles, all convertible into keychains for versatile use. Each charm can be laser-engraved, making it a stylish accessory for you and your most loyal companion.<\/p>","button_label":"Shop Now","button_link":"shopify:\/\/products\/pet-charm","button_style":"primary","text_alignment":"center","color_scheme":"none","heading_highlight_text":"","heading_highlight_font":true,"heading_highlight_stencil":false,"heading_highlight_color":"rgba(0,0,0,0)","heading_highlight_gradient":""}}},"block_order":["image_UPcfdp","text_MBD88U"],"custom_css":["div {padding-top: 0px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px; background-color: #ffffff;}"],"settings":{"alignment":"middle","color_scheme":"none"}},"collapsible_tabs_g4GWwP":{"type":"collapsible-tabs","blocks":{"question_rzUgcG":{"type":"question","settings":{"title":"Can you tell me more about stainless steel pet accessories?","answer":"<p>Stainless steel is pet-safe, non-toxic, highly durable, resistant to corrosion and bacterial growth. Our 316 stainless steel is medical-grade, while 304 stainless steel is food-grade—both reliable for daily use.<\/p>"}},"question_kjXbtR":{"type":"question","settings":{"title":"How do I care for stainless steel pet accessories?","answer":"<p>Clean with a mild, pet-safe detergent. Avoid harsh chemicals, abrasive tools, and steel wool that may scratch the surface. Once clean, dry thoroughly to prevent moisture buildup and keep your piece gleaming.<\/p>"}},"question_HPGPtc":{"type":"question","settings":{"title":"What is Vegatex AppleSkin™ leather?","answer":"<p>AppleSkin™ leather by Vegatex is a soft, durable, and eco-friendly material made from upcycled waste in the beverage industry.<\/p><ul><li>It’s certified 66% bio-based by the USDA<\/li><li>It’s PETA-approved vegan and crulty-free<\/li><li>It’s EU-REACH certified, non-toxic, VOC-free, and safe for pets<\/li><\/ul>"}},"question_NTUnxD":{"type":"question","settings":{"title":"How do I care for Vegatex AppleSkin™ leather pet accessories?","answer":"<p>Gently wipe with a dry microfiber cloth to remove dust. For deeper cleaning, use a slightly damp cloth and mild soap (never soak), then dry immediately. Avoid direct sunlight or high heat, and store in a cool, dry place. For extra care, apply a vegan-safe conditioner monthly to keep it soft and supple.<\/p>"}},"question_CyQJTe":{"type":"question","settings":{"title":"Where are lab-grown diamonds and gemstones?","answer":"<p>Lab-grown diamonds and gemstones are created in a controlled laboratory environment, replicating the natural conditions under which they form in the earth. They have the same chemical, physical, and optical properties as their natural counterparts.<\/p>"}},"question_KPzMNU":{"type":"question","settings":{"title":"Are pet accessories covered by THE FUTURE ROCKS Warranty?","answer":"<p>No, all pet accessories—except for Pawtner & Me necklaces—are not covered by warranty for hygienic reasons. If you have questions, please contact our Customer Service.<\/p>"}},"question_gVrGY9":{"type":"question","settings":{"title":"How can I return my order?","answer":"<p>If your item has a manufacturing defect, you may return the unused product—tags attached—to us within 14 days of purchase for a refund or exchange. For more information, please click our policy <a href=\"https:\/\/thefuturerocks.com\/pages\/refund-policy\"><span style=\"text-decoration:underline\">here<\/span><\/a>.<\/p>"}}},"block_order":["question_rzUgcG","question_kjXbtR","question_HPGPtc","question_NTUnxD","question_CyQJTe","question_KPzMNU","question_gVrGY9"],"name":"Collapsible tabs","settings":{"title":"Frequently Asked Questions"}},"rich_text_W7gWdp":{"type":"rich-text","custom_css":["div {padding-top: 10px; padding-right: 0px; padding-bottom: 10px; padding-left: 0px;}"],"settings":{"height":"medium","text_alignment":"center","color_scheme":"none","full_width":false}}},"order":["main","foxify_1733306160fqi_c4_D4MMCc","image_with_text_overlay_3zzhwh","rich_text_FQpbbp","custom_row_iPKRjk","featured_collection_hDKtPf","rich_text_T4iQJM","custom_row_hLLUh9","featured_collection_7MKCUJ","rich_text_Ug6hBG","custom_row_jq6rUB","collapsible_tabs_g4GWwP","rich_text_W7gWdp"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "full_width": false,
+        "split_header": false
+      }
+    },
+    "foxify_1733306160fqi_c4_D4MMCc": {
+      "type": "foxify-1733306160fqiC4",
+      "disabled": true,
+      "settings": {}
+    },
+    "spacer_xzGdQ7": {
+      "type": "spacer",
+      "name": "Spacer",
+      "settings": {
+        "use_custom_height": false,
+        "height": 120,
+        "height_mobile": 60
+      }
+    },
+    "featured_collection_83R3tU": {
+      "type": "featured-collection",
+      "name": "Featured collection",
+      "settings": {
+        "title": "Pet Collection",
+        "show_title": true,
+        "collection": "pet-collection",
+        "inline_padding": "wide",
+        "view_all_position": "below",
+        "view_all_label": "Explore the pet collection",
+        "show_vendor": true,
+        "enable_carousel": false,
+        "grid": 5,
+        "rows": 1,
+        "show_title_card": false,
+        "title_card_position": "first",
+        "show_title_card_image": false,
+        "overlay_style": "shadow",
+        "color_scheme": "1"
+      }
+    },
+    "gallery_QjqE6z": {
+      "type": "gallery",
+      "blocks": {
+        "image_YjEjXx": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/01_8ac6bf74-184c-4746-bd54-3f63e705c6cd.jpg",
+            "enlarge_image": false,
+            "subheading": "",
+            "title": "",
+            "button_label": "",
+            "link": "",
+            "text_alignment": "bottom left"
+          }
+        },
+        "image_kb4UcL": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/02_141d6ca1-2138-4025-918d-88dbfa8bba12.jpg",
+            "enlarge_image": false,
+            "subheading": "",
+            "title": "",
+            "button_label": "",
+            "link": "",
+            "text_alignment": "bottom left"
+          }
+        }
+      },
+      "block_order": [
+        "image_YjEjXx",
+        "image_kb4UcL"
+      ],
+      "name": "Gallery",
+      "settings": {
+        "grid": 2,
+        "height": "fixed",
+        "desktop_image_height": 700,
+        "mobile_image_height": 400,
+        "title_size": "h1-style",
+        "enable_margin": false,
+        "inset": false,
+        "enable_carousel": false,
+        "overlay_style": "full",
+        "button_style": "primary"
+      }
+    },
+    "editorial_column_CY99Ga": {
+      "type": "editorial-column",
+      "blocks": {
+        "label_CHmjmD": {
+          "type": "label",
+          "settings": {
+            "text": "INSPIRATION"
+          }
+        },
+        "statement_cwnKYG": {
+          "type": "statement",
+          "settings": {
+            "text": "For the most devoted pet lovers, we know every walk is never a daily routine—it’s a moment to bond, play, and express your shared taste in fashion. Yours, theirs, perfectly in sync.\n\nFusing jewelry-grade craftsmanship and pet-friendly design, our lineup of pet accessories is crafted to elevate a life in motion—for fine paws with bold moves."
+          }
+        },
+        "link_Mqg9tz": {
+          "type": "link",
+          "settings": {
+            "text": "EXPLORE THE PET COLLECTIONS",
+            "url": "shopify://collections/pet-collection"
+          }
+        }
+      },
+      "block_order": [
+        "label_CHmjmD",
+        "statement_cwnKYG",
+        "link_Mqg9tz"
+      ],
+      "name": "Editorial column",
+      "settings": {
+        "column_position": "right",
+        "label_beside": true
+      }
+    },
+    "featured_collection_KJC7py": {
+      "type": "featured-collection",
+      "name": "Featured collection",
+      "settings": {
+        "title": "Pawtner & Me",
+        "show_title": false,
+        "collection": "pawtner-me",
+        "inline_padding": "wide",
+        "view_all_position": "title-card",
+        "view_all_label": "Explore bundle",
+        "show_vendor": true,
+        "enable_carousel": false,
+        "grid": 3,
+        "rows": 1,
+        "show_title_card": true,
+        "title_card_position": "last",
+        "show_title_card_image": false,
+        "overlay_style": "shadow",
+        "color_scheme": "1"
+      }
+    },
+    "gallery_c7Bd7f": {
+      "type": "gallery",
+      "blocks": {
+        "image_GzNJQg": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/04_fd23ae63-c0e7-4c28-ad14-69fb32868206.jpg",
+            "enlarge_image": false,
+            "subheading": "",
+            "title": "",
+            "button_label": "",
+            "link": "",
+            "text_alignment": "bottom left"
+          }
+        },
+        "image_T9KfEa": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/03_8010ebc1-8e29-49e2-aca5-9f9761360052.jpg",
+            "enlarge_image": false,
+            "subheading": "",
+            "title": "",
+            "button_label": "",
+            "link": "",
+            "text_alignment": "bottom left"
+          }
+        }
+      },
+      "block_order": [
+        "image_GzNJQg",
+        "image_T9KfEa"
+      ],
+      "name": "Gallery",
+      "settings": {
+        "grid": 2,
+        "height": "fixed",
+        "desktop_image_height": 700,
+        "mobile_image_height": 500,
+        "title_size": "h1-style",
+        "enable_margin": false,
+        "inset": true,
+        "enable_carousel": true,
+        "overlay_style": "full",
+        "button_style": "primary"
+      }
+    },
+    "featured_collection_yYRbq4": {
+      "type": "featured-collection",
+      "name": "Featured collection",
+      "settings": {
+        "title": "Pawtner & Me",
+        "show_title": false,
+        "collection": "collars-leashes",
+        "inline_padding": "wide",
+        "view_all_position": "title-card",
+        "view_all_label": "Explore all",
+        "show_vendor": true,
+        "enable_carousel": false,
+        "grid": 5,
+        "rows": 1,
+        "show_title_card": true,
+        "title_card_position": "first",
+        "show_title_card_image": false,
+        "overlay_style": "shadow",
+        "color_scheme": "1"
+      }
+    },
+    "gallery_k49XGq": {
+      "type": "gallery",
+      "blocks": {
+        "image_AEc9Dx": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/06_02ec83d3-0473-45cf-a46d-f1c70ed864de.jpg",
+            "enlarge_image": false,
+            "subheading": "",
+            "title": "",
+            "button_label": "",
+            "link": "",
+            "text_alignment": "bottom left"
+          }
+        },
+        "image_Wc8EJX": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/05_7182426e-368d-4f33-ba86-4c7a69e34a41.jpg",
+            "enlarge_image": false,
+            "subheading": "",
+            "title": "",
+            "button_label": "",
+            "link": "",
+            "text_alignment": "bottom left"
+          }
+        }
+      },
+      "block_order": [
+        "image_AEc9Dx",
+        "image_Wc8EJX"
+      ],
+      "name": "Gallery",
+      "settings": {
+        "grid": 2,
+        "height": "fixed",
+        "desktop_image_height": 700,
+        "mobile_image_height": 500,
+        "title_size": "h1-style",
+        "enable_margin": false,
+        "inset": true,
+        "enable_carousel": true,
+        "overlay_style": "full",
+        "button_style": "primary"
+      }
+    },
+    "featured_collection_tXjzAV": {
+      "type": "featured-collection",
+      "name": "Featured collection",
+      "settings": {
+        "title": "Pawtner & Me",
+        "show_title": false,
+        "collection": "pet-charms",
+        "inline_padding": "wide",
+        "view_all_position": "title-card",
+        "view_all_label": "",
+        "show_vendor": true,
+        "enable_carousel": false,
+        "grid": 4,
+        "rows": 1,
+        "show_title_card": true,
+        "title_card_position": "first",
+        "show_title_card_image": false,
+        "overlay_style": "shadow",
+        "color_scheme": "1"
+      }
+    },
+    "custom_row_iPKRjk": {
+      "type": "custom-row",
+      "blocks": {
+        "image_zV9whD": {
+          "type": "image",
+          "settings": {
+            "width": "half",
+            "image": "shopify://shop_images/pet_campaign_model_pet_5.2.png",
+            "height": "adapt",
+            "height_desktop": 400,
+            "height_mobile": 300,
+            "subheading": "",
+            "title": "",
+            "text": "",
+            "enlarge_text": false,
+            "button_label": "",
+            "image_link": "",
+            "text_alignment": "center center",
+            "mobile_overlay_under": false,
+            "overlay_style": "shadow",
+            "color_scheme": "none",
+            "heading_highlight_text": "",
+            "heading_highlight_font": true,
+            "heading_highlight_stencil": false,
+            "heading_highlight_color": "rgba(0,0,0,0)",
+            "heading_highlight_gradient": ""
+          }
+        },
+        "text_Px7Q4k": {
+          "type": "text",
+          "settings": {
+            "width": "half",
+            "subheading": "",
+            "title": "Pawtner & Me",
+            "title_size": "hl-style",
+            "text": "<p>Match, share, and wear your bond. Let your furry companion dazzle with matching charms while you wear a subtle note of elegance—a beautiful connection between you and your four-legged muse.</p>",
+            "button_label": "",
+            "button_link": "shopify://collections/most-gifted-jewelry",
+            "button_style": "primary",
+            "text_alignment": "center",
+            "color_scheme": "none",
+            "heading_highlight_text": "",
+            "heading_highlight_font": true,
+            "heading_highlight_stencil": false,
+            "heading_highlight_color": "rgba(0,0,0,0)",
+            "heading_highlight_gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_zV9whD",
+        "text_Px7Q4k"
+      ],
+      "disabled": true,
+      "custom_css": [
+        "div {padding-top: 0px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px; background-color: #ffffff;}"
+      ],
+      "settings": {
+        "alignment": "middle",
+        "color_scheme": "none"
+      }
+    },
+    "featured_collection_hDKtPf": {
+      "type": "featured-collection",
+      "disabled": true,
+      "name": "Featured collection",
+      "settings": {
+        "title": "Featured collection",
+        "show_title": false,
+        "collection": "pawtner-me",
+        "inline_padding": "inset",
+        "view_all_position": "header",
+        "view_all_label": "",
+        "show_vendor": false,
+        "enable_carousel": true,
+        "grid": 2,
+        "rows": 1,
+        "show_title_card": false,
+        "title_card_position": "first",
+        "show_title_card_image": false,
+        "overlay_style": "shadow",
+        "color_scheme": "1"
+      }
+    },
+    "rich_text_T4iQJM": {
+      "type": "rich-text",
+      "blocks": {
+        "button_d9RWEg": {
+          "type": "button",
+          "settings": {
+            "button_label": "Shop Now",
+            "button_link": "shopify://collections/pet-collection",
+            "button_style": "primary"
+          }
+        }
+      },
+      "block_order": [
+        "button_d9RWEg"
+      ],
+      "disabled": true,
+      "custom_css": [
+        "div {padding-top: 5px; padding-right: 0px; padding-bottom: 20px; padding-left: 0px;}"
+      ],
+      "settings": {
+        "height": "medium",
+        "text_alignment": "center",
+        "color_scheme": "none",
+        "full_width": false
+      }
+    },
+    "custom_row_hLLUh9": {
+      "type": "custom-row",
+      "blocks": {
+        "image_FAjGUt": {
+          "type": "image",
+          "settings": {
+            "width": "half",
+            "image": "shopify://shop_images/pet_campaign_model_pet_3.png",
+            "height": "adapt",
+            "height_desktop": 400,
+            "height_mobile": 300,
+            "subheading": "",
+            "title": "",
+            "text": "",
+            "enlarge_text": false,
+            "button_label": "",
+            "image_link": "",
+            "text_alignment": "center center",
+            "mobile_overlay_under": false,
+            "overlay_style": "shadow",
+            "color_scheme": "none",
+            "heading_highlight_text": "",
+            "heading_highlight_font": true,
+            "heading_highlight_stencil": false,
+            "heading_highlight_color": "rgba(0,0,0,0)",
+            "heading_highlight_gradient": ""
+          }
+        },
+        "text_jrfefJ": {
+          "type": "text",
+          "settings": {
+            "width": "half",
+            "subheading": "",
+            "title": "Collars & Leashes",
+            "title_size": "hl-style",
+            "text": "<p>Designed for movement and style, our collars and leashes are available in three sizes and come in Caramel Brown and Forest Green, crafted from high-quality materials. Refined yet ruggedly durable, and ready for every adventure together.</p>",
+            "button_label": "",
+            "button_link": "shopify://collections/christmas-gifts",
+            "button_style": "primary",
+            "text_alignment": "center",
+            "color_scheme": "none",
+            "heading_highlight_text": "",
+            "heading_highlight_font": true,
+            "heading_highlight_stencil": false,
+            "heading_highlight_color": "rgba(0,0,0,0)",
+            "heading_highlight_gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_FAjGUt",
+        "text_jrfefJ"
+      ],
+      "disabled": true,
+      "custom_css": [
+        "div {padding-top: 0px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px; background-color: #ffffff;}"
+      ],
+      "settings": {
+        "alignment": "middle",
+        "color_scheme": "none"
+      }
+    },
+    "featured_collection_7MKCUJ": {
+      "type": "featured-collection",
+      "disabled": true,
+      "name": "Featured collection",
+      "settings": {
+        "title": "Featured collection",
+        "show_title": false,
+        "collection": "collars-leashes",
+        "inline_padding": "inset",
+        "view_all_position": "header",
+        "view_all_label": "",
+        "show_vendor": false,
+        "enable_carousel": true,
+        "grid": 4,
+        "rows": 1,
+        "show_title_card": false,
+        "title_card_position": "first",
+        "show_title_card_image": false,
+        "overlay_style": "shadow",
+        "color_scheme": "1"
+      }
+    },
+    "rich_text_Ug6hBG": {
+      "type": "rich-text",
+      "blocks": {
+        "button_q4Y8W4": {
+          "type": "button",
+          "settings": {
+            "button_label": "Shop Now",
+            "button_link": "shopify://collections/pet-collection",
+            "button_style": "primary"
+          }
+        }
+      },
+      "block_order": [
+        "button_q4Y8W4"
+      ],
+      "disabled": true,
+      "custom_css": [
+        "div {padding-top: 5px; padding-right: 0px; padding-bottom: 20px; padding-left: 0px;}"
+      ],
+      "settings": {
+        "height": "medium",
+        "text_alignment": "center",
+        "color_scheme": "none",
+        "full_width": false
+      }
+    },
+    "custom_row_jq6rUB": {
+      "type": "custom-row",
+      "blocks": {
+        "image_UPcfdp": {
+          "type": "image",
+          "settings": {
+            "width": "half",
+            "image": "shopify://shop_images/pet_campaign_pet_4.png",
+            "height": "adapt",
+            "height_desktop": 400,
+            "height_mobile": 300,
+            "subheading": "",
+            "title": "",
+            "text": "",
+            "enlarge_text": false,
+            "button_label": "",
+            "image_link": "",
+            "text_alignment": "center center",
+            "mobile_overlay_under": false,
+            "overlay_style": "shadow",
+            "color_scheme": "none",
+            "heading_highlight_text": "",
+            "heading_highlight_font": true,
+            "heading_highlight_stencil": false,
+            "heading_highlight_color": "rgba(0,0,0,0)",
+            "heading_highlight_gradient": ""
+          }
+        },
+        "text_MBD88U": {
+          "type": "text",
+          "settings": {
+            "width": "half",
+            "subheading": "",
+            "title": "Pet Charms",
+            "title_size": "hl-style",
+            "text": "<p>Celebrate your real bond with 26 timeless alphabet charms and four pet-inspired styles, all convertible into keychains for versatile use. Each charm can be laser-engraved, making it a stylish accessory for you and your most loyal companion.</p>",
+            "button_label": "Shop Now",
+            "button_link": "shopify://products/pet-charm",
+            "button_style": "primary",
+            "text_alignment": "center",
+            "color_scheme": "none",
+            "heading_highlight_text": "",
+            "heading_highlight_font": true,
+            "heading_highlight_stencil": false,
+            "heading_highlight_color": "rgba(0,0,0,0)",
+            "heading_highlight_gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_UPcfdp",
+        "text_MBD88U"
+      ],
+      "disabled": true,
+      "custom_css": [
+        "div {padding-top: 0px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px; background-color: #ffffff;}"
+      ],
+      "settings": {
+        "alignment": "middle",
+        "color_scheme": "none"
+      }
+    },
+    "collapsible_tabs_g4GWwP": {
+      "type": "collapsible-tabs",
+      "blocks": {
+        "question_rzUgcG": {
+          "type": "question",
+          "settings": {
+            "title": "Can you tell me more about stainless steel pet accessories?",
+            "answer": "<p>Stainless steel is pet-safe, non-toxic, highly durable, resistant to corrosion and bacterial growth. Our 316 stainless steel is medical-grade, while 304 stainless steel is food-grade—both reliable for daily use.</p>"
+          }
+        },
+        "question_kjXbtR": {
+          "type": "question",
+          "settings": {
+            "title": "How do I care for stainless steel pet accessories?",
+            "answer": "<p>Clean with a mild, pet-safe detergent. Avoid harsh chemicals, abrasive tools, and steel wool that may scratch the surface. Once clean, dry thoroughly to prevent moisture buildup and keep your piece gleaming.</p>"
+          }
+        },
+        "question_HPGPtc": {
+          "type": "question",
+          "settings": {
+            "title": "What is Vegatex AppleSkin™ leather?",
+            "answer": "<p>AppleSkin™ leather by Vegatex is a soft, durable, and eco-friendly material made from upcycled waste in the beverage industry.</p><ul><li>It’s certified 66% bio-based by the USDA</li><li>It’s PETA-approved vegan and crulty-free</li><li>It’s EU-REACH certified, non-toxic, VOC-free, and safe for pets</li></ul>"
+          }
+        },
+        "question_NTUnxD": {
+          "type": "question",
+          "settings": {
+            "title": "How do I care for Vegatex AppleSkin™ leather pet accessories?",
+            "answer": "<p>Gently wipe with a dry microfiber cloth to remove dust. For deeper cleaning, use a slightly damp cloth and mild soap (never soak), then dry immediately. Avoid direct sunlight or high heat, and store in a cool, dry place. For extra care, apply a vegan-safe conditioner monthly to keep it soft and supple.</p>"
+          }
+        },
+        "question_CyQJTe": {
+          "type": "question",
+          "settings": {
+            "title": "Where are lab-grown diamonds and gemstones?",
+            "answer": "<p>Lab-grown diamonds and gemstones are created in a controlled laboratory environment, replicating the natural conditions under which they form in the earth. They have the same chemical, physical, and optical properties as their natural counterparts.</p>"
+          }
+        },
+        "question_KPzMNU": {
+          "type": "question",
+          "settings": {
+            "title": "Are pet accessories covered by THE FUTURE ROCKS Warranty?",
+            "answer": "<p>No, all pet accessories—except for Pawtner & Me necklaces—are not covered by warranty for hygienic reasons. If you have questions, please contact our Customer Service.</p>"
+          }
+        },
+        "question_gVrGY9": {
+          "type": "question",
+          "settings": {
+            "title": "How can I return my order?",
+            "answer": "<p>If your item has a manufacturing defect, you may return the unused product—tags attached—to us within 14 days of purchase for a refund or exchange. For more information, please click our policy <a href=\"https://thefuturerocks.com/pages/refund-policy\"><span style=\"text-decoration:underline\">here</span></a>.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "question_rzUgcG",
+        "question_kjXbtR",
+        "question_HPGPtc",
+        "question_NTUnxD",
+        "question_CyQJTe",
+        "question_KPzMNU",
+        "question_gVrGY9"
+      ],
+      "disabled": true,
+      "name": "Collapsible tabs",
+      "settings": {
+        "title": "Frequently Asked Questions"
+      }
+    },
+    "rich_text_W7gWdp": {
+      "type": "rich-text",
+      "disabled": true,
+      "custom_css": [
+        "div {padding-top: 10px; padding-right: 0px; padding-bottom: 10px; padding-left: 0px;}"
+      ],
+      "settings": {
+        "height": "medium",
+        "text_alignment": "center",
+        "color_scheme": "none",
+        "full_width": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "foxify_1733306160fqi_c4_D4MMCc",
+    "spacer_xzGdQ7",
+    "featured_collection_83R3tU",
+    "gallery_QjqE6z",
+    "editorial_column_CY99Ga",
+    "featured_collection_KJC7py",
+    "gallery_c7Bd7f",
+    "featured_collection_yYRbq4",
+    "gallery_k49XGq",
+    "featured_collection_tXjzAV",
+    "custom_row_iPKRjk",
+    "featured_collection_hDKtPf",
+    "rich_text_T4iQJM",
+    "custom_row_hLLUh9",
+    "featured_collection_7MKCUJ",
+    "rich_text_Ug6hBG",
+    "custom_row_jq6rUB",
+    "collapsible_tabs_g4GWwP",
+    "rich_text_W7gWdp"
+  ]
+}

@@ -74,6 +74,16 @@
   padding-inline: var(--module-pad-inline);
 }
 
+/* Reusable wide/inset toggle (per-module "Inline padding" setting).
+   The class sets the --module-inline token; each module's own inset
+   rules consume it. Wide = site gutter, inset = the 5% module grid. */
+.module-inline--wide {
+  --module-inline: var(--site-gutter);
+}
+.module-inline--inset {
+  --module-inline: var(--module-pad-inline);
+}
+
 /* Kill the theme's image zoom-on-hover globally (collection cards,
    grid promos, title cards, gallery/multi-column images…) — the
    class is hardcoded in their markup, so neutralise it here. Same
@@ -349,6 +359,12 @@ button.btn--secondary:focus {
   content: "+";
   line-height: inherit;
 }
+/* CTA label spans are never bordered in the redesign — old-site
+   styles bordered them; enforce globally (defensive: also covers
+   app/campaign CSS). */
+.btn__text {
+  border: none;
+}
 
 /* ---- 6. Module spacing convention --------------------------- */
 /* Standard module rhythm: no padding-top, 120px padding-bottom,
@@ -397,8 +413,107 @@ button.btn--secondary:focus {
   flex-shrink: 0;
   white-space: nowrap;
 }
+/* Redesigned title card (hook class in featured-collection.liquid).
+   No card-scheme ground; content top-aligned. Title takes heading-3
+   type, description standard body copy, each with 60px below.
+   (0,3,0) scoping out-specifies both the card-scheme background and
+   the shared §15 title-card rules further down the file. */
+.section-featured-collection .featured-collection__title-card {
+  background: transparent;
+  /* The .product-list-heading-block__text wrapper (which carried the
+     inner padding and bottom-pinned flex) is removed from this card's
+     markup — the card pads itself and content sits in normal flow
+     from the top. */
+  /* padding: var(--site-gutter); */
+}
+/* Mobile: the card's wrapper block hugs its actual content height
+   instead of stretching with the product grid row. */
+@media (max-width: 767.98px) {
+  .section-featured-collection .product-block--mobile-wide {
+    height: 100%;
+  }
+}
+.section-featured-collection .featured-collection__title-card .overlay-text {
+  width: 100%;
+}
+
+.section-featured-collection .featured-collection__title-card .overlay-text__title {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  line-height: 21px;
+  text-transform: uppercase;
+  margin: 0 0 60px;
+}
+.section-featured-collection .featured-collection__title-card .overlay-text__rte {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  margin: 0 0 60px;
+}
+
+/* Mobile: the title card's text splits into two columns — title
+   left (35%), description + view-all stacked right (65%), 15px
+   column gap. The gap comes out of the title column (35% − 15px)
+   so the two columns + gap still total 100%. */
+@media (max-width: 767.98px) {
+  .section-featured-collection .featured-collection__title-card .overlay-text__text {
+    display: grid;
+    grid-template-columns: calc(35% - 15px) 65%;
+    column-gap: 15px;
+    row-gap: 15px;
+  }
+  /* Spacing moves off the elements and onto the grid gaps: element
+     margin-bottoms (meant for the stacked flow) leave a 60px void
+     in row 1 when there is no description — and with no description
+     the CTA auto-places into row 1 beside the title, where a
+     bottom margin has nothing to space. */
+  .section-featured-collection .featured-collection__title-card .overlay-text__title,
+  .section-featured-collection .featured-collection__title-card .overlay-text__rte {
+    margin-bottom: 0;
+  }
+  .section-featured-collection .featured-collection__title-card .overlay-text__title {
+    grid-column: 1;
+  }
+  .section-featured-collection .featured-collection__title-card .overlay-text__rte {
+    grid-column: 2;
+    justify-self: start;
+  }
+  /* The CTA sits in the title column, pinned to its own row directly
+     underneath the title (auto-flow would otherwise promote it into
+     row 1 beside the title when there is no description). */
+  .section-featured-collection .featured-collection__title-card .section-header__view-all {
+    grid-column: 1;
+    grid-row: 2;
+    justify-self: start;
+  }
+}
+
+/* In-title-card placement for the view-all CTA ("'View all'
+   position" setting): spaced under the title/description and lifted
+   above the card's full-surface link (z-index 2, styles.css ~6950)
+   so the CTA is clickable in its own right. */
+.section-featured-collection .product-list-heading-block .section-header__view-all {
+  position: relative;
+  z-index: 3;
+  display: inline-block;
+  /* Margin-bottom-only spacing inside the card: the gap above comes
+     from the previous element's own margin-bottom, so a missing
+     description never leaves stray top spacing. */
+  margin: 0;
+}
+
+/* Below-carousel placement for the view-all CTA ("'View all'
+   position" setting): same inset as the
+   title row, centred, spaced off the products. The trailing "+"
+   stays hardcoded via the .btn--secondary .btn__text::after rule. */
+.section-featured-collection .section-footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+  padding: 0 20px;
+}
 @media (min-width: 1280px) {
   .section-featured-collection .section-header,
+  .section-featured-collection .section-footer,
   .section-related-products .section-header,
   .section-logo-carousel .section-header,
   .section-infographic .section-header {
@@ -409,6 +524,68 @@ button.btn--secondary:focus {
     padding-block: 0;
     padding-left: var(--module-pad-inline);
     padding-right: var(--module-pad-inline);
+  }
+}
+/* Featured collection consumes the wide/inset toggle (the
+   module-inline--* class on its root div sets --module-inline):
+   title row, footer row and the desktop product grid all follow it.
+   Placed after the base/1280 rules above so the token wins whenever
+   the class is present; sections predating the setting default to
+   "inset" via the markup fallback, matching the old ≥1280 look. */
+.section-featured-collection .module-inline--wide .section-header,
+.section-featured-collection .module-inline--wide .section-footer,
+.section-featured-collection .module-inline--inset .section-header,
+.section-featured-collection .module-inline--inset .section-footer {
+  padding-inline: var(--module-inline);
+}
+@media (min-width: 1280px) {
+  .section-featured-collection .module-inline--wide .cc-carousel--mobile-only .product-list.cc-carousel__scroll-area,
+  .section-featured-collection .module-inline--inset .cc-carousel--mobile-only .product-list.cc-carousel__scroll-area {
+    padding-left: var(--module-inline);
+    padding-right: var(--module-inline);
+  }
+}
+
+/* Gallery — site-gutter inline inset on desktop; full bleed on
+   mobile. Closes with the standard module bottom padding. */
+.section-gallery {
+  padding-inline: var(--site-gutter);
+  padding-bottom: var(--module-pad-bottom);
+}
+@media (max-width: 767.98px) {
+  .section-gallery {
+    padding-inline: 0;
+  }
+  /* Mobile slideshow slides: 90% of the viewport (the carousel is
+     full bleed) so the next image peeks in on the right; slick runs
+     variableWidth and reads these widths for its positioning. The
+     LAST slide is 110% so slick's natural left-alignment fills the
+     viewport — no dead strip, no JS correction (the overflowing 10%
+     is clipped by the slick list). */
+  .gallery--mobile-carousel .gallery__item {
+    width: 90vw;
+  }
+  .gallery--mobile-carousel .gallery__item:last-child {
+    width: 110vw;
+  }
+}
+/* "Inset" setting: a considerable inline inset on desktop (double
+   the 5% module grid, on top of the section's site-gutter). On
+   mobile it falls back to the plain site gutter — except the mobile
+   slideshow, which stays full bleed like the PDP gallery. The
+   slideshow's slick dots are gone entirely (dots: false in
+   theme.js's GallerySection) — the green .gallery-progress bar
+   (§18 styles; markup + sync script in gallery.liquid) replaces
+   them. */
+.gallery-card--inset {
+  padding-inline: calc(var(--module-pad-inline) * 2);
+}
+@media (max-width: 767.98px) {
+  .gallery-card--inset {
+    padding-inline: var(--site-gutter);
+  }
+  .gallery-card--inset:has(.gallery--mobile-carousel) {
+    padding-inline: 0;
   }
 }
 
@@ -2332,9 +2509,12 @@ button.btn--secondary:focus {
 }
 
 /* ---- 24. Editorial column (sections/editorial-column.liquid) - */
-/* Half-width stacked column on the 5% grid. Module spacing
-   convention: no top padding, 80px bottom. */
+/* Half-width stacked column, hardcoded to the WIDE inline state
+   (site gutter — was the 5% module grid via .module-pad-inline in
+   the markup). Module spacing convention: no top padding, 80px
+   bottom. */
 .editorial-column {
+  padding-inline: var(--site-gutter);
   padding-bottom: var(--module-pad-bottom);
 }
 .editorial-column__content {
@@ -2363,6 +2543,24 @@ button.btn--secondary:focus {
   text-transform: uppercase;
   margin: 0 0 24px;
 }
+/* "Label beside content" toggle: Label blocks move into their own
+   column left of the content, same row (mirrors the about header's
+   label/content split). Content keeps its 55% width; --right's
+   margin-left: auto still pushes it to the far side, leaving the
+   label column at the page edge. */
+.editorial-column--label-beside {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+.editorial-column--label-beside .editorial-column__label-col {
+  flex: 0 0 30%;
+  min-width: 0;
+}
+.editorial-column--label-beside .editorial-column__content {
+  min-width: 0;
+}
+
 /* Mobile: column spans the full page width (inside the module
    gutter) and the statement centres. */
 @media (max-width: 767.98px) {
@@ -2371,6 +2569,12 @@ button.btn--secondary:focus {
   }
   .editorial-column__statement {
     text-align: center;
+  }
+  /* Beside mode stacks back to the normal column on mobile: the
+     label returns above the content at full width (its own 16px
+     bottom margin provides the gap, same as the stacked layout). */
+  .editorial-column--label-beside {
+    display: block;
   }
 }
 

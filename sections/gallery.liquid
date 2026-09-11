@@ -1,4 +1,4 @@
-<div class="card" id="section-id-{{ section.id }}" data-section-type="gallery">
+<div class="card{% if section.settings.inset %} gallery-card--inset{% endif %}" id="section-id-{{ section.id }}" data-section-type="gallery">
   {%- if section.settings.height == 'fixed' -%}
     {% style %}
       #section-id-{{ section.id }} .gallery__item {
@@ -13,7 +13,7 @@
     {% endstyle %}
   {%- endif -%}
 
-  <div class="gallery gallery--height-{{ section.settings.height }} gallery--grid-{{ section.settings.grid }}{% if section.settings.enable_margin %} gallery--with-margins{% else %} card-br-oh{% endif %}{% if section.settings.enable_carousel %} gallery--mobile-carousel slick-slider-overlay-dots{% endif %}" data-grid="{{ section.settings.grid }}">
+  <div class="gallery gallery--height-{{ section.settings.height }} gallery--grid-{{ section.settings.grid }}{% if section.settings.enable_margin %} gallery--with-margins{% else %} card-br-oh{% endif %}{% if section.settings.enable_carousel %} gallery--mobile-carousel{% endif %}" data-grid="{{ section.settings.grid }}">
     <div class="gallery__row">
       {%- for block in section.blocks -%}
         {%- assign forloop_mod_grid = forloop.index0 | modulo: section.settings.grid -%}
@@ -67,6 +67,36 @@
       {%- endfor -%}
     </div>
   </div>
+
+  {%- if section.settings.enable_carousel -%}
+    {%- comment -%}
+      Mobile slideshow matches the PDP product gallery: dots hidden
+      (redesign.css §gallery) and this progress bar below the slides
+      instead — same .gallery-progress classes and sync pattern as
+      main-product.liquid (§18 styles).
+    {%- endcomment -%}
+    <div class="gallery-progress" aria-hidden="true">
+      <div class="gallery-progress__bar"></div>
+    </div>
+    <script>
+      (function () {
+        var progress = document.querySelector('#section-id-{{ section.id }} .gallery-progress__bar');
+        var slider = document.querySelector('#section-id-{{ section.id }} .gallery--mobile-carousel');
+        if (!progress || !slider) return;
+        var render = function (index, count) {
+          progress.style.width = 100 / count + '%';
+          progress.style.transform = 'translateX(' + index * 100 + '%)';
+        };
+        render(0, slider.querySelectorAll('.gallery__item').length || 1);
+        document.addEventListener('DOMContentLoaded', function () {
+          if (!window.jQuery) return;
+          jQuery(document).on('init reInit afterChange breakpoint', '#section-id-{{ section.id }} .gallery--mobile-carousel', function (evt, slick, current) {
+            render(typeof current === 'number' ? current : slick.currentSlide || 0, slick.slideCount || 1);
+          });
+        });
+      })();
+    </script>
+  {%- endif -%}
 </div>
 
 
@@ -158,6 +188,13 @@
       "type": "checkbox",
       "label": "Add spacing between images",
       "default": true
+    },
+    {
+      "id": "inset",
+      "type": "checkbox",
+      "label": "Inset",
+      "info": "Adds a wide inline inset on desktop. On mobile the inset falls back to the site gutter (mobile slideshow stays full bleed).",
+      "default": false
     },
     {
       "id": "enable_carousel",

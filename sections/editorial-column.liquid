@@ -6,7 +6,27 @@
   redesign.css §24.
 {%- endcomment -%}
 
-<div class="editorial-column module-pad-inline editorial-column--{{ section.settings.column_position }}" data-section-type="editorial-column">
+{%- liquid
+  assign label_beside = false
+  if section.settings.label_beside
+    for block in section.blocks
+      if block.type == 'label'
+        assign label_beside = true
+        break
+      endif
+    endfor
+  endif
+-%}
+<div class="editorial-column editorial-column--{{ section.settings.column_position }}{% if label_beside %} editorial-column--label-beside{% endif %}" data-section-type="editorial-column">
+  {%- if label_beside -%}
+    <div class="editorial-column__label-col">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'label' -%}
+          <p class="heading-3 editorial-column__label" {{ block.shopify_attributes }}>{{ block.settings.text | escape }}</p>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
   <div class="editorial-column__content">
     {%- for block in section.blocks -%}
       {%- case block.type -%}
@@ -23,7 +43,9 @@
             {%- endif -%}
           </div>
         {%- when 'label' -%}
-          <p class="heading-3 editorial-column__label" {{ block.shopify_attributes }}>{{ block.settings.text | escape }}</p>
+          {%- unless label_beside -%}
+            <p class="heading-3 editorial-column__label" {{ block.shopify_attributes }}>{{ block.settings.text | escape }}</p>
+          {%- endunless -%}
         {%- when 'statement' -%}
           <h2 class="heading-2 editorial-column__statement" {{ block.shopify_attributes }}>{{ block.settings.text | escape }}</h2>
         {%- when 'link' -%}
@@ -51,6 +73,13 @@
         { "value": "right", "label": "Right" }
       ],
       "default": "right"
+    },
+    {
+      "type": "checkbox",
+      "id": "label_beside",
+      "label": "Label beside content",
+      "info": "Moves Label blocks into their own column, left of the content, on the same row.",
+      "default": false
     }
   ],
   "blocks": [
