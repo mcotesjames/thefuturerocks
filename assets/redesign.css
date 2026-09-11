@@ -915,11 +915,17 @@ button.btn--secondary:focus {
 }
 /* CTA inherits the band's text colour on any background (the shared
    secondary style paints theme-settings colours). */
-.text-with-media .btn.btn--secondary,
-.text-with-media .btn.btn--secondary:hover,
-.text-with-media .btn.btn--secondary:focus {
+.text-with-media .btn.btn--secondary {
   background: transparent;
   color: inherit;
+}
+/* Hover inverts against the band, mirroring every other CTA: ground
+   takes the band's text colour, text takes the band colour (both
+   emitted by the section as --twm-* vars). */
+.text-with-media .btn.btn--secondary:hover,
+.text-with-media .btn.btn--secondary:focus {
+  background: var(--twm-text, var(--color-black));
+  color: var(--twm-bg, var(--color-white));
 }
 /* Media column: site-gutter padding all the way around. */
 .text-with-media__media-col {

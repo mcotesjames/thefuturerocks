@@ -487,7 +487,7 @@
       "type": "text-with-media",
       "name": "Text with media",
       "settings": {
-        "bg_color": "#00d200",
+        "bg_color": "#00D200",
         "text_color": "#000000",
         "eyebrow": "About TFR",
         "title": "The Future Rocks creates accessories for people who refuse to blend in.",
