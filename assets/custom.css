@@ -433,9 +433,9 @@ span.product-block-options__item.sterling.silver:last-of-type {
 /* 24/02/2025 */
 
 .wishlist-wrapper .shopify-block.shopify-app-block {
-    margin: 0 5px 0 10px;
+    /* margin: 0 5px 0 10px;
     border: 1px solid #000;
-    padding: 0 15px;
+    padding: 0 15px; */
 }
 .quantity-submit--butn-wish {
     display: flex;
@@ -444,7 +444,7 @@ span.product-block-options__item.sterling.silver:last-of-type {
 .quantity-submit--butn-wish .quantity-submit-row__submit {
     width: 80%;
     margin: 0 !important;
-    margin-bottom: 30px !important;
+    margin-bottom: 12px !important;
 }
 .quantity-submit--butn-wish .wishlist-wrapper {
     width: 20%;

@@ -83,8 +83,8 @@
           "type": "shopify://apps/swish-wishlist-king/blocks/wishlist-button-block/194f5011-a43c-4b22-b12e-eaf20dc4506a",
           "settings": {
             "button_style": "plain_accent_1",
-            "button_alignment": "left",
-            "button_content_alignment": "left",
+            "button_alignment": "center",
+            "button_content_alignment": "center",
             "button_margin_top": 0,
             "button_margin_bottom": 0,
             "button_max_width": 0,
@@ -95,6 +95,13 @@
             "icon_size": 18,
             "icon_stroke_width": 1,
             "icon_offset_vertical": 0
+          }
+        },
+        "dropdowns_anchor_MDinLk": {
+          "type": "dropdowns_anchor",
+          "settings": {
+            "show_disclaimer": true,
+            "disclaimer": "<p>Please note that the carat weight, gold weight, number of stones, and dimensions will vary depending on the size of the product ordered. Please <a href=\"/pages/contact\" title=\"Contact\"><span style=\"text-decoration:underline\">contact us</span></a> for more information. </p>"
           }
         },
         "arrivesby_delivery_time_iMmhHT": {
@@ -121,13 +128,6 @@
             "suffix": "",
             "cutoff_message": "Order within",
             "show_explainer": false
-          }
-        },
-        "dropdowns_anchor_MDinLk": {
-          "type": "dropdowns_anchor",
-          "settings": {
-            "show_disclaimer": true,
-            "disclaimer": "<p>Please note that the carat weight, gold weight, number of stones, and dimensions will vary depending on the size of the product ordered. Please <a href=\"/pages/contact\" title=\"Contact\"><span style=\"text-decoration:underline\">contact us</span></a> for more information. </p>"
           }
         },
         "accordion_jAzpEh": {
@@ -355,8 +355,8 @@
         "easify_options_easify_product_options_RwWzDW",
         "buy_buttons",
         "wishlist_king_wishlist_button_block_bDPTRJ",
-        "arrivesby_delivery_time_iMmhHT",
         "dropdowns_anchor_MDinLk",
+        "arrivesby_delivery_time_iMmhHT",
         "accordion_jAzpEh",
         "accordion_KykLQh",
         "details_row_KykLQh",
@@ -413,11 +413,15 @@
         "title": "Spend +$200 and get a pave cord bracelet at half price $100",
         "show_title": true,
         "collection": "pave-cord-bracelets",
+        "inline_padding": "inset",
+        "view_all_position": "header",
+        "view_all_label": "",
         "show_vendor": false,
         "enable_carousel": true,
         "grid": 4,
         "rows": 1,
         "show_title_card": false,
+        "title_card_position": "first",
         "show_title_card_image": true,
         "overlay_style": "shadow",
         "color_scheme": "1"
