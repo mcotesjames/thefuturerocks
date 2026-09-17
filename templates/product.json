@@ -69,6 +69,32 @@
           "type": "shopify://apps/easify-options/blocks/easify-product-options/d2288b18-c1ba-42f5-b3b3-26c75c8820bf",
           "settings": {}
         },
+        "arrivesby_delivery_time_iMmhHT": {
+          "type": "shopify://apps/arrivesby/blocks/delivery-time/b4f15d36-71f0-4a8c-954f-e485b7529360",
+          "settings": {
+            "show_offer": false,
+            "show_delivery_cutoff": false,
+            "show_shipping_policy": false,
+            "font_size": 16,
+            "line_height": 1.5,
+            "padding": 0.5,
+            "text_align": "left",
+            "icon": "delivery_truck_speed",
+            "icon_size": 16,
+            "date_format": "medium",
+            "cutoff_time_format": "timer",
+            "text_color": "#121212",
+            "background_color": "#ffffff",
+            "countdown_color": "#32741e",
+            "link_color": "#006699",
+            "offer_text": "<strong>FREE</strong> shipping",
+            "prefix": "Ships between",
+            "separator": "-",
+            "suffix": "",
+            "cutoff_message": "Order within",
+            "show_explainer": false
+          }
+        },
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
@@ -102,32 +128,6 @@
           "settings": {
             "show_disclaimer": true,
             "disclaimer": "<p>Please note that the carat weight, gold weight, number of stones, and dimensions will vary depending on the size of the product ordered. Please <a href=\"/pages/contact\" title=\"Contact\"><span style=\"text-decoration:underline\">contact us</span></a> for more information. </p>"
-          }
-        },
-        "arrivesby_delivery_time_iMmhHT": {
-          "type": "shopify://apps/arrivesby/blocks/delivery-time/b4f15d36-71f0-4a8c-954f-e485b7529360",
-          "settings": {
-            "show_offer": false,
-            "show_delivery_cutoff": false,
-            "show_shipping_policy": false,
-            "font_size": 16,
-            "line_height": 1.5,
-            "padding": 0.5,
-            "text_align": "left",
-            "icon": "delivery_truck_speed",
-            "icon_size": 16,
-            "date_format": "medium",
-            "cutoff_time_format": "timer",
-            "text_color": "#121212",
-            "background_color": "#ffffff",
-            "countdown_color": "#32741e",
-            "link_color": "#006699",
-            "offer_text": "<strong>FREE</strong> shipping",
-            "prefix": "Ships between",
-            "separator": "-",
-            "suffix": "",
-            "cutoff_message": "Order within",
-            "show_explainer": false
           }
         },
         "accordion_jAzpEh": {
@@ -360,10 +360,10 @@
         "variant_picker",
         "richtext_VgL3GB",
         "easify_options_easify_product_options_RwWzDW",
+        "arrivesby_delivery_time_iMmhHT",
         "buy_buttons",
         "wishlist_king_wishlist_button_block_bDPTRJ",
         "dropdowns_anchor_MDinLk",
-        "arrivesby_delivery_time_iMmhHT",
         "accordion_jAzpEh",
         "accordion_KykLQh",
         "details_row_KykLQh",
