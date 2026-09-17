@@ -153,6 +153,7 @@
         },
         "richtext_QF9mdF": {
           "type": "richtext",
+          "disabled": true,
           "settings": {
             "richtext": "<p>Tax and duties included</p>",
             "icon": "check_mark",
@@ -186,6 +187,7 @@
         },
         "richtext_cdXj7g": {
           "type": "richtext",
+          "disabled": true,
           "settings": {
             "richtext": "<p><a href=\"https://wa.me/85266620636\" target=\"_blank\" title=\"https://wa.me/85266620636\"><span style=\"text-decoration:underline\">Speak with an expert</span></a></p>",
             "icon": "chat_bubble",
@@ -351,8 +353,8 @@
         "vendor",
         "title",
         "profy_banner_countdown_timer_app_block_ERxKXV",
-        "custom_liquid_E64dKX",
         "price",
+        "custom_liquid_E64dKX",
         "variant_picker",
         "easify_options_easify_product_options_RwWzDW",
         "text_BNWt97",

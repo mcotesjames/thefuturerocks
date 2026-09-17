@@ -2210,7 +2210,7 @@ button.btn--secondary:focus {
   margin: 0;
 }
 .template-product .main-container .detail .price-container {
-  margin: 10px 0 0;
+  margin: 10px 0 var(--gutter-content);
 }
 .product-detail-label {
   text-transform: uppercase;

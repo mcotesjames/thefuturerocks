@@ -57,6 +57,7 @@
         },
         "text_PFbUi4": {
           "type": "text",
+          "disabled": true,
           "settings": {
             "text": "{{ product.metafields.custom.certification.value }}",
             "icon": "",
@@ -160,6 +161,7 @@
         },
         "richtext_VgL3GB": {
           "type": "richtext",
+          "disabled": true,
           "settings": {
             "richtext": "<p>Tax and duties included</p>",
             "icon": "check_mark",
@@ -194,6 +196,7 @@
         },
         "custom_liquid_MgcXyG": {
           "type": "custom_liquid",
+          "disabled": true,
           "settings": {
             "custom_liquid": "<style>\n.chat-button {\nwidth: 100%;\nmargin-top: 10px;\ntext-transform: uppercase;\npadding: 15px 31px;\nheight: auto;\n}\n.chat-button:hover {\nborder: 1px #009e2d solid !important;\nbackground: #009e2d !important;\n}\n</style>\n<style>\n\nhtml:not([lang|=\"en\"]) #myDiv-en,html:not([lang|=\"ja\"]) #myDiv-ja, html:not([lang|=\"ko\"]) #myDiv-ko\n\n    { display: none!important; }\n\n</style> \n\n<div lang=\"en\" id=\"myDiv-en\">\n<div><a href=\"https://wa.me/85266620636\" target=\"_blank\"><button class=\"chat-button\">Speak with an expert</button></a></div>\n</div>\n<div lang=\"ja\" id=\"myDiv-ja\">\n<div><button class=\"chat-button\" onclick=\"tidioChatApi.display(true);tidioChatApi.open()\">専門家に相談する</button></div>\n</div>\n<div lang=\"ko\" id=\"myDiv-ko\">\n<div><button class=\"chat-button\" onclick=\"tidioChatApi.display(true);tidioChatApi.open()\">전문가와 상담하세요</button></div>\n</div>",
             "show_in_quickbuy": false
@@ -347,6 +350,13 @@
             "content": "<p>{{ product.metafields.custom.dimension | metafield_tag }}</p>"
           }
         },
+        "details_row_k6LNQH": {
+          "type": "details_row",
+          "settings": {
+            "heading": "Certification",
+            "content": "<p>{{ product.metafields.custom.certification.value }}</p>"
+          }
+        },
         "details_row_XniCXG": {
           "type": "details_row",
           "settings": {
@@ -406,6 +416,7 @@
         "details_row_wQT4PD",
         "accordion_wJyWkc",
         "details_row_wJyWkc",
+        "details_row_k6LNQH",
         "accordion_XniCXG",
         "details_row_XniCXG",
         "accordion_xQCYRD",

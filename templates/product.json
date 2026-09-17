@@ -123,7 +123,7 @@
             "countdown_color": "#32741e",
             "link_color": "#006699",
             "offer_text": "<strong>FREE</strong> shipping",
-            "prefix": "Arrives by",
+            "prefix": "Ships between",
             "separator": "-",
             "suffix": "",
             "cutoff_message": "Order within",
@@ -161,6 +161,27 @@
             "content": "<p>{{ product.metafields.custom.design | metafield_tag }}</p>"
           }
         },
+        "details_row_wQT4PD": {
+          "type": "details_row",
+          "settings": {
+            "heading": "material",
+            "content": "<p>{{ product.metafields.custom.material_1 | metafield_tag }}</p>"
+          }
+        },
+        "details_row_wJyWkc": {
+          "type": "details_row",
+          "settings": {
+            "heading": "dimensions",
+            "content": "<p>{{ product.metafields.custom.dimension | metafield_tag }}</p>"
+          }
+        },
+        "details_row_k6LNQH": {
+          "type": "details_row",
+          "settings": {
+            "heading": "Certification",
+            "content": "<p>{{ product.metafields.custom.certification.value }}</p>"
+          }
+        },
         "accordion_wQT4PD": {
           "type": "accordion",
           "disabled": true,
@@ -173,13 +194,6 @@
             "show_in_quickbuy": true
           }
         },
-        "details_row_wQT4PD": {
-          "type": "details_row",
-          "settings": {
-            "heading": "material",
-            "content": "<p>{{ product.metafields.custom.material_1 | metafield_tag }}</p>"
-          }
-        },
         "accordion_wJyWkc": {
           "type": "accordion",
           "disabled": true,
@@ -190,13 +204,6 @@
             "page": "",
             "open": false,
             "show_in_quickbuy": true
-          }
-        },
-        "details_row_wJyWkc": {
-          "type": "details_row",
-          "settings": {
-            "heading": "dimensions",
-            "content": "<p>{{ product.metafields.custom.dimension | metafield_tag }}</p>"
           }
         },
         "accordion_XniCXG": {
@@ -360,10 +367,11 @@
         "accordion_jAzpEh",
         "accordion_KykLQh",
         "details_row_KykLQh",
-        "accordion_wQT4PD",
         "details_row_wQT4PD",
-        "accordion_wJyWkc",
         "details_row_wJyWkc",
+        "details_row_k6LNQH",
+        "accordion_wQT4PD",
+        "accordion_wJyWkc",
         "accordion_XniCXG",
         "accordion_xQCYRD",
         "accordion_kKLj48",

@@ -173,6 +173,7 @@
         },
         "richtext_PYTfRB": {
           "type": "richtext",
+          "disabled": true,
           "settings": {
             "richtext": "<p>Tax included, duties calculated at checkout</p>",
             "icon": "check_mark",
@@ -350,10 +351,10 @@
       "block_order": [
         "vendor",
         "title",
-        "custom_liquid_mD7feG",
         "custom_liquid_LGbKTH",
         "richtext_Kam7hY",
         "price",
+        "custom_liquid_mD7feG",
         "variant_picker",
         "text_BNWt97",
         "link_xrcnp8",

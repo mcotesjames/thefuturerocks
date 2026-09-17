@@ -165,6 +165,7 @@
         },
         "richtext_VgL3GB": {
           "type": "richtext",
+          "disabled": true,
           "settings": {
             "richtext": "<p>Tax and duties included</p>",
             "icon": "check_mark",
@@ -355,9 +356,9 @@
       "block_order": [
         "vendor",
         "title",
-        "custom_liquid_LGbKTH",
         "richtext_Kam7hY",
         "price",
+        "custom_liquid_LGbKTH",
         "variant_picker",
         "text_BNWt97",
         "link_xrcnp8",

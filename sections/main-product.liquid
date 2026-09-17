@@ -6,7 +6,7 @@
   assign current_variant = product.selected_or_first_available_variant
   assign featured_media = product.selected_or_first_available_variant.featured_media | default: product.featured_media
 
-  if product.template_suffix contains 'preorder'
+  if product.template_suffix contains 'preorder' or template.suffix contains 'preorder'
     assign is_preorder_product = true
   else
     assign is_preorder_product = false

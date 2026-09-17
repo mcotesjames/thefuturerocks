@@ -188,6 +188,7 @@
         },
         "richtext_8Vk9xK": {
           "type": "richtext",
+          "disabled": true,
           "settings": {
             "richtext": "<p>Tax included, duties calculated at checkout</p>",
             "icon": "check_mark",
