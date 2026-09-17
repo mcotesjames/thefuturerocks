@@ -27,39 +27,73 @@
           "type": "title",
           "settings": {}
         },
+        "dropdowns_anchor": {
+          "type": "dropdowns_anchor",
+          "settings": {
+            "show_disclaimer": true,
+            "disclaimer": "<p>Please note that the carat weight, gold weight, number of stones, and dimensions will vary depending on the size of the product ordered. Please <a href=\"/pages/contact\" title=\"Contact\"><span style=\"text-decoration:underline\">contact us</span></a> for more information. </p>"
+          }
+        },
+        "details_row_KykLQh": {
+          "type": "details_row",
+          "settings": {
+            "heading": "design",
+            "content": "<p>{{ product.metafields.custom.design | metafield_tag }}</p>"
+          }
+        },
+        "details_row_wQT4PD": {
+          "type": "details_row",
+          "settings": {
+            "heading": "material",
+            "content": "<p>{{ product.metafields.custom.material_1 | metafield_tag }}</p>"
+          }
+        },
+        "details_row_wJyWkc": {
+          "type": "details_row",
+          "settings": {
+            "heading": "dimensions",
+            "content": "<p>{{ product.metafields.custom.dimension | metafield_tag }}</p>"
+          }
+        },
+        "details_row_k6LNQH": {
+          "type": "details_row",
+          "settings": {
+            "heading": "Certification",
+            "content": "<p>{{ product.metafields.custom.certification.value }}</p>"
+          }
+        },
+        "essential_shipping_bar_app_block_6dHPct": {
+          "type": "shopify://apps/essential-free-shipping/blocks/app-block/4125375e-37c8-4137-949d-c4e1a3aac572",
+          "settings": {
+            "id": ""
+          }
+        },
+        "shipping_row_ships": {
+          "type": "shipping_row",
+          "settings": {
+            "heading": "Ships on or before",
+            "content": "<p><strong>Why isn't my order shipped immediately upon payment?</strong></p><p>With a socially conscious vision and an unwavering commitment to sustainability, we encourage our community of creatives and designers not to overproduce and operate on a made-to-order basis. In light of that, we hope you'd be patient with your order and allow extra time for our creators to craft the jewelry that will stand the test of time.</p>"
+          }
+        },
+        "shipping_row_transit": {
+          "type": "shipping_row",
+          "settings": {
+            "heading": "Estimated time in transit",
+            "content": "<p>7 days</p>"
+          }
+        },
+        "shipping_row_wPQfj9": {
+          "type": "shipping_row",
+          "settings": {
+            "heading": "",
+            "content": "<p>Free insured shipping for orders above USD 300</p>"
+          }
+        },
         "custom_liquid_mD7feG": {
           "type": "custom_liquid",
           "disabled": true,
           "settings": {
             "custom_liquid": "<div style=\"color: #009e2d; display: flex; align-items: flex-start;\">\n\n\n<span class=\"material-symbols-outlined\" style=\"font-size: 20px; margin-right: 8px; margin-top: 2px; color: #009e2d;\">shopping_bag</span>\n\n<div style=\"display: flex; flex-direction: column;\">\n\n<span> {{'promo.message.md-gwp'|t}}</span>\n\n</div>\n\n\n</div>\n\n\n<link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined\">",
-            "show_in_quickbuy": false
-          }
-        },
-        "custom_liquid_fJqCpK": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "<div style=\"margin-bottom: 12px\"></div>",
-            "show_in_quickbuy": false
-          }
-        },
-        "custom_liquid_nUV4Xx": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "<a style=\"margin-top: 12px\" href=\"/collections/all-jewelry\" style=\"text-decoration: none;\"><button class=\"button button--large\">SHOP JEWELRY</button></a>",
-            "show_in_quickbuy": false
-          }
-        },
-        "custom_liquid_U7m4Fr": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "<a href=\"/collections/pet-collection\" style=\"text-decoration: none;\"><button class=\"button button--large\">SHOP PET COLLECTION</button></a>",
-            "show_in_quickbuy": false
-          }
-        },
-        "custom_liquid_FcWz9W": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "<a href=\"https://wa.me/85221923826?text=Hello,%20I%20browsed%20the%20website%20of%20THE%20FUTURE%20ROCKS%20and%20would%20like%20to%20know%20more.%20Thank%20you!%20%E4%BD%A0%E5%A5%BD%EF%BC%8C%E6%88%91%E7%80%8F%E8%A6%BD%E9%81%8ETHE%20FUTURE%20ROCKS%E7%9A%84%E7%B6%B2%E7%AB%99%EF%BC%8C%E6%83%B3%E4%BA%86%E8%A7%A3%E6%9B%B4%E5%A4%9A%EF%BC%8C%E8%AC%9D%E8%AC%9D%0A%0A{{shop.url}}{{product.url}}\" style=\"text-decoration: none;\"><button class=\"button button--large\">CHAT WITH US</button></a>",
             "show_in_quickbuy": false
           }
         },
@@ -186,13 +220,6 @@
             "icon_offset_vertical": 0
           }
         },
-        "dropdowns_anchor": {
-          "type": "dropdowns_anchor",
-          "settings": {
-            "show_disclaimer": true,
-            "disclaimer": "<p>Please note that the carat weight, gold weight, number of stones, and dimensions will vary depending on the size of the product ordered. Please <a href=\"/pages/contact\" title=\"Contact\"><span style=\"text-decoration:underline\">contact us</span></a> for more information. </p>"
-          }
-        },
         "arrivesby_delivery_time_iMmhHT": {
           "type": "shopify://apps/arrivesby/blocks/delivery-time/b4f15d36-71f0-4a8c-954f-e485b7529360",
           "disabled": true,
@@ -266,12 +293,6 @@
             "show_in_quickbuy": true
           }
         },
-        "essential_shipping_bar_app_block_6dHPct": {
-          "type": "shopify://apps/essential-free-shipping/blocks/app-block/4125375e-37c8-4137-949d-c4e1a3aac572",
-          "settings": {
-            "id": ""
-          }
-        },
         "richtext_THmT7c": {
           "type": "richtext",
           "disabled": true,
@@ -332,13 +353,6 @@
             "show_in_quickbuy": true
           }
         },
-        "details_row_KykLQh": {
-          "type": "details_row",
-          "settings": {
-            "heading": "design",
-            "content": "<p>{{ product.metafields.custom.design | metafield_tag }}</p>"
-          }
-        },
         "accordion_wQT4PD": {
           "type": "accordion",
           "disabled": true,
@@ -351,13 +365,6 @@
             "show_in_quickbuy": true
           }
         },
-        "details_row_wQT4PD": {
-          "type": "details_row",
-          "settings": {
-            "heading": "material",
-            "content": "<p>{{ product.metafields.custom.material_1 | metafield_tag }}</p>"
-          }
-        },
         "accordion_wJyWkc": {
           "type": "accordion",
           "disabled": true,
@@ -368,20 +375,6 @@
             "page": "",
             "open": false,
             "show_in_quickbuy": true
-          }
-        },
-        "details_row_wJyWkc": {
-          "type": "details_row",
-          "settings": {
-            "heading": "dimensions",
-            "content": "<p>{{ product.metafields.custom.dimension | metafield_tag }}</p>"
-          }
-        },
-        "details_row_k6LNQH": {
-          "type": "details_row",
-          "settings": {
-            "heading": "Certification",
-            "content": "<p>{{ product.metafields.custom.certification.value }}</p>"
           }
         },
         "accordion_XniCXG": {
@@ -476,20 +469,6 @@
             "show_explainer": false
           }
         },
-        "shipping_row_ships": {
-          "type": "shipping_row",
-          "settings": {
-            "heading": "Ships on or before",
-            "content": "<p><strong>Why isn't my order shipped immediately upon payment?</strong></p><p>With a socially conscious vision and an unwavering commitment to sustainability, we encourage our community of creatives and designers not to overproduce and operate on a made-to-order basis. In light of that, we hope you'd be patient with your order and allow extra time for our creators to craft the jewelry that will stand the test of time.</p>"
-          }
-        },
-        "shipping_row_transit": {
-          "type": "shipping_row",
-          "settings": {
-            "heading": "Estimated time in transit",
-            "content": "<p>7 days</p>"
-          }
-        },
         "shipping_row_WhcnMH": {
           "type": "shipping_row",
           "disabled": true,
@@ -505,23 +484,12 @@
             "heading": "Returns",
             "content": "<p>Easy 14-day returns</p>"
           }
-        },
-        "shipping_row_wPQfj9": {
-          "type": "shipping_row",
-          "settings": {
-            "heading": "",
-            "content": "<p>Free insured shipping for orders above USD 300</p>"
-          }
         }
       },
       "block_order": [
         "custom_liquid_ezC6tx",
         "vendor",
         "title",
-        "custom_liquid_fJqCpK",
-        "custom_liquid_nUV4Xx",
-        "custom_liquid_U7m4Fr",
-        "custom_liquid_FcWz9W",
         "dropdowns_anchor",
         "details_row_KykLQh",
         "details_row_wQT4PD",
