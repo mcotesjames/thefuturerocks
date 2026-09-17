@@ -190,7 +190,7 @@
           "type": "dropdowns_anchor",
           "settings": {
             "show_disclaimer": true,
-            "disclaimer": "<p>Please note that the carat weight, gold weight, number of stones, and dimensions will vary depending on the size of the product ordered. Please <a href=\"/pages/contact\" title=\"Contact\"><span style=\"text-decoration:underline\">contact us</span></a> for more information.</p>"
+            "disclaimer": "<p>Please note that the carat weight, gold weight, number of stones, and dimensions will vary depending on the size of the product ordered. Please <a href=\"/pages/contact\" title=\"Contact\"><span style=\"text-decoration:underline\">contact us</span></a> for more information. </p>"
           }
         },
         "arrivesby_delivery_time_iMmhHT": {
@@ -518,11 +518,20 @@
         "custom_liquid_ezC6tx",
         "vendor",
         "title",
-        "custom_liquid_mD7feG",
         "custom_liquid_fJqCpK",
         "custom_liquid_nUV4Xx",
         "custom_liquid_U7m4Fr",
         "custom_liquid_FcWz9W",
+        "dropdowns_anchor",
+        "details_row_KykLQh",
+        "details_row_wQT4PD",
+        "details_row_wJyWkc",
+        "details_row_k6LNQH",
+        "essential_shipping_bar_app_block_6dHPct",
+        "shipping_row_ships",
+        "shipping_row_transit",
+        "shipping_row_wPQfj9",
+        "custom_liquid_mD7feG",
         "richtext_Kam7hY",
         "price",
         "custom_liquid_xRWAGD",
@@ -534,25 +543,19 @@
         "richtext_THw9AP",
         "buy_buttons",
         "wishlist_king_wishlist_button_block_bDPTRJ",
-        "dropdowns_anchor",
         "arrivesby_delivery_time_iMmhHT",
         "accordion_jAzpEh",
         "custom_liquid_KAwH8z",
         "text_UFrjgx",
         "klaviyo_email_marketing_sms_form_embed_block_Knd83D",
         "divider_frUPRe",
-        "essential_shipping_bar_app_block_6dHPct",
         "richtext_THmT7c",
         "richtext_C7gjga",
         "richtext_A7HF4e",
         "richtext_XkfCr8",
         "accordion_KykLQh",
-        "details_row_KykLQh",
         "accordion_wQT4PD",
-        "details_row_wQT4PD",
         "accordion_wJyWkc",
-        "details_row_wJyWkc",
-        "details_row_k6LNQH",
         "accordion_XniCXG",
         "details_row_XniCXG",
         "accordion_xQCYRD",
@@ -560,11 +563,8 @@
         "image_WMbF9y",
         "complementary_4PYwWD",
         "arrivesby_delivery_time_k9WmEM",
-        "shipping_row_ships",
-        "shipping_row_transit",
         "shipping_row_WhcnMH",
-        "shipping_row_BiERkU",
-        "shipping_row_wPQfj9"
+        "shipping_row_BiERkU"
       ],
       "custom_css": [],
       "settings": {
@@ -580,142 +580,9 @@
         "var_img_grouping_option": "Metal,金属,금속"
       }
     },
-    "scrolling_banner_gdnABN": {
-      "type": "scrolling-banner",
-      "blocks": {
-        "text_Q39wXH": {
-          "type": "text",
-          "settings": {
-            "text": "Coming soon",
-            "color": "rgba(0,0,0,0)",
-            "link": "",
-            "use_h1": false,
-            "heading_highlight_text": "",
-            "heading_highlight_font": true,
-            "heading_highlight_stencil": false,
-            "heading_highlight_color": "rgba(0,0,0,0)",
-            "heading_highlight_gradient": ""
-          }
-        },
-        "text_RyLf6q": {
-          "type": "text",
-          "settings": {
-            "text": "Coming soon",
-            "color": "rgba(0,0,0,0)",
-            "link": "",
-            "use_h1": false,
-            "heading_highlight_text": "",
-            "heading_highlight_font": true,
-            "heading_highlight_stencil": false,
-            "heading_highlight_color": "rgba(0,0,0,0)",
-            "heading_highlight_gradient": ""
-          }
-        },
-        "text_r8TPWJ": {
-          "type": "text",
-          "settings": {
-            "text": "Coming soon",
-            "color": "rgba(0,0,0,0)",
-            "link": "",
-            "use_h1": false,
-            "heading_highlight_text": "",
-            "heading_highlight_font": true,
-            "heading_highlight_stencil": false,
-            "heading_highlight_color": "rgba(0,0,0,0)",
-            "heading_highlight_gradient": ""
-          }
-        }
-      },
-      "block_order": [
-        "text_Q39wXH",
-        "text_RyLf6q",
-        "text_r8TPWJ"
-      ],
-      "disabled": true,
-      "custom_css": [
-        ".marquee-container {text-transform: uppercase;}"
-      ],
-      "settings": {
-        "text_size": 20,
-        "vertical_padding": 20,
-        "speed": 20,
-        "direction": "left",
-        "font": "heading",
-        "space": 50,
-        "color_scheme": "2",
-        "custom_scheme_bg": "#f6f6ef",
-        "custom_scheme_bg_grad": ""
-      }
-    },
-    "custom_liquid_8ihLfF": {
-      "type": "custom-liquid",
-      "disabled": true,
-      "custom_css": [
-        ".section-id-template--20976446406805__custom_liquid_8ihLfF {padding: 4%;}",
-        "@media screen and (min-width: 1280px) {.section-id-template--20008320303253__custom_liquid_8ihLfF {margin-left: 10%; margin-right: 10%; }}",
-        "@media screen and (min-width: 1920px) {.section-id-template--20976446406805__custom_liquid_8ihLfF {margin-left: 20%; margin-right: 20%; }}"
-      ],
-      "settings": {
-        "code": "<!DOCTYPE html>\n\n<html>\n\n<head>\n\n<style>\n\nhtml:not([lang|=\"en\"]) #myDiv-en,html:not([lang|=\"ja\"]) #myDiv-ja, html:not([lang|=\"ko\"]) #myDiv-ko\n\n    { display: none!important; }\n\n</style> \n\n<script>  \n\n</script>\n\n</head>\n\n<body>\n\n<div lang=\"en\" id=\"myDiv-en\" style=\"padding-bottom: 30px;\">\n<style>\n * {\n  box-sizing: border-box;\n}\n.primary-title {\ntext-transform: uppercase;\n  font-family: \"BrownProBold\";\n}\n.secondary-title {\ntext-transform: lowercase;\n  display: inline-block;\n}\n.secondary-title:first-letter {\ntext-transform: uppercase;\n}\n.detail-spacing {\nmargin-bottom: 20px;\n}\n/* Create four equal columns that floats next to each other */\n.column {\n  float: left;\n  width: 50%;\npadding: 2% 4% 2% 0%;\nbackground-color: transparent !important;\n}\n\n/* Clear floats after the columns */\n.row:after {\n  content: \"\";\n  display: table;\n  clear: both;\n}\n\n/* Responsive layout - makes a two column-layout instead of four columns */\n@media screen and (max-width: 900px) {\n  .column  {\n    width: 50%;\n  }\n}\n\n/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */\n@media screen and (max-width: 600px) {\n  .column  {\n    width: 100%;\n  }\n}\n  </style>\n<h3 class=\"detail-spacing\">About {{ product.title }}</h3>\n<p class=\"detail-spacing\">{{product.description}}</p>\n\n<div class=\"row\">\n  <div class=\"column\">\n  <p>{% if product.metafields.custom.primary_metal %}\n\n<p><span class=\"primary-title\">Primary material:&nbsp;</span>{{ product.metafields.custom.primary_metal }}</p>\n\n{% endif %}\n{% if product.metafields.custom.material_description_breakdown %}\n\n<p><span class=\"secondary-title\">About this material:&nbsp;  </span>{{ product.metafields.custom.material_description_breakdown }}</p>\n\n{% endif %}\n{% if product.metafields.custom.material_durability_care %}\n\n<p><span class=\"secondary-title\">Durability & care:&nbsp; </span>{{ product.metafields.custom.material_durability_care }}</p>\n\n{% endif %}\n{% if product.metafields.custom.material_conscious_practice %}\n\n<p><span class=\"secondary-title\">Conscious practices:&nbsp; </span>{{ product.metafields.custom.material_conscious_practice }}</p>\n\n{% endif %}</p>\n  <p>{% if product.metafields.custom.secondary_metal %}\n\n<p><span class=\"primary-title\">Secondary material:&nbsp; </span>{{ product.metafields.custom.secondary_metal }}</p>\n\n{% endif %}\n{% if product.metafields.custom.secondary_metal_description_breakdown %}\n\n<p><span class=\"secondary-title\">About this material:&nbsp; </span>{{ product.metafields.custom.secondary_metal_description_breakdown }}</p>\n\n{% endif %}\n{% if product.metafields.custom.secondary_metal_durability_care %}\n\n<p><span class=\"secondary-title\">Durability & care:&nbsp; </span>{{ product.metafields.custom.secondary_metal_durability_care }}</p>\n\n{% endif %}\n{% if product.metafields.custom.secondary_metal_conscious_practice %}\n\n<p><span class=\"secondary-title\">Conscious practices:&nbsp; </span>{{ product.metafields.custom.secondary_metal_conscious_practice }}</p>\n\n{% endif %}</p>\n  </div>\n  <div class=\"column\">\n  <p>{% if product.metafields.custom.primary_gemstone %}\n\n<p><span class=\"primary-title\">Primary gemstone:&nbsp; </span>{{ product.metafields.custom.primary_gemstone }}</p>\n\n{% endif %}\n{% if product.metafields.custom.primary_gemstone_total_carat_weight %}\n\n<p><span class=\"secondary-title\">Total carat weight:&nbsp; </span>{{ product.metafields.custom.primary_gemstone_total_carat_weight }}</p>\n\n{% endif %}\n{% if product.metafields.custom.primary_gemstone_center_stone_carat_weight %}\n\n<p><span class=\"secondary-title\">Center stone total weight:&nbsp; </span>{{ product.metafields.custom.primary_gemstone_center_stone_carat_weight }}</p>\n\n{% endif %}\n{% if product.metafields.custom.primary_gemstone_color_grade %}\n\n<p><span class=\"secondary-title\">Color grade:&nbsp;</span>{{ product.metafields.custom.primary_gemstone_color_grade }}</p>\n\n{% endif %}\n    {% if product.metafields.custom.primary_gemstone_clarity_grade %}\n\n<p><span class=\"secondary-title\">Clarity grade:&nbsp; </span>{{ product.metafields.custom.primary_gemstone_clarity_grade }}</p>\n\n{% endif %}\n{% if product.metafields.custom.primary_gemstone_description_breakdown %}\n\n<p><span class=\"secondary-title\">About this material:&nbsp; </span>{{ product.metafields.custom.primary_gemstone_description_breakdown }}</p>\n\n{% endif %}\n{% if product.metafields.custom.primary_gemstone_durability_care %}\n\n<p><span class=\"secondary-title\">Durability & care:&nbsp;</span>{{ product.metafields.custom.primary_gemstone_durability_care }}</p>\n\n{% endif %}\n{% if product.metafields.custom.primary_gemstone_conscious_practice %}\n\n<p><span class=\"secondary-title\">Conscious practices:&nbsp; </span>{{ product.metafields.custom.primary_gemstone_conscious_practice }}</p>\n\n{% endif %}</p>\n\n  <p>{% if product.metafields.custom.secondary_gemstone %}\n\n<p><span class=\"primary-title\">Secondary gemstone:&nbsp; </span>{{ product.metafields.custom.secondary_gemstone }}</p>\n\n{% endif %}\n{% if product.metafields.custom.secondary_gemstone_total_carat_weight %}\n\n<p><span class=\"secondary-title\">Carat weight:&nbsp; </span>{{ product.metafields.custom.secondary_gemstone_total_carat_weight }}</p>\n\n{% endif %}\n\n{% if product.metafields.custom.secondary_gemstone_size %}\n\n<p><span class=\"secondary-title\">Size:&nbsp; </span>{{ product.metafields.custom.secondary_gemstone_size }}</p>\n\n{% endif %}\n\n{% if product.metafields.custom.secondary_gemstone_description_breakdown %}\n\n<p><span class=\"secondary-title\">About this material:&nbsp; </span>{{ product.metafields.custom.secondary_gemstone_description_breakdown }}</p>\n\n{% endif %}\n{% if product.metafields.custom.secondary_gemstone_durability_care %}\n\n<p><span class=\"secondary-title\">Durability & care:&nbsp; </span>{{ product.metafields.custom.secondary_gemstone_durability_care }}</p>\n\n{% endif %}\n{% if product.metafields.custom.secondary_gemstone_conscious_practice %}\n\n<p><span class=\"secondary-title\">Conscious practices:&nbsp; </span>{{ product.metafields.custom.secondary_gemstone_conscious_practice }}</p>\n\n{% endif %}</p>\n  </div>\n\n</div>\n\n</div>    \n\n<div lang=\"ja\" id=\"myDiv-ja\" style=\"padding-bottom: 30px;\">\n<style>\n * {\n  box-sizing: border-box;\n}\n.primary-title {\ntext-transform: uppercase;\n  font-family: \"BrownProBold\";\n}\n.secondary-title {\ntext-transform: lowercase;\n  display: inline-block;\n}\n.secondary-title:first-letter {\ntext-transform: uppercase;\n}\n.detail-spacing {\nmargin-bottom: 20px;\n}\n/* Create four equal columns that floats next to each other */\n.column {\n  float: left;\n  width: 50%;\npadding: 2% 4% 2% 0%;\nbackground-color: transparent !important;\n}\n\n/* Clear floats after the columns */\n.row:after {\n  content: \"\";\n  display: table;\n  clear: both;\n}\n\n/* Responsive layout - makes a two column-layout instead of four columns */\n@media screen and (max-width: 900px) {\n  .column  {\n    width: 50%;\n  }\n}\n\n/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */\n@media screen and (max-width: 600px) {\n  .column  {\n    width: 100%;\n  }\n}\n  </style>\n<h3 class=\"detail-spacing\">{{ product.title }} について</h3>\n<p class=\"detail-spacing\">{{product.metafields.custom.about_the_brand}}</p>\n\n<div class=\"row\">\n  <div class=\"column\">\n  <p>{% if product.metafields.custom.primary_metal %}\n\n<p><span class=\"primary-title\">主な素材:&nbsp;</span>{{ product.metafields.custom.primary_metal }}</p>\n\n{% endif %}\n{% if product.metafields.custom.material_description_breakdown %}\n\n<p><span class=\"secondary-title\">この素材について:&nbsp;  </span>{{ product.metafields.custom.material_description_breakdown }}</p>\n\n{% endif %}\n{% if product.metafields.custom.material_durability_care %}\n\n<p><span class=\"secondary-title\">耐久性とケア:&nbsp; </span>{{ product.metafields.custom.material_durability_care }}</p>\n\n{% endif %}\n{% if product.metafields.custom.material_conscious_practice %}\n\n<p><span class=\"secondary-title\">サステイナビリティ:&nbsp; </span>{{ product.metafields.custom.material_conscious_practice }}</p>\n\n{% endif %}</p>\n  <p>{% if product.metafields.custom.secondary_metal %}\n\n<p><span class=\"primary-title\">副素材:&nbsp; </span>{{ product.metafields.custom.secondary_metal }}</p>\n\n{% endif %}\n{% if product.metafields.custom.secondary_metal_description_breakdown %}\n\n<p><span class=\"secondary-title\">この素材について:&nbsp; </span>{{ product.metafields.custom.secondary_metal_description_breakdown }}</p>\n\n{% endif %}\n{% if product.metafields.custom.secondary_metal_durability_care %}\n\n<p><span class=\"secondary-title\">耐久性とケア:&nbsp; </span>{{ product.metafields.custom.secondary_metal_durability_care }}</p>\n\n{% endif %}\n{% if product.metafields.custom.secondary_metal_conscious_practice %}\n\n<p><span class=\"secondary-title\">サステイナビリティ:&nbsp; </span>{{ product.metafields.custom.secondary_metal_conscious_practice }}</p>\n\n{% endif %}</p>\n  </div>\n  <div class=\"column\">\n  <p>{% if product.metafields.custom.primary_gemstone %}\n\n<p><span class=\"primary-title\">主な宝石:&nbsp; </span>{{ product.metafields.custom.primary_gemstone }}</p>\n\n{% endif %}\n{% if product.metafields.custom.primary_gemstone_total_carat_weight %}\n\n<p><span class=\"secondary-title\">総カラット重量:&nbsp; </span>{{ product.metafields.custom.primary_gemstone_total_carat_weight }}</p>\n\n{% endif %}\n{% if product.metafields.custom.primary_gemstone_center_stone_carat_weight %}\n\n<p><span class=\"secondary-title\">センターストーンの総重量:&nbsp; </span>{{ product.metafields.custom.primary_gemstone_center_stone_carat_weight }}</p>\n\n{% endif %}\n{% if product.metafields.custom.primary_gemstone_color_grade %}\n\n<p><span class=\"secondary-title\">カラーグレード:&nbsp;</span>{{ product.metafields.custom.primary_gemstone_color_grade }}</p>\n\n{% endif %}\n    {% if product.metafields.custom.primary_gemstone_clarity_grade %}\n\n<p><span class=\"secondary-title\">クラリティグレード:&nbsp; </span>{{ product.metafields.custom.primary_gemstone_clarity_grade }}</p>\n\n{% endif %}\n{% if product.metafields.custom.primary_gemstone_description_breakdown %}\n\n<p><span class=\"secondary-title\">この素材について:&nbsp; </span>{{ product.metafields.custom.primary_gemstone_description_breakdown }}</p>\n\n{% endif %}\n{% if product.metafields.custom.primary_gemstone_durability_care %}\n\n<p><span class=\"secondary-title\">耐久性とケア:&nbsp;</span>{{ product.metafields.custom.primary_gemstone_durability_care }}</p>\n\n{% endif %}\n{% if product.metafields.custom.primary_gemstone_conscious_practice %}\n\n<p><span class=\"secondary-title\">サステイナビリティ:&nbsp; </span>{{ product.metafields.custom.primary_gemstone_conscious_practice }}</p>\n\n{% endif %}</p>\n\n  <p>{% if product.metafields.custom.secondary_gemstone %}\n\n<p><span class=\"primary-title\">副宝石:&nbsp; </span>{{ product.metafields.custom.secondary_gemstone }}</p>\n\n{% endif %}\n{% if product.metafields.custom.secondary_gemstone_total_carat_weight %}\n\n<p><span class=\"secondary-title\">カラット重量:&nbsp; </span>{{ product.metafields.custom.secondary_gemstone_total_carat_weight }}</p>\n\n{% endif %}\n\n{% if product.metafields.custom.secondary_gemstone_size %}\n\n<p><span class=\"secondary-title\">サイズ:&nbsp; </span>{{ product.metafields.custom.secondary_gemstone_size }}</p>\n\n{% endif %}\n\n{% if product.metafields.custom.secondary_gemstone_description_breakdown %}\n\n<p><span class=\"secondary-title\">この素材について:&nbsp; </span>{{ product.metafields.custom.secondary_gemstone_description_breakdown }}</p>\n\n{% endif %}\n{% if product.metafields.custom.secondary_gemstone_durability_care %}\n\n<p><span class=\"secondary-title\">耐久性とケア:&nbsp; </span>{{ product.metafields.custom.secondary_gemstone_durability_care }}</p>\n\n{% endif %}\n{% if product.metafields.custom.secondary_gemstone_conscious_practice %}\n\n<p><span class=\"secondary-title\">サステイナビリティ:&nbsp; </span>{{ product.metafields.custom.secondary_gemstone_conscious_practice }}</p>\n\n{% endif %}</p>\n  </div>\n\n</div>\n\n</div>\n\n<div lang=\"ko\" id=\"myDiv-ko\" style=\"padding-bottom: 30px;\">\n<style>\n * {\n  box-sizing: border-box;\n}\n.primary-title {\ntext-transform: uppercase;\n  font-family: \"BrownProBold\";\n}\n.secondary-title {\ntext-transform: lowercase;\n  display: inline-block;\n}\n.secondary-title:first-letter {\ntext-transform: uppercase;\n}\n.detail-spacing {\nmargin-bottom: 20px;\n}\n/* Create four equal columns that floats next to each other */\n.column {\n  float: left;\n  width: 50%;\npadding: 2% 4% 2% 0%;\nbackground-color: transparent !important;\n}\n\n/* Clear floats after the columns */\n.row:after {\n  content: \"\";\n  display: table;\n  clear: both;\n}\n\n/* Responsive layout - makes a two column-layout instead of four columns */\n@media screen and (max-width: 900px) {\n  .column  {\n    width: 50%;\n  }\n}\n\n/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */\n@media screen and (max-width: 600px) {\n  .column  {\n    width: 100%;\n  }\n}\n  </style>\n<h3 class=\"detail-spacing\">{{ product.title }} 에 대해</h3>\n<p class=\"detail-spacing\">{{product.metafields.custom.about_the_brand}}</p>\n\n<div class=\"row\">\n  <div class=\"column\">\n  <p>{% if product.metafields.custom.primary_metal %}\n\n<p><span class=\"primary-title\">주요 소재:&nbsp;</span>{{ product.metafields.custom.primary_metal }}</p>\n\n{% endif %}\n{% if product.metafields.custom.material_description_breakdown %}\n\n<p><span class=\"secondary-title\">소재 설명:&nbsp;  </span>{{ product.metafields.custom.material_description_breakdown }}</p>\n\n{% endif %}\n{% if product.metafields.custom.material_durability_care %}\n\n<p><span class=\"secondary-title\">내구성 및 관리방법:&nbsp; </span>{{ product.metafields.custom.material_durability_care }}</p>\n\n{% endif %}\n{% if product.metafields.custom.material_conscious_practice %}\n\n<p><span class=\"secondary-title\">의식적인 관행:&nbsp; </span>{{ product.metafields.custom.material_conscious_practice }}</p>\n\n{% endif %}</p>\n  <p>{% if product.metafields.custom.secondary_metal %}\n\n<p><span class=\"primary-title\">보조 소재:&nbsp; </span>{{ product.metafields.custom.secondary_metal }}</p>\n\n{% endif %}\n{% if product.metafields.custom.secondary_metal_description_breakdown %}\n\n<p><span class=\"secondary-title\">소재 설명:&nbsp; </span>{{ product.metafields.custom.secondary_metal_description_breakdown }}</p>\n\n{% endif %}\n{% if product.metafields.custom.secondary_metal_durability_care %}\n\n<p><span class=\"secondary-title\">내구성 및 관리방법:&nbsp; </span>{{ product.metafields.custom.secondary_metal_durability_care }}</p>\n\n{% endif %}\n{% if product.metafields.custom.secondary_metal_conscious_practice %}\n\n<p><span class=\"secondary-title\">의식적인 관행:&nbsp; </span>{{ product.metafields.custom.secondary_metal_conscious_practice }}</p>\n\n{% endif %}</p>\n  </div>\n  <div class=\"column\">\n  <p>{% if product.metafields.custom.primary_gemstone %}\n\n<p><span class=\"primary-title\">주요 보석:&nbsp; </span>{{ product.metafields.custom.primary_gemstone }}</p>\n\n{% endif %}\n{% if product.metafields.custom.primary_gemstone_total_carat_weight %}\n\n<p><span class=\"secondary-title\">총 캐럿 중량:&nbsp; </span>{{ product.metafields.custom.primary_gemstone_total_carat_weight }}</p>\n\n{% endif %}\n{% if product.metafields.custom.primary_gemstone_center_stone_carat_weight %}\n\n<p><span class=\"secondary-title\">센터 스톤 총 중량:&nbsp; </span>{{ product.metafields.custom.primary_gemstone_center_stone_carat_weight }}</p>\n\n{% endif %}\n{% if product.metafields.custom.primary_gemstone_color_grade %}\n\n<p><span class=\"secondary-title\">컬러 등급:&nbsp;</span>{{ product.metafields.custom.primary_gemstone_color_grade }}</p>\n\n{% endif %}\n    {% if product.metafields.custom.primary_gemstone_clarity_grade %}\n\n<p><span class=\"secondary-title\">투명도 등급:&nbsp; </span>{{ product.metafields.custom.primary_gemstone_clarity_grade }}</p>\n\n{% endif %}\n{% if product.metafields.custom.primary_gemstone_description_breakdown %}\n\n<p><span class=\"secondary-title\">소재 설명:&nbsp; </span>{{ product.metafields.custom.primary_gemstone_description_breakdown }}</p>\n\n{% endif %}\n{% if product.metafields.custom.primary_gemstone_durability_care %}\n\n<p><span class=\"secondary-title\">내구성 및 관리방법:&nbsp;</span>{{ product.metafields.custom.primary_gemstone_durability_care }}</p>\n\n{% endif %}\n{% if product.metafields.custom.primary_gemstone_conscious_practice %}\n\n<p><span class=\"secondary-title\">의식적인 관행:&nbsp; </span>{{ product.metafields.custom.primary_gemstone_conscious_practice }}</p>\n\n{% endif %}</p>\n\n  <p>{% if product.metafields.custom.secondary_gemstone %}\n\n<p><span class=\"primary-title\">보조 보석:&nbsp; </span>{{ product.metafields.custom.secondary_gemstone }}</p>\n\n{% endif %}\n{% if product.metafields.custom.secondary_gemstone_total_carat_weight %}\n\n<p><span class=\"secondary-title\">캐럿 중량:&nbsp; </span>{{ product.metafields.custom.secondary_gemstone_total_carat_weight }}</p>\n\n{% endif %}\n\n{% if product.metafields.custom.secondary_gemstone_size %}\n\n<p><span class=\"secondary-title\">사이즈:&nbsp; </span>{{ product.metafields.custom.secondary_gemstone_size }}</p>\n\n{% endif %}\n\n{% if product.metafields.custom.secondary_gemstone_description_breakdown %}\n\n<p><span class=\"secondary-title\">소재 설명:&nbsp; </span>{{ product.metafields.custom.secondary_gemstone_description_breakdown }}</p>\n\n{% endif %}\n{% if product.metafields.custom.secondary_gemstone_durability_care %}\n\n<p><span class=\"secondary-title\">내구성 및 관리방법:&nbsp; </span>{{ product.metafields.custom.secondary_gemstone_durability_care }}</p>\n\n{% endif %}\n{% if product.metafields.custom.secondary_gemstone_conscious_practice %}\n\n<p><span class=\"secondary-title\">의식적인 관행:&nbsp; </span>{{ product.metafields.custom.secondary_gemstone_conscious_practice }}</p>\n\n{% endif %}</p>\n  </div>\n\n</div>\n\n</div>\n \n    \n \n</body>\n\n</html>"
-      }
-    },
-    "text_custom_section_product_GUTkVY": {
-      "type": "text-custom-section-product",
-      "disabled": true,
-      "custom_css": [],
-      "settings": {
-        "custom_text_custm": "<p>Please note that the carat weight, gold weight, number of stones, and dimensions will vary depending on the size of the product ordered. Please <a href=\"/pages/contact\" title=\"Contact\"><span style=\"text-decoration:underline\">contact us</span></a> for more information.</p>"
-      }
-    },
-    "custom_liquid_PRKD9J": {
-      "type": "custom-liquid",
-      "disabled": true,
-      "custom_css": [
-        ".section-id-template--18255773991061__custom_liquid_PRKD9J {padding: 4%;}",
-        "@media screen and (min-width: 1280px) {.section-id-template--18255773991061__custom_liquid_PRKD9J {margin-left: 10%; margin-right: 10%; }}",
-        "@media screen and (min-width: 1920px) {.section-id-template--18255773991061__custom_liquid_PRKD9J {margin-left: 20%; margin-right: 20%; }}"
-      ],
-      "settings": {
-        "code": "<!DOCTYPE html>\n\n<html>\n\n<head>\n\n<style>\n\nhtml:not([lang|=\"en\"]) #myDiv-en,html:not([lang|=\"ja\"]) #myDiv-ja, html:not([lang|=\"ko\"]) #myDiv-ko\n\n    { display: none!important; }\n\n</style> \n\n<script>  \n\n</script>\n\n</head>\n\n<body>\n\n<div lang=\"en\" id=\"myDiv-en\" style=\"padding-bottom: 30px;\">\n<style>\n * {\n  box-sizing: border-box;\n}\n.primary-title {\ntext-transform: uppercase;\n  font-family: \"BrownProBold\";\n}\n.secondary-title {\ntext-transform: lowercase;\n  display: inline-block;\n}\n.secondary-title:first-letter {\ntext-transform: uppercase;\n}\n.detail-spacing {\nmargin-bottom: 20px;\n}\n/* Create four equal columns that floats next to each other */\n.column {\n  float: left;\n  width: 50%;\npadding: 2% 4% 2% 0%;\nbackground-color: transparent !important;\n}\n\n/* Clear floats after the columns */\n.row:after {\n  content: \"\";\n  display: table;\n  clear: both;\n}\n\n/* Responsive layout - makes a two column-layout instead of four columns */\n@media screen and (max-width: 900px) {\n  .column  {\n    width: 50%;\n  }\n}\n\n/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */\n@media screen and (max-width: 600px) {\n  .column  {\n    width: 100%;\n  }\n}\n  </style>\n<h3 class=\"detail-spacing\">About {{ product.title }}</h3>\n<p class=\"detail-spacing\">{{product.description}}</p>\n\n<div class=\"row\">\n  <div class=\"column\">\n  <p>{% if product.metafields.custom.primary_metal %}\n\n<p><span class=\"primary-title\">Primary material:&nbsp;</span>{{ product.metafields.custom.primary_metal }}</p>\n\n{% endif %}\n{% if product.metafields.custom.material_description_breakdown %}\n\n<p><span class=\"secondary-title\">About this material:&nbsp;  </span>{{ product.metafields.custom.material_description_breakdown }}</p>\n\n{% endif %}\n{% if product.metafields.custom.material_durability_care %}\n\n<p><span class=\"secondary-title\">Durability & care:&nbsp; </span>{{ product.metafields.custom.material_durability_care }}</p>\n\n{% endif %}\n{% if product.metafields.custom.material_conscious_practice %}\n\n<p><span class=\"secondary-title\">Conscious practices:&nbsp; </span>{{ product.metafields.custom.material_conscious_practice }}</p>\n\n{% endif %}</p>\n  <p>{% if product.metafields.custom.secondary_metal %}\n\n<p><span class=\"primary-title\">Secondary material:&nbsp; </span>{{ product.metafields.custom.secondary_metal }}</p>\n\n{% endif %}\n{% if product.metafields.custom.secondary_metal_description_breakdown %}\n\n<p><span class=\"secondary-title\">About this material:&nbsp; </span>{{ product.metafields.custom.secondary_metal_description_breakdown }}</p>\n\n{% endif %}\n{% if product.metafields.custom.secondary_metal_durability_care %}\n\n<p><span class=\"secondary-title\">Durability & care:&nbsp; </span>{{ product.metafields.custom.secondary_metal_durability_care }}</p>\n\n{% endif %}\n{% if product.metafields.custom.secondary_metal_conscious_practice %}\n\n<p><span class=\"secondary-title\">Conscious practices:&nbsp; </span>{{ product.metafields.custom.secondary_metal_conscious_practice }}</p>\n\n{% endif %}</p>\n  </div>\n  <div class=\"column\">\n  <p>{% if product.metafields.custom.primary_gemstone %}\n\n<p><span class=\"primary-title\">Primary gemstone:&nbsp; </span>{{ product.metafields.custom.primary_gemstone }}</p>\n\n{% endif %}\n{% if product.metafields.custom.primary_gemstone_total_carat_weight %}\n\n<p><span class=\"secondary-title\">Total carat weight:&nbsp; </span>{{ product.metafields.custom.primary_gemstone_total_carat_weight }}</p>\n\n{% endif %}\n{% if product.metafields.custom.primary_gemstone_center_stone_carat_weight %}\n\n<p><span class=\"secondary-title\">Center stone total weight:&nbsp; </span>{{ product.metafields.custom.primary_gemstone_center_stone_carat_weight }}</p>\n\n{% endif %}\n{% if product.metafields.custom.primary_gemstone_color_grade %}\n\n<p><span class=\"secondary-title\">Color grade:&nbsp;</span>{{ product.metafields.custom.primary_gemstone_color_grade }}</p>\n\n{% endif %}\n    {% if product.metafields.custom.primary_gemstone_clarity_grade %}\n\n<p><span class=\"secondary-title\">Clarity grade:&nbsp; </span>{{ product.metafields.custom.primary_gemstone_clarity_grade }}</p>\n\n{% endif %}\n{% if product.metafields.custom.primary_gemstone_description_breakdown %}\n\n<p><span class=\"secondary-title\">About this material:&nbsp; </span>{{ product.metafields.custom.primary_gemstone_description_breakdown }}</p>\n\n{% endif %}\n{% if product.metafields.custom.primary_gemstone_durability_care %}\n\n<p><span class=\"secondary-title\">Durability & care:&nbsp;</span>{{ product.metafields.custom.primary_gemstone_durability_care }}</p>\n\n{% endif %}\n{% if product.metafields.custom.primary_gemstone_conscious_practice %}\n\n<p><span class=\"secondary-title\">Conscious practices:&nbsp; </span>{{ product.metafields.custom.primary_gemstone_conscious_practice }}</p>\n\n{% endif %}</p>\n\n  <p>{% if product.metafields.custom.secondary_gemstone %}\n\n<p><span class=\"primary-title\">Secondary gemstone:&nbsp; </span>{{ product.metafields.custom.secondary_gemstone }}</p>\n\n{% endif %}\n{% if product.metafields.custom.secondary_gemstone_total_carat_weight %}\n\n<p><span class=\"secondary-title\">Carat weight:&nbsp; </span>{{ product.metafields.custom.secondary_gemstone_total_carat_weight }}</p>\n\n{% endif %}\n\n{% if product.metafields.custom.secondary_gemstone_size %}\n\n<p><span class=\"secondary-title\">Size:&nbsp; </span>{{ product.metafields.custom.secondary_gemstone_size }}</p>\n\n{% endif %}\n\n{% if product.metafields.custom.secondary_gemstone_description_breakdown %}\n\n<p><span class=\"secondary-title\">About this material:&nbsp; </span>{{ product.metafields.custom.secondary_gemstone_description_breakdown }}</p>\n\n{% endif %}\n{% if product.metafields.custom.secondary_gemstone_durability_care %}\n\n<p><span class=\"secondary-title\">Durability & care:&nbsp; </span>{{ product.metafields.custom.secondary_gemstone_durability_care }}</p>\n\n{% endif %}\n{% if product.metafields.custom.secondary_gemstone_conscious_practice %}\n\n<p><span class=\"secondary-title\">Conscious practices:&nbsp; </span>{{ product.metafields.custom.secondary_gemstone_conscious_practice }}</p>\n\n{% endif %}</p>\n  </div>\n\n</div>\n\n</div>    \n\n<div lang=\"ja\" id=\"myDiv-ja\" style=\"padding-bottom: 30px;\">\n<style>\n * {\n  box-sizing: border-box;\n}\n.primary-title {\ntext-transform: uppercase;\n  font-family: \"BrownProBold\";\n}\n.secondary-title {\ntext-transform: lowercase;\n  display: inline-block;\n}\n.secondary-title:first-letter {\ntext-transform: uppercase;\n}\n.detail-spacing {\nmargin-bottom: 20px;\n}\n/* Create four equal columns that floats next to each other */\n.column {\n  float: left;\n  width: 50%;\npadding: 2% 4% 2% 0%;\nbackground-color: transparent !important;\n}\n\n/* Clear floats after the columns */\n.row:after {\n  content: \"\";\n  display: table;\n  clear: both;\n}\n\n/* Responsive layout - makes a two column-layout instead of four columns */\n@media screen and (max-width: 900px) {\n  .column  {\n    width: 50%;\n  }\n}\n\n/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */\n@media screen and (max-width: 600px) {\n  .column  {\n    width: 100%;\n  }\n}\n  </style>\n<h3 class=\"detail-spacing\">{{ product.title }} について</h3>\n<p class=\"detail-spacing\">{{product.metafields.custom.about_the_brand}}</p>\n\n<div class=\"row\">\n  <div class=\"column\">\n  <p>{% if product.metafields.custom.primary_metal %}\n\n<p><span class=\"primary-title\">主な素材:&nbsp;</span>{{ product.metafields.custom.primary_metal }}</p>\n\n{% endif %}\n{% if product.metafields.custom.material_description_breakdown %}\n\n<p><span class=\"secondary-title\">この素材について:&nbsp;  </span>{{ product.metafields.custom.material_description_breakdown }}</p>\n\n{% endif %}\n{% if product.metafields.custom.material_durability_care %}\n\n<p><span class=\"secondary-title\">耐久性とケア:&nbsp; </span>{{ product.metafields.custom.material_durability_care }}</p>\n\n{% endif %}\n{% if product.metafields.custom.material_conscious_practice %}\n\n<p><span class=\"secondary-title\">サステイナビリティ:&nbsp; </span>{{ product.metafields.custom.material_conscious_practice }}</p>\n\n{% endif %}</p>\n  <p>{% if product.metafields.custom.secondary_metal %}\n\n<p><span class=\"primary-title\">副素材:&nbsp; </span>{{ product.metafields.custom.secondary_metal }}</p>\n\n{% endif %}\n{% if product.metafields.custom.secondary_metal_description_breakdown %}\n\n<p><span class=\"secondary-title\">この素材について:&nbsp; </span>{{ product.metafields.custom.secondary_metal_description_breakdown }}</p>\n\n{% endif %}\n{% if product.metafields.custom.secondary_metal_durability_care %}\n\n<p><span class=\"secondary-title\">耐久性とケア:&nbsp; </span>{{ product.metafields.custom.secondary_metal_durability_care }}</p>\n\n{% endif %}\n{% if product.metafields.custom.secondary_metal_conscious_practice %}\n\n<p><span class=\"secondary-title\">サステイナビリティ:&nbsp; </span>{{ product.metafields.custom.secondary_metal_conscious_practice }}</p>\n\n{% endif %}</p>\n  </div>\n  <div class=\"column\">\n  <p>{% if product.metafields.custom.primary_gemstone %}\n\n<p><span class=\"primary-title\">主な宝石:&nbsp; </span>{{ product.metafields.custom.primary_gemstone }}</p>\n\n{% endif %}\n{% if product.metafields.custom.primary_gemstone_total_carat_weight %}\n\n<p><span class=\"secondary-title\">総カラット重量:&nbsp; </span>{{ product.metafields.custom.primary_gemstone_total_carat_weight }}</p>\n\n{% endif %}\n{% if product.metafields.custom.primary_gemstone_center_stone_carat_weight %}\n\n<p><span class=\"secondary-title\">センターストーンの総重量:&nbsp; </span>{{ product.metafields.custom.primary_gemstone_center_stone_carat_weight }}</p>\n\n{% endif %}\n{% if product.metafields.custom.primary_gemstone_color_grade %}\n\n<p><span class=\"secondary-title\">カラーグレード:&nbsp;</span>{{ product.metafields.custom.primary_gemstone_color_grade }}</p>\n\n{% endif %}\n    {% if product.metafields.custom.primary_gemstone_clarity_grade %}\n\n<p><span class=\"secondary-title\">クラリティグレード:&nbsp; </span>{{ product.metafields.custom.primary_gemstone_clarity_grade }}</p>\n\n{% endif %}\n{% if product.metafields.custom.primary_gemstone_description_breakdown %}\n\n<p><span class=\"secondary-title\">この素材について:&nbsp; </span>{{ product.metafields.custom.primary_gemstone_description_breakdown }}</p>\n\n{% endif %}\n{% if product.metafields.custom.primary_gemstone_durability_care %}\n\n<p><span class=\"secondary-title\">耐久性とケア:&nbsp;</span>{{ product.metafields.custom.primary_gemstone_durability_care }}</p>\n\n{% endif %}\n{% if product.metafields.custom.primary_gemstone_conscious_practice %}\n\n<p><span class=\"secondary-title\">サステイナビリティ:&nbsp; </span>{{ product.metafields.custom.primary_gemstone_conscious_practice }}</p>\n\n{% endif %}</p>\n\n  <p>{% if product.metafields.custom.secondary_gemstone %}\n\n<p><span class=\"primary-title\">副宝石:&nbsp; </span>{{ product.metafields.custom.secondary_gemstone }}</p>\n\n{% endif %}\n{% if product.metafields.custom.secondary_gemstone_total_carat_weight %}\n\n<p><span class=\"secondary-title\">カラット重量:&nbsp; </span>{{ product.metafields.custom.secondary_gemstone_total_carat_weight }}</p>\n\n{% endif %}\n\n{% if product.metafields.custom.secondary_gemstone_size %}\n\n<p><span class=\"secondary-title\">サイズ:&nbsp; </span>{{ product.metafields.custom.secondary_gemstone_size }}</p>\n\n{% endif %}\n\n{% if product.metafields.custom.secondary_gemstone_description_breakdown %}\n\n<p><span class=\"secondary-title\">この素材について:&nbsp; </span>{{ product.metafields.custom.secondary_gemstone_description_breakdown }}</p>\n\n{% endif %}\n{% if product.metafields.custom.secondary_gemstone_durability_care %}\n\n<p><span class=\"secondary-title\">耐久性とケア:&nbsp; </span>{{ product.metafields.custom.secondary_gemstone_durability_care }}</p>\n\n{% endif %}\n{% if product.metafields.custom.secondary_gemstone_conscious_practice %}\n\n<p><span class=\"secondary-title\">サステイナビリティ:&nbsp; </span>{{ product.metafields.custom.secondary_gemstone_conscious_practice }}</p>\n\n{% endif %}</p>\n  </div>\n\n</div>\n\n</div>\n\n<div lang=\"ko\" id=\"myDiv-ko\" style=\"padding-bottom: 30px;\">\n<style>\n * {\n  box-sizing: border-box;\n}\n.primary-title {\ntext-transform: uppercase;\n  font-family: \"BrownProBold\";\n}\n.secondary-title {\ntext-transform: lowercase;\n  display: inline-block;\n}\n.secondary-title:first-letter {\ntext-transform: uppercase;\n}\n.detail-spacing {\nmargin-bottom: 20px;\n}\n/* Create four equal columns that floats next to each other */\n.column {\n  float: left;\n  width: 50%;\npadding: 2% 4% 2% 0%;\nbackground-color: transparent !important;\n}\n\n/* Clear floats after the columns */\n.row:after {\n  content: \"\";\n  display: table;\n  clear: both;\n}\n\n/* Responsive layout - makes a two column-layout instead of four columns */\n@media screen and (max-width: 900px) {\n  .column  {\n    width: 50%;\n  }\n}\n\n/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */\n@media screen and (max-width: 600px) {\n  .column  {\n    width: 100%;\n  }\n}\n  </style>\n<h3 class=\"detail-spacing\">{{ product.title }} 에 대해</h3>\n<p class=\"detail-spacing\">{{product.metafields.custom.about_the_brand}}</p>\n\n<div class=\"row\">\n  <div class=\"column\">\n  <p>{% if product.metafields.custom.primary_metal %}\n\n<p><span class=\"primary-title\">주요 소재:&nbsp;</span>{{ product.metafields.custom.primary_metal }}</p>\n\n{% endif %}\n{% if product.metafields.custom.material_description_breakdown %}\n\n<p><span class=\"secondary-title\">소재 설명:&nbsp;  </span>{{ product.metafields.custom.material_description_breakdown }}</p>\n\n{% endif %}\n{% if product.metafields.custom.material_durability_care %}\n\n<p><span class=\"secondary-title\">내구성 및 관리방법:&nbsp; </span>{{ product.metafields.custom.material_durability_care }}</p>\n\n{% endif %}\n{% if product.metafields.custom.material_conscious_practice %}\n\n<p><span class=\"secondary-title\">의식적인 관행:&nbsp; </span>{{ product.metafields.custom.material_conscious_practice }}</p>\n\n{% endif %}</p>\n  <p>{% if product.metafields.custom.secondary_metal %}\n\n<p><span class=\"primary-title\">보조 소재:&nbsp; </span>{{ product.metafields.custom.secondary_metal }}</p>\n\n{% endif %}\n{% if product.metafields.custom.secondary_metal_description_breakdown %}\n\n<p><span class=\"secondary-title\">소재 설명:&nbsp; </span>{{ product.metafields.custom.secondary_metal_description_breakdown }}</p>\n\n{% endif %}\n{% if product.metafields.custom.secondary_metal_durability_care %}\n\n<p><span class=\"secondary-title\">내구성 및 관리방법:&nbsp; </span>{{ product.metafields.custom.secondary_metal_durability_care }}</p>\n\n{% endif %}\n{% if product.metafields.custom.secondary_metal_conscious_practice %}\n\n<p><span class=\"secondary-title\">의식적인 관행:&nbsp; </span>{{ product.metafields.custom.secondary_metal_conscious_practice }}</p>\n\n{% endif %}</p>\n  </div>\n  <div class=\"column\">\n  <p>{% if product.metafields.custom.primary_gemstone %}\n\n<p><span class=\"primary-title\">주요 보석:&nbsp; </span>{{ product.metafields.custom.primary_gemstone }}</p>\n\n{% endif %}\n{% if product.metafields.custom.primary_gemstone_total_carat_weight %}\n\n<p><span class=\"secondary-title\">총 캐럿 중량:&nbsp; </span>{{ product.metafields.custom.primary_gemstone_total_carat_weight }}</p>\n\n{% endif %}\n{% if product.metafields.custom.primary_gemstone_center_stone_carat_weight %}\n\n<p><span class=\"secondary-title\">센터 스톤 총 중량:&nbsp; </span>{{ product.metafields.custom.primary_gemstone_center_stone_carat_weight }}</p>\n\n{% endif %}\n{% if product.metafields.custom.primary_gemstone_color_grade %}\n\n<p><span class=\"secondary-title\">컬러 등급:&nbsp;</span>{{ product.metafields.custom.primary_gemstone_color_grade }}</p>\n\n{% endif %}\n    {% if product.metafields.custom.primary_gemstone_clarity_grade %}\n\n<p><span class=\"secondary-title\">투명도 등급:&nbsp; </span>{{ product.metafields.custom.primary_gemstone_clarity_grade }}</p>\n\n{% endif %}\n{% if product.metafields.custom.primary_gemstone_description_breakdown %}\n\n<p><span class=\"secondary-title\">소재 설명:&nbsp; </span>{{ product.metafields.custom.primary_gemstone_description_breakdown }}</p>\n\n{% endif %}\n{% if product.metafields.custom.primary_gemstone_durability_care %}\n\n<p><span class=\"secondary-title\">내구성 및 관리방법:&nbsp;</span>{{ product.metafields.custom.primary_gemstone_durability_care }}</p>\n\n{% endif %}\n{% if product.metafields.custom.primary_gemstone_conscious_practice %}\n\n<p><span class=\"secondary-title\">의식적인 관행:&nbsp; </span>{{ product.metafields.custom.primary_gemstone_conscious_practice }}</p>\n\n{% endif %}</p>\n\n  <p>{% if product.metafields.custom.secondary_gemstone %}\n\n<p><span class=\"primary-title\">보조 보석:&nbsp; </span>{{ product.metafields.custom.secondary_gemstone }}</p>\n\n{% endif %}\n{% if product.metafields.custom.secondary_gemstone_total_carat_weight %}\n\n<p><span class=\"secondary-title\">캐럿 중량:&nbsp; </span>{{ product.metafields.custom.secondary_gemstone_total_carat_weight }}</p>\n\n{% endif %}\n\n{% if product.metafields.custom.secondary_gemstone_size %}\n\n<p><span class=\"secondary-title\">사이즈:&nbsp; </span>{{ product.metafields.custom.secondary_gemstone_size }}</p>\n\n{% endif %}\n\n{% if product.metafields.custom.secondary_gemstone_description_breakdown %}\n\n<p><span class=\"secondary-title\">소재 설명:&nbsp; </span>{{ product.metafields.custom.secondary_gemstone_description_breakdown }}</p>\n\n{% endif %}\n{% if product.metafields.custom.secondary_gemstone_durability_care %}\n\n<p><span class=\"secondary-title\">내구성 및 관리방법:&nbsp; </span>{{ product.metafields.custom.secondary_gemstone_durability_care }}</p>\n\n{% endif %}\n{% if product.metafields.custom.secondary_gemstone_conscious_practice %}\n\n<p><span class=\"secondary-title\">의식적인 관행:&nbsp; </span>{{ product.metafields.custom.secondary_gemstone_conscious_practice }}</p>\n\n{% endif %}</p>\n  </div>\n\n</div>\n\n</div>\n \n    \n \n</body>\n\n</html>"
-      }
-    },
-    "featured_collection_kEDdRj": {
-      "type": "featured-collection",
-      "disabled": true,
-      "name": "Featured collection",
-      "settings": {
-        "title": "Spend +$200 and get a pave cord bracelet at half price $100",
-        "show_title": true,
-        "collection": "pave-cord-bracelets",
-        "inline_padding": "inset",
-        "view_all_position": "header",
-        "view_all_label": "",
-        "show_vendor": false,
-        "enable_carousel": true,
-        "grid": 4,
-        "rows": 1,
-        "show_title_card": false,
-        "title_card_position": "first",
-        "show_title_card_image": true,
-        "overlay_style": "shadow",
-        "color_scheme": "1"
-      }
-    },
-    "image_with_text_custom_meta_j6kVHK": {
-      "type": "image-with-text-custom-meta",
-      "disabled": true,
-      "custom_css": [],
-      "settings": {}
-    },
-    "second_meta_section_custom_PHFf6t": {
-      "type": "second-meta-section-custom",
-      "settings": {}
-    },
     "related-products": {
       "type": "related-products",
-      "custom_css": [
-        "@media (min-width: 768px) {.product-list:hover {padding: 70px; -webkit-transition: padding 0.4s ease; transition: padding 0.4s ease; } .product-list {padding: 70px; -webkit-transition: padding 0.6s ease; transition: padding 0.6s ease; }}"
-      ],
+      "custom_css": [],
       "settings": {
         "title": "You may also like",
         "show_title": true,
@@ -726,13 +593,6 @@
   },
   "order": [
     "main",
-    "scrolling_banner_gdnABN",
-    "custom_liquid_8ihLfF",
-    "text_custom_section_product_GUTkVY",
-    "custom_liquid_PRKD9J",
-    "featured_collection_kEDdRj",
-    "image_with_text_custom_meta_j6kVHK",
-    "second_meta_section_custom_PHFf6t",
     "related-products"
   ]
 }

@@ -2,7 +2,30 @@
 
 A log of changes to the product page templates as they are brought in line with the new default product page.
 
-Nothing is deleted outright. Switched-off content stays saved in the theme editor as a hidden block, so it can be restored.
+Within the product information area, nothing is deleted outright. Switched-off content stays saved in the theme editor as a hidden block, so it can be restored.
+
+---
+
+## Rollout: all templates now use the new default layout
+
+All 21 product templates now use the new default product page layout, keeping only the differences agreed below (see "What each template keeps after the rebuild").
+
+**Sections below the product information removed** (confirmed by client). Every product template, including the default, now has only:
+1. the product information area
+2. the "You may also like" related products section
+
+This removed the "About [product]" materials section, Design Lab, the campaign image-and-text sections (pet, solitaire, Very Serious, Wonder Rocks), scrolling banners, featured collections and the old disclaimer sections. The previous version is saved in the project history and can be restored if needed.
+
+**Checked on every template:**
+- Purchase button wording
+- Price
+- Size guide, delivery estimate and product options, where agreed
+- Shipping and Product Details rows
+- Disclaimer
+- Promo messages below the price
+- No leftover old tick lines
+
+The Japanese carat / gold weight disclaimer still applies on the templates that have it.
 
 ---
 
@@ -183,6 +206,14 @@ Old content that is switched off stays saved in the templates, hidden from custo
 ### 15. Clara curb-link products: no change
 The Clara curb-link bracelet, earrings, necklace and ring point to a template named "Default product", which doesn't exist. They already display the default product page. No change.
 
+### 16. Returns message: tick line removed, kept in the Shipping dropdown
+The standalone "Easy 14-day return" tick line under the purchase button is removed from every template that had it: assist-product, collars-leashes, cord-promo-product, golden-week, md-promo, nova-preorder, pawtner-me, pet-bowl, pet-bundle, pet-charms, solitaire-product, solitaire-promo, vs-adjustable, vs-clipon, vs-promo-product, wonder-rocks and zodiac-promo-product.
+
+Returns information stays in the **Shipping dropdown** as a "Returns" row reading "Easy 14-day returns":
+- Today it appears on the default product page and preorder.
+- The other templates get the row when they move to the new default layout.
+- The final-sale templates, **summer-sale** and **the-future-rocks**, stay without a Returns row.
+
 ---
 
 ## What each template keeps after the rebuild
@@ -206,7 +237,7 @@ Every template will use the new default product page layout. The list below show
 | solitaire-product | Made-to-order message hidden |
 | solitaire-promo | "MOTHER'S DAY 35% OFF. USE CODE: GIFT35" below the price; made-to-order message hidden; no delivery estimate |
 | summer-sale | "FINAL SALE. UP TO 50% OFF…" below the price; no Returns row |
-| the-future-rocks | "FINAL SALE" below the price; "Also available" products; no delivery estimate; no product options |
+| the-future-rocks | "FINAL SALE" below the price; "Also available" products; no delivery estimate; no product options; no Returns row |
 | vs-adjustable | "FINAL SALE" below the price; made-to-order message hidden; no delivery estimate; no product options |
 | vs-clipon | Made-to-order message hidden; no delivery estimate; no product options |
 | vs-promo-product | Made-to-order message hidden; no delivery estimate; no product options |
