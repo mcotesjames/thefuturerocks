@@ -421,6 +421,30 @@
             "text": "The Future Rocks Original",
             "link_url": "shopify://products/the-earring"
           }
+        },
+        "menu_promotion_small_shopbyNova": {
+          "type": "menu-promotion-small",
+          "settings": {
+            "dropdown_link_title": "shop by",
+            "image": "shopify://shop_images/4_Chroma_Core_Necklace-4_1.png",
+            "bg_col": "{{ shop.brand.colors.primary[0].foreground }}",
+            "text_col": "{{ shop.brand.colors.primary[0].background }}",
+            "title": "Nova cord necklace",
+            "text": "Nova Collection",
+            "link_url": "shopify://products/nova-leather-necklace-with-emerald"
+          }
+        },
+        "menu_promotion_small_shopbyPave": {
+          "type": "menu-promotion-small",
+          "settings": {
+            "dropdown_link_title": "shop by",
+            "image": "shopify://shop_images/orange2.png",
+            "bg_col": "{{ shop.brand.colors.primary[0].foreground }}",
+            "text_col": "{{ shop.brand.colors.primary[0].background }}",
+            "title": "Pavé orange cord bracelet",
+            "text": "Essence Collection",
+            "link_url": "shopify://products/pave-orange-cord-bracelet-0-6ct"
+          }
         }
       },
       "block_order": [
@@ -435,6 +459,8 @@
         "menu_promotion_small_myJxkA",
         "menu_promotion_small_B6kHDf",
         "menu_promotion_small_ahfnUh",
+        "menu_promotion_small_shopbyNova",
+        "menu_promotion_small_shopbyPave",
         "menu_promotion_small_tEEAi8",
         "menu_promotion_small_rqzdR3",
         "menu_promotion_small_XEHm73",
