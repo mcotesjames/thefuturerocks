@@ -1,0 +1,96 @@
+{%- comment -%}
+  Numbered columns — 2026 redesign.
+  Label rail plus up to three numbered text columns ("01." etc,
+  numbered automatically from block order). Desktop: 4-column grid
+  (label in the first column) with all body copy starting on a
+  shared row via subgrid. Mobile: the columns collapse into an
+  accordion of ruled rows (numbers hidden, first item open).
+  Styled in redesign.css §26.
+{%- endcomment -%}
+
+<div class="numbered-columns" id="numbered-columns-{{ section.id }}" data-section-type="numbered-columns">
+  {%- if section.settings.label != blank -%}
+    <p class="heading-3 numbered-columns__label">{{ section.settings.label | escape }}</p>
+  {%- endif -%}
+  {%- for block in section.blocks -%}
+    <div class="numbered-columns__item accordion-rd__item{% if forloop.first %} is-open{% endif %}" {{ block.shopify_attributes }}>
+      <h3 class="heading-3 numbered-columns__title">
+        <button
+          type="button"
+          class="numbered-columns__toggle accordion-rd__toggle"
+          aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}"
+          aria-controls="numbered-columns-body-{{ block.id }}"
+        >
+          <span class="numbered-columns__number" aria-hidden="true">{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}.</span>
+          <span class="numbered-columns__title-text">{{ block.settings.title | escape }}</span>
+          <svg class="accordion-rd__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+            <path d="M12 4v16m0 0l-6-6m6 6l6-6"/>
+          </svg>
+        </button>
+      </h3>
+      <div class="accordion-rd__body rte" id="numbered-columns-body-{{ block.id }}">
+        {{ block.settings.text }}
+      </div>
+    </div>
+  {%- endfor -%}
+</div>
+
+<script>
+  (function () {
+    var root = document.getElementById('numbered-columns-{{ section.id }}');
+    if (!root || root.dataset.initialised) return;
+    root.dataset.initialised = 'true';
+    root.addEventListener('click', function (e) {
+      var btn = e.target.closest('.numbered-columns__toggle');
+      if (!btn) return;
+      var item = btn.closest('.numbered-columns__item');
+      var open = item.classList.toggle('is-open');
+      btn.setAttribute('aria-expanded', open);
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Numbered columns",
+  "class": "section-numbered-columns",
+  "max_blocks": 3,
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Label",
+      "default": "Our value"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "column",
+      "name": "Column",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "info": "Numbering (01., 02., …) is added automatically."
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Numbered columns",
+      "blocks": [
+        { "type": "column" },
+        { "type": "column" },
+        { "type": "column" }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,14 +1,26 @@
 {%- assign mobile_expand_with_entire_link = true -%}
 
 {% style %}
-  .logo img {
+  :root {
+    /* Consumed by redesign.css §13: no-hero pages compute the
+       docked wordmark row height from this (× the SVG aspect) for
+       the scroll-away-logo sticky offset. */
+    --tfr-logo-w: {{ section.settings.logo_img_width_int }}px;
+  }
+  .logo img,
+  .logo svg {
     width: {{ section.settings.logo_img_width_int }}px;
+  }
+  .logo svg {
+    display: block;
+    height: auto;
   }
   .logo-area__middle--logo-image {
     max-width: {{ section.settings.logo_img_width_int }}px;
   }
   @media (max-width: 767.98px) {
-    .logo img {
+    .logo img,
+    .logo svg {
       width: {{ section.settings.mobile_logo_img_width_int }}px;
     }
     .logo-area__middle--logo-image {
@@ -73,12 +85,12 @@
             {%- endif -%}
 
             <a class="logo__link" href="{{ routes.root_url }}" title="{{ shop.name }}" itemprop="url">
-              {%- if section.settings.logo != blank -%}
-                {%- capture img_size -%}{{ section.settings.logo_img_width_int | times: 2 }}x{%- endcapture -%}
-                <img class="logo__image" src="{{ section.settings.logo | img_url: img_size }}" alt="{{ section.settings.logo.alt | default: shop.name | escape }}" width="{{ section.settings.logo.width }}" height="{{ section.settings.logo.height }}" itemprop="logo" />
-              {%- else -%}
-                <span class="logotext">{{ shop.name }}</span>
-              {%- endif -%}
+              {%- comment -%}
+                2026 redesign: inline currentColor wordmark (tints white
+                over the hero, dark when docked). The logo image setting
+                is left intact but unused while the wordmark is in play.
+              {%- endcomment -%}
+              <span class="logo__image logo__wordmark" role="img" aria-label="{{ shop.name | escape }}">{{ 'tfr-wordmark.svg' | inline_asset_content }}</span>
             </a>
 
             {%- if request.page_type == 'index' and section.settings.logo_h1 -%}
@@ -283,6 +295,37 @@
     }
   }
   setTimeout(theme.inlineNavigationCheck, 0);
+</script>
+
+<script>
+  /* 2026 redesign header: the sticky mechanics are pure CSS
+     (redesign.css §13 — html:has(.cc-hero-banner) + a negative
+     sticky top offset). This observer only toggles the stuck-state
+     COLOUR class: html.tfr-nav-stuck goes on when the wordmark row
+     has scrolled under the announcement bar, which is the moment
+     the menu row pins. Once pinned, the wordmark's bottom rests
+     exactly (row gap) 12px above the announcement line, so the
+     boundary must sit inside that 12px window — 6px in, the flip
+     lands a hair before the pin and can always be crossed. */
+  (function () {
+    var root = document.documentElement;
+
+    function init() {
+      if (!document.querySelector('.cc-hero-banner')) return;
+      var wordmark = document.querySelector('#pageheader .logo-area__middle');
+      if (!wordmark) return;
+      var announceH = parseInt(getComputedStyle(root).getPropertyValue('--tfr-announce-h'), 10) || 45;
+      new IntersectionObserver(function (entries) {
+        root.classList.toggle('tfr-nav-stuck', !entries[0].isIntersecting);
+      }, { rootMargin: '-' + (announceH - 6) + 'px 0px 0px 0px' }).observe(wordmark);
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  })();
 </script>
 
 {%- endif -%}

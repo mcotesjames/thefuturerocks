@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "date_formats": {
     "month_date_year": "%d. %B, %Y"
@@ -182,7 +191,13 @@
       "product_unavailable": "Ikke Tilgængelig",
       "backorder": "er på bestilling og sendes så snart den er tilbage på lager",
       "unit_price_separator": " / ",
-      "size_chart": "Skostørrelse diagram"
+      "size_chart": "Skostørrelse diagram",
+      "details": {
+        "title": "Product Details"
+      },
+      "shipping": {
+        "title": "Shipping"
+      }
     },
     "variant": {
       "no_stock": "Udsolgt",
@@ -202,7 +217,8 @@
       "percent_reduction": "-{{ amount }}%",
       "value_reduction_html": "-{{ amount }}",
       "sale": "På Tilbud",
-      "sold_out": "Udsolgt"
+      "sold_out": "Udsolgt",
+      "trending": "Trending"
     },
     "quick_buy": {
       "read_more": "Flere detaljer",
@@ -456,6 +472,11 @@
       "pick_up_available": "Afhentning er tilgængeligt",
       "pick_up_currently_unavailable": "Afhentning er ikke tilgængeligt i øjeblikket",
       "invalid_location_address": "Kontakt butikken for at bekræfte adressen"
+    }
+  },
+  "sections": {
+    "featured_collection": {
+      "view_all": "Se alle"
     }
   }
 }

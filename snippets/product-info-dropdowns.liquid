@@ -1,0 +1,68 @@
+{%- comment -%}
+  Redesign: the two product-info dropdowns (Shipping and Packaging,
+  then Product Details), styled in redesign.css section 21.
+
+  Rendered at the position of the "dropdowns_anchor" block so the
+  client controls placement in the theme editor (falls back to the
+  end of the block list when no anchor block exists — see
+  main-product.liquid). Rows are collected from the section's
+  shipping_row / details_row blocks in block order; rows with no
+  content skip, and an empty dropdown doesn't render at all.
+
+  Accepts: section, product
+{%- endcomment -%}
+
+{%- capture accordion_toggle_icon -%}
+  <span class="consolidated-details__arrow">{% render 'svg-chevron-down-rd' %}</span>
+{%- endcapture -%}
+
+{%- capture shipping_content -%}
+  {%- for row_block in section.blocks -%}
+    {%- if row_block.type == 'shipping_row' -%}
+      {%- assign row_check = row_block.settings.content | strip_html | strip -%}
+      {%- if row_check != blank -%}
+        <div class="consolidated-details__group" {{ row_block.shopify_attributes }}>
+          {%- if row_block.settings.heading != blank -%}
+            <h4 class="consolidated-details__subheading">{{ row_block.settings.heading | escape }}</h4>
+          {%- endif -%}
+          <div class="consolidated-details__body">{{ row_block.settings.content }}</div>
+        </div>
+      {%- endif -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endcapture -%}
+{%- assign shipping_check = shipping_content | strip_html | strip -%}
+{%- if shipping_check != blank -%}
+  {%- assign shipping_title = 'products.product.shipping.title' | t -%}
+  <div class="detail-accordion consolidated-details">
+    {% render 'accordion', allow_multi_open: true, add_content_class: 'rte cf', first_item_open: false, item1_title: shipping_title, item1_content: shipping_content, toggle_icon: accordion_toggle_icon %}
+  </div>
+{%- endif -%}
+
+{%- capture product_details_content -%}
+  {%- if product.description != blank -%}
+    <div class="consolidated-details__group">
+      <div class="consolidated-details__body">{{ product.description }}</div>
+    </div>
+  {%- endif -%}
+  {%- for row_block in section.blocks -%}
+    {%- if row_block.type == 'details_row' -%}
+      {%- assign row_check = row_block.settings.content | strip_html | strip -%}
+      {%- if row_check != blank -%}
+        <div class="consolidated-details__group" {{ row_block.shopify_attributes }}>
+          {%- if row_block.settings.heading != blank -%}
+            <h4 class="consolidated-details__subheading">{{ row_block.settings.heading | escape }}</h4>
+          {%- endif -%}
+          <div class="consolidated-details__body">{{ row_block.settings.content }}</div>
+        </div>
+      {%- endif -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endcapture -%}
+{%- assign product_details_check = product_details_content | strip_html | strip -%}
+{%- if product_details_check != blank -%}
+  {%- assign product_details_title = 'products.product.details.title' | t -%}
+  <div class="detail-accordion consolidated-details">
+    {% render 'accordion', allow_multi_open: true, add_content_class: 'rte cf', first_item_open: false, item1_title: product_details_title, item1_content: product_details_content, toggle_icon: accordion_toggle_icon %}
+  </div>
+{%- endif -%}

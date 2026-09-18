@@ -1,0 +1,3171 @@
+/* ============================================================
+   REDESIGN.CSS — 2026 cosmetic redesign override layer
+   ------------------------------------------------------------
+   Loaded in layout/theme.liquid AFTER styles.css and custom.css.
+   All redesign overrides live here — do not edit styles.css
+   (flattened, fragile) except by exception, and never rename
+   existing classes (wishlist/GTM/custom.js are bound to them).
+
+   Contents:
+     1. Design tokens
+     2. @font-face — ABC Favorit Mono
+     3. Font application (replaces BrownPro/Signifier)
+   ============================================================ */
+
+/* ---- 1. Design tokens ------------------------------------- */
+
+:root {
+  --font-body: "ABCFavoritMono", "Courier New", monospace;
+  --font-heading: "ABCFavoritMonoBlack", "Courier New", monospace;
+  --font-heading-ja: "ABCFavoritMonoBlack", "NotoSansJP", sans-serif;
+  --font-heading-ko: "ABCFavoritMonoBlack", "NotoSansKR", sans-serif;
+  /* Proportional (non-mono) Favorit — currently used for product
+     card titles only. */
+  --font-favorit: "ABCFavorit", "Helvetica Neue", Arial, sans-serif;
+  /* Space Grotesk (Google Fonts, loaded in layout/theme.liquid).
+     Not applied anywhere yet — consume via var(--font-grotesk). */
+  --font-grotesk: "Space Grotesk", "Helvetica Neue", Arial, sans-serif;
+
+  /* Module spacing convention (see section 6):
+     no top padding, 80px bottom (60px on mobile), 5% inline on
+     large screens (matches the PDP product-detail's 5% margins). */
+  --module-pad-inline: 5%;
+  --module-pad-bottom: 80px;
+  --module-title-mb: 60px;
+
+  /* Sticky chrome: the bars that stay on screen while scrolling,
+     as fixed approximations of their rendered heights — used by
+     pinned modules to size against the visible viewport below
+     them. Desktop: announcement bar (45px) + header (85px), both
+     sticky. Mobile: header only (44px) — the announcement bar
+     scrolls away there. */
+  --sticky-chrome: 130px;
+
+  /* Caption: reusable small-label type (vendor, price, meta). */
+  --caption-size: 10px;
+  --caption-lh: 12px;
+
+  /* Brand palette — values match the Figma foundations file. Grey
+     is muted/inactive text (breadcrumb ancestors). */
+  --color-black: #000000;
+  --color-white: #FFFFFF;
+  --color-green: #00D200;
+  --color-grey: #B2B2B2;
+  --color-grey-dark: #808080;
+  --color-cream: #F8F8EC;
+}
+
+@media (max-width: 1369.98px) {
+  :root {
+    --sticky-chrome: 44px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  :root {
+    --module-pad-bottom: 60px;
+    --module-title-mb: 40px;
+  }
+}
+
+/* Reusable module inline padding — puts a module's content on the
+   5% grid (token above). Apply to module wrappers in section markup. */
+.module-pad-inline {
+  padding-inline: var(--module-pad-inline);
+}
+
+/* Reusable wide/inset toggle (per-module "Inline padding" setting).
+   The class sets the --module-inline token; each module's own inset
+   rules consume it. Wide = site gutter, inset = the 5% module grid. */
+.module-inline--wide {
+  --module-inline: var(--site-gutter);
+}
+.module-inline--inset {
+  --module-inline: var(--module-pad-inline);
+}
+
+/* Kill the theme's image zoom-on-hover globally (collection cards,
+   grid promos, title cards, gallery/multi-column images…) — the
+   class is hardcoded in their markup, so neutralise it here. Same
+   selector as the theme rule (styles.css ~11838); this sheet loads
+   later, so it wins by order. */
+.scale-on-hover:hover .scale-on-hover__target {
+  transform: none;
+}
+
+/* Reusable media aspect ratio — apply to an img/svg and set
+   --image-ratio / --image-ratio-mobile ("auto" = natural) inline on
+   it or an ancestor; sections emit them from their settings. */
+.ratio-media {
+  aspect-ratio: var(--image-ratio, auto);
+  object-fit: cover;
+}
+@media (max-width: 767.98px) {
+  .ratio-media {
+    aspect-ratio: var(--image-ratio-mobile, auto);
+  }
+}
+
+/* Reusable caption style. */
+.caption {
+  font-size: var(--caption-size);
+  line-height: var(--caption-lh);
+}
+
+/* Reusable body-2: 12px / 14px Space Grotesk (variant picker rows,
+   small UI copy). */
+.body-2 {
+  font-family: var(--font-grotesk);
+  font-size: 12px;
+  line-height: 14px;
+}
+
+.heading-1 {
+  font-family: var(--font-heading);
+  font-size: 48px;
+  line-height: 48px;
+}
+
+/* Reusable heading-2 (Figma TFR_Header2): 32px / 32px, ABC Favorit
+   Mono Black. */
+.heading-2 {
+  font-family: var(--font-heading);
+  font-size: 32px;
+  line-height: 32px;
+}
+
+/* Reusable heading-3: 18px / 21px, ABC Favorit Mono Black. Also applied
+   to collection-card titles (scoped selector wins the 12px product-card
+   title rule). */
+.heading-3,
+.section-collection-list .product-block__title {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  line-height: 21px;
+  text-transform: uppercase;
+}
+
+/* Mobile heading sizes. */
+@media (max-width: 767.98px) {
+  .heading-1 {
+    font-size: 28px;
+    line-height: 28px;
+  }
+  .heading-2 {
+    font-size: 18px;
+    line-height: 18px;
+  }
+  .heading-3,
+  .section-collection-list .product-block__title {
+    font-size: 16px;
+    line-height: 22px;
+  }
+}
+
+/* ---- 2. @font-face: ABC Favorit Mono ----------------------- */
+/* Weight-mapped so <strong>/bold text in body copy resolves to
+   the Black cut instead of a synthesized faux-bold. */
+
+@font-face {
+  font-family: "ABCFavoritMono";
+  src: url("ABCFavoritMono-Regular.woff2") format("woff2");
+  font-weight: 100 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "ABCFavoritMono";
+  src: url("ABCFavoritMono-Black.woff2") format("woff2");
+  font-weight: 501 1000;
+  font-style: normal;
+  font-display: swap;
+}
+/* Standalone heading family: matches every weight, so heading
+   contexts render the Black cut regardless of inherited
+   font-weight rules (mirrors the old BrownProBold pattern). */
+@font-face {
+  font-family: "ABCFavoritMonoBlack";
+  src: url("ABCFavoritMono-Black.woff2") format("woff2");
+  font-weight: 100 1000;
+  font-style: normal;
+  font-display: swap;
+}
+/* Proportional ABC Favorit (Regular cut). Matches every weight so it
+   renders the Regular cut wherever it's applied, regardless of
+   inherited font-weight. */
+@font-face {
+  font-family: "ABCFavorit";
+  src: url("ABCFavorit-Regular.woff2") format("woff2");
+  font-weight: 100 1000;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ---- 3. Font application ----------------------------------- */
+/* Each block overrides a rule in styles.css/custom.css that
+   hardcodes BrownProRegular / BrownProBold / SignifierRegular.
+   Selectors are copied 1:1 so specificity ties resolve to this
+   file (loaded later). */
+
+/* Body — was BrownProRegular (styles.css ~10160) */
+body {
+  font-family: var(--font-body);
+}
+
+/* Buttons & inputs — was BrownProRegular (styles.css ~1524) */
+.button,
+.btn,
+button,
+input[type=submit],
+input[type=reset],
+input[type=button] {
+  font-family: var(--font-body);
+}
+
+/* Add-to-cart submit — was BrownProRegular (styles.css ~7558) */
+.product-form .quantity-submit-row .quantity-submit-row__submit button[type=submit] {
+  font-family: var(--font-body);
+}
+
+/* Headings — was BrownProBold (styles.css ~2713) */
+h1, .h1-style,
+h2, h3, h4, h5, h6,
+.heading-font {
+  font-family: var(--font-heading);
+}
+
+/* JA/KO heading stacks — keep Noto fallbacks; !important matches
+   the originals (styles.css ~2720) so these win the tie. */
+h1:lang(ko), .h1-style:lang(ko), h2:lang(ko), h3:lang(ko), h4:lang(ko),
+h5:lang(ko), h6:lang(ko), .heading-font:lang(ko) {
+  font-family: var(--font-heading-ko) !important;
+}
+h1:lang(ja), .h1-style:lang(ja), h2:lang(ja), h3:lang(ja), h4:lang(ja),
+h5:lang(ja), h6:lang(ja), .heading-font:lang(ja) {
+  font-family: var(--font-heading-ja) !important;
+}
+
+/* Signifier accent spots — originals use !important, so these
+   must too (styles.css ~6152, ~10502). */
+.heading-font {
+  font-family: var(--font-heading) !important;
+}
+.page-header__title {
+  font-family: var(--font-heading) !important;
+}
+
+/* Heading contexts styled individually in styles.css */
+.overlay-text .overlay-text__title { font-family: var(--font-heading); }
+.announcement .announcement__text { font-family: var(--font-grotesk); }
+.navigation--desktop .navigation__columns .navigation__column:not(.navigation__column--promotion) .navigation__column-title { font-family: var(--font-heading); }
+.mobile-nav-title { font-family: var(--font-heading); }
+.product-label > span { font-family: var(--font-body); }
+
+/* custom.css stragglers */
+.product-count p { font-family: var(--font-body); }
+ul.navigation__tier-2 li.custom-sect-cls a.navigation__link { font-family: var(--font-heading); }
+
+/* Design-lab (.dsgn-*) blocks — was BrownProRegular (styles.css tail) */
+.dsgn-title,
+.dsgn-paragraph,
+.dsgn-button,
+.dsgn-button:hover {
+  font-family: var(--font-body);
+}
+
+/* ---- 4. Buttons --------------------------------------------- */
+/* Primary CTA: flat colour, no padding, body mono at the size set
+   in theme settings. The --btn-* variables are emitted from theme
+   settings in layout/theme.liquid, so Customizer > Colors > Buttons
+   and Typography > Button text size drive this live (the flattened
+   styles.css had disconnected them). Base .btn buttons (ATC, forms)
+   are deliberately untouched until their own pass. */
+.btn--primary {
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  border: none;
+  border-radius: var(--btn-radius, 0);
+  padding: 0;
+  font-family: var(--font-body);
+  font-size: var(--btn-text-size, 18px);
+}
+/* Hover: colours invert — ground takes the text colour, text takes
+   the ground colour (replaces the theme-settings hover colour). */
+.btn--primary:hover,
+.btn--primary:focus {
+  background: var(--btn-text);
+  color: var(--btn-bg);
+}
+
+/* All CTAs — primary and secondary — are set in uppercase. */
+.btn--primary,
+.btn--secondary {
+  text-transform: uppercase;
+}
+
+/* Kill the theme's hover label animation (btn-slide-up: the text
+   scrolls out of the button and back in) on every CTA — hover states
+   are instant colour swaps now. */
+.btn--link:hover .btn__text {
+  animation: none;
+}
+
+/* Secondary CTA — same construction as primary, using the secondary
+   colours from theme settings, at 16px, underlined, with a trailing
+   "+" (no gap). Selector matches .btn.btn--secondary to beat the
+   theme's bordered secondary style. */
+.btn.btn--secondary,
+button.btn--secondary {
+  background: var(--btn-secondary-bg);
+  color: var(--btn-secondary-text);
+  border: none;
+  border-radius: var(--btn-radius, 0);
+  padding: 0;
+  font-family: var(--font-body);
+  font-size: 16px;
+}
+/* Hover: colours invert, mirroring the primary CTA — ground takes
+   the text colour, text takes the ground colour. */
+.btn.btn--secondary:hover,
+.btn.btn--secondary:focus,
+button.btn--secondary:hover,
+button.btn--secondary:focus {
+  background: var(--btn-secondary-text);
+  color: var(--btn-secondary-bg);
+}
+/* Light secondary variant — hardcoded white ground with black text
+   (not theme-settings driven), for CTAs sitting on imagery or colour
+   where the standard secondary colours don't read. Triple class
+   out-specifies the base/hover secondary rules and later scoped
+   overrides. Hover inverts, same as every other CTA. */
+.btn.btn--secondary.btn--secondary-light {
+  background: var(--color-white);
+  color: var(--color-black);
+}
+.btn.btn--secondary.btn--secondary-light:hover,
+.btn.btn--secondary.btn--secondary-light:focus {
+  background: var(--color-black);
+  color: var(--color-white);
+}
+
+/* Underline on the label span — the base button forces
+   text-decoration: none !important on the <a>, which suppresses the
+   anchor's own underline; the span renders it cleanly. */
+.btn--secondary .btn__text {
+  text-decoration: underline;
+}
+/* Trailing "+", no gap, sitting on the same line as the label text. */
+.btn--secondary .btn__text::after {
+  content: "+";
+  line-height: inherit;
+}
+/* CTA label spans are never bordered in the redesign — old-site
+   styles bordered them; enforce globally (defensive: also covers
+   app/campaign CSS). */
+.btn__text {
+  border: none;
+}
+
+/* ---- 6. Module spacing convention --------------------------- */
+/* Standard module rhythm: no padding-top, 120px padding-bottom,
+   120px inline padding on large screens, section heading left-
+   aligned and inset to the content edge with 60px below it.
+   Applied per-module as each is redesigned (the shared classes
+   .section-title / .cc-carousel are used by many sections, so
+   this is scoped to each section's wrapper class rather than set
+   globally). Colour-block modules get padding-bottom only. */
+
+/* Featured collection — and the PDP related-products module, which
+   mirrors it (same header, title, carousel treatment). */
+.section-featured-collection,
+.section-related-products {
+  padding-top: 0;
+  padding-bottom: var(--module-pad-bottom);
+}
+.section-featured-collection .cc-carousel.card-margin,
+.section-related-products .cc-carousel.card-margin {
+  margin-top: 0;
+}
+/* Title row: heading left + "view all" CTA right, one row at all
+   sizes. Shared by the logo-carousel module (heading only, no CTA). */
+.section-featured-collection .section-header,
+.section-related-products .section-header,
+.section-logo-carousel .section-header,
+.section-infographic .section-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 0 0 var(--module-title-mb);
+  padding: 0 20px;
+}
+.section-featured-collection .section-title,
+.section-related-products .section-title,
+.section-logo-carousel .section-title,
+.section-infographic .section-title {
+  text-align: left;
+  margin: 0;
+  min-width: 0;
+}
+/* View-all uses the shared secondary CTA style (.btn--secondary);
+   only the header-layout bits live here. */
+.section-featured-collection .section-header__view-all {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+/* Redesigned title card (hook class in featured-collection.liquid).
+   No card-scheme ground; content top-aligned. Title takes heading-3
+   type, description standard body copy, each with 60px below.
+   (0,3,0) scoping out-specifies both the card-scheme background and
+   the shared §15 title-card rules further down the file. */
+.section-featured-collection .featured-collection__title-card {
+  background: transparent;
+  /* The .product-list-heading-block__text wrapper (which carried the
+     inner padding and bottom-pinned flex) is removed from this card's
+     markup — the card pads itself and content sits in normal flow
+     from the top. */
+  /* padding: var(--site-gutter); */
+}
+/* Mobile: the card's wrapper block hugs its actual content height
+   instead of stretching with the product grid row. */
+@media (max-width: 767.98px) {
+  .section-featured-collection .product-block--mobile-wide {
+    height: 100%;
+  }
+}
+.section-featured-collection .featured-collection__title-card .overlay-text {
+  width: 100%;
+}
+
+.section-featured-collection .featured-collection__title-card .overlay-text__title {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  line-height: 21px;
+  text-transform: uppercase;
+  margin: 0 0 60px;
+}
+.section-featured-collection .featured-collection__title-card .overlay-text__rte {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  margin: 0 0 60px;
+}
+
+/* Mobile: the title card's text splits into two columns — title
+   left (35%), description + view-all stacked right (65%), 15px
+   column gap. The gap comes out of the title column (35% − 15px)
+   so the two columns + gap still total 100%. */
+@media (max-width: 767.98px) {
+  .section-featured-collection .featured-collection__title-card .overlay-text__text {
+    display: grid;
+    grid-template-columns: calc(35% - 15px) 65%;
+    column-gap: 15px;
+    row-gap: 15px;
+  }
+  /* Spacing moves off the elements and onto the grid gaps: element
+     margin-bottoms (meant for the stacked flow) leave a 60px void
+     in row 1 when there is no description — and with no description
+     the CTA auto-places into row 1 beside the title, where a
+     bottom margin has nothing to space. */
+  .section-featured-collection .featured-collection__title-card .overlay-text__title,
+  .section-featured-collection .featured-collection__title-card .overlay-text__rte {
+    margin-bottom: 0;
+  }
+  .section-featured-collection .featured-collection__title-card .overlay-text__title {
+    grid-column: 1;
+  }
+  .section-featured-collection .featured-collection__title-card .overlay-text__rte {
+    grid-column: 2;
+    justify-self: start;
+  }
+  /* The CTA sits in the title column, pinned to its own row directly
+     underneath the title (auto-flow would otherwise promote it into
+     row 1 beside the title when there is no description). */
+  .section-featured-collection .featured-collection__title-card .section-header__view-all {
+    grid-column: 1;
+    grid-row: 2;
+    justify-self: start;
+  }
+}
+
+/* In-title-card placement for the view-all CTA ("'View all'
+   position" setting): spaced under the title/description and lifted
+   above the card's full-surface link (z-index 2, styles.css ~6950)
+   so the CTA is clickable in its own right. */
+.section-featured-collection .product-list-heading-block .section-header__view-all {
+  position: relative;
+  z-index: 3;
+  display: inline-block;
+  /* Margin-bottom-only spacing inside the card: the gap above comes
+     from the previous element's own margin-bottom, so a missing
+     description never leaves stray top spacing. */
+  margin: 0;
+}
+
+/* Below-carousel placement for the view-all CTA ("'View all'
+   position" setting): same inset as the
+   title row, centred, spaced off the products. The trailing "+"
+   stays hardcoded via the .btn--secondary .btn__text::after rule. */
+.section-featured-collection .section-footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+  padding: 0 20px;
+}
+@media (min-width: 1280px) {
+  .section-featured-collection .section-header,
+  .section-featured-collection .section-footer,
+  .section-related-products .section-header,
+  .section-logo-carousel .section-header,
+  .section-infographic .section-header {
+    padding: 0 var(--module-pad-inline);
+  }
+  .section-featured-collection .cc-carousel--mobile-only .product-list.cc-carousel__scroll-area,
+  .section-related-products .cc-carousel--mobile-only .product-list.cc-carousel__scroll-area {
+    padding-block: 0;
+    padding-left: var(--module-pad-inline);
+    padding-right: var(--module-pad-inline);
+  }
+}
+/* Featured collection consumes the wide/inset toggle (the
+   module-inline--* class on its root div sets --module-inline):
+   title row, footer row and the desktop product grid all follow it.
+   Placed after the base/1280 rules above so the token wins whenever
+   the class is present; sections predating the setting default to
+   "inset" via the markup fallback, matching the old ≥1280 look. */
+.section-featured-collection .module-inline--wide .section-header,
+.section-featured-collection .module-inline--wide .section-footer,
+.section-featured-collection .module-inline--inset .section-header,
+.section-featured-collection .module-inline--inset .section-footer {
+  padding-inline: var(--module-inline);
+}
+@media (min-width: 1280px) {
+  .section-featured-collection .module-inline--wide .cc-carousel--mobile-only .product-list.cc-carousel__scroll-area,
+  .section-featured-collection .module-inline--inset .cc-carousel--mobile-only .product-list.cc-carousel__scroll-area {
+    padding-left: var(--module-inline);
+    padding-right: var(--module-inline);
+  }
+}
+
+/* Gallery — site-gutter inline inset on desktop; full bleed on
+   mobile. Closes with the standard module bottom padding. */
+.section-gallery {
+  padding-inline: var(--site-gutter);
+  padding-bottom: var(--module-pad-bottom);
+}
+@media (max-width: 767.98px) {
+  .section-gallery {
+    padding-inline: 0;
+  }
+  /* Mobile slideshow slides: 90% of the viewport (the carousel is
+     full bleed) so the next image peeks in on the right; slick runs
+     variableWidth and reads these widths for its positioning. The
+     LAST slide is 110% so slick's natural left-alignment fills the
+     viewport — no dead strip, no JS correction (the overflowing 10%
+     is clipped by the slick list). */
+  .gallery--mobile-carousel .gallery__item {
+    width: 90vw;
+  }
+  .gallery--mobile-carousel .gallery__item:last-child {
+    width: 110vw;
+  }
+}
+/* "Inset" setting: a considerable inline inset on desktop (double
+   the 5% module grid, on top of the section's site-gutter). On
+   mobile it falls back to the plain site gutter — except the mobile
+   slideshow, which stays full bleed like the PDP gallery. The
+   slideshow's slick dots are gone entirely (dots: false in
+   theme.js's GallerySection) — the green .gallery-progress bar
+   (§18 styles; markup + sync script in gallery.liquid) replaces
+   them. */
+.gallery-card--inset {
+  padding-inline: calc(var(--module-pad-inline) * 2);
+}
+@media (max-width: 767.98px) {
+  .gallery-card--inset {
+    padding-inline: var(--site-gutter);
+  }
+  .gallery-card--inset:has(.gallery--mobile-carousel) {
+    padding-inline: 0;
+  }
+}
+
+/* Collection list — full width with a site-gutter page gutter (no
+   carousel; items wrap to the grid column count). Title matches the
+   featured-collection treatment. */
+.section-collection-list {
+  padding-top: 0;
+  padding-bottom: var(--module-pad-bottom);
+  padding-inline: var(--site-gutter);
+}
+.section-collection-list .section-title {
+  text-align: left;
+  margin: 0 0 var(--module-title-mb);
+  padding-inline: var(--site-gutter);
+}
+/* Gap-based flex grid (replaces the theme's negative-margin gutters). */
+.section-collection-list .collection-listing .product-list {
+  gap: 24px var(--site-gutter);
+  margin: 0;
+  padding: 0;
+}
+.section-collection-list .collection-block {
+  margin: 0;
+  padding: 0;
+}
+.section-collection-list .product-list--per-row-2 .collection-block { width: calc((100% - 1 * var(--site-gutter)) / 2); }
+.section-collection-list .product-list--per-row-3 .collection-block { width: calc((100% - 2 * var(--site-gutter)) / 3); }
+.section-collection-list .product-list--per-row-4 .collection-block { width: calc((100% - 3 * var(--site-gutter)) / 4); }
+.section-collection-list .product-list--per-row-5 .collection-block { width: calc((100% - 4 * var(--site-gutter)) / 5); }
+/* Mobile: draggable (touch-scroll) carousel instead of a grid — cards
+   in a nowrap row that scrolls horizontally with snap. Native finger-
+   drag, no JS. Desktop keeps the wrapping grid above. */
+@media (max-width: 767.98px) {
+  .section-collection-list {
+    padding: 0;
+  }
+  .section-collection-list .collection-listing .product-list {
+    padding: 0;
+    flex-wrap: nowrap;
+    gap: 0;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    scroll-padding-inline: var(--site-gutter);
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .section-collection-list .collection-listing .product-list::-webkit-scrollbar {
+    display: none;
+  }
+  /* (0,4,0) beats the desktop per-row width rules (0,3,0). */
+  .section-collection-list .collection-listing .product-list .collection-block {
+    flex: 0 0 auto;
+    width: 85%;
+    scroll-snap-align: start;
+  }
+  /* Carousel: title overlays the card, bottom-right, white + underlined. */
+  .section-collection-list .collection-block .product-link {
+    position: relative;
+  }
+  .section-collection-list .collection-block .product-link .image-cont {
+    margin-bottom: 0;
+  }
+  .section-collection-list .collection-block .product-info {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding: 20px;
+    text-align: right;
+  }
+  .section-collection-list .collection-block .product-block__title {
+    color: var(--color-white);
+    text-decoration: underline;
+    text-transform: uppercase;
+  }
+
+  .section-collection-list .collection-block .product-block__title::after {
+    content: "+";
+    line-height: inherit;
+  }
+}
+/* Card images: fit and position from the section's Customizer
+   settings ("Card images"), emitted as --cl-fit / --cl-pos on the
+   section wrapper. --bg-pos is the theme's own object-position hook
+   (inherits into .inline-image); --content-fit is set inline there so
+   the fit override targets the img directly. */
+/* Selector depth matches styles.css's own
+   .product-block.collection-block .image-cont .inline-image__image
+   rule, which pins object-position: center center at (0,4,1). */
+.section-collection-list .product-block.collection-block .image-cont .inline-image__image {
+  object-fit: var(--cl-fit, cover);
+  object-position: var(--cl-pos, 50% 50%);
+  /* Per-block zoom (100 = natural). Clipped by .image-cont's
+     overflow:hidden; sits on the img so the wrapper-level
+     scale-on-hover still composes on top. Overrides the load-in
+     scale-settle animation on these cards. */
+  transform: scale(calc(var(--cl-scale, 100) / 100));
+  transform-origin: var(--cl-pos, 50% 50%);
+}
+
+/* Left-align all collection card titles (theme centres them). */
+.product-block.collection-block .product-info {
+  text-align: left;
+  margin-bottom: 0;
+}
+
+/* ---- 7. Product card (snippets/product-block.liquid) -------- */
+/* Shared by collection, search, featured-collection, related,
+   product-list. The class names are load-bearing (swatch JS,
+   quick-add, theme.card_bg, and the Swish wishlist app all target
+   them) — restyle only, don't rename. */
+
+/* Card background stays on the image; product info sits below it on
+   a transparent ground, visually separated from the image. */
+.product-block .block-inner.card-scheme--1,
+.product-block .block-inner.card-scheme--2,
+.product-block .block-inner.card-scheme--3 {
+  background: transparent;
+}
+.product-block .image-cont {
+  background: var(--bg, #f8f8f8);
+}
+/* Neutralise the "CDO" desktop card rules (styles.css ~6212, min-width
+   1280/1133) that force a grey background onto the whole card and add a
+   hover-lift. They use !important + high specificity, so the redesign
+   card only showed below 1280 without this. Matching their selectors so
+   the transparent-info card is uniform at every width. */
+.template-index .cc-carousel .product-list .block-inner,
+.template-index .cc-carousel .product-list .block-inner:hover,
+.template-product .cc-carousel .product-list .block-inner,
+.template-product .cc-carousel .product-list .block-inner:hover,
+.collection-listing .block-inner,
+.collection-listing .block-inner:hover {
+  margin: 0 !important;
+  padding: 0 !important;
+  background-color: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+}
+/* 10px gap between the image and the info block (was a 16px/14px
+   margin on product-info). */
+.product-block .image-cont {
+  margin-bottom: 10px;
+}
+
+/* Reconnect card grid spacing to the "Space between cards" setting
+   (site_gutter). styles.css:6351 froze these at a literal 8px when the
+   stylesheet was flattened; --site-gutter is emitted in theme.liquid. */
+.product-block {
+  padding-left: var(--site-gutter, 8px);
+  margin-bottom: var(--site-gutter, 8px);
+  padding-bottom: 20px;
+}
+
+.product-block__info-card {
+  padding-bottom: 0px;
+}
+/* Product info: left-aligned, with an even 8px gap between every
+   element (vendor, title, subtitle, price, swatch/material row).
+   Theme element margins are zeroed so the gap is the only spacing. */
+.product-block.collection-block .product-info {
+  text-align: left;
+}
+
+.product-block .product-info {
+  margin: 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: left;
+}
+.product-block .product-info > .product-link {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.product-block .block-inner .vendor,
+.product-block__title,
+.product-block__subtitle,
+.product-block__price-row {
+  margin: 0;
+}
+/* Override the theme's text-align: right on the info link (0,3,0), at
+   all widths — must match its specificity, not just the parent. */
+.product-block .product-link:not(.button) {
+  text-align: left;
+}
+
+/* Type sizes: vendor uses the caption style; title and price are
+   both 12px. */
+.product-block .block-inner .vendor {
+  font-size: var(--caption-size);
+  line-height: var(--caption-lh);
+}
+.product-block__title {
+  font-family: var(--font-favorit);
+  font-size: 12px;
+  text-transform: capitalize;
+}
+.product-block .product-info .product-price {
+  font-size: 12px;
+}
+
+/* Text colours: title grey, price black, vendor = the card scheme's
+   secondary text (set per scheme in theme settings, emitted as vars
+   in layout/theme.liquid). */
+.product-block__title {
+  color: var(--color-grey);
+}
+.product-block .block-inner .vendor {
+  color: var(--card-text-secondary);
+}
+.product-block .product-info .product-price {
+  color: var(--color-black);
+}
+/* Swatches sit in normal flow below the price at all widths (the old
+   absolute top-right desktop treatment is gone), with the material
+   caption on the same row. Spacing comes from the product-info gap,
+   not the row's own margin (theme sets margin-top: 0.5em and
+   justify-content: space-between on --swatches-inline). */
+.product-block .product-info .product-block__price-row {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+}
+.product-block__price-row--swatches-inline .product-block-options {
+  position: static;
+  margin: 0;
+}
+/* Swatches keep their natural width — the material text must never
+   crush them (a shrunk carousel clips or underlaps the swatch). Wide
+   swatch sets cap at 60% of the row and scroll inside the carousel;
+   the material takes the remaining width and wraps. */
+.product-block .product-info .product-block__price-row .product-block-options {
+  flex: 0 0 auto;
+  max-width: 60%;
+}
+/* Material (custom.material_1) takes the caption style, secondary
+   card colour — same treatment as vendor and price. */
+.product-block__material {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-family: var(--font-favorit);
+  font-size: var(--caption-size);
+  line-height: var(--caption-lh);
+  color: var(--card-text-secondary);
+}
+/* Price left-aligned; the theme's 0.5em top margin is removed (spacing
+   is now the product-info gap). The second selector matches (and beats)
+   the theme's flex-end rule for the swatches-present case. */
+.product-block .product-info .product-price,
+.product-block__price-row--swatches-inline .product-block__price:not(:last-child) .product-price {
+  justify-content: flex-start;
+  text-align: left;
+}
+.product-block__price-row--swatches-inline .product-block__price:not(:last-child) {
+  text-align: left;
+  flex: 1 1 auto;
+  margin-top: 0;
+}
+.product-block__price-row--swatches-inline .product-block__price:not(:last-child) .product-price {
+  font-size: var(--caption-size);
+  line-height: var(--caption-lh);
+}
+/* Swatches: flush to the top-right (no item margin) with a 1px solid
+   black border, and a 4px gap between items. */
+.product-block .product-block-options__item {
+  margin: 0;
+  border: 1px solid var(--color-black);
+}
+/* Sold-out swatches draw a 3px box-shadow ring and a strike-through
+   that overhangs the item by up to 4px (theme styles) — the item
+   margins that gave them room are zeroed above, so give the two
+   overflow-hidden clip boxes 4px padding instead, pulled back with
+   a negative margin so nothing shifts. */
+.product-block .product-block-options,
+.product-block .product-block-options .cc-carousel__scroll-outer {
+  padding: 4px;
+  padding-bottom: 8px;
+  margin: -4px;
+}
+/* Sold-out swatches are self-contained: the theme's halo ring can't
+   fit the 4px swatch gap without overlapping neighbours, so drop it
+   (the redesign's 1px black border already outlines the swatch) and
+   clip the diagonal strike inside the circle. */
+.product-block .product-block-options__item.product-block-options__item--unavailable {
+  box-shadow: none;
+  overflow: hidden;
+}
+/* The strike matches the swatch border: solid black, full opacity
+   (theme default is 30% text colour). */
+.product-block .product-block-options__item.product-block-options__item--unavailable::after {
+  background: var(--color-black);
+  opacity: 1;
+}
+.product-block-options__inner.cc-carousel__scroll-area {
+  gap: 4px;
+  justify-content: flex-start;
+  /* The scroll-area is itself a scroll container (overflow-x: auto
+     clips BOTH axes — overflow-y: visible computes to auto), so it
+     needs the same 4px paint room as the outer clip boxes for the
+     sold-out ring/strike. */
+  padding: 4px;
+  margin: -4px;
+}
+
+@media (max-width: 767.98px) {
+  /* Carousel/grid scroll-area sits 8px below the section title. */
+  .cc-carousel__scroll-area {
+    margin-top: 8px;
+  }
+  /* Standard swatches are 16×16 on mobile. */
+  .swatch-method-standard .product-block-options__item {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+/* Mobile: product grids drop the swipe carousel for a 2-column grid.
+   Scoped to .cc-carousel--mobile-only (featured-collection, product
+   lists) so swatch carousels are unaffected. */
+@media (max-width: 767.98px) {
+  .cc-carousel--mobile-only .product-list.cc-carousel__scroll-area {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px 16px;
+    overflow: visible;
+    scroll-snap-type: none;
+    padding-inline: 16px;
+    margin-left: 0;
+  }
+  .cc-carousel--mobile-only .cc-carousel__scroll-area > product-block,
+  .cc-carousel--mobile-only .cc-carousel__scroll-area > .product-block {
+    width: auto;
+    max-width: none;
+    padding-left: 0;
+    margin-bottom: 0;
+    scroll-snap-align: none;
+  }
+  .cc-carousel--mobile-only .cc-carousel__scroll-area > .product-block--mobile-wide {
+    grid-column: 1 / -1;
+  }
+  /* Stop the off-edge bleed that pushed the grid past the page width. */
+  .container .cc-carousel--mobile-only.cc-carousel--off-edge-mobile,
+  .cc-carousel--mobile-only.cc-carousel--off-edge-mobile {
+    margin-right: 0;
+    margin-left: 0;
+  }
+  .cc-carousel--mobile-only .cc-carousel-buttons {
+    display: none;
+  }
+
+  /* Swatches left-aligned on mobile — override the theme's per-row-mob-2
+   * rule that centres them (styles.css ~6420). The -4px matches the
+   * clip-box padding compensation above. */
+  .product-block-options,
+  .product-list--per-row-mob-2 .product-block .product-info .product-block__price-row--swatches-inline .product-block-options {
+    justify-content: flex-start;
+    margin-inline-end: -4px;
+  }
+}
+
+/* All badges: a 3×3 square marker before the text, inheriting the
+   badge's text colour. */
+.product-label > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.product-label > span::before {
+  content: "";
+  flex: 0 0 auto;
+  width: 3px;
+  height: 3px;
+  background: currentColor;
+}
+
+/* All card badges (trending, new in, sale, sold out, pre-order,
+   stock, metafield label) — black background, brand-green text.
+   Ties with the per-type colour rules in styles.css (~7334) at
+   (0,1,1) and wins by load order. */
+.product-label > span {
+  background: var(--color-black);
+  color: var(--color-green);
+  font-weight: 400;
+}
+
+/* Card image controls: square grounds (the theme draws both the
+   quick-add/quick-view button and the prev/next chevrons on
+   border-radius 100% circles — styles.css ~1880, ~6725). */
+.quick-action-button,
+.image-page-button::after {
+  border-radius: 0;
+}
+
+/* Wishlist button (Swish / Wishlist King app) — bottom-left of the
+   image, no background circle. NOTE: targets app-injected markup
+   (.wk-floating) that is not in the theme repo; NEEDS verifying
+   against the live DOM — the app may render different classes. */
+.product-block .image-cont .wk-floating {
+  top: auto;
+  right: auto;
+  bottom: 10px;
+  left: 10px;
+  background: none;
+  box-shadow: none;
+  border: none;
+  padding: 0;
+}
+
+/* ---- 8. Foxify page-builder overrides ----------------------- */
+/* Foxify sections load their generated CSS mid-body, AFTER this
+   file, and set fonts per block instance as
+   `.f-app .f-<blocktype>-<instanceID> { font-family: ... }` —
+   so these overrides require !important to win. Scoped entirely
+   to .f-app; do not use !important elsewhere in this file.
+
+   Foxify pages load Google "Noto Sans JP/KR" themselves, so CJK
+   glyphs (absent from ABC Favorit Mono) fall through to those.  */
+
+:root {
+  --f-font-body: "ABCFavoritMono", "Courier New", "Noto Sans KR", "Noto Sans JP", monospace;
+  --f-font-heading: "ABCFavoritMonoBlack", "Courier New", "Noto Sans KR", "Noto Sans JP", monospace;
+}
+
+/* Body font: base wrapper + every block type Foxify styles as
+   body/regular text (was BrownProTT-Regular/Light, Noto Sans,
+   Jost, Signifier on assorted blocks). */
+.f-app,
+.f-app [class*="f-richtext-"],
+.f-app [class*="f-text-"],
+.f-app [class*="f-button-"],
+.f-app [class*="f-col-"],
+.f-app [class*="f-grid-"],
+.f-app [class*="f-content-tabs-"],
+.f-app [class*="f-collapsible-"],
+.f-app [class*="f-menu-"],
+.f-app [class*="f-image-"],
+.f-app [class*="f-product-price-"],
+.f-app [class*="f-scrolling-promotion-"],
+.f-app [class*="f-slideshow-"],
+.f-app [class*="f-press-content-"],
+.f-app [class*="f-countdown-"],
+.f-app [class*="f-custom-code-"],
+.f-app [class*="f-custom-section-"],
+.f-app input,
+.f-app textarea,
+.f-app select {
+  font-family: var(--f-font-body) !important;
+}
+
+/* Heading font: heading/product-title blocks (was BrownProTT-Bold
+   et al.) plus bare heading elements inside custom-code blocks. */
+.f-app h1, .f-app h2, .f-app h3, .f-app h4, .f-app h5, .f-app h6,
+.f-app [class*="f-heading-"],
+.f-app [class*="f-product-title-"] {
+  font-family: var(--f-font-heading) !important;
+}
+
+/* ---- 9. Text with media (sections/text-with-media.liquid) --- */
+/* 2026 replacement direction for "Media with text" (which stays
+   untouched on the campaign product templates). Full-bleed colour
+   band: text column gets 40px block / site-gutter inline padding,
+   media column gets site-gutter padding all round (per Figma, the
+   media insets equal the 20px site gutter). Colours and media
+   width are per-instance Customizer settings emitted as --twm-*
+   vars on the section wrapper. */
+.text-with-media {
+  display: flex;
+  align-items: stretch;
+  /* Keeps the media pinned to the far edge when the text column
+     hits its max-width cap. */
+  justify-content: space-between;
+  background: var(--twm-bg, var(--color-green));
+  color: var(--twm-text, var(--color-black));
+  /* No spacing below: the following module owns the gap (quick-links
+     carries it as top padding, dropped on mobile so the two touch). */
+}
+.text-with-media--media-left {
+  flex-direction: row-reverse;
+}
+.text-with-media__content {
+  flex: 1 1 auto;
+  /* "Maximum content width" setting; the cap includes the inline
+     padding. */
+  max-width: var(--twm-content-max, 800px);
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 40px var(--site-gutter);
+  text-transform: uppercase;
+}
+.text-with-media__eyebrow,
+.text-with-media__title {
+  margin: 0;
+  color: inherit;
+}
+.text-with-media__title {
+  margin-top: 16px;
+}
+.text-with-media__cta {
+  margin-top: 12px;
+}
+/* CTA inherits the band's text colour on any background (the shared
+   secondary style paints theme-settings colours). */
+.text-with-media .btn.btn--secondary {
+  background: transparent;
+  color: inherit;
+}
+/* Hover inverts against the band, mirroring every other CTA: ground
+   takes the band's text colour, text takes the band colour (both
+   emitted by the section as --twm-* vars). */
+.text-with-media .btn.btn--secondary:hover,
+.text-with-media .btn.btn--secondary:focus {
+  background: var(--twm-text, var(--color-black));
+  color: var(--twm-bg, var(--color-white));
+}
+/* Media column: site-gutter padding all the way around. */
+.text-with-media__media-col {
+  flex: 0 0 var(--twm-media-w, 40%);
+  min-width: 0;
+  padding: var(--site-gutter);
+}
+.text-with-media__media {
+  height: 100%;
+  aspect-ratio: var(--twm-ar, auto);
+}
+.text-with-media__media img,
+.text-with-media__media video,
+.text-with-media__media .placeholder-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* Fill mode: media matches the text column's height. */
+.text-with-media__media--fill {
+  position: relative;
+}
+.text-with-media__media--fill img,
+.text-with-media__media--fill video {
+  position: absolute;
+  inset: 0;
+}
+/* Mobile: stack text over media; media goes full width at a fixed
+   ratio (fill mode has no height to inherit once stacked). */
+@media (max-width: 767.98px) {
+  .text-with-media,
+  .text-with-media--media-left {
+    flex-direction: column;
+  }
+  .text-with-media__content {
+    padding: 40px var(--site-gutter) 10px;
+  }
+  .text-with-media__title {
+    margin-bottom: 32px;
+  }
+  .text-with-media__media-col {
+    flex-basis: auto;
+  }
+  .text-with-media__media,
+  .text-with-media__media--fill {
+    aspect-ratio: var(--twm-ar, 1.25);
+  }
+  .text-with-media__media--fill img,
+  .text-with-media__media--fill video {
+    position: static;
+  }
+}
+
+/* ---- 10. Quick links (sections/quick-links.liquid) ----------- */
+/* Bespoke replacement for the homepage custom-row promo grid: a
+   row of equal-width clickable image tiles with bottom-left
+   overlay text. Module rhythm: gutter inline padding, standard
+   bottom padding, and — exception to the no-top-padding rule —
+   standard top padding too, because the preceding text-with-media
+   band carries no bottom spacing (on mobile the two touch, so the
+   top padding is dropped there). Site-gutter gap between tiles. */
+.quick-links {
+  display: flex;
+  align-items: stretch;
+  gap: var(--site-gutter);
+  padding: var(--module-pad-bottom) var(--site-gutter) 0;
+}
+/* The tile owns the height: its aspect-ratio (the "Tile aspect
+   ratio" setting via --ql-ar) fixes it against the flexed width, and
+   the media fills it — so mixed-ratio uploads always cover-crop to a
+   uniform grid. The ratio must stay on the tile, not the image: a
+   height:100% chain with no fixed ratio collapses to zero (the
+   absolute overlay contributes no height). */
+.quick-links__tile {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+  display: block;
+  text-decoration: none;
+  aspect-ratio: var(--ql-ar, 0.8);
+}
+.quick-links__media {
+  height: 100%;
+}
+.quick-links__media img,
+.quick-links__media .placeholder-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* Overlay: bottom-left stack over the image. */
+.quick-links__overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  gap: 5px;
+  padding: var(--site-gutter);
+  text-align: left;
+  color: var(--ql-text, var(--color-white));
+}
+.quick-links__title,
+.quick-links__text {
+  margin: 0;
+  color: inherit;
+}
+/* CTA is a span (the tile itself is the link): uses the light
+   secondary variant (white ground, black text), so the overlay's
+   text-shadow must not bleed onto it. */
+.quick-links .btn.btn--secondary {
+  text-shadow: none;
+}
+/* Mobile: tiles stack full-bleed — no gutter padding, no gap, and
+   no top padding (flush against the preceding text-with-media band);
+   module bottom padding stays. */
+@media (max-width: 767.98px) {
+  .quick-links {
+    flex-direction: column;
+    gap: 0;
+    padding-inline: 0;
+    padding-top: 0;
+  }
+}
+
+/* ---- 11. Logo carousel (sections/logo-carousel.liquid) ------- */
+/* Bespoke replacement for the Foxify press-logo carousel. Pure CSS
+   marquee: the Liquid renders the logo set four times inside the
+   track, and one animation cycle translates exactly one set-width
+   (-25% of the track), so the loop is seamless for any logo count.
+   --lc-h (logo height), --lc-gap (space between logos) and
+   --lc-speed (seconds per loop) are Customizer settings emitted on
+   the section wrapper. */
+.logo-carousel {
+  padding-bottom: var(--module-pad-bottom);
+  overflow: hidden;
+}
+/* Heading uses the shared .section-header/.section-title structure
+   (styled in section 6, scoped to include .section-logo-carousel). */
+.logo-carousel__viewport {
+  overflow: hidden;
+}
+.logo-carousel__track {
+  display: flex;
+  width: max-content;
+  animation: lc-marquee var(--lc-speed, 40s) linear infinite;
+}
+.logo-carousel__viewport:hover .logo-carousel__track {
+  animation-play-state: paused;
+}
+.logo-carousel__set {
+  display: flex;
+  align-items: center;
+  gap: var(--lc-gap, 80px);
+  padding-inline-end: var(--lc-gap, 80px);
+}
+.logo-carousel__item {
+  display: block;
+  flex: 0 0 auto;
+}
+.logo-carousel__img {
+  display: block;
+  height: var(--lc-h, 40px);
+  width: auto;
+}
+@keyframes lc-marquee {
+  to {
+    transform: translateX(-25%);
+  }
+}
+/* Reduced motion: no animation; the strip becomes a plain
+   touch/trackpad-scrollable row instead. */
+@media (prefers-reduced-motion: reduce) {
+  .logo-carousel__track {
+    animation: none;
+  }
+  .logo-carousel__viewport {
+    overflow-x: auto;
+  }
+}
+
+/* ---- 12. Footer (sections/footer.liquid) --------------------- */
+/* 2026 rebuild. Colours are Customizer settings (--footer-bg /
+   --footer-text, defaults cream on black). Desktop: newsletter left
+   / three menu columns right; socials left / Butterfly Mark right;
+   legal + copyright left / large logo right. Mobile: single column,
+   menus stay 3-up, butterfly loses its text, logo is hidden, and the
+   country/language selectors appear below a rule (they are mobile-
+   only per the design — desktop omission is with the designer). */
+.footer-rd {
+  background: var(--footer-bg, var(--color-cream));
+  color: var(--footer-text, var(--color-black));
+  padding: 40px var(--site-gutter) var(--site-gutter);
+}
+.footer-rd a {
+  color: inherit;
+}
+
+/* Top: newsletter zone left, menu columns right. */
+.footer-rd__top {
+  display: flex;
+  gap: 50px;
+}
+.footer-rd__newsletter {
+  flex: 0 0 46%;
+  min-width: 0;
+}
+.footer-rd__menus {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--site-gutter);
+}
+.footer-rd__menu-title {
+  margin: 0 0 24px;
+  text-transform: uppercase;
+}
+.footer-rd__menu-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+/* styles.css re-applies list-style at the li level, so the ul's
+   list-style: none doesn't stick — kill the markers on the lis. */
+.footer-rd__menu-list li,
+.footer-rd__legal-menu li {
+  list-style: none;
+}
+.footer-rd__menu-list li::marker,
+.footer-rd__legal-menu li::marker {
+  content: none;
+}
+.footer-rd__menu-list a {
+  text-decoration: none;
+}
+.footer-rd__menu-list a:hover {
+  text-decoration: underline;
+}
+
+/* Mid band: socials left, Butterfly Mark right. */
+.footer-rd__mid {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: var(--site-gutter);
+  margin-top: 20px;
+}
+.footer-rd__social .social-links {
+  margin: 0;
+}
+.footer-rd .social-links a svg,
+.footer-rd .social-links a img {
+  width: 25px;
+  height: 25px;
+}
+.footer-rd__butterfly {
+  max-width: 160px;
+  text-align: left;
+}
+.footer-rd__butterfly-badge img {
+  display: block;
+  width: 120px;
+  height: auto;
+}
+.footer-rd__butterfly-text {
+  margin-top: 12px;
+}
+
+/* Bottom: legal cluster left, large logo right, bottom-aligned. */
+.footer-rd__bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: var(--site-gutter);
+  margin-top: 40px;
+}
+/* Desktop shows the legal links row above the copyright line. */
+.footer-rd__legal {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 12px;
+  font-size: 12px;
+}
+.footer-rd__legal-menu {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  text-transform: uppercase;
+  opacity: 0.5;
+}
+.footer-rd__legal-menu a {
+  text-decoration: none;
+}
+.footer-rd__legal-menu a:hover {
+  text-decoration: underline;
+}
+.footer-rd__logo {
+  flex: 0 1 50%;
+}
+.footer-rd__logo img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Selectors: hidden on desktop (design has none there). */
+.footer-rd__localization {
+  display: none;
+}
+/* Country + language sit side by side, 20px apart. */
+.footer-rd__localization .selectors-form {
+  display: flex;
+  gap: 20px;
+}
+/* Toggles read as plain text: no box (base + hover styles in
+   styles.css paint a white bordered button). */
+.footer-rd__localization .disclosure__toggle,
+.footer-rd__localization .disclosure__toggle:hover {
+  padding: 0;
+  background: none;
+  border: none;
+}
+/* Arrow: the footer renders its own snippet (svg-chevron-down-rd.liquid,
+   switched by the rd_arrow flag on the localization render) — size it
+   down from the base 18px square. styles.css already rotates the svg
+   180deg when the disclosure is open. */
+.footer-rd__localization .disclosure__toggle-arrow svg {
+  width: 9px;
+  height: 12px;
+}
+
+@media (max-width: 767.98px) {
+  .footer-rd {
+    padding: 24px var(--site-gutter) var(--site-gutter);
+  }
+  .footer-rd__top {
+    flex-direction: column;
+    gap: 40px;
+  }
+  .footer-rd__newsletter {
+    flex-basis: auto;
+  }
+  .footer-rd__menus {
+    gap: var(--site-gutter);
+  }
+  .footer-rd__menu-title {
+    margin-bottom: 16px;
+    font-size: 16px;
+  }
+  .footer-rd__menu-list {
+    font-size: 12px;
+    gap: 12px;
+  }
+  .footer-rd__mid {
+    margin-top: 40px;
+    align-items: center;
+  }
+  .footer-rd__butterfly-badge img {
+    width: 72px;
+  }
+  .footer-rd__butterfly-text {
+    display: none;
+  }
+  .footer-rd__bottom {
+    margin-top: 32px;
+  }
+  .footer-rd__logo {
+    display: none;
+  }
+  /* Copyright and legal links run together as one wrapping block. */
+  .footer-rd__legal {
+    display: block;
+  }
+  .footer-rd__copyright {
+    margin-right: 8px;
+  }
+  .footer-rd__legal-menu {
+    display: inline;
+    opacity: 1;
+  }
+  .footer-rd__legal-menu li {
+    display: inline;
+    margin-right: 8px;
+  }
+  .footer-rd__legal-menu a {
+    text-decoration: underline;
+  }
+  /* Selectors below a full-width rule, mobile only. */
+  .footer-rd__localization {
+    display: block;
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid currentColor;
+  }
+}
+
+/* ---- 13. Header / main navigation (sections/header.liquid) --- */
+/* 2026 redesign, WIDE DESKTOP ONLY (>=1370px) — below that the
+   theme's stock header with the burger + mobile drawer applies
+   (forced into burger mode between 768-1369.98px; true mobile
+   header below 768px stays untouched). One header, sticky mechanics
+   in pure CSS, JS only for the stuck-state colour class:
+     hero pages (html:has(.cc-hero-banner)) — the header starts
+       transparent over the hero (full-width wordmark, white text) in
+       normal flow, overlaying via a negative bottom margin. It is
+       sticky with a NEGATIVE top offset, so the wordmark scrolls out
+       of the viewport naturally and the menu row pins seamlessly
+       under the announcement bar. Only the colour flip to the docked
+       white/black look uses JS: html.tfr-nav-stuck, toggled by a
+       small IntersectionObserver in header.liquid when the wordmark
+       row passes under the announcement bar.
+     no-hero pages — the same mechanic on the docked header: small
+       wordmark row scrolls away, menu row pins (no colour flip —
+       the docked bar is white/black throughout).
+   The announcement bar is pinned above both. Markup, classes,
+   theme.js behaviour and all mega-menu blocks are untouched. */
+/* The header's inline {% style %} sticky rule targets bare
+   .section-header, which is also the class of content section-title
+   rows (featured collection, logo carousel). Keep those rows in
+   normal flow — only the header's .shopify-section wrapper may
+   stick. */
+.section-header:not(.shopify-section) {
+  position: static;
+}
+
+/* The theme gives every .card an 8px top margin, which pushes the
+   announcement bar / header content out of their fixed-height
+   wrappers and causes overlap. Global removal (site-wide, not just
+   the header cards) — redesign modules manage their own rhythm. */
+.card {
+  margin-top: 0;
+}
+
+/* Fixed announcement-bar height at all widths (45px on wide desktop,
+   42px below the 1370px header breakpoint) — consumed as the
+   docked/hero header top offset on wide desktop and by the
+   hero-height calc below. Inner chain stretched to fill it. */
+:root {
+  --tfr-announce-h: 45px;
+}
+@media (max-width: 1369.98px) {
+  :root {
+    --tfr-announce-h: 42px;
+  }
+}
+/* 768-1369.98px: the bar flips to its mobile presentation together
+   with the header — announcement text only. Below 768px the theme's
+   .desktop-only utility hides these side columns anyway. */
+@media (min-width: 768px) and (max-width: 1369.98px) {
+  .announcement-bar .announcement-bar__left,
+  .announcement-bar .announcement-bar__right {
+    display: none;
+  }
+  /* The hidden side columns still count as :first/:last-child, so the
+     theme's desktop max-width: 50% on the middle would pin the text
+     to the bar's left half — let it fill like on mobile. */
+  .announcement-bar__middle:not(:first-child):not(:last-child) {
+    max-width: none;
+  }
+}
+.shopify-section.section-announcement-bar {
+  height: var(--tfr-announce-h);
+}
+.shopify-section.section-announcement-bar .wide-container,
+.shopify-section.section-announcement-bar .announcement-bar {
+  height: 100%;
+}
+.shopify-section.section-announcement-bar .announcement-bar {
+  display: flex;
+  align-items: center;
+}
+
+/* Below the 1370px redesign breakpoint: the hero fills exactly the
+   viewport minus the announcement bar and header (both in normal
+   flow above it). --theme-header-height is maintained live by
+   theme.js; !important matches the hero section's ID-scoped inline
+   {% style %} that sets 100svh. */
+@media (max-width: 1369.98px) {
+  .cc-hero-banner .height--fixed {
+    --image-height: calc(100svh - var(--tfr-announce-h) - var(--theme-header-height, 44px)) !important;
+  }
+}
+
+/* 768-1369.98px: no redesign header at all — the theme's stock bar
+   opening the mobile drawer. Burger mode is forced regardless of the
+   inline-permitted class the fit-measurement script toggles; doubled
+   classes out-specify the theme's own mode rules either way. */
+@media (min-width: 768px) and (max-width: 1369.98px) {
+  .pageheader .logo-area .mobile-nav-toggle.mobile-nav-toggle {
+    display: inline-block;
+    height: auto;
+  }
+  .pageheader .navigation--desktop.navigation--desktop {
+    position: absolute;
+    visibility: hidden;
+    pointer-events: none;
+  }
+  /* Drawer footer (inline menu + locale selectors + social links,
+     cloned from the announcement bar by theme.js) comes in with the
+     drawer — styles.css hides it from 768px up, which would leave
+     those options unreachable now the announcement bar's right side
+     is gone below 1370px. */
+  .mobile-navigation-drawer__footer {
+    display: block;
+  }
+}
+
+@media (min-width: 1370px) {
+  /* Announcement bar: always pinned at the very top. */
+  .shopify-section.section-announcement-bar {
+    position: sticky;
+    top: 0;
+    z-index: 130;
+  }
+
+  /* Docked bar sticks below the pinned announcement. NOTE:
+     "section-header" is BOTH the header section's wrapper class and
+     the class of section title rows (featured collection, logo
+     carousel) — the .shopify-section pairing scopes these rules to
+     the header wrapper only, and also beats the header's inline
+     {% style %} rule (top: var(--magic-margin)) on specificity. */
+  .shopify-section.section-header {
+    position: sticky;
+    top: var(--tfr-announce-h, 0px);
+    z-index: 120;
+  }
+  /* Hero pages: pure-CSS scroll-away wordmark + sticky menu row.
+     The header sits in normal flow, pulled over the hero by a
+     negative bottom margin, and sticks with a NEGATIVE top offset:
+     the wordmark row scrolls out of the viewport naturally, and the
+     moment it's gone the menu row pins under the announcement bar.
+     No scroll listeners, no state classes.
+     Tokens:
+     --tfr-wordmark-h: rendered wordmark height — full-bleed width ×
+       the SVG's aspect ratio (viewBox 400 × 24.12 → 0.0603);
+     --tfr-hdr-scroll: scroll distance consumed before the pin (bar
+       top padding 12 + wordmark + 12 row gap);
+     --tfr-navrow-h: menu row height — MUST track the tier-1 link's
+       vertical padding (currently padding: 18px → 18 + 21 line
+       + 18 = 57): a mismatch leaves a page-background strip
+       between the announcement bar and the hero. */
+  html:has(.cc-hero-banner) {
+    --tfr-wordmark-h: calc((100vw - 2 * var(--site-gutter)) * 0.0603);
+    --tfr-hdr-scroll: calc(var(--tfr-wordmark-h) + 24px);
+    --tfr-navrow-h: 57px;
+  }
+  html:has(.cc-hero-banner) .shopify-section.section-header {
+    top: calc(var(--tfr-announce-h) - var(--tfr-hdr-scroll));
+    margin-bottom: calc(-1 * (var(--tfr-hdr-scroll) + var(--tfr-navrow-h)));
+  }
+
+  /* No-hero pages: the SAME scroll-away mechanic on the docked
+     header — the small wordmark row scrolls out and the menu row
+     pins under the announcement bar. Identical negative-sticky-top
+     trick; the row height comes from the logo width setting
+     (--tfr-logo-w, emitted by header.liquid's {% style %}) × the
+     wordmark SVG aspect (24.12/400), plus the bar's 12px top
+     padding and 12px row gap. No overlay margin (nothing to overlap)
+     and no colour flip (the docked bar is white/black throughout). */
+  html:not(:has(.cc-hero-banner)) .shopify-section.section-header {
+    top: calc(var(--tfr-announce-h) - ((var(--tfr-logo-w, 180px) * 0.0603) + 24px));
+  }
+
+  /* The theme's two desktop nav modes both assume the old flex bar
+     and fight the grid:
+     - not-permitted (burger): hides the nav, shows the burger;
+     - permitted + inline-menu-center: fakes centering by collapsing
+       .logo-area__left to 2px and stretching the inner across the
+       viewport with a -50vw margin (styles.css ~4924/4955), which
+       throws the menu off-screen under the grid.
+     Neutralise both so the nav row is a plain left-aligned flex row
+     regardless of which class theme.js lands on. */
+  .pageheader .logo-area .mobile-nav-toggle.mobile-nav-toggle {
+    display: none;
+  }
+  /* Doubled class out-specifies the theme's burger-mode hide rule
+     (.pageheader:not(.pageheader--layout-inline-permitted)
+     .navigation). */
+  .pageheader .navigation--desktop.navigation--desktop {
+    position: static;
+    visibility: visible;
+    pointer-events: auto;
+  }
+  /* Burger mode also clips the bar (styles.css ~4937) — which would
+     clip the open mega-menu panel hanging below it. */
+  .pageheader:not(.pageheader--layout-inline-permitted) .logo-area {
+    overflow: visible;
+  }
+  .pageheader .logo-area .logo-area__left {
+    display: block;
+    width: auto;
+    flex: none;
+    margin: 0;
+    font-size: inherit;
+  }
+  .pageheader .logo-area .logo-area__left__inner {
+    /* position: static also re-anchors the absolute mega-menu panel
+       to the header wrapper, so it spans the full bar width. */
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0;
+    justify-content: flex-start;
+  }
+  .pageheader .navigation--desktop {
+    text-align: start;
+  }
+  /* Pull the row back by the first item's own link padding so the
+     items align flush with the wordmark / gutter edge. Flex layout
+     kills the ~3px inline-whitespace gaps between items, so their
+     18px link paddings connect — no dead zones for the pointer to
+     fall into while moving between menus. */
+  .pageheader .navigation--desktop .navigation__tier-1 {
+    margin-inline-start: -18px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+  }
+
+  .height--fixed {
+  height: calc(var(--image-height) - var(--tfr-announce-h));
+  }
+  .height--fixed .background-image,
+  .height--fixed .placeholder-image {
+    height: calc(var(--image-height) - var(--tfr-announce-h));
+  }
+
+  /* Shared two-row bar: wordmark row, then nav left / icons right.
+     No bottom padding and end-aligned second row: the nav items must
+     run flush to the header's bottom edge (where the mega-menu panel
+     starts) so the cursor never crosses dead space between a nav item
+     and its open panel — the absorbed bottom gutter moves into the
+     nav links' bottom padding instead. */
+  .pageheader .logo-area {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      "logo  logo"
+      "nav   icons";
+    row-gap: 12px;
+    align-items: end;
+    padding: var(--site-gutter) var(--site-gutter) 0;
+    align-items: center;
+  }
+  /* The theme pads the logo 10px block (styles.css ~3768) — the grid
+     row gap is the only spacing now. */
+  .pageheader .logo {
+    padding: 0;
+  }
+  .pageheader .logo-area__middle {
+    grid-area: logo;
+    max-width: none;
+    justify-self: start;
+  }
+  .pageheader .logo-area__left {
+    grid-area: nav;
+  }
+  .pageheader .logo-area__right {
+    grid-area: icons;
+    justify-self: end;
+  }
+
+  /* Nav row typography: heading-3 type (18/21 Favorit Mono Black),
+     caps — direct-child selector keeps the mega-menu tiers on their
+     existing styles. Featured link ("final sale" / "outlab") in brand
+     green in both states. */
+  .navigation--desktop .navigation__tier-1 > .navigation__item > .navigation__link {
+    font-family: var(--font-heading);
+    font-size: 18px;
+    line-height: 21px;
+    text-transform: uppercase;
+    /* 6px visual + the bar's absorbed 12px bottom padding: the link's
+       hover box touches the mega-menu panel's top edge. */
+    padding: 18px;
+  }
+  /* !important matches the originals (styles.css ~4052 hardcodes the
+     old #009e2d green + a green-block hover with !important). */
+  .navigation--desktop .navigation__tier-1 > .featured-link > .navigation__link {
+    color: var(--color-green) !important;
+  }
+  .navigation--desktop .navigation__tier-1 > .featured-link > .navigation__link:hover {
+    background: transparent !important;
+    color: var(--color-green) !important;
+  }
+
+  /* ---- Hero pages: transparent bar over the hero banner. ----
+     White ink over the hero; the colour flip to black-on-white when
+     the bar pins is driven by html.tfr-nav-stuck, set by the small
+     observer in header.liquid (positioning needs no JS at all). */
+  html:has(.cc-hero-banner) .pageheader {
+    background: transparent;
+    color: var(--color-white);
+  }
+  /* Stuck: the bar's grid element (the container of the nav and
+     icons areas) takes the white ground — the wordmark row above
+     has scrolled offscreen by the time the class comes on. */
+  html:has(.cc-hero-banner).tfr-nav-stuck .pageheader .logo-area {
+    background: var(--color-white);
+  }
+  html:has(.cc-hero-banner) .pageheader .navigation__link,
+  html:has(.cc-hero-banner) .pageheader .logo__link,
+  html:has(.cc-hero-banner) .pageheader .header-account-link,
+  html:has(.cc-hero-banner) .pageheader .show-search-link,
+  html:has(.cc-hero-banner) .pageheader .cart-link {
+    color: var(--color-white);
+  }
+  html:has(.cc-hero-banner).tfr-nav-stuck .pageheader .navigation__link,
+  html:has(.cc-hero-banner).tfr-nav-stuck .pageheader .header-account-link,
+  html:has(.cc-hero-banner).tfr-nav-stuck .pageheader .show-search-link,
+  html:has(.cc-hero-banner).tfr-nav-stuck .pageheader .cart-link {
+    color: var(--color-black);
+  }
+  /* Full-bleed wordmark over the hero. Every ancestor between the
+     grid area and the svg must be a stretched block — any inline-block
+     shrink-to-fit link in the chain collapses width:100% to the SVG's
+     300px intrinsic default. */
+  html:has(.cc-hero-banner) .logo-area__middle,
+  html:has(.cc-hero-banner) .logo-area__middle__inner,
+  html:has(.cc-hero-banner) .logo-area__middle .logo,
+  html:has(.cc-hero-banner) .logo-area__middle .logo__h1,
+  html:has(.cc-hero-banner) .logo-area__middle .logo__link,
+  html:has(.cc-hero-banner) .logo-area__middle .logo__wordmark {
+    display: block;
+    width: 100%;
+    max-width: none;
+    justify-self: stretch;
+  }
+  html:has(.cc-hero-banner) .logo svg {
+    width: 100%;
+  }
+  /* Keep the green featured link legible on imagery too. */
+  html:has(.cc-hero-banner) .pageheader .featured-link > .navigation__link {
+    color: var(--color-green) !important;
+  }
+
+  /* Mega menu panel: no top padding (the theme reserves
+     var(--magic-margin) there), instant open/close (kills the
+     theme's 175ms opacity/visibility fade — hover-intent delays in
+     theme.js still apply), and all non-heading type in body mono —
+     column titles and promo titles keep the Black heading cut.
+     Out-specifies the section-3 custom-sect-cls straggler. */
+  .navigation--desktop .navigation__tier-2-container {
+    padding-top: 0;
+    transition: none;
+  }
+  .navigation--desktop .navigation__tier-2-container .navigation__link:not(.navigation__column-title):not(.heading-font),
+  .navigation--desktop .navigation__tier-2-container .menu-promotion__text {
+    font-family: var(--font-body);
+  }
+
+  /* No hover borders on tier-1 items (the old campaign hacks drew
+     them), and no colour transitions anywhere in the bar — state
+     swaps are instant by design. */
+  .navigation--desktop .navigation__tier-1 > .navigation__item > .navigation__link:hover {
+    border: none;
+  }
+  .pageheader,
+  .pageheader .logo-area,
+  .pageheader .navigation__link,
+  .pageheader .logo__link,
+  .pageheader .header-account-link,
+  .pageheader .show-search-link,
+  .pageheader .cart-link {
+    transition: none;
+  }
+
+  /* Hero pages: invert the whole bar to a white ground — but only
+     while a nav link is hovered (:has), or while a dropdown is open
+     (theme.js puts section-header--nav-open on the wrapper) so the
+     inversion holds as the pointer moves down into the mega menu.
+     Hovering the wordmark, icons or empty bar does NOT invert.
+     Instant — no transition. These set background/color directly, so
+     they out-cascade the animated custom properties in every scroll
+     state. */
+  html:has(.cc-hero-banner) .shopify-section.section-header:has(.navigation--desktop .navigation__link:hover) .pageheader,
+  html:has(.cc-hero-banner) .shopify-section.section-header--nav-open .pageheader {
+    background: var(--color-white);
+    color: var(--color-black);
+  }
+  html:has(.cc-hero-banner) .shopify-section.section-header:has(.navigation--desktop .navigation__link:hover) .pageheader .navigation__link,
+  html:has(.cc-hero-banner) .shopify-section.section-header:has(.navigation--desktop .navigation__link:hover) .pageheader .logo__link,
+  html:has(.cc-hero-banner) .shopify-section.section-header:has(.navigation--desktop .navigation__link:hover) .pageheader .header-account-link,
+  html:has(.cc-hero-banner) .shopify-section.section-header:has(.navigation--desktop .navigation__link:hover) .pageheader .show-search-link,
+  html:has(.cc-hero-banner) .shopify-section.section-header:has(.navigation--desktop .navigation__link:hover) .pageheader .cart-link,
+  html:has(.cc-hero-banner) .shopify-section.section-header--nav-open .pageheader .navigation__link,
+  html:has(.cc-hero-banner) .shopify-section.section-header--nav-open .pageheader .logo__link,
+  html:has(.cc-hero-banner) .shopify-section.section-header--nav-open .pageheader .header-account-link,
+  html:has(.cc-hero-banner) .shopify-section.section-header--nav-open .pageheader .show-search-link,
+  html:has(.cc-hero-banner) .shopify-section.section-header--nav-open .pageheader .cart-link {
+    color: var(--color-black);
+  }
+}
+
+/* ---- 14. Mobile drawer navigation type ----------------------- */
+/* Mirror the desktop nav: tiers 1 and 2 in the Black heading cut,
+   tier 3 and promo/body copy in body mono. (Tier-2 column titles
+   already carry .heading-font.) The base rule un-does the system-ui
+   stack styles.css puts on bare .navigation, which everything
+   without an explicit family (menu-promotion__text, rte) fell
+   back to. */
+.mobile-navigation-drawer .navigation {
+  font-family: var(--font-body);
+}
+.mobile-navigation-drawer .navigation__link {
+  font-family: var(--font-heading);
+}
+.mobile-navigation-drawer .navigation__tier-3 .navigation__link {
+  font-family: var(--font-body);
+}
+
+/* ---- 15. Collection page header (product-list-heading-block) - */
+/* The heading card used by main-collection (and the product-list /
+   featured-collection variants). */
+.product-list-heading-block__text {
+  padding: var(--site-gutter);
+}
+/* Collection title takes heading-2 (32/32 Favorit Mono Black) —
+   scoped tighter than the styles.css base rule so it wins the tie. */
+.product-list-heading-block .overlay-text__title {
+  font-family: var(--font-heading);
+  font-size: 32px;
+  line-height: 32px;
+}
+
+/* ---- 16. PDP sticky columns (sections/main-product.liquid) --- */
+/* position:sticky on the product-detail columns only engages if no
+   ancestor between them and the viewport is a scroll container. Two
+   styles.css rules create one: `.cc-animate-enabled .shopify-section
+   {overflow:hidden}` (clips the reveal-animation translate) and
+   `.main-container {overflow-x:hidden}` (an x-hidden box computes
+   overflow-y to auto). `clip` keeps the same clipping without
+   creating a scroll container, so the sticky works. */
+/* --sticky-top is set per column by the script in main-product.liquid:
+   the header offset when the column fits the viewport, or a negative
+   offset for a column taller than the viewport, so it scrolls to its
+   own bottom edge (last image row / final accordion) before pinning. */
+.sticky-content-container {
+  position: -webkit-sticky;
+  position: sticky;
+  top: var(--sticky-top, calc(50px + var(--theme-sticky-header-height)));
+}
+
+.cc-animate-enabled .shopify-section.section-main-product {
+  overflow: clip;
+}
+/* Module rhythm: the PDP section closes with the standard module
+   bottom padding (section 6 convention). */
+.shopify-section.section-main-product {
+  padding-bottom: var(--module-pad-bottom);
+}
+.main-container {
+  overflow-x: clip;
+}
+
+/* ---- 17. PDP breadcrumb (snippets/breadcrumb.liquid) --------- */
+/* Caption-size Space Grotesk trail above the product columns —
+   ancestor crumbs in brand grey, current page black. Normal flow
+   (no sticky), so it scrolls away with the page. Inline margins
+   mirror the .template-product .product-detail container margins
+   (styles.css ~10346) plus the gallery's own 8px, so the trail
+   left-aligns with the gallery edge at every breakpoint. */
+.template-product .main-container .product-detail {
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 50px;
+}
+.breadcrumb {
+  font-family: var(--font-grotesk);
+  font-size: var(--caption-size);
+  line-height: var(--caption-lh);
+  text-transform: uppercase;
+  color: var(--color-grey);
+  margin: 50px 8px 0;
+}
+@media (max-width: 767.98px) {
+  .breadcrumb {
+    margin-top: 10px;
+  }
+}
+@media (min-width: 768px) {
+  .breadcrumb {
+    margin-inline: 30px;
+  }
+}
+@media (min-width: 1040px) {
+  .breadcrumb {
+    margin-inline: 52px;
+  }
+}
+@media (min-width: 1280px) {
+  .breadcrumb {
+    margin-inline: calc(5% + 8px);
+  }
+}
+@media (min-width: 2160px) {
+  .breadcrumb {
+    margin-inline: calc(20% + 8px);
+  }
+}
+/* Double-class selectors: `a:link {color:#1b2b27}` (styles.css ~2673)
+   is (0,1,1) and outguns a lone class, so the crumbs need (0,2,0). */
+.breadcrumb .breadcrumb__link {
+  color: var(--color-grey);
+}
+.breadcrumb .breadcrumb__link:hover {
+  color: var(--color-black);
+}
+.breadcrumb__sep {
+  margin: 0 0.4em;
+}
+.breadcrumb__current {
+  color: var(--color-black);
+}
+
+/* ---- 18. Mobile gallery (sections/main-product.liquid) ------- */
+/* The carousel keeps the theme's slick behaviour; this restyles it:
+   full-bleed images and a green progress bar instead of the
+   thumbnail strip. Desktop (the two-column grid) is untouched. */
+@media (max-width: 767.98px) {
+  /* Full bleed: cancel the gallery's own 8px margin plus whatever
+     inline margins/padding any wrapper adds (the 50%-50vw trick
+     recentres the box on the viewport, so it holds even if the
+     wrapper margins change). Safe against x-overflow because
+     .main-container is overflow-x: clip (section 16). */
+  .template-product .product-detail .gallery {
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-inline: calc(50% - 50vw);
+  }
+  /* Bar sits flush against the image's bottom edge. */
+  .template-product .product-detail .gallery .main-image {
+    margin-bottom: 0;
+  }
+  /* Thumbnail strip retired in favour of the progress bar. */
+  .template-product .product-detail .gallery .cc-carousel.mobile-only {
+    display: none !important;
+  }
+}
+
+/* Track: brand green at 10%. Hidden on desktop, where the grid has
+   no carousel position to report. */
+.gallery-progress {
+  display: none;
+  height: 4px;
+  background: color-mix(in srgb, var(--color-green) 10%, transparent);
+  overflow: hidden;
+}
+@media (max-width: 767.98px) {
+  .gallery-progress {
+    display: block;
+  }
+}
+/* Fill: width and translateX are set inline by the script in
+   main-product.liquid (width = 100% / image count, offset = current
+   slide index x own width). */
+.gallery-progress__bar {
+  height: 100%;
+  width: 100%;
+  background: var(--color-green);
+}
+
+/* ---- 19. PDP detail column (sections/main-product.liquid) ---- */
+/* Block order (vendor > title > price) lives in the product
+   templates' block_order, not here. */
+
+/* Form loses the off-card-container's 16px inline padding; the
+   column's own margins set the inset instead. */
+.product-detail .product-form {
+  padding-left: 0;
+  padding-right: 0;
+}
+.product-detail .detail {
+  margin-inline: 12px;
+}
+/* Mobile: the stacked detail column sits 5% below the gallery and
+   runs full-bleed (the 12px inset comes off); the whole product
+   area starts 10px below the breadcrumb. */
+@media (max-width: 767.98px) {
+  .template-product .main-container .product-detail {
+    margin-top: 10px;
+  }
+  .product-detail .product-column-right {
+    margin-top: 5%;
+  }
+  .product-detail .detail {
+    margin-inline: 0;
+  }
+}
+
+/* Vendor row (now above the title) and the remaining
+   .product-detail-label uses (e.g. SKU) are set in uppercase. */
+.product-detail .vendor {
+  text-transform: uppercase;
+}
+
+/* Product labels (NEW IN etc.) moved out of the gallery overlay:
+   the render call now sits inside .product-form, and since the form
+   is position:sticky (a positioned ancestor) the absolute container
+   anchors to the form's own top-right — travelling with it when the
+   column pins. Base rule (styles.css ~7289) sets all four inset
+   sides to 10px; this re-anchors it. */
+.product-detail .product-form .product-label-container {
+  inset: 0 0 auto auto;
+  align-items: flex-end;
+}
+/* Labels float over the form without reserving space; when any are
+   present, keep the (full-width) title clear of the badge column so
+   long product names wrap instead of running under a second badge. */
+.product-detail .product-form:has(.product-label) .title-row {
+  padding-inline-end: 100px;
+}
+/* PDP labels take the trending-badge treatment (section 7): black
+   ground, brand-green text; the square marker and mono font come
+   from the global .product-label rules. Out-guns the per-type
+   colour rules in styles.css (.product-label--new-in etc.). */
+.product-detail .product-form .product-label > span {
+  background: var(--color-black);
+  color: var(--color-green);
+  font-weight: 400;
+}
+
+/* Inventory-state messages by the buy buttons (made-to-order
+   backorder line, inventory-transfer notice): body-2 type on a
+   brand-green ground. No .hidden guard on the backorder — theme.js
+   reveals it with an inline display style while the class stays, and
+   a display:none element paints nothing anyway. The transfer keeps
+   its --none guard because JS empties it without hiding it. */
+.product-form .backorder,
+.product-form .product-inventory-transfer:not(.product-inventory-transfer--none) {
+  font-family: var(--font-grotesk);
+  font-size: 12px;
+  line-height: 14px;
+  background: var(--color-green);
+  color: var(--color-black);
+  padding: 10px;
+}
+.product-form .backorder p {
+  margin: 0;
+}
+
+/* Add-to-cart: flat green CTA. Selector mirrors the styles.css rule
+   (border + old-brand hover, ~7559) to tie and win by order. Hover
+   follows the section-4 CTA convention: colours invert. */
+.product-form .quantity-submit-row .quantity-submit-row__submit button[type=submit] {
+  border: none;
+  background: var(--color-green);
+  color: var(--color-black);
+  min-height: 48px;
+  padding-block: 10px;
+}
+.product-form .quantity-submit-row .quantity-submit-row__submit button[type=submit]:hover {
+  background-color: var(--color-black);
+  color: var(--color-green);
+}
+/* Mobile: taller tap target, height from min-height alone. */
+@media (max-width: 767.98px) {
+  .product-form .quantity-submit-row .quantity-submit-row__submit button[type=submit] {
+    min-height: 48px;
+    padding-block: 0;
+  }
+}
+
+/* Wishlist King button beside add-to-cart: the button box matches
+   the add-to-cart height (33px desktop, 48px mobile) instead of the
+   app's 45px. Icon size and offset are left to the app settings. */
+.product-detail wishlist-button-block {
+  --wk-atc-height: 48px;
+}
+@media (max-width: 767.98px) {
+  .product-detail wishlist-button-block {
+    --wk-atc-height: 48px;
+  }
+}
+.product-detail wishlist-button-block .wk-button,
+.product-detail wishlist-button-block .wk-button:hover {
+  min-height: var(--wk-atc-height);
+  height: var(--wk-atc-height);
+}
+
+/* Even 10px rhythm through vendor > title > price. The price
+   selector mirrors the styles.css rule (20px 0 10px, min-768) to
+   tie at (0,4,0) and win by order. */
+.product-detail .detail .vendor {
+  margin: 0;
+}
+.product-detail .detail .title-row {
+  margin: 10px 0 0;
+}
+.product-detail .detail .title {
+  margin: 0;
+}
+.template-product .main-container .detail .price-container {
+  margin: 10px 0 var(--gutter-content);
+}
+.product-detail-label {
+  text-transform: uppercase;
+}
+
+/* Price takes heading-3 (18/21 Favorit Mono Black, uppercase).
+   Four-class selector: the styles.css PDP block pins .price at 16px
+   with .template-product .main-container .detail .price, so this
+   must tie it (0,4,0) and win by order. */
+.product-detail .detail .price-container .price {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  line-height: 21px;
+  text-transform: uppercase;
+}
+
+/* Desktop: both columns start at the same y — the gallery drops its
+   8px top margin, the detail its 20px. */
+@media (min-width: 768px) {
+  .product-detail .gallery {
+    margin-top: 0;
+  }
+  .product-detail .detail {
+    margin-top: 0;
+  }
+}
+
+/* ---- 20. PDP variant picker (snippets/variant-picker.liquid) - */
+/* Rebuilt "listed" radio picker. Each option is a full-width row
+   with a top rule; the last row also closes with a bottom rule. */
+.product-detail .option-selectors .option-selector {
+  border-top: 1px solid var(--color-black);
+  padding: 14px 0 18px;
+  margin: 0;
+}
+.product-detail .option-selectors .option-selector:last-child {
+  border-bottom: 1px solid var(--color-black);
+}
+
+/* Header row: option name (bold), selected swatch value beside it,
+   ready-to-ship legend pushed right. */
+.option-selector__header {
+  display: flex;
+  align-items: baseline;
+}
+/* Header label and values take body-2 (12/14 Space Grotesk); the
+   selected swatch value takes proportional ABC Favorit at the same
+   size. */
+.product-detail .option-selector__header .label {
+  font-family: var(--font-grotesk);
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 14px;
+  color: var(--color-black);
+  margin: 0;
+}
+.option-selector__selected-value {
+  font-family: var(--font-favorit);
+  font-size: 12px;
+  line-height: 14px;
+  color: var(--color-black);
+  margin-inline-start: 32px;
+}
+.option-selector__legend {
+  font-family: var(--font-grotesk);
+  font-size: var(--caption-size);
+  line-height: var(--caption-lh);
+  color: var(--color-black);
+  margin-inline-start: auto;
+}
+
+/* Value rows: strip the theme's boxed chip styling back to text. */
+.product-detail .option-selector__btns {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 32px;
+  margin: 14px 0 0;
+}
+.product-detail .opt-label {
+  min-width: 0;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font-family: var(--font-grotesk);
+  font-size: 12px;
+  line-height: 14px;
+  color: var(--color-black);
+  cursor: pointer;
+}
+.product-detail .opt-btn:checked + .opt-label {
+  border: 0;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+/* A sole value (e.g. Carat "2ct") reads as plain text, not a choice. */
+.product-detail .opt-btn:only-of-type + .opt-label {
+  text-decoration: none;
+  cursor: default;
+}
+/* Unavailable values: brand grey, no strike-through artwork. */
+.product-detail .opt-btn.is-unavailable + .opt-label {
+  background-image: none;
+  color: var(--color-grey);
+}
+
+/* Swatch rows (Metal): circle only, name in the header instead.
+   The circle drops the ::before pattern's inherited sizing and the
+   colours come from swatches.css.liquid via --swatch-background-*. */
+.product-detail .option-selector--swatch .opt-label__text {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+/* Swatches sit inline and wrap onto new rows when the column narrows. */
+.product-detail .option-selector--swatch .option-selector__btns {
+  flex-wrap: wrap;
+  gap: 32px;
+}
+
+@media (max-width: 767.98px) {
+  .product-detail .option-selector--swatch .option-selector__btns {
+    gap: 24px;
+  }
+}
+
+.swatch-style-listed .product-detail .option-selector--swatch .opt-label[data-swatch] {
+  width: auto;
+  min-width: 0;
+  padding: 0;
+}
+.swatch-style-listed .product-detail .option-selector--swatch [data-swatch]::before {
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  box-shadow: 0 0 0 1px var(--color-grey);
+}
+.swatch-style-listed .product-detail .option-selector--swatch .opt-btn:checked + [data-swatch]::before {
+  box-shadow: 0 0 0 1.5px var(--color-black);
+}
+/* Unavailable swatch keeps the theme's diagonal-line treatment but
+   in brand grey. */
+.product-detail .opt-btn.is-unavailable + .opt-label[data-swatch] {
+  --line-color: var(--color-grey);
+}
+
+/* ---- 21. PDP consolidated Product Details ------------------- */
+/* Toggle arrow: the redesign chevron replaces the theme's CSS
+   plus/minus (two ::before/::after bars on the summary). Scoped to
+   .consolidated-details so other accordions keep their icon. */
+.consolidated-details .cc-accordion-item__title::before,
+.consolidated-details .cc-accordion-item__title::after {
+  content: none;
+}
+.consolidated-details__arrow {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  display: inline-flex;
+  transition: transform 0.3s ease;
+}
+.consolidated-details__arrow svg {
+  width: 10px;
+  height: auto;
+}
+.cc-accordion-item[open]:not(.is-closing) .consolidated-details__arrow {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+/* Separators: 1px black top + bottom on each dropdown; an adjacent
+   pair shares a single line (the follower drops its top border).
+   The theme's -50px overlap hack between .detail-accordions
+   (styles.css ~9950) is neutralised, and any inner .cc-accordion
+   borders cleared so the wrapper lines are the only ones. */
+.product-detail .consolidated-details {
+  border-top: 1px solid var(--color-black);
+  border-bottom: 1px solid var(--color-black);
+  margin-top: 10px;
+}
+/* The delivery-date shortcode mount carries an inline -40px
+   margin-top hack that compensated for old row spacing (rows now
+   disabled) — it was dragging the accordion group upward.
+   !important is required to beat the inline style. */
+.product-form .delivery_date_shortcode {
+  margin-top: 0 !important;
+}
+.product-detail .consolidated-details + .consolidated-details {
+  border-top: none;
+  margin-top: 0;
+}
+/* Breathing room below the dropdowns group (and its disclaimer)
+   before the next block. */
+.product-info-dropdowns {
+  padding-bottom: 16px;
+}
+/* Disclaimer under the dropdowns (anchor block's "Show disclaimer"
+   toggle): caption size/line-height, dark grey. */
+.product-info-dropdowns__disclaimer {
+  font-family: var(--font-grotesk);
+  font-size: var(--caption-size);
+  line-height: var(--caption-lh);
+  color: var(--color-grey-dark);
+  margin-top: 12px;
+}
+.product-info-dropdowns__disclaimer p {
+  margin: 0 0 0.5em;
+}
+.product-info-dropdowns__disclaimer p:last-child {
+  margin-bottom: 0;
+}
+
+.product-detail .consolidated-details .cc-accordion {
+  border-top: none;
+  border-bottom: none;
+  /* the theme gives .cc-accordion a 50px bottom margin — inside our
+     bordered wrapper it reads as dead space above the border */
+  margin-bottom: 0;
+}
+/* Compact title row in heading-3 (18/21 Favorit Mono Black,
+   uppercase), normalised to the type's own height plus even
+   padding. Scoped to the redesign dropdowns — other theme
+   accordions keep their own title styling. */
+.product-detail .consolidated-details .cc-accordion-item__title {
+  height: auto;
+  min-height: 0;
+  padding-block: 16px;
+  font-family: var(--font-heading);
+  font-size: 18px;
+  line-height: 21px;
+  text-transform: uppercase;
+}
+
+/* One dropdown holding every accordion block as a subsection
+   (main-product.liquid, "consolidate_accordions" section setting).
+   Subheads and body take Space Grotesk per the mock. */
+.consolidated-details__group {
+  margin: 0 0 24px;
+}
+.consolidated-details__group:last-child {
+  margin-bottom: 8px;
+}
+/* Triple-class selectors: the accordion body carries .rte, whose
+   typographic rules (.rte h4 etc.) outgun a lone class. */
+.consolidated-details .consolidated-details__group .consolidated-details__subheading {
+  font-family: var(--font-grotesk);
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 14px;
+  text-transform: uppercase;
+  color: var(--color-black);
+  margin: 0 0 8px;
+}
+.consolidated-details .consolidated-details__group .consolidated-details__body {
+  font-family: var(--font-grotesk);
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--color-black);
+}
+.consolidated-details .consolidated-details__group .consolidated-details__body p {
+  margin: 0 0 0.6em;
+}
+
+/* ---- 22. About page (templates/page.about.json) ------------- */
+/* Scoped to the about template's body class so the shared
+   main-page section stays untouched on default-template pages. */
+
+/* The site-gutter inline padding sits on the whole section
+   wrapper, so every header element — including the mobile
+   two-column row — inherits it. Inner elements drop their own
+   insets (the container's gutter, the blocks' .module-pad-inline). */
+.template-suffix-about .page-section-spacing {
+  padding-inline: var(--site-gutter);
+}
+.template-suffix-about .page-section-spacing .container {
+  padding-inline: 0;
+}
+.template-suffix-about .page-section-spacing :is(.heading-module, .page-cta-block) {
+  padding-inline: 0;
+}
+.template-suffix-about .page-header {
+  margin: 50px 0;
+  text-align: left;
+}
+/* Title takes heading-3 type (18/21 Favorit Mono Black, uppercase)
+   in grey. */
+.template-suffix-about .page-header .majortitle {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  line-height: 21px;
+  text-transform: uppercase;
+  color: var(--color-grey);
+  margin: 0;
+}
+/* Mobile: title and heading block sit side by side — title column
+   35%, heading module 65%. The 50px rhythm moves to the row. */
+@media (max-width: 767.98px) {
+  .template-suffix-about .page-section-spacing {
+    display: flex;
+    align-items: flex-start;
+    margin: 50px 0;
+  }
+  .template-suffix-about .page-section-spacing {
+    gap: 20px;
+  }
+  .template-suffix-about .page-section-spacing .container {
+    flex: 0 0 calc(30% - 20px);
+    min-width: 0;
+  }
+  .template-suffix-about .page-header {
+    margin: 0;
+  }
+  .template-suffix-about .page-section-spacing .heading-module {
+    flex: 0 0 calc(70%);
+    min-width: 0;
+    margin-bottom: 0;
+  }
+}
+
+/* ---- 23. Heading block (sections/main-page.liquid) ---------- */
+/* Standalone heading in heading-1 type (class set in markup);
+   capped for line length. */
+.heading-module {
+  margin-bottom: 20px;
+}
+.heading-module__title {
+  max-width: 850px;
+  margin: 0;
+}
+
+/* ---- 24. Editorial column (sections/editorial-column.liquid) - */
+/* Half-width stacked column, hardcoded to the WIDE inline state
+   (site gutter — was the 5% module grid via .module-pad-inline in
+   the markup). Module spacing convention: no top padding, 80px
+   bottom. */
+.editorial-column {
+  padding-inline: var(--site-gutter);
+  padding-bottom: var(--module-pad-bottom);
+}
+.editorial-column__content {
+  width: 55%;
+}
+.editorial-column--right .editorial-column__content {
+  margin-left: auto;
+}
+.editorial-column__image {
+  margin: 0 0 40px;
+}
+/* Aspect ratio comes from .ratio-media (§1) via the --image-ratio
+   vars the image block emits inline on its wrapper. */
+.editorial-column__img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+/* Type comes from the shared classes in markup: label is
+   .heading-3, statement is .heading-2, link is the secondary CTA
+   (.btn.btn--secondary). Only spacing lives here. */
+.editorial-column__label {
+  margin: 0 0 16px;
+}
+.editorial-column__statement {
+  text-transform: uppercase;
+  margin: 0 0 24px;
+}
+/* "Label beside content" toggle: Label blocks move into their own
+   column left of the content, same row (mirrors the about header's
+   label/content split). Content keeps its 55% width; --right's
+   margin-left: auto still pushes it to the far side, leaving the
+   label column at the page edge. */
+.editorial-column--label-beside {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+.editorial-column--label-beside .editorial-column__label-col {
+  flex: 0 0 30%;
+  min-width: 0;
+}
+.editorial-column--label-beside .editorial-column__content {
+  min-width: 0;
+}
+
+/* Mobile: column spans the full page width (inside the module
+   gutter) and the statement centres. */
+@media (max-width: 767.98px) {
+  .editorial-column__content {
+    width: 100%;
+  }
+  .editorial-column__statement {
+    text-align: center;
+  }
+  /* Beside mode stacks back to the normal column on mobile: the
+     label returns above the content at full width (its own 16px
+     bottom margin provides the gap, same as the stacked layout). */
+  .editorial-column--label-beside {
+    display: block;
+  }
+}
+
+/* ---- 25. Image banner (sections/image-banner.liquid) -------- */
+/* Site-gutter inset on desktop (no bottom padding, so the overlaid
+   title sits on the image edge — module bottom spacing is margin
+   instead); full bleed on mobile. */
+.image-banner {
+  position: relative;
+  padding: var(--site-gutter) var(--site-gutter) 0;
+  margin-bottom: var(--module-pad-bottom);
+  /* Container so the title's cqw units track the banner's width. */
+  container-type: inline-size;
+}
+.image-banner__img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.image-banner__img--mobile {
+  display: none;
+}
+/* Oversized overlay title. The mono font advances exactly 0.6em
+   per character, so available-width / (chars × 0.6) is the font
+   size at which the title exactly fills one line — any length,
+   never wrapping. --title-chars is emitted inline from liquid.
+   Tight line height keeps the glyphs sitting on the bottom edge. */
+.image-banner__title {
+  position: absolute;
+  inset-inline: var(--site-gutter);
+  bottom: 0;
+  margin: 0;
+  font-family: var(--font-heading);
+  padding-inline: 12.5vw;
+  font-size: calc((100cqw - 2 * var(--site-gutter) - 25vw) / (var(--title-chars, 16) * 0.6));
+  line-height: 0.75;
+  white-space: nowrap;
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--color-green);
+}
+@media (max-width: 767.98px) {
+  .image-banner {
+    padding: 0;
+  }
+  .image-banner--has-mobile-image .image-banner__img--desktop {
+    display: none;
+  }
+  .image-banner--has-mobile-image .image-banner__img--mobile {
+    display: block;
+  }
+  /* Title touches the viewport edges — same fit formula, no gutter
+     or title padding. */
+  .image-banner__title {
+    inset-inline: 0;
+    padding-inline: 0;
+    font-size: calc(100cqw / (var(--title-chars, 16) * 0.6));
+  }
+}
+
+
+/* ---- 26. Accordion (shared redesign style) ------------------- */
+/* Canonical accordion row anatomy, mechanism-agnostic: 2px ruled
+   rows, a full-width title row (type class set in markup — usually
+   heading-3) with a right-hand icon that flips when open. The
+   consumer's mechanism marks an open row with .is-open; show/hide
+   mechanics stay with the consumer (details-based accordions
+   collapse natively, scripted ones toggle their body). Icon SVGs
+   should point down in their closed state.
+   Consumers: numbered-columns (§27). The PDP consolidated details
+   (§21) predate this with a 1px/chevron treatment on the theme's
+   cc-accordion — align them on the next PDP pass. */
+.accordion-rd__item {
+  border-top: 2px solid var(--color-black);
+}
+.accordion-rd__item:last-child {
+  border-bottom: 2px solid var(--color-black);
+}
+/* Works on a <button> or a <summary>; strips button chrome so the
+   row renders as the heading it sits in. */
+.accordion-rd__toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  padding: 20px 0;
+  border: none;
+  background: none;
+  font: inherit;
+  text-transform: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.accordion-rd__icon {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  transition: transform 0.3s ease;
+}
+.accordion-rd__item.is-open .accordion-rd__icon {
+  transform: rotate(180deg);
+}
+.accordion-rd__body {
+  padding-bottom: 32px;
+}
+
+/* ---- 27. Numbered columns (sections/numbered-columns.liquid) - */
+/* Body copy is the theme default (.rte); titles and label are
+   heading-3. Below 1024px the columns collapse into rows using the
+   shared accordion style (§26). */
+.numbered-columns {
+  padding-inline: var(--site-gutter);
+  padding-bottom: var(--module-pad-bottom);
+}
+.numbered-columns__title {
+  margin: 0;
+}
+/* "01." sits on its own line above the title. */
+.numbered-columns__number {
+  display: block;
+}
+
+/* Desktop: 4-column grid — label rail, then the columns, each
+   spanning two subgrid rows so every body starts on the same line
+   under the tallest title. The accordion is inert: rules, icon and
+   row padding are unset. */
+@media (min-width: 1024px) {
+  .numbered-columns {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto auto;
+    column-gap: 20px;
+    row-gap: 60px;
+  }
+  .numbered-columns__label {
+    grid-column: 1;
+    grid-row: 1;
+    margin: 0;
+  }
+  .numbered-columns__item {
+    display: grid;
+    grid-row: 1 / 3;
+    grid-template-rows: subgrid;
+    border: none;
+  }
+  /* The shared accordion's :last-child bottom rule out-specifies
+     the plain border unset above — match it. */
+  .numbered-columns .numbered-columns__item:last-child {
+    border-bottom: none;
+  }
+  .numbered-columns .accordion-rd__toggle {
+    display: block;
+    padding: 0;
+    pointer-events: none;
+  }
+  .numbered-columns .accordion-rd__icon {
+    display: none;
+  }
+  .numbered-columns .accordion-rd__body {
+    padding-bottom: 0;
+  }
+}
+
+/* Accordion view: numbers hidden, first item open (set in liquid),
+   only open items show their body. Row anatomy comes from §26. */
+@media (max-width: 1023.98px) {
+  .numbered-columns__label {
+    margin: 0 0 24px;
+  }
+  .numbered-columns__number {
+    display: none;
+  }
+  .numbered-columns__item:not(.is-open) .accordion-rd__body {
+    display: none;
+  }
+}
+
+/* ---- 28. Text banner (sections/text-banner.liquid) ---------- */
+/* Colour band with centred heading-1 statement (type class in
+   markup) and optional small image below. Background per instance
+   via --banner-bg (inline from the section setting). No external
+   spacing — colour blocks butt up to neighbours; use the Spacer
+   module for gaps. */
+.text-banner {
+  background: var(--banner-bg, var(--color-green));
+  color: var(--color-black);
+  text-align: center;
+  padding: 64px var(--module-pad-inline);
+}
+.text-banner__text {
+  margin: 0 auto;
+}
+.text-banner__image {
+  display: block;
+  width: 120px;
+  height: auto;
+  margin: 48px auto 0;
+}
+@media (max-width: 767.98px) {
+  .text-banner {
+    padding-block: 48px;
+  }
+  .text-banner__image {
+    margin-top: 40px;
+    width: 100px;
+  }
+}
+
+:root {
+  --scrolling-columns-pad-top: 20px;
+}
+
+/* ---- 29. Scrolling columns (sections/scrolling-columns.liquid) */
+/* Pinned horizontal scroll (script-driven scrub); the label rides
+   inside the track as a wider leading column and scrolls out of
+   view with the content columns. */
+.scrolling-columns {
+  position: relative;
+  /* Module spacing sits on top here (the pinned screen fills the
+     rest of the viewport beneath it). */
+  margin-top: var(--module-pad-bottom);
+  padding-bottom: var(--module-pad-bottom);
+}
+/* Pinned mode (added by the section script; absent = swipe
+   fallback). The root becomes the runway — its height is set by
+   the script to pin height + horizontal overflow — and the pin
+   sticks below the top margin for one viewport while the track is
+   translated. */
+.scrolling-columns--pinned {
+  padding-bottom: 0;
+  margin-bottom: var(--module-pad-bottom);
+}
+.scrolling-columns--pinned .scrolling-columns__pin {
+  position: sticky;
+  /* Clears the sticky announcement bar + header, then the module's
+     own top margin; height fills the rest of the viewport. */
+  top: calc(var(--sticky-chrome) + var(--scrolling-columns-pad-top));
+  height: calc(100vh - var(--sticky-chrome) - var(--module-pad-bottom));
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+@supports (height: 100svh) {
+  .scrolling-columns--pinned .scrolling-columns__pin {
+    height: calc(100svh - var(--sticky-chrome) - var(--module-pad-bottom));
+  }
+}
+/* The pin clips; the track itself must not (its content extends
+   past the viewport and is pulled left by transform). */
+.scrolling-columns--pinned .scrolling-columns__track {
+  overflow-x: visible;
+  scroll-snap-type: none;
+  will-change: transform;
+}
+/* The row wraps the label column and the track; its height is the
+   track's height, so the absolute label column spans exactly the
+   cards' band and the title top-aligns with them. */
+.scrolling-columns__row {
+  position: relative;
+}
+.scrolling-columns__label {
+  margin: 0;
+  max-width: 300px;
+}
+/* Desktop: static opaque column at the left — sits above the track
+   so the sliding cards disappear behind it. */
+@media (min-width: 768px) {
+  .scrolling-columns__label-column {
+    position: absolute;
+    inset-block: 0;
+    left: 0;
+    z-index: 1;
+    width: 33vw;
+    background: var(--color-white);
+    padding: 0 20px 0 var(--site-gutter);
+  }
+}
+/* Scrollbar hidden per the design — trackpads, touch and wheel
+   still scroll natively. */
+.scrolling-columns__track {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding-inline: var(--site-gutter);
+  scroll-snap-type: x proximity;
+  scroll-padding-inline: var(--site-gutter);
+  scrollbar-width: none;
+}
+.scrolling-columns__track::-webkit-scrollbar {
+  display: none;
+}
+/* Desktop lead-in: room for the static label column (declared
+   after the base track rule so it beats the padding-inline
+   shorthand above). */
+@media (min-width: 768px) {
+  .scrolling-columns__track {
+    padding-inline-start: calc(33vw + 20px);
+    scroll-padding-inline-start: calc(33vw + 20px);
+  }
+}
+.scrolling-columns__item {
+  /* vw, not % — a percentage basis resolves against the track's
+     content box and would let columns shrink to fit instead of
+     overflowing. */
+  flex: 0 0 22vw;
+  min-width: 0;
+  scroll-snap-align: start;
+}
+/* Pinned mode (both breakpoints): cards fill the pin's height
+   with UNIFORM imagery. The track becomes a grid with two shared
+   rows — image row (1fr) and text row (auto, sized by the tallest
+   text across all cards) — and each card spans both via subgrid,
+   so the image/text boundary lands at the same y on every card.
+   Column width per breakpoint: 22vw desktop, 75vw mobile. */
+.scrolling-columns--pinned .scrolling-columns__row {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+.scrolling-columns--pinned .scrolling-columns__track {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 22vw;
+  grid-template-rows: minmax(0, 1fr) auto;
+  column-gap: 20px;
+  row-gap: 16px;
+}
+.scrolling-columns--pinned .scrolling-columns__item {
+  display: grid;
+  grid-row: 1 / 3;
+  grid-template-rows: subgrid;
+}
+.scrolling-columns--pinned .scrolling-columns__image {
+  min-height: 0;
+  margin: 0;
+}
+.scrolling-columns--pinned .scrolling-columns__img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: auto;
+  object-fit: cover;
+}
+
+.scrolling-columns__image {
+  margin: 0 0 16px;
+}
+.scrolling-columns__img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+/* Mobile: the label column sits in flow above the track while the
+   columns slide beneath. */
+@media (max-width: 767.98px) {
+
+  .scrolling-columns__label-column {
+    margin: 0 0 24px;
+    padding-inline: var(--module-pad-inline);
+  }
+  .scrolling-columns__track {
+    padding-inline: var(--module-pad-inline);
+    scroll-padding-inline: var(--module-pad-inline);
+  }
+  .scrolling-columns__item {
+    flex-basis: 75vw;
+  }
+
+  .scrolling-columns--pinned .scrolling-columns__track {
+    grid-auto-columns: 75vw;
+  }
+}
+
+/* ---- 30. Promotion (sections/promotion.liquid) --------------- */
+/* Full-width image with overlaid white text: section title top
+   left, block stack (eyebrow / title / link) bottom left. Bottom
+   spacing is margin so neighbours keep the module rhythm against
+   the full-bleed image. */
+.promotion {
+  position: relative;
+}
+.promotion__img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.promotion__img--mobile {
+  display: none;
+}
+.promotion__title {
+  position: absolute;
+  top: var(--site-gutter);
+  left: var(--site-gutter);
+  margin: 0;
+  color: var(--color-white);
+}
+.promotion__content {
+  position: absolute;
+  bottom: var(--site-gutter);
+  left: var(--site-gutter);
+  color: var(--color-white);
+}
+/* Eyebrow type comes from .caption (markup); this just uppercases
+   and spaces it. */
+.promotion__eyebrow {
+  text-transform: uppercase;
+  margin: 0 0 8px;
+}
+.promotion__block-title {
+  margin: 0 0 12px;
+}
+.promotion__link {
+  display: inline-block;
+}
+@media (max-width: 767.98px) {
+  .promotion--has-mobile-image .promotion__img--desktop {
+    display: none;
+  }
+  .promotion--has-mobile-image .promotion__img--mobile {
+    display: block;
+  }
+}
+
+/* ---- 31. Split page header (sections/main-page.liquid) ------- */
+/* "Two-column header" layout: page title left (same grey heading-3
+   treatment as the about header, but carried by the layout class
+   so it works on any template), content + blocks right. Stacks on
+   mobile. */
+.page-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 20px;
+  margin: 50px 0;
+  padding-inline: var(--site-gutter);
+}
+.page-split .page-header {
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+.page-split .page-header .majortitle {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  line-height: 21px;
+  text-transform: uppercase;
+  color: var(--color-grey);
+  margin: 0;
+}
+/* Blocks inherit the wrapper's grid padding — no inner inset. */
+.page-split .heading-module {
+  padding-inline: 0;
+}
+@media (max-width: 767.98px) {
+  /* Mirrors the default layout's mobile header exactly: title
+     column 35%, content 65%, side by side (title keeps its 18/21
+     size, as the default does). */
+  .page-split {
+    /* 20px gap, absorbed by the columns so the row still totals
+       100% (30/70 of the remaining space, matching the default
+       layout). */
+    grid-template-columns: calc(30% - 20px) calc(70% - 0px);
+    column-gap: 20px;
+  }
+  /* The header's heading-2 holds at heading-1's mobile size (28px)
+     instead of dropping to 18px like heading-2 elsewhere. */
+  .page-split .heading-module__title.heading-2 {
+    font-size: 28px;
+    line-height: 28px;
+  }
+}
+
+/* ---- 32. Infographic (sections/infographic.liquid) ----------- */
+/* Colour block of 50/50 media + text rows, inset by the site
+   gutter. Rows always alternate — odd rows media left, even rows
+   media right — enforced here (no per-block side option). */
+.infographic {
+  padding-bottom: var(--module-pad-bottom);
+}
+.infographic__rows {
+  margin-inline: var(--site-gutter);
+  background: var(--infographic-bg, var(--color-green));
+}
+.infographic__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.infographic__row:nth-child(even) .infographic__media {
+  grid-column: 2;
+  grid-row: 1;
+}
+.infographic__row:nth-child(even) .infographic__content {
+  grid-column: 1;
+  grid-row: 1;
+}
+/* Image fills its half; the row's height comes from the taller of
+   content or the media minimum. */
+.infographic__media {
+  position: relative;
+  min-height: 340px;
+}
+.infographic__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.infographic__img--mobile {
+  display: none;
+}
+.infographic__content {
+  padding: 40px;
+  color: var(--color-black);
+}
+.infographic__row-title {
+  text-transform: uppercase;
+  margin: 0 0 20px;
+}
+.infographic__text {
+  max-width: 460px;
+}
+/* Mobile: rows stack media-first (alternation is a desktop-only
+   rhythm). */
+@media (max-width: 767.98px) {
+  .infographic__row,
+  .infographic__row:nth-child(even) .infographic__media,
+  .infographic__row:nth-child(even) .infographic__content {
+    grid-template-columns: 1fr;
+    grid-column: 1;
+    grid-row: auto;
+  }
+  .infographic__media {
+    position: static;
+    min-height: 0;
+  }
+  .infographic__img {
+    position: static;
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
+  .infographic__media--has-mobile-image .infographic__img--desktop {
+    display: none;
+  }
+  .infographic__media--has-mobile-image .infographic__img--mobile {
+    display: block;
+  }
+  .infographic__content {
+    padding: 32px 20px 40px;
+  }
+}

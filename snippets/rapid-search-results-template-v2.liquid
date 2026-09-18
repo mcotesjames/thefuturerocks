@@ -99,7 +99,7 @@
 
   <style id="rps-theme-section-style-{{ section.id }}">
     {% if rps_theme_settings.theme_version == 2 %}
-      #shopify-section-template{{ section.id }}__search.shopify-section .search-page__header {
+      div.shopify-section[id$="__search"] .search-page__header {
         display: none !important;
       }
 

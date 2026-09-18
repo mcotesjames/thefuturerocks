@@ -5,10 +5,13 @@
 
   {% if recommendations.performed and recommendations.products_count > 0 %}
     {% if section.settings.title != blank %}
-      <h2 class="section-title{% unless section.settings.show_title %} visually-hidden{% endunless %}">{{ section.settings.title | escape }}</h2>
+      {%- comment -%} Redesign: header wrapper + mobile-only carousel to mirror the featured-collection module (redesign.css section 6) {%- endcomment -%}
+      <div class="section-header">
+        <h2 class="section-title{% unless section.settings.show_title %} visually-hidden{% endunless %}">{{ section.settings.title | escape }}</h2>
+      </div>
     {% endif %}
 
-    <cc-carousel class="cc-carousel cc-carousel--off-edge-mobile card-margin" allow-mouse-drag data-cc-animate="cc-fade-in-up">
+    <cc-carousel class="cc-carousel cc-carousel--off-edge-mobile cc-carousel--mobile-only card-margin" allow-mouse-drag rebuild-on-resize data-cc-animate="cc-fade-in-up">
       <div class="cc-carousel-buttons cc-carousel-buttons--overlay-top">
         <button class="cc-carousel-button cc-carousel-button--prev tap-target" aria-label="{{ 'general.accessibility_labels.previous' | t }}"><span class="icon--small ltr-icon">{% render 'svg-chevron-left' %}</span></button>
         <button class="cc-carousel-button cc-carousel-button--next tap-target" aria-label="{{ 'general.accessibility_labels.next' | t }}"><span class="icon--small ltr-icon">{% render 'svg-chevron-right' %}</span></button>
@@ -43,7 +46,7 @@
             endif
           -%}
           {%- for product in recommendations.products -%}
-            {% render 'product-block', product: product, custom_aspect_ratio: chosen_aspect_ratio %}
+            {% render 'product-block', product: product, custom_aspect_ratio: chosen_aspect_ratio, no_swiping: true %}
           {%- endfor -%}
         </div>
       </div>

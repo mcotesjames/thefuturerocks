@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "date_formats": {
     "month_date_year": "%B %d, %Y"
@@ -182,7 +191,13 @@
       "product_unavailable": "Nicht verfügbar",
       "backorder": "ist auf Lager und wird versandt, sobald es wieder verfügbar ist",
       "unit_price_separator": " / ",
-      "size_chart": "Größentabelle"
+      "size_chart": "Größentabelle",
+      "details": {
+        "title": "Product Details"
+      },
+      "shipping": {
+        "title": "Shipping"
+      }
     },
     "variant": {
       "no_stock": "Ausverkauft",
@@ -202,7 +217,8 @@
       "percent_reduction": "-{{ amount }}%",
       "value_reduction_html": "-{{ amount }}",
       "sale": "Sale",
-      "sold_out": "Ausverkauft"
+      "sold_out": "Ausverkauft",
+      "trending": "Im Trend"
     },
     "quick_buy": {
       "read_more": "Mehr Details",
@@ -456,6 +472,11 @@
       "pick_up_available": "Abholung verfügbar",
       "pick_up_currently_unavailable": "Abholung derzeit nicht verfügbar",
       "invalid_location_address": "Zur Adressbestätigung Shop kontaktieren"
+    }
+  },
+  "sections": {
+    "featured_collection": {
+      "view_all": "Alle ansehen"
     }
   }
 }

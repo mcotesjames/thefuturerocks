@@ -1,0 +1,25 @@
+{%- comment -%}
+  Redesign PDP breadcrumb (styled in redesign.css section 17).
+  Trail: All > collection > vendor > product title. The collection
+  crumb only renders when the product was reached via a
+  collection-aware URL (/collections/x/products/y) — Shopify doesn't
+  expose a canonical collection on a bare product URL. Sits in normal
+  flow above the product columns, so it scrolls away naturally.
+
+  Accepts: product, collection
+{%- endcomment -%}
+{%- if product != blank -%}
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a class="breadcrumb__link" href="{{ routes.all_products_collection_url }}">All</a>
+    {%- if collection -%}
+      <span class="breadcrumb__sep" aria-hidden="true">&gt;</span>
+      <a class="breadcrumb__link" href="{{ collection.url }}">{{ collection.title | escape }}</a>
+    {%- endif -%}
+    {%- if product.vendor != blank -%}
+      <span class="breadcrumb__sep" aria-hidden="true">&gt;</span>
+      <a class="breadcrumb__link" href="{{ product.vendor | url_for_vendor }}">{{ product.vendor | escape }}</a>
+    {%- endif -%}
+    <span class="breadcrumb__sep" aria-hidden="true">&gt;</span>
+    <span class="breadcrumb__current" aria-current="page">{{ product.title | escape }}</span>
+  </nav>
+{%- endif -%}

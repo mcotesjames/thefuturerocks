@@ -4611,7 +4611,7 @@
       }
 
       var $nav = options.nav,
-        navHoverDelay = 250,
+        navHoverDelay = 0, /* 2026 redesign: was 250 — menus open/close instantly (nav item padding connects them to the panel, so there is no dead space to bridge) */
         $navLastOpenDropdown = $(),
         navOpenTimeoutId = -1;
 
@@ -6291,18 +6291,17 @@
             $carouselGallery.slick({
               autoplay: false,
               fade: false,
-              infinite: true,
+              // 2026 redesign: finite, variable-width slides — 90% wide
+              // (redesign.css) so the next image peeks in on the right;
+              // the LAST slide is 110% wide so slick's natural
+              // left-alignment fills the viewport with no dead strip.
+              infinite: false,
+              variableWidth: true,
               useTransform: true,
               arrows: false,
-              dots: true,
-              customPaging: function (slider, i) {
-                return `<button class="custom-dot" type="button" data-role="none" role="button" tabindex="0">` +
-                `<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30px" height="30px" viewBox="0 0 30 30" xml:space="preserve">` +
-                `<circle class="circle-one" cx="15" cy="15" r="13" />` +
-                `<circle class="circle-two" cx="15" cy="15" r="13" />` +
-                `</svg>` +
-                `</button>`;
-              },
+              // 2026 redesign: dots retired — the .gallery-progress bar
+              // (rendered and synced by gallery.liquid) reports position.
+              dots: false,
               rtl: document.querySelector('html[dir=rtl]') ? true : false
             });
           }

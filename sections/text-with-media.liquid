@@ -1,0 +1,177 @@
+{%- comment -%}
+  Text with media — 2026 redesign module (homepage).
+  Deliberately separate from sections/media-with-text.liquid, which powers
+  un-signed-off campaign product templates and must keep its current look.
+  All styling lives in assets/redesign.css (section 9).
+{%- endcomment -%}
+
+<div
+  id="section-id-{{ section.id }}"
+  class="text-with-media{% if section.settings.media_position == 'left' %} text-with-media--media-left{% endif %}"
+  style="--twm-bg: {{ section.settings.bg_color }}; --twm-text: {{ section.settings.text_color }}; --twm-media-w: {{ section.settings.media_width }}%; --twm-content-max: {{ section.settings.content_max_width }}px;{% if section.settings.media_shape != blank %} --twm-ar: {{ section.settings.media_shape }};{% endif %}"
+  data-section-type="text-with-media"
+>
+  <div class="text-with-media__content">
+    {%- if section.settings.eyebrow != blank -%}
+      <p class="text-with-media__eyebrow heading-3">{{ section.settings.eyebrow | escape }}</p>
+    {%- endif -%}
+
+    {%- if section.settings.title != blank -%}
+      {%- if section.settings.use_h1 -%}
+        <h1 class="text-with-media__title heading-2">{{ section.settings.title | escape | newline_to_br }}</h1>
+      {%- else -%}
+        <h2 class="text-with-media__title heading-2">{{ section.settings.title | escape | newline_to_br }}</h2>
+      {%- endif -%}
+    {%- endif -%}
+
+    {%- if section.settings.button_label != blank -%}
+      <a class="text-with-media__cta btn btn--secondary btn--link" href="{{ section.settings.button_link }}">
+        <span class="btn__text">{{ section.settings.button_label | escape }}</span>
+      </a>
+    {%- endif -%}
+  </div>
+
+  <div class="text-with-media__media-col">
+    <div class="text-with-media__media{% if section.settings.media_shape == blank %} text-with-media__media--fill{% endif %}">
+      {%- if section.settings.video != blank -%}
+        {{ section.settings.video | video_tag: autoplay: true, loop: true, muted: true, controls: false, playsinline: true }}
+      {%- elsif section.settings.image != blank -%}
+        {{ section.settings.image | image_url: width: 1800 | image_tag: widths: '400, 600, 800, 1000, 1200, 1600, 1800', sizes: '(max-width: 767px) 100vw, 40vw' }}
+      {%- else -%}
+        <div class="placeholder-image dark">{{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}</div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Text with media",
+  "class": "section-text-with-media",
+  "disabled_on": {
+    "groups": ["aside"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background",
+      "default": "#00D200"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Text"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "About TFR"
+    },
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Heading",
+      "info": "Line breaks are kept",
+      "default": "The Future Rocks creates accessories for\npeople who refuse to blend in."
+    },
+    {
+      "type": "checkbox",
+      "id": "use_h1",
+      "label": "Set as primary page heading",
+      "info": "Use <h1> tag. One per page recommended.",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button",
+      "default": "Read more"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "Media"
+    },
+    {
+      "id": "image",
+      "type": "image_picker",
+      "label": "Image"
+    },
+    {
+      "id": "video",
+      "type": "video",
+      "label": "Video",
+      "info": "Hosted by Shopify. Autoplays muted on loop. Replaces the image if both are set."
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "media_position",
+      "label": "Media position",
+      "default": "right",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "right", "label": "Right" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "media_width",
+      "min": 25,
+      "max": 60,
+      "step": 5,
+      "unit": "%",
+      "label": "Media width (desktop)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "content_max_width",
+      "min": 400,
+      "max": 1200,
+      "step": 50,
+      "unit": "px",
+      "label": "Maximum content width",
+      "default": 800
+    },
+    {
+      "type": "select",
+      "id": "media_shape",
+      "label": "Media shape",
+      "default": "",
+      "options": [
+        { "value": "", "label": "Fill (match text height)" },
+        { "value": "1.7778", "label": "Landscape (16:9)" },
+        { "value": "1.5", "label": "Landscape (3:2)" },
+        { "value": "1.25", "label": "Landscape (5:4)" },
+        { "value": "1", "label": "Square (1:1)" },
+        { "value": "0.8", "label": "Portrait (4:5)" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Text with media",
+      "settings": {}
+    }
+  ]
+}
+{% endschema %}

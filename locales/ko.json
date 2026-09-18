@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "promo": {
     "message": {
@@ -1486,6 +1495,9 @@
       "f-richtext-1733824107wvsjy-text_html": "<p>나사산이 없는 플랫백 주얼리를 제거하려면</p>",
       "f-heading-1733824233UiaW0-text_html": "1단계",
       "f-heading-1733824241FRfUE-text_html": "2단계"
+    },
+    "featured_collection": {
+      "view_all": "전체 보기"
     }
   },
   "foxify": {
@@ -1737,7 +1749,13 @@
       "preorder": "선주문",
       "product_unavailable": "이 제품은 사용할 수 없습니다",
       "backorder": ": 주문 제작 제품으로 제작이 완료되는대로 배송됩니다. ",
-      "size_chart": "사이즈 가이드"
+      "size_chart": "사이즈 가이드",
+      "details": {
+        "title": "Product Details"
+      },
+      "shipping": {
+        "title": "Shipping"
+      }
     },
     "labels": {
       "new_in": "새로운",
@@ -1748,7 +1766,8 @@
       "percent_reduction": "{{ amount }} % 할인",
       "value_reduction_html": "{{ amount }} 할인",
       "sale": "판매",
-      "sold_out": "매진"
+      "sold_out": "매진",
+      "trending": "인기"
     },
     "listing": {
       "from": "에서"

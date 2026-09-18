@@ -54,6 +54,23 @@
     </div>
   {%- endif -%}
 
+  {%- comment -%}
+    DEV PREVIEW ONLY — force_trending_preview forces the Trending badge
+    onto every product so it can be styled without tagging live
+    products. SET BACK TO false (or remove) BEFORE LAUNCH so the badge
+    is tag-driven only.
+  {%- endcomment -%}
+  {%- assign force_trending_preview = true -%}
+  {%- if label_count < label_limit and settings.prod_trending_show -%}
+    {%- assign tags_downcased = product.tags | join: ',' | downcase -%}
+    {%- if tags_downcased contains 'trending' or force_trending_preview -%}
+      {%- assign label_count = label_count | plus: 1 -%}
+      <div class="product-label product-label--trending">
+        <span>{{ 'products.labels.trending' | t }}</span>
+      </div>
+    {%- endif -%}
+  {%- endif -%}
+
   {%- liquid
     if label_count < label_limit and settings.prod_reduction_show and cheapest_variant.compare_at_price > cheapest_variant.price
       if settings.prod_reduction_type == 'percent'
