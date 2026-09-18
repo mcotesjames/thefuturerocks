@@ -84,12 +84,12 @@
       ],
       "settings": {
         "announcement_bar_col": "#000000",
-        "announcement_text_col": "#FFFFFF",
+        "announcement_text_col": "#ffffff",
         "message_font_size": 14,
         "show_social_icons": true,
         "menu": "aux-ss24",
         "show_country_selector": true,
-        "show_language_selector": true
+        "show_language_selector": false
       }
     },
     "header": {
@@ -252,6 +252,30 @@
             "title": "Green vegan leather collar with lab-grown sapphire",
             "text": "Pet Collection",
             "link_url": "shopify://products/green-vegan-leather-collar-with-lab-grown-sapphire"
+          }
+        },
+        "menu_promotion_small_shopbyNova": {
+          "type": "menu-promotion-small",
+          "settings": {
+            "dropdown_link_title": "shop by",
+            "image": "shopify://shop_images/4_Chroma_Core_Necklace-4_1.png",
+            "bg_col": "{{ shop.brand.colors.primary[0].foreground }}",
+            "text_col": "{{ shop.brand.colors.primary[0].background }}",
+            "title": "Nova cord necklace",
+            "text": "Nova Collection",
+            "link_url": "shopify://products/nova-leather-necklace-with-emerald"
+          }
+        },
+        "menu_promotion_small_shopbyPave": {
+          "type": "menu-promotion-small",
+          "settings": {
+            "dropdown_link_title": "shop by",
+            "image": "shopify://shop_images/orange2.png",
+            "bg_col": "{{ shop.brand.colors.primary[0].foreground }}",
+            "text_col": "{{ shop.brand.colors.primary[0].background }}",
+            "title": "Pavé orange cord bracelet",
+            "text": "Essence Collection",
+            "link_url": "shopify://products/pave-orange-cord-bracelet-0-6ct"
           }
         },
         "menu_promotion_small_tEEAi8": {
@@ -420,30 +444,6 @@
             "title": "THE EARRINGS",
             "text": "The Future Rocks Original",
             "link_url": "shopify://products/the-earring"
-          }
-        },
-        "menu_promotion_small_shopbyNova": {
-          "type": "menu-promotion-small",
-          "settings": {
-            "dropdown_link_title": "shop by",
-            "image": "shopify://shop_images/4_Chroma_Core_Necklace-4_1.png",
-            "bg_col": "{{ shop.brand.colors.primary[0].foreground }}",
-            "text_col": "{{ shop.brand.colors.primary[0].background }}",
-            "title": "Nova cord necklace",
-            "text": "Nova Collection",
-            "link_url": "shopify://products/nova-leather-necklace-with-emerald"
-          }
-        },
-        "menu_promotion_small_shopbyPave": {
-          "type": "menu-promotion-small",
-          "settings": {
-            "dropdown_link_title": "shop by",
-            "image": "shopify://shop_images/orange2.png",
-            "bg_col": "{{ shop.brand.colors.primary[0].foreground }}",
-            "text_col": "{{ shop.brand.colors.primary[0].background }}",
-            "title": "Pavé orange cord bracelet",
-            "text": "Essence Collection",
-            "link_url": "shopify://products/pave-orange-cord-bracelet-0-6ct"
           }
         }
       },
