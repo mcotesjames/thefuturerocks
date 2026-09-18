@@ -1,32 +1,44 @@
-    {% liquid
-        assign locales = shop.metafields.foxify.locales.value
-        assign current_locale = request.locale.iso_code
-        assign primary_locale = current_locale
-        for locale in shop.published_locales
-        if locale.primary
-            assign primary_locale = locale.iso_code
-            break
-        endif
-        endfor
-        assign translation = locales[current_locale] | default: locales[primary_locale]
-    %}
-    <script>
+
+{% liquid
+  
+    assign locales = shop.metafields.foxify.locales.value
+    assign current_locale = request.locale.iso_code
+    assign primary_locale = current_locale
+    for locale in shop.published_locales
+    if locale.primary
+        assign primary_locale = locale.iso_code
+        break
+    endif
+    endfor
+    assign translation = locales[current_locale] | default: locales[primary_locale]
+
+    assign theme_settings = shop.metafields.foxify.theme_settings.value
+    assign productCard = theme_settings.productCard
+  
+  
+      assign foxifyCustomCss = shop.metafields.foxify['66974598de7f87555dafdbd6'].value.customCss
+      assign foxifyCustomJs = shop.metafields.foxify['66974598de7f87555dafdbd6'].value.customJs
+    
+%}
+
+      <script>
         window.Foxify = window.Foxify || {}
         Foxify.ThemeStyles = {
-            product: "https:{{ 'foxify-product.css' | asset_url }}",
-            swiper: "https:{{ 'foxify-swiper.css' | asset_url }}",
+          product: "https:{{ 'foxify-product.css' | asset_url }}",
+          swiper: "https:{{ 'foxify-swiper.css' | asset_url }}",
         }
 
         Foxify.ThemeScripts = {
-            productModel: "https:{{ 'foxify-product-model.js' | asset_url }}",
-            productMedia: "https:{{ 'foxify-media-gallery.js' | asset_url }}",
-            variantPicker: "https:{{ 'foxify-variant-picker.js' | asset_url }}"
+          productModel: "https:{{ 'foxify-product-model.js' | asset_url }}",
+          productMedia: "https:{{ 'foxify-media-gallery.js' | asset_url }}",
+          variantPicker: "https:{{ 'foxify-variant-picker.js' | asset_url }}"
         }
 
-        Foxify.pageId = '1721189783cxZVD'
-        Foxify.default = false
-    </script>
-    <div class="f-app f:content">
+        Foxify.pageId = '1721189783cxZVD';
+        Foxify.default = false;
+      </script>
+    
+<div class="f-app f:content">
 <style data-foxify-editor="foxify-custom-fonts">
   @font-face {
     font-family: BrownProTT-Bold-17071127825LR9n;
@@ -102,39 +114,39 @@ color: #1b2b27;
       %}
 
 </div>
-    {% schema %}
-        {
-            "name": "Foxify main content",
-            "class": "foxify-main f-app",
-            "settings": [
-                {
-                "type": "header",
-                "content": "Customize section",
-                "info": "Go to [Foxify app](https://app.foxify.io/editor?id=1721189783cxZVD&type=REGULAR) to edit this section."
-                }
-            ],
-            "locales": {
-  "en": {
-    "f-richtext-1721189762z23Mo-text_html": "Instagram Influencer Unique Promotion Code",
-    "f-heading-17211897620H4Ta-text_html": "Instagram Influencer Unique Promotion Code",
-    "f-richtext-1721189762N8hzD-text_html": "Use the unique promo code (the \"Code\") you received via Instagram Influencer to get 15% off your next order from THE FUTURE ROCKS (<a href=\"http://www.thefuturerocks.com\">www.thefuturerocks.com</a>), subject to the terms and conditions (the \"Terms and Conditions\") of the promotion.",
-    "f-heading-1721189762PwDeK-text_html": "What should I do in the event that my 2-year warranty expires?",
-    "f-richtext-1721189762zbvkV-text_html": "Upon expiration of the Warranty Period, any services or repairs will be subject to a service charge.",
-    "f-heading-17211897620rXxJ-text_html": "Under what condition can I repair my purchase from The Future Rocks?",
-    "f-richtext-1721189762cY0I3-text_html": "If a jewelry piece is returned during the Warranty Period, any defect resulting from a manufacturing defect will be repaired (if feasible) or replaced free of component (excluding diamonds) and labor charges at TFR's sole discretion. The Warranty only covers manufacturing defects, but not defects and damages resulting from misuse or negligence, or from accident.",
-    "f-heading-1721189762FTcV1-text_html": "How do I process my warranty claim? ",
-    "f-richtext-1721189762LbtTR-text_html": "You must send a warranty claim to <a href=\"mailto:contact@thefuturerocks.com\">contact@thefuturerocks.com</a>, including proof of purchase or order number, and photos of the broken piece. Do note you are responsible for the shipping cost of returning the jewelry piece to us. Shipment should be sent with a trackable shipping method and carrier. We also advise you to insure the shipment to prevent any unfortunate event during shipment.",
-    "f-button-1721189762Y1Q5G-button_label_html": "contact us",
-    "f-heading-1721189762DQgqZ-text_html": "Promotion Terms and Conditions:",
-    "f-richtext-1721189762vQ9TT-text_html": "The Future Rocks Limited Warranty Terms and Conditions (the “Warranty Terms”)",
-    "f-richtext-1721189762ATlFP-text_html": "Depending on the territory in which you live, you may have rights under local laws that override or operate in addition to the provisions of this Warranty. Please refer to the <strong>ADDENDUM TO LIMITED WARRANTY TERMS AND CONDITIONS </strong>for warranty provisions that apply in your specific territory.",
-    "f-heading-1723513815to1Zf-text_html": "Instagram Influencer Unique Promotion Code (10% + Special Gift)",
-    "f-richtext-1723513818XVB3W-text_html": "Use the unique promo code (the \"Code\") you received via Instagram Influencer to get 10% off and a special gift with the purchase of your next order from THE FUTURE ROCKS (<a href=\"http://www.thefuturerocks.com\">www.thefuturerocks.com</a>), subject to the promotion's terms and conditions (the \"Terms and Conditions\").",
-    "f-heading-1723513900ouOFK-text_html": "Instagram Influencer Unique Promotion Code",
-    "f-richtext-1723513900k1Hd4-text_html": "Use the unique promo code (the \"Code\") you received via Instagram Influencer to get 15% off your next order from THE FUTURE ROCKS (<a href=\"http://www.thefuturerocks.com\">www.thefuturerocks.com</a>), subject to the terms and conditions (the \"Terms and Conditions\") of the promotion.",
-    "f-heading-1723513905cmk7K-text_html": "Promotion Terms and Conditions:"
+{% schema %}
+  {
+  "name": "Foxify main content",
+  "class": "foxify-main f-app",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Customize main content",
+      "info": "Go to [Foxify app](https://admin.shopify.com/store/the-future-rocks/apps/foxify-builder/editor?id=1721189783cxZVD&type=regular) to edit this section."
+    }
+  ],
+  "locales": {
+    "en": {
+      "f-richtext-1721189762z23Mo-text_html": "Instagram Influencer Unique Promotion Code",
+      "f-heading-17211897620H4Ta-text_html": "Instagram Influencer Unique Promotion Code",
+      "f-richtext-1721189762N8hzD-text_html": "Use the unique promo code (the \"Code\") you received via Instagram Influencer to get 15% off your next order from THE FUTURE ROCKS (<a href=\"http://www.thefuturerocks.com\">www.thefuturerocks.com</a>), subject to the terms and conditions (the \"Terms and Conditions\") of the promotion.",
+      "f-heading-1721189762PwDeK-text_html": "What should I do in the event that my 2-year warranty expires?",
+      "f-richtext-1721189762zbvkV-text_html": "Upon expiration of the Warranty Period, any services or repairs will be subject to a service charge.",
+      "f-heading-17211897620rXxJ-text_html": "Under what condition can I repair my purchase from The Future Rocks?",
+      "f-richtext-1721189762cY0I3-text_html": "If a jewelry piece is returned during the Warranty Period, any defect resulting from a manufacturing defect will be repaired (if feasible) or replaced free of component (excluding diamonds) and labor charges at TFR's sole discretion. The Warranty only covers manufacturing defects, but not defects and damages resulting from misuse or negligence, or from accident.",
+      "f-heading-1721189762FTcV1-text_html": "How do I process my warranty claim? ",
+      "f-richtext-1721189762LbtTR-text_html": "You must send a warranty claim to <a href=\"mailto:contact@thefuturerocks.com\">contact@thefuturerocks.com</a>, including proof of purchase or order number, and photos of the broken piece. Do note you are responsible for the shipping cost of returning the jewelry piece to us. Shipment should be sent with a trackable shipping method and carrier. We also advise you to insure the shipment to prevent any unfortunate event during shipment.",
+      "f-button-1721189762Y1Q5G-button_label_html": "contact us",
+      "f-heading-1721189762DQgqZ-text_html": "Promotion Terms and Conditions:",
+      "f-richtext-1721189762vQ9TT-text_html": "The Future Rocks Limited Warranty Terms and Conditions (the “Warranty Terms”)",
+      "f-richtext-1721189762ATlFP-text_html": "Depending on the territory in which you live, you may have rights under local laws that override or operate in addition to the provisions of this Warranty. Please refer to the <strong>ADDENDUM TO LIMITED WARRANTY TERMS AND CONDITIONS </strong>for warranty provisions that apply in your specific territory.",
+      "f-heading-1723513815to1Zf-text_html": "Instagram Influencer Unique Promotion Code (10% + Special Gift)",
+      "f-richtext-1723513818XVB3W-text_html": "Use the unique promo code (the \"Code\") you received via Instagram Influencer to get 10% off and a special gift with the purchase of your next order from THE FUTURE ROCKS (<a href=\"http://www.thefuturerocks.com\">www.thefuturerocks.com</a>), subject to the promotion's terms and conditions (the \"Terms and Conditions\").",
+      "f-heading-1723513900ouOFK-text_html": "Instagram Influencer Unique Promotion Code",
+      "f-richtext-1723513900k1Hd4-text_html": "Use the unique promo code (the \"Code\") you received via Instagram Influencer to get 15% off your next order from THE FUTURE ROCKS (<a href=\"http://www.thefuturerocks.com\">www.thefuturerocks.com</a>), subject to the terms and conditions (the \"Terms and Conditions\") of the promotion.",
+      "f-heading-1723513905cmk7K-text_html": "Promotion Terms and Conditions:"
+    }
   }
 }
-        }
-    {% endschema %}
+{% endschema %}
   
