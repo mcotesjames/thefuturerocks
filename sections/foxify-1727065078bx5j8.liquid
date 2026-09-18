@@ -1,32 +1,44 @@
-    {% liquid
-        assign locales = shop.metafields.foxify.locales.value
-        assign current_locale = request.locale.iso_code
-        assign primary_locale = current_locale
-        for locale in shop.published_locales
-        if locale.primary
-            assign primary_locale = locale.iso_code
-            break
-        endif
-        endfor
-        assign translation = locales[current_locale] | default: locales[primary_locale]
-    %}
-    <script>
+
+{% liquid
+  
+    assign locales = shop.metafields.foxify.locales.value
+    assign current_locale = request.locale.iso_code
+    assign primary_locale = current_locale
+    for locale in shop.published_locales
+    if locale.primary
+        assign primary_locale = locale.iso_code
+        break
+    endif
+    endfor
+    assign translation = locales[current_locale] | default: locales[primary_locale]
+
+    assign theme_settings = shop.metafields.foxify.theme_settings.value
+    assign productCard = theme_settings.productCard
+  
+  
+      assign foxifyCustomCss = shop.metafields.foxify['66f0ebf6cd22e50e55565a11'].value.customCss
+      assign foxifyCustomJs = shop.metafields.foxify['66f0ebf6cd22e50e55565a11'].value.customJs
+    
+%}
+
+      <script>
         window.Foxify = window.Foxify || {}
         Foxify.ThemeStyles = {
-            product: "https:{{ 'foxify-product.css' | asset_url }}",
-            swiper: "https:{{ 'foxify-swiper.css' | asset_url }}",
+          product: "https:{{ 'foxify-product.css' | asset_url }}",
+          swiper: "https:{{ 'foxify-swiper.css' | asset_url }}",
         }
 
         Foxify.ThemeScripts = {
-            productModel: "https:{{ 'foxify-product-model.js' | asset_url }}",
-            productMedia: "https:{{ 'foxify-media-gallery.js' | asset_url }}",
-            variantPicker: "https:{{ 'foxify-variant-picker.js' | asset_url }}"
+          productModel: "https:{{ 'foxify-product-model.js' | asset_url }}",
+          productMedia: "https:{{ 'foxify-media-gallery.js' | asset_url }}",
+          variantPicker: "https:{{ 'foxify-variant-picker.js' | asset_url }}"
         }
 
-        Foxify.pageId = '1727065078bx5j8'
-        Foxify.default = false
-    </script>
-    <div class="f-app f:content">
+        Foxify.pageId = '1727065078bx5j8';
+        Foxify.default = false;
+      </script>
+    
+<div class="f-app f:content">
 <style data-foxify-editor="foxify-custom-fonts">
   @font-face {
     font-family: BrownProTT-Regular-1707112782cX7wj;
@@ -85,45 +97,45 @@
       %}
 
 </div>
-    {% schema %}
-        {
-            "name": "Foxify main content",
-            "class": "foxify-main f-app",
-            "settings": [
-                {
-                "type": "header",
-                "content": "Customize section",
-                "info": "Go to [Foxify app](https://app.foxify.io/editor?id=1727065078bx5j8&type=REGULAR) to edit this section."
-                }
-            ],
-            "locales": {
-  "en": {
-    "f-richtext-1732701160sVMC0-text_html": "<p>How to: Earring Guide</p>",
-    "f-heading-1732701160Yu4fY-text_html": "HOW TO PUT ON FLATBACKS",
-    "f-richtext-1733823704rUlKq-text_html": "To wear your threadless flatback jewelry",
-    "f-heading-17338238320n4CZ-text_html": "Step 1",
-    "f-richtext-17338237696gL5F-text_html": "Insert the taper pin into your piercing.",
-    "f-heading-1733823887JV1v1-text_html": "Step 2",
-    "f-richtext-1733823788tJoyR-text_html": "Connect the end of the post to the taper.",
-    "f-heading-1733823928HjZ07-text_html": "Step 3",
-    "f-richtext-1733823928J8RR6-text_html": "Push the post through the piercing.",
-    "f-heading-1733823928aRumQ-text_html": "Step 4",
-    "f-richtext-1733823928uqbbb-text_html": "Insert the pin end and gently screw both ends together.",
-    "f-richtext-1733824107wvsjy-text_html": "<p>To remove your threadless flatback jewelry</p>",
-    "f-heading-1733824233UiaW0-text_html": "Step 1",
-    "f-richtext-1733824237mCUj5-text_html": "Hold onto the jewerly end and the flatback end.",
-    "f-heading-1733824241FRfUE-text_html": "Step 2",
-    "f-richtext-1733824241fGlTG-text_html": "Slowly loosen the screwed ends. (You should feel some tension since that's what keeps them in place)",
-    "f-heading-1733824346So3po-text_html": "MY EARRINGS WONT CLOSE",
-    "f-richtext-17338243468GX01-text_html": "Our jewelry is crafted from precious metals such as sterling silver and gold, which are softer materials. This means that over time, the clasps can become misaligned if they are pushed up or down slightly. Fortunately, fixing the clasps on various types of earrings is straightforward.",
-    "f-heading-1733824487FE2RW-text_html": "HUGGIE HOOPS",
-    "f-richtext-1733824487ydjjl-text_html": "<p>The huggie post has a groove at the end that fits into the back of the huggie. Carefully bend the post back into its original position. Be cautious not to apply too much force, as this can push the post too far or break the metal.</p>",
-    "f-heading-1733824788EQ0Kg-text_html": "HINGED HOOPS",
-    "f-richtext-1733824788n6R3A-text_html": "<p>If the hinge is out of alignment, gently bend it back into position using your fingers or pliers. If the clasp feels loose, gently pinch the two \"ears\" of the hinge together using a tool like needle-nose pliers or even regular scissors. If the clasp is too tight, you can gently separate the two ears using needle-nose pliers. Carefully adjust the distance between the ears until the curved post fits snugly into the clasp.</p>",
-    "f-heading-1733825126jAWYx-text_html": "BUTTERFLY BACKS",
-    "f-richtext-1733825126qA76a-text_html": "<p>Butterfly backs for earring posts can loosen with regular use, so it’s important to check that they are secure. If you find that the backs feel loose, you can gently squeeze the two circular metal parts together with your fingers. </p>"
+{% schema %}
+  {
+  "name": "Foxify main content",
+  "class": "foxify-main f-app",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Customize main content",
+      "info": "Go to [Foxify app](https://admin.shopify.com/store/the-future-rocks/apps/foxify-builder/editor?id=1727065078bx5j8&type=regular) to edit this section."
+    }
+  ],
+  "locales": {
+    "en": {
+      "f-richtext-1732701160sVMC0-text_html": "<p>How to: Earring Guide</p>",
+      "f-heading-1732701160Yu4fY-text_html": "HOW TO PUT ON FLATBACKS",
+      "f-richtext-1733823704rUlKq-text_html": "To wear your threadless flatback jewelry",
+      "f-heading-17338238320n4CZ-text_html": "Step 1",
+      "f-richtext-17338237696gL5F-text_html": "Insert the taper pin into your piercing.",
+      "f-heading-1733823887JV1v1-text_html": "Step 2",
+      "f-richtext-1733823788tJoyR-text_html": "Connect the end of the post to the taper.",
+      "f-heading-1733823928HjZ07-text_html": "Step 3",
+      "f-richtext-1733823928J8RR6-text_html": "Push the post through the piercing.",
+      "f-heading-1733823928aRumQ-text_html": "Step 4",
+      "f-richtext-1733823928uqbbb-text_html": "Insert the pin end and gently screw both ends together.",
+      "f-richtext-1733824107wvsjy-text_html": "<p>To remove your threadless flatback jewelry</p>",
+      "f-heading-1733824233UiaW0-text_html": "Step 1",
+      "f-richtext-1733824237mCUj5-text_html": "Hold onto the jewerly end and the flatback end.",
+      "f-heading-1733824241FRfUE-text_html": "Step 2",
+      "f-richtext-1733824241fGlTG-text_html": "Slowly loosen the screwed ends. (You should feel some tension since that's what keeps them in place)",
+      "f-heading-1733824346So3po-text_html": "MY EARRINGS WONT CLOSE",
+      "f-richtext-17338243468GX01-text_html": "Our jewelry is crafted from precious metals such as sterling silver and gold, which are softer materials. This means that over time, the clasps can become misaligned if they are pushed up or down slightly. Fortunately, fixing the clasps on various types of earrings is straightforward.",
+      "f-heading-1733824487FE2RW-text_html": "HUGGIE HOOPS",
+      "f-richtext-1733824487ydjjl-text_html": "<p>The huggie post has a groove at the end that fits into the back of the huggie. Carefully bend the post back into its original position. Be cautious not to apply too much force, as this can push the post too far or break the metal.</p>",
+      "f-heading-1733824788EQ0Kg-text_html": "HINGED HOOPS",
+      "f-richtext-1733824788n6R3A-text_html": "<p>If the hinge is out of alignment, gently bend it back into position using your fingers or pliers. If the clasp feels loose, gently pinch the two \"ears\" of the hinge together using a tool like needle-nose pliers or even regular scissors. If the clasp is too tight, you can gently separate the two ears using needle-nose pliers. Carefully adjust the distance between the ears until the curved post fits snugly into the clasp.</p>",
+      "f-heading-1733825126jAWYx-text_html": "BUTTERFLY BACKS",
+      "f-richtext-1733825126qA76a-text_html": "<p>Butterfly backs for earring posts can loosen with regular use, so it’s important to check that they are secure. If you find that the backs feel loose, you can gently squeeze the two circular metal parts together with your fingers. </p>"
+    }
   }
 }
-        }
-    {% endschema %}
+{% endschema %}
   

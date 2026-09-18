@@ -1,32 +1,44 @@
-    {% liquid
-        assign locales = shop.metafields.foxify.locales.value
-        assign current_locale = request.locale.iso_code
-        assign primary_locale = current_locale
-        for locale in shop.published_locales
-        if locale.primary
-            assign primary_locale = locale.iso_code
-            break
-        endif
-        endfor
-        assign translation = locales[current_locale] | default: locales[primary_locale]
-    %}
-    <script>
+
+{% liquid
+  
+    assign locales = shop.metafields.foxify.locales.value
+    assign current_locale = request.locale.iso_code
+    assign primary_locale = current_locale
+    for locale in shop.published_locales
+    if locale.primary
+        assign primary_locale = locale.iso_code
+        break
+    endif
+    endfor
+    assign translation = locales[current_locale] | default: locales[primary_locale]
+
+    assign theme_settings = shop.metafields.foxify.theme_settings.value
+    assign productCard = theme_settings.productCard
+  
+  
+      assign foxifyCustomCss = shop.metafields.foxify['669a2e6b05ad271be0970bfe'].value.customCss
+      assign foxifyCustomJs = shop.metafields.foxify['669a2e6b05ad271be0970bfe'].value.customJs
+    
+%}
+
+      <script>
         window.Foxify = window.Foxify || {}
         Foxify.ThemeStyles = {
-            product: "https:{{ 'foxify-product.css' | asset_url }}",
-            swiper: "https:{{ 'foxify-swiper.css' | asset_url }}",
+          product: "https:{{ 'foxify-product.css' | asset_url }}",
+          swiper: "https:{{ 'foxify-swiper.css' | asset_url }}",
         }
 
         Foxify.ThemeScripts = {
-            productModel: "https:{{ 'foxify-product-model.js' | asset_url }}",
-            productMedia: "https:{{ 'foxify-media-gallery.js' | asset_url }}",
-            variantPicker: "https:{{ 'foxify-variant-picker.js' | asset_url }}"
+          productModel: "https:{{ 'foxify-product-model.js' | asset_url }}",
+          productMedia: "https:{{ 'foxify-media-gallery.js' | asset_url }}",
+          variantPicker: "https:{{ 'foxify-variant-picker.js' | asset_url }}"
         }
 
-        Foxify.pageId = '1721380459eLXgz'
-        Foxify.default = false
-    </script>
-    <div class="f-app f:content">
+        Foxify.pageId = '1721380459eLXgz';
+        Foxify.default = false;
+      </script>
+    
+<div class="f-app f:content">
 <style data-foxify-editor="foxify-custom-fonts">
   @font-face {
     font-family: BrownProTT-Regular-1707112782cX7wj;
@@ -157,35 +169,35 @@ a:link {
       %}
 
 </div>
-    {% schema %}
-        {
-            "name": "Foxify main content",
-            "class": "foxify-main f-app",
-            "settings": [
-                {
-                "type": "header",
-                "content": "Customize section",
-                "info": "Go to [Foxify app](https://app.foxify.io/editor?id=1721380459eLXgz&type=REGULAR) to edit this section."
-                }
-            ],
-            "locales": {
-  "en": {
-    "f-richtext-1721380440c7qlZ-text_html": "visual identity standards",
-    "f-heading-1721380440Ff5H0-text_html": "brand guidelines",
-    "f-richtext-1721380440gG8Xn-text_html": "This document contains the rules of the communication system. Follow these rules strictly to maintain brand consistency.",
-    "f-button-1721380440al7nz-button_label_html": "get started",
-    "f-button-1721380440MwLDO-button_label_html": "identity",
-    "f-button-1721380440TSkY7-button_label_html": "design",
-    "f-button-1721380440FN32m-button_label_html": "visual",
-    "f-heading-1721380440Cr0Cq-text_html": "DAM",
-    "f-richtext-1721380440dUA60-text_html": "A Digital Asset Management (DAM) system provide several benefits for our team to deal with a large number of digital assets, such as images, videos, documents, and other multimedia content.<br /><br />In the spirit of enhancing our ability to manage, collaborate on, and derive value from our digital assets more effectively, we centralize all our assets in one location.",
-    "f-list-items-1721380440WBnn7-items-Item-1-title_html": "DAM access",
-    "f-list-items-1721380440WBnn7-items-Item-3-title_html": "SHOPIFY access",
-    "f-content-tab-1721380440vE71Z-title_html": "DIGITAL ASSET MANAGEMENT",
-    "f-button-1721380582EMdWP-button_label_html": "do not",
-    "f-button-1721380583jND2u-button_label_html": "resources"
+{% schema %}
+  {
+  "name": "Foxify main content",
+  "class": "foxify-main f-app",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Customize main content",
+      "info": "Go to [Foxify app](https://admin.shopify.com/store/the-future-rocks/apps/foxify-builder/editor?id=1721380459eLXgz&type=regular) to edit this section."
+    }
+  ],
+  "locales": {
+    "en": {
+      "f-richtext-1721380440c7qlZ-text_html": "visual identity standards",
+      "f-heading-1721380440Ff5H0-text_html": "brand guidelines",
+      "f-richtext-1721380440gG8Xn-text_html": "This document contains the rules of the communication system. Follow these rules strictly to maintain brand consistency.",
+      "f-button-1721380440al7nz-button_label_html": "get started",
+      "f-button-1721380440MwLDO-button_label_html": "identity",
+      "f-button-1721380440TSkY7-button_label_html": "design",
+      "f-button-1721380440FN32m-button_label_html": "visual",
+      "f-heading-1721380440Cr0Cq-text_html": "DAM",
+      "f-richtext-1721380440dUA60-text_html": "A Digital Asset Management (DAM) system provide several benefits for our team to deal with a large number of digital assets, such as images, videos, documents, and other multimedia content.<br /><br />In the spirit of enhancing our ability to manage, collaborate on, and derive value from our digital assets more effectively, we centralize all our assets in one location.",
+      "f-list-items-1721380440WBnn7-items-Item-1-title_html": "DAM access",
+      "f-list-items-1721380440WBnn7-items-Item-3-title_html": "SHOPIFY access",
+      "f-content-tab-1721380440vE71Z-title_html": "DIGITAL ASSET MANAGEMENT",
+      "f-button-1721380582EMdWP-button_label_html": "do not",
+      "f-button-1721380583jND2u-button_label_html": "resources"
+    }
   }
 }
-        }
-    {% endschema %}
+{% endschema %}
   

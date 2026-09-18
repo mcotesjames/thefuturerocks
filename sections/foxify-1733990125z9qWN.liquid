@@ -1,31 +1,44 @@
-    {% liquid
-      assign locales = shop.metafields.foxify.locales.value
-      assign current_locale = request.locale.iso_code
-      assign primary_locale = current_locale
-      for locale in shop.published_locales
-        if locale.primary
-          assign primary_locale = locale.iso_code
-          break
-        endif
-      endfor
-      assign translation = locales[current_locale] | default: locales[primary_locale]
-    %}
-    <script>
-      window.Foxify = window.Foxify || {}
-      Foxify.ThemeStyles = {
-        product: "https:{{ 'foxify-product.css' | asset_url }}",
-        swiper: "https:{{ 'foxify-swiper.css' | asset_url }}",
-      }
 
-      Foxify.ThemeScripts = {
-        productModel: "https:{{ 'foxify-product-model.js' | asset_url }}",
-        productMedia: "https:{{ 'foxify-media-gallery.js' | asset_url }}",
-        variantPicker: "https:{{ 'foxify-variant-picker.js' | asset_url }}"
-      }
+{% liquid
+  
+    assign locales = shop.metafields.foxify.locales.value
+    assign current_locale = request.locale.iso_code
+    assign primary_locale = current_locale
+    for locale in shop.published_locales
+    if locale.primary
+        assign primary_locale = locale.iso_code
+        break
+    endif
+    endfor
+    assign translation = locales[current_locale] | default: locales[primary_locale]
 
-      Foxify.pageId = '1733990125z9qWN'
-    </script>
-    <div class="f-app f:content">
+    assign theme_settings = shop.metafields.foxify.theme_settings.value
+    assign productCard = theme_settings.productCard
+  
+  
+      assign foxifyCustomCss = shop.metafields.foxify['675a96eddac076eb52d6de2b'].value.customCss
+      assign foxifyCustomJs = shop.metafields.foxify['675a96eddac076eb52d6de2b'].value.customJs
+    
+%}
+
+      <script>
+        window.Foxify = window.Foxify || {}
+        Foxify.ThemeStyles = {
+          product: "https:{{ 'foxify-product.css' | asset_url }}",
+          swiper: "https:{{ 'foxify-swiper.css' | asset_url }}",
+        }
+
+        Foxify.ThemeScripts = {
+          productModel: "https:{{ 'foxify-product-model.js' | asset_url }}",
+          productMedia: "https:{{ 'foxify-media-gallery.js' | asset_url }}",
+          variantPicker: "https:{{ 'foxify-variant-picker.js' | asset_url }}"
+        }
+
+        Foxify.pageId = '1733990125z9qWN';
+        Foxify.default = false;
+      </script>
+    
+<div class="f-app f:content">
 <style data-foxify-editor="foxify-custom-fonts">
   @font-face {
     font-family: BrownProTT-Regular-1707112782cX7wj;
@@ -69,73 +82,74 @@
       %}
 
 </div>
-    {% schema %}
-      {
-        "name": "[Foxify] SS24 KV",
-        "class": "foxify-section f-app",
-        "settings": [{"type":"header","content":"Customize section","info":"Go to [Foxify app](https://app.foxify.io/editor?id=1733990125z9qWN&type=SECTION) to edit this section."}],
-        "locales": {
-  "en": {
-    "f-richtext-1733990526gFHTS-text_html": "<p><span style=\"color: #ffffff;\">New arrival</span></p>",
-    "f-heading-1733990526wa6IT-text_html": "HOLIDAY GIFT GUIDE",
-    "f-richtext-17339905263vBj6-text_html": "<p><span style=\"color: #1b2b27;\">Add sparkle to your celebrations with our curated Christmas guide.</span></p>",
-    "f-button-17339905264jVIL-button_label_html": "Shop now",
-    "f-button-1733990526h8zig-button_label_html": "Learn more",
-    "f-richtext-1733990526PMrho-text_html": "<p><span style=\"color: #ffffff;\">New arrival</span></p>",
-    "f-heading-1733990526r8Jga-text_html": "BUY 1 GET 20% OFF, BUY 2 GET 30% OFF",
-    "f-richtext-1733990526uHUdg-text_html": "<p><span style=\"color: #ffffff;\">Explore our most-loved, elegant staples.</span></p>",
-    "f-button-1733990526XvbIU-button_label_html": "Shop now",
-    "f-button-1733990526baboO-button_label_html": "Learn more",
-    "f-richtext-17339905263Ulec-text_html": "<p><span style=\"color: #ffffff;\">New arrival</span></p>",
-    "f-heading-17339905264pcC0-text_html": "NEW ARRIVALS",
-    "f-richtext-1733990526vSo6O-text_html": "<p><span style=\"color: #ffffff;\">Upgrade your jewelry wardrobe with our latest addition.</span></p>",
-    "f-button-17339905264YsvY-button_label_html": "Shop now",
-    "f-button-1733990526M6rT2-button_label_html": "Learn more",
-    "f-richtext-1733991291c5tBG-text_html": "<p>New arrival</p>",
-    "f-heading-17339912915lbkf-text_html": "BUY 1 GET 20% OFF,<br>BUY 2 GET 30% OFF",
-    "f-richtext-1733991291DqqyA-text_html": "<p>Explore our most-loved, elegant staples.</p>",
-    "f-button-1733991291k4hdT-button_label_html": "Shop now",
-    "f-richtext-17339912913wmyN-text_html": "<p><span style=\"color: #000000;\">New arrival</span></p>",
-    "f-heading-1733991291rb1g1-text_html": "HOLIDAY GIFT GUIDE",
-    "f-richtext-1733991291FqjGN-text_html": "<p>Add sparkle to your celebrations with<br />our curated Christmas guide.</p>",
-    "f-button-1733991291SDals-button_label_html": "Shop now",
-    "f-richtext-1733991291AgoWd-text_html": "<p><span style=\"color: #000000;\">New arrival</span></p>",
-    "f-heading-1733991291pe7dX-text_html": "NEW ARRIVALS",
-    "f-richtext-1733991291mLdIi-text_html": "<p>Upgrade your jewelry wardrobe<br />with our latest addition.</p>",
-    "f-button-1733991291z4Zre-button_label_html": "SEE ALL",
-    "f-heading-1733992152DbUEl-text_html": "Free Shipping",
-    "f-richtext-17339921523IHbG-text_html": "<p>Free Shipping for orders over £130</p>",
-    "f-heading-17339921526Ax63-text_html": "Money Guarantee",
-    "f-richtext-1733992152Mxh2b-text_html": "<p>Within 30 days for an exchange.</p>\n",
-    "f-heading-1733992152VYM0V-text_html": "Online Support",
-    "f-richtext-1733992152Pvlxt-text_html": "<p>24 hours a day, 7 days a week</p>\n",
-    "f-heading-1733992152vzaFI-text_html": "Flexible Payment",
-    "f-richtext-17339921528UNd2-text_html": "<p>Pay with Multiple Credit Cards</p>\n",
-    "f-button-17339978116toqn-button_label_html": "OUR STORY",
-    "f-richtext-1734332070B6lYP-text_html": "<strong>FREE SHIPPING</strong> on all orders over $100",
-    "f-richtext-1734332070dZs1S-text_html": "<strong>EASY RETURNS</strong> 30-day postage paid returns",
-    "f-richtext-1734332070CI9rT-text_html": "<strong>10% OFF</strong> your first order | Use code: FIRST10",
-    "f-button-1734339281pgpoQ-button_label_html": "All Jewelry",
-    "f-button-17343393120J4YU-button_label_html": "Rings",
-    "f-button-1734339314Tj9Gg-button_label_html": "Earrings",
-    "f-button-1734339331m60Xk-button_label_html": "Necklaces",
-    "f-button-1734339332VkoBs-button_label_html": "Bracelets",
-    "f-button-1734339332BqFeO-button_label_html": "Pendants",
-    "f-heading-1734343449rJiss-text_html": "Store",
-    "f-richtext-1734343449Clt3T-text_html": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
-    "f-button-1734343449KumTf-button_label_html": "Shop now"
-  }
-},
-        "blocks": [
-          {
-            "type": "@app"
-          }
-        ],          
-        "presets": [
-          {
-            "name": "[Foxify] SS24 KV"
-          }
-        ]  
-      }
-    {% endschema %}
+{% schema %}
+  {
+  "name": "[Foxify] SS24 KV",
+  "class": "foxify-section f-app",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Customize section",
+      "info": "Go to [Foxify app](https://admin.shopify.com/store/the-future-rocks/apps/foxify-builder/editor?id=1733990125z9qWN&type=section) to edit this section."
+    }
+  ],
+  "locales": {
+    "en": {
+      "f-richtext-1733990526gFHTS-text_html": "<p><span style=\"color: #ffffff;\">New arrival</span></p>",
+      "f-heading-1733990526wa6IT-text_html": "HOLIDAY GIFT GUIDE",
+      "f-richtext-17339905263vBj6-text_html": "<p><span style=\"color: #1b2b27;\">Add sparkle to your celebrations with our curated Christmas guide.</span></p>",
+      "f-button-17339905264jVIL-button_label_html": "Shop now",
+      "f-button-1733990526h8zig-button_label_html": "Learn more",
+      "f-richtext-1733990526PMrho-text_html": "<p><span style=\"color: #ffffff;\">New arrival</span></p>",
+      "f-heading-1733990526r8Jga-text_html": "BUY 1 GET 20% OFF, BUY 2 GET 30% OFF",
+      "f-richtext-1733990526uHUdg-text_html": "<p><span style=\"color: #ffffff;\">Explore our most-loved, elegant staples.</span></p>",
+      "f-button-1733990526XvbIU-button_label_html": "Shop now",
+      "f-button-1733990526baboO-button_label_html": "Learn more",
+      "f-richtext-17339905263Ulec-text_html": "<p><span style=\"color: #ffffff;\">New arrival</span></p>",
+      "f-heading-17339905264pcC0-text_html": "NEW ARRIVALS",
+      "f-richtext-1733990526vSo6O-text_html": "<p><span style=\"color: #ffffff;\">Upgrade your jewelry wardrobe with our latest addition.</span></p>",
+      "f-button-17339905264YsvY-button_label_html": "Shop now",
+      "f-button-1733990526M6rT2-button_label_html": "Learn more",
+      "f-richtext-1733991291c5tBG-text_html": "<p>New arrival</p>",
+      "f-heading-17339912915lbkf-text_html": "BUY 1 GET 20% OFF,<br>BUY 2 GET 30% OFF",
+      "f-richtext-1733991291DqqyA-text_html": "<p>Explore our most-loved, elegant staples.</p>",
+      "f-button-1733991291k4hdT-button_label_html": "Shop now",
+      "f-richtext-17339912913wmyN-text_html": "<p><span style=\"color: #000000;\">New arrival</span></p>",
+      "f-heading-1733991291rb1g1-text_html": "HOLIDAY GIFT GUIDE",
+      "f-richtext-1733991291FqjGN-text_html": "<p>Add sparkle to your celebrations with<br />our curated Christmas guide.</p>",
+      "f-button-1733991291SDals-button_label_html": "Shop now",
+      "f-richtext-1733991291AgoWd-text_html": "<p><span style=\"color: #000000;\">New arrival</span></p>",
+      "f-heading-1733991291pe7dX-text_html": "NEW ARRIVALS",
+      "f-richtext-1733991291mLdIi-text_html": "<p>Upgrade your jewelry wardrobe<br />with our latest addition.</p>",
+      "f-button-1733991291z4Zre-button_label_html": "SEE ALL",
+      "f-heading-1733992152DbUEl-text_html": "Free Shipping",
+      "f-richtext-17339921523IHbG-text_html": "<p>Free Shipping for orders over £130</p>",
+      "f-heading-17339921526Ax63-text_html": "Money Guarantee",
+      "f-richtext-1733992152Mxh2b-text_html": "<p>Within 30 days for an exchange.</p>\n",
+      "f-heading-1733992152VYM0V-text_html": "Online Support",
+      "f-richtext-1733992152Pvlxt-text_html": "<p>24 hours a day, 7 days a week</p>\n",
+      "f-heading-1733992152vzaFI-text_html": "Flexible Payment",
+      "f-richtext-17339921528UNd2-text_html": "<p>Pay with Multiple Credit Cards</p>\n",
+      "f-button-17339978116toqn-button_label_html": "OUR STORY",
+      "f-richtext-1734332070B6lYP-text_html": "<strong>FREE SHIPPING</strong> on all orders over $100",
+      "f-richtext-1734332070dZs1S-text_html": "<strong>EASY RETURNS</strong> 30-day postage paid returns",
+      "f-richtext-1734332070CI9rT-text_html": "<strong>10% OFF</strong> your first order | Use code: FIRST10",
+      "f-button-1734339281pgpoQ-button_label_html": "All Jewelry",
+      "f-button-17343393120J4YU-button_label_html": "Rings",
+      "f-button-1734339314Tj9Gg-button_label_html": "Earrings",
+      "f-button-1734339331m60Xk-button_label_html": "Necklaces",
+      "f-button-1734339332VkoBs-button_label_html": "Bracelets",
+      "f-button-1734339332BqFeO-button_label_html": "Pendants",
+      "f-heading-1734343449rJiss-text_html": "Store",
+      "f-richtext-1734343449Clt3T-text_html": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+      "f-button-1734343449KumTf-button_label_html": "Shop now"
+    }
+  },
+  "presets": [
+    {
+      "name": "[Foxify] SS24 KV"
+    }
+  ]
+}
+{% endschema %}
   

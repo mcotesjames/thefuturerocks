@@ -1,31 +1,44 @@
-    {% liquid
-      assign locales = shop.metafields.foxify.locales.value
-      assign current_locale = request.locale.iso_code
-      assign primary_locale = current_locale
-      for locale in shop.published_locales
-        if locale.primary
-          assign primary_locale = locale.iso_code
-          break
-        endif
-      endfor
-      assign translation = locales[current_locale] | default: locales[primary_locale]
-    %}
-    <script>
-      window.Foxify = window.Foxify || {}
-      Foxify.ThemeStyles = {
-        product: "https:{{ 'foxify-product.css' | asset_url }}",
-        swiper: "https:{{ 'foxify-swiper.css' | asset_url }}",
-      }
 
-      Foxify.ThemeScripts = {
-        productModel: "https:{{ 'foxify-product-model.js' | asset_url }}",
-        productMedia: "https:{{ 'foxify-media-gallery.js' | asset_url }}",
-        variantPicker: "https:{{ 'foxify-variant-picker.js' | asset_url }}"
-      }
+{% liquid
+  
+    assign locales = shop.metafields.foxify.locales.value
+    assign current_locale = request.locale.iso_code
+    assign primary_locale = current_locale
+    for locale in shop.published_locales
+    if locale.primary
+        assign primary_locale = locale.iso_code
+        break
+    endif
+    endfor
+    assign translation = locales[current_locale] | default: locales[primary_locale]
 
-      Foxify.pageId = '1733278784r3kkJ'
-    </script>
-    <div class="f-app f:content">
+    assign theme_settings = shop.metafields.foxify.theme_settings.value
+    assign productCard = theme_settings.productCard
+  
+  
+      assign foxifyCustomCss = shop.metafields.foxify['674fbc3fe6a7006a67c511c6'].value.customCss
+      assign foxifyCustomJs = shop.metafields.foxify['674fbc3fe6a7006a67c511c6'].value.customJs
+    
+%}
+
+      <script>
+        window.Foxify = window.Foxify || {}
+        Foxify.ThemeStyles = {
+          product: "https:{{ 'foxify-product.css' | asset_url }}",
+          swiper: "https:{{ 'foxify-swiper.css' | asset_url }}",
+        }
+
+        Foxify.ThemeScripts = {
+          productModel: "https:{{ 'foxify-product-model.js' | asset_url }}",
+          productMedia: "https:{{ 'foxify-media-gallery.js' | asset_url }}",
+          variantPicker: "https:{{ 'foxify-variant-picker.js' | asset_url }}"
+        }
+
+        Foxify.pageId = '1733278784r3kkJ';
+        Foxify.default = false;
+      </script>
+    
+<div class="f-app f:content">
 <style data-foxify-editor="foxify-custom-fonts">
   @font-face {
     font-family: BrownProTT-Bold-17071127825LR9n;
@@ -57,36 +70,37 @@
       %}
 
 </div>
-    {% schema %}
-      {
-        "name": "[Foxify] Holiday 24 KV",
-        "class": "foxify-section f-app",
-        "settings": [{"type":"header","content":"Customize section","info":"Go to [Foxify app](https://app.foxify.io/editor?id=1733278784r3kkJ&type=SECTION) to edit this section."}],
-        "locales": {
-  "en": {
-    "f-heading-1733278773YCBfc-text_html": "THE RING REIMAGINED",
-    "f-richtext-1733278773CU1k9-text_html": "Iconic vision. Future-ready.",
-    "f-button-1733278773lZYAM-button_label_html": "Shop now",
-    "f-button-1733278773aDpYV-button_label_html": "shop now",
-    "f-button-1733278773ikh56-button_label_html": "shop now",
-    "f-heading-1733278773R8tQo-text_html": "New Arrivals",
-    "f-richtext-17332787739WWMj-text_html": "Upgrade your jewelry wardrobe with our latest addition.",
-    "f-button-1733278773sbwNh-button_label_html": "SEE ALL",
-    "f-heading-1733278773TMK5J-text_html": "BESTSELLERS",
-    "f-richtext-1733278773lvNfS-text_html": "Explore our most-loved, elegant staples.",
-    "f-button-1733278773qyKK7-button_label_html": "Shop now"
-  }
-},
-        "blocks": [
-          {
-            "type": "@app"
-          }
-        ],          
-        "presets": [
-          {
-            "name": "[Foxify] Holiday 24 KV"
-          }
-        ]  
-      }
-    {% endschema %}
+{% schema %}
+  {
+  "name": "[Foxify] Holiday 24 KV",
+  "class": "foxify-section f-app",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Customize section",
+      "info": "Go to [Foxify app](https://admin.shopify.com/store/the-future-rocks/apps/foxify-builder/editor?id=1733278784r3kkJ&type=section) to edit this section."
+    }
+  ],
+  "locales": {
+    "en": {
+      "f-heading-1733278773YCBfc-text_html": "THE RING REIMAGINED",
+      "f-richtext-1733278773CU1k9-text_html": "Iconic vision. Future-ready.",
+      "f-button-1733278773lZYAM-button_label_html": "Shop now",
+      "f-button-1733278773aDpYV-button_label_html": "shop now",
+      "f-button-1733278773ikh56-button_label_html": "shop now",
+      "f-heading-1733278773R8tQo-text_html": "New Arrivals",
+      "f-richtext-17332787739WWMj-text_html": "Upgrade your jewelry wardrobe with our latest addition.",
+      "f-button-1733278773sbwNh-button_label_html": "SEE ALL",
+      "f-heading-1733278773TMK5J-text_html": "BESTSELLERS",
+      "f-richtext-1733278773lvNfS-text_html": "Explore our most-loved, elegant staples.",
+      "f-button-1733278773qyKK7-button_label_html": "Shop now"
+    }
+  },
+  "presets": [
+    {
+      "name": "[Foxify] Holiday 24 KV"
+    }
+  ]
+}
+{% endschema %}
   

@@ -1,32 +1,44 @@
-    {% liquid
-        assign locales = shop.metafields.foxify.locales.value
-        assign current_locale = request.locale.iso_code
-        assign primary_locale = current_locale
-        for locale in shop.published_locales
-        if locale.primary
-            assign primary_locale = locale.iso_code
-            break
-        endif
-        endfor
-        assign translation = locales[current_locale] | default: locales[primary_locale]
-    %}
-    <script>
+
+{% liquid
+  
+    assign locales = shop.metafields.foxify.locales.value
+    assign current_locale = request.locale.iso_code
+    assign primary_locale = current_locale
+    for locale in shop.published_locales
+    if locale.primary
+        assign primary_locale = locale.iso_code
+        break
+    endif
+    endfor
+    assign translation = locales[current_locale] | default: locales[primary_locale]
+
+    assign theme_settings = shop.metafields.foxify.theme_settings.value
+    assign productCard = theme_settings.productCard
+  
+  
+      assign foxifyCustomCss = shop.metafields.foxify['66baf520cae31dd3e19c956e'].value.customCss
+      assign foxifyCustomJs = shop.metafields.foxify['66baf520cae31dd3e19c956e'].value.customJs
+    
+%}
+
+      <script>
         window.Foxify = window.Foxify || {}
         Foxify.ThemeStyles = {
-            product: "https:{{ 'foxify-product.css' | asset_url }}",
-            swiper: "https:{{ 'foxify-swiper.css' | asset_url }}",
+          product: "https:{{ 'foxify-product.css' | asset_url }}",
+          swiper: "https:{{ 'foxify-swiper.css' | asset_url }}",
         }
 
         Foxify.ThemeScripts = {
-            productModel: "https:{{ 'foxify-product-model.js' | asset_url }}",
-            productMedia: "https:{{ 'foxify-media-gallery.js' | asset_url }}",
-            variantPicker: "https:{{ 'foxify-variant-picker.js' | asset_url }}"
+          productModel: "https:{{ 'foxify-product-model.js' | asset_url }}",
+          productMedia: "https:{{ 'foxify-media-gallery.js' | asset_url }}",
+          variantPicker: "https:{{ 'foxify-variant-picker.js' | asset_url }}"
         }
 
-        Foxify.pageId = '1723528481rKp62'
-        Foxify.default = false
-    </script>
-    <div class="f-app f:content">
+        Foxify.pageId = '1723528481rKp62';
+        Foxify.default = false;
+      </script>
+    
+<div class="f-app f:content">
 <style data-foxify-editor="foxify-custom-fonts">
   @font-face {
     font-family: BrownProTT-Bold-17071127825LR9n;
@@ -83,29 +95,34 @@
       %}
 
 </div>
-    {% schema %}
-        {
-            "name": "Foxify main content",
-            "class": "foxify-main f-app",
-            "settings": [
-                {
-                "type": "header",
-                "content": "Customize section",
-                "info": "Go to [Foxify app](https://app.foxify.io/editor?id=1723528481rKp62&type=SECTION) to edit this section."
-                }
-            ],
-            "locales": {
-  "en": {
-    "f-heading-1721628061QtNEL-text_html": "one. five. four.",
-    "f-richtext-1721628064IOTcg-text_html": "Each pair of earrings summons 154 hours of meticulous craftsmanship. We painstakingly cut and polish a 60-carat lab-grown sapphire into two halo loops totaling 9-carat, then perfect every facet and angle to ensure maximum shine and light reflection, achieving the pinnacle of symmetry and smoothness.",
-    "f-heading-1721628092U5b2q-text_html": "beyond. treasure.",
-    "f-richtext-1721631941IvUXh-text_html": "Discover a pair of earrings that go beyond the ordinary - a timeless masterpiece. Each piece showcases a rare blend of intricately detailed halo design and the dazzling brilliance of curated lab-grown diamonds. Embrace the allure of these exceptional gems and experience the unmatched beauty of a treasure destined to leave a lasting impression.",
-    "f-heading-1721892662TebXB-text_html": "beyond. treasure.",
-    "f-richtext-1721892662zoZYe-text_html": "Discover a pair of earrings that go beyond the ordinary - a timeless masterpiece. Each piece showcases a rare blend of intricately detailed halo design and the dazzling brilliance of curated lab-grown diamonds. Embrace the allure of these exceptional gems and experience the unmatched beauty of a treasure destined to leave a lasting impression.",
-    "f-heading-1721892662Ze3BQ-text_html": "one. five. four.",
-    "f-richtext-1721892662ByCFX-text_html": "Each pair of earrings summons 154 hours of meticulous craftsmanship. We painstakingly cut and polish a 60-carat lab-grown sapphire into two halo loops totaling 9-carat, then perfect every facet and angle to ensure maximum shine and light reflection, achieving the pinnacle of symmetry and smoothness."
-  }
+{% schema %}
+  {
+  "name": "[Foxify] The Earrings",
+  "class": "foxify-section f-app",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Customize section",
+      "info": "Go to [Foxify app](https://admin.shopify.com/store/the-future-rocks/apps/foxify-builder/editor?id=1723528481rKp62&type=section) to edit this section."
+    }
+  ],
+  "locales": {
+    "en": {
+      "f-heading-1721628061QtNEL-text_html": "one. five. four.",
+      "f-richtext-1721628064IOTcg-text_html": "Each pair of earrings summons 154 hours of meticulous craftsmanship. We painstakingly cut and polish a 60-carat lab-grown sapphire into two halo loops totaling 9-carat, then perfect every facet and angle to ensure maximum shine and light reflection, achieving the pinnacle of symmetry and smoothness.",
+      "f-heading-1721628092U5b2q-text_html": "beyond. treasure.",
+      "f-richtext-1721631941IvUXh-text_html": "Discover a pair of earrings that go beyond the ordinary - a timeless masterpiece. Each piece showcases a rare blend of intricately detailed halo design and the dazzling brilliance of curated lab-grown diamonds. Embrace the allure of these exceptional gems and experience the unmatched beauty of a treasure destined to leave a lasting impression.",
+      "f-heading-1721892662TebXB-text_html": "beyond. treasure.",
+      "f-richtext-1721892662zoZYe-text_html": "Discover a pair of earrings that go beyond the ordinary - a timeless masterpiece. Each piece showcases a rare blend of intricately detailed halo design and the dazzling brilliance of curated lab-grown diamonds. Embrace the allure of these exceptional gems and experience the unmatched beauty of a treasure destined to leave a lasting impression.",
+      "f-heading-1721892662Ze3BQ-text_html": "one. five. four.",
+      "f-richtext-1721892662ByCFX-text_html": "Each pair of earrings summons 154 hours of meticulous craftsmanship. We painstakingly cut and polish a 60-carat lab-grown sapphire into two halo loops totaling 9-carat, then perfect every facet and angle to ensure maximum shine and light reflection, achieving the pinnacle of symmetry and smoothness."
+    }
+  },
+  "presets": [
+    {
+      "name": "[Foxify] The Earrings"
+    }
+  ]
 }
-        }
-    {% endschema %}
+{% endschema %}
   

@@ -1,31 +1,44 @@
-    {% liquid
-      assign locales = shop.metafields.foxify.locales.value
-      assign current_locale = request.locale.iso_code
-      assign primary_locale = current_locale
-      for locale in shop.published_locales
-        if locale.primary
-          assign primary_locale = locale.iso_code
-          break
-        endif
-      endfor
-      assign translation = locales[current_locale] | default: locales[primary_locale]
-    %}
-    <script>
-      window.Foxify = window.Foxify || {}
-      Foxify.ThemeStyles = {
-        product: "https:{{ 'foxify-product.css' | asset_url }}",
-        swiper: "https:{{ 'foxify-swiper.css' | asset_url }}",
-      }
 
-      Foxify.ThemeScripts = {
-        productModel: "https:{{ 'foxify-product-model.js' | asset_url }}",
-        productMedia: "https:{{ 'foxify-media-gallery.js' | asset_url }}",
-        variantPicker: "https:{{ 'foxify-variant-picker.js' | asset_url }}"
-      }
+{% liquid
+  
+    assign locales = shop.metafields.foxify.locales.value
+    assign current_locale = request.locale.iso_code
+    assign primary_locale = current_locale
+    for locale in shop.published_locales
+    if locale.primary
+        assign primary_locale = locale.iso_code
+        break
+    endif
+    endfor
+    assign translation = locales[current_locale] | default: locales[primary_locale]
 
-      Foxify.pageId = '1732096642MOgwZ'
-    </script>
-    <div class="f-app f:content">
+    assign theme_settings = shop.metafields.foxify.theme_settings.value
+    assign productCard = theme_settings.productCard
+  
+  
+      assign foxifyCustomCss = shop.metafields.foxify['673db282250f6d5be15b618e'].value.customCss
+      assign foxifyCustomJs = shop.metafields.foxify['673db282250f6d5be15b618e'].value.customJs
+    
+%}
+
+      <script>
+        window.Foxify = window.Foxify || {}
+        Foxify.ThemeStyles = {
+          product: "https:{{ 'foxify-product.css' | asset_url }}",
+          swiper: "https:{{ 'foxify-swiper.css' | asset_url }}",
+        }
+
+        Foxify.ThemeScripts = {
+          productModel: "https:{{ 'foxify-product-model.js' | asset_url }}",
+          productMedia: "https:{{ 'foxify-media-gallery.js' | asset_url }}",
+          variantPicker: "https:{{ 'foxify-variant-picker.js' | asset_url }}"
+        }
+
+        Foxify.pageId = '1732096642MOgwZ';
+        Foxify.default = false;
+      </script>
+    
+<div class="f-app f:content">
 <style data-foxify-editor="foxify-custom-fonts">
   @font-face {
     font-family: BrownProTT-Regular-1707112782cX7wj;
@@ -44,28 +57,29 @@
       %}
 
 </div>
-    {% schema %}
-      {
-        "name": "[Foxify] 2 Column L Text",
-        "class": "foxify-section f-app",
-        "settings": [{"type":"header","content":"Customize section","info":"Go to [Foxify app](https://app.foxify.io/editor?id=1732096642MOgwZ&type=SECTION) to edit this section."}],
-        "locales": {
-  "en": {
-    "f-heading-1732096614tr8VK-text_html": "Party Moments",
-    "f-richtext-1732096614kNMnx-text_html": "Gift the brilliance of sparkles that elevate every celebration with our chic jewelry.",
-    "f-button-17320966143tb7k-button_label_html": "Button label"
-  }
-},
-        "blocks": [
-          {
-            "type": "@app"
-          }
-        ],          
-        "presets": [
-          {
-            "name": "[Foxify] 2 Column L Text"
-          }
-        ]  
-      }
-    {% endschema %}
+{% schema %}
+  {
+  "name": "[Foxify] 2 Column L Text",
+  "class": "foxify-section f-app",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Customize section",
+      "info": "Go to [Foxify app](https://admin.shopify.com/store/the-future-rocks/apps/foxify-builder/editor?id=1732096642MOgwZ&type=section) to edit this section."
+    }
+  ],
+  "locales": {
+    "en": {
+      "f-heading-1732096614tr8VK-text_html": "Party Moments",
+      "f-richtext-1732096614kNMnx-text_html": "Gift the brilliance of sparkles that elevate every celebration with our chic jewelry.",
+      "f-button-17320966143tb7k-button_label_html": "Button label"
+    }
+  },
+  "presets": [
+    {
+      "name": "[Foxify] 2 Column L Text"
+    }
+  ]
+}
+{% endschema %}
   

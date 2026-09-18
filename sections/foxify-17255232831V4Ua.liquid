@@ -1,31 +1,44 @@
-    {% liquid
-      assign locales = shop.metafields.foxify.locales.value
-      assign current_locale = request.locale.iso_code
-      assign primary_locale = current_locale
-      for locale in shop.published_locales
-        if locale.primary
-          assign primary_locale = locale.iso_code
-          break
-        endif
-      endfor
-      assign translation = locales[current_locale] | default: locales[primary_locale]
-    %}
-    <script>
-      window.Foxify = window.Foxify || {}
-      Foxify.ThemeStyles = {
-        product: "https:{{ 'foxify-product.css' | asset_url }}",
-        swiper: "https:{{ 'foxify-swiper.css' | asset_url }}",
-      }
 
-      Foxify.ThemeScripts = {
-        productModel: "https:{{ 'foxify-product-model.js' | asset_url }}",
-        productMedia: "https:{{ 'foxify-media-gallery.js' | asset_url }}",
-        variantPicker: "https:{{ 'foxify-variant-picker.js' | asset_url }}"
-      }
+{% liquid
+  
+    assign locales = shop.metafields.foxify.locales.value
+    assign current_locale = request.locale.iso_code
+    assign primary_locale = current_locale
+    for locale in shop.published_locales
+    if locale.primary
+        assign primary_locale = locale.iso_code
+        break
+    endif
+    endfor
+    assign translation = locales[current_locale] | default: locales[primary_locale]
 
-      Foxify.pageId = '17255232831V4Ua'
-    </script>
-    <div class="f-app f:content">
+    assign theme_settings = shop.metafields.foxify.theme_settings.value
+    assign productCard = theme_settings.productCard
+  
+  
+      assign foxifyCustomCss = shop.metafields.foxify['66d96552a4d5223d37bd8e14'].value.customCss
+      assign foxifyCustomJs = shop.metafields.foxify['66d96552a4d5223d37bd8e14'].value.customJs
+    
+%}
+
+      <script>
+        window.Foxify = window.Foxify || {}
+        Foxify.ThemeStyles = {
+          product: "https:{{ 'foxify-product.css' | asset_url }}",
+          swiper: "https:{{ 'foxify-swiper.css' | asset_url }}",
+        }
+
+        Foxify.ThemeScripts = {
+          productModel: "https:{{ 'foxify-product-model.js' | asset_url }}",
+          productMedia: "https:{{ 'foxify-media-gallery.js' | asset_url }}",
+          variantPicker: "https:{{ 'foxify-variant-picker.js' | asset_url }}"
+        }
+
+        Foxify.pageId = '17255232831V4Ua';
+        Foxify.default = false;
+      </script>
+    
+<div class="f-app f:content">
 {{ 'foxify-17255232831V4Ua.css' | asset_url | stylesheet_tag }}
 <style>*{
   margin:0;
@@ -136,26 +149,27 @@ bf-main{
       %}
 
 </div>
-    {% schema %}
-      {
-        "name": "[Foxify] A/W 2024 Black ",
-        "class": "foxify-section f-app",
-        "settings": [{"type":"header","content":"Customize section","info":"Go to [Foxify app](https://app.foxify.io/editor?id=17255232831V4Ua&type=SECTION) to edit this section."}],
-        "locales": {
-  "en": {
-    "f-button-1725610027QxLDO-button_label_html": " SHOP NOW"
-  }
-},
-        "blocks": [
-          {
-            "type": "@app"
-          }
-        ],          
-        "presets": [
-          {
-            "name": "[Foxify] A/W 2024 Black "
-          }
-        ]  
-      }
-    {% endschema %}
+{% schema %}
+  {
+  "name": "[Foxify] A/W 2024 Black ",
+  "class": "foxify-section f-app",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Customize section",
+      "info": "Go to [Foxify app](https://admin.shopify.com/store/the-future-rocks/apps/foxify-builder/editor?id=17255232831V4Ua&type=section) to edit this section."
+    }
+  ],
+  "locales": {
+    "en": {
+      "f-button-1725610027QxLDO-button_label_html": " SHOP NOW"
+    }
+  },
+  "presets": [
+    {
+      "name": "[Foxify] A/W 2024 Black "
+    }
+  ]
+}
+{% endschema %}
   

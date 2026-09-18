@@ -1,32 +1,44 @@
-    {% liquid
-        assign locales = shop.metafields.foxify.locales.value
-        assign current_locale = request.locale.iso_code
-        assign primary_locale = current_locale
-        for locale in shop.published_locales
-        if locale.primary
-            assign primary_locale = locale.iso_code
-            break
-        endif
-        endfor
-        assign translation = locales[current_locale] | default: locales[primary_locale]
-    %}
-    <script>
+
+{% liquid
+  
+    assign locales = shop.metafields.foxify.locales.value
+    assign current_locale = request.locale.iso_code
+    assign primary_locale = current_locale
+    for locale in shop.published_locales
+    if locale.primary
+        assign primary_locale = locale.iso_code
+        break
+    endif
+    endfor
+    assign translation = locales[current_locale] | default: locales[primary_locale]
+
+    assign theme_settings = shop.metafields.foxify.theme_settings.value
+    assign productCard = theme_settings.productCard
+  
+  
+      assign foxifyCustomCss = shop.metafields.foxify['66aaff4e4722a4016800f0ad'].value.customCss
+      assign foxifyCustomJs = shop.metafields.foxify['66aaff4e4722a4016800f0ad'].value.customJs
+    
+%}
+
+      <script>
         window.Foxify = window.Foxify || {}
         Foxify.ThemeStyles = {
-            product: "https:{{ 'foxify-product.css' | asset_url }}",
-            swiper: "https:{{ 'foxify-swiper.css' | asset_url }}",
+          product: "https:{{ 'foxify-product.css' | asset_url }}",
+          swiper: "https:{{ 'foxify-swiper.css' | asset_url }}",
         }
 
         Foxify.ThemeScripts = {
-            productModel: "https:{{ 'foxify-product-model.js' | asset_url }}",
-            productMedia: "https:{{ 'foxify-media-gallery.js' | asset_url }}",
-            variantPicker: "https:{{ 'foxify-variant-picker.js' | asset_url }}"
+          productModel: "https:{{ 'foxify-product-model.js' | asset_url }}",
+          productMedia: "https:{{ 'foxify-media-gallery.js' | asset_url }}",
+          variantPicker: "https:{{ 'foxify-variant-picker.js' | asset_url }}"
         }
 
-        Foxify.pageId = '1722482510WV1dG'
-        Foxify.default = false
-    </script>
-    <div class="f-app f:content">
+        Foxify.pageId = '1722482510WV1dG';
+        Foxify.default = false;
+      </script>
+    
+<div class="f-app f:content">
 <style data-foxify-editor="foxify-custom-fonts">
   @font-face {
     font-family: BrownProTT-Bold-17071127825LR9n;
@@ -50,24 +62,29 @@
       %}
 
 </div>
-    {% schema %}
-        {
-            "name": "Foxify main content",
-            "class": "foxify-main f-app",
-            "settings": [
-                {
-                "type": "header",
-                "content": "Customize section",
-                "info": "Go to [Foxify app](https://app.foxify.io/editor?id=1722482510WV1dG&type=SECTION) to edit this section."
-                }
-            ],
-            "locales": {
-  "en": {
-    "f-heading-1722482545kF1a7-text_html": "Last chance alert!\n",
-    "f-richtext-1722482545UVdT2-text_html": "<p>Up to 45% off select styles from Design Lab’s Zodiac collection </p>",
-    "f-button-1722482545JCQ5d-button_label_html": "Shop Now"
-  }
+{% schema %}
+  {
+  "name": "[Foxify] Zodiac Promo",
+  "class": "foxify-section f-app",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Customize section",
+      "info": "Go to [Foxify app](https://admin.shopify.com/store/the-future-rocks/apps/foxify-builder/editor?id=1722482510WV1dG&type=section) to edit this section."
+    }
+  ],
+  "locales": {
+    "en": {
+      "f-heading-1722482545kF1a7-text_html": "Last chance alert!\n",
+      "f-richtext-1722482545UVdT2-text_html": "<p>Up to 45% off select styles from Design Lab’s Zodiac collection </p>",
+      "f-button-1722482545JCQ5d-button_label_html": "Shop Now"
+    }
+  },
+  "presets": [
+    {
+      "name": "[Foxify] Zodiac Promo"
+    }
+  ]
 }
-        }
-    {% endschema %}
+{% endschema %}
   

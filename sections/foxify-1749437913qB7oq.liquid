@@ -1,3 +1,4 @@
+
 {% liquid
   
     assign locales = shop.metafields.foxify.locales.value
@@ -10,6 +11,9 @@
     endif
     endfor
     assign translation = locales[current_locale] | default: locales[primary_locale]
+
+    assign theme_settings = shop.metafields.foxify.theme_settings.value
+    assign productCard = theme_settings.productCard
   
   
       assign foxifyCustomCss = shop.metafields.foxify['68464dd96dbd31389c611696'].value.customCss
@@ -73,11 +77,6 @@
       "f-richtext-1749441655k2YqZ-text_html": "<p>Independent verification of the highest sustainability standards.</p>"
     }
   },
-  "blocks": [
-    {
-      "type": "@app"
-    }
-  ],
   "presets": [
     {
       "name": "[Foxify] Butterfly Mark"
