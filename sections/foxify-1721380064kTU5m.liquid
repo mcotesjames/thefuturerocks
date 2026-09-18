@@ -1,32 +1,44 @@
-    {% liquid
-        assign locales = shop.metafields.foxify.locales.value
-        assign current_locale = request.locale.iso_code
-        assign primary_locale = current_locale
-        for locale in shop.published_locales
-        if locale.primary
-            assign primary_locale = locale.iso_code
-            break
-        endif
-        endfor
-        assign translation = locales[current_locale] | default: locales[primary_locale]
-    %}
-    <script>
+
+{% liquid
+  
+    assign locales = shop.metafields.foxify.locales.value
+    assign current_locale = request.locale.iso_code
+    assign primary_locale = current_locale
+    for locale in shop.published_locales
+    if locale.primary
+        assign primary_locale = locale.iso_code
+        break
+    endif
+    endfor
+    assign translation = locales[current_locale] | default: locales[primary_locale]
+
+    assign theme_settings = shop.metafields.foxify.theme_settings.value
+    assign productCard = theme_settings.productCard
+  
+  
+      assign foxifyCustomCss = shop.metafields.foxify['669a2ce005ad271be096e5f4'].value.customCss
+      assign foxifyCustomJs = shop.metafields.foxify['669a2ce005ad271be096e5f4'].value.customJs
+    
+%}
+
+      <script>
         window.Foxify = window.Foxify || {}
         Foxify.ThemeStyles = {
-            product: "https:{{ 'foxify-product.css' | asset_url }}",
-            swiper: "https:{{ 'foxify-swiper.css' | asset_url }}",
+          product: "https:{{ 'foxify-product.css' | asset_url }}",
+          swiper: "https:{{ 'foxify-swiper.css' | asset_url }}",
         }
 
         Foxify.ThemeScripts = {
-            productModel: "https:{{ 'foxify-product-model.js' | asset_url }}",
-            productMedia: "https:{{ 'foxify-media-gallery.js' | asset_url }}",
-            variantPicker: "https:{{ 'foxify-variant-picker.js' | asset_url }}"
+          productModel: "https:{{ 'foxify-product-model.js' | asset_url }}",
+          productMedia: "https:{{ 'foxify-media-gallery.js' | asset_url }}",
+          variantPicker: "https:{{ 'foxify-variant-picker.js' | asset_url }}"
         }
 
-        Foxify.pageId = '1721380064kTU5m'
-        Foxify.default = false
-    </script>
-    <div class="f-app f:content">
+        Foxify.pageId = '1721380064kTU5m';
+        Foxify.default = false;
+      </script>
+    
+<div class="f-app f:content">
 <style data-foxify-editor="foxify-custom-fonts">
   @font-face {
     font-family: BrownProTT-Regular-1707112782cX7wj;
@@ -274,121 +286,121 @@ a:link {
       %}
 
 </div>
-    {% schema %}
-        {
-            "name": "Foxify main content",
-            "class": "foxify-main f-app",
-            "settings": [
-                {
-                "type": "header",
-                "content": "Customize section",
-                "info": "Go to [Foxify app](https://app.foxify.io/editor?id=1721380064kTU5m&type=REGULAR) to edit this section."
-                }
-            ],
-            "locales": {
-  "en": {
-    "f-richtext-172138005017Api-text_html": "visual identity standards",
-    "f-heading-1721380050rf9mT-text_html": "brand guidelines",
-    "f-richtext-1721380050xODwx-text_html": "This document contains the rules of the communication system. Follow these rules strictly to maintain brand consistency.",
-    "f-button-1721380050cQvQq-button_label_html": "get started",
-    "f-button-17213800502BbNq-button_label_html": "identity",
-    "f-button-17213800501WGvu-button_label_html": "design",
-    "f-button-1721380050zU5ap-button_label_html": "visual",
-    "f-heading-1721380050eTZMy-text_html": "identity",
-    "f-richtext-17213800503Tlr3-text_html": "Our identity is a statement that can accommodate different layouts. While the Line Statement is the preferred identifier, the Flex Statement is equally significant.",
-    "f-richtext-1721380050EnoWu-text_html": "DO NOT BREAK FORM: when adapting to layout scenarios, ensure the statement is in its intended format.",
-    "f-heading-17213800509zJW0-text_html": "do not",
-    "f-richtext-1721380050z3qaD-text_html": "Plain and simple. No effects. And – depending on the background – keep it minimal. Our logo is a statement that represent the brand.",
-    "f-richtext-1721380050mG62L-text_html": "Conditions apply to all logo variants:",
-    "f-richtext-1721380050hJQNk-text_html": "line statment",
-    "f-richtext-1721380050aQNLR-text_html": "flex statment",
-    "f-richtext-1721380050SRGP0-text_html": "dot mark",
-    "f-richtext-1721380050D1c8U-text_html": "Drop shadow",
-    "f-richtext-1721380050WIgkf-text_html": "Break statement",
-    "f-richtext-1721380050JancG-text_html": "Manipulate text alignment",
-    "f-richtext-1721380050ebvgE-text_html": "Extrude nor distort",
-    "f-richtext-1721380050rWX0y-text_html": "Color gradient",
-    "f-richtext-1721380050uvGvU-text_html": "Non-brand color as dominant",
-    "f-richtext-1721380050McBsL-text_html": "conscience practices",
-    "f-richtext-1721380050tHlr6-text_html": "Attach to foreign elements",
-    "f-richtext-17213800505zM7O-text_html": "Break and repurpose logo element",
-    "f-heading-1721380050p8m91-text_html": "supports world peace",
-    "f-richtext-1721380050aDA9D-text_html": "Use logo in a sentence",
-    "f-richtext-1721380050tjwVb-text_html": "Overlay complex background",
-    "f-richtext-1721380050SG3Sg-text_html": "Place logo on the ground",
-    "f-richtext-1721380050w6ZtW-text_html": "Use logo on food",
-    "f-richtext-1721380050xxAaj-text_html": "Tilt or rotate",
-    "f-richtext-1721380050H5K3E-text_html": "Add effect",
-    "f-richtext-1721380050tPqSf-text_html": "Enclose with border",
-    "f-richtext-1721380050zYGke-text_html": "Apply decoration",
-    "f-richtext-1721380050KrsZR-text_html": "Monogram or repetitive graphics",
-    "f-richtext-1721380050GOa13-text_html": "Stretch nor reshape",
-    "f-richtext-17213800506gw8t-text_html": "Present statement with unapproved font",
-    "f-richtext-1721380050EfgDm-text_html": "Combine logos",
-    "f-content-tab-1721380050x5WI1-title_html": "IDENTITY",
-    "f-heading-1721380050Yo3Zz-text_html": "visual",
-    "f-richtext-1721380050g9J4H-text_html": "Our story is defined by passion, ingenuity, and forward-thinking, which are reflected in the visual aesthetic of our visual assets. The style is minimalistic and clear-cut, with each image authentically and assuredly narrating the story of people, focusing on the essential details. The imagery appears unstaged yet meticulously composed in every detail.",
-    "f-button-1721380050Zy2qM-button_label_html": "photography",
-    "f-button-1721380050oDrtL-button_label_html": "illustration",
-    "f-button-1721380050wyeXh-button_label_html": "composition",
-    "f-button-1721380050ESSsY-button_label_html": "layout structure",
-    "f-heading-1721380050m5WlV-text_html": "photography",
-    "f-richtext-1721380050hQdTO-text_html": "Our photo style is evolving with trends, innovating on subtle details such as lighting, shadow, angle, and composition, while maintaining a consistent brand look.<br><br>The goal: Every photo and video should be identifiable as edgy and fashion-forward. We should use full body imagery sparingly, focusing thoughtfully on close-ups with the intention of clearly telling product stories.",
-    "f-list-items-17213800509jjSR-items-Item-1-title_html": "Our photography is honest.",
-    "f-list-items-17213800509jjSR-items-Item-3-title_html": "Our products are beautiful and believable.",
-    "f-list-items-17213800509jjSR-items-Item-2-title_html": "Our people are authentic and relatable.",
-    "f-heading-17213800502nqKb-text_html": "do not",
-    "f-richtext-1721380050q8cAi-text_html": "Style with denim or leather",
-    "f-richtext-1721380050Q7JVY-text_html": "Portray nostalgia",
-    "f-richtext-1721380050oaPvS-text_html": "Over clutter the scene",
-    "f-richtext-1721380050TyUEw-text_html": "Overly cosmetize in styling",
-    "f-richtext-1721380050dstS1-text_html": "Use of intense shadow",
-    "f-richtext-1721380050Lt8kD-text_html": "Use overly dominant color in scene",
-    "f-richtext-1721380050GnVZD-text_html": "Blurry light condition",
-    "f-richtext-1721380050S7K3n-text_html": "Backlight photography",
-    "f-richtext-1721380050in4Fh-text_html": "Drappy and textured fabric",
-    "f-richtext-1721380050EElNr-text_html": "Invoke non-sustainable material",
-    "f-richtext-17213800505rnjv-text_html": "Complex pose",
-    "f-richtext-1721380050qnC8R-text_html": "Layers and contrasted styling",
-    "f-heading-1721380050bgOkV-text_html": "illustration",
-    "f-richtext-1721380050j9FBM-text_html": "Our approach to illustration is based on our engaging storytelling and is adapting to current trends. The content should be related to jewelry or our pursuit of innovation in some way. We can use texture, photo collage, composition, and graphic details to create a unique feel. While our brand colors don't have to be in every illustration, they should be considered within the brand context.",
-    "f-list-items-1721380050FaszU-items-Item-1-title_html": "Our style is minimalistic.",
-    "f-list-items-1721380050FaszU-items-Item-3-title_html": "Our illustrations are distinct and inspiring.",
-    "f-list-items-1721380050FaszU-items-Item-2-title_html": "Our focus is always the jewelry.",
-    "f-heading-1721380050XZ5af-text_html": "do not",
-    "f-richtext-1721380050kA52i-text_html": "Unidentifiable as a commerical product",
-    "f-richtext-1721380050pbHz4-text_html": "Unidentifiable as a commerical product",
-    "f-richtext-1721380050ZhS2X-text_html": "Unidentifiable as a commerical product",
-    "f-richtext-1721380050eEjbX-text_html": "Unidentifiable as a commerical product",
-    "f-richtext-1721380050VFipy-text_html": "Product partially objectified",
-    "f-richtext-1721380050Mugva-text_html": "Use product for unintended purpose",
-    "f-richtext-1721380050w6GGZ-text_html": "Lack of product in scene",
-    "f-richtext-17213800501JKFg-text_html": "Generic product in abstract form",
-    "f-heading-1721380050infd7-text_html": "composition",
-    "f-richtext-1721380050NJseN-text_html": "The composition is bold and directs the viewer's attention. The surroundings serve as a backdrop, and the styling does not take away from the jewelry. The staging always feels natural, allowing our images to tell a believable story. The jewelry is clearly visible on people, and the positioning is authentic.",
-    "f-list-items-1721380050DJN6L-items-Item-1-title_html": "We prioritize detailed crops with high-precision close-ups.",
-    "f-list-items-1721380050DJN6L-items-Item-3-title_html": "We make textures and shapes clearly visible.",
-    "f-list-items-1721380050DJN6L-items-Item-2-title_html": "We enables the viewer to experience how it would feel in reality.",
-    "f-heading-17213800508SeF4-text_html": "do not",
-    "f-richtext-1721380050idktW-text_html": "Full body context without cropped highlights",
-    "f-richtext-1721380050KYSZI-text_html": "Full body context without cropped highlights",
-    "f-richtext-1721380050FnGPg-text_html": "Full body context without cropped highlights",
-    "f-richtext-1721380050L8NQr-text_html": "Full body context without cropped highlights",
-    "f-heading-1721380050hJf3o-text_html": "layout structure",
-    "f-richtext-1721380050waVNd-text_html": "Layouts can include one or more subdivisions arranged horizontally and vertically. The divisions are straight, rectangular, and bleed to the edge. They can be either symmetrical or asymmetrical. The number of spaces and their sizes relative to each other are flexible.",
-    "f-list-items-1721380050eac0y-items-Item-1-title_html": "Our layout is clean and minimalistic.",
-    "f-list-items-1721380050eac0y-items-Item-3-title_html": "Our layouts are designed to creatively maximize product exposure.",
-    "f-list-items-1721380050eac0y-items-Item-2-title_html": "Our layouts are jewelry-focused.",
-    "f-heading-1721380050PGc3G-text_html": "do not",
-    "f-richtext-1721380050HpNZh-text_html": "Visual imbalance",
-    "f-richtext-1721380050k9hEs-text_html": "Insufficient contrast",
-    "f-richtext-1721380050o7v6n-text_html": "Misalignment of Flex Statment",
-    "f-richtext-1721380050QQ93p-text_html": "Lack of context",
-    "f-content-tab-1721380050n547v-title_html": "VISUAL",
-    "f-button-1721381487SiK5v-button_label_html": "do not",
-    "f-button-1721381488sVVci-button_label_html": "resources"
+{% schema %}
+  {
+  "name": "Foxify main content",
+  "class": "foxify-main f-app",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Customize main content",
+      "info": "Go to [Foxify app](https://admin.shopify.com/store/the-future-rocks/apps/foxify-builder/editor?id=1721380064kTU5m&type=regular) to edit this section."
+    }
+  ],
+  "locales": {
+    "en": {
+      "f-richtext-172138005017Api-text_html": "visual identity standards",
+      "f-heading-1721380050rf9mT-text_html": "brand guidelines",
+      "f-richtext-1721380050xODwx-text_html": "This document contains the rules of the communication system. Follow these rules strictly to maintain brand consistency.",
+      "f-button-1721380050cQvQq-button_label_html": "get started",
+      "f-button-17213800502BbNq-button_label_html": "identity",
+      "f-button-17213800501WGvu-button_label_html": "design",
+      "f-button-1721380050zU5ap-button_label_html": "visual",
+      "f-heading-1721380050eTZMy-text_html": "identity",
+      "f-richtext-17213800503Tlr3-text_html": "Our identity is a statement that can accommodate different layouts. While the Line Statement is the preferred identifier, the Flex Statement is equally significant.",
+      "f-richtext-1721380050EnoWu-text_html": "DO NOT BREAK FORM: when adapting to layout scenarios, ensure the statement is in its intended format.",
+      "f-heading-17213800509zJW0-text_html": "do not",
+      "f-richtext-1721380050z3qaD-text_html": "Plain and simple. No effects. And – depending on the background – keep it minimal. Our logo is a statement that represent the brand.",
+      "f-richtext-1721380050mG62L-text_html": "Conditions apply to all logo variants:",
+      "f-richtext-1721380050hJQNk-text_html": "line statment",
+      "f-richtext-1721380050aQNLR-text_html": "flex statment",
+      "f-richtext-1721380050SRGP0-text_html": "dot mark",
+      "f-richtext-1721380050D1c8U-text_html": "Drop shadow",
+      "f-richtext-1721380050WIgkf-text_html": "Break statement",
+      "f-richtext-1721380050JancG-text_html": "Manipulate text alignment",
+      "f-richtext-1721380050ebvgE-text_html": "Extrude nor distort",
+      "f-richtext-1721380050rWX0y-text_html": "Color gradient",
+      "f-richtext-1721380050uvGvU-text_html": "Non-brand color as dominant",
+      "f-richtext-1721380050McBsL-text_html": "conscience practices",
+      "f-richtext-1721380050tHlr6-text_html": "Attach to foreign elements",
+      "f-richtext-17213800505zM7O-text_html": "Break and repurpose logo element",
+      "f-heading-1721380050p8m91-text_html": "supports world peace",
+      "f-richtext-1721380050aDA9D-text_html": "Use logo in a sentence",
+      "f-richtext-1721380050tjwVb-text_html": "Overlay complex background",
+      "f-richtext-1721380050SG3Sg-text_html": "Place logo on the ground",
+      "f-richtext-1721380050w6ZtW-text_html": "Use logo on food",
+      "f-richtext-1721380050xxAaj-text_html": "Tilt or rotate",
+      "f-richtext-1721380050H5K3E-text_html": "Add effect",
+      "f-richtext-1721380050tPqSf-text_html": "Enclose with border",
+      "f-richtext-1721380050zYGke-text_html": "Apply decoration",
+      "f-richtext-1721380050KrsZR-text_html": "Monogram or repetitive graphics",
+      "f-richtext-1721380050GOa13-text_html": "Stretch nor reshape",
+      "f-richtext-17213800506gw8t-text_html": "Present statement with unapproved font",
+      "f-richtext-1721380050EfgDm-text_html": "Combine logos",
+      "f-content-tab-1721380050x5WI1-title_html": "IDENTITY",
+      "f-heading-1721380050Yo3Zz-text_html": "visual",
+      "f-richtext-1721380050g9J4H-text_html": "Our story is defined by passion, ingenuity, and forward-thinking, which are reflected in the visual aesthetic of our visual assets. The style is minimalistic and clear-cut, with each image authentically and assuredly narrating the story of people, focusing on the essential details. The imagery appears unstaged yet meticulously composed in every detail.",
+      "f-button-1721380050Zy2qM-button_label_html": "photography",
+      "f-button-1721380050oDrtL-button_label_html": "illustration",
+      "f-button-1721380050wyeXh-button_label_html": "composition",
+      "f-button-1721380050ESSsY-button_label_html": "layout structure",
+      "f-heading-1721380050m5WlV-text_html": "photography",
+      "f-richtext-1721380050hQdTO-text_html": "Our photo style is evolving with trends, innovating on subtle details such as lighting, shadow, angle, and composition, while maintaining a consistent brand look.<br><br>The goal: Every photo and video should be identifiable as edgy and fashion-forward. We should use full body imagery sparingly, focusing thoughtfully on close-ups with the intention of clearly telling product stories.",
+      "f-list-items-17213800509jjSR-items-Item-1-title_html": "Our photography is honest.",
+      "f-list-items-17213800509jjSR-items-Item-3-title_html": "Our products are beautiful and believable.",
+      "f-list-items-17213800509jjSR-items-Item-2-title_html": "Our people are authentic and relatable.",
+      "f-heading-17213800502nqKb-text_html": "do not",
+      "f-richtext-1721380050q8cAi-text_html": "Style with denim or leather",
+      "f-richtext-1721380050Q7JVY-text_html": "Portray nostalgia",
+      "f-richtext-1721380050oaPvS-text_html": "Over clutter the scene",
+      "f-richtext-1721380050TyUEw-text_html": "Overly cosmetize in styling",
+      "f-richtext-1721380050dstS1-text_html": "Use of intense shadow",
+      "f-richtext-1721380050Lt8kD-text_html": "Use overly dominant color in scene",
+      "f-richtext-1721380050GnVZD-text_html": "Blurry light condition",
+      "f-richtext-1721380050S7K3n-text_html": "Backlight photography",
+      "f-richtext-1721380050in4Fh-text_html": "Drappy and textured fabric",
+      "f-richtext-1721380050EElNr-text_html": "Invoke non-sustainable material",
+      "f-richtext-17213800505rnjv-text_html": "Complex pose",
+      "f-richtext-1721380050qnC8R-text_html": "Layers and contrasted styling",
+      "f-heading-1721380050bgOkV-text_html": "illustration",
+      "f-richtext-1721380050j9FBM-text_html": "Our approach to illustration is based on our engaging storytelling and is adapting to current trends. The content should be related to jewelry or our pursuit of innovation in some way. We can use texture, photo collage, composition, and graphic details to create a unique feel. While our brand colors don't have to be in every illustration, they should be considered within the brand context.",
+      "f-list-items-1721380050FaszU-items-Item-1-title_html": "Our style is minimalistic.",
+      "f-list-items-1721380050FaszU-items-Item-3-title_html": "Our illustrations are distinct and inspiring.",
+      "f-list-items-1721380050FaszU-items-Item-2-title_html": "Our focus is always the jewelry.",
+      "f-heading-1721380050XZ5af-text_html": "do not",
+      "f-richtext-1721380050kA52i-text_html": "Unidentifiable as a commerical product",
+      "f-richtext-1721380050pbHz4-text_html": "Unidentifiable as a commerical product",
+      "f-richtext-1721380050ZhS2X-text_html": "Unidentifiable as a commerical product",
+      "f-richtext-1721380050eEjbX-text_html": "Unidentifiable as a commerical product",
+      "f-richtext-1721380050VFipy-text_html": "Product partially objectified",
+      "f-richtext-1721380050Mugva-text_html": "Use product for unintended purpose",
+      "f-richtext-1721380050w6GGZ-text_html": "Lack of product in scene",
+      "f-richtext-17213800501JKFg-text_html": "Generic product in abstract form",
+      "f-heading-1721380050infd7-text_html": "composition",
+      "f-richtext-1721380050NJseN-text_html": "The composition is bold and directs the viewer's attention. The surroundings serve as a backdrop, and the styling does not take away from the jewelry. The staging always feels natural, allowing our images to tell a believable story. The jewelry is clearly visible on people, and the positioning is authentic.",
+      "f-list-items-1721380050DJN6L-items-Item-1-title_html": "We prioritize detailed crops with high-precision close-ups.",
+      "f-list-items-1721380050DJN6L-items-Item-3-title_html": "We make textures and shapes clearly visible.",
+      "f-list-items-1721380050DJN6L-items-Item-2-title_html": "We enables the viewer to experience how it would feel in reality.",
+      "f-heading-17213800508SeF4-text_html": "do not",
+      "f-richtext-1721380050idktW-text_html": "Full body context without cropped highlights",
+      "f-richtext-1721380050KYSZI-text_html": "Full body context without cropped highlights",
+      "f-richtext-1721380050FnGPg-text_html": "Full body context without cropped highlights",
+      "f-richtext-1721380050L8NQr-text_html": "Full body context without cropped highlights",
+      "f-heading-1721380050hJf3o-text_html": "layout structure",
+      "f-richtext-1721380050waVNd-text_html": "Layouts can include one or more subdivisions arranged horizontally and vertically. The divisions are straight, rectangular, and bleed to the edge. They can be either symmetrical or asymmetrical. The number of spaces and their sizes relative to each other are flexible.",
+      "f-list-items-1721380050eac0y-items-Item-1-title_html": "Our layout is clean and minimalistic.",
+      "f-list-items-1721380050eac0y-items-Item-3-title_html": "Our layouts are designed to creatively maximize product exposure.",
+      "f-list-items-1721380050eac0y-items-Item-2-title_html": "Our layouts are jewelry-focused.",
+      "f-heading-1721380050PGc3G-text_html": "do not",
+      "f-richtext-1721380050HpNZh-text_html": "Visual imbalance",
+      "f-richtext-1721380050k9hEs-text_html": "Insufficient contrast",
+      "f-richtext-1721380050o7v6n-text_html": "Misalignment of Flex Statment",
+      "f-richtext-1721380050QQ93p-text_html": "Lack of context",
+      "f-content-tab-1721380050n547v-title_html": "VISUAL",
+      "f-button-1721381487SiK5v-button_label_html": "do not",
+      "f-button-1721381488sVVci-button_label_html": "resources"
+    }
   }
 }
-        }
-    {% endschema %}
+{% endschema %}
   

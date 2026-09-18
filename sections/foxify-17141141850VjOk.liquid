@@ -1,32 +1,44 @@
-    {% liquid
-        assign locales = shop.metafields.foxify.locales.value
-        assign current_locale = request.locale.iso_code
-        assign primary_locale = current_locale
-        for locale in shop.published_locales
-        if locale.primary
-            assign primary_locale = locale.iso_code
-            break
-        endif
-        endfor
-        assign translation = locales[current_locale] | default: locales[primary_locale]
-    %}
-    <script>
+
+{% liquid
+  
+    assign locales = shop.metafields.foxify.locales.value
+    assign current_locale = request.locale.iso_code
+    assign primary_locale = current_locale
+    for locale in shop.published_locales
+    if locale.primary
+        assign primary_locale = locale.iso_code
+        break
+    endif
+    endfor
+    assign translation = locales[current_locale] | default: locales[primary_locale]
+
+    assign theme_settings = shop.metafields.foxify.theme_settings.value
+    assign productCard = theme_settings.productCard
+  
+  
+      assign foxifyCustomCss = shop.metafields.foxify['662b4e89748b10a43996a681'].value.customCss
+      assign foxifyCustomJs = shop.metafields.foxify['662b4e89748b10a43996a681'].value.customJs
+    
+%}
+
+      <script>
         window.Foxify = window.Foxify || {}
         Foxify.ThemeStyles = {
-            product: "https:{{ 'foxify-product.css' | asset_url }}",
-            swiper: "https:{{ 'foxify-swiper.css' | asset_url }}",
+          product: "https:{{ 'foxify-product.css' | asset_url }}",
+          swiper: "https:{{ 'foxify-swiper.css' | asset_url }}",
         }
 
         Foxify.ThemeScripts = {
-            productModel: "https:{{ 'foxify-product-model.js' | asset_url }}",
-            productMedia: "https:{{ 'foxify-media-gallery.js' | asset_url }}",
-            variantPicker: "https:{{ 'foxify-variant-picker.js' | asset_url }}"
+          productModel: "https:{{ 'foxify-product-model.js' | asset_url }}",
+          productMedia: "https:{{ 'foxify-media-gallery.js' | asset_url }}",
+          variantPicker: "https:{{ 'foxify-variant-picker.js' | asset_url }}"
         }
 
-        Foxify.pageId = '17141141850VjOk'
-        Foxify.default = false
-    </script>
-    <div class="f-app f:content">
+        Foxify.pageId = '17141141850VjOk';
+        Foxify.default = false;
+      </script>
+    
+<div class="f-app f:content">
 <style data-foxify-editor="foxify-custom-fonts">
   @font-face {
     font-family: BrownProTT-Regular-1707112782cX7wj;
@@ -1003,167 +1015,167 @@ html:not([lang|="en"]) #myDiv-en,html:not([lang|="ja"]) #myDiv-ja, html:not([lan
       %}
 
 </div>
-    {% schema %}
-        {
-            "name": "Foxify main content",
-            "class": "foxify-main f-app",
-            "settings": [
-                {
-                "type": "header",
-                "content": "Customize section",
-                "info": "Go to [Foxify app](https://app.foxify.io/editor?id=17141141850VjOk&type=REGULAR) to edit this section."
-                }
-            ],
-            "locales": {
-  "en": {
-    "f-content-tab-1714114230dREMO-title_html": "RINGS",
-    "f-heading-1714118343DUTl5-text_html": "size guide",
-    "f-richtext-1714118349bZsGF-text_html": "It isn't always the bigger the better when it comes to the size of a diamond. A few other factors may also contribute to how a piece of diamond is perceived on the wearer.",
-    "f-heading-1714118159hpD7Y-text_html": "Finger proportions",
-    "f-richtext-1714118173FTdZ7-text_html": "Slender fingers benefit from elongated diamond shapes like ovals, marquise, or pear, creating the illusion of length. Wider fingers, on the other hand, can be complemented by round, princess, or cushion-cut diamonds, offering a balanced and symmetrical look.",
-    "f-heading-17141183195pbgP-text_html": "Diamond Shape",
-    "f-richtext-17141183191CPvA-text_html": "Different diamond shapes of the same carat weight impact perceived size. Round brilliant cut appears larger due to optimal light reflection. Elongated shapes like ovals and marquise create the illusion of greater size, while emerald and princess cuts may appear slightly smaller.",
-    "f-heading-17141183193GhzF-text_html": "setting",
-    "f-richtext-1714118319jngfI-text_html": "The choice of setting influences perceived size. High-profile settings like halo settings create the illusion of a larger diamond, while lower-profile settings like bezel settings may make the center stone appear slightly smaller.",
-    "f-heading-1714126191Zaltx-text_html": "Diamond size on finger",
-    "f-richtext-1714126193IENUT-text_html": "Choosing the right diamond carat size is crucial when it comes to finding the perfect fit for your diamond rings or other jewelry. While personal preference plays a significant role, understanding how diamond carat sizes complement different finger sizes and shapes can help you make an informed decision.",
-    "f-heading-1714126265JLF8q-text_html": "Emerald cut",
-    "f-richtext-1714126268tx0IE-text_html": "0.25 - 3.00 carats",
-    "f-heading-1714126334VndeB-text_html": "Brilliant cut",
-    "f-richtext-1714126334d81Te-text_html": "0.25 - 3.00 carats",
-    "f-heading-1714126335WCCQt-text_html": "Oval cut",
-    "f-richtext-1714126335CoSjP-text_html": "0.25 - 3.00 carats",
-    "f-heading-1714126336ph1Vo-text_html": "Princess cut",
-    "f-richtext-17141263369oZWN-text_html": "0.25 - 3.00 carats",
-    "f-heading-1714126348FWWjL-text_html": "Diamond carat weights",
-    "f-richtext-1714126348Nok9j-text_html": "A diamond carat is a unit of weight used to measure diamonds. One carat equals to 200 milligrams or 0.2 grams. Here's a general table that shows the approximate relationship between carat weight and diamond diameter. Please note that these diamond measurements are approximate and can vary based on the specific cut, shape, and proportions of the diamond.",
-    "f-heading-1714126525Qg4v7-text_html": "You're all set",
-    "f-richtext-1714126525CpovQ-text_html": "Ready to find the perfect ring? Explore our collection of beautifully crafted rings and make your special moment even more memorable. Shop now and create a lasting symbol of love.",
-    "f-button-1714126578fIrpx-button_label_html": "shop rings",
-    "f-heading-1714367172wtJVk-text_html": "Measure inside diameter",
-    "f-content-tab-1714367172sYjnj-title_html": "Tab name",
-    "f-heading-17143665979syiF-text_html": "Measure finger size",
-    "f-content-tab-1714366597lIvwk-title_html": "Tab name",
-    "f-list-items-1714370205GIVlL-items-Item-2-title_html": "0.25 ct",
-    "f-list-items-1714370205GIVlL-items-Item-3-title_html": "0.50 ct",
-    "f-list-items-1714370205GIVlL-items-Item-4-title_html": "1.00 ct",
-    "f-list-items-1714370205GIVlL-items-Item-5-title_html": "1.50 ct",
-    "f-list-items-1714370205GIVlL-items-Item-6-title_html": "2.00 ct",
-    "f-list-items-1714370205GIVlL-items-Item-7-title_html": "2.50 ct",
-    "f-list-items-1714370205GIVlL-items-Item-8-title_html": "3.00 ct",
-    "f-list-items-1714370313c6bBD-items-Item-2-title_html": "4.1 mm",
-    "f-list-items-1714370313c6bBD-items-Item-3-title_html": "5.2 mm",
-    "f-list-items-1714370313c6bBD-items-Item-5-title_html": "6.5 mm",
-    "f-list-items-1714370313c6bBD-items-Item-6-title_html": "7.4 mm",
-    "f-list-items-1714370313c6bBD-items-Item-7-title_html": "8.2 mm",
-    "f-list-items-1714370313c6bBD-items-Item-4-title_html": "8.9 mm",
-    "f-list-items-1714370313c6bBD-items-Item-8-title_html": "9.4 mm",
-    "f-content-tab-1714370178xBEq6-title_html": "Tab name",
-    "f-collapsible-tab-17143710849mhSl-heading_html": "I know my ring size",
-    "f-collapsible-tab-171437110702bAC-heading_html": "Use measurement to determine your ring size.",
-    "f-content-tab-1714371054BoD9Q-title_html": "Tab name",
-    "f-richtext-1714378184kMoW0-text_html": "Cut a thin strip of paper or ribbon.",
-    "f-richtext-1714378230JBXe3-text_html": "Wrap the strip of paper or ribbon snugly around your finger, then use a pen to mark where the strip overlaps.",
-    "f-richtext-1714378238okCXq-text_html": "Measure the marked strip with a ruler - ensure it’s exact and don’t round up! The ribbon or paper strip should be comfortable enough to slip on and off your finger easily.",
-    "f-richtext-1714378534MjQY1-text_html": "Using an existing ring that fits you well, place a ruler in front of the ring to measure the inside diameter.",
-    "f-richtext-1714378558vmUjz-text_html": "Match it to the closest size in the chart above. If you are between sizes, we recommend choosing the larger size.",
-    "f-heading-1714386753pyqiF-text_html": "Size Guide",
-    "f-heading-1714386753izHVU-text_html": "small hoop",
-    "f-richtext-1714386753CdejD-text_html": "0.75 inches",
-    "f-heading-1714386753J0eJH-text_html": "medium hoop",
-    "f-richtext-1714386753dtiHP-text_html": "1.00 inches",
-    "f-heading-1714386753c4k4h-text_html": "large hoop",
-    "f-richtext-1714386753YS8Sf-text_html": "1.50 inches",
-    "f-heading-1714386753A00nB-text_html": "Considering your comfort",
-    "f-richtext-1714386753MTlQw-text_html": "Factors such as earring thickness, weight, closure type, and material should be taken into account. Lightweight earrings are generally more comfortable for extended wear, while secure closures, like butterfly backs or lever-backs, offer peace of mind. Moreover, hypoallergenic materials such as nickel-free titanium and platinum are suitable for sensitive ears, minimizing the risk of irritation.",
-    "f-heading-17143867532w6Oy-text_html": "Face shape",
-    "f-richtext-1714386753Xs6gL-text_html": "Considering your face shape when landing on the right pair of earrings can help enhance your natural features. Remember, these are general guidelines and personal preference should always be considered when choosing earrings that make you feel confident and beautiful.",
-    "f-heading-1714386753nNkra-text_html": "You're all set",
-    "f-richtext-1714386753q3Od3-text_html": "Ready to explore more stunning earrings? Visit our website to browse our wide selection of earrings in various sizes, styles, and materials. Discover the perfect pair of earrings mindfully made from lab-grown diamonds, recycled metals, and more.",
-    "f-button-1714386753zXrcr-button_label_html": "SHOP HOOP EARRINGS",
-    "f-content-tab-17143867533yv9s-title_html": "HOOP EARRINGS",
-    "f-heading-1714429619f2RRw-text_html": "find my ring size",
-    "f-heading-1714430988yhFCI-text_html": "round face",
-    "f-richtext-1714430992Ysr3B-text_html": "Long drop earrings or angular designs like teardrops can create the illusion of length, making your face appear slimmer.",
-    "f-heading-1714431239MAJ9x-text_html": "oval face",
-    "f-richtext-1714431242LRnUP-text_html": "Oval faces can pull off almost any earring style. Experiment with different shapes and sizes to find your favourites.",
-    "f-heading-1714431212WUjmD-text_html": "square face",
-    "f-richtext-1714431214EJN6J-text_html": "Soften the angles of a square face with rounded or curved earrings, such as hoops or oval-shaped studs.",
-    "f-heading-1714431182BXSMa-text_html": "heart-shaped face\n",
-    "f-richtext-1714431185prTr2-text_html": "Balance a wider forehead and narrower chin with earrings that widen at the bottom, like triangular or chandelier styles.",
-    "f-heading-1714431151DHQEr-text_html": "rectangular face",
-    "f-richtext-1714431154cn7pv-text_html": "Soften the angles of a rectangular face with rounded or curved earrings, such as hoops or oval-shaped studs.",
-    "f-heading-1714431119yfSxN-text_html": "diamond-shaped face",
-    "f-richtext-1714431122hOcJl-text_html": "Complement your cheekbones with earrings that are wider at the top and bottom, such as dangle earrings or studs with embellishments.",
-    "f-heading-1714431993upckF-text_html": "Size Guide",
-    "f-richtext-1714431993DJDDw-text_html": "Whether you're on a quest to find your perfect necklace fit or looking to surprise someone with a thoughtful gift, our necklace size guide is here to point you in the right direction. In this guide, we will explore how to measure and determine the ideal necklace chain length for any occasion.",
-    "f-heading-171443199386Zg8-text_html": "Follow these steps to determine your ideal necklace and pendant length:",
-    "f-richtext-17144319932RWFH-text_html": "Use a piece of string to measure and cut it to the same length as the necklace you're considering.",
-    "f-richtext-1714431993l8Yog-text_html": "Place the string around your neck to see where it falls. Finding the right balance is crucial, especially when layering necklaces. Take into account the size and shape of the pendant you plan to wear.",
-    "f-richtext-17144319937HHXo-text_html": "Use a tape measure or a piece of string to measure the distance from the desired starting point to the desired endpoint of the necklace. Make sure the tape or string is held taut but not too tight.",
-    "f-content-tab-1714431993vRDDS-title_html": "Tab name",
-    "f-heading-17144319934J1Un-text_html": "What to consider when deciding on the right necklace length",
-    "f-heading-1714431993oS36x-text_html": "necklace size chart",
-    "f-richtext-1714431993tJeGe-text_html": "A 14-inch chain is typically a choker length, perfect for a trendy and close-fitting style. A 16 to 18-inch chain falls around the collarbone, offering versatility for everyday wear. Longer chains, such as 20 inches or more, create an elegant and dramatic effect for special occasions or layering purposes.",
-    "f-list-items-1714431993r7vYe-items-Item-2-title_html": "Choker chain",
-    "f-list-items-1714431993r7vYe-items-Item-3-title_html": "Short chain",
-    "f-list-items-1714431993r7vYe-items-Item-4-title_html": "Medium chain",
-    "f-list-items-1714431993r7vYe-items-Item-5-title_html": "Long chain",
-    "f-list-items-1714431993PW2u3-items-Item-2-title_html": "14 inches",
-    "f-list-items-1714431993PW2u3-items-Item-3-title_html": "16 inches",
-    "f-list-items-1714431993PW2u3-items-Item-5-title_html": "18 inches",
-    "f-list-items-1714431993PW2u3-items-Item-6-title_html": "20 inches",
-    "f-content-tab-1714431993pN22J-title_html": "Tab name",
-    "f-heading-1714431993G2Uvi-text_html": "You're all set",
-    "f-richtext-1714431993NoXMb-text_html": "Ready to find the perfect necklace with the desired length? Explore our collection of stunning necklaces and discover the one that matches your style and preference. Shop now to elevate your jewelry collection.",
-    "f-button-1714431993JGXJo-button_label_html": "shop necklaces",
-    "f-content-tab-1714431993e4AIb-title_html": "NECKLACES",
-    "f-heading-1714432031RAx33-text_html": "What diamond size works best on my finger?",
-    "f-heading-1714434223r9n4F-text_html": "choker chain",
-    "f-richtext-1714434226Q8QMV-text_html": "14 inches",
-    "f-heading-1714434328GSFqT-text_html": "short chain",
-    "f-richtext-171443432870wUF-text_html": "16 inches",
-    "f-heading-1714434328zZgBW-text_html": "medium chain",
-    "f-richtext-1714434328ZsJwn-text_html": "18 inches",
-    "f-heading-1714434329GX2K2-text_html": "long chain",
-    "f-richtext-1714434329tQOKA-text_html": "20 inches",
-    "f-heading-1714434330njpjF-text_html": "size comparison",
-    "f-richtext-1714434330t1czl-text_html": "All chain lengths",
-    "f-heading-1714434804eltrz-text_html": "How to measure your necklace length",
-    "f-richtext-17144348045AISJ-text_html": "Finding the right necklace length is essential in achieving your desired look. The circumference of your neck and the size of the pendant will impact how the necklace sits both on its own and when layered with other styles.",
-    "f-heading-1714441176s8vsQ-text_html": "There are several factors to consider:",
-    "f-heading-1714441392JX8q5-text_html": "neck size",
-    "f-richtext-1714441397PMv2s-text_html": "Consider the circumference and size of your neck. A shorter chain length may be more suitable for those with smaller necks, while a longer chain can complement a larger neck size.",
-    "f-content-tab-1714441176wy9pc-title_html": "Tab name",
-    "f-heading-17144415264T2tT-text_html": "Neckline and style",
-    "f-richtext-1714441526uIcEr-text_html": "Take into account the neckline and style of the clothing you'll be wearing with the necklace. Different chain lengths pair better with specific necklines, such as shorter chains for low-cut tops and longer chains for high-neck or scoop-neck outfits.",
-    "f-heading-1714441528R6l3c-text_html": "Pendant or charm size",
-    "f-richtext-1714441528b7K7s-text_html": "If you plan to wear a pendant or charm with your necklace, consider its size. A longer chain length may be necessary to ensure the pendant hangs at the desired position without being too close to the neckline.",
-    "f-heading-1714441529azm8r-text_html": "Personal preference",
-    "f-richtext-1714441529qEt7T-text_html": "Ultimately, choose a chain length that aligns with your personal style and comfort. Try on different lengths or use a necklace length chart to get a visual representation and determine which length feels most flattering and reflects your individual taste.",
-    "f-heading-1714441531ORVgf-text_html": "Layering potential",
-    "f-richtext-1714441531xYImD-text_html": "If you intend to layer necklaces, consider how the chain length of one necklace will interact with others. Opt for varying chain lengths to create a stylish and layered look without tangling or overlapping excessively.",
-    "f-heading-1714448045VI38Y-text_html": "1",
-    "f-heading-1714448051luLn1-text_html": "2",
-    "f-heading-1714448056WknJL-text_html": "3",
-    "f-heading-1714448280UgKwR-text_html": "1",
-    "f-heading-1714448290d3Rwy-text_html": "2",
-    "f-heading-1714448230eht9r-text_html": "1",
-    "f-heading-17144482345G6d2-text_html": "2",
-    "f-heading-1714448240sah97-text_html": "3",
-    "f-richtext-1714457748JpbE7-text_html": "as offered by The Future Rocks",
-    "f-heading-1714458605ldC97-text_html": "rings",
-    "f-heading-1714458675mCe7J-text_html": "Hoop Earrings ",
-    "f-heading-1714458810MZgk1-text_html": "Necklaces",
-    "f-heading-1714458901MfpS8-text_html": "hoop Earring size chart",
-    "f-richtext-1714458901pmFxG-text_html": "Choosing the right earrings can make a significant difference in how they complement your overall look. Whether you're a jewelry enthusiast or a first-time buyer, our comprehensive earring size guide will help you navigate the world of earrings and find the perfect fit for your style and comfort.",
-    "f-richtext-1714458901KDuui-text_html": "as offered by The Future Rocks",
-    "f-heading-1714465761kddHE-text_html": "carat weight",
-    "f-heading-1714465803xNN50-text_html": "diamond diameter",
-    "f-heading-1714465842qYuVS-text_html": "chain type",
-    "f-heading-1714465860haJcK-text_html": "chain length"
+{% schema %}
+  {
+  "name": "Foxify main content",
+  "class": "foxify-main f-app",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Customize main content",
+      "info": "Go to [Foxify app](https://admin.shopify.com/store/the-future-rocks/apps/foxify-builder/editor?id=17141141850VjOk&type=regular) to edit this section."
+    }
+  ],
+  "locales": {
+    "en": {
+      "f-content-tab-1714114230dREMO-title_html": "RINGS",
+      "f-heading-1714118343DUTl5-text_html": "size guide",
+      "f-richtext-1714118349bZsGF-text_html": "It isn't always the bigger the better when it comes to the size of a diamond. A few other factors may also contribute to how a piece of diamond is perceived on the wearer.",
+      "f-heading-1714118159hpD7Y-text_html": "Finger proportions",
+      "f-richtext-1714118173FTdZ7-text_html": "Slender fingers benefit from elongated diamond shapes like ovals, marquise, or pear, creating the illusion of length. Wider fingers, on the other hand, can be complemented by round, princess, or cushion-cut diamonds, offering a balanced and symmetrical look.",
+      "f-heading-17141183195pbgP-text_html": "Diamond Shape",
+      "f-richtext-17141183191CPvA-text_html": "Different diamond shapes of the same carat weight impact perceived size. Round brilliant cut appears larger due to optimal light reflection. Elongated shapes like ovals and marquise create the illusion of greater size, while emerald and princess cuts may appear slightly smaller.",
+      "f-heading-17141183193GhzF-text_html": "setting",
+      "f-richtext-1714118319jngfI-text_html": "The choice of setting influences perceived size. High-profile settings like halo settings create the illusion of a larger diamond, while lower-profile settings like bezel settings may make the center stone appear slightly smaller.",
+      "f-heading-1714126191Zaltx-text_html": "Diamond size on finger",
+      "f-richtext-1714126193IENUT-text_html": "Choosing the right diamond carat size is crucial when it comes to finding the perfect fit for your diamond rings or other jewelry. While personal preference plays a significant role, understanding how diamond carat sizes complement different finger sizes and shapes can help you make an informed decision.",
+      "f-heading-1714126265JLF8q-text_html": "Emerald cut",
+      "f-richtext-1714126268tx0IE-text_html": "0.25 - 3.00 carats",
+      "f-heading-1714126334VndeB-text_html": "Brilliant cut",
+      "f-richtext-1714126334d81Te-text_html": "0.25 - 3.00 carats",
+      "f-heading-1714126335WCCQt-text_html": "Oval cut",
+      "f-richtext-1714126335CoSjP-text_html": "0.25 - 3.00 carats",
+      "f-heading-1714126336ph1Vo-text_html": "Princess cut",
+      "f-richtext-17141263369oZWN-text_html": "0.25 - 3.00 carats",
+      "f-heading-1714126348FWWjL-text_html": "Diamond carat weights",
+      "f-richtext-1714126348Nok9j-text_html": "A diamond carat is a unit of weight used to measure diamonds. One carat equals to 200 milligrams or 0.2 grams. Here's a general table that shows the approximate relationship between carat weight and diamond diameter. Please note that these diamond measurements are approximate and can vary based on the specific cut, shape, and proportions of the diamond.",
+      "f-heading-1714126525Qg4v7-text_html": "You're all set",
+      "f-richtext-1714126525CpovQ-text_html": "Ready to find the perfect ring? Explore our collection of beautifully crafted rings and make your special moment even more memorable. Shop now and create a lasting symbol of love.",
+      "f-button-1714126578fIrpx-button_label_html": "shop rings",
+      "f-heading-1714367172wtJVk-text_html": "Measure inside diameter",
+      "f-content-tab-1714367172sYjnj-title_html": "Tab name",
+      "f-heading-17143665979syiF-text_html": "Measure finger size",
+      "f-content-tab-1714366597lIvwk-title_html": "Tab name",
+      "f-list-items-1714370205GIVlL-items-Item-2-title_html": "0.25 ct",
+      "f-list-items-1714370205GIVlL-items-Item-3-title_html": "0.50 ct",
+      "f-list-items-1714370205GIVlL-items-Item-4-title_html": "1.00 ct",
+      "f-list-items-1714370205GIVlL-items-Item-5-title_html": "1.50 ct",
+      "f-list-items-1714370205GIVlL-items-Item-6-title_html": "2.00 ct",
+      "f-list-items-1714370205GIVlL-items-Item-7-title_html": "2.50 ct",
+      "f-list-items-1714370205GIVlL-items-Item-8-title_html": "3.00 ct",
+      "f-list-items-1714370313c6bBD-items-Item-2-title_html": "4.1 mm",
+      "f-list-items-1714370313c6bBD-items-Item-3-title_html": "5.2 mm",
+      "f-list-items-1714370313c6bBD-items-Item-5-title_html": "6.5 mm",
+      "f-list-items-1714370313c6bBD-items-Item-6-title_html": "7.4 mm",
+      "f-list-items-1714370313c6bBD-items-Item-7-title_html": "8.2 mm",
+      "f-list-items-1714370313c6bBD-items-Item-4-title_html": "8.9 mm",
+      "f-list-items-1714370313c6bBD-items-Item-8-title_html": "9.4 mm",
+      "f-content-tab-1714370178xBEq6-title_html": "Tab name",
+      "f-collapsible-tab-17143710849mhSl-heading_html": "I know my ring size",
+      "f-collapsible-tab-171437110702bAC-heading_html": "Use measurement to determine your ring size.",
+      "f-content-tab-1714371054BoD9Q-title_html": "Tab name",
+      "f-richtext-1714378184kMoW0-text_html": "Cut a thin strip of paper or ribbon.",
+      "f-richtext-1714378230JBXe3-text_html": "Wrap the strip of paper or ribbon snugly around your finger, then use a pen to mark where the strip overlaps.",
+      "f-richtext-1714378238okCXq-text_html": "Measure the marked strip with a ruler - ensure it’s exact and don’t round up! The ribbon or paper strip should be comfortable enough to slip on and off your finger easily.",
+      "f-richtext-1714378534MjQY1-text_html": "Using an existing ring that fits you well, place a ruler in front of the ring to measure the inside diameter.",
+      "f-richtext-1714378558vmUjz-text_html": "Match it to the closest size in the chart above. If you are between sizes, we recommend choosing the larger size.",
+      "f-heading-1714386753pyqiF-text_html": "Size Guide",
+      "f-heading-1714386753izHVU-text_html": "small hoop",
+      "f-richtext-1714386753CdejD-text_html": "0.75 inches",
+      "f-heading-1714386753J0eJH-text_html": "medium hoop",
+      "f-richtext-1714386753dtiHP-text_html": "1.00 inches",
+      "f-heading-1714386753c4k4h-text_html": "large hoop",
+      "f-richtext-1714386753YS8Sf-text_html": "1.50 inches",
+      "f-heading-1714386753A00nB-text_html": "Considering your comfort",
+      "f-richtext-1714386753MTlQw-text_html": "Factors such as earring thickness, weight, closure type, and material should be taken into account. Lightweight earrings are generally more comfortable for extended wear, while secure closures, like butterfly backs or lever-backs, offer peace of mind. Moreover, hypoallergenic materials such as nickel-free titanium and platinum are suitable for sensitive ears, minimizing the risk of irritation.",
+      "f-heading-17143867532w6Oy-text_html": "Face shape",
+      "f-richtext-1714386753Xs6gL-text_html": "Considering your face shape when landing on the right pair of earrings can help enhance your natural features. Remember, these are general guidelines and personal preference should always be considered when choosing earrings that make you feel confident and beautiful.",
+      "f-heading-1714386753nNkra-text_html": "You're all set",
+      "f-richtext-1714386753q3Od3-text_html": "Ready to explore more stunning earrings? Visit our website to browse our wide selection of earrings in various sizes, styles, and materials. Discover the perfect pair of earrings mindfully made from lab-grown diamonds, recycled metals, and more.",
+      "f-button-1714386753zXrcr-button_label_html": "SHOP HOOP EARRINGS",
+      "f-content-tab-17143867533yv9s-title_html": "HOOP EARRINGS",
+      "f-heading-1714429619f2RRw-text_html": "find my ring size",
+      "f-heading-1714430988yhFCI-text_html": "round face",
+      "f-richtext-1714430992Ysr3B-text_html": "Long drop earrings or angular designs like teardrops can create the illusion of length, making your face appear slimmer.",
+      "f-heading-1714431239MAJ9x-text_html": "oval face",
+      "f-richtext-1714431242LRnUP-text_html": "Oval faces can pull off almost any earring style. Experiment with different shapes and sizes to find your favourites.",
+      "f-heading-1714431212WUjmD-text_html": "square face",
+      "f-richtext-1714431214EJN6J-text_html": "Soften the angles of a square face with rounded or curved earrings, such as hoops or oval-shaped studs.",
+      "f-heading-1714431182BXSMa-text_html": "heart-shaped face\n",
+      "f-richtext-1714431185prTr2-text_html": "Balance a wider forehead and narrower chin with earrings that widen at the bottom, like triangular or chandelier styles.",
+      "f-heading-1714431151DHQEr-text_html": "rectangular face",
+      "f-richtext-1714431154cn7pv-text_html": "Soften the angles of a rectangular face with rounded or curved earrings, such as hoops or oval-shaped studs.",
+      "f-heading-1714431119yfSxN-text_html": "diamond-shaped face",
+      "f-richtext-1714431122hOcJl-text_html": "Complement your cheekbones with earrings that are wider at the top and bottom, such as dangle earrings or studs with embellishments.",
+      "f-heading-1714431993upckF-text_html": "Size Guide",
+      "f-richtext-1714431993DJDDw-text_html": "Whether you're on a quest to find your perfect necklace fit or looking to surprise someone with a thoughtful gift, our necklace size guide is here to point you in the right direction. In this guide, we will explore how to measure and determine the ideal necklace chain length for any occasion.",
+      "f-heading-171443199386Zg8-text_html": "Follow these steps to determine your ideal necklace and pendant length:",
+      "f-richtext-17144319932RWFH-text_html": "Use a piece of string to measure and cut it to the same length as the necklace you're considering.",
+      "f-richtext-1714431993l8Yog-text_html": "Place the string around your neck to see where it falls. Finding the right balance is crucial, especially when layering necklaces. Take into account the size and shape of the pendant you plan to wear.",
+      "f-richtext-17144319937HHXo-text_html": "Use a tape measure or a piece of string to measure the distance from the desired starting point to the desired endpoint of the necklace. Make sure the tape or string is held taut but not too tight.",
+      "f-content-tab-1714431993vRDDS-title_html": "Tab name",
+      "f-heading-17144319934J1Un-text_html": "What to consider when deciding on the right necklace length",
+      "f-heading-1714431993oS36x-text_html": "necklace size chart",
+      "f-richtext-1714431993tJeGe-text_html": "A 14-inch chain is typically a choker length, perfect for a trendy and close-fitting style. A 16 to 18-inch chain falls around the collarbone, offering versatility for everyday wear. Longer chains, such as 20 inches or more, create an elegant and dramatic effect for special occasions or layering purposes.",
+      "f-list-items-1714431993r7vYe-items-Item-2-title_html": "Choker chain",
+      "f-list-items-1714431993r7vYe-items-Item-3-title_html": "Short chain",
+      "f-list-items-1714431993r7vYe-items-Item-4-title_html": "Medium chain",
+      "f-list-items-1714431993r7vYe-items-Item-5-title_html": "Long chain",
+      "f-list-items-1714431993PW2u3-items-Item-2-title_html": "14 inches",
+      "f-list-items-1714431993PW2u3-items-Item-3-title_html": "16 inches",
+      "f-list-items-1714431993PW2u3-items-Item-5-title_html": "18 inches",
+      "f-list-items-1714431993PW2u3-items-Item-6-title_html": "20 inches",
+      "f-content-tab-1714431993pN22J-title_html": "Tab name",
+      "f-heading-1714431993G2Uvi-text_html": "You're all set",
+      "f-richtext-1714431993NoXMb-text_html": "Ready to find the perfect necklace with the desired length? Explore our collection of stunning necklaces and discover the one that matches your style and preference. Shop now to elevate your jewelry collection.",
+      "f-button-1714431993JGXJo-button_label_html": "shop necklaces",
+      "f-content-tab-1714431993e4AIb-title_html": "NECKLACES",
+      "f-heading-1714432031RAx33-text_html": "What diamond size works best on my finger?",
+      "f-heading-1714434223r9n4F-text_html": "choker chain",
+      "f-richtext-1714434226Q8QMV-text_html": "14 inches",
+      "f-heading-1714434328GSFqT-text_html": "short chain",
+      "f-richtext-171443432870wUF-text_html": "16 inches",
+      "f-heading-1714434328zZgBW-text_html": "medium chain",
+      "f-richtext-1714434328ZsJwn-text_html": "18 inches",
+      "f-heading-1714434329GX2K2-text_html": "long chain",
+      "f-richtext-1714434329tQOKA-text_html": "20 inches",
+      "f-heading-1714434330njpjF-text_html": "size comparison",
+      "f-richtext-1714434330t1czl-text_html": "All chain lengths",
+      "f-heading-1714434804eltrz-text_html": "How to measure your necklace length",
+      "f-richtext-17144348045AISJ-text_html": "Finding the right necklace length is essential in achieving your desired look. The circumference of your neck and the size of the pendant will impact how the necklace sits both on its own and when layered with other styles.",
+      "f-heading-1714441176s8vsQ-text_html": "There are several factors to consider:",
+      "f-heading-1714441392JX8q5-text_html": "neck size",
+      "f-richtext-1714441397PMv2s-text_html": "Consider the circumference and size of your neck. A shorter chain length may be more suitable for those with smaller necks, while a longer chain can complement a larger neck size.",
+      "f-content-tab-1714441176wy9pc-title_html": "Tab name",
+      "f-heading-17144415264T2tT-text_html": "Neckline and style",
+      "f-richtext-1714441526uIcEr-text_html": "Take into account the neckline and style of the clothing you'll be wearing with the necklace. Different chain lengths pair better with specific necklines, such as shorter chains for low-cut tops and longer chains for high-neck or scoop-neck outfits.",
+      "f-heading-1714441528R6l3c-text_html": "Pendant or charm size",
+      "f-richtext-1714441528b7K7s-text_html": "If you plan to wear a pendant or charm with your necklace, consider its size. A longer chain length may be necessary to ensure the pendant hangs at the desired position without being too close to the neckline.",
+      "f-heading-1714441529azm8r-text_html": "Personal preference",
+      "f-richtext-1714441529qEt7T-text_html": "Ultimately, choose a chain length that aligns with your personal style and comfort. Try on different lengths or use a necklace length chart to get a visual representation and determine which length feels most flattering and reflects your individual taste.",
+      "f-heading-1714441531ORVgf-text_html": "Layering potential",
+      "f-richtext-1714441531xYImD-text_html": "If you intend to layer necklaces, consider how the chain length of one necklace will interact with others. Opt for varying chain lengths to create a stylish and layered look without tangling or overlapping excessively.",
+      "f-heading-1714448045VI38Y-text_html": "1",
+      "f-heading-1714448051luLn1-text_html": "2",
+      "f-heading-1714448056WknJL-text_html": "3",
+      "f-heading-1714448280UgKwR-text_html": "1",
+      "f-heading-1714448290d3Rwy-text_html": "2",
+      "f-heading-1714448230eht9r-text_html": "1",
+      "f-heading-17144482345G6d2-text_html": "2",
+      "f-heading-1714448240sah97-text_html": "3",
+      "f-richtext-1714457748JpbE7-text_html": "as offered by The Future Rocks",
+      "f-heading-1714458605ldC97-text_html": "rings",
+      "f-heading-1714458675mCe7J-text_html": "Hoop Earrings ",
+      "f-heading-1714458810MZgk1-text_html": "Necklaces",
+      "f-heading-1714458901MfpS8-text_html": "hoop Earring size chart",
+      "f-richtext-1714458901pmFxG-text_html": "Choosing the right earrings can make a significant difference in how they complement your overall look. Whether you're a jewelry enthusiast or a first-time buyer, our comprehensive earring size guide will help you navigate the world of earrings and find the perfect fit for your style and comfort.",
+      "f-richtext-1714458901KDuui-text_html": "as offered by The Future Rocks",
+      "f-heading-1714465761kddHE-text_html": "carat weight",
+      "f-heading-1714465803xNN50-text_html": "diamond diameter",
+      "f-heading-1714465842qYuVS-text_html": "chain type",
+      "f-heading-1714465860haJcK-text_html": "chain length"
+    }
   }
 }
-        }
-    {% endschema %}
+{% endschema %}
   
