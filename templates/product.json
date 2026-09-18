@@ -81,7 +81,7 @@
             "text_align": "left",
             "icon": "delivery_truck_speed",
             "icon_size": 16,
-            "date_format": "medium",
+            "date_format": "long",
             "cutoff_time_format": "timer",
             "text_color": "#121212",
             "background_color": "#ffffff",
