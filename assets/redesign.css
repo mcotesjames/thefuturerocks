@@ -2983,6 +2983,15 @@ button.btn--secondary:focus {
   width: 100%;
   height: auto;
 }
+/* Column title (heading-3) + text share one wrapper — the pinned
+   subgrid's text row — which the section omits entirely when both
+   are empty. */
+.scrolling-columns__title {
+  margin: 0;
+}
+.scrolling-columns__title + .scrolling-columns__text {
+  margin-top: 8px;
+}
 /* Mobile: the label column sits in flow above the track while the
    columns slide beneath. */
 @media (max-width: 767.98px) {

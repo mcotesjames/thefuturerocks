@@ -8,7 +8,9 @@
   On mobile the label sits in flow above the track instead. Without
   JS (or with reduced motion) it falls back to a swipeable row.
   Column image ratios come from the shared .ratio-media utility via
-  section-level settings. Styled in redesign.css §29.
+  section-level settings. Each column's optional heading-3 title and
+  text share one content wrapper that is omitted when both are empty.
+  Styled in redesign.css §29.
 {%- endcomment -%}
 
 <div
@@ -34,8 +36,16 @@
               {{ 'image' | placeholder_svg_tag: 'scrolling-columns__img ratio-media placeholder-svg' }}
             {%- endif -%}
           </div>
-          {%- if block.settings.text != blank -%}
-            <div class="scrolling-columns__text rte">{{ block.settings.text }}</div>
+          {%- assign text_check = block.settings.text | strip_html | strip -%}
+          {%- if block.settings.title != blank or text_check != blank -%}
+            <div class="scrolling-columns__content">
+              {%- if block.settings.title != blank -%}
+                <h3 class="heading-3 scrolling-columns__title">{{ block.settings.title | escape }}</h3>
+              {%- endif -%}
+              {%- if text_check != blank -%}
+                <div class="scrolling-columns__text rte">{{ block.settings.text }}</div>
+              {%- endif -%}
+            </div>
           {%- endif -%}
         </div>
       {%- endfor -%}
@@ -153,6 +163,11 @@
           "type": "image_picker",
           "id": "image",
           "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
         },
         {
           "type": "richtext",
