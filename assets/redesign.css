@@ -1449,6 +1449,18 @@ button.btn--secondary:focus {
   height: 12px;
 }
 
+/* Country / language dropdown lists (footer + announcement bar) sit on
+   a white panel, but styles.css leaves their colour empty (`color: ;`),
+   so the options inherited the white text of the bar/footer around
+   them. Pin them to black. The mobile drawer's inline list keeps its
+   own more specific `color: inherit`. */
+.disclosure-list,
+.disclosure-list__option,
+.disclosure-list__option:hover,
+.disclosure-list__option:focus {
+  color: var(--color-black);
+}
+
 @media (max-width: 767.98px) {
   .footer-rd {
     padding: 24px var(--site-gutter) var(--site-gutter);
