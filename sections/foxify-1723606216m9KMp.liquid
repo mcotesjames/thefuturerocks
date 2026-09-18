@@ -1,44 +1,31 @@
+    {% liquid
+      assign locales = shop.metafields.foxify.locales.value
+      assign current_locale = request.locale.iso_code
+      assign primary_locale = current_locale
+      for locale in shop.published_locales
+        if locale.primary
+          assign primary_locale = locale.iso_code
+          break
+        endif
+      endfor
+      assign translation = locales[current_locale] | default: locales[primary_locale]
+    %}
+    <script>
+      window.Foxify = window.Foxify || {}
+      Foxify.ThemeStyles = {
+        product: "https:{{ 'foxify-product.css' | asset_url }}",
+        swiper: "https:{{ 'foxify-swiper.css' | asset_url }}",
+      }
 
-{% liquid
-  
-    assign locales = shop.metafields.foxify.locales.value
-    assign current_locale = request.locale.iso_code
-    assign primary_locale = current_locale
-    for locale in shop.published_locales
-    if locale.primary
-        assign primary_locale = locale.iso_code
-        break
-    endif
-    endfor
-    assign translation = locales[current_locale] | default: locales[primary_locale]
+      Foxify.ThemeScripts = {
+        productModel: "https:{{ 'foxify-product-model.js' | asset_url }}",
+        productMedia: "https:{{ 'foxify-media-gallery.js' | asset_url }}",
+        variantPicker: "https:{{ 'foxify-variant-picker.js' | asset_url }}"
+      }
 
-    assign theme_settings = shop.metafields.foxify.theme_settings.value
-    assign productCard = theme_settings.productCard
-  
-  
-      assign foxifyCustomCss = shop.metafields.foxify['66bc24c8cae31dd3e19ddea8'].value.customCss
-      assign foxifyCustomJs = shop.metafields.foxify['66bc24c8cae31dd3e19ddea8'].value.customJs
-    
-%}
-
-      <script>
-        window.Foxify = window.Foxify || {}
-        Foxify.ThemeStyles = {
-          product: "https:{{ 'foxify-product.css' | asset_url }}",
-          swiper: "https:{{ 'foxify-swiper.css' | asset_url }}",
-        }
-
-        Foxify.ThemeScripts = {
-          productModel: "https:{{ 'foxify-product-model.js' | asset_url }}",
-          productMedia: "https:{{ 'foxify-media-gallery.js' | asset_url }}",
-          variantPicker: "https:{{ 'foxify-variant-picker.js' | asset_url }}"
-        }
-
-        Foxify.pageId = '1723606216m9KMp';
-        Foxify.default = false;
-      </script>
-    
-<div class="f-app f:content">
+      Foxify.pageId = '1723606216m9KMp'
+    </script>
+    <div class="f-app f:content">
 <style data-foxify-editor="foxify-custom-fonts">
   @font-face {
     font-family: BrownProTT-Bold-17071127825LR9n;
@@ -75,42 +62,41 @@
       %}
 
 </div>
-{% schema %}
-  {
-  "name": "[Foxify] Flatback",
-  "class": "foxify-section f-app",
-  "settings": [
-    {
-      "type": "header",
-      "content": "Customize section",
-      "info": "Go to [Foxify app](https://admin.shopify.com/store/the-future-rocks/apps/foxify-builder/editor?id=1723606216m9KMp&type=section) to edit this section."
-    }
-  ],
-  "locales": {
-    "en": {
-      "f-heading-17236071238O1rr-text_html": "To wear your threadless flatback jewelry",
-      "f-heading-1723606358UXYF2-text_html": "step 1",
-      "f-richtext-1723606362JORmG-text_html": "Insert the taper pin into your piercing.",
-      "f-heading-1723607345C1dxA-text_html": "To remove your threadless flatback jewelry",
-      "f-heading-1723607740MGnWj-text_html": "step 2",
-      "f-richtext-1723607740bHKV0-text_html": "Connect the end of the post to the taper.",
-      "f-heading-1723607740gwpde-text_html": "step 3",
-      "f-richtext-1723607740Ehk80-text_html": "Push the post through the piercing.",
-      "f-heading-1723607740Ii5dm-text_html": "step 4",
-      "f-richtext-1723607740uC6aR-text_html": "Insert the pin end and gently screw both ends together.",
-      "f-heading-1723607817NPBoV-text_html": "step 1",
-      "f-richtext-1723607817fUKKM-text_html": "Hold onto the jewelry end and the flatback end.",
-      "f-heading-1723607817tR3vq-text_html": "step 2",
-      "f-richtext-1723607817vZqbG-text_html": "Slowly loosen the screwed ends.<br />(You should feel some tension since that's what keeps them in place)",
-      "f-richtext-1727065931QOKlY-text_html": "<p>how to</p>",
-      "f-heading-1727065931eLjip-text_html": "put on flatbacks"
-    }
-  },
-  "presets": [
-    {
-      "name": "[Foxify] Flatback"
-    }
-  ]
-}
-{% endschema %}
+    {% schema %}
+      {
+        "name": "[Foxify] Flatback",
+        "class": "foxify-section f-app",
+        "settings": [{"type":"header","content":"Customize section","info":"Go to [Foxify app](https://app.foxify.io/editor?id=1723606216m9KMp&type=SECTION) to edit this section."}],
+        "locales": {
+  "en": {
+    "f-heading-17236071238O1rr-text_html": "To wear your threadless flatback jewelry",
+    "f-heading-1723606358UXYF2-text_html": "step 1",
+    "f-richtext-1723606362JORmG-text_html": "Insert the taper pin into your piercing.",
+    "f-heading-1723607345C1dxA-text_html": "To remove your threadless flatback jewelry",
+    "f-heading-1723607740MGnWj-text_html": "step 2",
+    "f-richtext-1723607740bHKV0-text_html": "Connect the end of the post to the taper.",
+    "f-heading-1723607740gwpde-text_html": "step 3",
+    "f-richtext-1723607740Ehk80-text_html": "Push the post through the piercing.",
+    "f-heading-1723607740Ii5dm-text_html": "step 4",
+    "f-richtext-1723607740uC6aR-text_html": "Insert the pin end and gently screw both ends together.",
+    "f-heading-1723607817NPBoV-text_html": "step 1",
+    "f-richtext-1723607817fUKKM-text_html": "Hold onto the jewelry end and the flatback end.",
+    "f-heading-1723607817tR3vq-text_html": "step 2",
+    "f-richtext-1723607817vZqbG-text_html": "Slowly loosen the screwed ends.<br />(You should feel some tension since that's what keeps them in place)",
+    "f-richtext-1727065931QOKlY-text_html": "<p>how to</p>",
+    "f-heading-1727065931eLjip-text_html": "put on flatbacks"
+  }
+},
+        "blocks": [
+          {
+            "type": "@app"
+          }
+        ],          
+        "presets": [
+          {
+            "name": "[Foxify] Flatback"
+          }
+        ]  
+      }
+    {% endschema %}
   

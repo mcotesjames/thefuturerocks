@@ -1,44 +1,32 @@
-
-{% liquid
-  
-    assign locales = shop.metafields.foxify.locales.value
-    assign current_locale = request.locale.iso_code
-    assign primary_locale = current_locale
-    for locale in shop.published_locales
-    if locale.primary
-        assign primary_locale = locale.iso_code
-        break
-    endif
-    endfor
-    assign translation = locales[current_locale] | default: locales[primary_locale]
-
-    assign theme_settings = shop.metafields.foxify.theme_settings.value
-    assign productCard = theme_settings.productCard
-  
-  
-      assign foxifyCustomCss = shop.metafields.foxify['66208448dbaa884649156d02'].value.customCss
-      assign foxifyCustomJs = shop.metafields.foxify['66208448dbaa884649156d02'].value.customJs
-    
-%}
-
-      <script>
+    {% liquid
+        assign locales = shop.metafields.foxify.locales.value
+        assign current_locale = request.locale.iso_code
+        assign primary_locale = current_locale
+        for locale in shop.published_locales
+        if locale.primary
+            assign primary_locale = locale.iso_code
+            break
+        endif
+        endfor
+        assign translation = locales[current_locale] | default: locales[primary_locale]
+    %}
+    <script>
         window.Foxify = window.Foxify || {}
         Foxify.ThemeStyles = {
-          product: "https:{{ 'foxify-product.css' | asset_url }}",
-          swiper: "https:{{ 'foxify-swiper.css' | asset_url }}",
+            product: "https:{{ 'foxify-product.css' | asset_url }}",
+            swiper: "https:{{ 'foxify-swiper.css' | asset_url }}",
         }
 
         Foxify.ThemeScripts = {
-          productModel: "https:{{ 'foxify-product-model.js' | asset_url }}",
-          productMedia: "https:{{ 'foxify-media-gallery.js' | asset_url }}",
-          variantPicker: "https:{{ 'foxify-variant-picker.js' | asset_url }}"
+            productModel: "https:{{ 'foxify-product-model.js' | asset_url }}",
+            productMedia: "https:{{ 'foxify-media-gallery.js' | asset_url }}",
+            variantPicker: "https:{{ 'foxify-variant-picker.js' | asset_url }}"
         }
 
-        Foxify.pageId = '17134070483LauH';
-        Foxify.default = false;
-      </script>
-    
-<div class="f-app f:content">
+        Foxify.pageId = '17134070483LauH'
+        Foxify.default = false
+    </script>
+    <div class="f-app f:content">
 <link href="https://fonts.googleapis.com/css2?family=Tilt+Neon:wght@400&display=swap" id="Tilt Neon" rel="stylesheet">
 <style data-foxify-editor="foxify-custom-fonts">
   @font-face {
@@ -185,84 +173,84 @@
       %}
 
 </div>
-{% schema %}
-  {
-  "name": "Foxify main content",
-  "class": "foxify-main f-app",
-  "settings": [
-    {
-      "type": "header",
-      "content": "Customize main content",
-      "info": "Go to [Foxify app](https://admin.shopify.com/store/the-future-rocks/apps/foxify-builder/editor?id=17134070483LauH&type=regular) to edit this section."
-    }
-  ],
-  "locales": {
-    "en": {
-      "f-heading-1713406990JSy5s-text_html": "mother's day",
-      "f-heading-17134069901daNj-text_html": "JEWELRY GIFT GUIDE",
-      "f-richtext-1713406990UKJeu-text_html": "When it comes to honoring the mothers in your life, nothing expresses your love and appreciation quite like the gift of gemstones. From sparkling diamonds to elegant precious metals to intricate designs, each piece is mindfully crafted to be the classic of the future. Here are a few recommendations from The Future Rocks' team.",
-      "f-richtext-1713406990Go7c7-text_html": "Photo by <a href=\"https://unsplash.com/@bencehalmosi?utm_content=creditCopyText&amp;utm_medium=referral&amp;utm_source=unsplash\" target=\"_blank\" rel=\"noopener\">Bence Halmosi</a> on <a href=\"https://unsplash.com/\" target=\"_blank\" rel=\"noopener\">Unsplash</a>",
-      "f-heading-1713406990eIsYn-text_html": "mother's day",
-      "f-heading-17134069905FlFY-text_html": "JEWELRY GIFT GUIDE",
-      "f-richtext-1713406990PmFfX-text_html": "When it comes to honoring the mothers in your life, nothing expresses your love and appreciation quite like the gift of gemstones. From sparkling diamonds to elegant precious metals to intricate designs, each piece is mindfully crafted to be the classic of the future. Here are a few recommendations from The Future Rocks' team.",
-      "f-richtext-17134069909WLCW-text_html": "Photo by <a href=\"https://unsplash.com/@bencehalmosi?utm_content=creditCopyText&amp;utm_medium=referral&amp;utm_source=unsplash\" target=\"_blank\" rel=\"noopener\">Bence Halmosi</a> on <a href=\"https://unsplash.com/\" target=\"_blank\" rel=\"noopener\">Unsplash</a>",
-      "f-richtext-1713406990Ugp9A-text_html": "gifts for two",
-      "f-heading-1713406990lXTbM-text_html": "the perfect pair",
-      "f-richtext-1713406990i0JJY-text_html": "Celebrate the bond between mother and child with our exclusive Hikari bundle and other heartwarming pieces designed for two.",
-      "f-button-1713406990l7HC9-button_label_html": "shop bundle specials",
-      "f-heading-1713406990cJ07E-text_html": "Ready-to-ship",
-      "f-richtext-1713406990ngA7P-text_html": "While we encourage most of our creatives and designers to operate on a made-to-order basis, we also understand your urge for last-minute shopping. Here, we have curated a list of designs that are ready-to-ship. However, to avoid overproduction, some metal options, diamond carats, sizes, etc., are only available upon request. Test your luck and browse through our selection below.",
-      "f-button-1713406990hgPXp-button_label_html": "see all",
-      "f-heading-1713406990P7Jw5-text_html": "shop by price",
-      "f-button-1713406990qUlru-button_label_html": "under USD $500",
-      "f-button-1713406990K2ggd-button_label_html": "USD $500 - $1000",
-      "f-button-1713406990qdCtM-button_label_html": "USD $1000 - $2000",
-      "f-button-1713406990iPMWS-button_label_html": "USD $2000 - $3000",
-      "f-button-1713406990q82Gn-button_label_html": "above USD $3000",
-      "f-heading-1713406990Nz4QW-text_html": "shop by material",
-      "f-richtext-17134069905IjtG-text_html": "Discover the scientific wonders of Lab-grown diamonds with a range of jewelry curation.",
-      "f-button-1713406990FqBCv-button_label_html": "lab-grown diamond",
-      "f-button-1713406990fRucM-button_label_html": "color lab-grown diamond",
-      "f-button-1713406990M6JIV-button_label_html": "recycled gold",
-      "f-button-1713406990lQ5D5-button_label_html": "gold vermeil",
-      "f-button-17134069901AQuW-button_label_html": "gem free",
-      "f-heading-1713406990WrcND-text_html": "shop by style",
-      "f-button-1713406990I7cHD-button_label_html": "see all",
-      "f-heading-1713406990Adf4E-text_html": "shop by style",
-      "f-button-1713406990MOzww-button_label_html": "see all",
-      "f-button-171340699024XMX-button_label_html": "promise rings",
-      "f-button-1713406990T2Cth-button_label_html": "solitaire necklaces",
-      "f-button-1713406990HIkpB-button_label_html": "tennis bracelets",
-      "f-button-1713406990mGOwu-button_label_html": "stud earrings",
-      "f-richtext-1713406990SLLs1-text_html": "the future rocks gift card",
-      "f-heading-1713406990IMtte-text_html": "Digital Gifts for all Occasion",
-      "f-richtext-1713406990wKntK-text_html": "<p>If you're unsure of her preferences, let her choose her gift with our convenient gift cards. Pair it with a heartfelt message to make her feel truly special.</p>",
-      "f-button-1713406990gqgLx-button_label_html": "buy a gift card",
-      "f-heading-17134069903Cjw1-text_html": "More Suggestions for You",
-      "f-heading-17134069902bAOk-text_html": "Jewelry Gift Guide: Find the right amount of bling for those who matter",
-      "f-richtext-1713406990M4yhg-text_html": "It’s the gifting season! While there is no way to measure how much love you receive from those closest to you, there is a way to know how much glitz and glamour you can give depending on how close you are to someone.",
-      "f-button-1713406990maso0-button_label_html": "read and shop",
-      "f-heading-17134069907c6KH-text_html": "Mother's Day: The perfect zodiac jewelry for twelve kinds of mom",
-      "f-richtext-1713406990yqSau-text_html": "As we're approaching the greatest festival of the year - no, it's not Christmas yet - millions of people around the world are losing sleep over finding the perfect gifts for mom.",
-      "f-button-1713406990Tdygj-button_label_html": "read and shop",
-      "f-heading-1713406990Jk4a1-text_html": "The Trinity of Gold Jewelry: What Your Choice Says About You",
-      "f-richtext-1713406990WZVyq-text_html": "Gold has been associated with royalty and opulence ever since the time of ancient Egypt. Gold jewelry is a timeless investment that keeps its value over time, and it’s also an affordable way to build your personal gold stash and diversify your portfolio.",
-      "f-button-1713406990a1FZG-button_label_html": "read and shop",
-      "f-richtext-1713406990guEeX-text_html": "<p>hong kong only</p>",
-      "f-heading-1713406990otM6A-text_html": "permanent jewelry",
-      "f-richtext-1713406990CCopq-text_html": "<p>Our Permanent jewelry is tailored to fit seamlessly, designed for continuous wear. We provide 14K solid gold chains in diverse styles suitable for everyday use. Personalize your jewelry with our extensive selection of charms and mix and match with our bracelets for a unique touch.</p>",
-      "f-button-17134069903wWY2-button_label_html": "learn more",
-      "f-heading-1713406990ubv9j-text_html": "faq",
-      "f-collapsible-tab-17134069909cjfD-heading_html": "What does a diamond symbolize?",
-      "f-collapsible-tab-17134069909cjfD-content_html": "A diamond is more than just a gift to be worn, cherished, and loved at the time of giving – it can be passed down to generations as a meaningful heirloom for your loved ones and become the start of a new family tradition.",
-      "f-collapsible-tab-1713406990K46rZ-heading_html": "Can I personalize jewelry for Mother's Day?",
-      "f-collapsible-tab-1713406990K46rZ-content_html": "Yes, many of our jewelry pieces can be customized or personalized to add an extra personal touch. From engraving initials to selecting specific diamond colors and cuts, you could find a one-of-a-kind piece that will make your Mother's Day gift even more special.",
-      "f-collapsible-tab-1713406990Ozwky-heading_html": "Do you offer gift cards?",
-      "f-collapsible-tab-1713406990Ozwky-content_html": "Yes! We offer gift cards in preset denominations of  USD $250, USD $500, USD $1,000, or you can choose a custom value. Please note that our gift cards are non-refundable. We currently offer gift cards for customers located in the United States only.",
-      "f-collapsible-tab-1713406990N7GsY-heading_html": "Is my order shipped immediately upon payment?",
-      "f-collapsible-tab-1713406990N7GsY-content_html": "We encourage our community of creatives and designers not to overproduce and operate on a made-to-order basis. However, we also understand your urge for last-minute shopping. Here, we have curated a list of designs that are ready to ship."
-    }
+    {% schema %}
+        {
+            "name": "Foxify main content",
+            "class": "foxify-main f-app",
+            "settings": [
+                {
+                "type": "header",
+                "content": "Customize section",
+                "info": "Go to [Foxify app](https://app.foxify.io/editor?id=17134070483LauH&type=REGULAR) to edit this section."
+                }
+            ],
+            "locales": {
+  "en": {
+    "f-heading-1713406990JSy5s-text_html": "mother's day",
+    "f-heading-17134069901daNj-text_html": "JEWELRY GIFT GUIDE",
+    "f-richtext-1713406990UKJeu-text_html": "When it comes to honoring the mothers in your life, nothing expresses your love and appreciation quite like the gift of gemstones. From sparkling diamonds to elegant precious metals to intricate designs, each piece is mindfully crafted to be the classic of the future. Here are a few recommendations from The Future Rocks' team.",
+    "f-richtext-1713406990Go7c7-text_html": "Photo by <a href=\"https://unsplash.com/@bencehalmosi?utm_content=creditCopyText&amp;utm_medium=referral&amp;utm_source=unsplash\" target=\"_blank\" rel=\"noopener\">Bence Halmosi</a> on <a href=\"https://unsplash.com/\" target=\"_blank\" rel=\"noopener\">Unsplash</a>",
+    "f-heading-1713406990eIsYn-text_html": "mother's day",
+    "f-heading-17134069905FlFY-text_html": "JEWELRY GIFT GUIDE",
+    "f-richtext-1713406990PmFfX-text_html": "When it comes to honoring the mothers in your life, nothing expresses your love and appreciation quite like the gift of gemstones. From sparkling diamonds to elegant precious metals to intricate designs, each piece is mindfully crafted to be the classic of the future. Here are a few recommendations from The Future Rocks' team.",
+    "f-richtext-17134069909WLCW-text_html": "Photo by <a href=\"https://unsplash.com/@bencehalmosi?utm_content=creditCopyText&amp;utm_medium=referral&amp;utm_source=unsplash\" target=\"_blank\" rel=\"noopener\">Bence Halmosi</a> on <a href=\"https://unsplash.com/\" target=\"_blank\" rel=\"noopener\">Unsplash</a>",
+    "f-richtext-1713406990Ugp9A-text_html": "gifts for two",
+    "f-heading-1713406990lXTbM-text_html": "the perfect pair",
+    "f-richtext-1713406990i0JJY-text_html": "Celebrate the bond between mother and child with our exclusive Hikari bundle and other heartwarming pieces designed for two.",
+    "f-button-1713406990l7HC9-button_label_html": "shop bundle specials",
+    "f-heading-1713406990cJ07E-text_html": "Ready-to-ship",
+    "f-richtext-1713406990ngA7P-text_html": "While we encourage most of our creatives and designers to operate on a made-to-order basis, we also understand your urge for last-minute shopping. Here, we have curated a list of designs that are ready-to-ship. However, to avoid overproduction, some metal options, diamond carats, sizes, etc., are only available upon request. Test your luck and browse through our selection below.",
+    "f-button-1713406990hgPXp-button_label_html": "see all",
+    "f-heading-1713406990P7Jw5-text_html": "shop by price",
+    "f-button-1713406990qUlru-button_label_html": "under USD $500",
+    "f-button-1713406990K2ggd-button_label_html": "USD $500 - $1000",
+    "f-button-1713406990qdCtM-button_label_html": "USD $1000 - $2000",
+    "f-button-1713406990iPMWS-button_label_html": "USD $2000 - $3000",
+    "f-button-1713406990q82Gn-button_label_html": "above USD $3000",
+    "f-heading-1713406990Nz4QW-text_html": "shop by material",
+    "f-richtext-17134069905IjtG-text_html": "Discover the scientific wonders of Lab-grown diamonds with a range of jewelry curation.",
+    "f-button-1713406990FqBCv-button_label_html": "lab-grown diamond",
+    "f-button-1713406990fRucM-button_label_html": "color lab-grown diamond",
+    "f-button-1713406990M6JIV-button_label_html": "recycled gold",
+    "f-button-1713406990lQ5D5-button_label_html": "gold vermeil",
+    "f-button-17134069901AQuW-button_label_html": "gem free",
+    "f-heading-1713406990WrcND-text_html": "shop by style",
+    "f-button-1713406990I7cHD-button_label_html": "see all",
+    "f-heading-1713406990Adf4E-text_html": "shop by style",
+    "f-button-1713406990MOzww-button_label_html": "see all",
+    "f-button-171340699024XMX-button_label_html": "promise rings",
+    "f-button-1713406990T2Cth-button_label_html": "solitaire necklaces",
+    "f-button-1713406990HIkpB-button_label_html": "tennis bracelets",
+    "f-button-1713406990mGOwu-button_label_html": "stud earrings",
+    "f-richtext-1713406990SLLs1-text_html": "the future rocks gift card",
+    "f-heading-1713406990IMtte-text_html": "Digital Gifts for all Occasion",
+    "f-richtext-1713406990wKntK-text_html": "<p>If you're unsure of her preferences, let her choose her gift with our convenient gift cards. Pair it with a heartfelt message to make her feel truly special.</p>",
+    "f-button-1713406990gqgLx-button_label_html": "buy a gift card",
+    "f-heading-17134069903Cjw1-text_html": "More Suggestions for You",
+    "f-heading-17134069902bAOk-text_html": "Jewelry Gift Guide: Find the right amount of bling for those who matter",
+    "f-richtext-1713406990M4yhg-text_html": "It’s the gifting season! While there is no way to measure how much love you receive from those closest to you, there is a way to know how much glitz and glamour you can give depending on how close you are to someone.",
+    "f-button-1713406990maso0-button_label_html": "read and shop",
+    "f-heading-17134069907c6KH-text_html": "Mother's Day: The perfect zodiac jewelry for twelve kinds of mom",
+    "f-richtext-1713406990yqSau-text_html": "As we're approaching the greatest festival of the year - no, it's not Christmas yet - millions of people around the world are losing sleep over finding the perfect gifts for mom.",
+    "f-button-1713406990Tdygj-button_label_html": "read and shop",
+    "f-heading-1713406990Jk4a1-text_html": "The Trinity of Gold Jewelry: What Your Choice Says About You",
+    "f-richtext-1713406990WZVyq-text_html": "Gold has been associated with royalty and opulence ever since the time of ancient Egypt. Gold jewelry is a timeless investment that keeps its value over time, and it’s also an affordable way to build your personal gold stash and diversify your portfolio.",
+    "f-button-1713406990a1FZG-button_label_html": "read and shop",
+    "f-richtext-1713406990guEeX-text_html": "<p>hong kong only</p>",
+    "f-heading-1713406990otM6A-text_html": "permanent jewelry",
+    "f-richtext-1713406990CCopq-text_html": "<p>Our Permanent jewelry is tailored to fit seamlessly, designed for continuous wear. We provide 14K solid gold chains in diverse styles suitable for everyday use. Personalize your jewelry with our extensive selection of charms and mix and match with our bracelets for a unique touch.</p>",
+    "f-button-17134069903wWY2-button_label_html": "learn more",
+    "f-heading-1713406990ubv9j-text_html": "faq",
+    "f-collapsible-tab-17134069909cjfD-heading_html": "What does a diamond symbolize?",
+    "f-collapsible-tab-17134069909cjfD-content_html": "A diamond is more than just a gift to be worn, cherished, and loved at the time of giving – it can be passed down to generations as a meaningful heirloom for your loved ones and become the start of a new family tradition.",
+    "f-collapsible-tab-1713406990K46rZ-heading_html": "Can I personalize jewelry for Mother's Day?",
+    "f-collapsible-tab-1713406990K46rZ-content_html": "Yes, many of our jewelry pieces can be customized or personalized to add an extra personal touch. From engraving initials to selecting specific diamond colors and cuts, you could find a one-of-a-kind piece that will make your Mother's Day gift even more special.",
+    "f-collapsible-tab-1713406990Ozwky-heading_html": "Do you offer gift cards?",
+    "f-collapsible-tab-1713406990Ozwky-content_html": "Yes! We offer gift cards in preset denominations of  USD $250, USD $500, USD $1,000, or you can choose a custom value. Please note that our gift cards are non-refundable. We currently offer gift cards for customers located in the United States only.",
+    "f-collapsible-tab-1713406990N7GsY-heading_html": "Is my order shipped immediately upon payment?",
+    "f-collapsible-tab-1713406990N7GsY-content_html": "We encourage our community of creatives and designers not to overproduce and operate on a made-to-order basis. However, we also understand your urge for last-minute shopping. Here, we have curated a list of designs that are ready to ship."
   }
 }
-{% endschema %}
+        }
+    {% endschema %}
   

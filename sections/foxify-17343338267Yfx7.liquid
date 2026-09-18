@@ -1,44 +1,34 @@
-
-{% liquid
-  
-    assign locales = shop.metafields.foxify.locales.value
-    assign current_locale = request.locale.iso_code
-    assign primary_locale = current_locale
-    for locale in shop.published_locales
-    if locale.primary
-        assign primary_locale = locale.iso_code
-        break
-    endif
-    endfor
-    assign translation = locales[current_locale] | default: locales[primary_locale]
-
-    assign theme_settings = shop.metafields.foxify.theme_settings.value
-    assign productCard = theme_settings.productCard
-  
-  
-      assign foxifyCustomCss = shop.metafields.foxify['675fd581ad861cf8cb0ae9e7'].value.customCss
-      assign foxifyCustomJs = shop.metafields.foxify['675fd581ad861cf8cb0ae9e7'].value.customJs
-    
-%}
-
-      <script>
+    {% liquid
+        assign locales = shop.metafields.foxify.locales.value
+        assign current_locale = request.locale.iso_code
+        assign primary_locale = current_locale
+        assign foxifyCustomCss = shop.metafields.foxify['675fd581ad861cf8cb0ae9e7'].value.customCss
+        assign foxifyCustomJs = shop.metafields.foxify['675fd581ad861cf8cb0ae9e7'].value.customJs
+        for locale in shop.published_locales
+        if locale.primary
+            assign primary_locale = locale.iso_code
+            break
+        endif
+        endfor
+        assign translation = locales[current_locale] | default: locales[primary_locale]
+    %}
+    <script>
         window.Foxify = window.Foxify || {}
         Foxify.ThemeStyles = {
-          product: "https:{{ 'foxify-product.css' | asset_url }}",
-          swiper: "https:{{ 'foxify-swiper.css' | asset_url }}",
+            product: "https:{{ 'foxify-product.css' | asset_url }}",
+            swiper: "https:{{ 'foxify-swiper.css' | asset_url }}",
         }
 
         Foxify.ThemeScripts = {
-          productModel: "https:{{ 'foxify-product-model.js' | asset_url }}",
-          productMedia: "https:{{ 'foxify-media-gallery.js' | asset_url }}",
-          variantPicker: "https:{{ 'foxify-variant-picker.js' | asset_url }}"
+            productModel: "https:{{ 'foxify-product-model.js' | asset_url }}",
+            productMedia: "https:{{ 'foxify-media-gallery.js' | asset_url }}",
+            variantPicker: "https:{{ 'foxify-variant-picker.js' | asset_url }}"
         }
 
-        Foxify.pageId = '17343338267Yfx7';
-        Foxify.default = false;
-      </script>
-    
-<div class="f-app f:content">
+        Foxify.pageId = '17343338267Yfx7'
+        Foxify.default = false
+    </script>
+    <div class="f-app f:content">
 <style data-foxify-editor="foxify-custom-fonts">
   @font-face {
     font-family: BrownProTT-Bold-17071127825LR9n;
@@ -248,180 +238,180 @@ html:not([lang|="en"]) #myDiv-en-form,html:not([lang|="ja"]) #myDiv-ja-form, htm
       %}
 
 </div>
-{% schema %}
-  {
-  "name": "Foxify main content",
-  "class": "foxify-main f-app",
-  "settings": [
-    {
-      "type": "header",
-      "content": "Customize main content",
-      "info": "Go to [Foxify app](https://admin.shopify.com/store/the-future-rocks/apps/foxify-builder/editor?id=17343338267Yfx7&type=regular) to edit this section."
-    },
-    {
-      "id": "f-favorite-product-1735809518IqonG",
-      "type": "product_list",
-      "label": "Products list favorite-product-1735809518IqonG"
-    },
-    {
-      "id": "f-lookbook-item-1734580255NGmey",
-      "type": "product_list",
-      "label": "Lookbook item lookbook-item-1734580255NGmey"
-    },
-    {
-      "id": "f-lookbook-item-1734579842B9ryv",
-      "type": "product_list",
-      "label": "Lookbook item lookbook-item-1734579842B9ryv"
-    },
-    {
-      "id": "f-lookbook-item-1734580240FRfEn",
-      "type": "product_list",
-      "label": "Lookbook item lookbook-item-1734580240FRfEn"
-    },
-    {
-      "id": "f-featured-collection-block-1734579783Qo17B",
-      "type": "collection",
-      "label": "Collection product grid featured-collection-block-1734579783Qo17B"
-    },
-    {
-      "id": "f-collection-list-items-1711166635UhWvE",
-      "type": "collection_list",
-      "label": "Collection grid collection-list-items-1711166635UhWvE"
-    }
-  ],
-  "locales": {
-    "en": {
-      "f-richtext-1711237011j24ud-text_html": "<p>Design Lab</p>",
-      "f-heading-1711237011OpzA6-text_html": "The Goddess Collection",
-      "f-richtext-1711237011XYTwx-text_html": "<p>The Goddess Collection captures the essence of femininity, strength, and timeless beauty, empowering wearers to tap into their inner strength as the new year unfolds. It represents a journey of self-discovery, empowering wearers to express their unique beauty and radiate with confidence.</p>",
-      "f-button-1734334637U9WoZ-button_label_html": "View Collection",
-      "f-richtext-1711170628NwKw6-text_html": "see you soon",
-      "f-richtext-1711171724AxMYb-text_html": "#vanitywithaconscience",
-      "f-heading-1711238432GDcds-text_html": "Ancient Archetypes And Modern Design",
-      "f-richtext-1711238435JkWyc-text_html": "Named after goddesses, this collection features six chain necklaces and seven unique modular charms. Each piece evokes a dialogue between femininity and empowerment, celebrating the strength and beauty of women throughout time.",
-      "f-button-1711324026mLw9q-button_label_html": "+",
-      "f-button-171136169456jk8-button_label_html": "+",
-      "f-button-1711325929ka9ic-button_label_html": "+",
-      "f-button-1711325933NrhJj-button_label_html": "+",
-      "f-button-1711325935sApo0-button_label_html": "+",
-      "f-button-171136125344JOF-button_label_html": "+",
-      "f-button-17113612537tD6M-button_label_html": "instagram",
-      "f-button-1711361253Gm6Bg-button_label_html": "facebook",
-      "f-button-1711361253aqLa4-button_label_html": "linkedin",
-      "f-button-1711361253ntO3d-button_label_html": "email",
-      "f-button-1711361253tdFE8-button_label_html": "+",
-      "f-button-1711361253TxgHi-button_label_html": "+",
-      "f-button-1711361253kqiyU-button_label_html": "+",
-      "f-heading-1711160747xAfil-text_html": "what's in store",
-      "f-press-content-171116074741s1c-press_list-Item-01-title_html": "<p>\"A Bacelona-based jewelry label that contributes to a positive impact on the planet, without compromising style.\"</p>",
-      "f-press-content-171116074741s1c-press_list-Item-02-title_html": "<p>\"A French luxury label that pioneers the future of carbon-neutral jewelry.\"</p>",
-      "f-press-content-171116074741s1c-press_list-Item-03-title_html": "<p>\"Switzerland’s LOEV offers a nod to modern icons of empowerment.\"</p>",
-      "f-press-content-171116074741s1c-press_list-Item-04-title_html": "<p>\"Breathes new life into vintage jewelry pieces from a Hong Kong family-owned pawnshop.\"</p>",
-      "f-press-content-171116074741s1c-press_list-Item-05-title_html": "<p>\"Parisian label Loyal.e celebrates gender-free styles that underpin the brand's liberated, convention-breaking ethos.\"</p>",
-      "f-press-content-171116074741s1c-press_list-Item-1-title_html": "<p>\"Established in 2018, Lightbox is a cutting-edge lab-grown diamond brand that provides stylish, yet accessible jewelry.\"</p>",
-      "f-press-content-171116074741s1c-press_list-Item-2-title_html": "<p>\"Germany-based Maren aims to tell a story about love, passion, and nature through each of the brand’s creations.\"</p>",
-      "f-press-content-171116074741s1c-press_list-Item-3-title_html": "<p>\"Italian for \"in the balance\", Inbilico finds the balance between old traditions and futuristic designs.\"</p>",
-      "f-press-content-171116074741s1c-press_list-Item-4-title_html": "<p>\"The Spanish jewelry label takes pride in total transparency and believing that each piece of jewelry is its objet d'art.\"</p>",
-      "f-heading-1711183908vceyp-text_html": "what's in store",
-      "f-press-content-1711183908qkpjM-press_list-Item-01-title_html": "<p>\"A Bacelona-based jewelry label that contributes to a positive impact on the planet, without compromising style.\"</p>",
-      "f-press-content-1711183908qkpjM-press_list-Item-02-title_html": "<p>\"A French luxury label that pioneers the future of carbon-neutral jewelry.\"</p>",
-      "f-press-content-1711183908qkpjM-press_list-Item-03-title_html": "<p>\"Switzerland’s LOEV offers a nod to modern icons of empowerment.\"</p>",
-      "f-press-content-1711183908qkpjM-press_list-Item-04-title_html": "<p>\"Breathes new life into vintage jewelry pieces from a Hong Kong family-owned pawnshop.\"</p>",
-      "f-press-content-1711183908qkpjM-press_list-Item-05-title_html": "<p>\"Parisian label Loyal.e celebrates gender-free styles that underpin the brand's liberated, convention-breaking ethos.\"</p>",
-      "f-press-content-1711183908qkpjM-press_list-Item-1-title_html": "<p>\"Established in 2018, Lightbox is a cutting-edge lab-grown diamond brand that provides stylish, yet accessible jewelry.\"</p>",
-      "f-press-content-1711183908qkpjM-press_list-Item-2-title_html": "<p>\"Germany-based Maren aims to tell a story about love, passion, and nature through each of the brand’s creations.\"</p>",
-      "f-press-content-1711183908qkpjM-press_list-Item-3-title_html": "<p>\"Italian for \"in the balance\", Inbilico finds the balance between old traditions and futuristic designs.\"</p>",
-      "f-press-content-1711183908qkpjM-press_list-Item-4-title_html": "<p>\"The Spanish jewelry label takes pride in total transparency and believing that each piece of jewelry is its objet d'art.\"</p>",
-      "f-collection-list-items-1711166635UhWvE-collection_list-Collection-1-title_html": "mimoke",
-      "f-collection-list-items-1711166635UhWvE-collection_list-Collection-2-title_html": "unsaid",
-      "f-collection-list-items-1711166635UhWvE-collection_list-Collection-3-title_html": "loev",
-      "f-collection-list-items-1711166635UhWvE-collection_list-Collection-4-title_html": "maazi",
-      "f-collection-list-items-1711166635UhWvE-collection_list-Collection-5-title_html": "loyal.e paris",
-      "f-collection-list-items-1711166635UhWvE-collection_list-Collection-6-title_html": "lightbox",
-      "f-collection-list-items-1711166635UhWvE-collection_list-Collection-7-title_html": "maren",
-      "f-collection-list-items-1711166635UhWvE-collection_list-Collection-8-title_html": "inbilico",
-      "f-collection-list-items-1711166635UhWvE-collection_list-Collection-9-title_html": "rever",
-      "f-heading-1734340529lOYvA-text_html": "Timeless Modularity",
-      "f-richtext-1734340529CV9P5-text_html": "<p>Available in 18k yellow gold vermeil and rhodium-plated sterling silver for lasting durability and a tarnish-resistant finish.</p>",
-      "f-testimonial-items-1734576007Kn84n-testimonial_list-Item-1-author_html": "Hebe",
-      "f-testimonial-items-1734576007Kn84n-testimonial_list-Item-1-bio_html": "The goddess of youth",
-      "f-testimonial-items-1734576007Kn84n-testimonial_list-Item-2-author_html": "Hera",
-      "f-testimonial-items-1734576007Kn84n-testimonial_list-Item-2-bio_html": "The goddess of marriage, family, childbirth",
-      "f-testimonial-items-1734576007Kn84n-testimonial_list-Item-3-author_html": "Athena",
-      "f-testimonial-items-1734576007Kn84n-testimonial_list-Item-3-bio_html": "The goddess of wisdom",
-      "f-testimonial-items-1734576007Kn84n-testimonial_list-Item-4-author_html": "Phoebe",
-      "f-testimonial-items-1734576007Kn84n-testimonial_list-Item-4-bio_html": "The goddess of intellect",
-      "f-testimonial-items-1734576007Kn84n-testimonial_list-Item-5-author_html": "Gaia",
-      "f-testimonial-items-1734576007Kn84n-testimonial_list-Item-5-bio_html": "The goddess of Earth, mother of all life",
-      "f-testimonial-items-1734576007Kn84n-testimonial_list-Item-6-author_html": "Artemis",
-      "f-testimonial-items-1734576007Kn84n-testimonial_list-Item-6-bio_html": "The goddess of wild animals",
-      "f-testimonial-items-1734576007Kn84n-testimonial_list-Item-7-author_html": "Nyx",
-      "f-testimonial-items-1734576007Kn84n-testimonial_list-Item-7-bio_html": "The goddess of the night",
-      "f-testimonial-items-1734576007Kn84n-testimonial_list-Item-8-author_html": "Astra",
-      "f-testimonial-items-1734576007Kn84n-testimonial_list-Item-8-bio_html": "The virgin goddess of justic",
-      "f-testimonial-items-1734576007Kn84n-testimonial_list-Item-9-author_html": "Perse",
-      "f-testimonial-items-1734576007Kn84n-testimonial_list-Item-9-bio_html": "Married Helios, the sun god, and later gave birth to the goddess Circe",
-      "f-testimonial-items-1734576007Kn84n-testimonial_list-Item-10-author_html": "Clio",
-      "f-testimonial-items-1734576007Kn84n-testimonial_list-Item-10-bio_html": "The goddess of music, song and dance",
-      "f-testimonial-items-1734576007Kn84n-testimonial_list-Item-11-author_html": "Iris",
-      "f-testimonial-items-1734576007Kn84n-testimonial_list-Item-11-bio_html": "The goddess of the rainbow and the messenger of the Olympian gods",
-      "f-testimonial-items-1734576007Kn84n-testimonial_list-Item-12-author_html": "Aphrodite",
-      "f-testimonial-items-1734576007Kn84n-testimonial_list-Item-12-bio_html": "The goddess of love and beauty",
-      "f-testimonial-items-1734576007Kn84n-testimonial_list-Item-13-author_html": "Selene",
-      "f-testimonial-items-1734576007Kn84n-testimonial_list-Item-13-bio_html": "The goddess of the moon",
-      "f-testimonial-items-1734576007Kn84n-heading_html": "Example heading",
-      "f-testimonial-items-1734576007Kn84n-text_html": "<p>Use this text to describe your section.</p>",
-      "f-testimonial-items-1734578199lHLrV-testimonial_list-Item-1-author_html": "Hebe",
-      "f-testimonial-items-1734578199lHLrV-testimonial_list-Item-1-bio_html": "The goddess of youth",
-      "f-testimonial-items-1734578199lHLrV-testimonial_list-Item-2-author_html": "Hera",
-      "f-testimonial-items-1734578199lHLrV-testimonial_list-Item-2-bio_html": "The goddess of marriage, family, childbirth",
-      "f-testimonial-items-1734578199lHLrV-testimonial_list-Item-3-author_html": "Athena",
-      "f-testimonial-items-1734578199lHLrV-testimonial_list-Item-3-bio_html": "The goddess of wisdom",
-      "f-testimonial-items-1734578199lHLrV-testimonial_list-Item-4-author_html": "Phoebe",
-      "f-testimonial-items-1734578199lHLrV-testimonial_list-Item-4-bio_html": "The goddess of intellect",
-      "f-testimonial-items-1734578199lHLrV-testimonial_list-Item-5-author_html": "Gaia",
-      "f-testimonial-items-1734578199lHLrV-testimonial_list-Item-5-bio_html": "The goddess of Earth, mother of all life",
-      "f-testimonial-items-1734578199lHLrV-testimonial_list-Item-6-author_html": "Artemis",
-      "f-testimonial-items-1734578199lHLrV-testimonial_list-Item-6-bio_html": "The goddess of wilderness, and wild animals",
-      "f-testimonial-items-1734578199lHLrV-testimonial_list-Item-7-author_html": "Nyx",
-      "f-testimonial-items-1734578199lHLrV-testimonial_list-Item-7-bio_html": "The goddess of the night",
-      "f-testimonial-items-1734578199lHLrV-testimonial_list-Item-8-author_html": "Astra",
-      "f-testimonial-items-1734578199lHLrV-testimonial_list-Item-8-bio_html": "The virgin goddess of justice",
-      "f-testimonial-items-1734578199lHLrV-testimonial_list-Item-9-author_html": "Perse",
-      "f-testimonial-items-1734578199lHLrV-testimonial_list-Item-9-bio_html": "Married Helios, the sun god, and later gave birth to the goddess Circe",
-      "f-testimonial-items-1734578199lHLrV-testimonial_list-Item-10-author_html": "Clio",
-      "f-testimonial-items-1734578199lHLrV-testimonial_list-Item-10-bio_html": "The goddess of music, song and dance",
-      "f-testimonial-items-1734578199lHLrV-testimonial_list-Item-11-author_html": "Iris",
-      "f-testimonial-items-1734578199lHLrV-testimonial_list-Item-11-bio_html": "The goddess of the rainbow and the messenger of the Olympian gods",
-      "f-testimonial-items-1734578199lHLrV-testimonial_list-Item-12-author_html": "Aphrodite",
-      "f-testimonial-items-1734578199lHLrV-testimonial_list-Item-12-bio_html": "The goddess of love and beauty",
-      "f-testimonial-items-1734578199lHLrV-testimonial_list-Item-13-author_html": "Selene",
-      "f-testimonial-items-1734578199lHLrV-testimonial_list-Item-13-bio_html": "The goddess of the moon",
-      "f-testimonial-items-1734578199lHLrV-heading_html": "Example heading",
-      "f-testimonial-items-1734578199lHLrV-text_html": "<p>Use this text to describe your section.</p>",
-      "f-heading-1734579783W2F3B-text_html": "Work",
-      "f-richtext-17345797833uzEQ-text_html": "Step into work with confidence.",
-      "f-button-1734579783COvF9-button_label_html": "Get the Look",
-      "f-heading-17345887878uQ9G-text_html": "Casual",
-      "f-heading-1734589941xrlke-text_html": "Work",
-      "f-heading-1734590826ElPSx-text_html": "Active",
-      "f-heading-1734591261BIEC4-text_html": "Change your style in a snap",
-      "f-richtext-1734591261Je7r2-text_html": "<p>Mix and match charms and adjust necklace lengths for a personalized touch, making each piece ideal for any occasion.</p>",
-      "f-richtext-1735794077tUzpG-text_html": "Sparkling with lab-grown white sapphires, <span style=\"font-family: -apple-system, BlinkMacSystemFont, Helvetica, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;\">these charms range from 0.60ct to 8cts.</span>",
-      "f-heading-1735809654ehy5F-text_html": "Choose Your Style of Chain",
-      "f-heading-17361303647t9mA-text_html": "Style It Your Own Way\n",
-      "f-heading-1736134439fPVTG-text_html": "Choose to Add More Charms",
-      "f-testimonial-items-17361344390Jp8Y-heading_html": "Example heading",
-      "f-testimonial-items-17361344390Jp8Y-text_html": "<p>Use this text to describe your section.</p>",
-      "f-testimonial-items-17361344390Jp8Y-testimonial_list-Item-2-text_html": "<strong>Nyx charm (Round)<br /></strong><span style=\"color: #2dc26b;\">USD $100<br /><br /><a href=\"https://thefuturerocks.com/products/solitaire-charms?variant=45656456855701\"><span style=\"text-decoration: underline;\"><span style=\"color: #000000; text-decoration: underline;\">SHOP NOW</span></span></a></span>",
-      "f-testimonial-items-17361344390Jp8Y-testimonial_list-Item-1-text_html": "<strong>Clio charm (Marquise)</strong><br /><span style=\"color: #2dc26b;\">USD $100</span><strong><span style=\"color: #2dc26b;\"><br /><br /></span></strong><a href=\"https://thefuturerocks.com/products/solitaire-charms?variant=45656456822933\"><span style=\"color: #000000;\"><span style=\"text-decoration: underline;\">SHOP NOW</span></span></a>",
-      "f-testimonial-items-17361344390Jp8Y-testimonial_list-Item-6-text_html": "<strong>Aphrodite pavé charm</strong><br /><span style=\"color: #2dc26b;\">USD $130<br /><br /><a href=\"https://thefuturerocks.com/products/pave-charms?variant=45656484708501\"><span style=\"text-decoration: underline; color: #000000;\">SHOP NOW</span></a><br /></span>",
-      "f-testimonial-items-17361344390Jp8Y-testimonial_list-Item-7-text_html": "<strong>Selene pavé charm</strong><br /><span style=\"color: #2dc26b;\">USD $130<br /><br /><a href=\"https://thefuturerocks.com/products/pave-charms?variant=45656484741269\"><span style=\"text-decoration: underline;\"><span style=\"color: #000000; text-decoration: underline;\">SHOP NOW</span></span></a></span>",
-      "f-testimonial-items-17361344390Jp8Y-testimonial_list-Item-4-text_html": "<strong>Astra charm (Trillion)</strong><br /><span style=\"color: #2dc26b;\">USD $100</span><strong><span style=\"color: #2dc26b;\"><br /><br /></span></strong><a href=\"https://thefuturerocks.com/products/solitaire-charms?variant=45656456790165\"><span style=\"text-decoration: underline; color: #000000;\">SHOP NOW</span></a>",
-      "f-testimonial-items-17361344390Jp8Y-testimonial_list-Item-3-text_html": "<strong>Perse charm (Pear)</strong><br /><span style=\"color: #2dc26b;\">USD $100<br /><br /><a href=\"https://thefuturerocks.com/products/solitaire-charms?variant=45656456757397\"><span style=\"text-decoration: underline; color: #000000;\">SHOP NOW</span></a></span>",
-      "f-testimonial-items-17361344390Jp8Y-testimonial_list-Item-5-text_html": "<strong>Iris pavé charm (Round)</strong><br /><span style=\"color: #2dc26b;\">USD $130<br /><br /><a href=\"https://thefuturerocks.com/products/pave-charms?variant=45656484675733\"><span style=\"text-decoration: underline; color: #000000;\">SHOP NOW</span></a><br /></span>"
-    }
+    {% schema %}
+        {
+            "name": "Foxify main content",
+            "class": "foxify-main f-app",
+            "settings": [
+                {
+                "type": "header",
+                "content": "Customize section",
+                "info": "Go to [Foxify app](https://app.foxify.io/editor?id=17343338267Yfx7&type=REGULAR) to edit this section."
+                },
+                {
+ "id": "f-favorite-product-1735809518IqonG",
+ "type": "product_list",
+ "label": "Products list favorite-product-1735809518IqonG"
+},
+{
+ "id": "f-lookbook-item-1734580255NGmey",
+ "type": "product_list",
+ "label": "Lookbook item lookbook-item-1734580255NGmey"
+},
+{
+ "id": "f-lookbook-item-1734579842B9ryv",
+ "type": "product_list",
+ "label": "Lookbook item lookbook-item-1734579842B9ryv"
+},
+{
+ "id": "f-lookbook-item-1734580240FRfEn",
+ "type": "product_list",
+ "label": "Lookbook item lookbook-item-1734580240FRfEn"
+},
+{
+ "id": "f-featured-collection-block-1734579783Qo17B",
+ "type": "collection",
+ "label": "Collection product grid featured-collection-block-1734579783Qo17B"
+},
+{
+ "id": "f-collection-list-items-1711166635UhWvE",
+ "type": "collection_list",
+ "label": "Collection grid collection-list-items-1711166635UhWvE"
+}
+            ],
+            "locales": {
+  "en": {
+    "f-richtext-1711237011j24ud-text_html": "<p>Design Lab</p>",
+    "f-heading-1711237011OpzA6-text_html": "The Goddess Collection",
+    "f-richtext-1711237011XYTwx-text_html": "<p>The Goddess Collection captures the essence of femininity, strength, and timeless beauty, empowering wearers to tap into their inner strength as the new year unfolds. It represents a journey of self-discovery, empowering wearers to express their unique beauty and radiate with confidence.</p>",
+    "f-button-1734334637U9WoZ-button_label_html": "View Collection",
+    "f-richtext-1711170628NwKw6-text_html": "see you soon",
+    "f-richtext-1711171724AxMYb-text_html": "#vanitywithaconscience",
+    "f-heading-1711238432GDcds-text_html": "Ancient Archetypes And Modern Design",
+    "f-richtext-1711238435JkWyc-text_html": "Named after goddesses, this collection features six chain necklaces and seven unique modular charms. Each piece evokes a dialogue between femininity and empowerment, celebrating the strength and beauty of women throughout time.",
+    "f-button-1711324026mLw9q-button_label_html": "+",
+    "f-button-171136169456jk8-button_label_html": "+",
+    "f-button-1711325929ka9ic-button_label_html": "+",
+    "f-button-1711325933NrhJj-button_label_html": "+",
+    "f-button-1711325935sApo0-button_label_html": "+",
+    "f-button-171136125344JOF-button_label_html": "+",
+    "f-button-17113612537tD6M-button_label_html": "instagram",
+    "f-button-1711361253Gm6Bg-button_label_html": "facebook",
+    "f-button-1711361253aqLa4-button_label_html": "linkedin",
+    "f-button-1711361253ntO3d-button_label_html": "email",
+    "f-button-1711361253tdFE8-button_label_html": "+",
+    "f-button-1711361253TxgHi-button_label_html": "+",
+    "f-button-1711361253kqiyU-button_label_html": "+",
+    "f-heading-1711160747xAfil-text_html": "what's in store",
+    "f-press-content-171116074741s1c-press_list-Item-01-title_html": "<p>\"A Bacelona-based jewelry label that contributes to a positive impact on the planet, without compromising style.\"</p>",
+    "f-press-content-171116074741s1c-press_list-Item-02-title_html": "<p>\"A French luxury label that pioneers the future of carbon-neutral jewelry.\"</p>",
+    "f-press-content-171116074741s1c-press_list-Item-03-title_html": "<p>\"Switzerland’s LOEV offers a nod to modern icons of empowerment.\"</p>",
+    "f-press-content-171116074741s1c-press_list-Item-04-title_html": "<p>\"Breathes new life into vintage jewelry pieces from a Hong Kong family-owned pawnshop.\"</p>",
+    "f-press-content-171116074741s1c-press_list-Item-05-title_html": "<p>\"Parisian label Loyal.e celebrates gender-free styles that underpin the brand's liberated, convention-breaking ethos.\"</p>",
+    "f-press-content-171116074741s1c-press_list-Item-1-title_html": "<p>\"Established in 2018, Lightbox is a cutting-edge lab-grown diamond brand that provides stylish, yet accessible jewelry.\"</p>",
+    "f-press-content-171116074741s1c-press_list-Item-2-title_html": "<p>\"Germany-based Maren aims to tell a story about love, passion, and nature through each of the brand’s creations.\"</p>",
+    "f-press-content-171116074741s1c-press_list-Item-3-title_html": "<p>\"Italian for \"in the balance\", Inbilico finds the balance between old traditions and futuristic designs.\"</p>",
+    "f-press-content-171116074741s1c-press_list-Item-4-title_html": "<p>\"The Spanish jewelry label takes pride in total transparency and believing that each piece of jewelry is its objet d'art.\"</p>",
+    "f-heading-1711183908vceyp-text_html": "what's in store",
+    "f-press-content-1711183908qkpjM-press_list-Item-01-title_html": "<p>\"A Bacelona-based jewelry label that contributes to a positive impact on the planet, without compromising style.\"</p>",
+    "f-press-content-1711183908qkpjM-press_list-Item-02-title_html": "<p>\"A French luxury label that pioneers the future of carbon-neutral jewelry.\"</p>",
+    "f-press-content-1711183908qkpjM-press_list-Item-03-title_html": "<p>\"Switzerland’s LOEV offers a nod to modern icons of empowerment.\"</p>",
+    "f-press-content-1711183908qkpjM-press_list-Item-04-title_html": "<p>\"Breathes new life into vintage jewelry pieces from a Hong Kong family-owned pawnshop.\"</p>",
+    "f-press-content-1711183908qkpjM-press_list-Item-05-title_html": "<p>\"Parisian label Loyal.e celebrates gender-free styles that underpin the brand's liberated, convention-breaking ethos.\"</p>",
+    "f-press-content-1711183908qkpjM-press_list-Item-1-title_html": "<p>\"Established in 2018, Lightbox is a cutting-edge lab-grown diamond brand that provides stylish, yet accessible jewelry.\"</p>",
+    "f-press-content-1711183908qkpjM-press_list-Item-2-title_html": "<p>\"Germany-based Maren aims to tell a story about love, passion, and nature through each of the brand’s creations.\"</p>",
+    "f-press-content-1711183908qkpjM-press_list-Item-3-title_html": "<p>\"Italian for \"in the balance\", Inbilico finds the balance between old traditions and futuristic designs.\"</p>",
+    "f-press-content-1711183908qkpjM-press_list-Item-4-title_html": "<p>\"The Spanish jewelry label takes pride in total transparency and believing that each piece of jewelry is its objet d'art.\"</p>",
+    "f-collection-list-items-1711166635UhWvE-collection_list-Collection-1-title_html": "mimoke",
+    "f-collection-list-items-1711166635UhWvE-collection_list-Collection-2-title_html": "unsaid",
+    "f-collection-list-items-1711166635UhWvE-collection_list-Collection-3-title_html": "loev",
+    "f-collection-list-items-1711166635UhWvE-collection_list-Collection-4-title_html": "maazi",
+    "f-collection-list-items-1711166635UhWvE-collection_list-Collection-5-title_html": "loyal.e paris",
+    "f-collection-list-items-1711166635UhWvE-collection_list-Collection-6-title_html": "lightbox",
+    "f-collection-list-items-1711166635UhWvE-collection_list-Collection-7-title_html": "maren",
+    "f-collection-list-items-1711166635UhWvE-collection_list-Collection-8-title_html": "inbilico",
+    "f-collection-list-items-1711166635UhWvE-collection_list-Collection-9-title_html": "rever",
+    "f-heading-1734340529lOYvA-text_html": "Timeless Modularity",
+    "f-richtext-1734340529CV9P5-text_html": "<p>Available in 18k yellow gold vermeil and rhodium-plated sterling silver for lasting durability and a tarnish-resistant finish.</p>",
+    "f-testimonial-items-1734576007Kn84n-testimonial_list-Item-1-author_html": "Hebe",
+    "f-testimonial-items-1734576007Kn84n-testimonial_list-Item-1-bio_html": "The goddess of youth",
+    "f-testimonial-items-1734576007Kn84n-testimonial_list-Item-2-author_html": "Hera",
+    "f-testimonial-items-1734576007Kn84n-testimonial_list-Item-2-bio_html": "The goddess of marriage, family, childbirth",
+    "f-testimonial-items-1734576007Kn84n-testimonial_list-Item-3-author_html": "Athena",
+    "f-testimonial-items-1734576007Kn84n-testimonial_list-Item-3-bio_html": "The goddess of wisdom",
+    "f-testimonial-items-1734576007Kn84n-testimonial_list-Item-4-author_html": "Phoebe",
+    "f-testimonial-items-1734576007Kn84n-testimonial_list-Item-4-bio_html": "The goddess of intellect",
+    "f-testimonial-items-1734576007Kn84n-testimonial_list-Item-5-author_html": "Gaia",
+    "f-testimonial-items-1734576007Kn84n-testimonial_list-Item-5-bio_html": "The goddess of Earth, mother of all life",
+    "f-testimonial-items-1734576007Kn84n-testimonial_list-Item-6-author_html": "Artemis",
+    "f-testimonial-items-1734576007Kn84n-testimonial_list-Item-6-bio_html": "The goddess of wild animals",
+    "f-testimonial-items-1734576007Kn84n-testimonial_list-Item-7-author_html": "Nyx",
+    "f-testimonial-items-1734576007Kn84n-testimonial_list-Item-7-bio_html": "The goddess of the night",
+    "f-testimonial-items-1734576007Kn84n-testimonial_list-Item-8-author_html": "Astra",
+    "f-testimonial-items-1734576007Kn84n-testimonial_list-Item-8-bio_html": "The virgin goddess of justic",
+    "f-testimonial-items-1734576007Kn84n-testimonial_list-Item-9-author_html": "Perse",
+    "f-testimonial-items-1734576007Kn84n-testimonial_list-Item-9-bio_html": "Married Helios, the sun god, and later gave birth to the goddess Circe",
+    "f-testimonial-items-1734576007Kn84n-testimonial_list-Item-10-author_html": "Clio",
+    "f-testimonial-items-1734576007Kn84n-testimonial_list-Item-10-bio_html": "The goddess of music, song and dance",
+    "f-testimonial-items-1734576007Kn84n-testimonial_list-Item-11-author_html": "Iris",
+    "f-testimonial-items-1734576007Kn84n-testimonial_list-Item-11-bio_html": "The goddess of the rainbow and the messenger of the Olympian gods",
+    "f-testimonial-items-1734576007Kn84n-testimonial_list-Item-12-author_html": "Aphrodite",
+    "f-testimonial-items-1734576007Kn84n-testimonial_list-Item-12-bio_html": "The goddess of love and beauty",
+    "f-testimonial-items-1734576007Kn84n-testimonial_list-Item-13-author_html": "Selene",
+    "f-testimonial-items-1734576007Kn84n-testimonial_list-Item-13-bio_html": "The goddess of the moon",
+    "f-testimonial-items-1734576007Kn84n-heading_html": "Example heading",
+    "f-testimonial-items-1734576007Kn84n-text_html": "<p>Use this text to describe your section.</p>",
+    "f-testimonial-items-1734578199lHLrV-testimonial_list-Item-1-author_html": "Hebe",
+    "f-testimonial-items-1734578199lHLrV-testimonial_list-Item-1-bio_html": "The goddess of youth",
+    "f-testimonial-items-1734578199lHLrV-testimonial_list-Item-2-author_html": "Hera",
+    "f-testimonial-items-1734578199lHLrV-testimonial_list-Item-2-bio_html": "The goddess of marriage, family, childbirth",
+    "f-testimonial-items-1734578199lHLrV-testimonial_list-Item-3-author_html": "Athena",
+    "f-testimonial-items-1734578199lHLrV-testimonial_list-Item-3-bio_html": "The goddess of wisdom",
+    "f-testimonial-items-1734578199lHLrV-testimonial_list-Item-4-author_html": "Phoebe",
+    "f-testimonial-items-1734578199lHLrV-testimonial_list-Item-4-bio_html": "The goddess of intellect",
+    "f-testimonial-items-1734578199lHLrV-testimonial_list-Item-5-author_html": "Gaia",
+    "f-testimonial-items-1734578199lHLrV-testimonial_list-Item-5-bio_html": "The goddess of Earth, mother of all life",
+    "f-testimonial-items-1734578199lHLrV-testimonial_list-Item-6-author_html": "Artemis",
+    "f-testimonial-items-1734578199lHLrV-testimonial_list-Item-6-bio_html": "The goddess of wilderness, and wild animals",
+    "f-testimonial-items-1734578199lHLrV-testimonial_list-Item-7-author_html": "Nyx",
+    "f-testimonial-items-1734578199lHLrV-testimonial_list-Item-7-bio_html": "The goddess of the night",
+    "f-testimonial-items-1734578199lHLrV-testimonial_list-Item-8-author_html": "Astra",
+    "f-testimonial-items-1734578199lHLrV-testimonial_list-Item-8-bio_html": "The virgin goddess of justice",
+    "f-testimonial-items-1734578199lHLrV-testimonial_list-Item-9-author_html": "Perse",
+    "f-testimonial-items-1734578199lHLrV-testimonial_list-Item-9-bio_html": "Married Helios, the sun god, and later gave birth to the goddess Circe",
+    "f-testimonial-items-1734578199lHLrV-testimonial_list-Item-10-author_html": "Clio",
+    "f-testimonial-items-1734578199lHLrV-testimonial_list-Item-10-bio_html": "The goddess of music, song and dance",
+    "f-testimonial-items-1734578199lHLrV-testimonial_list-Item-11-author_html": "Iris",
+    "f-testimonial-items-1734578199lHLrV-testimonial_list-Item-11-bio_html": "The goddess of the rainbow and the messenger of the Olympian gods",
+    "f-testimonial-items-1734578199lHLrV-testimonial_list-Item-12-author_html": "Aphrodite",
+    "f-testimonial-items-1734578199lHLrV-testimonial_list-Item-12-bio_html": "The goddess of love and beauty",
+    "f-testimonial-items-1734578199lHLrV-testimonial_list-Item-13-author_html": "Selene",
+    "f-testimonial-items-1734578199lHLrV-testimonial_list-Item-13-bio_html": "The goddess of the moon",
+    "f-testimonial-items-1734578199lHLrV-heading_html": "Example heading",
+    "f-testimonial-items-1734578199lHLrV-text_html": "<p>Use this text to describe your section.</p>",
+    "f-heading-1734579783W2F3B-text_html": "Work",
+    "f-richtext-17345797833uzEQ-text_html": "Step into work with confidence.",
+    "f-button-1734579783COvF9-button_label_html": "Get the Look",
+    "f-heading-17345887878uQ9G-text_html": "Casual",
+    "f-heading-1734589941xrlke-text_html": "Work",
+    "f-heading-1734590826ElPSx-text_html": "Active",
+    "f-heading-1734591261BIEC4-text_html": "Change your style in a snap",
+    "f-richtext-1734591261Je7r2-text_html": "<p>Mix and match charms and adjust necklace lengths for a personalized touch, making each piece ideal for any occasion.</p>",
+    "f-richtext-1735794077tUzpG-text_html": "Sparkling with lab-grown white sapphires, <span style=\"font-family: -apple-system, BlinkMacSystemFont, Helvetica, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;\">these charms range from 0.60ct to 8cts.</span>",
+    "f-heading-1735809654ehy5F-text_html": "Choose Your Style of Chain",
+    "f-heading-17361303647t9mA-text_html": "Style It Your Own Way\n",
+    "f-heading-1736134439fPVTG-text_html": "Choose to Add More Charms",
+    "f-testimonial-items-17361344390Jp8Y-heading_html": "Example heading",
+    "f-testimonial-items-17361344390Jp8Y-text_html": "<p>Use this text to describe your section.</p>",
+    "f-testimonial-items-17361344390Jp8Y-testimonial_list-Item-2-text_html": "<strong>Nyx charm (Round)<br /></strong><span style=\"color: #2dc26b;\">USD $100<br /><br /><a href=\"https://thefuturerocks.com/products/solitaire-charms?variant=45656456855701\"><span style=\"text-decoration: underline;\"><span style=\"color: #000000; text-decoration: underline;\">SHOP NOW</span></span></a></span>",
+    "f-testimonial-items-17361344390Jp8Y-testimonial_list-Item-1-text_html": "<strong>Clio charm (Marquise)</strong><br /><span style=\"color: #2dc26b;\">USD $100</span><strong><span style=\"color: #2dc26b;\"><br /><br /></span></strong><a href=\"https://thefuturerocks.com/products/solitaire-charms?variant=45656456822933\"><span style=\"color: #000000;\"><span style=\"text-decoration: underline;\">SHOP NOW</span></span></a>",
+    "f-testimonial-items-17361344390Jp8Y-testimonial_list-Item-6-text_html": "<strong>Aphrodite pavé charm</strong><br /><span style=\"color: #2dc26b;\">USD $130<br /><br /><a href=\"https://thefuturerocks.com/products/pave-charms?variant=45656484708501\"><span style=\"text-decoration: underline; color: #000000;\">SHOP NOW</span></a><br /></span>",
+    "f-testimonial-items-17361344390Jp8Y-testimonial_list-Item-7-text_html": "<strong>Selene pavé charm</strong><br /><span style=\"color: #2dc26b;\">USD $130<br /><br /><a href=\"https://thefuturerocks.com/products/pave-charms?variant=45656484741269\"><span style=\"text-decoration: underline;\"><span style=\"color: #000000; text-decoration: underline;\">SHOP NOW</span></span></a></span>",
+    "f-testimonial-items-17361344390Jp8Y-testimonial_list-Item-4-text_html": "<strong>Astra charm (Trillion)</strong><br /><span style=\"color: #2dc26b;\">USD $100</span><strong><span style=\"color: #2dc26b;\"><br /><br /></span></strong><a href=\"https://thefuturerocks.com/products/solitaire-charms?variant=45656456790165\"><span style=\"text-decoration: underline; color: #000000;\">SHOP NOW</span></a>",
+    "f-testimonial-items-17361344390Jp8Y-testimonial_list-Item-3-text_html": "<strong>Perse charm (Pear)</strong><br /><span style=\"color: #2dc26b;\">USD $100<br /><br /><a href=\"https://thefuturerocks.com/products/solitaire-charms?variant=45656456757397\"><span style=\"text-decoration: underline; color: #000000;\">SHOP NOW</span></a></span>",
+    "f-testimonial-items-17361344390Jp8Y-testimonial_list-Item-5-text_html": "<strong>Iris pavé charm (Round)</strong><br /><span style=\"color: #2dc26b;\">USD $130<br /><br /><a href=\"https://thefuturerocks.com/products/pave-charms?variant=45656484675733\"><span style=\"text-decoration: underline; color: #000000;\">SHOP NOW</span></a><br /></span>"
   }
 }
-{% endschema %}
+        }
+    {% endschema %}
   

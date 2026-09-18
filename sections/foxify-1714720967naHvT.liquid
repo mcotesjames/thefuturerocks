@@ -1,44 +1,32 @@
-
-{% liquid
-  
-    assign locales = shop.metafields.foxify.locales.value
-    assign current_locale = request.locale.iso_code
-    assign primary_locale = current_locale
-    for locale in shop.published_locales
-    if locale.primary
-        assign primary_locale = locale.iso_code
-        break
-    endif
-    endfor
-    assign translation = locales[current_locale] | default: locales[primary_locale]
-
-    assign theme_settings = shop.metafields.foxify.theme_settings.value
-    assign productCard = theme_settings.productCard
-  
-  
-      assign foxifyCustomCss = shop.metafields.foxify['663490c72a28e1411bd5ac0b'].value.customCss
-      assign foxifyCustomJs = shop.metafields.foxify['663490c72a28e1411bd5ac0b'].value.customJs
-    
-%}
-
-      <script>
+    {% liquid
+        assign locales = shop.metafields.foxify.locales.value
+        assign current_locale = request.locale.iso_code
+        assign primary_locale = current_locale
+        for locale in shop.published_locales
+        if locale.primary
+            assign primary_locale = locale.iso_code
+            break
+        endif
+        endfor
+        assign translation = locales[current_locale] | default: locales[primary_locale]
+    %}
+    <script>
         window.Foxify = window.Foxify || {}
         Foxify.ThemeStyles = {
-          product: "https:{{ 'foxify-product.css' | asset_url }}",
-          swiper: "https:{{ 'foxify-swiper.css' | asset_url }}",
+            product: "https:{{ 'foxify-product.css' | asset_url }}",
+            swiper: "https:{{ 'foxify-swiper.css' | asset_url }}",
         }
 
         Foxify.ThemeScripts = {
-          productModel: "https:{{ 'foxify-product-model.js' | asset_url }}",
-          productMedia: "https:{{ 'foxify-media-gallery.js' | asset_url }}",
-          variantPicker: "https:{{ 'foxify-variant-picker.js' | asset_url }}"
+            productModel: "https:{{ 'foxify-product-model.js' | asset_url }}",
+            productMedia: "https:{{ 'foxify-media-gallery.js' | asset_url }}",
+            variantPicker: "https:{{ 'foxify-variant-picker.js' | asset_url }}"
         }
 
-        Foxify.pageId = '1714720967naHvT';
-        Foxify.default = false;
-      </script>
-    
-<div class="f-app f:content">
+        Foxify.pageId = '1714720967naHvT'
+        Foxify.default = false
+    </script>
+    <div class="f-app f:content">
 <link href="https://fonts.googleapis.com/css2?family=Nothing+You+Could+Do:wght@400&display=swap" id="Nothing You Could Do" rel="stylesheet">
 <style data-foxify-editor="foxify-custom-fonts">
   @font-face {
@@ -182,54 +170,54 @@ li {
       %}
 
 </div>
-{% schema %}
-  {
-  "name": "Foxify main content",
-  "class": "foxify-main f-app",
-  "settings": [
-    {
-      "type": "header",
-      "content": "Customize main content",
-      "info": "Go to [Foxify app](https://admin.shopify.com/store/the-future-rocks/apps/foxify-builder/editor?id=1714720967naHvT&type=regular) to edit this section."
-    }
-  ],
-  "locales": {
-    "en": {
-      "f-richtext-17147209340EvR7-text_html": "become an ambassador",
-      "f-heading-1714720934YDPbn-text_html": "be our rock!",
-      "f-richtext-1714720934Fthwp-text_html": "Refer your friends, family, co-workers, or anyone on your contact list and earn up to $600 for new customers you send our way. While your referral gets 10% off on their first purchase, you receive a USD $30 shopping credit.",
-      "f-heading-1714721651Bt5RU-text_html": "Rock On and Earn Big",
-      "f-heading-1714722088H3T1P-text_html": "Rock on in 3 simple steps:",
-      "f-richtext-1714723059ZgTfq-text_html": "Invite a friend with your unique referral link – the link will be shared in your “Rock On” registration confirmation email.",
-      "f-heading-17147233155II9n-text_html": "Reward Scheme",
-      "f-heading-1714723732uq1fW-text_html": "terms & conditions",
-      "f-list-items-1714723732mo3Gz-items-Item-1-title_html": "You may not send a referral to yourself. The person you refer must be a new customer outside of our database.",
-      "f-list-items-1714723732mo3Gz-items-Item-5-title_html": "If the referral link is not used at the time of purchase, the said credit cannot be transferred retroactively. ",
-      "f-list-items-1714723732mo3Gz-items-Item-4-title_html": "You and your referral will both get rewarded 30 days after the order is delivered.",
-      "f-list-items-1714723732mo3Gz-items-Item-3-title_html": "Valid in the US market only. Up to 20 successful referrals a year.",
-      "f-list-items-1714723732mo3Gz-items-Item-2-title_html": "A unique USD $30 shopping credit code will be generated per referee’s completed transaction. Accumulated shopping credits can be used by entering multiple shopping credit codes at checkout.",
-      "f-collapsible-tab-1714725270J2CYm-heading_html": "No prior spending required",
-      "f-collapsible-tab-1714725270J2CYm-content_html": "Prior spending is not mandatory for members to join our Rock On referral program.",
-      "f-collapsible-tab-1714725350AbAUU-heading_html": "Maximum referrals",
-      "f-collapsible-tab-1714725350AbAUU-content_html": "Members have a maximum of 20 referral quotas per year.",
-      "f-collapsible-tab-17147253519GR5g-heading_html": "Referee/referrer benefits",
-      "f-collapsible-tab-17147253519GR5g-content_html": "Referees get 10% off on their first purchase via referral link, while referrers get USD $30 shopping credit for every completed transaction made by their referral.",
-      "f-collapsible-tab-1714725352fRAFx-heading_html": "Earn shopping credits",
-      "f-collapsible-tab-1714725352fRAFx-content_html": "Members can accumulate up to USD $600 shopping credits (upon successful transactions made by all 20 referrals) for purchases on thefuturerocks.com within the first year of membership registration.<br /><br /><em>Example: Person A registered for the Rock On program on 30th June, 2024, and successfully referred 20 customers (with order delivered) within a year. USD $600 worth of shopping credits will expire by 30th June, 2025.</em>",
-      "f-collapsible-tab-1714725353NxQ4b-heading_html": "Get more with less",
-      "f-collapsible-tab-1714725353NxQ4b-content_html": "Shopping credits can be used in conjunction with any other promotions/ gift cards.",
-      "f-collapsible-tab-1714725579ULaX6-heading_html": "Hassle-free allocations",
-      "f-collapsible-tab-1714725579ULaX6-content_html": "Credits are allocated to the referrer’s account automatically 30 days after the referee’s order is delivered. Credits will not be allocated if the order is returned or refunded.",
-      "f-heading-1714729374JSCRQ-text_html": "1",
-      "f-heading-1714730013i8fm1-text_html": "2",
-      "f-richtext-1714730013J82Xv-text_html": "A transaction is completed via the unique referral link.",
-      "f-heading-1714730013OePpI-text_html": "3",
-      "f-richtext-1714730013kos99-text_html": "You both get rewarded 30 days after the order is delivered.",
-      "f-button-1714779061DG6We-button_label_html": "be our rock!",
-      "f-richtext-1714779279NrMEI-text_html": "Photo by <a href=\"https://unsplash.com/@brucemars\" target=\"_blank\" rel=\"noopener\">bruce mars</a> on <a href=\"https://unsplash.com\" target=\"_blank\" rel=\"noopener\">Unsplash</a>",
-      "f-richtext-1714779294xOzej-text_html": "Photo by <a href=\"https://unsplash.com/@towfiqu999999\" target=\"_blank\" rel=\"noopener\">Towfiqu barbhuiya</a> on <a href=\"https://unsplash.com\" target=\"_blank\" rel=\"noopener\">Unsplash</a>"
-    }
+    {% schema %}
+        {
+            "name": "Foxify main content",
+            "class": "foxify-main f-app",
+            "settings": [
+                {
+                "type": "header",
+                "content": "Customize section",
+                "info": "Go to [Foxify app](https://app.foxify.io/editor?id=1714720967naHvT&type=REGULAR) to edit this section."
+                }
+            ],
+            "locales": {
+  "en": {
+    "f-richtext-17147209340EvR7-text_html": "become an ambassador",
+    "f-heading-1714720934YDPbn-text_html": "be our rock!",
+    "f-richtext-1714720934Fthwp-text_html": "Refer your friends, family, co-workers, or anyone on your contact list and earn up to $600 for new customers you send our way. While your referral gets 10% off on their first purchase, you receive a USD $30 shopping credit.",
+    "f-heading-1714721651Bt5RU-text_html": "Rock On and Earn Big",
+    "f-heading-1714722088H3T1P-text_html": "Rock on in 3 simple steps:",
+    "f-richtext-1714723059ZgTfq-text_html": "Invite a friend with your unique referral link – the link will be shared in your “Rock On” registration confirmation email.",
+    "f-heading-17147233155II9n-text_html": "Reward Scheme",
+    "f-heading-1714723732uq1fW-text_html": "terms & conditions",
+    "f-list-items-1714723732mo3Gz-items-Item-1-title_html": "You may not send a referral to yourself. The person you refer must be a new customer outside of our database.",
+    "f-list-items-1714723732mo3Gz-items-Item-5-title_html": "If the referral link is not used at the time of purchase, the said credit cannot be transferred retroactively. ",
+    "f-list-items-1714723732mo3Gz-items-Item-4-title_html": "You and your referral will both get rewarded 30 days after the order is delivered.",
+    "f-list-items-1714723732mo3Gz-items-Item-3-title_html": "Valid in the US market only. Up to 20 successful referrals a year.",
+    "f-list-items-1714723732mo3Gz-items-Item-2-title_html": "A unique USD $30 shopping credit code will be generated per referee’s completed transaction. Accumulated shopping credits can be used by entering multiple shopping credit codes at checkout.",
+    "f-collapsible-tab-1714725270J2CYm-heading_html": "No prior spending required",
+    "f-collapsible-tab-1714725270J2CYm-content_html": "Prior spending is not mandatory for members to join our Rock On referral program.",
+    "f-collapsible-tab-1714725350AbAUU-heading_html": "Maximum referrals",
+    "f-collapsible-tab-1714725350AbAUU-content_html": "Members have a maximum of 20 referral quotas per year.",
+    "f-collapsible-tab-17147253519GR5g-heading_html": "Referee/referrer benefits",
+    "f-collapsible-tab-17147253519GR5g-content_html": "Referees get 10% off on their first purchase via referral link, while referrers get USD $30 shopping credit for every completed transaction made by their referral.",
+    "f-collapsible-tab-1714725352fRAFx-heading_html": "Earn shopping credits",
+    "f-collapsible-tab-1714725352fRAFx-content_html": "Members can accumulate up to USD $600 shopping credits (upon successful transactions made by all 20 referrals) for purchases on thefuturerocks.com within the first year of membership registration.<br /><br /><em>Example: Person A registered for the Rock On program on 30th June, 2024, and successfully referred 20 customers (with order delivered) within a year. USD $600 worth of shopping credits will expire by 30th June, 2025.</em>",
+    "f-collapsible-tab-1714725353NxQ4b-heading_html": "Get more with less",
+    "f-collapsible-tab-1714725353NxQ4b-content_html": "Shopping credits can be used in conjunction with any other promotions/ gift cards.",
+    "f-collapsible-tab-1714725579ULaX6-heading_html": "Hassle-free allocations",
+    "f-collapsible-tab-1714725579ULaX6-content_html": "Credits are allocated to the referrer’s account automatically 30 days after the referee’s order is delivered. Credits will not be allocated if the order is returned or refunded.",
+    "f-heading-1714729374JSCRQ-text_html": "1",
+    "f-heading-1714730013i8fm1-text_html": "2",
+    "f-richtext-1714730013J82Xv-text_html": "A transaction is completed via the unique referral link.",
+    "f-heading-1714730013OePpI-text_html": "3",
+    "f-richtext-1714730013kos99-text_html": "You both get rewarded 30 days after the order is delivered.",
+    "f-button-1714779061DG6We-button_label_html": "be our rock!",
+    "f-richtext-1714779279NrMEI-text_html": "Photo by <a href=\"https://unsplash.com/@brucemars\" target=\"_blank\" rel=\"noopener\">bruce mars</a> on <a href=\"https://unsplash.com\" target=\"_blank\" rel=\"noopener\">Unsplash</a>",
+    "f-richtext-1714779294xOzej-text_html": "Photo by <a href=\"https://unsplash.com/@towfiqu999999\" target=\"_blank\" rel=\"noopener\">Towfiqu barbhuiya</a> on <a href=\"https://unsplash.com\" target=\"_blank\" rel=\"noopener\">Unsplash</a>"
   }
 }
-{% endschema %}
+        }
+    {% endschema %}
   

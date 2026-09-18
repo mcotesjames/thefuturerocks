@@ -1,4 +1,3 @@
-
 {% if localization.language.iso_code == "fr" or localization.language.iso_code contains "fr-" %}
     {% capture goback %} Retournez en arrière {% endcapture %}
     {% capture lastArticles %} Dernières nouvelles {% endcapture %}
@@ -362,18 +361,24 @@
   <div id="bloggle_article" >
       <div id="article" class="flex-column-reverse">
       {% if article.image %}
-      <img class="bloggle--blog-item-img" src="{{ article.image | img_url:'1200x' }}" alt="{{ article.image.alt }}">
+      <img class="bloggle--blog-item-img lazybloggle" data-src="{{ article.image | img_url:'1200x' }}" alt="{{ article.image.alt }}">
       {% endif %}
     <div id="article-header" class="text__center">
       
        
       <h1 id="bloggle--article-title" class="">{{article.title }}</h1>
       <div class="info_header">
-        <p id="bloggle--blog-item-author" >{{author}}<span id="author"> {{ article.author }}</span></p><p class="separator">|</p><p id="bloggle--blog-item-author" >{{datePublished}} <span>{{ article.published_at | time_tag: format: 'date'}}</span></p><p class="separator">|</p>{% assign wordCount = article.content | strip_html | split: ' ' | size %}
-       {% if wordCount %}
-         {% assign timeToReadMin = wordCount | divided_by: 225 %}
-         <p id="bloggle--blog-item-ttread" >{{ timeToRead }} <span id='time'>{{ timeToReadMin }}</span> min</p>
-       {% endif %}
+        <p id="bloggle--blog-item-author" >{{author}}<span id="author"> {{ article.author }}</span></p>
+        <p id="separator">|</p>
+         <p id="bloggle--blog-item-author" >{{datePublished}} <span>{{ article.published_at | time_tag: format: 'date'}}</span></p>
+          
+           
+        <p id="separator">|</p>
+        {% assign wordCount = article.content | strip_html | split: ' ' | size %}
+               {% if wordCount %}
+                 {% assign timeToReadMin = wordCount | divided_by: 225 %}
+                 <p id="bloggle--blog-item-ttread" >{{ timeToRead }} <span id='time'>{{ timeToReadMin }}</span> min</p>
+               {% endif %}
       </div>
     </div>
   </div>
@@ -400,7 +405,7 @@
       </div>
   </div>
 
-  <div id="bloggle_sideBar"  class="sideBar__showOnMobile bloggle_sideBar-V2">
+  <div id="bloggle_sideBar"  class="sideBar__showOnMobile">
         {% assign product = all_products[article.metafields.bloggle.sideproduct] %}
         {% if product.title != blank or article.tags contains "bloggle-preview" %}
         <div id="bggle--product-related">
@@ -442,14 +447,13 @@
             {% unless recoArticle.title == article.title or count >= 3 %}
               {% assign count = count | plus: 1 %}
               <a class="bggle-latest-article" href="{{recoArticle.url}}">
-                {% if recoArticle.image %}<img class="bggle-latest-article-img lazybloggle" data-src="{{ recoArticle.image | img_url:'350x350' }}" alt="{{ recoArticle.image.alt }}">{% endif %}
+                {% if recoArticle.image %}<img class="bggle-latest-article-img lazybloggle" data-src="{{ recoArticle.image | image_url: width: 250 }}" alt="{{ recoArticle.image.alt }}">{% endif %}
                 <p>{{recoArticle.title}}</p>
               </a>
             {% endunless %}
           {% endfor %}
           </div>
         </div>
-
     </div>
   </div>
 
@@ -522,76 +526,9 @@
         height: 120px;
         transform: translateY(120px);
         transition: all 0.3s ease;
-        background: #ffffff;
-      }
-      #bloggle_sideBar.bggle-sideBar--blocks .bggle_button-link {
-        padding-top: 0;
-        padding-bottom: 0;
-      }
-      #bloggle_sideBar.bggle-sideBar--blocks .bggle--compare {
-        display: none;
-      }
-
-      .bloggle_sideBar-V2 {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding-top: 0;
-        padding-bottom: 0;
-      }
-      .bloggle_sideBar-V2 .bggle--sideBar-block {
-        display: none;
-        padding: 0 !important;
-      }
-      .bloggle_sideBar-V2 .bggle--sideBar-block--product {
-        display: block !important;
-      }
-      .bloggle_sideBar-V2 .bggle_button-link > div {
-        flex-direction: row !important;
-        align-items: center;
-      }
-      .bloggle_sideBar-V2 .bggle_button-link > div > button.button {
-        margin-top: 0px !important;
-      }
-      .bloggle_sideBar-V2 .bloggle_product--infos {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        text-align: left !important;
-        margin-left: 10px;
-        margin-right: 10px;
-        margin-bottom: 0 !important;
-      }
-      .bloggle_sideBar-V2 .bloggle_product--img, .bloggle_sideBar-V2 .bggle--product-item-img {
-        margin-bottom: 0 !important;
-      }
-      .bloggle_sideBar-V2 .bggle--product-price {
-        color: #646464;
-        font-size: 0.8em;
-        margin: 0px !important;
       }
       }
        
-
-      @media screen and (min-width: 769px) {
-        .bloggle_sideBar-V2 .bggle--info-siderBar-product img {
-            max-width: 100% !important;
-            width: 100% !important;
-            height: auto !important;
-            max-height:150px;
-        }
-       .bloggle_sideBar-V2 .bggle--product-info {
-          margin-top: 10px;
-          width: 100%;
-        }
-
-        .bloggle_sideBar-V2 .bggle--info-siderBar-product {
-          flex-direction: column !important;
-        }
-        .bloggle_sideBar-V2 .bggle-latest-article-img{
-          width: 100% !important;
-        }
-      }
 
   </style>
 <script>
@@ -609,4 +546,3 @@
   }
   window.addEventListener('scroll', handleScroll);
 </script>
-

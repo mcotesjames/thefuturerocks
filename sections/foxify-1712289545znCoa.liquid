@@ -1,44 +1,32 @@
-
-{% liquid
-  
-    assign locales = shop.metafields.foxify.locales.value
-    assign current_locale = request.locale.iso_code
-    assign primary_locale = current_locale
-    for locale in shop.published_locales
-    if locale.primary
-        assign primary_locale = locale.iso_code
-        break
-    endif
-    endfor
-    assign translation = locales[current_locale] | default: locales[primary_locale]
-
-    assign theme_settings = shop.metafields.foxify.theme_settings.value
-    assign productCard = theme_settings.productCard
-  
-  
-      assign foxifyCustomCss = shop.metafields.foxify['660f7709652f672e0f3fe58f'].value.customCss
-      assign foxifyCustomJs = shop.metafields.foxify['660f7709652f672e0f3fe58f'].value.customJs
-    
-%}
-
-      <script>
+    {% liquid
+        assign locales = shop.metafields.foxify.locales.value
+        assign current_locale = request.locale.iso_code
+        assign primary_locale = current_locale
+        for locale in shop.published_locales
+        if locale.primary
+            assign primary_locale = locale.iso_code
+            break
+        endif
+        endfor
+        assign translation = locales[current_locale] | default: locales[primary_locale]
+    %}
+    <script>
         window.Foxify = window.Foxify || {}
         Foxify.ThemeStyles = {
-          product: "https:{{ 'foxify-product.css' | asset_url }}",
-          swiper: "https:{{ 'foxify-swiper.css' | asset_url }}",
+            product: "https:{{ 'foxify-product.css' | asset_url }}",
+            swiper: "https:{{ 'foxify-swiper.css' | asset_url }}",
         }
 
         Foxify.ThemeScripts = {
-          productModel: "https:{{ 'foxify-product-model.js' | asset_url }}",
-          productMedia: "https:{{ 'foxify-media-gallery.js' | asset_url }}",
-          variantPicker: "https:{{ 'foxify-variant-picker.js' | asset_url }}"
+            productModel: "https:{{ 'foxify-product-model.js' | asset_url }}",
+            productMedia: "https:{{ 'foxify-media-gallery.js' | asset_url }}",
+            variantPicker: "https:{{ 'foxify-variant-picker.js' | asset_url }}"
         }
 
-        Foxify.pageId = '1712289545znCoa';
-        Foxify.default = false;
-      </script>
-    
-<div class="f-app f:content">
+        Foxify.pageId = '1712289545znCoa'
+        Foxify.default = false
+    </script>
+    <div class="f-app f:content">
 <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,400;0,500;1,400;1,500&display=swap" id="Jost" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Tilt+Neon:wght@400&display=swap" id="Tilt Neon" rel="stylesheet">
 <style data-foxify-editor="foxify-custom-fonts">
@@ -279,87 +267,87 @@ box-shadow:  20px 20px 60px #d3d3d3,
       %}
 
 </div>
-{% schema %}
-  {
-  "name": "Foxify main content",
-  "class": "foxify-main f-app",
-  "settings": [
-    {
-      "type": "header",
-      "content": "Customize main content",
-      "info": "Go to [Foxify app](https://admin.shopify.com/store/the-future-rocks/apps/foxify-builder/editor?id=1712289545znCoa&type=regular) to edit this section."
-    }
-  ],
-  "locales": {
-    "en": {
-      "f-richtext-1712289727lCzUg-text_html": "<p>weekend special</p>",
-      "f-heading-1712289727kYier-text_html": "permanent jewelry",
-      "f-richtext-1712289727EWjmA-text_html": "<p>Permanent Jewelry service is available upon reservation, with chain options starting from HKD $400, or complimentary for offline customers with a net purchase of  HKD $5,000 or above.<br /><br />Speak to our staff for more information on the service.</p>",
-      "f-button-1712289727h4NiT-button_label_html": "book Now",
-      "f-richtext-1712290603J6wTm-text_html": "<a href=\"https://thefuturerocks.com/pages/the-future-rocks-k11-musea\">the lab-grown store</a>",
-      "f-richtext-171229060393edS-text_html": "<a href=\"https://thefuturerocks.com/pages/the-future-rocks-k11-musea\">learn more</a>",
-      "f-richtext-1712291602V69UM-text_html": "<p>weekend special</p>",
-      "f-heading-17122916022n2MG-text_html": "permanent jewelry",
-      "f-richtext-1712291602udjPr-text_html": "<p>Permanent Jewelry service is available upon reservation, with chain options starting from $400 HKD, or complimentary for offline customers with a net purchase of $5000 HKD or above.<br /><br />Speak to our staff for more information on the service.</p>",
-      "f-button-17122916022jQjF-button_label_html": "book Now",
-      "f-heading-1712293177fRZoF-text_html": "what is it?",
-      "f-richtext-1712293181KEzgp-text_html": "Our Permanent jewelry is tailored to fit seamlessly, designed for continuous wear. We provide 14K solid gold chains in diverse styles suitable for everyday use. Personalize your jewelry with our extensive selection of charms and mix and match with our bracelets for a unique touch.",
-      "f-heading-1712294143xgNb9-text_html": "what does it take?",
-      "f-richtext-17122941713xO3u-text_html": "01",
-      "f-heading-1712294171BVf4p-text_html": "select",
-      "f-richtext-1712294179bQAmj-text_html": "Select a gold chain that speaks to your heart. Personalize your piece further by adding charms (optional).",
-      "f-richtext-1712294630uGnPd-text_html": "02",
-      "f-heading-1712294630PyXyi-text_html": "measure",
-      "f-richtext-1712294630HaCd1-text_html": "We will measure your wrist to ensure a flawless, comfortable fit.",
-      "f-richtext-1712294630Ble6O-text_html": "03",
-      "f-heading-17122946300YGKI-text_html": "zap",
-      "f-richtext-1712294630LDWOq-text_html": "Our trained welder will use a laser pen to securely seal the bracelet chains together, actual welding takes a few seconds, but please allow up to 15 minutes for the whole process.",
-      "f-heading-1712295206lejOz-text_html": "chains",
-      "f-richtext-1712295206ufWst-text_html": "Find a 14k Yellow Gold chain that matches you from the styles below",
-      "f-heading-1712295244d3W3Q-text_html": "pendants",
-      "f-richtext-1712295244PVKy3-text_html": "Add to your chain with our extensive selection of Lab-grown Diamond and Lab-grown Gemstone charms set in 14k Yellow Gold.<br /><br />\n<ul>\n<li>Lab-grown diamond charm -  HKD $1,600</li>\n<li>Lab-grown sapphire charm -  HKD $900 </li>\n</ul>",
-      "f-heading-1712299140CZ2SP-text_html": "faq",
-      "f-collapsible-tab-1712299140ZvGgE-heading_html": "What is permanent jewelry?",
-      "f-collapsible-tab-1712299140ZvGgE-content_html": "Permanent jewelry refers to bracelets, necklaces, or other jewelry pieces without a traditional clasp. The ends are expertly soldered, and the jewelry is intended not to be removed regularly.",
-      "f-collapsible-tab-17122991409LBvV-heading_html": "Can I wear permanent jewelry all day?",
-      "f-collapsible-tab-17122991409LBvV-content_html": "Crafted from durable 14K gold, our permanent jewelry is hypoallergenic, water-resistant, and less prone to tarnishing compared to gold-plated jewelry.",
-      "f-collapsible-tab-17122991405dg9E-heading_html": "Can I take off permanent jewelry?",
-      "f-collapsible-tab-17122991405dg9E-content_html": "While permanent jewelry is designed to be worn forever, it can be removed if necessary. Carefully cut the welded jump ring with scissors to take it off. Please keep in mind that re-welding may be required to restore its original form.",
-      "f-collapsible-tab-1712299309IwOXN-heading_html": "Does permanent jewelry hurt?",
-      "f-collapsible-tab-1712299309IwOXN-content_html": "Rest assured, the welding process is completely painless. The heat involved only affects the jewelry and not your skin.",
-      "f-collapsible-tab-17122993090OOet-heading_html": "How durable is permanent jewelry?",
-      "f-collapsible-tab-17122993090OOet-content_html": "Our permanent jewelry is designed to stand the test of time. Crafted from durable 14K solid gold, it's an investment that will become a part of you, day and night.",
-      "f-collapsible-tab-1712299309js4xa-heading_html": "What if my permanent jewelry is broken?",
-      "f-collapsible-tab-1712299309js4xa-content_html": "If your permanent jewelry is broken and it falls within the two-year timeframe from the date of purchase, you can take advantage of our free complimentary rewelding service. Please reach out to the customer success team for further assistance.",
-      "f-collapsible-tab-1712299362VJUki-heading_html": "Can I refund or exchange my permanent jewelry?",
-      "f-collapsible-tab-1712299362VJUki-content_html": "Unfortunately, we are unable to provide refunds or exchanges for personalized jewelry items.",
-      "f-collapsible-tab-1712299363AROwA-heading_html": "How to take care of my permanent bracelet?",
-      "f-collapsible-tab-1712299363AROwA-content_html": "To maintain the beauty of your permanent bracelet, we recommend avoiding harsh chemicals and storing it in a soft pouch or box when not in use. Regular cleaning with a mild jewelry cleaner will help keep it looking its best.",
-      "f-collapsible-tab-1712299363LDUMr-heading_html": "Should I get matching permanent jewelry with other people?",
-      "f-collapsible-tab-1712299363LDUMr-content_html": "Permanent bracelets make an unforgettable gesture. Get matching forever bracelets with your best friend, or show your appreciation to your mom.",
-      "f-heading-17123044134Bkup-text_html": "Kiosk LA111",
-      "f-richtext-1712304413Nc53q-text_html": "<p>Opening Hours: 11am - 9pm Daily</p>",
-      "f-button-1712304413M6jLs-button_label_html": "Get directions",
-      "f-google-map-1712304413bPzgD-map_address_html": "K11 Musea, 18 Salisbury Rd, Tsim Sha Tsui, Hong Kong",
-      "f-google-map-1712304413bPzgD-map_api_key_html": "AIzaSyD8jPBszjyZv23nQMfmgKx8Hjvw3rfp4FM",
-      "f-richtext-17123045724qDN6-text_html": "<p><strong>K11 Musea<br /></strong><br />18 Salisbury Rd<br />Tsim Sha Tsui<br />Kowloon . Hong Kong</p>",
-      "f-heading-1712305448EmVcj-text_html": "make a reservation",
-      "f-richtext-17123054549BYQY-text_html": "We advise making an appointment, but walk-ins are possible. For optimal service, reserve one slot per person. One reservation only for each registered email account. Pre-booked appointments will be prioritized over walk-ins.",
-      "f-button-17123054579s3J8-button_label_html": "book now",
-      "f-richtext-1712305460ZK430-text_html": "Any changes or cancellations must be made at least 12 hours in advance. Arriving later than 10 or more minutes may result in rescheduling.",
-      "f-heading-1723625738b7myR-text_html": "1",
-      "f-heading-1723625963fyY74-text_html": "2",
-      "f-heading-1723626002qBEQw-text_html": "3",
-      "f-heading-1723626012MjIvx-text_html": "4",
-      "f-heading-1723626022QVGh1-text_html": "5",
-      "f-richtext-1723626099UvI4j-text_html": "<ol>\n<li>14K Yellow Gold 2.1 mm Paperclip Style Chain – HKD $ 1,500</li>\n<li>14K Yellow Gold 2.5 mm Cable Chain – HKD $1,500</li>\n<li>14K Yellow Gold 0.85 mm Faceted Beaded Cable Chain – HKD $1,000</li>\n<li>14K Yellow Gold 1.1 mm Rolo Chain – HKD $800</li>\n<li>14K Yellow Gold 1.3 mm Flat Cable Chain – HKD $400 or complimentary for offline customers with a net purchase of HKD $5,000 or above.</li>\n</ol>",
-      "f-heading-1723626981dIUmj-text_html": "1",
-      "f-heading-1723627006on4x6-text_html": "2",
-      "f-heading-172362701983tUa-text_html": "3",
-      "f-heading-1723627030SsIY2-text_html": "4",
-      "f-heading-17236270438ZATq-text_html": "5"
-    }
+    {% schema %}
+        {
+            "name": "Foxify main content",
+            "class": "foxify-main f-app",
+            "settings": [
+                {
+                "type": "header",
+                "content": "Customize section",
+                "info": "Go to [Foxify app](https://app.foxify.io/editor?id=1712289545znCoa&type=REGULAR) to edit this section."
+                }
+            ],
+            "locales": {
+  "en": {
+    "f-richtext-1712289727lCzUg-text_html": "<p>weekend special</p>",
+    "f-heading-1712289727kYier-text_html": "permanent jewelry",
+    "f-richtext-1712289727EWjmA-text_html": "<p>Permanent Jewelry service is available upon reservation, with chain options starting from HKD $400, or complimentary for offline customers with a net purchase of  HKD $5,000 or above.<br /><br />Speak to our staff for more information on the service.</p>",
+    "f-button-1712289727h4NiT-button_label_html": "book Now",
+    "f-richtext-1712290603J6wTm-text_html": "<a href=\"https://thefuturerocks.com/pages/the-future-rocks-k11-musea\">the lab-grown store</a>",
+    "f-richtext-171229060393edS-text_html": "<a href=\"https://thefuturerocks.com/pages/the-future-rocks-k11-musea\">learn more</a>",
+    "f-richtext-1712291602V69UM-text_html": "<p>weekend special</p>",
+    "f-heading-17122916022n2MG-text_html": "permanent jewelry",
+    "f-richtext-1712291602udjPr-text_html": "<p>Permanent Jewelry service is available upon reservation, with chain options starting from $400 HKD, or complimentary for offline customers with a net purchase of $5000 HKD or above.<br /><br />Speak to our staff for more information on the service.</p>",
+    "f-button-17122916022jQjF-button_label_html": "book Now",
+    "f-heading-1712293177fRZoF-text_html": "what is it?",
+    "f-richtext-1712293181KEzgp-text_html": "Our Permanent jewelry is tailored to fit seamlessly, designed for continuous wear. We provide 14K solid gold chains in diverse styles suitable for everyday use. Personalize your jewelry with our extensive selection of charms and mix and match with our bracelets for a unique touch.",
+    "f-heading-1712294143xgNb9-text_html": "what does it take?",
+    "f-richtext-17122941713xO3u-text_html": "01",
+    "f-heading-1712294171BVf4p-text_html": "select",
+    "f-richtext-1712294179bQAmj-text_html": "Select a gold chain that speaks to your heart. Personalize your piece further by adding charms (optional).",
+    "f-richtext-1712294630uGnPd-text_html": "02",
+    "f-heading-1712294630PyXyi-text_html": "measure",
+    "f-richtext-1712294630HaCd1-text_html": "We will measure your wrist to ensure a flawless, comfortable fit.",
+    "f-richtext-1712294630Ble6O-text_html": "03",
+    "f-heading-17122946300YGKI-text_html": "zap",
+    "f-richtext-1712294630LDWOq-text_html": "Our trained welder will use a laser pen to securely seal the bracelet chains together, actual welding takes a few seconds, but please allow up to 15 minutes for the whole process.",
+    "f-heading-1712295206lejOz-text_html": "chains",
+    "f-richtext-1712295206ufWst-text_html": "Find a 14k Yellow Gold chain that matches you from the styles below",
+    "f-heading-1712295244d3W3Q-text_html": "pendants",
+    "f-richtext-1712295244PVKy3-text_html": "Add to your chain with our extensive selection of Lab-grown Diamond and Lab-grown Gemstone charms set in 14k Yellow Gold.<br /><br />\n<ul>\n<li>Lab-grown diamond charm -  HKD $1,600</li>\n<li>Lab-grown sapphire charm -  HKD $900 </li>\n</ul>",
+    "f-heading-1712299140CZ2SP-text_html": "faq",
+    "f-collapsible-tab-1712299140ZvGgE-heading_html": "What is permanent jewelry?",
+    "f-collapsible-tab-1712299140ZvGgE-content_html": "Permanent jewelry refers to bracelets, necklaces, or other jewelry pieces without a traditional clasp. The ends are expertly soldered, and the jewelry is intended not to be removed regularly.",
+    "f-collapsible-tab-17122991409LBvV-heading_html": "Can I wear permanent jewelry all day?",
+    "f-collapsible-tab-17122991409LBvV-content_html": "Crafted from durable 14K gold, our permanent jewelry is hypoallergenic, water-resistant, and less prone to tarnishing compared to gold-plated jewelry.",
+    "f-collapsible-tab-17122991405dg9E-heading_html": "Can I take off permanent jewelry?",
+    "f-collapsible-tab-17122991405dg9E-content_html": "While permanent jewelry is designed to be worn forever, it can be removed if necessary. Carefully cut the welded jump ring with scissors to take it off. Please keep in mind that re-welding may be required to restore its original form.",
+    "f-collapsible-tab-1712299309IwOXN-heading_html": "Does permanent jewelry hurt?",
+    "f-collapsible-tab-1712299309IwOXN-content_html": "Rest assured, the welding process is completely painless. The heat involved only affects the jewelry and not your skin.",
+    "f-collapsible-tab-17122993090OOet-heading_html": "How durable is permanent jewelry?",
+    "f-collapsible-tab-17122993090OOet-content_html": "Our permanent jewelry is designed to stand the test of time. Crafted from durable 14K solid gold, it's an investment that will become a part of you, day and night.",
+    "f-collapsible-tab-1712299309js4xa-heading_html": "What if my permanent jewelry is broken?",
+    "f-collapsible-tab-1712299309js4xa-content_html": "If your permanent jewelry is broken and it falls within the two-year timeframe from the date of purchase, you can take advantage of our free complimentary rewelding service. Please reach out to the customer success team for further assistance.",
+    "f-collapsible-tab-1712299362VJUki-heading_html": "Can I refund or exchange my permanent jewelry?",
+    "f-collapsible-tab-1712299362VJUki-content_html": "Unfortunately, we are unable to provide refunds or exchanges for personalized jewelry items.",
+    "f-collapsible-tab-1712299363AROwA-heading_html": "How to take care of my permanent bracelet?",
+    "f-collapsible-tab-1712299363AROwA-content_html": "To maintain the beauty of your permanent bracelet, we recommend avoiding harsh chemicals and storing it in a soft pouch or box when not in use. Regular cleaning with a mild jewelry cleaner will help keep it looking its best.",
+    "f-collapsible-tab-1712299363LDUMr-heading_html": "Should I get matching permanent jewelry with other people?",
+    "f-collapsible-tab-1712299363LDUMr-content_html": "Permanent bracelets make an unforgettable gesture. Get matching forever bracelets with your best friend, or show your appreciation to your mom.",
+    "f-heading-17123044134Bkup-text_html": "Kiosk LA111",
+    "f-richtext-1712304413Nc53q-text_html": "<p>Opening Hours: 11am - 9pm Daily</p>",
+    "f-button-1712304413M6jLs-button_label_html": "Get directions",
+    "f-google-map-1712304413bPzgD-map_address_html": "K11 Musea, 18 Salisbury Rd, Tsim Sha Tsui, Hong Kong",
+    "f-google-map-1712304413bPzgD-map_api_key_html": "AIzaSyD8jPBszjyZv23nQMfmgKx8Hjvw3rfp4FM",
+    "f-richtext-17123045724qDN6-text_html": "<p><strong>K11 Musea<br /></strong><br />18 Salisbury Rd<br />Tsim Sha Tsui<br />Kowloon . Hong Kong</p>",
+    "f-heading-1712305448EmVcj-text_html": "make a reservation",
+    "f-richtext-17123054549BYQY-text_html": "We advise making an appointment, but walk-ins are possible. For optimal service, reserve one slot per person. One reservation only for each registered email account. Pre-booked appointments will be prioritized over walk-ins.",
+    "f-button-17123054579s3J8-button_label_html": "book now",
+    "f-richtext-1712305460ZK430-text_html": "Any changes or cancellations must be made at least 12 hours in advance. Arriving later than 10 or more minutes may result in rescheduling.",
+    "f-heading-1723625738b7myR-text_html": "1",
+    "f-heading-1723625963fyY74-text_html": "2",
+    "f-heading-1723626002qBEQw-text_html": "3",
+    "f-heading-1723626012MjIvx-text_html": "4",
+    "f-heading-1723626022QVGh1-text_html": "5",
+    "f-richtext-1723626099UvI4j-text_html": "<ol>\n<li>14K Yellow Gold 2.1 mm Paperclip Style Chain – HKD $ 1,500</li>\n<li>14K Yellow Gold 2.5 mm Cable Chain – HKD $1,500</li>\n<li>14K Yellow Gold 0.85 mm Faceted Beaded Cable Chain – HKD $1,000</li>\n<li>14K Yellow Gold 1.1 mm Rolo Chain – HKD $800</li>\n<li>14K Yellow Gold 1.3 mm Flat Cable Chain – HKD $400 or complimentary for offline customers with a net purchase of HKD $5,000 or above.</li>\n</ol>",
+    "f-heading-1723626981dIUmj-text_html": "1",
+    "f-heading-1723627006on4x6-text_html": "2",
+    "f-heading-172362701983tUa-text_html": "3",
+    "f-heading-1723627030SsIY2-text_html": "4",
+    "f-heading-17236270438ZATq-text_html": "5"
   }
 }
-{% endschema %}
+        }
+    {% endschema %}
   

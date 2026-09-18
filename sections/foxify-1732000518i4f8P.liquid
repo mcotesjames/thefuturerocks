@@ -1,44 +1,31 @@
+    {% liquid
+      assign locales = shop.metafields.foxify.locales.value
+      assign current_locale = request.locale.iso_code
+      assign primary_locale = current_locale
+      for locale in shop.published_locales
+        if locale.primary
+          assign primary_locale = locale.iso_code
+          break
+        endif
+      endfor
+      assign translation = locales[current_locale] | default: locales[primary_locale]
+    %}
+    <script>
+      window.Foxify = window.Foxify || {}
+      Foxify.ThemeStyles = {
+        product: "https:{{ 'foxify-product.css' | asset_url }}",
+        swiper: "https:{{ 'foxify-swiper.css' | asset_url }}",
+      }
 
-{% liquid
-  
-    assign locales = shop.metafields.foxify.locales.value
-    assign current_locale = request.locale.iso_code
-    assign primary_locale = current_locale
-    for locale in shop.published_locales
-    if locale.primary
-        assign primary_locale = locale.iso_code
-        break
-    endif
-    endfor
-    assign translation = locales[current_locale] | default: locales[primary_locale]
+      Foxify.ThemeScripts = {
+        productModel: "https:{{ 'foxify-product-model.js' | asset_url }}",
+        productMedia: "https:{{ 'foxify-media-gallery.js' | asset_url }}",
+        variantPicker: "https:{{ 'foxify-variant-picker.js' | asset_url }}"
+      }
 
-    assign theme_settings = shop.metafields.foxify.theme_settings.value
-    assign productCard = theme_settings.productCard
-  
-  
-      assign foxifyCustomCss = shop.metafields.foxify['673c3b0512a7e0579289580f'].value.customCss
-      assign foxifyCustomJs = shop.metafields.foxify['673c3b0512a7e0579289580f'].value.customJs
-    
-%}
-
-      <script>
-        window.Foxify = window.Foxify || {}
-        Foxify.ThemeStyles = {
-          product: "https:{{ 'foxify-product.css' | asset_url }}",
-          swiper: "https:{{ 'foxify-swiper.css' | asset_url }}",
-        }
-
-        Foxify.ThemeScripts = {
-          productModel: "https:{{ 'foxify-product-model.js' | asset_url }}",
-          productMedia: "https:{{ 'foxify-media-gallery.js' | asset_url }}",
-          variantPicker: "https:{{ 'foxify-variant-picker.js' | asset_url }}"
-        }
-
-        Foxify.pageId = '1732000518i4f8P';
-        Foxify.default = false;
-      </script>
-    
-<div class="f-app f:content">
+      Foxify.pageId = '1732000518i4f8P'
+    </script>
+    <div class="f-app f:content">
 <style data-foxify-editor="foxify-custom-fonts">
   @font-face {
     font-family: BrownProTT-Bold-17071127825LR9n;
@@ -62,29 +49,28 @@
       %}
 
 </div>
-{% schema %}
-  {
-  "name": "[Foxify] Warm Wishes",
-  "class": "foxify-section f-app",
-  "settings": [
-    {
-      "type": "header",
-      "content": "Customize section",
-      "info": "Go to [Foxify app](https://admin.shopify.com/store/the-future-rocks/apps/foxify-builder/editor?id=1732000518i4f8P&type=section) to edit this section."
-    }
-  ],
-  "locales": {
-    "en": {
-      "f-heading-1732264897xbMpO-text_html": "WARM WISHES",
-      "f-richtext-17322648971KDab-text_html": "<p>Unique pieces that radiate love, select gems that reflect her style and personality.</p>",
-      "f-button-17322648978XYOt-button_label_html": "Shop now"
-    }
-  },
-  "presets": [
-    {
-      "name": "[Foxify] Warm Wishes"
-    }
-  ]
-}
-{% endschema %}
+    {% schema %}
+      {
+        "name": "[Foxify] Warm Wishes",
+        "class": "foxify-section f-app",
+        "settings": [{"type":"header","content":"Customize section","info":"Go to [Foxify app](https://app.foxify.io/editor?id=1732000518i4f8P&type=SECTION) to edit this section."}],
+        "locales": {
+  "en": {
+    "f-heading-1732264897xbMpO-text_html": "WARM WISHES",
+    "f-richtext-17322648971KDab-text_html": "<p>Unique pieces that radiate love, select gems that reflect her style and personality.</p>",
+    "f-button-17322648978XYOt-button_label_html": "Shop now"
+  }
+},
+        "blocks": [
+          {
+            "type": "@app"
+          }
+        ],          
+        "presets": [
+          {
+            "name": "[Foxify] Warm Wishes"
+          }
+        ]  
+      }
+    {% endschema %}
   

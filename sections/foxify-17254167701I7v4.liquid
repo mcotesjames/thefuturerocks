@@ -1,44 +1,31 @@
+    {% liquid
+      assign locales = shop.metafields.foxify.locales.value
+      assign current_locale = request.locale.iso_code
+      assign primary_locale = current_locale
+      for locale in shop.published_locales
+        if locale.primary
+          assign primary_locale = locale.iso_code
+          break
+        endif
+      endfor
+      assign translation = locales[current_locale] | default: locales[primary_locale]
+    %}
+    <script>
+      window.Foxify = window.Foxify || {}
+      Foxify.ThemeStyles = {
+        product: "https:{{ 'foxify-product.css' | asset_url }}",
+        swiper: "https:{{ 'foxify-swiper.css' | asset_url }}",
+      }
 
-{% liquid
-  
-    assign locales = shop.metafields.foxify.locales.value
-    assign current_locale = request.locale.iso_code
-    assign primary_locale = current_locale
-    for locale in shop.published_locales
-    if locale.primary
-        assign primary_locale = locale.iso_code
-        break
-    endif
-    endfor
-    assign translation = locales[current_locale] | default: locales[primary_locale]
+      Foxify.ThemeScripts = {
+        productModel: "https:{{ 'foxify-product-model.js' | asset_url }}",
+        productMedia: "https:{{ 'foxify-media-gallery.js' | asset_url }}",
+        variantPicker: "https:{{ 'foxify-variant-picker.js' | asset_url }}"
+      }
 
-    assign theme_settings = shop.metafields.foxify.theme_settings.value
-    assign productCard = theme_settings.productCard
-  
-  
-      assign foxifyCustomCss = shop.metafields.foxify['66d7c542a148c76d651a4f77'].value.customCss
-      assign foxifyCustomJs = shop.metafields.foxify['66d7c542a148c76d651a4f77'].value.customJs
-    
-%}
-
-      <script>
-        window.Foxify = window.Foxify || {}
-        Foxify.ThemeStyles = {
-          product: "https:{{ 'foxify-product.css' | asset_url }}",
-          swiper: "https:{{ 'foxify-swiper.css' | asset_url }}",
-        }
-
-        Foxify.ThemeScripts = {
-          productModel: "https:{{ 'foxify-product-model.js' | asset_url }}",
-          productMedia: "https:{{ 'foxify-media-gallery.js' | asset_url }}",
-          variantPicker: "https:{{ 'foxify-variant-picker.js' | asset_url }}"
-        }
-
-        Foxify.pageId = '17254167701I7v4';
-        Foxify.default = false;
-      </script>
-    
-<div class="f-app f:content">
+      Foxify.pageId = '17254167701I7v4'
+    </script>
+    <div class="f-app f:content">
 <style data-foxify-editor="foxify-custom-fonts">
   @font-face {
     font-family: BrownProTT-Bold-17071127825LR9n;
@@ -97,58 +84,57 @@ a:link {
       %}
 
 </div>
-{% schema %}
-  {
-  "name": "[Foxify] A/W 2024 KV",
-  "class": "foxify-section f-app",
-  "settings": [
-    {
-      "type": "header",
-      "content": "Customize section",
-      "info": "Go to [Foxify app](https://admin.shopify.com/store/the-future-rocks/apps/foxify-builder/editor?id=17254167701I7v4&type=section) to edit this section."
-    }
-  ],
-  "locales": {
-    "en": {
-      "f-heading-1726527753MyxnJ-text_html": "Meet THE WONDER ROCKS",
-      "f-richtext-1726527753KO0Q9-text_html": "Transform and customize your style from ring to necklace",
-      "f-button-1726527753VHPz9-button_label_html": "shop now",
-      "f-heading-1728315086CDE5P-text_html": "THE RING REIMAGINED",
-      "f-richtext-1728315086LLgEt-text_html": "Iconic vision. Future-ready.",
-      "f-button-17283150861NsQ9-button_label_html": "order now",
-      "f-button-1726527753pAyjc-button_label_html": "shop now",
-      "f-button-1726527753zqUkJ-button_label_html": "shop now",
-      "f-heading-1726527753uNVNS-text_html": "last chance alert!",
-      "f-richtext-1726527753jwjNR-text_html": "UP TO 25% OFF select styles from The Future Rocks x Lightbox Jewelry Joy Collection",
-      "f-button-17265277533nGyQ-button_label_html": "shop now",
-      "f-heading-1727666838AFkNb-text_html": "New Arrival",
-      "f-richtext-172766683863I38-text_html": "Upgrade your jewelry wardrobe with our latest addition.",
-      "f-button-1727666838EItgD-button_label_html": "SEE ALL",
-      "f-heading-1726527753lqiDt-text_html": "Discover Hikari's Meteor collection",
-      "f-richtext-1726527753NQHpj-text_html": "Get to your wishlist before it's gone.",
-      "f-button-1726527753JXWbm-button_label_html": "take a look",
-      "f-heading-1728318014efsQQ-text_html": "DAZZLE THIS SEASON OF GIVING",
-      "f-richtext-1728318014xCzRa-text_html": "RECEIVE A COMPLIMENTARY LAB-GROWN DIAMOND BRACELET WHEN YOU BUY ANY TWO SELECTED ITEMS.",
-      "f-heading-1728972682V8zWO-text_html": "Meet Design Lab's new Zodiac collection!",
-      "f-richtext-1728972682oIFpy-text_html": "Twinkle with your sign.",
-      "f-button-1728972726ZwW89-button_label_html": "Shop now",
-      "f-heading-1729675694T1Adh-text_html": "nEW aRRIVAL",
-      "f-richtext-1729675702HKdES-text_html": "Upgrade your jewelry wardrobe with our latest addition, featuring everything from zodiac necklaces, colored diamonds to sculptural earrings.",
-      "f-button-1729675705PP3Zx-button_label_html": "see all",
-      "f-heading-1729484661gkbgP-text_html": "new arrival",
-      "f-richtext-1729484661CQ8JR-text_html": "<p>Upgrade your jewelry wardrobe with our latest addition, featuring everything from zodiac necklaces, colored diamonds to sculptural earrings.</p>",
-      "f-button-1729484661iKHJO-button_label_html": "see all",
-      "f-heading-17310598507L854-text_html": "DAZZLE THIS<br>SEASON OF GIVING",
-      "f-richtext-1731059850BDwyC-text_html": "Receive a complimentary lab-grown diamond bracelet when you buy any two selected items.",
-      "f-button-1731059850LoSC8-button_label_html": "shop now",
-      "f-button-1731061702qyAqq-button_label_html": "Shop now"
-    }
-  },
-  "presets": [
-    {
-      "name": "[Foxify] A/W 2024 KV"
-    }
-  ]
-}
-{% endschema %}
+    {% schema %}
+      {
+        "name": "[Foxify] A/W 2024 KV",
+        "class": "foxify-section f-app",
+        "settings": [{"type":"header","content":"Customize section","info":"Go to [Foxify app](https://app.foxify.io/editor?id=17254167701I7v4&type=SECTION) to edit this section."}],
+        "locales": {
+  "en": {
+    "f-heading-1726527753MyxnJ-text_html": "Meet THE WONDER ROCKS",
+    "f-richtext-1726527753KO0Q9-text_html": "Transform and customize your style from ring to necklace",
+    "f-button-1726527753VHPz9-button_label_html": "shop now",
+    "f-heading-1728315086CDE5P-text_html": "THE RING REIMAGINED",
+    "f-richtext-1728315086LLgEt-text_html": "Iconic vision. Future-ready.",
+    "f-button-17283150861NsQ9-button_label_html": "order now",
+    "f-button-1726527753pAyjc-button_label_html": "shop now",
+    "f-button-1726527753zqUkJ-button_label_html": "shop now",
+    "f-heading-1726527753uNVNS-text_html": "last chance alert!",
+    "f-richtext-1726527753jwjNR-text_html": "UP TO 25% OFF select styles from The Future Rocks x Lightbox Jewelry Joy Collection",
+    "f-button-17265277533nGyQ-button_label_html": "shop now",
+    "f-heading-1727666838AFkNb-text_html": "New Arrival",
+    "f-richtext-172766683863I38-text_html": "Upgrade your jewelry wardrobe with our latest addition.",
+    "f-button-1727666838EItgD-button_label_html": "SEE ALL",
+    "f-heading-1726527753lqiDt-text_html": "Discover Hikari's Meteor collection",
+    "f-richtext-1726527753NQHpj-text_html": "Get to your wishlist before it's gone.",
+    "f-button-1726527753JXWbm-button_label_html": "take a look",
+    "f-heading-1728318014efsQQ-text_html": "DAZZLE THIS SEASON OF GIVING",
+    "f-richtext-1728318014xCzRa-text_html": "RECEIVE A COMPLIMENTARY LAB-GROWN DIAMOND BRACELET WHEN YOU BUY ANY TWO SELECTED ITEMS.",
+    "f-heading-1728972682V8zWO-text_html": "Meet Design Lab's new Zodiac collection!",
+    "f-richtext-1728972682oIFpy-text_html": "Twinkle with your sign.",
+    "f-button-1728972726ZwW89-button_label_html": "Shop now",
+    "f-heading-1729675694T1Adh-text_html": "nEW aRRIVAL",
+    "f-richtext-1729675702HKdES-text_html": "Upgrade your jewelry wardrobe with our latest addition, featuring everything from zodiac necklaces, colored diamonds to sculptural earrings.",
+    "f-button-1729675705PP3Zx-button_label_html": "see all",
+    "f-heading-1729484661gkbgP-text_html": "new arrival",
+    "f-richtext-1729484661CQ8JR-text_html": "<p>Upgrade your jewelry wardrobe with our latest addition, featuring everything from zodiac necklaces, colored diamonds to sculptural earrings.</p>",
+    "f-button-1729484661iKHJO-button_label_html": "see all",
+    "f-heading-17310598507L854-text_html": "DAZZLE THIS<br>SEASON OF GIVING",
+    "f-richtext-1731059850BDwyC-text_html": "Receive a complimentary lab-grown diamond bracelet when you buy any two selected items.",
+    "f-button-1731059850LoSC8-button_label_html": "shop now",
+    "f-button-1731061702qyAqq-button_label_html": "Shop now"
+  }
+},
+        "blocks": [
+          {
+            "type": "@app"
+          }
+        ],          
+        "presets": [
+          {
+            "name": "[Foxify] A/W 2024 KV"
+          }
+        ]  
+      }
+    {% endschema %}
   

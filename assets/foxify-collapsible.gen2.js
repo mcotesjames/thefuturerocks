@@ -2,7 +2,6 @@ if (!customElements.get(`x-collapsible-tab`)) {
   class FoxifyCollapsibleTab extends HTMLElement {
     constructor() {
       super();
-      this._onTriggerClick = (event) => this.toggle(event);
     }
     connectedCallback() {
       this.init();
@@ -11,14 +10,14 @@ if (!customElements.get(`x-collapsible-tab`)) {
       this.destroy();
     }
     init = () => {
-      const destroy = this.dataset.destroy === 'true';
-      this.preventToggle = this.dataset.preventToggle === 'true';
+      const destroy = this.dataset.destroy === "true";
+      this.preventToggle = this.dataset.preventToggle === "true";
       if (destroy) return;
 
       this.setDefaultData();
       this.attachEvents();
 
-      if (this.getAttribute('open') === 'true') {
+      if (this.getAttribute("open") === "true") {
         this.selected = true;
         this.classList.add(this.expandedClass);
         this.setExpandedAria();
@@ -27,13 +26,13 @@ if (!customElements.get(`x-collapsible-tab`)) {
         this.classList.add(this.collapsedClass);
         this.setCollapsedAria();
       }
-      this.content.removeAttribute('hidden');
-      if (!this.content.querySelector('.x-collapsible__content').innerHTML.trim()) {
-        this.classList.add(this.emptyClass);
+      this.content.removeAttribute("hidden");
+      if (!this.content.querySelector(".x-collapsible__content").innerHTML.trim()) {
+        this.classList.add(this.emptyClass)
         if (this.hideIfEmpty) {
-          this.classList.add(this.hiddenClass);
+          this.classList.add(this.hiddenClass)
           if (this.closest('.x-collapsible-tab')) {
-            this.closest('.x-collapsible-tab').classList.add(this.hiddenClass);
+            this.closest('.x-collapsible-tab').classList.add(this.hiddenClass)
           }
         }
       }
@@ -41,12 +40,12 @@ if (!customElements.get(`x-collapsible-tab`)) {
 
     transitionendEventName = () => {
       let i,
-        el = document.createElement('div'),
+        el = document.createElement("div"),
         transitions = {
-          transition: 'transitionend',
-          OTransition: 'otransitionend',
-          MozTransition: 'transitionend',
-          WebkitTransition: 'webkitTransitionEnd',
+          transition: "transitionend",
+          OTransition: "otransitionend",
+          MozTransition: "transitionend",
+          WebkitTransition: "webkitTransitionEnd",
         };
 
       for (i in transitions) {
@@ -64,8 +63,8 @@ if (!customElements.get(`x-collapsible-tab`)) {
         if (!this.isOpen) return;
 
         requestAnimationFrame(() => {
-          this.content.style.transition = '0';
-          this.content.style.height = 'auto';
+          this.content.style.transition = "0";
+          this.content.style.height = "auto";
 
           requestAnimationFrame(() => {
             this.content.style.height = null;
@@ -75,7 +74,7 @@ if (!customElements.get(`x-collapsible-tab`)) {
             this.classList.add(this.expandedClass);
             this.trySetTabIndex(this.content, 0);
 
-            this.fire('tabOpened');
+            this.fire("tabOpened");
           });
         });
       };
@@ -85,7 +84,7 @@ if (!customElements.get(`x-collapsible-tab`)) {
 
       this.isOpen = true;
       this.classList.remove(this.collapsedClass);
-      this.content.style.height = this.content.scrollHeight + 'px';
+      this.content.style.height = this.content.scrollHeight + "px";
     };
 
     collapse = () => {
@@ -95,7 +94,7 @@ if (!customElements.get(`x-collapsible-tab`)) {
 
         if (this.isOpen) return;
 
-        this.fire('elementClosed');
+        this.fire("elementClosed");
         this.setCollapsedAria();
         this.classList.add(this.collapsedClass);
         this.trySetTabIndex(this.content, -1);
@@ -108,8 +107,8 @@ if (!customElements.get(`x-collapsible-tab`)) {
       this.classList.remove(this.expandedClass);
 
       requestAnimationFrame(() => {
-        this.content.style.transition = '0';
-        this.content.style.height = this.content.scrollHeight + 'px';
+        this.content.style.transition = "0";
+        this.content.style.height = this.content.scrollHeight + "px";
 
         requestAnimationFrame(() => {
           this.content.style.transition = null;
@@ -120,16 +119,16 @@ if (!customElements.get(`x-collapsible-tab`)) {
 
     open = () => {
       this.selected = true;
-      this.fire('elementSelected');
+      this.fire("elementSelected");
       this.expand();
-      this.setAttribute('open', true);
+      this.setAttribute("open", true);
     };
 
     close = () => {
       this.selected = false;
-      this.fire('elementUnselected');
+      this.fire("elementUnselected");
       this.collapse();
-      this.removeAttribute('open');
+      this.removeAttribute("open");
     };
 
     toggle = (event) => {
@@ -144,9 +143,9 @@ if (!customElements.get(`x-collapsible-tab`)) {
         this.open();
 
         if (this.oneAtATime) {
-          const parentElement = this.closest('.x-collapsible') || this.parentElement?.parentElement;
-          const allItems = parentElement.querySelectorAll('x-collapsible-tab');
-          const parent = this.closest('[data-first-level]');
+          const parentElement = this.closest('.x-collapsible') || this.parentElement?.parentElement
+          const allItems = parentElement.querySelectorAll("x-collapsible-tab");
+          const parent = this.closest("[data-first-level]");
           if (allItems.length) {
             allItems.forEach((item) => {
               if (item !== this && item.selected && parent !== item) {
@@ -156,32 +155,30 @@ if (!customElements.get(`x-collapsible-tab`)) {
           }
         }
       }
-      this.fire('toggle');
+      this.fire("toggle");
     };
 
     trySetTabIndex(el, index) {
       const tappableElements = el.querySelectorAll(this.defaultElements);
       if (tappableElements) {
         tappableElements.forEach((e) => {
-          e.setAttribute('tabindex', index);
+          e.setAttribute("tabindex", index);
         });
       }
     }
 
     setExpandedAria = () => {
-      this.trigger.setAttribute('aria-expanded', 'true');
-      this.content.setAttribute('aria-hidden', 'false');
+      this.trigger.setAttribute("aria-expanded", "true");
+      this.content.setAttribute("aria-hidden", "false");
     };
 
     setCollapsedAria = (el) => {
-      this.trigger.setAttribute('aria-expanded', 'false');
-      this.content.setAttribute('aria-hidden', 'true');
+      this.trigger.setAttribute("aria-expanded", "false");
+      this.content.setAttribute("aria-hidden", "true");
     };
 
     attachEvents = () => {
-      if (!this.trigger) return;
-      this.trigger.removeEventListener('click', this._onTriggerClick);
-      this.trigger.addEventListener('click', this._onTriggerClick);
+      this.trigger.addEventListener("click", (event) => this.toggle(event));
     };
 
     setDefaultData = () => {
@@ -193,18 +190,23 @@ if (!customElements.get(`x-collapsible-tab`)) {
         elementClosed: [],
       };
       this.transitionendevent = this.transitionendEventName();
-      this.emptyClass = 'x-collapsible__item--empty';
-      this.hiddenClass = '!x-hidden';
-      this.expandedClass = 'x-is-expanded';
-      this.collapsedClass = 'x-is-collapsed';
-      this.trigger = this.querySelector('[data-trigger]');
-      this.content = this.querySelector('[data-content]');
-      this.collapsedHeight = '0px';
-      this.defaultElements = ['a', 'button', 'input:not(.focus-none)', '[data-trigger]'];
+      this.emptyClass = "x-collapsible__item--empty";
+      this.hiddenClass = "!x-hidden";
+      this.expandedClass = "x-is-expanded";
+      this.collapsedClass = "x-is-collapsed";
+      this.trigger = this.querySelector("[data-trigger]");
+      this.content = this.querySelector("[data-content]");
+      this.collapsedHeight = "0px";
+      this.defaultElements = [
+        "a",
+        "button",
+        "input:not(.focus-none)",
+        "[data-trigger]",
+      ];
       this.oneAtATime = true;
-      this.hideIfEmpty = this.dataset.hideIfEmpty === 'true';
+      this.hideIfEmpty = this.dataset.hideIfEmpty === 'true'
       if (this.dataset.oneOpen) {
-        this.oneAtATime = this.dataset.oneOpen === 'true';
+        this.oneAtATime = this.dataset.oneOpen === "true";
       }
     };
 
@@ -221,14 +223,11 @@ if (!customElements.get(`x-collapsible-tab`)) {
     };
 
     destroy = () => {
-      if (this.trigger) {
-        this.trigger.removeEventListener('click', this._onTriggerClick);
-      }
-      if (!this.content) return;
-      this.content.removeAttribute('aria-hidden');
-      this.content.style.height = 'auto';
+      this.trigger.removeEventListener("click", (event) => this.toggle(event));
+      this.content.removeAttribute("aria-hidden");
+      this.content.style.height = "auto";
       this.classList.remove(this.expandedClass, this.collapsedClass);
-      this.removeAttribute('open');
+      this.removeAttribute("open");
     };
   }
 

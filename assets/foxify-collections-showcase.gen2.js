@@ -7,7 +7,7 @@ if (!customElements.get('x-collection-showcase')) {
         tabs: ['.x-collection-showcase__tabs-list a'],
         contents: ['.x-collection-showcase__content'],
         banner: '.x-collection-showcase__banner',
-        contentsWrapper: '.x-collection-showcase__contents',
+        contentsWrapper: '.x-collection-showcase__contents'
       };
     }
 
@@ -16,7 +16,7 @@ if (!customElements.get('x-collection-showcase')) {
       this.trigger = this.dataset.trigger || 'click';
       this.activeIndex = 0;
       this.canHover = window.matchMedia('(hover: hover)').matches;
-
+      
       this.initEventListeners();
       this.setActiveTab(0);
       this.setSectionPaddingOffset();
@@ -24,7 +24,7 @@ if (!customElements.get('x-collection-showcase')) {
 
     setSectionPaddingOffset() {
       const section = this.closest('.x-section');
-
+      
       if (section && this.domNodes.contentsWrapper) {
         const sectionStyles = window.getComputedStyle(section);
         const paddingRight = sectionStyles.paddingRight;
@@ -121,16 +121,14 @@ if (!customElements.get('x-collection-showcase')) {
         }
       });
 
-      this.dispatchEvent(
-        new CustomEvent('collectionShowcaseChange', {
-          bubbles: true,
-          detail: {
-            activeIndex: index,
-            activeTab: this.domNodes.tabs[index],
-            activeContent: this.domNodes.contents[index],
-          },
-        }),
-      );
+      this.dispatchEvent(new CustomEvent('collectionShowcaseChange', {
+        bubbles: true,
+        detail: { 
+          activeIndex: index,
+          activeTab: this.domNodes.tabs[index],
+          activeContent: this.domNodes.contents[index]
+        }
+      }));
     }
 
     connectedCallback() {
@@ -139,12 +137,12 @@ if (!customElements.get('x-collection-showcase')) {
     }
 
     disconnectedCallback() {
-      this.domNodes.tabs.forEach((tab) => {
+      this.domNodes.tabs.forEach(tab => {
         tab.removeEventListener('click', this.handleClick);
         tab.removeEventListener('mouseenter', this.handleMouseEnter);
         tab.removeEventListener('keydown', this.handleKeyDown);
       });
-
+      
       if (this.resizeObserver) {
         this.resizeObserver.disconnect();
       }

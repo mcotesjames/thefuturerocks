@@ -1,44 +1,34 @@
-
-{% liquid
-  
-    assign locales = shop.metafields.foxify.locales.value
-    assign current_locale = request.locale.iso_code
-    assign primary_locale = current_locale
-    for locale in shop.published_locales
-    if locale.primary
-        assign primary_locale = locale.iso_code
-        break
-    endif
-    endfor
-    assign translation = locales[current_locale] | default: locales[primary_locale]
-
-    assign theme_settings = shop.metafields.foxify.theme_settings.value
-    assign productCard = theme_settings.productCard
-  
-  
-      assign foxifyCustomCss = shop.metafields.foxify['65c07cbb6e7a88dc02812e22'].value.customCss
-      assign foxifyCustomJs = shop.metafields.foxify['65c07cbb6e7a88dc02812e22'].value.customJs
-    
-%}
-
-      <script>
+    {% liquid
+        assign locales = shop.metafields.foxify.locales.value
+        assign current_locale = request.locale.iso_code
+        assign primary_locale = current_locale
+        assign foxifyCustomCss = shop.metafields.foxify['65c07cbb6e7a88dc02812e22'].value.customCss
+        assign foxifyCustomJs = shop.metafields.foxify['65c07cbb6e7a88dc02812e22'].value.customJs
+        for locale in shop.published_locales
+        if locale.primary
+            assign primary_locale = locale.iso_code
+            break
+        endif
+        endfor
+        assign translation = locales[current_locale] | default: locales[primary_locale]
+    %}
+    <script>
         window.Foxify = window.Foxify || {}
         Foxify.ThemeStyles = {
-          product: "https:{{ 'foxify-product.css' | asset_url }}",
-          swiper: "https:{{ 'foxify-swiper.css' | asset_url }}",
+            product: "https:{{ 'foxify-product.css' | asset_url }}",
+            swiper: "https:{{ 'foxify-swiper.css' | asset_url }}",
         }
 
         Foxify.ThemeScripts = {
-          productModel: "https:{{ 'foxify-product-model.js' | asset_url }}",
-          productMedia: "https:{{ 'foxify-media-gallery.js' | asset_url }}",
-          variantPicker: "https:{{ 'foxify-variant-picker.js' | asset_url }}"
+            productModel: "https:{{ 'foxify-product-model.js' | asset_url }}",
+            productMedia: "https:{{ 'foxify-media-gallery.js' | asset_url }}",
+            variantPicker: "https:{{ 'foxify-variant-picker.js' | asset_url }}"
         }
 
-        Foxify.pageId = '1707113659YnWk3';
-        Foxify.default = false;
-      </script>
-    
-<div class="f-app f:content">
+        Foxify.pageId = '1707113659YnWk3'
+        Foxify.default = false
+    </script>
+    <div class="f-app f:content">
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400&display=swap" id="Jost" rel="stylesheet">
 <style data-foxify-editor="foxify-custom-fonts">
   @font-face {
@@ -97,42 +87,43 @@
       %}
 
 </div>
-{% schema %}
-  {
-  "name": "Foxify main content",
-  "class": "foxify-main f-app",
-  "settings": [
-    {
-      "type": "header",
-      "content": "Customize main content",
-      "info": "Go to [Foxify app](https://admin.shopify.com/store/the-future-rocks/apps/foxify-builder/editor?id=1707113659YnWk3&type=regular) to edit this section."
-    }
-  ],
-  "locales": {
-    "en": {
-      "f-heading-1707114363O7pFb-text_html": "unlock exclusive member perks",
-      "f-richtext-1707114363oiXJ3-text_html": "Become a member today and unlock exclusive access to our latest releases, promotions, and more.",
-      "f-button-1711607471Y2Moz-button_label_html": "become a member",
-      "f-heading-1711609933CI8no-text_html": "First-hand Exclusives",
-      "f-richtext-1711609926VzIrG-text_html": "Early access to The Future Rocks exclusives.",
-      "f-heading-1711610138AMGJ4-text_html": "Priority Deal Access",
-      "f-richtext-1711610138ZTYFB-text_html": "Priority access to special deals throughout the year.",
-      "f-heading-1711610139HnlQb-text_html": "Members-only Offer",
-      "f-richtext-1711610139gfn6l-text_html": "Exclusive promotional offers.",
-      "f-heading-1712029542RxwY9-text_html": "Birthday Deal",
-      "f-richtext-1712029542zVBk4-text_html": "Enjoy 10% off all items on your birthday month.",
-      "f-heading-1712029542nPLns-text_html": "Brand Experience",
-      "f-richtext-1712029542bhrac-text_html": "Invitation to The Future Rocks events.",
-      "f-heading-1712029542pX9BZ-text_html": "Return Period Extension",
-      "f-richtext-1712029542K35u1-text_html": "Fuss-free refund or exchange within 30 days of receipt of shipment.",
-      "f-richtext-1712035326zwuab-text_html": "Already a member?",
-      "f-button-171203533172Iwe-button_label_html": "log in",
-      "f-heading-1712038855GdBVI-text_html": "The Future Rocks Membership",
-      "f-button-1712038859m1F0a-button_label_html": "become a member",
-      "f-richtext-1712038868cCiB0-text_html": "Already a member?",
-      "f-button-1712038871tBBhe-button_label_html": "log in"
-    }
+    {% schema %}
+        {
+            "name": "Foxify main content",
+            "class": "foxify-main f-app",
+            "settings": [
+                {
+                "type": "header",
+                "content": "Customize section",
+                "info": "Go to [Foxify app](https://app.foxify.io/editor?id=1707113659YnWk3&type=REGULAR) to edit this section."
+                },
+                
+            ],
+            "locales": {
+  "en": {
+    "f-heading-1707114363O7pFb-text_html": "unlock exclusive member perks",
+    "f-richtext-1707114363oiXJ3-text_html": "Become a member today and unlock exclusive access to our latest releases, promotions, and more.",
+    "f-button-1711607471Y2Moz-button_label_html": "become a member",
+    "f-heading-1711609933CI8no-text_html": "First-hand Exclusives",
+    "f-richtext-1711609926VzIrG-text_html": "Early access to The Future Rocks exclusives.",
+    "f-heading-1711610138AMGJ4-text_html": "Priority Deal Access",
+    "f-richtext-1711610138ZTYFB-text_html": "Priority access to special deals throughout the year.",
+    "f-heading-1711610139HnlQb-text_html": "Members-only Offer",
+    "f-richtext-1711610139gfn6l-text_html": "Exclusive promotional offers.",
+    "f-heading-1712029542RxwY9-text_html": "Birthday Deal",
+    "f-richtext-1712029542zVBk4-text_html": "Enjoy 10% off all items on your birthday month.",
+    "f-heading-1712029542nPLns-text_html": "Brand Experience",
+    "f-richtext-1712029542bhrac-text_html": "Invitation to The Future Rocks events.",
+    "f-heading-1712029542pX9BZ-text_html": "Return Period Extension",
+    "f-richtext-1712029542K35u1-text_html": "Fuss-free refund or exchange within 30 days of receipt of shipment.",
+    "f-richtext-1712035326zwuab-text_html": "Already a member?",
+    "f-button-171203533172Iwe-button_label_html": "log in",
+    "f-heading-1712038855GdBVI-text_html": "The Future Rocks Membership",
+    "f-button-1712038859m1F0a-button_label_html": "become a member",
+    "f-richtext-1712038868cCiB0-text_html": "Already a member?",
+    "f-button-1712038871tBBhe-button_label_html": "log in"
   }
 }
-{% endschema %}
+        }
+    {% endschema %}
   
