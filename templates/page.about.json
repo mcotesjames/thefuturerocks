@@ -65,7 +65,8 @@
         "link"
       ],
       "settings": {
-        "column_position": "right"
+        "column_position": "right",
+        "label_beside": false
       }
     },
     "banner": {
@@ -84,21 +85,21 @@
           "type": "column",
           "settings": {
             "title": "Buying jewelry can be a socially responsible act.",
-            "text": "<p>Buying jewelry can be a socially responsible act. We believe you don’t have to sacrifice your sense of style to live consciously. You can express yourself authentically while caring for our planet’s future.</p><p>We see a future where social responsibility and environmental consideration is a natural concept when it comes to fine jewelry. Imagine a jeweler’s dream playground where curious minds collaborate to push design boundaries and encourage conscious practices.</p><p>With a socially conscious vision and an unwavering commitment to sustainability, we transform the realm of the jewelry industry — by putting people and the planet first.</p>"
+            "text": "<p>We believe you don’t have to sacrifice your sense of style to live consciously. You can express yourself authentically while caring for our planet’s future.<br/><br/>We see a future where social responsibility and environmental consideration is a natural concept when it comes to fine jewelry. Imagine a jeweler’s dream playground where curious minds collaborate to push design boundaries and encourage conscious practices.<br/><br/>With a socially conscious vision and an unwavering commitment to sustainability, we transform the realm of the jewelry industry — by putting people and the planet first.</p>"
           }
         },
         "value_2": {
           "type": "column",
           "settings": {
-            "title": "Curator of style.",
-            "text": "<p>Drawing together designers with conscious practices that span across the globe, we cultivate a community of innovators united in shared values. We empower the poetic nature of human craftsmanship, through partnerships and collaborations with creatives, designers, and inspiring influencers.</p><p>Conscious jewelry made from high-quality materials, recycled metals, lab-grown diamonds, and gemstones - is at the heart of our jewelry universe. We leave a powerful statement with a gentler legacy.</p>"
+            "title": "curator of Style.",
+            "text": "<p>Drawing together designers with conscious practices that span across the globe, we cultivate a community of innovators united in shared values. We empower the poetic nature of human craftsmanship, through partnerships and collaborations with creatives, designers, and inspiring influencers.<br/><br/>Conscious jewelry made from high-quality materials, recycled metals, lab-grown diamonds, and gemstones - is at the heart of our jewelry universe. We leave a powerful statement with a gentler legacy.</p>"
           }
         },
         "value_3": {
           "type": "column",
           "settings": {
-            "title": "Passion meets curation",
-            "text": "<p>We are what we believe in, and we believe in a circular economy — powered by conscientiousand transparent business practices.</p><p>Our commitment to quality products goes beyond face value. We go the extra mile to examine their design, production, and how they impact the world around us. While we don’t have all the answers, we strive to do the right thing for future generations.</p>"
+            "title": "Passion meets purpose.",
+            "text": "<p>We are what we believe in, and we believe in a circular economy — powered by conscientiousand transparent business practices.<br/><br/>Our commitment to quality products goes beyond face value. We go the extra mile to examine their design, production, and how they impact the world around us. While we don’t have all the answers, we strive to do the right thing for future generations.</p>"
           }
         }
       },
@@ -162,7 +163,7 @@
       "name": "Quick links",
       "settings": {
         "tile_shape": "0.8",
-        "text_color": "#FFFFFF"
+        "text_color": "#ffffff"
       }
     },
     "sustainability": {
@@ -172,6 +173,7 @@
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/01_d7e613c5-4fa5-445d-8329-647448dc754a.jpg",
+            "title": "",
             "text": "<p>We examine the supply chain and identify the pain points throughout the process. Then, transfer the knowledge to our community of like-minded innovators.</p>"
           }
         },
@@ -179,6 +181,7 @@
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/02_87372e36-5dec-422d-aa4f-060bb1b50202.jpg",
+            "title": "",
             "text": "<p>Likewise, we dare to challenge the norm of mass production and forge new ideas in the retail sphere. Currently, we are co-developing with the award-winning architecture firm Snøhetta, a reusable portable display system for offline activations with the hope of reducing retail waste.</p>"
           }
         },
@@ -186,6 +189,7 @@
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/03_f6e7991a-e3c4-415c-94d7-491cffb0aac5.jpg",
+            "title": "",
             "text": "<p>Several of our partnering designers are proud members of the Responsible Jewelry Council. The world's leading standard and authority in the global watch and jewelry industry. Others are B-Corp certified, a stamp of approval on their sustainable practices across the board.</p>"
           }
         },
@@ -193,6 +197,7 @@
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/05_1.jpg",
+            "title": "",
             "text": "<p>Light sensors are placed in frequented locations in our office to save energy and reduce light waste.</p>"
           }
         },
@@ -200,6 +205,7 @@
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/unav-6_jpg_e4e4de52-fc07-4b64-a9af-20764a10de4b.webp",
+            "title": "",
             "text": "<p>Most jewels are individually made to reduce waste. Meaning, every item is a consciously produced, well crafted, treasured creation.</p>"
           }
         },
@@ -207,6 +213,7 @@
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/david-hofmann-GFt6VfdVdbk-unsplash_jpg_1b1bdf26-4460-4c49-af46-eeaaa7745fa7.webp",
+            "title": "",
             "text": "<p>Most of our partners use recycled metals sourced and recovered predominantly from discarded electronic devices that are then transformed into modern heirlooms.</p>"
           }
         },
@@ -214,6 +221,7 @@
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/Screenshot_2023-08-28_at_14_47_51_png_607049b1-01d5-4ed2-9cde-b514933087fb.webp",
+            "title": "",
             "text": "<p>We repurpose selected furniture to prolong its life, ensuring that we are consciously using items and promoting sustainable actions in our day to day.</p>"
           }
         }

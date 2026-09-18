@@ -42,20 +42,23 @@
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/01_aedd38f9-03e5-4913-b547-82c4fb5dfc43.jpg",
-            "text": "<p>Do your best to avoid exposure to direct sunlight and excessive heat. This means, securing your jewelry, especially silver, in a holder with individually lined compartments to avoid scratches. If you'd rather have your jewelry out on display, remember to clean your trinket trays and ring holders regularly to eliminate dust.</p>"
+            "title": "Take It Off Sometimes",
+            "text": "<p>Remove your jewelry before workouts or activities that may expose them to water, like swimming or washing hands. While diamonds can resist sweat, the metal settings can be damaged. Always store your jewelry in a dry, safe place to keep it fresh before putting it away. It is also recommended to take off your jewelry before going to bed to prevent any accidental damage while you sleep.</p>"
           }
         },
         "column_HTUp8b": {
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/02_3bffad3f-e75e-444e-aab1-33fc92449556.jpg",
-            "text": "<p>Do your best to avoid exposure to direct sunlight and excessive heat. This means, securing your jewelry, especially silver, in a holder with individually lined compartments to avoid scratches. If you'd rather have your jewelry out on display, remember to clean your trinket trays and ring holders regularly to eliminate dust. </p>"
+            "title": "Avoid Chemical",
+            "text": "<p>Chemicals such as hairspray, chlorine bleach, perfume, and cleaning solutions can cause your metal to change color. It will be wise to save your fine jewelry for the final stage of any styling process. Also, if you're trying to go full on clean and organize mode, remember to remove it temporarily before doing any housework.</p>"
           }
         },
         "column_FLTU6q": {
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/03_692f8bea-abaf-4ebc-88a5-13e255a20b0c.jpg",
+            "title": "How To Store",
             "text": "<p>Do your best to avoid exposure to direct sunlight and excessive heat. This means, securing your jewelry, especially silver, in a holder with individually lined compartments to avoid scratches. If you'd rather have your jewelry out on display, remember to clean your trinket trays and ring holders regularly to eliminate dust.</p>"
           }
         },
@@ -63,7 +66,8 @@
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/04_28450084-0164-4c8a-8ca0-da007c7bd8b1.jpg",
-            "text": "<p>Do your best to avoid exposure to direct sunlight and excessive heat. This means, securing your jewelry, especially silver, in a holder with individually lined compartments to avoid scratches. If you'd rather have your jewelry out on display, remember to clean your trinket trays and ring holders regularly to eliminate dust.</p>"
+            "title": "Regular Inspection",
+            "text": "<p>Have a professional inspect your jewelry every 6–12 months. Pay special attention to your diamonds’ setting, so you don’t lose those little rocks. Diamonds are extremely hard, yes — but the surrounding settings can dislodge over time and regular use.</p>"
           }
         }
       },
@@ -104,8 +108,8 @@
         "row_3": {
           "type": "media_text",
           "settings": {
-            "title": "Beginner's scrub",
-            "text": "<p>Dissolve one tablespoon of mild dish soap into a glass of warm water and let your jewelry go for a little swim. Scrub gently with a soft cloth or an old soft-bristle toothbrush before rinsing with clean water.</p>",
+            "title": "For plated pieces",
+            "text": "<p>When treating plated pieces, gentleness is key. Do not scrub or use a polishing cloth as this will damage the coating. Rub the surface gently with a soft jewelry cloth.</p><p>Photo by <a href=\"https://unsplash.com/@tanyatrukyr\" target=\"_blank\">Tanya Trukyr</a> on <a href=\"https://unsplash.com\" target=\"_blank\">Unsplash</a></p>",
             "image": "shopify://shop_images/For_Plated_Pieces.jpg",
             "image_mobile": "shopify://shop_images/For_Plated_Pieces_d3ec7109-f923-41ec-a97f-646b42764d7b.jpg"
           }
@@ -113,8 +117,8 @@
         "row_4": {
           "type": "media_text",
           "settings": {
-            "title": "Zen clean",
-            "text": "<p>Add 3 drops of lemon essential oil to a half cup of witch hazel or vinegar. Let your jewelry sit for 5 minutes, and wipe with a soft polishing cloth if necessary. Rinse with clean water.</p>",
+            "title": "For raw brass and sterling silver jewelry polish finish",
+            "text": "<p>Make a paste using half a lemon and a teaspoon of baking soda. Rub the paste in your jewelry in one direction with a cotton cloth. Wipe off and rinse.</p>",
             "image": "shopify://shop_images/Raw_Brass.jpg",
             "image_mobile": "shopify://shop_images/Raw_Brass_65cea7ce-50fc-40c2-b1f6-e7720dbe7fc1.jpg"
           }
