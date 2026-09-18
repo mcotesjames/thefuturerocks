@@ -1,0 +1,31 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "foxify-1713238407fEc8v": {
+      "type": "foxify-1713238407fEc8v",
+      "settings": {}
+    },
+    "foxify-header": {
+      "type": "foxify-header",
+      "settings": {}
+    },
+    "foxify-footer": {
+      "type": "foxify-footer",
+      "settings": {}
+    }
+  },
+  "order": [
+    "foxify-header",
+    "foxify-1713238407fEc8v",
+    "foxify-footer"
+  ],
+  "layout": "theme.foxify"
+}
