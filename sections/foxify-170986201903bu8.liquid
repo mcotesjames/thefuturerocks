@@ -1,32 +1,44 @@
-    {% liquid
-        assign locales = shop.metafields.foxify.locales.value
-        assign current_locale = request.locale.iso_code
-        assign primary_locale = current_locale
-        for locale in shop.published_locales
-        if locale.primary
-            assign primary_locale = locale.iso_code
-            break
-        endif
-        endfor
-        assign translation = locales[current_locale] | default: locales[primary_locale]
-    %}
-    <script>
+
+{% liquid
+  
+    assign locales = shop.metafields.foxify.locales.value
+    assign current_locale = request.locale.iso_code
+    assign primary_locale = current_locale
+    for locale in shop.published_locales
+    if locale.primary
+        assign primary_locale = locale.iso_code
+        break
+    endif
+    endfor
+    assign translation = locales[current_locale] | default: locales[primary_locale]
+
+    assign theme_settings = shop.metafields.foxify.theme_settings.value
+    assign productCard = theme_settings.productCard
+  
+  
+      assign foxifyCustomCss = shop.metafields.foxify['65ea6c8386c4d5eb8fc18544'].value.customCss
+      assign foxifyCustomJs = shop.metafields.foxify['65ea6c8386c4d5eb8fc18544'].value.customJs
+    
+%}
+
+      <script>
         window.Foxify = window.Foxify || {}
         Foxify.ThemeStyles = {
-            product: "https:{{ 'foxify-product.css' | asset_url }}",
-            swiper: "https:{{ 'foxify-swiper.css' | asset_url }}",
+          product: "https:{{ 'foxify-product.css' | asset_url }}",
+          swiper: "https:{{ 'foxify-swiper.css' | asset_url }}",
         }
 
         Foxify.ThemeScripts = {
-            productModel: "https:{{ 'foxify-product-model.js' | asset_url }}",
-            productMedia: "https:{{ 'foxify-media-gallery.js' | asset_url }}",
-            variantPicker: "https:{{ 'foxify-variant-picker.js' | asset_url }}"
+          productModel: "https:{{ 'foxify-product-model.js' | asset_url }}",
+          productMedia: "https:{{ 'foxify-media-gallery.js' | asset_url }}",
+          variantPicker: "https:{{ 'foxify-variant-picker.js' | asset_url }}"
         }
 
-        Foxify.pageId = '170986201903bu8'
-        Foxify.default = false
-    </script>
-    <div class="f-app f:content">
+        Foxify.pageId = '170986201903bu8';
+        Foxify.default = false;
+      </script>
+    
+<div class="f-app f:content">
 <style data-foxify-editor="foxify-custom-fonts">
   @font-face {
     font-family: BrownProTT-Bold-17071127825LR9n;
@@ -384,56 +396,56 @@
       %}
 
 </div>
-    {% schema %}
-        {
-            "name": "Foxify main content",
-            "class": "foxify-main f-app",
-            "settings": [
-                {
-                "type": "header",
-                "content": "Customize section",
-                "info": "Go to [Foxify app](https://app.foxify.io/editor?id=170986201903bu8&type=REGULAR) to edit this section."
-                }
-            ],
-            "locales": {
-  "en": {
-    "f-heading-1709861999FDwgi-text_html": "THE RING",
-    "f-richtext-1709861999gVjFM-text_html": "Meticulously crafted. Science-powered.",
-    "f-heading-1709861999rDOUc-text_html": "More amazing colors",
-    "f-richtext-1709861999KaPo8-text_html": "THE RING band is crafted entirely from a single piece of lab-grown sapphire, made possible with advanced material science. Slip into another dimension where your lab-grown diamond levitates on your finger.",
-    "f-heading-1709861999YVwni-text_html": "59 hours",
-    "f-richtext-1709861999IVUfV-text_html": "Exemplified with innovative craftsmanship, precision cutting, faceting, and polishing for optimal light reflection.",
-    "f-heading-1709861999DRa8G-text_html": "An essential collaboration.",
-    "f-richtext-1709861999YUyde-text_html": "A testament to powerful collaboration, the two elegant ring center stone options are sourced exclusively from Lightbox. Featuring 2ct round-cut lab-grown diamonds in pink and blue variations, these diamonds showcase Lightbox’s renowned innovative science-powered approach.",
-    "f-heading-1709861999uM1ve-text_html": "3 cuts",
-    "f-richtext-1709861999HinHR-text_html": "Center stones certified by the International Gemological Institute and hand-picked by our in-house gemologist.",
-    "f-collapsible-tab-1709942159NVl0O-heading_html": "International Gemological Institute",
-    "f-collapsible-tab-1709942159NVl0O-content_html": "IGI is the world's largest gemological institute, operating 29 laboratory locations around the world grading finished jewelry, natural diamonds, lab-grown diamonds and gemstones.",
-    "f-richtext-1709952128ZiaB2-text_html": "<p>the original</p>",
-    "f-heading-1709952128GpZKQ-text_html": "THE RING I",
-    "f-richtext-1709952128Ep4qb-text_html": "<p>Lab-grown diamond set in 18K white gold</p>",
-    "f-button-17099521284FnFk-button_label_html": "order now",
-    "f-richtext-1709952128WKYQu-text_html": "<p>New arrival</p>",
-    "f-heading-1709952128Z1GNn-text_html": "THE RING II",
-    "f-richtext-17099521283riqN-text_html": "<p>Lab-grown diamond set in 18K white gold</p>",
-    "f-button-1709952128ILRGq-button_label_html": "order now",
-    "f-richtext-1709952128abF2P-text_html": "<p>New arrival</p>",
-    "f-heading-1709952128j2UDN-text_html": "THE RING II",
-    "f-richtext-1709952128bpwD3-text_html": "<p>Lab-grown diamond set in 18K white gold</p>",
-    "f-button-17099521284RSkf-button_label_html": "order now",
-    "f-heading-1709958373phYg8-text_html": "Look",
-    "f-heading-1709958820sPQJ4-text_html": "Oval cut",
-    "f-richtext-1709958820T0OJj-text_html": "2 carat<br>F-color<br>VS1 lab-grown diamond<br>Set in 18K white gold",
-    "f-heading-1709958820f9Zao-text_html": "Round cut",
-    "f-richtext-1709958820vST4g-text_html": "2 carat<br>F-color<br>VS1 lab-grown diamond<br>Set in 18K white gold",
-    "f-heading-1709958820GFfMW-text_html": "Princess cut",
-    "f-richtext-17099588206o6yq-text_html": "2 carat<br>F-color<br>VS1 lab-grown diamond<br>Set in 18K white gold",
-    "f-heading-1709975424WPsWx-text_html": "VS1 WHITE",
-    "f-heading-17099755070Rc2v-text_html": "VS1 PINK",
-    "f-heading-1709975526bKgHf-text_html": "VS1 BLUE",
-    "f-heading-1709980336pg1jl-text_html": "Patent-pending gem, meticulously handcrafted into every band."
+{% schema %}
+  {
+  "name": "Foxify main content",
+  "class": "foxify-main f-app",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Customize main content",
+      "info": "Go to [Foxify app](https://admin.shopify.com/store/the-future-rocks/apps/foxify-builder/editor?id=170986201903bu8&type=regular) to edit this section."
+    }
+  ],
+  "locales": {
+    "en": {
+      "f-heading-1709861999FDwgi-text_html": "THE RING",
+      "f-richtext-1709861999gVjFM-text_html": "Meticulously crafted. Science-powered.",
+      "f-heading-1709861999rDOUc-text_html": "More amazing colors",
+      "f-richtext-1709861999KaPo8-text_html": "THE RING band is crafted entirely from a single piece of lab-grown sapphire, made possible with advanced material science. Slip into another dimension where your lab-grown diamond levitates on your finger.",
+      "f-heading-1709861999YVwni-text_html": "59 hours",
+      "f-richtext-1709861999IVUfV-text_html": "Exemplified with innovative craftsmanship, precision cutting, faceting, and polishing for optimal light reflection.",
+      "f-heading-1709861999DRa8G-text_html": "An essential collaboration.",
+      "f-richtext-1709861999YUyde-text_html": "A testament to powerful collaboration, the two elegant ring center stone options are sourced exclusively from Lightbox. Featuring 2ct round-cut lab-grown diamonds in pink and blue variations, these diamonds showcase Lightbox’s renowned innovative science-powered approach.",
+      "f-heading-1709861999uM1ve-text_html": "3 cuts",
+      "f-richtext-1709861999HinHR-text_html": "Center stones certified by the International Gemological Institute and hand-picked by our in-house gemologist.",
+      "f-collapsible-tab-1709942159NVl0O-heading_html": "International Gemological Institute",
+      "f-collapsible-tab-1709942159NVl0O-content_html": "IGI is the world's largest gemological institute, operating 29 laboratory locations around the world grading finished jewelry, natural diamonds, lab-grown diamonds and gemstones.",
+      "f-richtext-1709952128ZiaB2-text_html": "<p>the original</p>",
+      "f-heading-1709952128GpZKQ-text_html": "THE RING I",
+      "f-richtext-1709952128Ep4qb-text_html": "<p>Lab-grown diamond set in 18K white gold</p>",
+      "f-button-17099521284FnFk-button_label_html": "order now",
+      "f-richtext-1709952128WKYQu-text_html": "<p>New arrival</p>",
+      "f-heading-1709952128Z1GNn-text_html": "THE RING II",
+      "f-richtext-17099521283riqN-text_html": "<p>Lab-grown diamond set in 18K white gold</p>",
+      "f-button-1709952128ILRGq-button_label_html": "order now",
+      "f-richtext-1709952128abF2P-text_html": "<p>New arrival</p>",
+      "f-heading-1709952128j2UDN-text_html": "THE RING II",
+      "f-richtext-1709952128bpwD3-text_html": "<p>Lab-grown diamond set in 18K white gold</p>",
+      "f-button-17099521284RSkf-button_label_html": "order now",
+      "f-heading-1709958373phYg8-text_html": "Look",
+      "f-heading-1709958820sPQJ4-text_html": "Oval cut",
+      "f-richtext-1709958820T0OJj-text_html": "2 carat<br>F-color<br>VS1 lab-grown diamond<br>Set in 18K white gold",
+      "f-heading-1709958820f9Zao-text_html": "Round cut",
+      "f-richtext-1709958820vST4g-text_html": "2 carat<br>F-color<br>VS1 lab-grown diamond<br>Set in 18K white gold",
+      "f-heading-1709958820GFfMW-text_html": "Princess cut",
+      "f-richtext-17099588206o6yq-text_html": "2 carat<br>F-color<br>VS1 lab-grown diamond<br>Set in 18K white gold",
+      "f-heading-1709975424WPsWx-text_html": "VS1 WHITE",
+      "f-heading-17099755070Rc2v-text_html": "VS1 PINK",
+      "f-heading-1709975526bKgHf-text_html": "VS1 BLUE",
+      "f-heading-1709980336pg1jl-text_html": "Patent-pending gem, meticulously handcrafted into every band."
+    }
   }
 }
-        }
-    {% endschema %}
+{% endschema %}
   

@@ -1,32 +1,44 @@
-    {% liquid
-        assign locales = shop.metafields.foxify.locales.value
-        assign current_locale = request.locale.iso_code
-        assign primary_locale = current_locale
-        for locale in shop.published_locales
-        if locale.primary
-            assign primary_locale = locale.iso_code
-            break
-        endif
-        endfor
-        assign translation = locales[current_locale] | default: locales[primary_locale]
-    %}
-    <script>
+
+{% liquid
+  
+    assign locales = shop.metafields.foxify.locales.value
+    assign current_locale = request.locale.iso_code
+    assign primary_locale = current_locale
+    for locale in shop.published_locales
+    if locale.primary
+        assign primary_locale = locale.iso_code
+        break
+    endif
+    endfor
+    assign translation = locales[current_locale] | default: locales[primary_locale]
+
+    assign theme_settings = shop.metafields.foxify.theme_settings.value
+    assign productCard = theme_settings.productCard
+  
+  
+      assign foxifyCustomCss = shop.metafields.foxify['66f83480af03790c4dd5b31a'].value.customCss
+      assign foxifyCustomJs = shop.metafields.foxify['66f83480af03790c4dd5b31a'].value.customJs
+    
+%}
+
+      <script>
         window.Foxify = window.Foxify || {}
         Foxify.ThemeStyles = {
-            product: "https:{{ 'foxify-product.css' | asset_url }}",
-            swiper: "https:{{ 'foxify-swiper.css' | asset_url }}",
+          product: "https:{{ 'foxify-product.css' | asset_url }}",
+          swiper: "https:{{ 'foxify-swiper.css' | asset_url }}",
         }
 
         Foxify.ThemeScripts = {
-            productModel: "https:{{ 'foxify-product-model.js' | asset_url }}",
-            productMedia: "https:{{ 'foxify-media-gallery.js' | asset_url }}",
-            variantPicker: "https:{{ 'foxify-variant-picker.js' | asset_url }}"
+          productModel: "https:{{ 'foxify-product-model.js' | asset_url }}",
+          productMedia: "https:{{ 'foxify-media-gallery.js' | asset_url }}",
+          variantPicker: "https:{{ 'foxify-variant-picker.js' | asset_url }}"
         }
 
-        Foxify.pageId = '1727542401cYyKE'
-        Foxify.default = false
-    </script>
-    <div class="f-app f:content">
+        Foxify.pageId = '1727542401cYyKE';
+        Foxify.default = false;
+      </script>
+    
+<div class="f-app f:content">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400&display=swap" id="Noto Sans JP" rel="stylesheet">
 <style data-foxify-editor="foxify-custom-fonts">
   @font-face {
@@ -130,80 +142,80 @@
       %}
 
 </div>
-    {% schema %}
-        {
-            "name": "Foxify main content",
-            "class": "foxify-main f-app",
-            "settings": [
-                {
-                "type": "header",
-                "content": "Customize section",
-                "info": "Go to [Foxify app](https://app.foxify.io/editor?id=1727542401cYyKE&type=REGULAR) to edit this section."
-                }
-            ],
-            "locales": {
-  "en": {
-    "f-richtext-17297529466zhmk-text_html": "the future rocks around the world",
-    "f-heading-1729752949O7DHq-text_html": "Change your region and language",
-    "f-richtext-1729752954kkdwt-text_html": "Please pick the location that matches your delivery address.",
-    "f-heading-1727668545Asmjr-text_html": "north america",
-    "f-heading-17276686058unay-text_html": "united states",
-    "f-richtext-1727668608MuLS3-text_html": "english",
-    "f-heading-17276687591u484-text_html": "canada",
-    "f-richtext-1727668759bjD9t-text_html": "english",
-    "f-heading-1727668649Ae0Cm-text_html": "middle east",
-    "f-heading-1727668649Na6bi-text_html": "united arab emirates",
-    "f-richtext-1727668649ORtbN-text_html": "english",
-    "f-heading-1727648897fnW7k-text_html": "asia pacific",
-    "f-heading-1727648897rGDEe-text_html": "australia",
-    "f-richtext-1727648897Jvvu5-text_html": "english",
-    "f-heading-1727668240aKhn8-text_html": "hong kong sar",
-    "f-richtext-1727668240WdXts-text_html": "english",
-    "f-heading-1727649449VQsm4-text_html": "japan",
-    "f-richtext-1727649452jyGXU-text_html": "english",
-    "f-heading-17276495181HTZ8-text_html": "日本",
-    "f-richtext-1727649518ycerh-text_html": "日本語",
-    "f-heading-1727649236MutGv-text_html": "macao sar",
-    "f-richtext-1727649236GNCKg-text_html": "english",
-    "f-heading-1727668260cXryi-text_html": "new zealand",
-    "f-richtext-172766826017blh-text_html": "english",
-    "f-heading-17276492475ILWX-text_html": "singapore",
-    "f-richtext-1727649247wozmN-text_html": "english",
-    "f-heading-1727649967hX4vo-text_html": "south korea",
-    "f-richtext-1727649967XxjuP-text_html": "english",
-    "f-heading-17276499671C6al-text_html": "대한민국",
-    "f-richtext-1727649967i13I1-text_html": "한국인",
-    "f-heading-1727649250fxs3w-text_html": "taiwan",
-    "f-richtext-1727649250OeqYo-text_html": "english",
-    "f-heading-1727648930mGYYO-text_html": "europe",
-    "f-heading-1727648930tRM8A-text_html": "belgium",
-    "f-richtext-1727648930Lha1k-text_html": "english",
-    "f-heading-1727648930fE4je-text_html": "france",
-    "f-richtext-1727648930aIyn4-text_html": "english",
-    "f-heading-1727668281bnctz-text_html": "germany",
-    "f-richtext-1727668281lKFEv-text_html": "english",
-    "f-heading-1727668282TpeBv-text_html": "hungary",
-    "f-richtext-1727668282gmUX7-text_html": "english",
-    "f-heading-1727668285Yo2Gm-text_html": "iceland",
-    "f-richtext-1727668285QLvQX-text_html": "english",
-    "f-heading-1727668286eXvwn-text_html": "ireland",
-    "f-richtext-17276682860ZuQH-text_html": "english",
-    "f-heading-1727668287nnyth-text_html": "italy",
-    "f-richtext-1727668287YDzaf-text_html": "english",
-    "f-heading-1727668288BgRrC-text_html": "netherlands",
-    "f-richtext-1727668288ksIHA-text_html": "english",
-    "f-heading-1727668289W5z9z-text_html": "portugal",
-    "f-richtext-1727668289iMH3c-text_html": "english",
-    "f-heading-1727668291TZAVO-text_html": "spain",
-    "f-richtext-1727668291sxBPk-text_html": "english",
-    "f-heading-17276682929Nzo8-text_html": "sweden",
-    "f-richtext-1727668292njimW-text_html": "english",
-    "f-heading-1727668293YjL3a-text_html": "switzerland",
-    "f-richtext-1727668293opGS2-text_html": "english",
-    "f-heading-1727668299D40cz-text_html": "united kingdom",
-    "f-richtext-172766829947AnS-text_html": "english"
+{% schema %}
+  {
+  "name": "Foxify main content",
+  "class": "foxify-main f-app",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Customize main content",
+      "info": "Go to [Foxify app](https://admin.shopify.com/store/the-future-rocks/apps/foxify-builder/editor?id=1727542401cYyKE&type=regular) to edit this section."
+    }
+  ],
+  "locales": {
+    "en": {
+      "f-richtext-17297529466zhmk-text_html": "the future rocks around the world",
+      "f-heading-1729752949O7DHq-text_html": "Change your region and language",
+      "f-richtext-1729752954kkdwt-text_html": "Please pick the location that matches your delivery address.",
+      "f-heading-1727668545Asmjr-text_html": "north america",
+      "f-heading-17276686058unay-text_html": "united states",
+      "f-richtext-1727668608MuLS3-text_html": "english",
+      "f-heading-17276687591u484-text_html": "canada",
+      "f-richtext-1727668759bjD9t-text_html": "english",
+      "f-heading-1727668649Ae0Cm-text_html": "middle east",
+      "f-heading-1727668649Na6bi-text_html": "united arab emirates",
+      "f-richtext-1727668649ORtbN-text_html": "english",
+      "f-heading-1727648897fnW7k-text_html": "asia pacific",
+      "f-heading-1727648897rGDEe-text_html": "australia",
+      "f-richtext-1727648897Jvvu5-text_html": "english",
+      "f-heading-1727668240aKhn8-text_html": "hong kong sar",
+      "f-richtext-1727668240WdXts-text_html": "english",
+      "f-heading-1727649449VQsm4-text_html": "japan",
+      "f-richtext-1727649452jyGXU-text_html": "english",
+      "f-heading-17276495181HTZ8-text_html": "日本",
+      "f-richtext-1727649518ycerh-text_html": "日本語",
+      "f-heading-1727649236MutGv-text_html": "macao sar",
+      "f-richtext-1727649236GNCKg-text_html": "english",
+      "f-heading-1727668260cXryi-text_html": "new zealand",
+      "f-richtext-172766826017blh-text_html": "english",
+      "f-heading-17276492475ILWX-text_html": "singapore",
+      "f-richtext-1727649247wozmN-text_html": "english",
+      "f-heading-1727649967hX4vo-text_html": "south korea",
+      "f-richtext-1727649967XxjuP-text_html": "english",
+      "f-heading-17276499671C6al-text_html": "대한민국",
+      "f-richtext-1727649967i13I1-text_html": "한국인",
+      "f-heading-1727649250fxs3w-text_html": "taiwan",
+      "f-richtext-1727649250OeqYo-text_html": "english",
+      "f-heading-1727648930mGYYO-text_html": "europe",
+      "f-heading-1727648930tRM8A-text_html": "belgium",
+      "f-richtext-1727648930Lha1k-text_html": "english",
+      "f-heading-1727648930fE4je-text_html": "france",
+      "f-richtext-1727648930aIyn4-text_html": "english",
+      "f-heading-1727668281bnctz-text_html": "germany",
+      "f-richtext-1727668281lKFEv-text_html": "english",
+      "f-heading-1727668282TpeBv-text_html": "hungary",
+      "f-richtext-1727668282gmUX7-text_html": "english",
+      "f-heading-1727668285Yo2Gm-text_html": "iceland",
+      "f-richtext-1727668285QLvQX-text_html": "english",
+      "f-heading-1727668286eXvwn-text_html": "ireland",
+      "f-richtext-17276682860ZuQH-text_html": "english",
+      "f-heading-1727668287nnyth-text_html": "italy",
+      "f-richtext-1727668287YDzaf-text_html": "english",
+      "f-heading-1727668288BgRrC-text_html": "netherlands",
+      "f-richtext-1727668288ksIHA-text_html": "english",
+      "f-heading-1727668289W5z9z-text_html": "portugal",
+      "f-richtext-1727668289iMH3c-text_html": "english",
+      "f-heading-1727668291TZAVO-text_html": "spain",
+      "f-richtext-1727668291sxBPk-text_html": "english",
+      "f-heading-17276682929Nzo8-text_html": "sweden",
+      "f-richtext-1727668292njimW-text_html": "english",
+      "f-heading-1727668293YjL3a-text_html": "switzerland",
+      "f-richtext-1727668293opGS2-text_html": "english",
+      "f-heading-1727668299D40cz-text_html": "united kingdom",
+      "f-richtext-172766829947AnS-text_html": "english"
+    }
   }
 }
-        }
-    {% endschema %}
+{% endschema %}
   

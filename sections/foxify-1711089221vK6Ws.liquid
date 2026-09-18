@@ -1,32 +1,44 @@
-    {% liquid
-        assign locales = shop.metafields.foxify.locales.value
-        assign current_locale = request.locale.iso_code
-        assign primary_locale = current_locale
-        for locale in shop.published_locales
-        if locale.primary
-            assign primary_locale = locale.iso_code
-            break
-        endif
-        endfor
-        assign translation = locales[current_locale] | default: locales[primary_locale]
-    %}
-    <script>
+
+{% liquid
+  
+    assign locales = shop.metafields.foxify.locales.value
+    assign current_locale = request.locale.iso_code
+    assign primary_locale = current_locale
+    for locale in shop.published_locales
+    if locale.primary
+        assign primary_locale = locale.iso_code
+        break
+    endif
+    endfor
+    assign translation = locales[current_locale] | default: locales[primary_locale]
+
+    assign theme_settings = shop.metafields.foxify.theme_settings.value
+    assign productCard = theme_settings.productCard
+  
+  
+      assign foxifyCustomCss = shop.metafields.foxify['65fd2644ff40d24bb6d2ef12'].value.customCss
+      assign foxifyCustomJs = shop.metafields.foxify['65fd2644ff40d24bb6d2ef12'].value.customJs
+    
+%}
+
+      <script>
         window.Foxify = window.Foxify || {}
         Foxify.ThemeStyles = {
-            product: "https:{{ 'foxify-product.css' | asset_url }}",
-            swiper: "https:{{ 'foxify-swiper.css' | asset_url }}",
+          product: "https:{{ 'foxify-product.css' | asset_url }}",
+          swiper: "https:{{ 'foxify-swiper.css' | asset_url }}",
         }
 
         Foxify.ThemeScripts = {
-            productModel: "https:{{ 'foxify-product-model.js' | asset_url }}",
-            productMedia: "https:{{ 'foxify-media-gallery.js' | asset_url }}",
-            variantPicker: "https:{{ 'foxify-variant-picker.js' | asset_url }}"
+          productModel: "https:{{ 'foxify-product-model.js' | asset_url }}",
+          productMedia: "https:{{ 'foxify-media-gallery.js' | asset_url }}",
+          variantPicker: "https:{{ 'foxify-variant-picker.js' | asset_url }}"
         }
 
-        Foxify.pageId = '1711089221vK6Ws'
-        Foxify.default = false
-    </script>
-    <div class="f-app f:content">
+        Foxify.pageId = '1711089221vK6Ws';
+        Foxify.default = false;
+      </script>
+    
+<div class="f-app f:content">
 <link href="https://fonts.googleapis.com/css2?family=Tilt+Neon:wght@400&display=swap" id="Tilt Neon" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" id="Jost" rel="stylesheet">
 <style data-foxify-editor="foxify-custom-fonts">
@@ -392,109 +404,109 @@ html:not([lang|="en"]) #myDiv-en-form,html:not([lang|="ja"]) #myDiv-ja-form, htm
       %}
 
 </div>
-    {% schema %}
-        {
-            "name": "Foxify main content",
-            "class": "foxify-main f-app",
-            "settings": [
-                {
-                "type": "header",
-                "content": "Customize section",
-                "info": "Go to [Foxify app](https://app.foxify.io/editor?id=1711089221vK6Ws&type=REGULAR) to edit this section."
-                }
-            ],
-            "locales": {
-  "en": {
-    "f-google-map-1711100209joxIv-map_address_html": "K11 Musea, 18 Salisbury Rd, Tsim Sha Tsui, Hong Kong",
-    "f-google-map-1711100209joxIv-map_api_key_html": "AIzaSyD8jPBszjyZv23nQMfmgKx8Hjvw3rfp4FM",
-    "f-heading-17111002099byUL-text_html": "Kiosk LA111",
-    "f-button-1711100209HjJpU-button_label_html": "Get directions",
-    "f-richtext-1711101310RfeOp-text_html": "Opening Hours: 11am - 9pm Daily",
-    "f-richtext-171110151809VqQ-text_html": "<strong>K11 Musea<br /></strong><br />18 Salisbury Rd<br />Tsim Sha Tsui<br />Kowloon . Hong Kong",
-    "f-heading-1711102878GQgrP-text_html": "the lab-grown store",
-    "f-richtext-1711102878qScO6-text_html": "<p>Permanent Jewelry service is available upon reservation, free with a net purchase of HKD 5,000 or above for all customers.</p>",
-    "f-countdown-1711102878m7EVj-day_label_html": "Days",
-    "f-countdown-1711102878m7EVj-hour_label_html": "Hrs",
-    "f-countdown-1711102878m7EVj-min_label_html": "Mins",
-    "f-countdown-1711102878m7EVj-sec_label_html": "Secs",
-    "f-richtext-17111458775AKv0-text_html": "you spoke. we listened.",
-    "f-button-1711148429kv9xs-button_label_html": "more on permanent jewelry",
-    "f-heading-1711149149rv4OI-text_html": "NOW OPEN",
-    "f-richtext-17111546745l539-text_html": "you spoke. we listened.",
-    "f-heading-1711154674Ec2hS-text_html": "the lab-grown store",
-    "f-heading-171115467456saw-text_html": "NOW OPEN",
-    "f-countdown-1711154674QPIqL-day_label_html": "Days",
-    "f-countdown-1711154674QPIqL-hour_label_html": "Hrs",
-    "f-countdown-1711154674QPIqL-min_label_html": "Mins",
-    "f-countdown-1711154674QPIqL-sec_label_html": "Secs",
-    "f-richtext-1711154674gLVqn-text_html": "<p>Permanent Jewelry service is available upon reservation, free with a net purchase of $5000 HKD or above for all offline customers.</p>",
-    "f-button-1711154674qoNas-button_label_html": "more on permanent jewelry",
-    "f-richtext-1711157538T1O25-text_html": "<p>Design Lab, an initiative by The Future Rocks, drives innovation through hands-on experiments and projects to uncover insights and enhance jewelry design practices. Committed to innovation, Design Lab focuses on creating conscious solutions that lay the foundation for a brighter future for future generations.</p>",
-    "f-richtext-1711157538meH4P-text_html": "<p>With a multi-disciplinary and award-winning team in Copenhagen, Denmark, Natural Material Studio aims to transform the discourse of design for equal synergies between human, nature and space. Through materials, the studio is proposing a new design typology and terminology based on systemic methodologies.</p>",
-    "f-heading-1711160747xAfil-text_html": "what's in store",
-    "f-press-content-171116074741s1c-press_list-Item-01-title_html": "<p>\"A Bacelona-based jewelry label that contributes to a positive impact on the planet, without compromising style.\"</p>",
-    "f-press-content-171116074741s1c-press_list-Item-02-title_html": "<p>\"A French luxury label that pioneers the future of carbon-neutral jewelry.\"</p>",
-    "f-press-content-171116074741s1c-press_list-Item-03-title_html": "<p>\"Switzerland’s LOEV offers a nod to modern icons of empowerment.\"</p>",
-    "f-press-content-171116074741s1c-press_list-Item-04-title_html": "<p>\"Breathes new life into vintage jewelry pieces from a Hong Kong family-owned pawnshop.\"</p>",
-    "f-press-content-171116074741s1c-press_list-Item-05-title_html": "<p>\"Parisian label Loyal.e celebrates gender-free styles that underpin the brand's liberated, convention-breaking ethos.\"</p>",
-    "f-press-content-171116074741s1c-press_list-Item-1-title_html": "<p>\"Established in 2018, Lightbox is a cutting-edge lab-grown diamond brand that provides stylish, yet accessible jewelry.\"</p>",
-    "f-press-content-171116074741s1c-press_list-Item-2-title_html": "<p>\"Germany-based Maren aims to tell a story about love, passion, and nature through each of the brand’s creations.\"</p>",
-    "f-press-content-171116074741s1c-press_list-Item-3-title_html": "<p>\"Italian for \"in the balance\", Inbilico finds the balance between old traditions and futuristic designs.\"</p>",
-    "f-press-content-171116074741s1c-press_list-Item-4-title_html": "<p>\"The Spanish jewelry label takes pride in total transparency and believing that each piece of jewelry is its objet d'art.\"</p>",
-    "f-collection-list-items-1711166635UhWvE-collection_list-Collection-1-title_html": "mimoke",
-    "f-collection-list-items-1711166635UhWvE-collection_list-Collection-2-title_html": "unsaid",
-    "f-collection-list-items-1711166635UhWvE-collection_list-Collection-3-title_html": "loev",
-    "f-collection-list-items-1711166635UhWvE-collection_list-Collection-4-title_html": "maazi",
-    "f-collection-list-items-1711166635UhWvE-collection_list-Collection-5-title_html": "loyal.e paris",
-    "f-collection-list-items-1711166635UhWvE-collection_list-Collection-7-title_html": "maren",
-    "f-collection-list-items-1711166635UhWvE-collection_list-Collection-8-title_html": "inbilico",
-    "f-collection-list-items-1711166635UhWvE-collection_list-Collection-9-title_html": "rever",
-    "f-collection-list-items-1711166635UhWvE-collection_list-Collection-6-title_html": "lightbox",
-    "f-richtext-1711170628NwKw6-text_html": "see you soon",
-    "f-richtext-1711171724AxMYb-text_html": "#vanitywithaconscience",
-    "f-heading-1711183908vceyp-text_html": "what's in store",
-    "f-press-content-1711183908qkpjM-press_list-Item-01-title_html": "<p>\"A Bacelona-based jewelry label that contributes to a positive impact on the planet, without compromising style.\"</p>",
-    "f-press-content-1711183908qkpjM-press_list-Item-02-title_html": "<p>\"A French luxury label that pioneers the future of carbon-neutral jewelry.\"</p>",
-    "f-press-content-1711183908qkpjM-press_list-Item-03-title_html": "<p>\"Switzerland’s LOEV offers a nod to modern icons of empowerment.\"</p>",
-    "f-press-content-1711183908qkpjM-press_list-Item-04-title_html": "<p>\"Breathes new life into vintage jewelry pieces from a Hong Kong family-owned pawnshop.\"</p>",
-    "f-press-content-1711183908qkpjM-press_list-Item-05-title_html": "<p>\"Parisian label Loyal.e celebrates gender-free styles that underpin the brand's liberated, convention-breaking ethos.\"</p>",
-    "f-press-content-1711183908qkpjM-press_list-Item-1-title_html": "<p>\"Established in 2018, Lightbox is a cutting-edge lab-grown diamond brand that provides stylish, yet accessible jewelry.\"</p>",
-    "f-press-content-1711183908qkpjM-press_list-Item-2-title_html": "<p>\"Germany-based Maren aims to tell a story about love, passion, and nature through each of the brand’s creations.\"</p>",
-    "f-press-content-1711183908qkpjM-press_list-Item-3-title_html": "<p>\"Italian for \"in the balance\", Inbilico finds the balance between old traditions and futuristic designs.\"</p>",
-    "f-press-content-1711183908qkpjM-press_list-Item-4-title_html": "<p>\"The Spanish jewelry label takes pride in total transparency and believing that each piece of jewelry is its objet d'art.\"</p>",
-    "f-richtext-1711237011j24ud-text_html": "<p>the store</p>",
-    "f-heading-1711237011OpzA6-text_html": "with love from the future",
-    "f-richtext-1711237011XYTwx-text_html": "<p>Echoing our extensive selection of conscious jewelry made from high-quality materials, recycled metals, lab-grown diamonds, and gemstones, The Lab-grown Store was built to challenge the norm of mass production and forge new ideas in the retail sphere. The reusable, scalable setup is designed and crafted with sustainability in mind to reduce environmental impact.</p>",
-    "f-richtext-1711238429JLlOJ-text_html": "the packaging",
-    "f-heading-1711238432GDcds-text_html": "a solutions for a better future",
-    "f-richtext-1711238435JkWyc-text_html": "On a mission to forge new ideas in the retail sphere, The Future Rocks co-developed a ground-breaking packaging concept with materials designed by Natural Materials Studio. Through a material-led approach centred around the properties and qualities of often discarded or under-utilised natural resources, together, we created a new form of semi-transparent wrapping paper grown from protein-based bio-polymers, natural softners, clay, chalk, algae, reishi mushroom.",
-    "f-button-1711324026mLw9q-button_label_html": "+",
-    "f-button-1711325748abayE-button_label_html": "+",
-    "f-button-1711325753Xki8K-button_label_html": "+",
-    "f-button-1711325757DxtYp-button_label_html": "+",
-    "f-button-1711325761w1Vbo-button_label_html": "+",
-    "f-button-1711325765yx5Mk-button_label_html": "+",
-    "f-button-1711325929ka9ic-button_label_html": "+",
-    "f-button-1711325933NrhJj-button_label_html": "+",
-    "f-button-1711325935sApo0-button_label_html": "+",
-    "f-button-171136125344JOF-button_label_html": "+",
-    "f-button-17113612537tD6M-button_label_html": "instagram",
-    "f-button-1711361253Gm6Bg-button_label_html": "facebook",
-    "f-button-1711361253aqLa4-button_label_html": "linkedin",
-    "f-button-1711361253ntO3d-button_label_html": "email",
-    "f-button-1711361253tdFE8-button_label_html": "+",
-    "f-button-1711361253TxgHi-button_label_html": "+",
-    "f-button-1711361253kqiyU-button_label_html": "+",
-    "f-button-171136169456jk8-button_label_html": "+",
-    "f-richtext-1714473655uoNdI-text_html": "Mother's Day Special",
-    "f-richtext-1714473655SZcCX-text_html": "Buy one get one 50% off select items",
-    "f-richtext-17144738357Wg4O-text_html": "<span style=\"color: #009e2d;\"><a style=\"color: #009e2d;\" href=\"https://maps.app.goo.gl/s5dQAFXq8yyHq4rV9\">visit our store</a></span>",
-    "f-richtext-1719475669NaJ9D-text_html": "<p>June 28 - July 01</p>",
-    "f-heading-1719475669mkqUk-text_html": "EXCLUSIVE POP-UP PROMO ALERT!",
-    "f-richtext-1719475669d9Btw-text_html": "<p>Spend $5000 HKD and receive a complimentary lab-grown diamond bracelet!</p>",
-    "f-richtext-1719477304omAPd-text_html": "<p>Speak to our staff for more information.</p>"
+{% schema %}
+  {
+  "name": "Foxify main content",
+  "class": "foxify-main f-app",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Customize main content",
+      "info": "Go to [Foxify app](https://admin.shopify.com/store/the-future-rocks/apps/foxify-builder/editor?id=1711089221vK6Ws&type=regular) to edit this section."
+    }
+  ],
+  "locales": {
+    "en": {
+      "f-google-map-1711100209joxIv-map_address_html": "K11 Musea, 18 Salisbury Rd, Tsim Sha Tsui, Hong Kong",
+      "f-google-map-1711100209joxIv-map_api_key_html": "AIzaSyD8jPBszjyZv23nQMfmgKx8Hjvw3rfp4FM",
+      "f-heading-17111002099byUL-text_html": "Kiosk LA111",
+      "f-button-1711100209HjJpU-button_label_html": "Get directions",
+      "f-richtext-1711101310RfeOp-text_html": "Opening Hours: 11am - 9pm Daily",
+      "f-richtext-171110151809VqQ-text_html": "<strong>K11 Musea<br /></strong><br />18 Salisbury Rd<br />Tsim Sha Tsui<br />Kowloon . Hong Kong",
+      "f-heading-1711102878GQgrP-text_html": "the lab-grown store",
+      "f-richtext-1711102878qScO6-text_html": "<p>Permanent Jewelry service is available upon reservation, free with a net purchase of HKD 5,000 or above for all customers.</p>",
+      "f-countdown-1711102878m7EVj-day_label_html": "Days",
+      "f-countdown-1711102878m7EVj-hour_label_html": "Hrs",
+      "f-countdown-1711102878m7EVj-min_label_html": "Mins",
+      "f-countdown-1711102878m7EVj-sec_label_html": "Secs",
+      "f-richtext-17111458775AKv0-text_html": "you spoke. we listened.",
+      "f-button-1711148429kv9xs-button_label_html": "more on permanent jewelry",
+      "f-heading-1711149149rv4OI-text_html": "NOW OPEN",
+      "f-richtext-17111546745l539-text_html": "you spoke. we listened.",
+      "f-heading-1711154674Ec2hS-text_html": "the lab-grown store",
+      "f-heading-171115467456saw-text_html": "NOW OPEN",
+      "f-countdown-1711154674QPIqL-day_label_html": "Days",
+      "f-countdown-1711154674QPIqL-hour_label_html": "Hrs",
+      "f-countdown-1711154674QPIqL-min_label_html": "Mins",
+      "f-countdown-1711154674QPIqL-sec_label_html": "Secs",
+      "f-richtext-1711154674gLVqn-text_html": "<p>Permanent Jewelry service is available upon reservation, free with a net purchase of $5000 HKD or above for all offline customers.</p>",
+      "f-button-1711154674qoNas-button_label_html": "more on permanent jewelry",
+      "f-richtext-1711157538T1O25-text_html": "<p>Design Lab, an initiative by The Future Rocks, drives innovation through hands-on experiments and projects to uncover insights and enhance jewelry design practices. Committed to innovation, Design Lab focuses on creating conscious solutions that lay the foundation for a brighter future for future generations.</p>",
+      "f-richtext-1711157538meH4P-text_html": "<p>With a multi-disciplinary and award-winning team in Copenhagen, Denmark, Natural Material Studio aims to transform the discourse of design for equal synergies between human, nature and space. Through materials, the studio is proposing a new design typology and terminology based on systemic methodologies.</p>",
+      "f-heading-1711160747xAfil-text_html": "what's in store",
+      "f-press-content-171116074741s1c-press_list-Item-01-title_html": "<p>\"A Bacelona-based jewelry label that contributes to a positive impact on the planet, without compromising style.\"</p>",
+      "f-press-content-171116074741s1c-press_list-Item-02-title_html": "<p>\"A French luxury label that pioneers the future of carbon-neutral jewelry.\"</p>",
+      "f-press-content-171116074741s1c-press_list-Item-03-title_html": "<p>\"Switzerland’s LOEV offers a nod to modern icons of empowerment.\"</p>",
+      "f-press-content-171116074741s1c-press_list-Item-04-title_html": "<p>\"Breathes new life into vintage jewelry pieces from a Hong Kong family-owned pawnshop.\"</p>",
+      "f-press-content-171116074741s1c-press_list-Item-05-title_html": "<p>\"Parisian label Loyal.e celebrates gender-free styles that underpin the brand's liberated, convention-breaking ethos.\"</p>",
+      "f-press-content-171116074741s1c-press_list-Item-1-title_html": "<p>\"Established in 2018, Lightbox is a cutting-edge lab-grown diamond brand that provides stylish, yet accessible jewelry.\"</p>",
+      "f-press-content-171116074741s1c-press_list-Item-2-title_html": "<p>\"Germany-based Maren aims to tell a story about love, passion, and nature through each of the brand’s creations.\"</p>",
+      "f-press-content-171116074741s1c-press_list-Item-3-title_html": "<p>\"Italian for \"in the balance\", Inbilico finds the balance between old traditions and futuristic designs.\"</p>",
+      "f-press-content-171116074741s1c-press_list-Item-4-title_html": "<p>\"The Spanish jewelry label takes pride in total transparency and believing that each piece of jewelry is its objet d'art.\"</p>",
+      "f-collection-list-items-1711166635UhWvE-collection_list-Collection-1-title_html": "mimoke",
+      "f-collection-list-items-1711166635UhWvE-collection_list-Collection-2-title_html": "unsaid",
+      "f-collection-list-items-1711166635UhWvE-collection_list-Collection-3-title_html": "loev",
+      "f-collection-list-items-1711166635UhWvE-collection_list-Collection-4-title_html": "maazi",
+      "f-collection-list-items-1711166635UhWvE-collection_list-Collection-5-title_html": "loyal.e paris",
+      "f-collection-list-items-1711166635UhWvE-collection_list-Collection-7-title_html": "maren",
+      "f-collection-list-items-1711166635UhWvE-collection_list-Collection-8-title_html": "inbilico",
+      "f-collection-list-items-1711166635UhWvE-collection_list-Collection-9-title_html": "rever",
+      "f-collection-list-items-1711166635UhWvE-collection_list-Collection-6-title_html": "lightbox",
+      "f-richtext-1711170628NwKw6-text_html": "see you soon",
+      "f-richtext-1711171724AxMYb-text_html": "#vanitywithaconscience",
+      "f-heading-1711183908vceyp-text_html": "what's in store",
+      "f-press-content-1711183908qkpjM-press_list-Item-01-title_html": "<p>\"A Bacelona-based jewelry label that contributes to a positive impact on the planet, without compromising style.\"</p>",
+      "f-press-content-1711183908qkpjM-press_list-Item-02-title_html": "<p>\"A French luxury label that pioneers the future of carbon-neutral jewelry.\"</p>",
+      "f-press-content-1711183908qkpjM-press_list-Item-03-title_html": "<p>\"Switzerland’s LOEV offers a nod to modern icons of empowerment.\"</p>",
+      "f-press-content-1711183908qkpjM-press_list-Item-04-title_html": "<p>\"Breathes new life into vintage jewelry pieces from a Hong Kong family-owned pawnshop.\"</p>",
+      "f-press-content-1711183908qkpjM-press_list-Item-05-title_html": "<p>\"Parisian label Loyal.e celebrates gender-free styles that underpin the brand's liberated, convention-breaking ethos.\"</p>",
+      "f-press-content-1711183908qkpjM-press_list-Item-1-title_html": "<p>\"Established in 2018, Lightbox is a cutting-edge lab-grown diamond brand that provides stylish, yet accessible jewelry.\"</p>",
+      "f-press-content-1711183908qkpjM-press_list-Item-2-title_html": "<p>\"Germany-based Maren aims to tell a story about love, passion, and nature through each of the brand’s creations.\"</p>",
+      "f-press-content-1711183908qkpjM-press_list-Item-3-title_html": "<p>\"Italian for \"in the balance\", Inbilico finds the balance between old traditions and futuristic designs.\"</p>",
+      "f-press-content-1711183908qkpjM-press_list-Item-4-title_html": "<p>\"The Spanish jewelry label takes pride in total transparency and believing that each piece of jewelry is its objet d'art.\"</p>",
+      "f-richtext-1711237011j24ud-text_html": "<p>the store</p>",
+      "f-heading-1711237011OpzA6-text_html": "with love from the future",
+      "f-richtext-1711237011XYTwx-text_html": "<p>Echoing our extensive selection of conscious jewelry made from high-quality materials, recycled metals, lab-grown diamonds, and gemstones, The Lab-grown Store was built to challenge the norm of mass production and forge new ideas in the retail sphere. The reusable, scalable setup is designed and crafted with sustainability in mind to reduce environmental impact.</p>",
+      "f-richtext-1711238429JLlOJ-text_html": "the packaging",
+      "f-heading-1711238432GDcds-text_html": "a solutions for a better future",
+      "f-richtext-1711238435JkWyc-text_html": "On a mission to forge new ideas in the retail sphere, The Future Rocks co-developed a ground-breaking packaging concept with materials designed by Natural Materials Studio. Through a material-led approach centred around the properties and qualities of often discarded or under-utilised natural resources, together, we created a new form of semi-transparent wrapping paper grown from protein-based bio-polymers, natural softners, clay, chalk, algae, reishi mushroom.",
+      "f-button-1711324026mLw9q-button_label_html": "+",
+      "f-button-1711325748abayE-button_label_html": "+",
+      "f-button-1711325753Xki8K-button_label_html": "+",
+      "f-button-1711325757DxtYp-button_label_html": "+",
+      "f-button-1711325761w1Vbo-button_label_html": "+",
+      "f-button-1711325765yx5Mk-button_label_html": "+",
+      "f-button-1711325929ka9ic-button_label_html": "+",
+      "f-button-1711325933NrhJj-button_label_html": "+",
+      "f-button-1711325935sApo0-button_label_html": "+",
+      "f-button-171136125344JOF-button_label_html": "+",
+      "f-button-17113612537tD6M-button_label_html": "instagram",
+      "f-button-1711361253Gm6Bg-button_label_html": "facebook",
+      "f-button-1711361253aqLa4-button_label_html": "linkedin",
+      "f-button-1711361253ntO3d-button_label_html": "email",
+      "f-button-1711361253tdFE8-button_label_html": "+",
+      "f-button-1711361253TxgHi-button_label_html": "+",
+      "f-button-1711361253kqiyU-button_label_html": "+",
+      "f-button-171136169456jk8-button_label_html": "+",
+      "f-richtext-1714473655uoNdI-text_html": "Mother's Day Special",
+      "f-richtext-1714473655SZcCX-text_html": "Buy one get one 50% off select items",
+      "f-richtext-17144738357Wg4O-text_html": "<span style=\"color: #009e2d;\"><a style=\"color: #009e2d;\" href=\"https://maps.app.goo.gl/s5dQAFXq8yyHq4rV9\">visit our store</a></span>",
+      "f-richtext-1719475669NaJ9D-text_html": "<p>June 28 - July 01</p>",
+      "f-heading-1719475669mkqUk-text_html": "EXCLUSIVE POP-UP PROMO ALERT!",
+      "f-richtext-1719475669d9Btw-text_html": "<p>Spend $5000 HKD and receive a complimentary lab-grown diamond bracelet!</p>",
+      "f-richtext-1719477304omAPd-text_html": "<p>Speak to our staff for more information.</p>"
+    }
   }
 }
-        }
-    {% endschema %}
+{% endschema %}
   

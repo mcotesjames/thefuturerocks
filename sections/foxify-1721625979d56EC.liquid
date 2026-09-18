@@ -1,32 +1,44 @@
-    {% liquid
-        assign locales = shop.metafields.foxify.locales.value
-        assign current_locale = request.locale.iso_code
-        assign primary_locale = current_locale
-        for locale in shop.published_locales
-        if locale.primary
-            assign primary_locale = locale.iso_code
-            break
-        endif
-        endfor
-        assign translation = locales[current_locale] | default: locales[primary_locale]
-    %}
-    <script>
+
+{% liquid
+  
+    assign locales = shop.metafields.foxify.locales.value
+    assign current_locale = request.locale.iso_code
+    assign primary_locale = current_locale
+    for locale in shop.published_locales
+    if locale.primary
+        assign primary_locale = locale.iso_code
+        break
+    endif
+    endfor
+    assign translation = locales[current_locale] | default: locales[primary_locale]
+
+    assign theme_settings = shop.metafields.foxify.theme_settings.value
+    assign productCard = theme_settings.productCard
+  
+  
+      assign foxifyCustomCss = shop.metafields.foxify['669ded7a4722a40168da22b8'].value.customCss
+      assign foxifyCustomJs = shop.metafields.foxify['669ded7a4722a40168da22b8'].value.customJs
+    
+%}
+
+      <script>
         window.Foxify = window.Foxify || {}
         Foxify.ThemeStyles = {
-            product: "https:{{ 'foxify-product.css' | asset_url }}",
-            swiper: "https:{{ 'foxify-swiper.css' | asset_url }}",
+          product: "https:{{ 'foxify-product.css' | asset_url }}",
+          swiper: "https:{{ 'foxify-swiper.css' | asset_url }}",
         }
 
         Foxify.ThemeScripts = {
-            productModel: "https:{{ 'foxify-product-model.js' | asset_url }}",
-            productMedia: "https:{{ 'foxify-media-gallery.js' | asset_url }}",
-            variantPicker: "https:{{ 'foxify-variant-picker.js' | asset_url }}"
+          productModel: "https:{{ 'foxify-product-model.js' | asset_url }}",
+          productMedia: "https:{{ 'foxify-media-gallery.js' | asset_url }}",
+          variantPicker: "https:{{ 'foxify-variant-picker.js' | asset_url }}"
         }
 
-        Foxify.pageId = '1721625979d56EC'
-        Foxify.default = false
-    </script>
-    <div class="f-app f:content">
+        Foxify.pageId = '1721625979d56EC';
+        Foxify.default = false;
+      </script>
+    
+<div class="f-app f:content">
 <style data-foxify-editor="foxify-custom-fonts">
   @font-face {
     font-family: BrownProTT-Bold-17071127825LR9n;
@@ -115,37 +127,42 @@
       %}
 
 </div>
-    {% schema %}
-        {
-            "name": "Foxify main content",
-            "class": "foxify-main f-app",
-            "settings": [
-                {
-                "type": "header",
-                "content": "Customize section",
-                "info": "Go to [Foxify app](https://app.foxify.io/editor?id=1721625979d56EC&type=SECTION) to edit this section."
-                }
-            ],
-            "locales": {
-  "en": {
-    "f-heading-1721628061QtNEL-text_html": "Bold. Beautiful.",
-    "f-richtext-1721628064IOTcg-text_html": "Meet Blondie, THE RING's rebellious sibling, embodying a vibrant and emboldened spirit. Heeding its innovative heritage, Blondie is a handcrafted single-piece yellow lab-grown sapphire adorned with a color-matched IGI-certified 2-carat oval lab-grown diamond. Both marvels were made possible by advanced material science.",
-    "f-heading-1721628092U5b2q-text_html": "FIFTY. nine.",
-    "f-heading-1721629839xm0BD-text_html": "Gold. redux.",
-    "f-richtext-1721629842oYNdY-text_html": "A lustrous 18K gold inlay fortifies Blondie's radiant lab-grown sapphire ring band, accentuating the warm, yellow glow of the sapphire halo. The inlay design adds a distinctive touch, emitting a unique golden hue rarely seen in conventional gold rings.",
-    "f-heading-1721629998c1BpK-text_html": "solo. stacked.",
-    "f-richtext-17216300024V6G4-text_html": "With its bold color and daring design, Blondie is a testament to your unique personality. Blondie takes on a new dimension when stacked with its classic siblings, creating a layered, eclectic look that exudes next-level sophistication.",
-    "f-richtext-1721631941IvUXh-text_html": "Each Blondie creation summons 59 hours of meticulous craftsmanship. We painstakingly cut and polish a 60-carat lab-grown sapphire into a 9-carat band, then perfect every facet and angle to ensure maximum shine and light reflection, achieving the pinnacle of symmetry and smoothness.",
-    "f-heading-1721892662TebXB-text_html": "Bold. Beautiful.",
-    "f-richtext-1721892662zoZYe-text_html": "Meet Blondie, THE RING's rebellious sibling, embodying a vibrant and emboldened spirit. Heeding its innovative heritage, Blondie is a handcrafted single-piece yellow lab-grown sapphire adorned with a color-matched IGI-certified 2-carat oval lab-grown diamond. Both marvels were made possible by advanced material science.",
-    "f-heading-1721892662Ze3BQ-text_html": "FIFTY. nine.",
-    "f-richtext-1721892662ByCFX-text_html": "Each Blondie creation summons 59 hours of meticulous craftsmanship. We painstakingly cut and polish a 60-carat lab-grown sapphire into a 9-carat band, then perfect every facet and angle to ensure maximum shine and light reflection, achieving the pinnacle of symmetry and smoothness.",
-    "f-heading-1721892676rvtsj-text_html": "Gold. redux.",
-    "f-richtext-17218926760ey3R-text_html": "A lustrous 18K gold inlay fortifies Blondie's radiant lab-grown sapphire ring band, accentuating the warm, yellow glow of the sapphire halo. The inlay design adds a distinctive touch, emitting a unique golden hue rarely seen in conventional gold rings.",
-    "f-heading-172189267624LZO-text_html": "solo. stacked.",
-    "f-richtext-1721892676AVGrO-text_html": "With its bold color and daring design, Blondie is a testament to your unique personality. Blondie takes on a new dimension when stacked with its classic siblings, creating a layered, eclectic look that exudes next-level sophistication."
-  }
+{% schema %}
+  {
+  "name": "[Foxify] Blondie story",
+  "class": "foxify-section f-app",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Customize section",
+      "info": "Go to [Foxify app](https://admin.shopify.com/store/the-future-rocks/apps/foxify-builder/editor?id=1721625979d56EC&type=section) to edit this section."
+    }
+  ],
+  "locales": {
+    "en": {
+      "f-heading-1721628061QtNEL-text_html": "Bold. Beautiful.",
+      "f-richtext-1721628064IOTcg-text_html": "Meet Blondie, THE RING's rebellious sibling, embodying a vibrant and emboldened spirit. Heeding its innovative heritage, Blondie is a handcrafted single-piece yellow lab-grown sapphire adorned with a color-matched IGI-certified 2-carat oval lab-grown diamond. Both marvels were made possible by advanced material science.",
+      "f-heading-1721628092U5b2q-text_html": "FIFTY. nine.",
+      "f-heading-1721629839xm0BD-text_html": "Gold. redux.",
+      "f-richtext-1721629842oYNdY-text_html": "A lustrous 18K gold inlay fortifies Blondie's radiant lab-grown sapphire ring band, accentuating the warm, yellow glow of the sapphire halo. The inlay design adds a distinctive touch, emitting a unique golden hue rarely seen in conventional gold rings.",
+      "f-heading-1721629998c1BpK-text_html": "solo. stacked.",
+      "f-richtext-17216300024V6G4-text_html": "With its bold color and daring design, Blondie is a testament to your unique personality. Blondie takes on a new dimension when stacked with its classic siblings, creating a layered, eclectic look that exudes next-level sophistication.",
+      "f-richtext-1721631941IvUXh-text_html": "Each Blondie creation summons 59 hours of meticulous craftsmanship. We painstakingly cut and polish a 60-carat lab-grown sapphire into a 9-carat band, then perfect every facet and angle to ensure maximum shine and light reflection, achieving the pinnacle of symmetry and smoothness.",
+      "f-heading-1721892662TebXB-text_html": "Bold. Beautiful.",
+      "f-richtext-1721892662zoZYe-text_html": "Meet Blondie, THE RING's rebellious sibling, embodying a vibrant and emboldened spirit. Heeding its innovative heritage, Blondie is a handcrafted single-piece yellow lab-grown sapphire adorned with a color-matched IGI-certified 2-carat oval lab-grown diamond. Both marvels were made possible by advanced material science.",
+      "f-heading-1721892662Ze3BQ-text_html": "FIFTY. nine.",
+      "f-richtext-1721892662ByCFX-text_html": "Each Blondie creation summons 59 hours of meticulous craftsmanship. We painstakingly cut and polish a 60-carat lab-grown sapphire into a 9-carat band, then perfect every facet and angle to ensure maximum shine and light reflection, achieving the pinnacle of symmetry and smoothness.",
+      "f-heading-1721892676rvtsj-text_html": "Gold. redux.",
+      "f-richtext-17218926760ey3R-text_html": "A lustrous 18K gold inlay fortifies Blondie's radiant lab-grown sapphire ring band, accentuating the warm, yellow glow of the sapphire halo. The inlay design adds a distinctive touch, emitting a unique golden hue rarely seen in conventional gold rings.",
+      "f-heading-172189267624LZO-text_html": "solo. stacked.",
+      "f-richtext-1721892676AVGrO-text_html": "With its bold color and daring design, Blondie is a testament to your unique personality. Blondie takes on a new dimension when stacked with its classic siblings, creating a layered, eclectic look that exudes next-level sophistication."
+    }
+  },
+  "presets": [
+    {
+      "name": "[Foxify] Blondie story"
+    }
+  ]
 }
-        }
-    {% endschema %}
+{% endschema %}
   

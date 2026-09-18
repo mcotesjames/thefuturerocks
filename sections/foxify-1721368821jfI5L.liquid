@@ -1,32 +1,44 @@
-    {% liquid
-        assign locales = shop.metafields.foxify.locales.value
-        assign current_locale = request.locale.iso_code
-        assign primary_locale = current_locale
-        for locale in shop.published_locales
-        if locale.primary
-            assign primary_locale = locale.iso_code
-            break
-        endif
-        endfor
-        assign translation = locales[current_locale] | default: locales[primary_locale]
-    %}
-    <script>
+
+{% liquid
+  
+    assign locales = shop.metafields.foxify.locales.value
+    assign current_locale = request.locale.iso_code
+    assign primary_locale = current_locale
+    for locale in shop.published_locales
+    if locale.primary
+        assign primary_locale = locale.iso_code
+        break
+    endif
+    endfor
+    assign translation = locales[current_locale] | default: locales[primary_locale]
+
+    assign theme_settings = shop.metafields.foxify.theme_settings.value
+    assign productCard = theme_settings.productCard
+  
+  
+      assign foxifyCustomCss = shop.metafields.foxify['669a00f405ad271be095da96'].value.customCss
+      assign foxifyCustomJs = shop.metafields.foxify['669a00f405ad271be095da96'].value.customJs
+    
+%}
+
+      <script>
         window.Foxify = window.Foxify || {}
         Foxify.ThemeStyles = {
-            product: "https:{{ 'foxify-product.css' | asset_url }}",
-            swiper: "https:{{ 'foxify-swiper.css' | asset_url }}",
+          product: "https:{{ 'foxify-product.css' | asset_url }}",
+          swiper: "https:{{ 'foxify-swiper.css' | asset_url }}",
         }
 
         Foxify.ThemeScripts = {
-            productModel: "https:{{ 'foxify-product-model.js' | asset_url }}",
-            productMedia: "https:{{ 'foxify-media-gallery.js' | asset_url }}",
-            variantPicker: "https:{{ 'foxify-variant-picker.js' | asset_url }}"
+          productModel: "https:{{ 'foxify-product-model.js' | asset_url }}",
+          productMedia: "https:{{ 'foxify-media-gallery.js' | asset_url }}",
+          variantPicker: "https:{{ 'foxify-variant-picker.js' | asset_url }}"
         }
 
-        Foxify.pageId = '1721368821jfI5L'
-        Foxify.default = false
-    </script>
-    <div class="f-app f:content">
+        Foxify.pageId = '1721368821jfI5L';
+        Foxify.default = false;
+      </script>
+    
+<div class="f-app f:content">
 <link href="https://fonts.googleapis.com/css2?family=Nothing+You+Could+Do:wght@400&display=swap" id="Nothing You Could Do" rel="stylesheet">
 <style data-foxify-editor="foxify-custom-fonts">
   @font-face {
@@ -171,47 +183,47 @@ a:link {
       %}
 
 </div>
-    {% schema %}
-        {
-            "name": "Foxify main content",
-            "class": "foxify-main f-app",
-            "settings": [
-                {
-                "type": "header",
-                "content": "Customize section",
-                "info": "Go to [Foxify app](https://app.foxify.io/editor?id=1721368821jfI5L&type=REGULAR) to edit this section."
-                }
-            ],
-            "locales": {
-  "en": {
-    "f-richtext-1721368777n8Dqq-text_html": "visual identity standards",
-    "f-heading-1721368777Du6iC-text_html": "brand guidelines",
-    "f-richtext-1721368777Dvl3V-text_html": "This document contains the rules of the communication system. Follow these rules strictly to maintain brand consistency.",
-    "f-button-1721368777G55AZ-button_label_html": "get started",
-    "f-button-1721368777Mpsts-button_label_html": "identity",
-    "f-button-1721368777t7x5p-button_label_html": "design",
-    "f-button-1721368777hOsLx-button_label_html": "visual",
-    "f-heading-1721368777CbSxP-text_html": "We don't sell sustainability, we act with conscience.",
-    "f-richtext-17213687770ydqH-text_html": "At The Future Rocks, we’re not selling sustainability, we’re implementing it. We’re setting the stage for a new generation of creative and conscious, future-forward jewelry designers with innovative practices.",
-    "f-button-1721368777PUQAC-button_label_html": "what is the future rocks?",
-    "f-button-1721368777Gefzw-button_label_html": "our position",
-    "f-button-1721368777DXyIP-button_label_html": "our voice",
-    "f-button-1721368777EFhV3-button_label_html": "curator of style",
-    "f-button-17213687778qxOt-button_label_html": "we are a community",
-    "f-heading-1721368777yqJhO-text_html": "what is the future rocks?",
-    "f-richtext-1721368777QBX4P-text_html": "THE FUTURE ROCKS is an e-commerce marketplace specializing in designer jewelry made from science-driven materials ​that share values of sustainability, innovation, and creativity. ​",
-    "f-heading-1721368777PJkZZ-text_html": "our position",
-    "f-heading-1721368777ZjfGe-text_html": "#vanitywithaconscience",
-    "f-heading-1721368777Mf18k-text_html": "curator of style",
-    "f-richtext-1721368777pcigl-text_html": "Science-driven materials are revolutionizing the jewelry industry by addressing traditional design limitations and introducing new possibilities for creativity and functionality. We are the pioneers and advocates of this transformative movement.",
-    "f-heading-1721368777YBauD-text_html": "we are a community",
-    "f-richtext-1721368777o65Ds-text_html": "Our mission is to accelerate the recognition of conscious and future-forward jewelry design that aligns perfectly with the growing consumer demand for sustainability and ethical practices.<br /><br />This mission requires collective effort and collaboration across various disciplines.",
-    "f-richtext-1721368777Lbds2-text_html": "<ul>\n<li>Industry Partnerships</li>\n<li>Alliances with Sustainability Organizations</li>\n<li>Community and Customer Engagement</li>\n<li>Educational Collaborations</li>\n<li>Advocacy and Public Relations</li>\n<li>Technological Collaboration</li>\n<li>Consumer Awareness Campaigns</li>\n</ul>",
-    "f-content-tab-1721368777ILsmM-title_html": "GET STARTED",
-    "f-button-1721380828J7AbN-button_label_html": "do not",
-    "f-button-1721380828YdhbO-button_label_html": "resources"
+{% schema %}
+  {
+  "name": "Foxify main content",
+  "class": "foxify-main f-app",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Customize main content",
+      "info": "Go to [Foxify app](https://admin.shopify.com/store/the-future-rocks/apps/foxify-builder/editor?id=1721368821jfI5L&type=regular) to edit this section."
+    }
+  ],
+  "locales": {
+    "en": {
+      "f-richtext-1721368777n8Dqq-text_html": "visual identity standards",
+      "f-heading-1721368777Du6iC-text_html": "brand guidelines",
+      "f-richtext-1721368777Dvl3V-text_html": "This document contains the rules of the communication system. Follow these rules strictly to maintain brand consistency.",
+      "f-button-1721368777G55AZ-button_label_html": "get started",
+      "f-button-1721368777Mpsts-button_label_html": "identity",
+      "f-button-1721368777t7x5p-button_label_html": "design",
+      "f-button-1721368777hOsLx-button_label_html": "visual",
+      "f-heading-1721368777CbSxP-text_html": "We don't sell sustainability, we act with conscience.",
+      "f-richtext-17213687770ydqH-text_html": "At The Future Rocks, we’re not selling sustainability, we’re implementing it. We’re setting the stage for a new generation of creative and conscious, future-forward jewelry designers with innovative practices.",
+      "f-button-1721368777PUQAC-button_label_html": "what is the future rocks?",
+      "f-button-1721368777Gefzw-button_label_html": "our position",
+      "f-button-1721368777DXyIP-button_label_html": "our voice",
+      "f-button-1721368777EFhV3-button_label_html": "curator of style",
+      "f-button-17213687778qxOt-button_label_html": "we are a community",
+      "f-heading-1721368777yqJhO-text_html": "what is the future rocks?",
+      "f-richtext-1721368777QBX4P-text_html": "THE FUTURE ROCKS is an e-commerce marketplace specializing in designer jewelry made from science-driven materials ​that share values of sustainability, innovation, and creativity. ​",
+      "f-heading-1721368777PJkZZ-text_html": "our position",
+      "f-heading-1721368777ZjfGe-text_html": "#vanitywithaconscience",
+      "f-heading-1721368777Mf18k-text_html": "curator of style",
+      "f-richtext-1721368777pcigl-text_html": "Science-driven materials are revolutionizing the jewelry industry by addressing traditional design limitations and introducing new possibilities for creativity and functionality. We are the pioneers and advocates of this transformative movement.",
+      "f-heading-1721368777YBauD-text_html": "we are a community",
+      "f-richtext-1721368777o65Ds-text_html": "Our mission is to accelerate the recognition of conscious and future-forward jewelry design that aligns perfectly with the growing consumer demand for sustainability and ethical practices.<br /><br />This mission requires collective effort and collaboration across various disciplines.",
+      "f-richtext-1721368777Lbds2-text_html": "<ul>\n<li>Industry Partnerships</li>\n<li>Alliances with Sustainability Organizations</li>\n<li>Community and Customer Engagement</li>\n<li>Educational Collaborations</li>\n<li>Advocacy and Public Relations</li>\n<li>Technological Collaboration</li>\n<li>Consumer Awareness Campaigns</li>\n</ul>",
+      "f-content-tab-1721368777ILsmM-title_html": "GET STARTED",
+      "f-button-1721380828J7AbN-button_label_html": "do not",
+      "f-button-1721380828YdhbO-button_label_html": "resources"
+    }
   }
 }
-        }
-    {% endschema %}
+{% endschema %}
   
