@@ -41,14 +41,6 @@
             "show_in_quickbuy": false
           }
         },
-        "custom_liquid_xRWAGD": {
-          "type": "custom_liquid",
-          "disabled": true,
-          "settings": {
-            "custom_liquid": "<div style=\"color: #009e2d; display: flex; align-items: flex-start;\">\n\n\n<span class=\"material-symbols-outlined\" style=\"font-size: 20px; margin-right: 8px; margin-top: 2px; color: #009e2d;\">sell</span>\n\n<div style=\"display: flex; flex-direction: column;\">\n\n\n\n<span> {{'promo.message.raffia-bag'|t}}</span>\n\n\n\n</div>\n\n\n</div>\n\n\n<link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined\">",
-            "show_in_quickbuy": false
-          }
-        },
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
@@ -76,39 +68,30 @@
           "type": "shopify://apps/easify-options/blocks/easify-product-options/d2288b18-c1ba-42f5-b3b3-26c75c8820bf",
           "settings": {}
         },
-        "text_BNWt97": {
-          "type": "text",
-          "disabled": true,
+        "arrivesby_delivery_time_Ldcer4": {
+          "type": "shopify://apps/arrivesby/blocks/delivery-time/b4f15d36-71f0-4a8c-954f-e485b7529360",
           "settings": {
-            "text": "{{ product.metafields.custom.certification.value }}",
-            "icon": "",
-            "icon_size": "small",
-            "enable_box": true,
-            "box_color": "{{ shop.brand.colors.secondary[1].background }}",
-            "show_in_quickbuy": true
-          }
-        },
-        "link_xrcnp8": {
-          "type": "link",
-          "disabled": true,
-          "settings": {
-            "url": "shopify://pages/size-guide",
-            "open_in_new_tab": true,
-            "text": "Size Guide",
-            "style": "link",
-            "show_in_quickbuy": false
-          }
-        },
-        "richtext_YknPbc": {
-          "type": "richtext",
-          "disabled": true,
-          "settings": {
-            "richtext": "<p><a href=\"/pages/size-guide\" target=\"_blank\" title=\"Size Guide\"><span style=\"text-decoration:underline\">Size Guide</span></a></p>",
-            "icon": "ruler",
-            "icon_size": "small",
-            "enable_box": false,
-            "box_color": "#e0f4d5",
-            "show_in_quickbuy": false
+            "show_offer": false,
+            "show_delivery_cutoff": false,
+            "show_shipping_policy": false,
+            "font_size": 16,
+            "line_height": 1.5,
+            "padding": 0.5,
+            "text_align": "left",
+            "icon": "delivery_truck_speed",
+            "icon_size": 16,
+            "date_format": "long",
+            "cutoff_time_format": "timer",
+            "text_color": "#121212",
+            "background_color": "#ffffff",
+            "countdown_color": "#32741e",
+            "link_color": "#006699",
+            "offer_text": "<strong>FREE</strong> shipping",
+            "prefix": "Ships between",
+            "separator": "-",
+            "suffix": "",
+            "cutoff_message": "Order within",
+            "show_explainer": false
           }
         },
         "buy_buttons": {
@@ -146,30 +129,116 @@
             "disclaimer": "<p>Please note that the carat weight, gold weight, number of stones, and dimensions will vary depending on the size of the product ordered. Please <a href=\"/pages/contact\" title=\"Contact\"><span style=\"text-decoration:underline\">contact us</span></a> for more information. </p>"
           }
         },
-        "arrivesby_delivery_time_Ldcer4": {
-          "type": "shopify://apps/arrivesby/blocks/delivery-time/b4f15d36-71f0-4a8c-954f-e485b7529360",
+        "details_row_KykLQh": {
+          "type": "details_row",
           "settings": {
-            "show_offer": false,
-            "show_delivery_cutoff": false,
-            "show_shipping_policy": false,
-            "font_size": 16,
-            "line_height": 1.5,
-            "padding": 0.5,
-            "text_align": "left",
-            "icon": "delivery_truck_speed",
-            "icon_size": 16,
-            "date_format": "medium",
-            "cutoff_time_format": "timer",
-            "text_color": "#121212",
-            "background_color": "#ffffff",
-            "countdown_color": "#32741e",
-            "link_color": "#006699",
-            "offer_text": "<strong>FREE</strong> shipping",
-            "prefix": "Ships between",
-            "separator": "-",
-            "suffix": "",
-            "cutoff_message": "Order within",
-            "show_explainer": false
+            "heading": "design",
+            "content": "<p>{{ product.metafields.custom.design | metafield_tag }}</p>"
+          }
+        },
+        "details_row_wQT4PD": {
+          "type": "details_row",
+          "settings": {
+            "heading": "material",
+            "content": "<p>{{ product.metafields.custom.material_1 | metafield_tag }}</p>"
+          }
+        },
+        "details_row_wJyWkc": {
+          "type": "details_row",
+          "settings": {
+            "heading": "dimensions",
+            "content": "<p>{{ product.metafields.custom.dimension | metafield_tag }}</p>"
+          }
+        },
+        "details_row_k6LNQH": {
+          "type": "details_row",
+          "settings": {
+            "heading": "Certification",
+            "content": "<p>{{ product.metafields.custom.certification.value }}</p>"
+          }
+        },
+        "custom_liquid_KAwH8z": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div style='margin-top:-40px' class='delivery_date_shortcode'></div>",
+            "show_in_quickbuy": true
+          }
+        },
+        "essential_shipping_bar_app_block_6dHPct": {
+          "type": "shopify://apps/essential-free-shipping/blocks/app-block/4125375e-37c8-4137-949d-c4e1a3aac572",
+          "settings": {
+            "id": ""
+          }
+        },
+        "shipping_row_ships": {
+          "type": "shipping_row",
+          "settings": {
+            "heading": "Ships on or before",
+            "content": "<p><strong>Why isn't my order shipped immediately upon payment?</strong></p><p>With a socially conscious vision and an unwavering commitment to sustainability, we encourage our community of creatives and designers not to overproduce and operate on a made-to-order basis. In light of that, we hope you'd be patient with your order and allow extra time for our creators to craft the jewelry that will stand the test of time.</p>"
+          }
+        },
+        "shipping_row_transit": {
+          "type": "shipping_row",
+          "settings": {
+            "heading": "Estimated time in transit",
+            "content": "<p>7 days</p>"
+          }
+        },
+        "shipping_row_WhcnMH": {
+          "type": "shipping_row",
+          "settings": {
+            "heading": "Tax",
+            "content": "<p>Tax included, duties calculated at checkout</p>"
+          }
+        },
+        "shipping_row_wPQfj9": {
+          "type": "shipping_row",
+          "settings": {
+            "heading": "",
+            "content": "<p>Free insured shipping for orders above USD 300</p>"
+          }
+        },
+        "custom_liquid_xRWAGD": {
+          "type": "custom_liquid",
+          "disabled": true,
+          "settings": {
+            "custom_liquid": "<div style=\"color: #009e2d; display: flex; align-items: flex-start;\">\n\n\n<span class=\"material-symbols-outlined\" style=\"font-size: 20px; margin-right: 8px; margin-top: 2px; color: #009e2d;\">sell</span>\n\n<div style=\"display: flex; flex-direction: column;\">\n\n\n\n<span> {{'promo.message.raffia-bag'|t}}</span>\n\n\n\n</div>\n\n\n</div>\n\n\n<link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined\">",
+            "show_in_quickbuy": false
+          }
+        },
+        "text_BNWt97": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "{{ product.metafields.custom.certification.value }}",
+            "icon": "",
+            "icon_size": "small",
+            "enable_box": true,
+            "box_color": "{{ shop.brand.colors.secondary[1].background }}",
+            "show_in_quickbuy": true
+          }
+        },
+        "link_xrcnp8": {
+          "type": "link",
+          "disabled": true,
+          "settings": {
+            "url": "shopify://pages/size-guide",
+            "open_in_new_tab": true,
+            "text": "Size Guide",
+            "style": "link",
+            "show_in_quickbuy": false
+          }
+        },
+        "richtext_YknPbc": {
+          "type": "richtext",
+          "disabled": true,
+          "settings": {
+            "richtext": "<p><a href=\"/pages/size-guide\" target=\"_blank\" title=\"Size Guide\"><span style=\"text-decoration:underline\">Size Guide</span></a></p>",
+            "icon": "ruler",
+            "icon_size": "small",
+            "enable_box": false,
+            "box_color": "#e0f4d5",
+            "show_in_quickbuy": false
           }
         },
         "accordion_jAzpEh": {
@@ -181,13 +250,6 @@
             "content": "<p><strong>Why isn't my order shipped immediately upon payment?</strong></p><p>With a socially conscious vision and an unwavering commitment to sustainability, we encourage our community of creatives and designers not to overproduce and operate on a made-to-order basis. In light of that, we hope you'd be patient with your order and allow extra time for our creators to craft the jewelry that will stand the test of time.</p>",
             "page": "",
             "open": false,
-            "show_in_quickbuy": true
-          }
-        },
-        "custom_liquid_KAwH8z": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "<div style='margin-top:-40px' class='delivery_date_shortcode'></div>",
             "show_in_quickbuy": true
           }
         },
@@ -208,12 +270,6 @@
           "disabled": true,
           "settings": {
             "show_in_quickbuy": true
-          }
-        },
-        "essential_shipping_bar_app_block_6dHPct": {
-          "type": "shopify://apps/essential-free-shipping/blocks/app-block/4125375e-37c8-4137-949d-c4e1a3aac572",
-          "settings": {
-            "id": ""
           }
         },
         "richtext_VgL3GB": {
@@ -290,13 +346,6 @@
             "show_in_quickbuy": true
           }
         },
-        "details_row_KykLQh": {
-          "type": "details_row",
-          "settings": {
-            "heading": "design",
-            "content": "<p>{{ product.metafields.custom.design | metafield_tag }}</p>"
-          }
-        },
         "accordion_wQT4PD": {
           "type": "accordion",
           "disabled": true,
@@ -309,13 +358,6 @@
             "show_in_quickbuy": true
           }
         },
-        "details_row_wQT4PD": {
-          "type": "details_row",
-          "settings": {
-            "heading": "material",
-            "content": "<p>{{ product.metafields.custom.material_1 | metafield_tag }}</p>"
-          }
-        },
         "accordion_wJyWkc": {
           "type": "accordion",
           "disabled": true,
@@ -326,20 +368,6 @@
             "page": "",
             "open": false,
             "show_in_quickbuy": true
-          }
-        },
-        "details_row_wJyWkc": {
-          "type": "details_row",
-          "settings": {
-            "heading": "dimensions",
-            "content": "<p>{{ product.metafields.custom.dimension | metafield_tag }}</p>"
-          }
-        },
-        "details_row_k6LNQH": {
-          "type": "details_row",
-          "settings": {
-            "heading": "Certification",
-            "content": "<p>{{ product.metafields.custom.certification.value }}</p>"
           }
         },
         "accordion_XniCXG": {
@@ -434,40 +462,12 @@
             "show_explainer": false
           }
         },
-        "shipping_row_ships": {
-          "type": "shipping_row",
-          "settings": {
-            "heading": "Ships on or before",
-            "content": "<p><strong>Why isn't my order shipped immediately upon payment?</strong></p><p>With a socially conscious vision and an unwavering commitment to sustainability, we encourage our community of creatives and designers not to overproduce and operate on a made-to-order basis. In light of that, we hope you'd be patient with your order and allow extra time for our creators to craft the jewelry that will stand the test of time.</p>"
-          }
-        },
-        "shipping_row_transit": {
-          "type": "shipping_row",
-          "settings": {
-            "heading": "Estimated time in transit",
-            "content": "<p>7 days</p>"
-          }
-        },
-        "shipping_row_WhcnMH": {
-          "type": "shipping_row",
-          "settings": {
-            "heading": "Tax",
-            "content": "<p>Tax included, duties calculated at checkout</p>"
-          }
-        },
         "shipping_row_BiERkU": {
           "type": "shipping_row",
           "disabled": true,
           "settings": {
             "heading": "Returns",
             "content": "<p>Easy 14-day returns</p>"
-          }
-        },
-        "shipping_row_wPQfj9": {
-          "type": "shipping_row",
-          "settings": {
-            "heading": "",
-            "content": "<p>Free insured shipping for orders above USD 300</p>"
           }
         }
       },
