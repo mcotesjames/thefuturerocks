@@ -1,32 +1,44 @@
-    {% liquid
-        assign locales = shop.metafields.foxify.locales.value
-        assign current_locale = request.locale.iso_code
-        assign primary_locale = current_locale
-        for locale in shop.published_locales
-        if locale.primary
-            assign primary_locale = locale.iso_code
-            break
-        endif
-        endfor
-        assign translation = locales[current_locale] | default: locales[primary_locale]
-    %}
-    <script>
+
+{% liquid
+  
+    assign locales = shop.metafields.foxify.locales.value
+    assign current_locale = request.locale.iso_code
+    assign primary_locale = current_locale
+    for locale in shop.published_locales
+    if locale.primary
+        assign primary_locale = locale.iso_code
+        break
+    endif
+    endfor
+    assign translation = locales[current_locale] | default: locales[primary_locale]
+
+    assign theme_settings = shop.metafields.foxify.theme_settings.value
+    assign productCard = theme_settings.productCard
+  
+  
+      assign foxifyCustomCss = shop.metafields.foxify['669a021d05ad271be0961bd0'].value.customCss
+      assign foxifyCustomJs = shop.metafields.foxify['669a021d05ad271be0961bd0'].value.customJs
+    
+%}
+
+      <script>
         window.Foxify = window.Foxify || {}
         Foxify.ThemeStyles = {
-            product: "https:{{ 'foxify-product.css' | asset_url }}",
-            swiper: "https:{{ 'foxify-swiper.css' | asset_url }}",
+          product: "https:{{ 'foxify-product.css' | asset_url }}",
+          swiper: "https:{{ 'foxify-swiper.css' | asset_url }}",
         }
 
         Foxify.ThemeScripts = {
-            productModel: "https:{{ 'foxify-product-model.js' | asset_url }}",
-            productMedia: "https:{{ 'foxify-media-gallery.js' | asset_url }}",
-            variantPicker: "https:{{ 'foxify-variant-picker.js' | asset_url }}"
+          productModel: "https:{{ 'foxify-product-model.js' | asset_url }}",
+          productMedia: "https:{{ 'foxify-media-gallery.js' | asset_url }}",
+          variantPicker: "https:{{ 'foxify-variant-picker.js' | asset_url }}"
         }
 
-        Foxify.pageId = '1721369118LSsQn'
-        Foxify.default = false
-    </script>
-    <div class="f-app f:content">
+        Foxify.pageId = '1721369118LSsQn';
+        Foxify.default = false;
+      </script>
+    
+<div class="f-app f:content">
 <style data-foxify-editor="foxify-custom-fonts">
   @font-face {
     font-family: BrownProTT-Regular-1707112782cX7wj;
@@ -211,85 +223,85 @@ a:link {
       %}
 
 </div>
-    {% schema %}
-        {
-            "name": "Foxify main content",
-            "class": "foxify-main f-app",
-            "settings": [
-                {
-                "type": "header",
-                "content": "Customize section",
-                "info": "Go to [Foxify app](https://app.foxify.io/editor?id=1721369118LSsQn&type=REGULAR) to edit this section."
-                }
-            ],
-            "locales": {
-  "en": {
-    "f-richtext-1721369102JprIh-text_html": "visual identity standards",
-    "f-heading-17213691023AaTX-text_html": "brand guidelines",
-    "f-richtext-1721369102v1AVe-text_html": "This document contains the rules of the communication system. Follow these rules strictly to maintain brand consistency.",
-    "f-button-1721369102lAPGG-button_label_html": "get started",
-    "f-button-1721369102ODxnQ-button_label_html": "identity",
-    "f-button-1721369102S5bUN-button_label_html": "design",
-    "f-button-1721369102y02pb-button_label_html": "visual",
-    "f-heading-1721369102ApEGV-text_html": "visual",
-    "f-richtext-1721369102thpWf-text_html": "Our story is defined by passion, ingenuity, and forward-thinking, which are reflected in the visual aesthetic of our visual assets. The style is minimalistic and clear-cut, with each image authentically and assuredly narrating the story of people, focusing on the essential details. The imagery appears unstaged yet meticulously composed in every detail.",
-    "f-button-17213691021IHvs-button_label_html": "photography",
-    "f-button-1721369102eHwm9-button_label_html": "illustration",
-    "f-button-1721369102dHVAN-button_label_html": "composition",
-    "f-button-1721369102mEWkL-button_label_html": "layout structure",
-    "f-heading-1721369102fIL0G-text_html": "photography",
-    "f-richtext-1721369102CyfSW-text_html": "Our photo style is evolving with trends, innovating on subtle details such as lighting, shadow, angle, and composition, while maintaining a consistent brand look.<br><br>The goal: Every photo and video should be identifiable as edgy and fashion-forward. We should use full body imagery sparingly, focusing thoughtfully on close-ups with the intention of clearly telling product stories.",
-    "f-list-items-1721369102Atswh-items-Item-1-title_html": "Our photography is honest.",
-    "f-list-items-1721369102Atswh-items-Item-3-title_html": "Our products are beautiful and believable.",
-    "f-list-items-1721369102Atswh-items-Item-2-title_html": "Our people are authentic and relatable.",
-    "f-heading-17213691026VMQt-text_html": "attitude",
-    "f-richtext-1721369102dZY7F-text_html": "brave | curious | independent | optimistic",
-    "f-richtext-17213691022fZBQ-text_html": "The attitude is optimistic with a confident, nonchalant air. This is reflected in the expressions of our cast in a likable and distinctive manner. We portray individuals with charisma, determination, and curiosity.",
-    "f-heading-1721369102kHt0v-text_html": "cast",
-    "f-richtext-1721369102owz8U-text_html": "confident | diverse | cultured | understated",
-    "f-richtext-1721369102iqQwn-text_html": "The cast is expressive and positive. They have a well-cared-for, natural appearance. They are cultured, stylish, and aspire to challenge the status quo. If children are included, they should be curious and bright. Diversity plays an important role and should not feel forced.",
-    "f-heading-17213691022ybll-text_html": "Styling",
-    "f-richtext-1721369102whi4R-text_html": "premium | modern | minimal",
-    "f-richtext-1721369102ZiE0Q-text_html": "The cast's progressive and tasteful styling emphasizes their personalities, suiting the situation perfectly with sharp and sophisticated looks. Each outfit is carefully put together to not overpower the scene, expressing minimalist elegance.",
-    "f-heading-1721369102Xe6yl-text_html": "illustration",
-    "f-richtext-1721369102PGpSi-text_html": "Our approach to illustration is based on our engaging storytelling and is adapting to current trends. The content should be related to jewelry or our pursuit of innovation in some way. We can use texture, photo collage, composition, and graphic details to create a unique feel. While our brand colors don't have to be in every illustration, they should be considered within the brand context.",
-    "f-list-items-1721369102rUJQ2-items-Item-1-title_html": "Our style is minimalistic.",
-    "f-list-items-1721369102rUJQ2-items-Item-3-title_html": "Our illustrations are distinct and inspiring.",
-    "f-list-items-1721369102rUJQ2-items-Item-2-title_html": "Our focus is always the jewelry.",
-    "f-heading-1721369102YKxQW-text_html": "Focus on the product",
-    "f-richtext-1721369102AImLR-text_html": "Use the product's form to create intriguing compositions to magnify the jewelry's physical presence. This approach follows the principles of simplicity and clarity.",
-    "f-heading-1721369102Vm9Go-text_html": "Focus on the theme",
-    "f-richtext-1721369102P7sgR-text_html": "Amplify the product's concept by creating simple portrayals that tell the story of the design. This approach follows the principles of potent minimalism.",
-    "f-heading-17213691025EsNC-text_html": "Focus on the story",
-    "f-richtext-1721369102paujY-text_html": "The editorial approach to story-telling is inspiring and informative. Creativity is the limit as long as the product is always clearly objectified.",
-    "f-heading-1721369102COMl0-text_html": "composition",
-    "f-richtext-1721369102wNkZa-text_html": "The composition is bold and directs the viewer's attention. The surroundings serve as a backdrop, and the styling does not take away from the jewelry. The staging always feels natural, allowing our images to tell a believable story. The jewelry is clearly visible on people, and the positioning is authentic.",
-    "f-list-items-1721369102U9VFS-items-Item-1-title_html": "We prioritize detailed crops with high-precision close-ups.",
-    "f-list-items-1721369102U9VFS-items-Item-3-title_html": "We make textures and shapes clearly visible.",
-    "f-list-items-1721369102U9VFS-items-Item-2-title_html": "We enables the viewer to experience how it would feel in reality.",
-    "f-heading-1721369102kUDLn-text_html": "Context / zoom",
-    "f-richtext-1721369102rgB6K-text_html": "From the perspective of the image, cropping to zoom in on specific details highlights the importance of high precision and meticulous attention to detail. The close-up shots showcase textures and shapes with enhanced clarity, emphasizing their premium quality. However, to fully appreciate these details, it is crucial to provide the zoomed shots alongside the original context  . This combination allows the viewer to understand the overall composition and how each detailed element contributes to the whole, creating a comprehensive and engaging visual experience.",
-    "f-image-comparison-block-17213691026qBSw-before_heading_html": "Context",
-    "f-image-comparison-block-17213691026qBSw-after_heading_html": "Zoom",
-    "f-heading-1721369102tNyUb-text_html": "Context / perspective",
-    "f-richtext-17213691024v1ST-text_html": "From the perspective of the image, the detailed shots captivate with their high precision and meticulous attention to every minute element. The textures and shapes are clearly visible, emphasizing their premium quality. The precision of the photography animates the materials and surfaces, making them almost tangible. This visual sensation allows the viewer to vividly imagine the tactile experience of holding the objects in their hands.",
-    "f-image-comparison-block-1721369102cx1kO-before_heading_html": "Context",
-    "f-image-comparison-block-1721369102cx1kO-after_heading_html": "Persepctive",
-    "f-heading-1721369102cFJlp-text_html": "crop",
-    "f-richtext-17213691028QCsB-text_html": "Clear view of the product(s) in context",
-    "f-richtext-1721369102XYYTB-text_html": "Clear view of the product(s) in context",
-    "f-richtext-1721369102oBqtP-text_html": "Clear view of the product(s) in context",
-    "f-richtext-1721369102lAuDh-text_html": "Clear view of the product(s) in context",
-    "f-heading-1721369102bZj2x-text_html": "layout structure",
-    "f-richtext-1721369102zSEV3-text_html": "Layouts can include one or more subdivisions arranged horizontally and vertically. The divisions are straight, rectangular, and bleed to the edge. They can be either symmetrical or asymmetrical. The number of spaces and their sizes relative to each other are flexible.",
-    "f-list-items-17213691028KHha-items-Item-1-title_html": "Our layout is clean and minimalistic.",
-    "f-list-items-17213691028KHha-items-Item-3-title_html": "Our layouts are designed to creatively maximize product exposure.",
-    "f-list-items-17213691028KHha-items-Item-2-title_html": "Our layouts are jewelry-focused.",
-    "f-content-tab-1721369102OpONf-title_html": "VISUAL",
-    "f-button-172138134578Fsw-button_label_html": "do not",
-    "f-button-1721381346vIcnU-button_label_html": "resources"
+{% schema %}
+  {
+  "name": "Foxify main content",
+  "class": "foxify-main f-app",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Customize main content",
+      "info": "Go to [Foxify app](https://admin.shopify.com/store/the-future-rocks/apps/foxify-builder/editor?id=1721369118LSsQn&type=regular) to edit this section."
+    }
+  ],
+  "locales": {
+    "en": {
+      "f-richtext-1721369102JprIh-text_html": "visual identity standards",
+      "f-heading-17213691023AaTX-text_html": "brand guidelines",
+      "f-richtext-1721369102v1AVe-text_html": "This document contains the rules of the communication system. Follow these rules strictly to maintain brand consistency.",
+      "f-button-1721369102lAPGG-button_label_html": "get started",
+      "f-button-1721369102ODxnQ-button_label_html": "identity",
+      "f-button-1721369102S5bUN-button_label_html": "design",
+      "f-button-1721369102y02pb-button_label_html": "visual",
+      "f-heading-1721369102ApEGV-text_html": "visual",
+      "f-richtext-1721369102thpWf-text_html": "Our story is defined by passion, ingenuity, and forward-thinking, which are reflected in the visual aesthetic of our visual assets. The style is minimalistic and clear-cut, with each image authentically and assuredly narrating the story of people, focusing on the essential details. The imagery appears unstaged yet meticulously composed in every detail.",
+      "f-button-17213691021IHvs-button_label_html": "photography",
+      "f-button-1721369102eHwm9-button_label_html": "illustration",
+      "f-button-1721369102dHVAN-button_label_html": "composition",
+      "f-button-1721369102mEWkL-button_label_html": "layout structure",
+      "f-heading-1721369102fIL0G-text_html": "photography",
+      "f-richtext-1721369102CyfSW-text_html": "Our photo style is evolving with trends, innovating on subtle details such as lighting, shadow, angle, and composition, while maintaining a consistent brand look.<br><br>The goal: Every photo and video should be identifiable as edgy and fashion-forward. We should use full body imagery sparingly, focusing thoughtfully on close-ups with the intention of clearly telling product stories.",
+      "f-list-items-1721369102Atswh-items-Item-1-title_html": "Our photography is honest.",
+      "f-list-items-1721369102Atswh-items-Item-3-title_html": "Our products are beautiful and believable.",
+      "f-list-items-1721369102Atswh-items-Item-2-title_html": "Our people are authentic and relatable.",
+      "f-heading-17213691026VMQt-text_html": "attitude",
+      "f-richtext-1721369102dZY7F-text_html": "brave | curious | independent | optimistic",
+      "f-richtext-17213691022fZBQ-text_html": "The attitude is optimistic with a confident, nonchalant air. This is reflected in the expressions of our cast in a likable and distinctive manner. We portray individuals with charisma, determination, and curiosity.",
+      "f-heading-1721369102kHt0v-text_html": "cast",
+      "f-richtext-1721369102owz8U-text_html": "confident | diverse | cultured | understated",
+      "f-richtext-1721369102iqQwn-text_html": "The cast is expressive and positive. They have a well-cared-for, natural appearance. They are cultured, stylish, and aspire to challenge the status quo. If children are included, they should be curious and bright. Diversity plays an important role and should not feel forced.",
+      "f-heading-17213691022ybll-text_html": "Styling",
+      "f-richtext-1721369102whi4R-text_html": "premium | modern | minimal",
+      "f-richtext-1721369102ZiE0Q-text_html": "The cast's progressive and tasteful styling emphasizes their personalities, suiting the situation perfectly with sharp and sophisticated looks. Each outfit is carefully put together to not overpower the scene, expressing minimalist elegance.",
+      "f-heading-1721369102Xe6yl-text_html": "illustration",
+      "f-richtext-1721369102PGpSi-text_html": "Our approach to illustration is based on our engaging storytelling and is adapting to current trends. The content should be related to jewelry or our pursuit of innovation in some way. We can use texture, photo collage, composition, and graphic details to create a unique feel. While our brand colors don't have to be in every illustration, they should be considered within the brand context.",
+      "f-list-items-1721369102rUJQ2-items-Item-1-title_html": "Our style is minimalistic.",
+      "f-list-items-1721369102rUJQ2-items-Item-3-title_html": "Our illustrations are distinct and inspiring.",
+      "f-list-items-1721369102rUJQ2-items-Item-2-title_html": "Our focus is always the jewelry.",
+      "f-heading-1721369102YKxQW-text_html": "Focus on the product",
+      "f-richtext-1721369102AImLR-text_html": "Use the product's form to create intriguing compositions to magnify the jewelry's physical presence. This approach follows the principles of simplicity and clarity.",
+      "f-heading-1721369102Vm9Go-text_html": "Focus on the theme",
+      "f-richtext-1721369102P7sgR-text_html": "Amplify the product's concept by creating simple portrayals that tell the story of the design. This approach follows the principles of potent minimalism.",
+      "f-heading-17213691025EsNC-text_html": "Focus on the story",
+      "f-richtext-1721369102paujY-text_html": "The editorial approach to story-telling is inspiring and informative. Creativity is the limit as long as the product is always clearly objectified.",
+      "f-heading-1721369102COMl0-text_html": "composition",
+      "f-richtext-1721369102wNkZa-text_html": "The composition is bold and directs the viewer's attention. The surroundings serve as a backdrop, and the styling does not take away from the jewelry. The staging always feels natural, allowing our images to tell a believable story. The jewelry is clearly visible on people, and the positioning is authentic.",
+      "f-list-items-1721369102U9VFS-items-Item-1-title_html": "We prioritize detailed crops with high-precision close-ups.",
+      "f-list-items-1721369102U9VFS-items-Item-3-title_html": "We make textures and shapes clearly visible.",
+      "f-list-items-1721369102U9VFS-items-Item-2-title_html": "We enables the viewer to experience how it would feel in reality.",
+      "f-heading-1721369102kUDLn-text_html": "Context / zoom",
+      "f-richtext-1721369102rgB6K-text_html": "From the perspective of the image, cropping to zoom in on specific details highlights the importance of high precision and meticulous attention to detail. The close-up shots showcase textures and shapes with enhanced clarity, emphasizing their premium quality. However, to fully appreciate these details, it is crucial to provide the zoomed shots alongside the original context  . This combination allows the viewer to understand the overall composition and how each detailed element contributes to the whole, creating a comprehensive and engaging visual experience.",
+      "f-image-comparison-block-17213691026qBSw-before_heading_html": "Context",
+      "f-image-comparison-block-17213691026qBSw-after_heading_html": "Zoom",
+      "f-heading-1721369102tNyUb-text_html": "Context / perspective",
+      "f-richtext-17213691024v1ST-text_html": "From the perspective of the image, the detailed shots captivate with their high precision and meticulous attention to every minute element. The textures and shapes are clearly visible, emphasizing their premium quality. The precision of the photography animates the materials and surfaces, making them almost tangible. This visual sensation allows the viewer to vividly imagine the tactile experience of holding the objects in their hands.",
+      "f-image-comparison-block-1721369102cx1kO-before_heading_html": "Context",
+      "f-image-comparison-block-1721369102cx1kO-after_heading_html": "Persepctive",
+      "f-heading-1721369102cFJlp-text_html": "crop",
+      "f-richtext-17213691028QCsB-text_html": "Clear view of the product(s) in context",
+      "f-richtext-1721369102XYYTB-text_html": "Clear view of the product(s) in context",
+      "f-richtext-1721369102oBqtP-text_html": "Clear view of the product(s) in context",
+      "f-richtext-1721369102lAuDh-text_html": "Clear view of the product(s) in context",
+      "f-heading-1721369102bZj2x-text_html": "layout structure",
+      "f-richtext-1721369102zSEV3-text_html": "Layouts can include one or more subdivisions arranged horizontally and vertically. The divisions are straight, rectangular, and bleed to the edge. They can be either symmetrical or asymmetrical. The number of spaces and their sizes relative to each other are flexible.",
+      "f-list-items-17213691028KHha-items-Item-1-title_html": "Our layout is clean and minimalistic.",
+      "f-list-items-17213691028KHha-items-Item-3-title_html": "Our layouts are designed to creatively maximize product exposure.",
+      "f-list-items-17213691028KHha-items-Item-2-title_html": "Our layouts are jewelry-focused.",
+      "f-content-tab-1721369102OpONf-title_html": "VISUAL",
+      "f-button-172138134578Fsw-button_label_html": "do not",
+      "f-button-1721381346vIcnU-button_label_html": "resources"
+    }
   }
 }
-        }
-    {% endschema %}
+{% endschema %}
   

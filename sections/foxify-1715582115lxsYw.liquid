@@ -1,32 +1,44 @@
-    {% liquid
-        assign locales = shop.metafields.foxify.locales.value
-        assign current_locale = request.locale.iso_code
-        assign primary_locale = current_locale
-        for locale in shop.published_locales
-        if locale.primary
-            assign primary_locale = locale.iso_code
-            break
-        endif
-        endfor
-        assign translation = locales[current_locale] | default: locales[primary_locale]
-    %}
-    <script>
+
+{% liquid
+  
+    assign locales = shop.metafields.foxify.locales.value
+    assign current_locale = request.locale.iso_code
+    assign primary_locale = current_locale
+    for locale in shop.published_locales
+    if locale.primary
+        assign primary_locale = locale.iso_code
+        break
+    endif
+    endfor
+    assign translation = locales[current_locale] | default: locales[primary_locale]
+
+    assign theme_settings = shop.metafields.foxify.theme_settings.value
+    assign productCard = theme_settings.productCard
+  
+  
+      assign foxifyCustomCss = shop.metafields.foxify['6641b4a37bcf60bac4d8f39e'].value.customCss
+      assign foxifyCustomJs = shop.metafields.foxify['6641b4a37bcf60bac4d8f39e'].value.customJs
+    
+%}
+
+      <script>
         window.Foxify = window.Foxify || {}
         Foxify.ThemeStyles = {
-            product: "https:{{ 'foxify-product.css' | asset_url }}",
-            swiper: "https:{{ 'foxify-swiper.css' | asset_url }}",
+          product: "https:{{ 'foxify-product.css' | asset_url }}",
+          swiper: "https:{{ 'foxify-swiper.css' | asset_url }}",
         }
 
         Foxify.ThemeScripts = {
-            productModel: "https:{{ 'foxify-product-model.js' | asset_url }}",
-            productMedia: "https:{{ 'foxify-media-gallery.js' | asset_url }}",
-            variantPicker: "https:{{ 'foxify-variant-picker.js' | asset_url }}"
+          productModel: "https:{{ 'foxify-product-model.js' | asset_url }}",
+          productMedia: "https:{{ 'foxify-media-gallery.js' | asset_url }}",
+          variantPicker: "https:{{ 'foxify-variant-picker.js' | asset_url }}"
         }
 
-        Foxify.pageId = '1715582115lxsYw'
-        Foxify.default = true
-    </script>
-    <div class="f-app f:content">
+        Foxify.pageId = '1715582115lxsYw';
+        Foxify.default = true;
+      </script>
+    
+<div class="f-app f:content">
 <style data-foxify-editor="foxify-custom-fonts">
   @font-face {
     font-family: BrownProTT-Bold-17071127825LR9n;
@@ -582,65 +594,65 @@ html:not([lang|="en"]) #myDiv-en-form,html:not([lang|="ja"]) #myDiv-ja-form, htm
       %}
 
 </div>
-    {% schema %}
-        {
-            "name": "Foxify main content",
-            "class": "foxify-main f-app",
-            "settings": [
-                {
-                "type": "header",
-                "content": "Customize section",
-                "info": "Go to [Foxify app](https://app.foxify.io/editor?id=1715582115lxsYw&type=HOMEPAGE) to edit this section."
-                }
-            ],
-            "locales": {
-  "en": {
-    "f-richtext-1715582096IJmVO-text_html": "NEW",
-    "f-heading-1715582096TmqQ3-text_html": "Explore Unsaid",
-    "f-heading-1715582096ItHY4-text_html": "Bringing a sense of brilliance to any lifestyle.",
-    "f-button-171558209603rla-button_label_html": "Shop now",
-    "f-heading-1715582096PDwlV-text_html": "feature",
-    "f-richtext-1715582096CzQuB-text_html": "Stay ahead in style with our latest features",
-    "f-button-1715582096iSAib-button_label_html": "see all",
-    "f-richtext-1715582096BjSvr-text_html": "An essential collaboration",
-    "f-heading-1715582096qZM4Y-text_html": "The Future Rocks x Lightbox Jewelry",
-    "f-heading-1715582096KtdEv-text_html": "Joyful symphony of colors",
-    "f-button-17155820966Q89z-button_label_html": "Shop now",
-    "f-heading-1715582096xV2VK-text_html": "bestseller",
-    "f-richtext-1715582096O47RU-text_html": "From accent accessories to statement jewels – these are the most-wanted pieces enjoyed by our members",
-    "f-button-1715582096cnrB4-button_label_html": "see all",
-    "f-richtext-1715582096ApVKa-text_html": "NEW",
-    "f-heading-1715582096qU34P-text_html": "THE RING II",
-    "f-heading-171558209616OqW-text_html": "Meticulously crafted to the highest standards of quality.",
-    "f-button-1715582096mSbbt-button_label_html": "take a look",
-    "f-heading-1715582096CIawc-text_html": "Enjoy 10% off",
-    "f-richtext-17155820966G8r4-text_html": "Sign up to get 10% off your first order and be the first to hear about pre-orders, members-only promotions, and sneak peeks.",
-    "f-heading-17155820968UZMg-text_html": "journal",
-    "f-button-1715582096xOTDq-button_label_html": "earrings",
-    "f-button-1715582096GP6B4-button_label_html": "necklaces",
-    "f-button-1715582096rLPMk-button_label_html": "rings",
-    "f-button-1715582096ff9AN-button_label_html": "pendants",
-    "f-button-1715582096J3tqz-button_label_html": "bracelets",
-    "f-button-1715582096slxCX-button_label_html": "member perks",
-    "f-richtext-1715582096kZf0T-text_html": "<p>Exclusive members-only privileges</p>",
-    "f-button-1715582096pjqtA-button_label_html": "free shipping",
-    "f-richtext-1715582096A15g4-text_html": "<p>Free Shipping for orders over USD 300</p>",
-    "f-button-1715582096S4vKo-button_label_html": "easy return",
-    "f-richtext-1715582096nG1qo-text_html": "<p>Within 14 days of receipt of shipment</p>",
-    "f-richtext-1716864352vRvhT-text_html": "new",
-    "f-heading-17168643561WcNk-text_html": "Discover Maren",
-    "f-richtext-1716864359YU1Oj-text_html": "Glam up with Maren",
-    "f-button-1716864363U8X1B-button_label_html": "Take a look",
-    "f-richtext-1717402256yNXNL-text_html": "<p>summer code is here</p>",
-    "f-heading-1717402256qVyge-text_html": "summer 50",
-    "f-richtext-17174027480Og2r-text_html": "<p>Step up your style game this summer!</p>",
-    "f-countdown-171740225658ObT-day_label_html": "Days",
-    "f-countdown-171740225658ObT-hour_label_html": "Hrs",
-    "f-countdown-171740225658ObT-min_label_html": "Mins",
-    "f-countdown-171740225658ObT-sec_label_html": "Secs",
-    "f-button-1717402256kfdTy-button_label_html": "Shop now"
+{% schema %}
+  {
+  "name": "Foxify main content",
+  "class": "foxify-main f-app",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Customize main content",
+      "info": "Go to [Foxify app](https://admin.shopify.com/store/the-future-rocks/apps/foxify-builder/editor?id=1715582115lxsYw&type=homepage) to edit this section."
+    }
+  ],
+  "locales": {
+    "en": {
+      "f-richtext-1715582096IJmVO-text_html": "NEW",
+      "f-heading-1715582096TmqQ3-text_html": "Explore Unsaid",
+      "f-heading-1715582096ItHY4-text_html": "Bringing a sense of brilliance to any lifestyle.",
+      "f-button-171558209603rla-button_label_html": "Shop now",
+      "f-heading-1715582096PDwlV-text_html": "feature",
+      "f-richtext-1715582096CzQuB-text_html": "Stay ahead in style with our latest features",
+      "f-button-1715582096iSAib-button_label_html": "see all",
+      "f-richtext-1715582096BjSvr-text_html": "An essential collaboration",
+      "f-heading-1715582096qZM4Y-text_html": "The Future Rocks x Lightbox Jewelry",
+      "f-heading-1715582096KtdEv-text_html": "Joyful symphony of colors",
+      "f-button-17155820966Q89z-button_label_html": "Shop now",
+      "f-heading-1715582096xV2VK-text_html": "bestseller",
+      "f-richtext-1715582096O47RU-text_html": "From accent accessories to statement jewels – these are the most-wanted pieces enjoyed by our members",
+      "f-button-1715582096cnrB4-button_label_html": "see all",
+      "f-richtext-1715582096ApVKa-text_html": "NEW",
+      "f-heading-1715582096qU34P-text_html": "THE RING II",
+      "f-heading-171558209616OqW-text_html": "Meticulously crafted to the highest standards of quality.",
+      "f-button-1715582096mSbbt-button_label_html": "take a look",
+      "f-heading-1715582096CIawc-text_html": "Enjoy 10% off",
+      "f-richtext-17155820966G8r4-text_html": "Sign up to get 10% off your first order and be the first to hear about pre-orders, members-only promotions, and sneak peeks.",
+      "f-heading-17155820968UZMg-text_html": "journal",
+      "f-button-1715582096xOTDq-button_label_html": "earrings",
+      "f-button-1715582096GP6B4-button_label_html": "necklaces",
+      "f-button-1715582096rLPMk-button_label_html": "rings",
+      "f-button-1715582096ff9AN-button_label_html": "pendants",
+      "f-button-1715582096J3tqz-button_label_html": "bracelets",
+      "f-button-1715582096slxCX-button_label_html": "member perks",
+      "f-richtext-1715582096kZf0T-text_html": "<p>Exclusive members-only privileges</p>",
+      "f-button-1715582096pjqtA-button_label_html": "free shipping",
+      "f-richtext-1715582096A15g4-text_html": "<p>Free Shipping for orders over USD 300</p>",
+      "f-button-1715582096S4vKo-button_label_html": "easy return",
+      "f-richtext-1715582096nG1qo-text_html": "<p>Within 14 days of receipt of shipment</p>",
+      "f-richtext-1716864352vRvhT-text_html": "new",
+      "f-heading-17168643561WcNk-text_html": "Discover Maren",
+      "f-richtext-1716864359YU1Oj-text_html": "Glam up with Maren",
+      "f-button-1716864363U8X1B-button_label_html": "Take a look",
+      "f-richtext-1717402256yNXNL-text_html": "<p>summer code is here</p>",
+      "f-heading-1717402256qVyge-text_html": "summer 50",
+      "f-richtext-17174027480Og2r-text_html": "<p>Step up your style game this summer!</p>",
+      "f-countdown-171740225658ObT-day_label_html": "Days",
+      "f-countdown-171740225658ObT-hour_label_html": "Hrs",
+      "f-countdown-171740225658ObT-min_label_html": "Mins",
+      "f-countdown-171740225658ObT-sec_label_html": "Secs",
+      "f-button-1717402256kfdTy-button_label_html": "Shop now"
+    }
   }
 }
-        }
-    {% endschema %}
+{% endschema %}
   
